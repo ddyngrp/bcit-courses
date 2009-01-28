@@ -4,7 +4,8 @@ SVN Repository Layout
 Trunk:
 ------
 Trunk would be the main body of development, originating from the start
-of the project until the present.
+of the project until the present. There is only one version of the code
+living in the trunk at any one point in time, the latest version.
 
 Branches:
 ---------

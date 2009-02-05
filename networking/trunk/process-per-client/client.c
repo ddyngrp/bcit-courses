@@ -4,9 +4,9 @@
 char * conn_status = "\033[31m(disconnected)";
 
 void client_menu() {
-	int c;
+	int c, cmenu = 1;
 
-	while ((c = getchar())) {
+	while ((c = getchar()) && cmenu == 1) {
 		switch (c) {
 			case '1':
 				break;
@@ -21,17 +21,18 @@ void client_menu() {
 				break;
 
 			case '5':
-				exit(0);
+				master_menu_print(0);
+				cmenu = 0;
 				break;
 
 			default:
-				print_client_menu();
+				client_menu_print();
 				break;
 		}
 	}
 }
 
-void print_client_menu() {
+void client_menu_print() {
 	system("clear");
 	printf("\033[1mRun as Client Menu: %s\r\n\033[0m", conn_status);
 	printf(" 1. Set Server IP Address / Port\r\n");

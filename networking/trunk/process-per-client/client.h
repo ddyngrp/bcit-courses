@@ -4,6 +4,6 @@
 #include <stdio.h>
 
 void client_menu(void);
-void print_client_menu(void);
+void client_menu_print(void);
 
 #endif

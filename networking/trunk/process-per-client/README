@@ -15,12 +15,16 @@ master.c:
 			processess, co-ordinating all the input that each server process receives and
 			saving that input to a file for later comparison.
 
-			This process should also present the user with a simple menu of options:
+			This process should also present the user with a simple hierarchy of menu options:
 
-				1. Set Server Port
-				2. Start Server
-				3. Stop Server (disconnect clients)
-				4. Exit
+				1. Run as Server
+					1. Set Server Port
+					2. Start Server
+					3. Stop Server (disconnect clients)
+					4. Exit
+				2. Start Client
+					(client.c menu options)
+				3. Exit
 
 server.c:
 			This process will be responsible for receiving data from a single client, one process

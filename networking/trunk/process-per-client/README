@@ -1,0 +1,41 @@
+Server Process Spawned per Client
+=================================
+
+This is a proof of concept client/server application to send and receive simple TCP/IP data packets.
+Support for multiple clients via the server process forking for each client that connects. When
+a fork occurs, the new process notifies the client with a new socket port though which it will
+communicate.
+
+This is only a proof of concept, therefore it is a very rough example.
+
+master.c: This would be the master process, main(). This process will listen on a specific
+		  port for clients to connect and upon receiving a connection request, fork a new
+		  server process. This process should likely also manage the multiple server
+		  processess, co-ordinating all the input that each server process receives and
+		  saving that input to a file for later comparison.
+
+		  This process should also present the user with a simple menu of options:
+
+		  	1. Set Server Port
+		  	2. Start Server
+		  	3. Stop Server (disconnect clients)
+		  	4. Exit
+
+server.c: This process will be responsible for receiving data from a single client, one process
+		  per client. All this process will be do is receive data from a client and send this
+		  data to the master process to be processed.
+
+client.c: Contains code for the client side of the application. The client handles connecting to
+		  a server, receiving information from the server, and reconnecting to a new reqeusted port
+		  upon initial connection. The user should be presented with a simple menu as such:
+
+		  	1. Set Server IP Address / Port
+			2. Connect to Server
+			3. Send test data
+			4. Disconnect
+			5. Exit
+
+		  Option #3 should probably enter a loop to send a bunch of test data for a specific period
+		  of time. This data could be provided from a file, allowing the server to write the data
+		  out to a file on the other end. This would allow one to diff the files to verify data
+		  integrity.

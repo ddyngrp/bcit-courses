@@ -8,7 +8,8 @@ communicate.
 
 This is only a proof of concept, therefore it is a very rough example.
 
-master.c:	This would be the master process, main(). This process will listen on a specific
+master.c:
+			This would be the master process, main(). This process will listen on a specific
 			port for clients to connect and upon receiving a connection request, fork a new
 			server process. This process should likely also manage the multiple server
 			processess, co-ordinating all the input that each server process receives and
@@ -21,11 +22,13 @@ master.c:	This would be the master process, main(). This process will listen on 
 				3. Stop Server (disconnect clients)
 				4. Exit
 
-server.c:	This process will be responsible for receiving data from a single client, one process
+server.c:
+			This process will be responsible for receiving data from a single client, one process
 			per client. All this process will be do is receive data from a client and send this
 			data to the master process to be processed.
 
-client.c:	Contains code for the client side of the application. The client handles connecting to
+client.c:
+			Contains code for the client side of the application. The client handles connecting to
 			a server, receiving information from the server, and reconnecting to a new reqeusted port
 			upon initial connection. The user should be presented with a simple menu as such:
 

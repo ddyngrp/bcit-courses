@@ -3,7 +3,7 @@ be redestributed without written permission.
 The code was modified by Alin Albu to meet the requirements of the Tux Bomer game.*/
 
 //The headers
-#include "MainHeader.h"
+#include "Mainheader.h"
 
 //bombs location index
 SDL_Rect bombs[TOTAL_TILES];
@@ -96,7 +96,7 @@ bool check_collision( SDL_Rect A, SDL_Rect B )
     bottomB = B.y + B.h;
 
     //If any of the sides from A are outside of B
-    if( bottomA <= topB+5 || topA >= bottomB-15 || rightA <= leftB+5 || leftA >= rightB-5 )
+    if( bottomA <= topB+15 || topA >= bottomB -15 || rightA <= leftB+5 || leftA >= rightB-5 )
     {
         return false;
     }
@@ -134,7 +134,7 @@ bool init()
 bool load_files()
 {
     //Load the Player image
-    player = load_image( "batmanTuxSmal.gif" );
+    player = load_image( "batmanTuxTall.xcf" );
 
     //If there was a problem in loading the player
     if( player == NULL )
@@ -343,12 +343,8 @@ void Player::handle_input()
             		BOMBS = 0;
             	break;
             case SDLK_RIGHT: xVel += TUX_WIDTH / 7; break;
-            //escape will kill the game
             case SDLK_ESCAPE: quit=true;break;
-            //refreshes the map from the file : lazyBack.map 
-            //to test this modify the values in the map and press 'r'
             case SDLK_r: set_tiles(tiles);break;
-            default:break;
             
         }
     }
@@ -364,7 +360,6 @@ void Player::handle_input()
             case SDLK_LEFT: xVel += TUX_WIDTH / 7; break;
             case SDLK_SPACE: break;
             case SDLK_RIGHT: xVel -= TUX_WIDTH / 7; break;
-            default:break;
         }
     }
 }

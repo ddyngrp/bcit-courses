@@ -5,5 +5,6 @@
 
 void client_menu(void);
 void client_menu_print(void);
+void toggle_conn_status(int);
 
 #endif

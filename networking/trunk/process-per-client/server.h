@@ -3,4 +3,6 @@
 
 #include <stdio.h>
 
+void server(void);
+
 #endif

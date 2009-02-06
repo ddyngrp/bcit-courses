@@ -8,19 +8,22 @@ void client_menu() {
 
 	while ((c = getchar()) && cmenu == 1) {
 		switch (c) {
-			case '1':
+			case '1': // Set Server IP / Port
 				break;
 
-			case '2':
+			case '2': // Connect to Server
+				toggle_conn_status(1);
 				break;
 
-			case '3':
+			case '3': // Send Test Data
 				break;
 
-			case '4':
+			case '4': // Disconnect
+				toggle_conn_status(0);
 				break;
 
-			case '5':
+			case '5': // Exit
+				toggle_conn_status(1);
 				master_menu_print(0);
 				cmenu = 0;
 				break;
@@ -41,4 +44,13 @@ void client_menu_print() {
 	printf(" 4. Disconnect\r\n");
 	printf(" 5. Exit\r\n");
 	printf("> ");
+}
+
+void toggle_conn_status(int status) {
+	if (status) {
+		conn_status = "\033[31m(connected)";
+	}
+	else {
+		conn_status = "\033[31m(disconnected)";
+	}
 }

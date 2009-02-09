@@ -172,7 +172,7 @@ void clean_up( Tile *tiles[] )
     SDL_Quit();
 }
 
-// Cut tiles from the picture
+// Cut tiles from the picture empty.xcf, faster loading one image than three.
 void clip_tiles()
 {
     //Clip the sprite sheet
@@ -339,7 +339,7 @@ void Player::handle_input()
             	bombs[BOMBS].y = TILE_HEIGHT*(int)((box.y+TILE_HEIGHT/2 -yVel)/TILE_HEIGHT); 
             	apply_surface(bombs[BOMBS].x ,bombs[BOMBS].y , bomb, screen );
             	
-            	if(++BOMBS == TOTAL_TILES)
+            	if(++BOMBS >= TOTAL_TILES)
             		BOMBS = 0;
             	break;
             case SDLK_RIGHT: xVel += TUX_WIDTH / 7; break;
@@ -511,11 +511,13 @@ int main( int argc, char* args[] )
     //Initialize the tiles
     for( int tx = 0, ty = -1; tx < TOTAL_TILES; tx++ )
     {
+	// Place empty spaces at player location, 2 locations right, and one down.
 	if(tx==20 || tx ==21 || tx ==37 ||tx==19 )
 	{
 		genmap<< "01" <<' ';
     		continue;
-    	}	
+    	}
+	// Places indestructables along left side.
     	if(tx%18==0)
     	{
     		if(++ty!=0)
@@ -523,25 +525,25 @@ int main( int argc, char* args[] )
     		genmap<< "00" <<' ';
     		continue; 
     	}
-    	
+    	// Places indestructables along the right side.
     	if(tx%18==16 || tx%18==17 )
     	{
     		genmap<< "00" <<' ';
     		continue; 
     	}
-    	
+    	// Places indestructables along top and bottom.
     	if((tx < 18 || tx > TOTAL_TILES -19))
     	{
     		genmap<< "00" <<' ';
     		continue;
     	}
-    	
+    	// Place indestructables at every second row and second column
     	if( ty%2 == 0 && tx%2 == 0)
     	{
     		genmap<< "00" <<' ';
     		continue;
     	}
-    	
+    	// Places either empty or destructable in every open location.
     	genmap<<'0'<<(rand()%2 + 1) <<' ';	
     }
     

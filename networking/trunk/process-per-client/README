@@ -42,7 +42,7 @@ client.c:
 				4. Disconnect
 				5. Exit
 
-			Option #3 should probably enter a loop to send a bunch of test data for a specific period
+			Option #3: should probably enter a loop to send a bunch of test data for a specific period
 			of time. This data could be provided from a file, allowing the server to write the data
 			out to a file on the other end. This would allow one to diff the files to verify data
 			integrity.

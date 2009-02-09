@@ -202,7 +202,7 @@ bool set_tiles( Tile *tiles[] )
     int x = FIELD_X_OFFSET, y = FIELD_Y_OFFSET;
 
     //Open the map
-    std::ifstream map( "lazyBack.map" );
+    std::ifstream map( "lazy.map" );
 
     //If the map couldn't be loaded
     if( map == NULL )
@@ -496,13 +496,18 @@ int main( int argc, char* args[] )
     Player myPlayer;
     //generate random map	
     std::ofstream genmap( "lazy.map" );
-
+    int sTime;
+    long lTime;
+    lTime = time(NULL);
+    sTime = (unsigned)lTime/2;
+    srand(sTime);
     //If the map couldn't be loaded
     if( genmap == NULL )
     {
         return false;
     }
 
+    
     //Initialize the tiles
     for( int tx = 0, ty = -1; tx < TOTAL_TILES; tx++ )
     {
@@ -537,7 +542,7 @@ int main( int argc, char* args[] )
     		continue;
     	}
     	
-    	genmap<<'0'<<((rand()%43)/11)%2 + 1 <<' ';	
+    	genmap<<'0'<<(rand()%2 + 1) <<' ';	
     }
     
     genmap.close();

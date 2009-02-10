@@ -33,7 +33,7 @@ const int PLAYER_Y_POS = 35;
 
 
 //The dimensions of the play field
-const int FIELD_WIDTH = 600;
+const int FIELD_WIDTH = 600;1
 const int FIELD_HEIGHT = 600;
 
 //play field offsets

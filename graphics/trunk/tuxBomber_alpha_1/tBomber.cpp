@@ -578,7 +578,7 @@ int main( int argc, char* args[] )
     	{
     		genmap<< "00" <<' ';
     		continue; 
-    	}
+    	} 
     	// Places indestructables along top and bottom.
     	if((tx < 18 || tx > TOTAL_TILES -19))
     	{

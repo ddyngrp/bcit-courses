@@ -216,12 +216,12 @@ void draw_options()
 	for(int i = 0; i < 5; i++)
 	{
 		messages[i] = TTF_RenderText_Solid(font, option_messages[i].c_str(), i == 0? selectColor : textColor);
-		apply_surface(0, (i+1) * 100, messages[i], screen);
+		apply_surface(0, i * 100, messages[i], screen);
 	}
 	
 	//message loop
 	while(!goBack)
-	{int main( int argc, char* args[] )
+	{
 		SDL_WaitEvent(&event);
 		
 		if(event.type == SDL_KEYDOWN)
@@ -249,6 +249,9 @@ void draw_options()
 				case SDLK_ESCAPE:
 					goBack = true;
 					break;
+				default:
+				break;
+				
 			}
 		}
 		else if(event.type == SDL_QUIT)
@@ -259,7 +262,7 @@ void draw_options()
 			apply_surface(0,0,background,screen);
 			for(int i = 0; i < 5; i++)
 			{
-				apply_surface(0, (i+1) * 100, messages[i], screen);
+				apply_surface(0, i * 100, messages[i], screen);
 			}
 			option_message = 0;
 		}
@@ -346,6 +349,7 @@ int main( int argc, char* args[] )
 								leftMessage = TTF_RenderText_Solid( font, messages[selectPos].c_str(), selectColor );
 								rightMessage = TTF_RenderText_Solid( font, messages[selectPos + 1].c_str(), textColor );
 							break;
+						
 						}
 					}
 					break;
@@ -368,6 +372,7 @@ int main( int argc, char* args[] )
 								leftMessage = TTF_RenderText_Solid( font, messages[selectPos - 1].c_str(), textColor );
 								rightMessage = TTF_RenderText_Solid( font, messages[selectPos].c_str(), selectColor );
 							break;
+							
 						}
 					}
 					break;
@@ -388,6 +393,8 @@ int main( int argc, char* args[] )
 							quit = true;
 						break;
 					}
+				default:
+				break;
 			}
 		}
 

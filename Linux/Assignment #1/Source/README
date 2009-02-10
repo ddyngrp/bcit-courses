@@ -1,0 +1,5 @@
+To compile this program, simply type "make" and press enter.
+
+To run this program, type "./keycatcher"
+
+To clean all compiled objects and executables, type "make clean"

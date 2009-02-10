@@ -1,0 +1,225 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Canada) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit\tCtrl+Q",               ID_FILE_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Clear Output\tCtrl+W",       ID_EDIT_CLEAROUTPUT
+    END
+    POPUP "Winsock"
+    BEGIN
+        MENUITEM "Resolve IP Address\tCtrl+1",  ID_WINSOCK_RESOLVEIPADDRESS
+        MENUITEM "Resolve Host Name\tCtrl+2",   ID_WINSOCK_RESOLVEHOSTNAME
+        MENUITEM "Resolve Service Name\tCtrl+3", ID_WINSOCK_RESOLVESVCNAME
+        MENUITEM "Resolve Service Port\tCtrl+4", ID_WINSOCK_RESOLVESVCPORT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "C:\\Program Files (x86)\\Microsoft Visual Studio 9.0\\Common7\\VS2008ImageLibrary\\1033\\VS2008ImageLibrary\\Objects\\ico_format\\WinVista\\Network_Map.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OUTPUT DIALOGEX 0, 0, 415, 183
+STYLE DS_ABSALIGN | DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_BORDER
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_OUTPUT,7,7,401,169,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | WS_VSCROLL
+END
+
+IDD_IP_INPUT DIALOGEX 0, 0, 154, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resolve Host Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,44,25,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,97,25,50,14
+    CONTROL         "",IDC_IP_ADDRESS,"SysIPAddress32",WS_TABSTOP,47,7,100,15
+    LTEXT           "IP Address:",IDC_STATIC,7,10,38,8
+END
+
+IDD_HOST_INPUT DIALOGEX 0, 0, 146, 47
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resolve IP Address"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,37,26,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,89,26,50,14
+    EDITTEXT        IDC_HOST_NAME,47,7,92,14,ES_AUTOHSCROLL
+    LTEXT           "Host Name:",IDC_STATIC,7,10,38,8
+END
+
+IDD_PORT_INPUT DIALOGEX 0, 0, 139, 63
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resolve Service Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,30,42,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,82,42,50,14
+    EDITTEXT        IDC_PORT_NUMBER,58,7,74,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROTO,58,26,74,14,ES_AUTOHSCROLL
+    LTEXT           "Port Number:",IDC_STATIC,12,10,44,8
+    LTEXT           "Protocol:",IDC_STATIC,25,28,30,8
+END
+
+IDD_SVC_INPUT DIALOGEX 0, 0, 139, 65
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resolve Service Port"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,29,44,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,82,44,50,14
+    EDITTEXT        IDC_SVC_NAME,58,7,74,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROTO,58,26,74,14,ES_AUTOHSCROLL
+    LTEXT           "Service Name:",IDC_STATIC,8,10,47,8
+    LTEXT           "Protocol:",IDC_STATIC,25,28,30,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_OUTPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 408
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_IP_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 147
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_HOST_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_PORT_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_SVC_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 58
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "W",            ID_EDIT_CLEAROUTPUT,    VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FILE_EXIT,           VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_WINSOCK_RESOLVEHOSTNAME, VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_WINSOCK_RESOLVEIPADDRESS, VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_WINSOCK_RESOLVESVCNAME, VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_WINSOCK_RESOLVESVCPORT, VIRTKEY, CONTROL, NOINVERT
+END
+
+#endif    // English (Canada) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

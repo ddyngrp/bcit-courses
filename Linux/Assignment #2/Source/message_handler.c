@@ -12,6 +12,9 @@ int mesg_send(char * mesg_data, int mesg_type) {
 	if (mesg_data != NULL) {
 		strcpy(message.mesg_data, mesg_data);
 	}
+	else {
+		message.mesg_data[0] = '\0';
+	}
 
 	if ((key = ftok("/dev/random", 'z')) == -1) {
 		perror("ftok");

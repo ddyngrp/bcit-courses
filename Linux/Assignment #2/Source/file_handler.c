@@ -7,7 +7,6 @@ char * read_file(char * file_name) {
 	struct stat file_status;
 
 	if ((fp = fopen(file_name, "rb")) == NULL) {
-		fclose(fp);
 		return NULL;
 	}
 

@@ -4,10 +4,8 @@
 #include "mesg.h"
 
 int main(int argc, char *argv[]) {
-	char * mesg_data;
-	char * file_data;
-	char * data_chunk;
-	int i, data_size;
+	char * mesg_data, * file_data, * data_chunk, * file_name;
+	int i, data_size, retval;
 
 	while (1) {
 		server_status(); // Wait for client to request server status
@@ -15,31 +13,41 @@ int main(int argc, char *argv[]) {
 			if ((mesg_data = mesg_recv(MQ_FROM_CLIENT)) == NULL) {
 				fatal("mesg_recv");
 			}
-
-			file_data = read_file(mesg_data);
-			data_size = sizeof(file_data);
-
-			// MAXMESSAGEDATA
-			i = 0;
-			data_chunk = (char *)malloc(MAXMESSAGEDATA);
-			while (i != -1) {
-				data_chunk[i] = file_data[i];
-				i++;
-				if (i == MAXMESSAGEDATA - 1) {
-					printf("sending...\n");
-					mesg_send(data_chunk, MQ_FROM_SERVER);
-			
-					i = -1;
-				}
+			else {
+				file_name = mesg_data; // save the file name
 			}
 
-			printf("data sent...\n");
-			mesg_send(NULL, MQ_FROM_SERVER);
-			
-			free(data_chunk);
-			free(file_data);
+			if ((file_data = read_file(mesg_data)) == NULL) {
+				printf(" ! file %s not found\n", mesg_data);
+				if ((retval = mesg_send(NULL, MQ_FROM_SERVER)) == -1) {
+					fatal("mesg_send");
+				}
+			}
+			else {
+				data_size = sizeof(file_data);
 
+				// MAXMESSAGEDATA
+				i = 0;
+				data_chunk = (char *)malloc(MAXMESSAGEDATA);
+				while (i != -1) {
+					data_chunk[i] = file_data[i];
+					i++;
+					if (i == MAXMESSAGEDATA - 1) {
+						printf("sending...\n");
+						mesg_send(data_chunk, MQ_FROM_SERVER);
+
+						i = -1;
+					}
+				}
+
+				printf("data sent...\n");
+				mesg_send(NULL, MQ_FROM_SERVER);
+
+				free(data_chunk);
+				free(file_data);
+			}
 			break; // go back to initial state
+
 		}
 	}
 

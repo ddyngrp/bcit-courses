@@ -1,8 +1,9 @@
 #include "client.h"
 #include "message_handler.h"
+#include "mesg.h"
 
 int main(int argc, char *argv[]) {
-	char * mesg_data;
+	char mesg_data[MAXMESSAGEDATA];
 	int retval, data_retrieved = 0;
 
 	if (argc < 2 || argc > 2) {
@@ -11,7 +12,7 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		server_status();
-		printf(" * Server running, sending request for %s\n", argv[1]);
+		fprintf(stderr, " * Server running, sending request for %s\n", argv[1]);
 
 		// Send file name to the server
 		if ((retval = mesg_send(argv[1], MQ_FROM_CLIENT)) == -1) {
@@ -20,27 +21,32 @@ int main(int argc, char *argv[]) {
 
 
 		while (1) { // receive from server
-			if ((mesg_data = mesg_recv(MQ_FROM_SERVER)) == NULL) {
-					fatal("mesg_recv");
-			}
+			clear_buffer(mesg_data);
+
+			memcpy(mesg_data, mesg_recv(MQ_FROM_SERVER), MAXMESSAGEDATA);
 
 			if (strlen(mesg_data) == 0) {
-				if (data_retrieved == 0) {
-					printf(" ! Server cannot find file %s\n", argv[1]);
+				if (!data_retrieved) {
+					fprintf(stderr, " ! Server cannot find file %s\n", argv[1]);
 				}
 				else {
-					printf(" * Transaction complete, file %s retrieved\n", argv[1]);
+					fprintf(stderr, "========= End Data Output =========\n");
+					fprintf(stderr, " * Transaction complete, file %s retrieved\n",
+							argv[1]);
 				}
 				exit(0);
 			}
 			else {
+				if (!data_retrieved) {
+					fprintf(stderr, " * Retrieving data from server\n");
+					fprintf(stderr, "=========== Data Output ===========\n");
+					fprintf(stdout, "%s", mesg_data);
+				}
+				else {
+					fprintf(stdout, "%s", mesg_data);
+				}
 				data_retrieved = 1;
-				printf(" * Retrieving data from server\n");
-				printf("=========== Data Output ===========\n");
-				printf("%s\n", mesg_data);
-				printf("========= End Data Output =========\n");
 			}
-
 		}
 	}
 
@@ -51,14 +57,14 @@ void server_status() {
 	int retval;
 	char * mesg_data;
 
-	printf(" * Checking for server\n");
+	fprintf(stderr, " * Checking for server\n");
 
 	// Verify that the server is running
 	if ((retval == mesg_send(NULL, MQ_FROM_CLIENT)) == -1) {
 		fatal("mesg_send");
 	}
 
-	printf(" * Waiting for server response\n");
+	fprintf(stderr, " * Waiting for server response\n");
 
 	// Retrieve server status reply
 	if ((mesg_data = mesg_recv(MQ_FROM_SERVER)) == NULL) {
@@ -67,8 +73,8 @@ void server_status() {
 }
 
 void print_help(char * command) {
-	printf("%s: missing file operand\n", command);
-	printf("%s: [filename]\n", command);
+	fprintf(stderr, "%s: missing file operand\n", command);
+	fprintf(stderr, "%s: [filename]\n", command);
 }
 
 void fatal(char * text) {

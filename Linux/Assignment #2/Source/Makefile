@@ -12,17 +12,14 @@ all: client server
 client: client.o message_handler.o
 		${CC} ${LDFLAGS} client.o message_handler.o -o client
 
-server: server.o file_handler.o message_handler.o
-		${CC} ${LDFLAGS} server.o file_handler.o message_handler.o -o server
+server: server.o message_handler.o
+		${CC} ${LDFLAGS} server.o message_handler.o -o server
 
 client.o: client.c
 		  ${CC} ${CFLAGS} client.c
 
 server.o: server.c
 		  ${CC} ${CFLAGS} server.c
-
-file_handler.o: file_handler.c
-				${CC} ${CFLAGS} file_handler.c
 
 message_handler.o: message_handler.c
 				   ${CC} ${CFLAGS} message_handler.c

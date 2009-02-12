@@ -14,5 +14,6 @@
 
 int mesg_send(char *, int);
 char * mesg_recv(int);
+void clear_buffer(char[]);
 
 #endif

@@ -1,11 +1,15 @@
 #include "server.h"
 #include "message_handler.h"
-#include "file_handler.h"
 #include "mesg.h"
 
 int main(int argc, char *argv[]) {
-	char * mesg_data, * file_data, * data_chunk, * file_name;
-	int i, data_size, retval;
+	FILE * fp;
+	char * mesg_data, * file_name;
+	char buff[MAXMESSAGEDATA];
+	int retval;
+	long byte_pos = 0;
+
+	fprintf(stderr, " * Server starting, press CTRL+C to exit\n");
 
 	while (1) {
 		server_status(); // Wait for client to request server status
@@ -13,41 +17,45 @@ int main(int argc, char *argv[]) {
 			if ((mesg_data = mesg_recv(MQ_FROM_CLIENT)) == NULL) {
 				fatal("mesg_recv");
 			}
-			else {
-				file_name = mesg_data; // save the file name
-			}
 
-			if ((file_data = read_file(mesg_data)) == NULL) {
-				printf(" ! file %s not found\n", mesg_data);
-				if ((retval = mesg_send(NULL, MQ_FROM_SERVER)) == -1) {
+			file_name = mesg_data; // save the file name
+
+			// Open file for reading
+			if ((fp = fopen(file_name, "r")) == NULL) {
+				fprintf(stderr, " ! File %s not found\n", file_name);
+
+				// Send a null message to the client, indicating no file found
+				if ((retval == mesg_send(NULL, MQ_FROM_SERVER)) == -1) {
 					fatal("mesg_send");
 				}
 			}
 			else {
-				data_size = sizeof(file_data);
+				// Read file in blocks until EOF
+				fprintf(stderr, " * Sending %s to client\n", file_name);
+				while (!feof(fp)) {
+					clear_buffer(buff);
 
-				// MAXMESSAGEDATA
-				i = 0;
-				data_chunk = (char *)malloc(MAXMESSAGEDATA);
-				while (i != -1) {
-					data_chunk[i] = file_data[i];
-					i++;
-					if (i == MAXMESSAGEDATA - 1) {
-						printf("sending...\n");
-						mesg_send(data_chunk, MQ_FROM_SERVER);
+					lseek((int)fp, byte_pos, SEEK_SET);
+					fread(buff, MAXMESSAGEDATA, 1, fp);
 
-						i = -1;
+					byte_pos += MAXMESSAGEDATA;
+
+					if ((retval == mesg_send(buff, MQ_FROM_SERVER)) == -1) {
+						fatal("mesg_send");
+					}
+
+					// Signal end of file
+				}
+				if (byte_pos != 0) {
+					if ((retval == mesg_send(NULL, MQ_FROM_SERVER)) == -1) {
+						fatal("mesg_send");
 					}
 				}
-
-				printf("data sent...\n");
-				mesg_send(NULL, MQ_FROM_SERVER);
-
-				free(data_chunk);
-				free(file_data);
+				fprintf(stderr, " * Transmission complete\n");
+				byte_pos = 0;
 			}
-			break; // go back to initial state
 
+			break; // go back to initial state
 		}
 	}
 
@@ -59,7 +67,7 @@ void server_status() {
 	char * mesg_data;
 
 	// Wait for initial server status query
-	printf(" * Waiting for client connection\n");
+	fprintf(stderr, " * Waiting for client connection\n");
 	if ((mesg_data = mesg_recv(MQ_FROM_CLIENT)) == NULL) {
 		fatal("mesg_recv");
 	}
@@ -69,7 +77,7 @@ void server_status() {
 		fatal("mesg_send");
 	}
 	else {
-		printf(" * Sent server status\n");
+		fprintf(stderr, " * Sent server status\n");
 	}
 }
 

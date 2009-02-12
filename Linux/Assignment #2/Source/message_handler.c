@@ -6,14 +6,13 @@ int mesg_send(char * mesg_data, int mesg_type) {
 	int msqid, length, retval;
 	Mesg message = {mesg_type, sizeof(mesg_data), {}};
 
+	clear_buffer(message.mesg_data);
+
 	length = sizeof(message) - sizeof(long);
 
 	// Copy the data into our struct
 	if (mesg_data != NULL) {
 		strcpy(message.mesg_data, mesg_data);
-	}
-	else {
-		message.mesg_data[0] = '\0';
 	}
 
 	if ((key = ftok("/dev/random", 'z')) == -1) {
@@ -37,8 +36,10 @@ int mesg_send(char * mesg_data, int mesg_type) {
 char * mesg_recv(int mesg_type) {
 	key_t key;
 	int msqid, length, retval;
-	char * mesg_data;
+	char mesg_data[MAXMESSAGEDATA];
 	Mesg message;
+
+	clear_buffer(mesg_data);
 
 	length = sizeof(message) - sizeof(long);
 
@@ -57,7 +58,15 @@ char * mesg_recv(int mesg_type) {
 		return NULL;
 	}
 
-	mesg_data = message.mesg_data;
+	memcpy(mesg_data, message.mesg_data, MAXMESSAGEDATA);
 
 	return mesg_data;
+}
+
+void clear_buffer(char buff[MAXMESSAGEDATA]) {
+	int i;
+
+	for (i = 0; i < MAXMESSAGEDATA; i++) {
+		buff[i] = '\0';
+	}
 }

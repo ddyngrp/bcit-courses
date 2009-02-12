@@ -1,3 +1,26 @@
+/*------------------------------------------------------------------------------
+-- SOURCE FILE:	message_handler.c - This module handles all message queues
+-- 
+-- PROGRAM:     client & server
+-- 
+-- FUNCTIONS:   mesg_send(char * mesg_data, int mesg_type, int priority)
+--              mesg_recv(int mesg_type, char * mesg_data)
+--              clear_buffer(char * buff[MAXMESSAGEDATA])
+--              mesg_qrm()
+-- 
+-- DATE:        February 12, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- NOTES: This module handls all incoming and outgoing POSIX message queues.
+--        Additionally it is also responsible for removing message queues when
+--        the program terminates.
+--
+------------------------------------------------------------------------------*/
 #include "message_handler.h"
 #include "mesg.h"
 
@@ -37,6 +60,28 @@ int mesg_send(char * mesg_data, int mesg_type, int priority) {
 	return 0;
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    mesg_recv
+-- 
+-- DATE:        January 21, 2008
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   server_status(int mesg_type, char * mesg_data)
+--                            int mesg_type: the type message type, usually
+--                                           the receiver's PID
+--                            char * mesg_data: the data to be sent
+-- 
+-- RETURNS: -1 if there is an error, otherwise returns the message priority
+-- 
+-- NOTES: This function places a message onto the message queue with a type
+--        of the receiving process.
+--		  
+------------------------------------------------------------------------------*/
 int mesg_recv(int mesg_type, char * mesg_data) {
 	key_t key;
 	int msqid, length, retval;
@@ -66,6 +111,25 @@ int mesg_recv(int mesg_type, char * mesg_data) {
 	return message.priority;
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    clear_buffer
+-- 
+-- DATE:        January 21, 2008
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   clear_buffer(char buff[MAXMESSAGEDATA])
+--                           buff: the buffer to be initialized with NULL chars
+-- 
+-- RETURNS: void
+-- 
+-- NOTES: This function simply fills a buffer with NULL characters
+--		  
+------------------------------------------------------------------------------*/
 void clear_buffer(char buff[MAXMESSAGEDATA]) {
 	int i;
 
@@ -74,6 +138,24 @@ void clear_buffer(char buff[MAXMESSAGEDATA]) {
 	}
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    mesg_qrm
+-- 
+-- DATE:        January 21, 2008
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   mesg_qrm(void)
+-- 
+-- RETURNS: void
+-- 
+-- NOTES: This function removes the message queue after the program terminates
+--		  
+------------------------------------------------------------------------------*/
 void mesg_qrm() {
 	key_t key;
 	int msqid, retval;

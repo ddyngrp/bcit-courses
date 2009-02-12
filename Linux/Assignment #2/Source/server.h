@@ -7,7 +7,9 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <pthread.h>
 
+void *zombie_harvester();
 void serve_client(pid_t);
 void wait_for_client();
 void fatal(char *);

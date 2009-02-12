@@ -4,13 +4,17 @@
 int mesg_send(char * mesg_data, int mesg_type) {
 	key_t key;
 	int msqid, length, retval;
-	Mesg message = {mesg_type, sizeof(mesg_data), 0, {}};
+	Mesg message;
+	
+	message.mesg_type = mesg_type;
+	message.mesg_len = sizeof(mesg_data);
+	message.priority = 0;
 
 	clear_buffer(message.mesg_data);
 
 	length = sizeof(message) - sizeof(long);
 
-	// Copy the data into our struct
+	/* Copy the data into our struct */
 	if (mesg_data != NULL) {
 		strcpy(message.mesg_data, mesg_data);
 	}

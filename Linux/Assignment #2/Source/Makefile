@@ -4,7 +4,7 @@
 #
 
 CC=gcc					# The compiler being used
-CFLAGS=-c -Wall -ggdb	# Compiler command line options
+CFLAGS=-c -Wall -pedantic -ggdb	# Compiler command line options
 LDFLAGS=				# Linker command line options
 
 all: client server

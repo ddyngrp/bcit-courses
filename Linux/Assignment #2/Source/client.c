@@ -18,13 +18,13 @@ int main(int argc, char *argv[]) {
 		server_status();
 		fprintf(stderr, " * Server running, sending request for %s\n", argv[1]);
 
-		// Send file name to the server
+		/* Send file name to the server */
 		if ((retval = mesg_send(argv[1], pid_client)) == -1) {
 			fatal("mesg_send");
 		}
 
 
-		while (1) { // receive from server
+		while (1) { /* receive from server */
 			clear_buffer(mesg_data);
 
 			mesg_recv(pid_server, mesg_data);
@@ -38,6 +38,8 @@ int main(int argc, char *argv[]) {
 					fprintf(stderr, " * Transaction complete, file %s retrieved\n",
 							argv[1]);
 				}
+				clear_buffer(mesg_data);
+
 				exit(0);
 			}
 			else {
@@ -62,23 +64,23 @@ void server_status() {
 	char mesg_data[MAXMESSAGEDATA];
 	char tmpPid[5];
 
-	sprintf(tmpPid, "%d", pid_client); // Convert pid to string
+	sprintf(tmpPid, "%d", pid_client); /* Convert pid to string */
 
 	fprintf(stderr, " * Checking for server\n");
 
-	// Verify that the server is running
+	/* Verify that the server is running */
 	if ((retval == mesg_send(tmpPid, MQ_FROM_CLIENT)) == -1) {
 		fatal("mesg_send");
 	}
 
 	fprintf(stderr, " * Waiting for server response\n");
 
-	// Retrieve server status reply
+	/* Retrieve server status reply */
 	if ((retval = mesg_recv(MQ_FROM_SERVER, mesg_data)) == -1) {
 		fatal("mesg_recv");
 	}
 
-	pid_server = atoi(mesg_data); // Set the server's PID
+	pid_server = atoi(mesg_data); /* Set the server's PID */
 
 	fprintf(stderr, " * Server's PID is %d\n", pid_server);
 

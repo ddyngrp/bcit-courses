@@ -33,10 +33,9 @@ int mesg_send(char * mesg_data, int mesg_type) {
 	return 0;
 }
 
-char * mesg_recv(int mesg_type) {
+int mesg_recv(int mesg_type, char * mesg_data) {
 	key_t key;
 	int msqid, length, retval;
-	char mesg_data[MAXMESSAGEDATA];
 	Mesg message;
 
 	clear_buffer(mesg_data);
@@ -45,22 +44,22 @@ char * mesg_recv(int mesg_type) {
 
 	if ((key = ftok("/dev/random", 'z')) == -1) {
 		perror("ftok");
-		return NULL;
+		return -1;
 	}
 
 	if ((msqid = msgget(key, 0644 | IPC_CREAT)) == -1) {
 		perror("msgget");
-		return NULL;
+		return -1;
 	}
 
 	if ((retval = msgrcv(msqid, &message, length, mesg_type, 0)) == -1) {
 		perror("msgrcv");
-		return NULL;
+		return -1;
 	}
 
 	memcpy(mesg_data, message.mesg_data, MAXMESSAGEDATA);
 
-	return mesg_data;
+	return 0;
 }
 
 void clear_buffer(char buff[MAXMESSAGEDATA]) {
@@ -68,5 +67,22 @@ void clear_buffer(char buff[MAXMESSAGEDATA]) {
 
 	for (i = 0; i < MAXMESSAGEDATA; i++) {
 		buff[i] = '\0';
+	}
+}
+
+void mesg_qrm() {
+	key_t key;
+	int msqid, retval;
+
+	if ((key = ftok("/dev/random", 'z')) == -1) {
+		perror("ftok");
+	}
+
+	if ((msqid = msgget(key, 0644)) == -1) {
+		perror("msgget");
+	}
+
+	if ((retval = msgctl(msqid, IPC_RMID, NULL)) == -1) {
+		perror("msgctl");
 	}
 }

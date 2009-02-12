@@ -4,21 +4,25 @@
 
 int main(int argc, char *argv[]) {
 	FILE * fp;
-	char * mesg_data, * file_name;
+	char mesg_data[MAXMESSAGEDATA];
+	char file_name[255];
 	char buff[MAXMESSAGEDATA];
 	int retval;
 	long byte_pos = 0;
+
+	signal(SIGINT, catch_sig); // we want to remove the queue when terminated
 
 	fprintf(stderr, " * Server starting, press CTRL+C to exit\n");
 
 	while (1) {
 		server_status(); // Wait for client to request server status
 		while (1) {
-			if ((mesg_data = mesg_recv(MQ_FROM_CLIENT)) == NULL) {
+			if ((retval = mesg_recv(MQ_FROM_CLIENT, mesg_data)) == -1) {
 				fatal("mesg_recv");
 			}
 
-			file_name = mesg_data; // save the file name
+			memcpy(file_name, mesg_data, 255);
+			clear_buffer(mesg_data); // clear the incomming message buffer
 
 			// Open file for reading
 			if ((fp = fopen(file_name, "r")) == NULL) {
@@ -51,7 +55,7 @@ int main(int argc, char *argv[]) {
 						fatal("mesg_send");
 					}
 				}
-				fprintf(stderr, " * Transmission complete\n");
+				fprintf(stderr, " * Transmission of %s complete\n", file_name);
 				byte_pos = 0;
 			}
 
@@ -64,11 +68,11 @@ int main(int argc, char *argv[]) {
 
 void server_status() {
 	int retval;
-	char * mesg_data;
+	char mesg_data[MAXMESSAGEDATA];
 
 	// Wait for initial server status query
 	fprintf(stderr, " * Waiting for client connection\n");
-	if ((mesg_data = mesg_recv(MQ_FROM_CLIENT)) == NULL) {
+	if ((retval = mesg_recv(MQ_FROM_CLIENT, mesg_data)) == -1) {
 		fatal("mesg_recv");
 	}
 
@@ -78,6 +82,15 @@ void server_status() {
 	}
 	else {
 		fprintf(stderr, " * Sent server status\n");
+	}
+}
+
+void catch_sig(int signo) {
+	// Terminate process
+	if (signo == SIGINT) { // SIGTERM
+		signal(SIGINT, NULL);
+		mesg_qrm();
+		kill(getpid(), SIGTERM);
 	}
 }
 

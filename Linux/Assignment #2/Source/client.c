@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 		while (1) { // receive from server
 			clear_buffer(mesg_data);
 
-			memcpy(mesg_data, mesg_recv(MQ_FROM_SERVER), MAXMESSAGEDATA);
+			mesg_recv(MQ_FROM_SERVER, mesg_data);
 
 			if (strlen(mesg_data) == 0) {
 				if (!data_retrieved) {
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
 void server_status() {
 	int retval;
-	char * mesg_data;
+	char mesg_data[MAXMESSAGEDATA];
 
 	fprintf(stderr, " * Checking for server\n");
 
@@ -67,7 +67,7 @@ void server_status() {
 	fprintf(stderr, " * Waiting for server response\n");
 
 	// Retrieve server status reply
-	if ((mesg_data = mesg_recv(MQ_FROM_SERVER)) == NULL) {
+	if ((retval = mesg_recv(MQ_FROM_SERVER, mesg_data)) == -1) {
 		fatal("mesg_recv");
 	}
 }

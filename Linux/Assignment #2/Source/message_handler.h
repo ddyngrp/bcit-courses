@@ -13,7 +13,8 @@
 #define MQ_FROM_SERVER	1
 
 int mesg_send(char *, int);
-char * mesg_recv(int);
+int mesg_recv(int, char *);
 void clear_buffer(char[]);
+void mesg_qrm();
 
 #endif

@@ -4,7 +4,7 @@
 int mesg_send(char * mesg_data, int mesg_type) {
 	key_t key;
 	int msqid, length, retval;
-	Mesg message = {mesg_type, sizeof(mesg_data), {}};
+	Mesg message = {mesg_type, sizeof(mesg_data), 0, {}};
 
 	clear_buffer(message.mesg_data);
 

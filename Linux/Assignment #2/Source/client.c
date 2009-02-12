@@ -2,9 +2,13 @@
 #include "message_handler.h"
 #include "mesg.h"
 
+pid_t pid_client, pid_server;
+
 int main(int argc, char *argv[]) {
 	char mesg_data[MAXMESSAGEDATA];
 	int retval, data_retrieved = 0;
+
+	pid_client = getpid();
 
 	if (argc < 2 || argc > 2) {
 		print_help(argv[0]);
@@ -15,7 +19,7 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, " * Server running, sending request for %s\n", argv[1]);
 
 		// Send file name to the server
-		if ((retval = mesg_send(argv[1], MQ_FROM_CLIENT)) == -1) {
+		if ((retval = mesg_send(argv[1], pid_client)) == -1) {
 			fatal("mesg_send");
 		}
 
@@ -23,7 +27,7 @@ int main(int argc, char *argv[]) {
 		while (1) { // receive from server
 			clear_buffer(mesg_data);
 
-			mesg_recv(MQ_FROM_SERVER, mesg_data);
+			mesg_recv(pid_server, mesg_data);
 
 			if (strlen(mesg_data) == 0) {
 				if (!data_retrieved) {
@@ -56,11 +60,14 @@ int main(int argc, char *argv[]) {
 void server_status() {
 	int retval;
 	char mesg_data[MAXMESSAGEDATA];
+	char tmpPid[5];
+
+	sprintf(tmpPid, "%d", pid_client); // Convert pid to string
 
 	fprintf(stderr, " * Checking for server\n");
 
 	// Verify that the server is running
-	if ((retval == mesg_send(NULL, MQ_FROM_CLIENT)) == -1) {
+	if ((retval == mesg_send(tmpPid, MQ_FROM_CLIENT)) == -1) {
 		fatal("mesg_send");
 	}
 
@@ -70,6 +77,11 @@ void server_status() {
 	if ((retval = mesg_recv(MQ_FROM_SERVER, mesg_data)) == -1) {
 		fatal("mesg_recv");
 	}
+
+	pid_server = atoi(mesg_data); // Set the server's PID
+
+	fprintf(stderr, " * Server's PID is %d\n", pid_server);
+
 }
 
 void print_help(char * command) {

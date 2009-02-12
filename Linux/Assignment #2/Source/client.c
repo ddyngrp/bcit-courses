@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
 	pid_client = getpid();
 
-	if (argc < 2 || argc > 2) {
+	if (argc < 3 || argc > 3) {
 		print_help(argv[0]);
 		exit(0);
 	}
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, " * Server running, sending request for %s\n", argv[1]);
 
 		/* Send file name to the server */
-		if ((retval = mesg_send(argv[1], pid_client)) == -1) {
+		if ((retval = mesg_send(argv[1], pid_client, atoi(argv[2]))) == -1) {
 			fatal("mesg_send");
 		}
 
@@ -69,7 +69,7 @@ void server_status() {
 	fprintf(stderr, " * Checking for server\n");
 
 	/* Verify that the server is running */
-	if ((retval == mesg_send(tmpPid, MQ_FROM_CLIENT)) == -1) {
+	if ((retval == mesg_send(tmpPid, MQ_FROM_CLIENT, 0)) == -1) {
 		fatal("mesg_send");
 	}
 
@@ -87,8 +87,8 @@ void server_status() {
 }
 
 void print_help(char * command) {
-	fprintf(stderr, "%s: missing file operand\n", command);
-	fprintf(stderr, "%s: [filename]\n", command);
+	fprintf(stderr, "%s: missing operand\n", command);
+	fprintf(stderr, "%s: [filename] [priority {0...5}]\n", command);
 }
 
 void fatal(char * text) {

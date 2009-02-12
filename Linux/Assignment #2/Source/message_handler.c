@@ -1,14 +1,14 @@
 #include "message_handler.h"
 #include "mesg.h"
 
-int mesg_send(char * mesg_data, int mesg_type) {
+int mesg_send(char * mesg_data, int mesg_type, int priority) {
 	key_t key;
 	int msqid, length, retval;
 	Mesg message;
 	
 	message.mesg_type = mesg_type;
 	message.mesg_len = sizeof(mesg_data);
-	message.priority = 0;
+	message.priority = priority;
 
 	clear_buffer(message.mesg_data);
 
@@ -63,7 +63,7 @@ int mesg_recv(int mesg_type, char * mesg_data) {
 
 	memcpy(mesg_data, message.mesg_data, MAXMESSAGEDATA);
 
-	return 0;
+	return message.priority;
 }
 
 void clear_buffer(char buff[MAXMESSAGEDATA]) {

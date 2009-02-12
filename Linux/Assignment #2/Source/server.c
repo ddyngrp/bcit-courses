@@ -30,7 +30,7 @@ void serve_client(pid_t pid_client) {
 	char file_name[255];
 	char buff[MAXMESSAGEDATA];
 	char tmpPid[5];
-	int retval;
+	int retval, priority;
 	long byte_pos = 0;
 	pid_t pid_server;
 
@@ -40,14 +40,14 @@ void serve_client(pid_t pid_client) {
 		sprintf(tmpPid, "%d", pid_server);
 
 		/* Respond with server's PID */
-		if ((retval = mesg_send(tmpPid, MQ_FROM_SERVER)) == -1) {
+		if ((retval = mesg_send(tmpPid, MQ_FROM_SERVER, 0)) == -1) {
 			fatal("mesg_send");
 		}
 		else {
 			fprintf(stderr, " [%d] Sent server status\n", pid_server);
 		}
 
-		if ((retval = mesg_recv(pid_client, mesg_data)) == -1) {
+		if ((priority = mesg_recv(pid_client, mesg_data)) == -1) {
 			fatal("mesg_recv");
 		}
 
@@ -59,7 +59,7 @@ void serve_client(pid_t pid_client) {
 			fprintf(stderr, " [%d] File %s not found\n", pid_server, file_name);
 
 			/* Send a null message to the client, indicating no file found */
-			if ((retval == mesg_send(NULL, pid_server)) == -1) {
+			if ((retval == mesg_send(NULL, pid_server, 0)) == -1) {
 				fatal("mesg_send");
 			}
 		}
@@ -71,8 +71,9 @@ void serve_client(pid_t pid_client) {
 				fread(buff, MAXMESSAGEDATA, 1, fp);
 
 				byte_pos += MAXMESSAGEDATA;
-
-				if ((retval == mesg_send(buff, pid_server)) == -1) {
+				
+				usleep(priority * 2000);
+				if ((retval == mesg_send(buff, pid_server, 0)) == -1) {
 					fatal("mesg_send");
 				}
 
@@ -80,10 +81,11 @@ void serve_client(pid_t pid_client) {
 			}
 			/* Signal end of file */
 			if (byte_pos != 0) {
-				if ((retval == mesg_send(NULL, pid_server)) == -1) {
+				if ((retval == mesg_send(NULL, pid_server, 0)) == -1) {
 					fatal("mesg_send");
 				}
 			}
+
 			fclose(fp);
 			fprintf(stderr, " [%d] Transmission of %s to client %d complete\n",
 					pid_server, file_name, pid_client);

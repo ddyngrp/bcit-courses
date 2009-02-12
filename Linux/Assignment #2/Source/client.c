@@ -149,7 +149,7 @@ void server_status() {
 ------------------------------------------------------------------------------*/
 void print_help(char * command) {
 	fprintf(stderr, "%s: missing operand\n", command);
-	fprintf(stderr, "%s: [filename] [priority {0...5}]\n", command);
+	fprintf(stderr, "%s: [filename] [priority {0...9999}]\n", command);
 }
 
 /*------------------------------------------------------------------------------

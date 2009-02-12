@@ -4,7 +4,7 @@
 #
 
 CC=gcc
-CFLAGS=-c -Wall -pedantic -ggdb
+CFLAGS=-c -Wall -pedantic
 LDFLAGS=-lpthread
 
 all: client server

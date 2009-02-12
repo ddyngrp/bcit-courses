@@ -1,0 +1,7 @@
+COMPILATION NOTE:
+Please run "make clean" and then "make" to compile this program.
+There is a bug I didn't notice until the last minute that causes
+a stack overflow if you compile using any optimization flags.
+
+I would have attempted to fix this bug, but unfortunately did not
+have the time to do so.

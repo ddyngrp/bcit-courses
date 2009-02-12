@@ -121,7 +121,7 @@ void serve_client(pid_t pid_client) {
 
 				byte_pos += MAXMESSAGEDATA;
 				
-				usleep(priority * 2000);
+				usleep(priority * 3000);
 				if ((retval == mesg_send(buff, pid_server, 0)) == -1) {
 					fatal("mesg_send");
 				}
@@ -211,11 +211,10 @@ void wait_for_client() {
 --		  
 ------------------------------------------------------------------------------*/
 void *zombie_harvester() {
-	while(1) {
-		while (waitpid(-1, NULL, WNOHANG) > 0) {
-			; /* don't hang if no kids are dead yet */
-		}
+	while (waitpid(-1, NULL, WNOHANG) > 0) {
+		; /* don't hang if no kids are dead yet */
 	}
+	return NULL;
 }
 
 /*------------------------------------------------------------------------------

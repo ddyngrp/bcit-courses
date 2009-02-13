@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!ELEMENT players (player)*>
+<!ELEMENT player (handicaps|playerRounds|contactNumber|postalCode|country|sate_prov|city|address|lastName|firstName)*>
+<!ATTLIST player playerID CDATA #IMPLIED >
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT sate_prov (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT postalCode (#PCDATA)>
+<!ELEMENT contactNumber (#PCDATA)>
+<!ELEMENT playerRounds (golfRound)*>
+<!ELEMENT golfRound (holes|weatherCondition|holesPlayed|endDateTime|startDateTime)*>
+<!ATTLIST golfRound courseID CDATA #IMPLIED roundID CDATA #IMPLIED>
+<!ELEMENT startDateTime (#PCDATA)>
+<!ELEMENT endDateTime (#PCDATA)>
+<!ELEMENT holesPlayed (#PCDATA)>
+<!ELEMENT weatherCondition (#PCDATA)>
+<!ELEMENT holes (hole)*>
+<!ELEMENT hole (score)*>
+<!ATTLIST hole holeNum CDATA #IMPLIED >
+<!ELEMENT score (#PCDATA)>
+<!ELEMENT handicaps (handicap)*>
+<!ELEMENT handicap (score|date)*>
+<!ELEMENT date (#PCDATA)>

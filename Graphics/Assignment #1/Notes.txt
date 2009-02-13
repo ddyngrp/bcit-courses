@@ -1,0 +1,8 @@
+if (h > (3s + 2g) && (w > 3s + 2g) {
+	for (ULy = s + g; ULy < h - (2s + g); ULy += s + g) {
+		for (ULx = w/2; ULx < w - (2s + g); ULx += s + g) {
+			rectangle(ULx, ULy, ULx + s, ULy + s);
+			rectangle(W - ULs - s, ULy, w - ULx, ULy + s);
+		}
+	}
+}

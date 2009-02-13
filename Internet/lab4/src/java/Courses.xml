@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Courses.xml
+    Created on : February 1, 2009, 10:17 PM
+    Author     : Steffen L. Norgren
+    Description:
+        Contains golf course information.
+-->
+
+<ns0:courses  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns0='http://xml.netbeans.org/schema/Courses'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/Courses Courses.xsd'>
+    <ns0:course courseID="1">
+        <ns0:name>Gleneagles Golf &amp; Country Club</ns0:name>
+        <ns0:address>2721 Seymore Way.</ns0:address>
+        <ns0:city>North Vancouver</ns0:city>
+        <ns0:state_prov>BC</ns0:state_prov>
+        <ns0:country>Canada</ns0:country>
+        <ns0:postalCode>V7R 2X8</ns0:postalCode>
+        <ns0:contactNumber>604-929-0111</ns0:contactNumber>
+        <ns0:scratchScore>50</ns0:scratchScore>
+        <ns0:holeDetails>
+            <ns0:hole holeNum="1">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>285</ns0:yards>
+                <ns0:info>Looks pretty</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="2">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>380</ns0:yards>
+                <ns0:info>Lots of squirrels</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="3">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>310</ns0:yards>
+                <ns0:info>Cliffside</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="4">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>170</ns0:yards>
+                <ns0:info>Water features</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="5">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>210</ns0:yards>
+                <ns0:info>Nothing special</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="6">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>235</ns0:yards>
+                <ns0:info>Dancing unicorns</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="7">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>450</ns0:yards>
+                <ns0:info>Nuclear waste site</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="8">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>220</ns0:yards>
+                <ns0:info>View of abattoir</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="9">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>375</ns0:yards>
+                <ns0:info>Fresh beef</ns0:info>
+            </ns0:hole>
+        </ns0:holeDetails>
+    </ns0:course>
+    <ns0:course courseID="2">
+        <ns0:name>Hollyburn Golf &amp; Country Club</ns0:name>
+        <ns0:address>3734 Dollarton Hwy.</ns0:address>
+        <ns0:city>North Vancouver</ns0:city>
+        <ns0:state_prov>BC</ns0:state_prov>
+        <ns0:country>Canada</ns0:country>
+        <ns0:postalCode>V7R E5E</ns0:postalCode>
+        <ns0:contactNumber>604-929-1847</ns0:contactNumber>
+        <ns0:scratchScore>50</ns0:scratchScore>
+        <ns0:holeDetails>
+            <ns0:hole holeNum="1">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>285</ns0:yards>
+                <ns0:info>Looks pretty</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="2">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>380</ns0:yards>
+                <ns0:info>Lots of squirrels</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="3">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>310</ns0:yards>
+                <ns0:info>Cliffside</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="4">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>170</ns0:yards>
+                <ns0:info>Water features</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="5">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>210</ns0:yards>
+                <ns0:info>Nothing special</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="6">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>235</ns0:yards>
+                <ns0:info>Dancing unicorns</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="7">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>450</ns0:yards>
+                <ns0:info>Nuclear waste site</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="8">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>220</ns0:yards>
+                <ns0:info>View of abattoir</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="9">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>375</ns0:yards>
+                <ns0:info>Fresh beef</ns0:info>
+            </ns0:hole>
+        </ns0:holeDetails>
+    </ns0:course>
+    <ns0:course courseID="3">
+        <ns0:name>Semiahmoo &amp; Country Club</ns0:name>
+        <ns0:address>21238 16th Ave.</ns0:address>
+        <ns0:city>Surrey</ns0:city>
+        <ns0:state_prov>BC</ns0:state_prov>
+        <ns0:country>Canada</ns0:country>
+        <ns0:postalCode>V4B 5R2</ns0:postalCode>
+        <ns0:contactNumber>604-535-7874</ns0:contactNumber>
+        <ns0:scratchScore>50</ns0:scratchScore>
+        <ns0:holeDetails>
+            <ns0:hole holeNum="1">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>285</ns0:yards>
+                <ns0:info>Looks pretty</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="2">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>380</ns0:yards>
+                <ns0:info>Lots of squirrels</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="3">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>310</ns0:yards>
+                <ns0:info>Cliffside</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="4">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>170</ns0:yards>
+                <ns0:info>Water features</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="5">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>210</ns0:yards>
+                <ns0:info>Nothing special</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="6">
+                <ns0:par>4</ns0:par>
+                <ns0:yards>235</ns0:yards>
+                <ns0:info>Dancing unicorns</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="7">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>450</ns0:yards>
+                <ns0:info>Nuclear waste site</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="8">
+                <ns0:par>3</ns0:par>
+                <ns0:yards>220</ns0:yards>
+                <ns0:info>View of abattoir</ns0:info>
+            </ns0:hole>
+            <ns0:hole holeNum="9">
+                <ns0:par>5</ns0:par>
+                <ns0:yards>375</ns0:yards>
+                <ns0:info>Fresh beef</ns0:info>
+            </ns0:hole>
+        </ns0:holeDetails>
+    </ns0:course>
+</ns0:courses>

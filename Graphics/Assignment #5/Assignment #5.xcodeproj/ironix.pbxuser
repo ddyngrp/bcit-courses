@@ -1,0 +1,177 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 3A7035260F45DCD600E3AC7D /* Assignment #5 */;
+		activeTarget = 8D1107260486CEB800E47090 /* Assignment #5 */;
+		codeSenseManager = 3A7035320F45DCF900E3AC7D /* Code sense */;
+		executables = (
+			3A7035260F45DCD600E3AC7D /* Assignment #5 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 256247639;
+			PBXWorkspaceStateSaveDate = 256247639;
+		};
+		perUserProjectItems = {
+			3A1234630F460C4C004F0906 /* PBXTextBookmark */ = 3A1234630F460C4C004F0906 /* PBXTextBookmark */;
+			3A7035680F45E05600E3AC7D /* PBXTextBookmark */ = 3A7035680F45E05600E3AC7D /* PBXTextBookmark */;
+			3A7035690F45E05600E3AC7D /* PlistBookmark */ = 3A7035690F45E05600E3AC7D /* PlistBookmark */;
+			3A70356B0F45E05600E3AC7D /* PBXTextBookmark */ = 3A70356B0F45E05600E3AC7D /* PBXTextBookmark */;
+			3A70356C0F45E05600E3AC7D /* PBXTextBookmark */ = 3A70356C0F45E05600E3AC7D /* PBXTextBookmark */;
+			3A70356E0F45E05600E3AC7D /* PlistBookmark */ = 3A70356E0F45E05600E3AC7D /* PlistBookmark */;
+			3A70356F0F45E05600E3AC7D /* PBXTextBookmark */ = 3A70356F0F45E05600E3AC7D /* PBXTextBookmark */;
+		};
+		sourceControlManager = 3A7035310F45DCF900E3AC7D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 253}}";
+			sepNavSelRange = "{147, 0}";
+			sepNavVisRange = "{0, 270}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* Assignment #5_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {600, 253}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 157}";
+		};
+	};
+	3A1234630F460C4C004F0906 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 7";
+		rLen = 0;
+		rLoc = 147;
+		rType = 0;
+		vrLen = 270;
+		vrLoc = 0;
+	};
+	3A7035260F45DCD600E3AC7D /* Assignment #5 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Assignment #5";
+		sourceDirectories = (
+		);
+	};
+	3A7035310F45DCF900E3AC7D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	3A7035320F45DCF900E3AC7D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	3A7035680F45E05600E3AC7D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* Assignment #5_Prefix.pch */;
+		name = "Assignment #5_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 157;
+		vrLoc = 0;
+	};
+	3A7035690F45E05600E3AC7D /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/ironix/Documents/Schoolwork/COMP 4560 - Computer Graphics/Assignments/Assignment #5/Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	3A70356B0F45E05600E3AC7D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* Assignment #5_Prefix.pch */;
+		name = "Assignment #5_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 157;
+		vrLoc = 0;
+	};
+	3A70356C0F45E05600E3AC7D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 270;
+		vrLoc = 0;
+	};
+	3A70356E0F45E05600E3AC7D /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/ironix/Documents/Schoolwork/COMP 4560 - Computer Graphics/Assignments/Assignment #5/Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	3A70356F0F45E05600E3AC7D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 11";
+		rLen = 0;
+		rLoc = 191;
+		rType = 0;
+		vrLen = 270;
+		vrLoc = 0;
+	};
+	8D1107260486CEB800E47090 /* Assignment #5 */ = {
+		activeExec = 0;
+		executables = (
+			3A7035260F45DCD600E3AC7D /* Assignment #5 */,
+		);
+	};
+}

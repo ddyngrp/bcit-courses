@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/Courses"
+    xmlns:tns="http://xml.netbeans.org/schema/Courses"
+    elementFormDefault="qualified">
+    <xsd:element name="courses">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="course">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="name" type="xsd:string"/>
+                            <xsd:element name="address" type="xsd:string"/>
+                            <xsd:element name="city" type="xsd:string"/>
+                            <xsd:element name="state_prov" type="xsd:string"/>
+                            <xsd:element name="country" type="xsd:string"/>
+                            <xsd:element name="postalCode" type="xsd:string"/>
+                            <xsd:element name="contactNumber" type="xsd:string"/>
+                            <xsd:element name="scratchScore" type="xsd:unsignedShort"/>
+                            <xsd:element name="holeDetails">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="hole">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="par" type="xsd:unsignedByte"/>
+                                                    <xsd:element name="yards" type="xsd:unsignedShort"/>
+                                                    <xsd:element name="info" type="xsd:string"/>
+                                                </xsd:sequence>
+                                                <xsd:attribute name="holeNum" type="xsd:unsignedShort"/>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="courseID" type="xsd:string"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

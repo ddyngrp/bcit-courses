@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/Players"
+    xmlns:tns="http://xml.netbeans.org/schema/Players"
+    elementFormDefault="qualified">
+    <xsd:element name="players">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="player" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="firstName" type="xsd:string"/>
+                            <xsd:element name="lastName" type="xsd:string"/>
+                            <xsd:element name="address" type="xsd:string"/>
+                            <xsd:element name="city" type="xsd:string"/>
+                            <xsd:element name="state_prov" type="xsd:string"/>
+                            <xsd:element name="country" type="xsd:string"/>
+                            <xsd:element name="postalCode" type="xsd:string"/>
+                            <xsd:element name="contactNumber" type="xsd:string"/>
+                            <xsd:element name="playerRounds">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="golfRound" maxOccurs="unbounded" minOccurs="0">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="startDateTime" type="xsd:dateTime"/>
+                                                    <xsd:element name="endDateTime" type="xsd:dateTime"/>
+                                                    <xsd:element name="holesPlayed" type="xsd:unsignedByte"/>
+                                                    <xsd:element name="weatherCondition" type="xsd:string"/>
+                                                    <xsd:element name="holes" maxOccurs="1" minOccurs="0">
+                                                        <xsd:complexType>
+                                                            <xsd:sequence>
+                                                                <xsd:element name="hole" maxOccurs="18">
+                                                                    <xsd:complexType>
+                                                                        <xsd:sequence>
+                                                                            <xsd:element name="score" maxOccurs="18" type="xsd:unsignedByte"/>
+                                                                        </xsd:sequence>
+                                                                        <xsd:attribute name="holeNum" type="xsd:string"/>
+                                                                    </xsd:complexType>
+                                                                </xsd:element>
+                                                            </xsd:sequence>
+                                                        </xsd:complexType>
+                                                    </xsd:element>
+                                                </xsd:sequence>
+                                                <xsd:attribute name="roundID" type="xsd:unsignedShort"/>
+                                                <xsd:attribute name="courseID" type="xsd:string"/>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="handicaps" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="handicap" maxOccurs="unbounded">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="date" type="xsd:date"/>
+                                                    <xsd:element name="score" type="xsd:unsignedByte"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="playerID" type="xsd:string"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

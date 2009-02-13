@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Players.xml
+    Created on : February 1, 2009, 10:17 PM
+    Author     : Steffen L. Norgren
+    Description:
+        Contains player information.
+-->
+
+<!DOCTYPE players SYSTEM "Players.dtd">
+
+<players>
+    <player playerID="1">
+        <firstName>Steffen</firstName>
+        <lastName>Norgren</lastName>
+        <address>13872 Malabar Ave.</address>
+        <city>White Rock</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V4B 2X9</postalCode>
+        <contactNumber>778-889-4498</contactNumber>
+        <playerRounds>
+            <golfRound roundID="1" courseID="1">
+                <startDateTime>2008-12-01 12:42:32</startDateTime>
+                <endDateTime>2008-12-01 15:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Sunny</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>6</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="2" courseID="2">
+                <startDateTime>2008-12-12 08:47:01</startDateTime>
+                <endDateTime>2008-12-12 10:01:57</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Freezing Rain</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>8</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>10</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>12</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>18</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>9</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="3" courseID="3">
+                <startDateTime>2009-01-14 17:42:32</startDateTime>
+                <endDateTime>2009-01-14 19:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Clowdy and Wind Gusts</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>3</score>
+                    </hole>
+                </holes>
+            </golfRound>
+        </playerRounds>
+        <handicaps>
+            <handicap>
+                <date>2008-12-01</date>
+                <score>34</score>
+            </handicap>
+            <handicap>
+                <date>2008-12-12</date>
+                <score>88</score>
+            </handicap>
+            <handicap>
+                <date>2009-01-14</date>
+                <score>35</score>
+            </handicap>
+        </handicaps>
+    </player>
+    <player playerID="2">
+        <firstName>Stuart</firstName>
+        <lastName>Porter</lastName>
+        <address>663 Riverside Dr</address>
+        <city>North Vancouver</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V7R 4M7</postalCode>
+        <contactNumber>604-929-0686</contactNumber>
+        <playerRounds>
+            <golfRound roundID="4" courseID="1">
+                <startDateTime>2008-12-01 12:42:32</startDateTime>
+                <endDateTime>2008-12-01 15:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Sunny</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>6</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="5" courseID="2">
+                <startDateTime>2008-12-12 08:47:01</startDateTime>
+                <endDateTime>2008-12-12 10:01:57</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Freezing Rain</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>8</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>10</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>12</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>18</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>9</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="6" courseID="3">
+                <startDateTime>2009-01-14 17:42:32</startDateTime>
+                <endDateTime>2009-01-14 19:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Clowdy and Wind Gusts</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>3</score>
+                    </hole>
+                </holes>
+            </golfRound>
+        </playerRounds>
+        <handicaps>
+            <handicap>
+                <date>2008-12-01</date>
+                <score>34</score>
+            </handicap>
+            <handicap>
+                <date>2008-12-12</date>
+                <score>88</score>
+            </handicap>
+            <handicap>
+                <date>2009-01-14</date>
+                <score>35</score>
+            </handicap>
+        </handicaps>
+    </player>
+    <player playerID="3">
+        <firstName>Maureen</firstName>
+        <lastName>Evans</lastName>
+        <address>#1045 1110 Haro St.</address>
+        <city>Vancouver</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V5E 2T7</postalCode>
+        <contactNumber>778-889-5554</contactNumber>
+        <playerRounds>
+            <golfRound roundID="7" courseID="1">
+                <startDateTime>2008-12-01 12:42:32</startDateTime>
+                <endDateTime>2008-12-01 15:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Sunny</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>2</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>6</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="8" courseID="2">
+                <startDateTime>2008-12-12 08:47:01</startDateTime>
+                <endDateTime>2008-12-12 10:01:57</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Freezing Rain</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>8</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>7</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>10</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>12</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>18</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>9</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>9</score>
+                    </hole>
+                </holes>
+            </golfRound>
+            <golfRound roundID="9" courseID="3">
+                <startDateTime>2009-01-14 17:42:32</startDateTime>
+                <endDateTime>2009-01-14 19:32:11</endDateTime>
+                <holesPlayed>9</holesPlayed>
+                <weatherCondition>Clowdy and Wind Gusts</weatherCondition>
+                <holes>
+                    <hole holeNum="1">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="2">
+                        <score>5</score>
+                    </hole>
+                    <hole holeNum="3">
+                        <score>6</score>
+                    </hole>
+                    <hole holeNum="4">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="5">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="6">
+                        <score>3</score>
+                    </hole>
+                    <hole holeNum="7">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="8">
+                        <score>4</score>
+                    </hole>
+                    <hole holeNum="9">
+                        <score>3</score>
+                    </hole>
+                </holes>
+            </golfRound>
+        </playerRounds>
+        <handicaps>
+            <handicap>
+                <date>2008-12-01</date>
+                <score>34</score>
+            </handicap>
+            <handicap>
+                <date>2008-12-12</date>
+                <score>88</score>
+            </handicap>
+            <handicap>
+                <date>2009-01-14</date>
+                <score>35</score>
+            </handicap>
+        </handicaps>
+    </player>
+</players>

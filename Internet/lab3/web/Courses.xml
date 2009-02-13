@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Courses.xml
+    Created on : February 1, 2009, 10:17 PM
+    Author     : Steffen L. Norgren
+    Description:
+        Contains golf course information.
+-->
+
+<!DOCTYPE courses SYSTEM "Courses.dtd">
+
+<courses>
+    <course courseID="1">
+        <name>Gleneagles Golf &amp; Country Club</name>
+        <address>2721 Seymore Way.</address>
+        <city>North Vancouver</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V7R 2X8</postalCode>
+        <contactNumber>604-929-0111</contactNumber>
+        <scratchScore>50</scratchScore>
+        <holeDetails>
+            <hole holeNum="1">
+                <par>4</par>
+                <yards>285</yards>
+                <info>Looks pretty</info>
+            </hole>
+            <hole holeNum="2">
+                <par>5</par>
+                <yards>380</yards>
+                <info>Lots of squirrels</info>
+            </hole>
+            <hole holeNum="3">
+                <par>4</par>
+                <yards>310</yards>
+                <info>Cliffside</info>
+            </hole>
+            <hole holeNum="4">
+                <par>3</par>
+                <yards>170</yards>
+                <info>Water features</info>
+            </hole>
+            <hole holeNum="5">
+                <par>3</par>
+                <yards>210</yards>
+                <info>Nothing special</info>
+            </hole>
+            <hole holeNum="6">
+                <par>4</par>
+                <yards>235</yards>
+                <info>Dancing unicorns</info>
+            </hole>
+            <hole holeNum="7">
+                <par>5</par>
+                <yards>450</yards>
+                <info>Nuclear waste site</info>
+            </hole>
+            <hole holeNum="8">
+                <par>3</par>
+                <yards>220</yards>
+                <info>View of abattoir</info>
+            </hole>
+            <hole holeNum="9">
+                <par>5</par>
+                <yards>375</yards>
+                <info>Fresh beef</info>
+            </hole>
+        </holeDetails>
+    </course>
+    <course courseID="2">
+        <name>Hollyburn Golf &amp; Country Club</name>
+        <address>3734 Dollarton Hwy.</address>
+        <city>North Vancouver</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V7R E5E</postalCode>
+        <contactNumber>604-929-1847</contactNumber>
+        <scratchScore>50</scratchScore>
+        <holeDetails>
+            <hole holeNum="1">
+                <par>4</par>
+                <yards>285</yards>
+                <info>Looks pretty</info>
+            </hole>
+            <hole holeNum="2">
+                <par>5</par>
+                <yards>380</yards>
+                <info>Lots of squirrels</info>
+            </hole>
+            <hole holeNum="3">
+                <par>4</par>
+                <yards>310</yards>
+                <info>Cliffside</info>
+            </hole>
+            <hole holeNum="4">
+                <par>3</par>
+                <yards>170</yards>
+                <info>Water features</info>
+            </hole>
+            <hole holeNum="5">
+                <par>3</par>
+                <yards>210</yards>
+                <info>Nothing special</info>
+            </hole>
+            <hole holeNum="6">
+                <par>4</par>
+                <yards>235</yards>
+                <info>Dancing unicorns</info>
+            </hole>
+            <hole holeNum="7">
+                <par>5</par>
+                <yards>450</yards>
+                <info>Nuclear waste site</info>
+            </hole>
+            <hole holeNum="8">
+                <par>3</par>
+                <yards>220</yards>
+                <info>View of abattoir</info>
+            </hole>
+            <hole holeNum="9">
+                <par>5</par>
+                <yards>375</yards>
+                <info>Fresh beef</info>
+            </hole>
+        </holeDetails>
+    </course>
+    <course courseID="3">
+        <name>Semiahmoo &amp; Country Club</name>
+        <address>21238 16th Ave.</address>
+        <city>Surrey</city>
+        <sate_prov>BC</sate_prov>
+        <country>Canada</country>
+        <postalCode>V4B 5R2</postalCode>
+        <contactNumber>604-535-7874</contactNumber>
+        <scratchScore>50</scratchScore>
+        <holeDetails>
+            <hole holeNum="1">
+                <par>4</par>
+                <yards>285</yards>
+                <info>Looks pretty</info>
+            </hole>
+            <hole holeNum="2">
+                <par>5</par>
+                <yards>380</yards>
+                <info>Lots of squirrels</info>
+            </hole>
+            <hole holeNum="3">
+                <par>4</par>
+                <yards>310</yards>
+                <info>Cliffside</info>
+            </hole>
+            <hole holeNum="4">
+                <par>3</par>
+                <yards>170</yards>
+                <info>Water features</info>
+            </hole>
+            <hole holeNum="5">
+                <par>3</par>
+                <yards>210</yards>
+                <info>Nothing special</info>
+            </hole>
+            <hole holeNum="6">
+                <par>4</par>
+                <yards>235</yards>
+                <info>Dancing unicorns</info>
+            </hole>
+            <hole holeNum="7">
+                <par>5</par>
+                <yards>450</yards>
+                <info>Nuclear waste site</info>
+            </hole>
+            <hole holeNum="8">
+                <par>3</par>
+                <yards>220</yards>
+                <info>View of abattoir</info>
+            </hole>
+            <hole holeNum="9">
+                <par>5</par>
+                <yards>375</yards>
+                <info>Fresh beef</info>
+            </hole>
+        </holeDetails>
+    </course>
+</courses>

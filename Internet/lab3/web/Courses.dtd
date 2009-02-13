@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!ELEMENT courses (course)*>
+<!ELEMENT course (holeDetails|scratchScore|contactNumber|postalCode|country|sate_prov|city|address|name)*>
+<!ATTLIST course courseID CDATA #IMPLIED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT sate_prov (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT postalCode (#PCDATA)>
+<!ELEMENT contactNumber (#PCDATA)>
+<!ELEMENT scratchScore (#PCDATA)>
+<!ELEMENT holeDetails (hole)*>
+<!ELEMENT hole (info|yards|par)*>
+<!ATTLIST hole holeNum CDATA #IMPLIED>
+<!ELEMENT par (#PCDATA)>
+<!ELEMENT yards (#PCDATA)>
+<!ELEMENT info (#PCDATA)>

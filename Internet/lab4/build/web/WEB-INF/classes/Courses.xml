@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Courses.xml
+    Created on : February 8, 2009, 11:39 PM
+    Author     : ironix
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns0:courses  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns0='http://xml.netbeans.org/schema/Courses'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/Courses Courses.xsd'>
+    <ns0:course courseID="">
+        <ns0:name>asdasd</ns0:name>
+        <ns0:address></ns0:address>
+        <ns0:city></ns0:city>
+        <ns0:state_prov></ns0:state_prov>
+        <ns0:country></ns0:country>
+        <ns0:postalCode></ns0:postalCode>
+        <ns0:contactNumber></ns0:contactNumber>
+        <ns0:scratchScore>123</ns0:scratchScore>
+        <ns0:holeDetails>
+            <ns0:hole holeNum="">
+                <ns0:par></ns0:par>
+                <ns0:yards></ns0:yards>
+                <ns0:info></ns0:info>
+            </ns0:hole>
+        </ns0:holeDetails>
+    </ns0:course>
+
+</ns0:courses>

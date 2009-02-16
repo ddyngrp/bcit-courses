@@ -28,8 +28,9 @@ public class Main {
     }
     
     /**
-     * Display the title, description & air time of all shows on between 8 & 11pm (local time) on TVDATA.
-     * Order the display by air time, so it looks like a real schedule
+     * Display the title, description & air time of all shows on between 8 &
+     * 11pm (local time) on TVDATA. Order the display by air time, so it looks
+     * like a real schedule
      */
     public static void when() {
         System.out.println("...");

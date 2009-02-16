@@ -1,270 +1,270 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- produced for the bleb.org TV system at Tue Feb 10 08:39:11 2009 -->
 <channel id="bbc2" source="BBC" date="10/02/2009">
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. 40/70. Families and Flying: Preschool fun with songs, rhymes, surprise guests, and things to make. Families, flying and Bonny, Banana and Mo with Paul, Sarah-Jane and Tamba.</desc>
-<title>Tikkabilla</title>
-<end>0630</end>
-<start>0600</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. Sharks and Baby Animals: A look at the planet we live on, with clips exploring different aspects of biology. The focus is on sharks and baby animals.</desc>
-<title>Our Planet</title>
-<end>0640</end>
-<start>0630</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. Conductor: Cookery series with Big Cook Ben and Little Cook Small. Colin the Conductor enters the cafe, eats some cheesy batons with salsa dip and leaves them his conducting baton.</desc>
-<title>Big Cook Little Cook</title>
-<end>0700</end>
-<start>0640</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. 76/100. Catch the Ninky Nonk, Tombiloos: In a magical forest, colourful characters have adventures and are read stories. Makka Pakka takes a ride on the Ninky Nonk.</desc>
-<title>In the Night Garden</title>
-<end>0730</end>
-<start>0700</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. Take Me to the Water: Programme for pre-school children combining animation with action footage. A film-making friend of Mama's, Jacques, visits the savannah.</desc>
-<title>Mama Mirabelle's Home Movies</title>
-<end>0745</end>
-<start>0730</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBeebies. Speed Rocket: Mixed media animation for young children. Pinky and Mr Guinea Pig take part in a very special race.</desc>
-<title>Pinky Dinky Doo</title>
-<end>0800</end>
-<start>0745</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. 12/20. Relive the madness of Dick and Dom in Da Bungalow. Featuring the best bungalow games. DI Harry Batt interrogates an ex-bungalowhead.</desc>
-<title>Da Dick and Dom Dairies</title>
-<end>0830</end>
-<start>0800</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. 2/13. Watford: Children's adventure game show. Six children must work together to complete challenges and escape from a Gothic fairytale tower - yet one of them can't be trusted.</desc>
-<title>Trapped</title>
-<end>0855</end>
-<start>0830</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. Space Station: Children's entertainment presented by Barney Harwood. Ella convinces her best friend Louise that there is a plane capable of taking passengers into space.</desc>
-<title>Prank Patrol Pocketsize</title>
-<end>0900</end>
-<start>0855</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. Richard Hammond looks at the weight of liquids. Richard discovers what happens when a tonne of water is dropped onto a car, while contestants must guess the weight of Ninja Nan.</desc>
-<title>Richard Hammond's Blast Lab</title>
-<end>0930</end>
-<start>0900</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. 2/13. Best Friends: Surreal sitcom about a struggling actress, continuously left in charge of her young siblings. Sam and Toby go to a party without Dani and get on surprisingly well.</desc>
-<title>Dani's House</title>
-<end>1000</end>
-<start>0930</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. Children's hidden camera game show that finds out how well kids know their mates. The cameras are hidden in Newcastle, but will Liam fall for the prank and shave off his mohawk?</desc>
-<title>Stake Out</title>
-<end>1030</end>
-<start>1000</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. The Ashams: Greece: Colette and Jem Asham have three trips to choose from and decide the holiday rules. At the end the kids have to answer two questions to win a fantastic treat.</desc>
-<title>Gimme a Break</title>
-<end>1100</end>
-<start>1030</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. Characteristics of Materials: Science for seven- to nine-year-olds. Trying to make a bicycle from rubber, and testing fabrics.</desc>
-<title>Science Clips</title>
-<end>1110</end>
-<start>1100</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. Keeping Warm: Science for seven- to nine-year-olds. Seeing, using and feeling temperature. How did the three bears use thermal conductivity?</desc>
-<title>Science Clips</title>
-<end>1120</end>
-<start>1110</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Think About It: Property: Educational programming designed to stretch the mind. The school summer raffle is Andrew's only chance of owning the football shirt he has always wanted.</desc>
-<title>Thinking Skills</title>
-<end>1130</end>
-<start>1120</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>CBBC. The Iron Man: 4/4: Ted Hughes's The Iron Man told in British Sign Language by Jean St Clair, with an English reading by Jane Lapotaire. Earth is threatened by a dragon from space.</desc>
-<title>Hands Up!</title>
-<end>1145</end>
-<start>1130</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>CBeebies. Barnaby Goes to Dublin: Educational fun. Barnaby flies to Dublin, where he goes sightseeing, finds out about the different ways to get around the city and tries Irish dancing. [AD,S]</desc>
-<title>Barnaby Bear</title>
-<end>1200</end>
-<start>1145</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Andrew Neil and Anita Anand have the top political stories of the day.</desc>
-<title>The Daily Politics</title>
-<end>1230</end>
-<start>1200</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>The latest business, consumer and workplace news from across the country.</desc>
-<title>Working Lunch</title>
-<end>1300</end>
-<start>1230</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>Boys Will Be Boys: Documentary series looking at a family of meerkats. Youssarian and Big Will go in search of females from a rival group. Mitch ends up at death's door. [AD,S]</desc>
-<title>Meerkat Manor</title>
-<end>1320</end>
-<start>1300</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>A couple of rhinos go on a date, Kate Humble makes some tortoises feel more at home and Ben Fogle gives an owl an MOT.</desc>
-<title>Animal Park</title>
-<end>1405</end>
-<start>1320</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Barbarossa: Acclaimed series telling the story of World War II, narrated by Laurence Olivier. The German-Soviet pact ends, and Hitler turns his tanks and troops against Russia.</desc>
-<title>The World at War</title>
-<end>1500</end>
-<start>1405</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>The Sound of Murder: Murder mystery series with the sleuthing Jessica Fletcher. A dead man is discovered being used as a prop during the making of a music video.</desc>
-<title>Murder, She Wrote</title>
-<end>1545</end>
-<start>1500</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Yeovil: Members of the public try to make money out of their antiques at auction. Experts Michael Baggott and James Lewis search for hidden gems In Yeovil.</desc>
-<title>Flog It!</title>
-<end>1630</end>
-<start>1545</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Strictly Come Dancing stars Darren Bennett and Lilia Kopylova bring their competitive streak to the kitchen as Ainsley Harriott hosts another mouthwatering cookery challenge.</desc>
-<title>Ready Steady Cook</title>
-<end>1715</end>
-<start>1630</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Claire Rayner: Claire Rayner, the nation's favourite agony aunt, rummages with husband Des and Lorne Spicer in search of items to sell at auction in aid of the Patients' Association.</desc>
-<title>Cash in the Celebrity Attic</title>
-<end>1800</end>
-<start>1715</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>2/20. Quiz show hosted by Nicky Campbell. Two teams featuring some of the brightest brains in Britain go head to head in a game of nerve, strategy and skill.</desc>
-<title>Battle of the Brains</title>
-<end>1830</end>
-<start>1800</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Jeremy Vine hosts a general knowledge quiz in which teams from all over the UK battle to beat the Eggheads.</desc>
-<title>Eggheads</title>
-<end>1900</end>
-<start>1830</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>Fiona Bruce: Celebrity genealogy series. Fiona Bruce discovers the sad truth behind her great-grandfather's mysterious death, and returns to her family's ancestral home. [AD,S]</desc>
-<title>Who Do You Think You Are?</title>
-<end>2000</end>
-<start>1900</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>6/8. Oz Clarke and James May travel Britain to profile the drinks on offer. The pair head to Wales where they find a 'beverage plant' that makes famous 'foreign beers'. [AD,S]</desc>
-<title>Oz and James Drink to Britain</title>
-<end>2030</end>
-<start>2000</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Cookery competition. The contestants have to survive an 18-hour shift in the kitchens of Bistro One Ninety at the Gore Hotel and The Park Restaurant at the Mandarin Oriental Hotel.</desc>
-<title>MasterChef</title>
-<end>2100</end>
-<start>2030</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>An investigation into the meaning of dreams with the findings based upon anecdotal evidence and a series of cutting-edge experiments.</desc>
-<title>Horizon: Why Do We Dream?</title>
-<end>2200</end>
-<start>2100</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>On the tenth anniversary of Heat magazine, Mark Kermode and Miranda Sawyer go head to head on the merits of Heat and celebrity culture in general.</desc>
-<title>The Culture Show</title>
-<end>2230</end>
-<start>2200</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>In-depth investigation and analysis of the stories behind the day's headlines with Jeremy Paxman. [S] Followed by Weather.</desc>
-<title>Newsnight</title>
-<end>2320</end>
-<start>2230</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Documentary looking at Nationwide, Britain's first truly regional TV programme, which ran on BBC from 1969 to 1983. Featuring Sue Lawley, Michael Barratt and Richard Stilgoe.</desc>
-<title>It's Time to Go Nationwide</title>
-<end>0020</end>
-<start>2320</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>BBC TWO joins the BBC's rolling news channel, with bulletins on the hour and the headlines every 15 minutes.</desc>
-<title>BBC News</title>
-<end>0400</end>
-<start>0020</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Challenging Beliefs: Seven programmes looking at the issues of philosophy and ethics, ultimate questions and critical thinking, exploring life's big questions in a multi-faith way.</desc>
-<title>Key Stage 4 Curriculum Bites</title>
-<end>0600</end>
-<start>0400</start>
-  </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. 40/70. Families and Flying: Preschool fun with songs, rhymes, surprise guests, and things to make. Families, flying and Bonny, Banana and Mo with Paul, Sarah-Jane and Tamba.</desc>
+        <title>Tikkabilla</title>
+        <end>0630</end>
+        <start>0600</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. Sharks and Baby Animals: A look at the planet we live on, with clips exploring different aspects of biology. The focus is on sharks and baby animals.</desc>
+        <title>Our Planet</title>
+        <end>0640</end>
+        <start>0630</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. Conductor: Cookery series with Big Cook Ben and Little Cook Small. Colin the Conductor enters the cafe, eats some cheesy batons with salsa dip and leaves them his conducting baton.</desc>
+        <title>Big Cook Little Cook</title>
+        <end>0700</end>
+        <start>0640</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. 76/100. Catch the Ninky Nonk, Tombiloos: In a magical forest, colourful characters have adventures and are read stories. Makka Pakka takes a ride on the Ninky Nonk.</desc>
+        <title>In the Night Garden</title>
+        <end>0730</end>
+        <start>0700</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. Take Me to the Water: Programme for pre-school children combining animation with action footage. A film-making friend of Mama's, Jacques, visits the savannah.</desc>
+        <title>Mama Mirabelle's Home Movies</title>
+        <end>0745</end>
+        <start>0730</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. Speed Rocket: Mixed media animation for young children. Pinky and Mr Guinea Pig take part in a very special race.</desc>
+        <title>Pinky Dinky Doo</title>
+        <end>0800</end>
+        <start>0745</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. 12/20. Relive the madness of Dick and Dom in Da Bungalow. Featuring the best bungalow games. DI Harry Batt interrogates an ex-bungalowhead.</desc>
+        <title>Da Dick and Dom Dairies</title>
+        <end>0830</end>
+        <start>0800</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. 2/13. Watford: Children's adventure game show. Six children must work together to complete challenges and escape from a Gothic fairytale tower - yet one of them can't be trusted.</desc>
+        <title>Trapped</title>
+        <end>0855</end>
+        <start>0830</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Space Station: Children's entertainment presented by Barney Harwood. Ella convinces her best friend Louise that there is a plane capable of taking passengers into space.</desc>
+        <title>Prank Patrol Pocketsize</title>
+        <end>0900</end>
+        <start>0855</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Richard Hammond looks at the weight of liquids. Richard discovers what happens when a tonne of water is dropped onto a car, while contestants must guess the weight of Ninja Nan.</desc>
+        <title>Richard Hammond's Blast Lab</title>
+        <end>0930</end>
+        <start>0900</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. 2/13. Best Friends: Surreal sitcom about a struggling actress, continuously left in charge of her young siblings. Sam and Toby go to a party without Dani and get on surprisingly well.</desc>
+        <title>Dani's House</title>
+        <end>1000</end>
+        <start>0930</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Children's hidden camera game show that finds out how well kids know their mates. The cameras are hidden in Newcastle, but will Liam fall for the prank and shave off his mohawk?</desc>
+        <title>Stake Out</title>
+        <end>1030</end>
+        <start>1000</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. The Ashams: Greece: Colette and Jem Asham have three trips to choose from and decide the holiday rules. At the end the kids have to answer two questions to win a fantastic treat.</desc>
+        <title>Gimme a Break</title>
+        <end>1100</end>
+        <start>1030</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Characteristics of Materials: Science for seven- to nine-year-olds. Trying to make a bicycle from rubber, and testing fabrics.</desc>
+        <title>Science Clips</title>
+        <end>1110</end>
+        <start>1100</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Keeping Warm: Science for seven- to nine-year-olds. Seeing, using and feeling temperature. How did the three bears use thermal conductivity?</desc>
+        <title>Science Clips</title>
+        <end>1120</end>
+        <start>1110</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Think About It: Property: Educational programming designed to stretch the mind. The school summer raffle is Andrew's only chance of owning the football shirt he has always wanted.</desc>
+        <title>Thinking Skills</title>
+        <end>1130</end>
+        <start>1120</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. The Iron Man: 4/4: Ted Hughes's The Iron Man told in British Sign Language by Jean St Clair, with an English reading by Jane Lapotaire. Earth is threatened by a dragon from space.</desc>
+        <title>Hands Up!</title>
+        <end>1145</end>
+        <start>1130</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>CBeebies. Barnaby Goes to Dublin: Educational fun. Barnaby flies to Dublin, where he goes sightseeing, finds out about the different ways to get around the city and tries Irish dancing. [AD,S]</desc>
+        <title>Barnaby Bear</title>
+        <end>1200</end>
+        <start>1145</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Andrew Neil and Anita Anand have the top political stories of the day.</desc>
+        <title>The Daily Politics</title>
+        <end>1230</end>
+        <start>1200</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The latest business, consumer and workplace news from across the country.</desc>
+        <title>Working Lunch</title>
+        <end>1300</end>
+        <start>1230</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Boys Will Be Boys: Documentary series looking at a family of meerkats. Youssarian and Big Will go in search of females from a rival group. Mitch ends up at death's door. [AD,S]</desc>
+        <title>Meerkat Manor</title>
+        <end>1320</end>
+        <start>1300</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>A couple of rhinos go on a date, Kate Humble makes some tortoises feel more at home and Ben Fogle gives an owl an MOT.</desc>
+        <title>Animal Park</title>
+        <end>1405</end>
+        <start>1320</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Barbarossa: Acclaimed series telling the story of World War II, narrated by Laurence Olivier. The German-Soviet pact ends, and Hitler turns his tanks and troops against Russia.</desc>
+        <title>The World at War</title>
+        <end>1500</end>
+        <start>1405</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The Sound of Murder: Murder mystery series with the sleuthing Jessica Fletcher. A dead man is discovered being used as a prop during the making of a music video.</desc>
+        <title>Murder, She Wrote</title>
+        <end>1545</end>
+        <start>1500</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Yeovil: Members of the public try to make money out of their antiques at auction. Experts Michael Baggott and James Lewis search for hidden gems In Yeovil.</desc>
+        <title>Flog It!</title>
+        <end>1630</end>
+        <start>1545</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Strictly Come Dancing stars Darren Bennett and Lilia Kopylova bring their competitive streak to the kitchen as Ainsley Harriott hosts another mouthwatering cookery challenge.</desc>
+        <title>Ready Steady Cook</title>
+        <end>1715</end>
+        <start>1630</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Claire Rayner: Claire Rayner, the nation's favourite agony aunt, rummages with husband Des and Lorne Spicer in search of items to sell at auction in aid of the Patients' Association.</desc>
+        <title>Cash in the Celebrity Attic</title>
+        <end>1800</end>
+        <start>1715</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>2/20. Quiz show hosted by Nicky Campbell. Two teams featuring some of the brightest brains in Britain go head to head in a game of nerve, strategy and skill.</desc>
+        <title>Battle of the Brains</title>
+        <end>1830</end>
+        <start>1800</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Jeremy Vine hosts a general knowledge quiz in which teams from all over the UK battle to beat the Eggheads.</desc>
+        <title>Eggheads</title>
+        <end>1900</end>
+        <start>1830</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Fiona Bruce: Celebrity genealogy series. Fiona Bruce discovers the sad truth behind her great-grandfather's mysterious death, and returns to her family's ancestral home. [AD,S]</desc>
+        <title>Who Do You Think You Are?</title>
+        <end>2000</end>
+        <start>1900</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>6/8. Oz Clarke and James May travel Britain to profile the drinks on offer. The pair head to Wales where they find a 'beverage plant' that makes famous 'foreign beers'. [AD,S]</desc>
+        <title>Oz and James Drink to Britain</title>
+        <end>2030</end>
+        <start>2000</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Cookery competition. The contestants have to survive an 18-hour shift in the kitchens of Bistro One Ninety at the Gore Hotel and The Park Restaurant at the Mandarin Oriental Hotel.</desc>
+        <title>MasterChef</title>
+        <end>2100</end>
+        <start>2030</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>An investigation into the meaning of dreams with the findings based upon anecdotal evidence and a series of cutting-edge experiments.</desc>
+        <title>Horizon: Why Do We Dream?</title>
+        <end>2200</end>
+        <start>2100</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>On the tenth anniversary of Heat magazine, Mark Kermode and Miranda Sawyer go head to head on the merits of Heat and celebrity culture in general.</desc>
+        <title>The Culture Show</title>
+        <end>2230</end>
+        <start>2200</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>In-depth investigation and analysis of the stories behind the day's headlines with Jeremy Paxman. [S] Followed by Weather.</desc>
+        <title>Newsnight</title>
+        <end>2320</end>
+        <start>2230</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Documentary looking at Nationwide, Britain's first truly regional TV programme, which ran on BBC from 1969 to 1983. Featuring Sue Lawley, Michael Barratt and Richard Stilgoe.</desc>
+        <title>It's Time to Go Nationwide</title>
+        <end>0020</end>
+        <start>2320</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC TWO joins the BBC's rolling news channel, with bulletins on the hour and the headlines every 15 minutes.</desc>
+        <title>BBC News</title>
+        <end>0400</end>
+        <start>0020</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Challenging Beliefs: Seven programmes looking at the issues of philosophy and ethics, ultimate questions and critical thinking, exploring life's big questions in a multi-faith way.</desc>
+        <title>Key Stage 4 Curriculum Bites</title>
+        <end>0600</end>
+        <start>0400</start>
+    </programme>
 </channel>

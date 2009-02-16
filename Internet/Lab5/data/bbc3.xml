@@ -1,144 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- produced for the bleb.org TV system at Tue Feb 10 08:40:03 2009 -->
 <channel id="bbc3" source="BBC" date="10/02/2009">
-  <programme>
-<flags></flags>
-<desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
-<title>This Is BBC THREE</title>
-<end>1858</end>
-<start>1200</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>BBC THREE. The best in new entertainment, comedy, contemporary drama and music for the digital generation. Stay tuned for 60 Seconds news.</desc>
-<title>This Is BBC THREE</title>
-<end>1900</end>
-<start>1858</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>The Idiot's Lantern: Queen Elizabeth II's coronation, 1953. But behind the celebrations are rumours of monsters on the streets, and the tormented Mr Magpie is hiding an alien secret. [AD,S]</desc>
-<title>Doctor Who</title>
-<end>1945</end>
-<start>1900</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>The Writer's Tale: Going behind the scenes of Doctor Who. Writer Russell T Davies unveils the secrets behind creating a 21st Century Doctor Who.</desc>
-<title>Doctor Who Confidential</title>
-<end>2000</end>
-<start>1945</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>4/4. Three bachelor princes come to the UK in search of love, but must keep their identities secret. The princes return to their kingdoms to await the arrival of their partners. [AD,S]</desc>
-<title>Undercover Princes</title>
-<end>2100</end>
-<start>2000</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>3/5. Psychologist Emma Kenny and image consultant Jonathan Phang challenge five office workers to spend four days gaining enough confidence to undergo a naked photo shoot. Contains some nudity.</desc>
-<title>Naked: Office Workers</title>
-<end>2200</end>
-<start>2100</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>Ricky and Bianca struggle with the truth, while Whitney's date ends in disaster. Garry makes a crushing decision, and Hev and Shirl do a little breaking and entering at George Michael's house. [AD,S]</desc>
-<title>EastEnders</title>
-<end>2230</end>
-<start>2200</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>5/8. Cow: Adult sitcom about being a twentysomething. When Michelle's new flatmate Chris calls her immature, Michelle marries Grant to show how grown up she is. Contains adult humour.</desc>
-<title>Grownups</title>
-<end>2300</end>
-<start>2230</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>8/22. The Kiss Seen Round the World: Animated comedy series about the everyday trials of family life. Meg and Neil intern at a TV station, and Stewie loses his tricycle to a bully.</desc>
-<title>Family Guy</title>
-<end>2320</end>
-<start>2300</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>9/22. Mr Saturday Knight: Animated comedy series about the everyday trials of family life. Peter decides to pursue his dream career - as a knight. Contains adult themes.</desc>
-<title>Family Guy</title>
-<end>2345</end>
-<start>2320</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>3/5. Psychologist Emma Kenny and image consultant Jonathan Phang challenge five office workers to spend four days gaining enough confidence to undergo a naked photo shoot. Contains some nudity.</desc>
-<title>Naked: Office Workers</title>
-<end>0045</end>
-<start>2345</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>4/4. Three bachelor princes come to the UK to find love, but must stay incognito. The princes return to their kingdoms to await their partners' arrival. Contains adult themes. [AD,S]</desc>
-<title>Undercover Princes</title>
-<end>0145</end>
-<start>0045</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>5/8. Cow: Adult sitcom about being a twentysomething. When Michelle's new flatmate Chris calls her immature, Michelle marries Grant to show how grown up she is. Contains adult humour.</desc>
-<title>Grownups</title>
-<end>0215</end>
-<start>0145</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>Documentary which follows young mother Kizzy Neal's journey to independence as she turns 16. Kizzy must decide whether to leave home or stay. Contains some strong language.</desc>
-<title>Kizzy: Sex, Prams and Exams</title>
-<end>0310</end>
-<start>0215</start>
-  </programme>
-  <programme>
-<flags>(S)</flags>
-<desc>4/10. A team of hustlers try out notorious scams on members of the public. Including distraction techniques used to access car boots, and a restaurant scam that guarantees a cheap meal.</desc>
-<title>The Real Hustle</title>
-<end>0340</end>
-<start>0310</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>3/6. Comedy-drama about a werewolf, a vampire and a ghost. Annie investigates why she is trapped in limbo with the help of a ghost. Contains some strong language and some sexual content. [AD,S,SL]</desc>
-<title>Being Human</title>
-<end>0440</end>
-<start>0340</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>The Writer's Tale: Going behind the scenes of Doctor Who. Writer Russell T Davies unveils the secrets behind creating a 21st Century Doctor Who. [S,SL]</desc>
-<title>Doctor Who Confidential</title>
-<end>0455</end>
-<start>0440</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
-<title>This Is BBC THREE</title>
-<end>0530</end>
-<start>0455</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
-<title>This Is BBC THREE</title>
-<end>0532</end>
-<start>0530</start>
-  </programme>
-  <programme>
-<flags></flags>
-<desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
-<title>This Is BBC THREE</title>
-<end>1200</end>
-<start>0532</start>
-  </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
+        <title>This Is BBC THREE</title>
+        <end>1858</end>
+        <start>1200</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC THREE. The best in new entertainment, comedy, contemporary drama and music for the digital generation. Stay tuned for 60 Seconds news.</desc>
+        <title>This Is BBC THREE</title>
+        <end>1900</end>
+        <start>1858</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>The Idiot's Lantern: Queen Elizabeth II's coronation, 1953. But behind the celebrations are rumours of monsters on the streets, and the tormented Mr Magpie is hiding an alien secret. [AD,S]</desc>
+        <title>Doctor Who</title>
+        <end>1945</end>
+        <start>1900</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The Writer's Tale: Going behind the scenes of Doctor Who. Writer Russell T Davies unveils the secrets behind creating a 21st Century Doctor Who.</desc>
+        <title>Doctor Who Confidential</title>
+        <end>2000</end>
+        <start>1945</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>4/4. Three bachelor princes come to the UK in search of love, but must keep their identities secret. The princes return to their kingdoms to await the arrival of their partners. [AD,S]</desc>
+        <title>Undercover Princes</title>
+        <end>2100</end>
+        <start>2000</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>3/5. Psychologist Emma Kenny and image consultant Jonathan Phang challenge five office workers to spend four days gaining enough confidence to undergo a naked photo shoot. Contains some nudity.</desc>
+        <title>Naked: Office Workers</title>
+        <end>2200</end>
+        <start>2100</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Ricky and Bianca struggle with the truth, while Whitney's date ends in disaster. Garry makes a crushing decision, and Hev and Shirl do a little breaking and entering at George Michael's house. [AD,S]</desc>
+        <title>EastEnders</title>
+        <end>2230</end>
+        <start>2200</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>5/8. Cow: Adult sitcom about being a twentysomething. When Michelle's new flatmate Chris calls her immature, Michelle marries Grant to show how grown up she is. Contains adult humour.</desc>
+        <title>Grownups</title>
+        <end>2300</end>
+        <start>2230</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>8/22. The Kiss Seen Round the World: Animated comedy series about the everyday trials of family life. Meg and Neil intern at a TV station, and Stewie loses his tricycle to a bully.</desc>
+        <title>Family Guy</title>
+        <end>2320</end>
+        <start>2300</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>9/22. Mr Saturday Knight: Animated comedy series about the everyday trials of family life. Peter decides to pursue his dream career - as a knight. Contains adult themes.</desc>
+        <title>Family Guy</title>
+        <end>2345</end>
+        <start>2320</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>3/5. Psychologist Emma Kenny and image consultant Jonathan Phang challenge five office workers to spend four days gaining enough confidence to undergo a naked photo shoot. Contains some nudity.</desc>
+        <title>Naked: Office Workers</title>
+        <end>0045</end>
+        <start>2345</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>4/4. Three bachelor princes come to the UK to find love, but must stay incognito. The princes return to their kingdoms to await their partners' arrival. Contains adult themes. [AD,S]</desc>
+        <title>Undercover Princes</title>
+        <end>0145</end>
+        <start>0045</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>5/8. Cow: Adult sitcom about being a twentysomething. When Michelle's new flatmate Chris calls her immature, Michelle marries Grant to show how grown up she is. Contains adult humour.</desc>
+        <title>Grownups</title>
+        <end>0215</end>
+        <start>0145</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Documentary which follows young mother Kizzy Neal's journey to independence as she turns 16. Kizzy must decide whether to leave home or stay. Contains some strong language.</desc>
+        <title>Kizzy: Sex, Prams and Exams</title>
+        <end>0310</end>
+        <start>0215</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>4/10. A team of hustlers try out notorious scams on members of the public. Including distraction techniques used to access car boots, and a restaurant scam that guarantees a cheap meal.</desc>
+        <title>The Real Hustle</title>
+        <end>0340</end>
+        <start>0310</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>3/6. Comedy-drama about a werewolf, a vampire and a ghost. Annie investigates why she is trapped in limbo with the help of a ghost. Contains some strong language and some sexual content. [AD,S,SL]</desc>
+        <title>Being Human</title>
+        <end>0440</end>
+        <start>0340</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>The Writer's Tale: Going behind the scenes of Doctor Who. Writer Russell T Davies unveils the secrets behind creating a 21st Century Doctor Who. [S,SL]</desc>
+        <title>Doctor Who Confidential</title>
+        <end>0455</end>
+        <start>0440</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
+        <title>This Is BBC THREE</title>
+        <end>0530</end>
+        <start>0455</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
+        <title>This Is BBC THREE</title>
+        <end>0532</end>
+        <start>0530</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC THREE: Refreshing TV for the digital age. Tune in daily from 7.00pm.</desc>
+        <title>This Is BBC THREE</title>
+        <end>1200</end>
+        <start>0532</start>
+    </programme>
 </channel>

@@ -22,8 +22,7 @@ public class Main {
             who();
             when();
             where();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -41,8 +40,8 @@ public class Main {
         Element root = doc.getRootElement();
         List shows = root.getChildren();
 
-        for (Iterator i = shows.iterator(); i.hasNext(); ) {
-            Element e = (Element)i.next();
+        for (Iterator i = shows.iterator(); i.hasNext();) {
+            Element e = (Element) i.next();
             if (e.getChild("title").getValue().toLowerCase()
                     .contains("Doctor Who".toLowerCase())) {
 
@@ -51,8 +50,8 @@ public class Main {
                 // Print out the title and description
                 String title = e.getChild("title").getValue();
                 String description = e.getChild("desc").getValue();
-                System.out.println("Title: " + title
-                        + "\nDescription: " + description + "\n");
+                System.out.println("Title: " + title + "\nDescription: "
+                        + description + "\n");
             }
         }
         System.out.println(drWhoCount + " of " + shows.size() +
@@ -63,9 +62,37 @@ public class Main {
      * Display the title, description & air time of all shows on between 8 &
      * 11pm (local time) on TVDATA. Order the display by air time, so it looks
      * like a real schedule
+     * NOTE: The times in the XML file are betwen midnight and 10:30 AM
+     *       I will assume you meant between 8 & 11 AM.
      */
     public static void when() throws Exception {
-        System.out.println("...");
+        SAXBuilder jdomObj = new SAXBuilder();
+        org.jdom.Document doc = jdomObj.build("data/tvdata.xml");
+
+        Element root = doc.getRootElement();
+        List shows = root.getChildren("programme");
+
+        for (Iterator i = shows.iterator(); i.hasNext();) {
+            Element e = (Element) i.next();
+
+            String start = e.getAttribute("start").getValue();
+            String startHour = start.substring(8, 10);
+            String startMin = start.substring(10, 12);
+            int hourInt = Integer.parseInt(startHour);
+            int minInt = Integer.parseInt(startMin);
+
+            if ((hourInt > 8 && hourInt < 11)
+                    || (hourInt > 11 && minInt == 0)) {
+                System.out.print("Title: ");
+                System.out.print(e.getChild("title").getValue());
+                System.out.print("\nDescription: ");
+                if (e.getChild("desc") != null) {
+                    System.out.print(e.getChild("desc").getValue());
+                }
+                System.out.println("\nStart Time: " + startHour + ":"
+                        + startMin + "\n");
+            }
+        }
     }
 
     /**
@@ -73,6 +100,34 @@ public class Main {
      * Use the category element to determine these.
      */
     public static void where() throws Exception {
-        System.out.println("...");
+        SAXBuilder jdomObj = new SAXBuilder();
+        org.jdom.Document doc = jdomObj.build("data/tvdata.xml");
+
+        Element root = doc.getRootElement();
+        List shows = root.getChildren("programme");
+
+        for (Iterator i = shows.iterator(); i.hasNext();) {
+            Element e = (Element) i.next();
+            List categories = e.getChildren("category");
+
+            String start = e.getAttribute("start").getValue();
+            String startHour = start.substring(8, 10);
+            String startMin = start.substring(10, 12);
+
+            for (Iterator it = categories.iterator(); it.hasNext(); ) {
+                Element el = (Element) it.next();
+
+                if (el.getValue().toLowerCase().contains("news".toLowerCase())) {
+                System.out.print("Title: ");
+                System.out.print(e.getChild("title").getValue());
+                System.out.print("\nDescription: ");
+                if (e.getChild("desc") != null) {
+                    System.out.print(e.getChild("desc").getValue());
+                }
+                System.out.println("\nStart Time: " + startHour + ":"
+                        + startMin + "\n");
+                }
+            }
+        }
     }
 }

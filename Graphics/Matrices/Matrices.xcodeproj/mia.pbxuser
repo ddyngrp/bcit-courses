@@ -1,0 +1,220 @@
+// !$*UTF8*$!
+{
+	0D0175000F32E4DB0067D5E3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0DC49DA40F2799720073AA0F /* Matrix.m */;
+		name = "Matrix.m: 217";
+		rLen = 0;
+		rLoc = 3940;
+		rType = 0;
+		vrLen = 970;
+		vrLoc = 3304;
+	};
+	0D0175010F32E4DB0067D5E3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0DC49DA30F2799720073AA0F /* Matrix.h */;
+		name = "Matrix.h: columnAt:";
+		rLen = 0;
+		rLoc = 492;
+		rType = 0;
+		vrLen = 835;
+		vrLoc = 0;
+	};
+	0D4157AE0F32E48400A2EED1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0DC49DA40F2799720073AA0F /* Matrix.m */;
+		name = "Matrix.m: 217";
+		rLen = 0;
+		rLoc = 3940;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 3306;
+	};
+	0D4157AF0F32E48400A2EED1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0DC49DA30F2799720073AA0F /* Matrix.h */;
+		name = "Matrix.h: columnAt:";
+		rLen = 0;
+		rLoc = 492;
+		rType = 0;
+		vrLen = 835;
+		vrLoc = 0;
+	};
+	0D427AFE0F31951A00C4D69F /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
+	0D7A39790F29F68F006D627D /* MatrixEnumerator.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{343, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{15, 191}, {1123, 832}}";
+		};
+	};
+	0D7A397A0F29F68F006D627D /* MatrixEnumerator.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 1358}}";
+			sepNavSelRange = "{383, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{38, 170}, {1123, 832}}";
+		};
+	};
+	0DBC20360F321FB500EBF821 /* MyMatrixController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{603, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{15, 191}, {1123, 832}}";
+		};
+	};
+	0DC49D900F2798EC0073AA0F /* Matrices */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Matrices;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	0DC49D9E0F2798F00073AA0F /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	0DC49D9F0F2798F00073AA0F /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	0DC49DA30F2799720073AA0F /* Matrix.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{492, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{130, 86}, {1123, 832}}";
+		};
+	};
+	0DC49DA40F2799720073AA0F /* Matrix.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 3654}}";
+			sepNavSelRange = "{3940, 0}";
+			sepNavVisRect = "{{0, 2631}, {1078, 703}}";
+			sepNavWindowFrame = "{{286, 196}, {1123, 832}}";
+		};
+	};
+	0DC49DA50F2799720073AA0F /* MatrixOutofBoundException.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{281, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{38, 170}, {1123, 832}}";
+		};
+	};
+	0DC49DA60F2799720073AA0F /* MatrixOutofBoundException.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{248, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{15, 191}, {1123, 832}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA /* Debug */;
+		activeExecutable = 0DC49D900F2798EC0073AA0F /* Matrices */;
+		activeTarget = 8D1107260486CEB800E47090 /* Matrices */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Matrices */,
+		);
+		breakpointsGroup = 0D427AFE0F31951A00C4D69F /* XCBreakpointsBucket */;
+		codeSenseManager = 0DC49D9F0F2798F00073AA0F /* Code sense */;
+		executables = (
+			0DC49D900F2798EC0073AA0F /* Matrices */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					133,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 254993606;
+			PBXWorkspaceStateSaveDate = 254993606;
+		};
+		perUserProjectItems = {
+			0D0175000F32E4DB0067D5E3 /* PBXTextBookmark */ = 0D0175000F32E4DB0067D5E3 /* PBXTextBookmark */;
+			0D0175010F32E4DB0067D5E3 /* PBXTextBookmark */ = 0D0175010F32E4DB0067D5E3 /* PBXTextBookmark */;
+			0D4157AE0F32E48400A2EED1 /* PBXTextBookmark */ = 0D4157AE0F32E48400A2EED1 /* PBXTextBookmark */;
+			0D4157AF0F32E48400A2EED1 /* PBXTextBookmark */ = 0D4157AF0F32E48400A2EED1 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 0DC49D9E0F2798F00073AA0F /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 703}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1078, 703}}";
+			sepNavWindowFrame = "{{84, 128}, {1123, 832}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* Matrices */ = {
+		activeExec = 0;
+		executables = (
+			0DC49D900F2798EC0073AA0F /* Matrices */,
+		);
+	};
+}

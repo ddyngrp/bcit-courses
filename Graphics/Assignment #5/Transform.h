@@ -7,23 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
+#import <Foundation/NSArray.h>
 
 @interface Transform : NSView {
-	NSMutableArray * points;
-	NSMutableArray * lines;
 }
 
 // Drawing
 - (void)drawRect:(NSRect)rect;
-
-// Data Methods
-- (NSMutableArray *)points;
-- (NSMutableArray *)lines;
-- (void)setPoints:(NSMutableArray *)newPoints;
-- (void)setLines:(NSMutableArray *)newLines;
-- (BOOL)readPoints:(NSString *)fileName;
-- (BOOL)readLines:(NSString *)fileName;
 
 // Event handling
 //- (void)mouseUp:(NSEvent *)event;

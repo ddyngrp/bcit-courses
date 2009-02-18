@@ -12,7 +12,10 @@
 		3ABA6CF60F4A6C4D00490FC6 /* Qlines3D.dat in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6CF20F4A6C4C00490FC6 /* Qlines3D.dat */; };
 		3ABA6CF70F4A6C4D00490FC6 /* Qpoints.dat in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6CF30F4A6C4C00490FC6 /* Qpoints.dat */; };
 		3ABA6CF80F4A6C4D00490FC6 /* Qpoints3D.dat in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA6CF40F4A6C4C00490FC6 /* Qpoints3D.dat */; };
-		3AD932DC0F46B0CA00A0C08F /* Matrices.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD932DB0F46B0CA00A0C08F /* Matrices.m */; };
+		3AC027B70F4BE9C6007DFD40 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B20F4BE9C6007DFD40 /* Matrix.m */; };
+		3AC027B80F4BE9C7007DFD40 /* MatrixEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B40F4BE9C6007DFD40 /* MatrixEnumerator.m */; };
+		3AC027B90F4BE9C7007DFD40 /* MatrixOutofBoundException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B60F4BE9C6007DFD40 /* MatrixOutofBoundException.m */; };
+		3AC027BD0F4BEA0F007DFD40 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027BC0F4BEA0F007DFD40 /* Controller.m */; };
 		3AD932DF0F46B0DB00A0C08F /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD932DE0F46B0DB00A0C08F /* Transform.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -32,8 +35,14 @@
 		3ABA6CF20F4A6C4C00490FC6 /* Qlines3D.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Qlines3D.dat; sourceTree = "<group>"; };
 		3ABA6CF30F4A6C4C00490FC6 /* Qpoints.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Qpoints.dat; sourceTree = "<group>"; };
 		3ABA6CF40F4A6C4C00490FC6 /* Qpoints3D.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Qpoints3D.dat; sourceTree = "<group>"; };
-		3AD932DA0F46B0CA00A0C08F /* Matrices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrices.h; sourceTree = "<group>"; };
-		3AD932DB0F46B0CA00A0C08F /* Matrices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrices.m; sourceTree = "<group>"; };
+		3AC027B10F4BE9C6007DFD40 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		3AC027B20F4BE9C6007DFD40 /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
+		3AC027B30F4BE9C6007DFD40 /* MatrixEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixEnumerator.h; sourceTree = "<group>"; };
+		3AC027B40F4BE9C6007DFD40 /* MatrixEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixEnumerator.m; sourceTree = "<group>"; };
+		3AC027B50F4BE9C6007DFD40 /* MatrixOutofBoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixOutofBoundException.h; sourceTree = "<group>"; };
+		3AC027B60F4BE9C6007DFD40 /* MatrixOutofBoundException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixOutofBoundException.m; sourceTree = "<group>"; };
+		3AC027BB0F4BEA0F007DFD40 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		3AC027BC0F4BEA0F007DFD40 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		3AD932DD0F46B0DB00A0C08F /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		3AD932DE0F46B0DB00A0C08F /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,8 +64,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3AD932DA0F46B0CA00A0C08F /* Matrices.h */,
-				3AD932DB0F46B0CA00A0C08F /* Matrices.m */,
+				3AC027B10F4BE9C6007DFD40 /* Matrix.h */,
+				3AC027B20F4BE9C6007DFD40 /* Matrix.m */,
+				3AC027B30F4BE9C6007DFD40 /* MatrixEnumerator.h */,
+				3AC027B40F4BE9C6007DFD40 /* MatrixEnumerator.m */,
+				3AC027B50F4BE9C6007DFD40 /* MatrixOutofBoundException.h */,
+				3AC027B60F4BE9C6007DFD40 /* MatrixOutofBoundException.m */,
 				3AD932DD0F46B0DB00A0C08F /* Transform.h */,
 				3AD932DE0F46B0DB00A0C08F /* Transform.m */,
 			);
@@ -92,7 +105,6 @@
 		29B97314FDCFA39411CA2CEA /* Assignment #5 */ = {
 			isa = PBXGroup;
 			children = (
-				3ABA6CE80F4A6C3D00490FC6 /* Data Files */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -106,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				32CA4F630368D1EE00C91783 /* Assignment #5_Prefix.pch */,
+				3AC027BB0F4BEA0F007DFD40 /* Controller.h */,
+				3AC027BC0F4BEA0F007DFD40 /* Controller.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -132,13 +146,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3ABA6CE80F4A6C3D00490FC6 /* Data Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Data Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +208,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				3AD932DC0F46B0CA00A0C08F /* Matrices.m in Sources */,
 				3AD932DF0F46B0DB00A0C08F /* Transform.m in Sources */,
+				3AC027B70F4BE9C6007DFD40 /* Matrix.m in Sources */,
+				3AC027B80F4BE9C7007DFD40 /* MatrixEnumerator.m in Sources */,
+				3AC027B90F4BE9C7007DFD40 /* MatrixOutofBoundException.m in Sources */,
+				3AC027BD0F4BEA0F007DFD40 /* Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

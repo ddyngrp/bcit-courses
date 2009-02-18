@@ -22,6 +22,30 @@
 	// free the used memory
 	[storage release];
 }
+
++ (Matrix *)newWithMultiply:(Matrix *)m1 m2:(Matrix *)m2 {
+	int i, j, k;
+	float prod;
+	Matrix * m_prod = [Matrix newWithXRows:4 YRows:4];
+	
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 4; j++) {
+			[m_prod atX:i atY:j put:[NSNumber numberWithFloat:0.0]];
+		}
+	}
+	
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 4; j++) {
+			for (k = 0; k < 4; k++) {
+				prod = [[m_prod atX:i atY:j] floatValue];
+				prod += [[m1 atX:i atY:k] floatValue] * [[m2 atX:k atY:j] floatValue];
+				[m_prod atX:i atY:j put:[NSNumber numberWithFloat:prod]];
+			}
+		}
+	}
+	
+	return m_prod;
+}
  
 - (void) print {
 	int i = 0;
@@ -189,10 +213,6 @@
 		[self atX:i atY:j put:[column objectAtIndex:j]];
 	}
 	return;
-}
-
-- (void)transpose {
-  // still need to implement	
 }
 
 - (NSEnumerator *)objectEnumerator {

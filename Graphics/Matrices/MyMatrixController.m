@@ -16,9 +16,10 @@
 	NSArray * array;
 	
 	Matrix * m1 = [Matrix newWithXRows:3 YRows:3];
-	Matrix * m2 = [Matrix newWithXRows:3 YRows:3];
 	
 	NSLog(@"init matrix");
+	
+	[m1 atX:0 atY:0 put:[NSNumber numberWithFloat:0.0]];
 	
 	[m1 atX:1 atY:0 put:@"A"];
 	[m1 atX:1 atY:1 put:@"B"];
@@ -37,7 +38,6 @@
 	
 	[m1 print];
 
-	
 	NSLog(@"start testing");
 	
 	if ([m1 containsObject:@"C"]) {

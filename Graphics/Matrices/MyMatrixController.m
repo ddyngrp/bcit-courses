@@ -7,45 +7,40 @@
 //
 
 #import "MyMatrixController.h"
-#import "Matrix.h" 
+#import "Matrix.h"
+
 
 @implementation MyMatrixController
 
 - (void)awakeFromNib {
-	NSLog(@"start");
-	NSArray * array;
-	
-	Matrix * m1 = [Matrix newWithXRows:3 YRows:3];
+	Matrix * m1 = [Matrix newWithXRows:4 YRows:4];
 	
 	NSLog(@"init matrix");
 	
-	[m1 atX:0 atY:0 put:[NSNumber numberWithFloat:0.0]];
-	
-	[m1 atX:1 atY:0 put:@"A"];
-	[m1 atX:1 atY:1 put:@"B"];
-	[m1 atX:1 atY:2 put:@"C"];
-	[m1 atX:2 atY:2 put:@"D"];
-	[m1 atX:2 atY:0 put:@"E"];
-	
-	[m1 print];
-	array = [m1 rowAt:2];
-	
-	NSLog(@"%@", array);
-	[array replaceObjectAtIndex:1 withObject:@"kk"];
-	NSLog(@"%@", array);
-	
-	[m1 putColumnAt:0 column:array];
-	
-	[m1 print];
+	[m1 atX:0 atY:0 put:[NSNumber numberWithFloat:1.0]];
+	[m1 atX:1 atY:0 put:[NSNumber numberWithFloat:2.0]];
+	[m1 atX:2 atY:0 put:[NSNumber numberWithFloat:3.0]];
+	[m1 atX:3 atY:0 put:[NSNumber numberWithFloat:4.0]];
 
-	NSLog(@"start testing");
+	[m1 atX:0 atY:1 put:[NSNumber numberWithFloat:5.0]];
+	[m1 atX:1 atY:1 put:[NSNumber numberWithFloat:6.0]];
+	[m1 atX:2 atY:1 put:[NSNumber numberWithFloat:7.0]];
+	[m1 atX:3 atY:1 put:[NSNumber numberWithFloat:8.0]];
+
+	[m1 atX:0 atY:2 put:[NSNumber numberWithFloat:9.0]];
+	[m1 atX:1 atY:2 put:[NSNumber numberWithFloat:10.0]];
+	[m1 atX:2 atY:2 put:[NSNumber numberWithFloat:11.0]];
+	[m1 atX:3 atY:2 put:[NSNumber numberWithFloat:12.0]];
+
+	[m1 atX:0 atY:3 put:[NSNumber numberWithFloat:13.0]];
+	[m1 atX:1 atY:3 put:[NSNumber numberWithFloat:14.0]];
+	[m1 atX:2 atY:3 put:[NSNumber numberWithFloat:15.0]];
+	[m1 atX:3 atY:3 put:[NSNumber numberWithFloat:16.0]];
 	
-	if ([m1 containsObject:@"C"]) {
-		NSLog(@"EQUAL");
-	}
-	else {
-		NSLog(@"NOT EQUAL");
-	}
+	NSLog(@"multiply matrix");
+
+	Matrix * prod = [Matrix newWithMultiply:m1 m2:m1];
+	[prod print];
 }
 
 

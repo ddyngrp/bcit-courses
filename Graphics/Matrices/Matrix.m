@@ -26,17 +26,20 @@
 + (Matrix *)newWithMultiply:(Matrix *)m1 m2:(Matrix *)m2 {
 	int i, j, k;
 	float prod;
-	Matrix * m_prod = [Matrix newWithXRows:4 YRows:4];
 	
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
+	Matrix * m_prod = [Matrix newWithXRows:[m2 maxX] YRows:[m1 maxY]];
+	
+	// Initialize the product array
+	for (i = 0; i < [m2 maxX]; i++) {
+		for (j = 0; [m1 maxY] < 4; j++) {
 			[m_prod atX:i atY:j put:[NSNumber numberWithFloat:0.0]];
 		}
 	}
 	
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
-			for (k = 0; k < 4; k++) {
+	// Multiply the two arrays
+	for (i = 0; i < [m1 maxX]; i++) {
+		for (j = 0; j < [m2 maxY]; j++) {
+			for (k = 0; k < [m1 maxX]; k++) {
 				prod = [[m_prod atX:i atY:j] floatValue];
 				prod += [[m1 atX:i atY:k] floatValue] * [[m2 atX:k atY:j] floatValue];
 				[m_prod atX:i atY:j put:[NSNumber numberWithFloat:prod]];

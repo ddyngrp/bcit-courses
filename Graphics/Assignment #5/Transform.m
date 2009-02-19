@@ -16,25 +16,107 @@
 	int i, j;
 	
 	// Read Data into our matricies
-	if ([self readPoints:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qpoints.dat"]] == NO) {
+	if ([self readPoints:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qpoints3D.dat"]] == NO) {
 		NSLog(@"Unable to read Qpoints.dat");
 	}
-	if ([self readLines:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qlines.dat"]] == NO) {
+	if ([self readLines:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qlines3D.dat"]] == NO) {
 		NSLog(@"Unable to read Qlines.dat");
 	}
 	
-	// Create an identity matrix
+	// Create identity matrices
+	m_transform = [Matrix newWithXRows:4 YRows:4];
+	m_rotate = [Matrix newWithXRows:4 YRows:4];
+	m_sheer = [Matrix newWithXRows:4 YRows:4];
+	m_scale = [Matrix newWithXRows:4 YRows:4];
 	m_product = [Matrix newWithXRows:4 YRows:4];
-	for (i = 0; i < 4; i++) {
-		[m_product atX:i atY:j put:[NSNumber numberWithFloat:0.0]];
+	for (i = 0; i < [m_product maxY]; i++) {
+		for (j = 0; j < [m_product maxX]; j++) {
+			if (i == j) {
+				[m_transform atX:j atY:i put:[NSNumber numberWithFloat:1.0]];
+				[m_rotate atX:j atY:i put:[NSNumber numberWithFloat:1.0]];
+				[m_sheer atX:j atY:i put:[NSNumber numberWithFloat:1.0]];
+				[m_scale atX:j atY:i put:[NSNumber numberWithFloat:1.0]];
+				[m_product atX:j atY:i put:[NSNumber numberWithFloat:1.0]];
+			}
+			else {
+				[m_transform atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
+				[m_rotate atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
+				[m_sheer atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
+				[m_scale atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
+				[m_product atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
+			}
+		}
 	}
 	
-	[m_product atX:0 atY:0 put:[NSNumber numberWithFloat:1.0]];
-	[m_product atX:1 atY:1 put:[NSNumber numberWithFloat:1.0]];
-	[m_product atX:2 atY:2 put:[NSNumber numberWithFloat:1.0]];
-	[m_product atX:3 atY:3 put:[NSNumber numberWithFloat:1.0]];
+	// Set to centre
+	float x_cen, y_cen;
+	x_cen = [[m_points atX:0 atY:0] floatValue];
+	y_cen = [[m_points atX:1 atY:0] floatValue];
+	
+	// Move centre to 0,0
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Scale to 50% of vertical height
+	// Find the maximum point Y and minimum point on Y then get the difference
+	float y_min = MAXFLOAT, y_max = -MAXFLOAT, y_scale;
+	for (int i = 0; i < [m_points maxY]; i++) {
+		for (j = 0; j < [m_product maxX]; j++) {
+			if ([[m_points atX:j atY:i] floatValue] > y_max) {
+				y_max = [[m_points atX:j atY:i] floatValue];
+			}
+			else if ([[m_points atX:j atY:i] floatValue] < y_min) {
+				y_min = [[m_points atX:j atY:i] floatValue];
+			}
+		}
+	}
+	y_scale = 0.5 / ((y_max - y_min) / frame.size.height);
+	
+	[m_scale atX:0 atY:0 put:[NSNumber numberWithFloat:y_scale]];
+	[m_scale atX:1 atY:1 put:[NSNumber numberWithFloat:y_scale]];
+	[m_scale atX:2 atY:2 put:[NSNumber numberWithFloat:y_scale]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_scale];
+	
 
+	// Move to centre of the screen
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:frame.size.width / 2]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:frame.size.height / 2]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
 	return self;
+}
+
+- (IBAction)translate_X:(id)sender {
+	double x;
+	
+	if ([sender doubleValue] == 0.0) {
+		x = -50.0;
+	}
+	else {
+		x = 50.0;
+	}
+	
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:0.0]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+    [self setNeedsDisplay:YES];
+}
+
+- (IBAction)translate_Y:(id)sender {
+	double y;
+	
+	if ([sender doubleValue] == 0.0) {
+		y = -25.0;
+	}
+	else {
+		y = 25.0;
+	}
+	
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:0.0]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)drawRect:(NSRect)rect {
@@ -56,8 +138,8 @@
 		
 		// TODO: Image needs to be 1/2 vertical height and in the centre
 		// this should be done via a translation I would think.
-		[aPath moveToPoint:NSMakePoint(x1 * 20 + 125, y1 * 20 + 25)];
-		[aPath lineToPoint:NSMakePoint(x2 * 20 + 125, y2 * 20 + 25)];
+		[aPath moveToPoint:NSMakePoint(x1, y1)];
+		[aPath lineToPoint:NSMakePoint(x2, y2)];
 	}
 	[aPath stroke]; // Draw the result
 	

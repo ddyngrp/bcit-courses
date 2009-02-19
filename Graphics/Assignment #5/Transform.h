@@ -30,13 +30,13 @@
 
 // Custom methods for actions this view implements
 - (IBAction)translate_X:(id)sender;
-//- (IBAction)translate_Y:(id)sender;
-//- (IBAction)zoom:(id)sender;
-//- (IBAction)rotate_X:(id)sender;
-//- (IBAction)rotate_Y:(id)sender;
-//- (IBAction)rotate_Z:(id)sender;
-//- (IBAction)sheer_X:(id)sender;
-//- (IBAction)rotation_animation:(id)sender;
-//- (IBAction)reset:(id)sender;
+- (IBAction)translate_Y:(id)sender;
+- (IBAction)zoom:(id)sender;
+- (IBAction)rotate_X:(id)sender;
+- (IBAction)rotate_Y:(id)sender;
+- (IBAction)rotate_Z:(id)sender;
+- (IBAction)sheer_X:(id)sender;
+- (IBAction)rotation_animation:(id)sender;
+- (IBAction)reset:(id)sender;
 
 @end

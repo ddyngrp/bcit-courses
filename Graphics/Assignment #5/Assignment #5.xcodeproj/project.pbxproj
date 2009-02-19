@@ -15,7 +15,6 @@
 		3AC027B70F4BE9C6007DFD40 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B20F4BE9C6007DFD40 /* Matrix.m */; };
 		3AC027B80F4BE9C7007DFD40 /* MatrixEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B40F4BE9C6007DFD40 /* MatrixEnumerator.m */; };
 		3AC027B90F4BE9C7007DFD40 /* MatrixOutofBoundException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027B60F4BE9C6007DFD40 /* MatrixOutofBoundException.m */; };
-		3AC027BD0F4BEA0F007DFD40 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC027BC0F4BEA0F007DFD40 /* Controller.m */; };
 		3AD932DF0F46B0DB00A0C08F /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD932DE0F46B0DB00A0C08F /* Transform.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -41,8 +40,6 @@
 		3AC027B40F4BE9C6007DFD40 /* MatrixEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixEnumerator.m; sourceTree = "<group>"; };
 		3AC027B50F4BE9C6007DFD40 /* MatrixOutofBoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixOutofBoundException.h; sourceTree = "<group>"; };
 		3AC027B60F4BE9C6007DFD40 /* MatrixOutofBoundException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixOutofBoundException.m; sourceTree = "<group>"; };
-		3AC027BB0F4BEA0F007DFD40 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		3AC027BC0F4BEA0F007DFD40 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		3AD932DD0F46B0DB00A0C08F /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		3AD932DE0F46B0DB00A0C08F /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,8 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				32CA4F630368D1EE00C91783 /* Assignment #5_Prefix.pch */,
-				3AC027BB0F4BEA0F007DFD40 /* Controller.h */,
-				3AC027BC0F4BEA0F007DFD40 /* Controller.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -212,7 +207,6 @@
 				3AC027B70F4BE9C6007DFD40 /* Matrix.m in Sources */,
 				3AC027B80F4BE9C7007DFD40 /* MatrixEnumerator.m in Sources */,
 				3AC027B90F4BE9C7007DFD40 /* MatrixOutofBoundException.m in Sources */,
-				3AC027BD0F4BEA0F007DFD40 /* Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

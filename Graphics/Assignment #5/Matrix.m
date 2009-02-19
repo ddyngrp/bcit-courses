@@ -16,7 +16,7 @@
 	return [[self alloc] initX:i initY:j];
 }
 
-- (void) release {
+- (void)release {
 	[super release];
 	
 	// free the used memory
@@ -30,27 +30,33 @@
 	Matrix * m_prod = [Matrix newWithXRows:[m2 maxX] YRows:[m1 maxY]];
 	
 	// Initialize the product array
-	for (i = 0; i < [m2 maxX]; i++) {
-		for (j = 0; [m1 maxY] < 4; j++) {
-			[m_prod atX:i atY:j put:[NSNumber numberWithFloat:0.0]];
+	for (i = 0; i < [m2 maxY]; i++) {
+		for (j = 0; j < [m1 maxX]; j++) {
+			[m_prod atX:j atY:i put:[NSNumber numberWithFloat:0.0]];
 		}
 	}
 	
 	// Multiply the two arrays
-	for (i = 0; i < [m1 maxX]; i++) {
-		for (j = 0; j < [m2 maxY]; j++) {
-			for (k = 0; k < [m1 maxX]; k++) {
-				prod = [[m_prod atX:i atY:j] floatValue];
-				prod += [[m1 atX:i atY:k] floatValue] * [[m2 atX:k atY:j] floatValue];
-				[m_prod atX:i atY:j put:[NSNumber numberWithFloat:prod]];
+	if ([m1 maxX] == [m2 maxY]) {
+		for (i = 0; i < [m_prod maxY]; i++) {
+			for (j = 0; j < [m_prod maxX]; j++) {
+				prod = 0.0;
+				for (k = 0; k < [m1 maxX]; k++) {
+					prod += [[m1 atX:k atY:i] floatValue] * [[m2 atX:j atY:k] floatValue];
+					[m_prod atX:j atY:i put:[NSNumber numberWithFloat:prod]];
+				}
 			}
 		}
+	}
+	else {
+		NSLog(@"Number of columns in Matrix1 is not equal to Number of rows in Matrix2");
+		NSLog(@"m1 Y = %d, m2 X = %d", [m1 maxY], [m2 maxX]);
 	}
 	
 	return m_prod;
 }
  
-- (void) print {
+- (void)print {
 	int i = 0;
 	int j = 0;
 	

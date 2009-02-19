@@ -8,18 +8,28 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Foundation/NSArray.h>
+#import "Matrix.h"
 
 @interface Transform : NSView {
+	Matrix * m_transform;
+	Matrix * m_rotate;
+	Matrix * m_sheer;
+	Matrix * m_scale;
+	
+	Matrix * m_product;
+	Matrix * m_points;
+	Matrix * m_lines;
 }
+
+// Data
+- (BOOL)readPoints:(NSString *)fileName;
+- (BOOL)readLines:(NSString *)fileName;
 
 // Drawing
 - (void)drawRect:(NSRect)rect;
 
-// Event handling
-//- (void)mouseUp:(NSEvent *)event;
-
 // Custom methods for actions this view implements
-//- (IBAction)translate_X:(id)sender;
+- (IBAction)translate_X:(id)sender;
 //- (IBAction)translate_Y:(id)sender;
 //- (IBAction)zoom:(id)sender;
 //- (IBAction)rotate_X:(id)sender;

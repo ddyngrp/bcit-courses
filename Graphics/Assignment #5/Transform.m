@@ -13,7 +13,8 @@
 
 - (id)initWithFrame:(NSRect)frame {
 	[super initWithFrame:frame];
-	int i, j;
+	x_size = frame.size.width;
+	y_size = frame.size.height;
 	
 	// Read Data into our matricies
 	if ([self readPoints:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qpoints3D.dat"]] == NO) {
@@ -23,6 +24,46 @@
 		NSLog(@"Unable to read Qlines.dat");
 	}
 	
+	[self reset:nil];
+	
+	return self;
+}
+
+- (IBAction)translate_X:(id)sender {
+	double x;
+	
+	if ([sender doubleValue] == 0.0) {
+		x = -50.0;
+	}
+	else {
+		x = 50.0;
+	}
+	
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:0.0]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+    [self setNeedsDisplay:YES];
+}
+
+- (IBAction)translate_Y:(id)sender {
+	double y;
+	
+	if ([sender doubleValue] == 0.0) {
+		y = -25.0;
+	}
+	else {
+		y = 25.0;
+	}
+	
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:0.0]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+    [self setNeedsDisplay:YES];
+}
+
+- (IBAction)reset:(id)sender {
+	int i, j;
+
 	// Create identity matrices
 	m_transform = [Matrix newWithXRows:4 YRows:4];
 	m_rotate = [Matrix newWithXRows:4 YRows:4];
@@ -71,51 +112,19 @@
 			}
 		}
 	}
-	y_scale = 0.5 / ((y_max - y_min) / frame.size.height);
+	y_scale = 0.5 / ((y_max - y_min) / y_size);
 	
 	[m_scale atX:0 atY:0 put:[NSNumber numberWithFloat:y_scale]];
 	[m_scale atX:1 atY:1 put:[NSNumber numberWithFloat:y_scale]];
 	[m_scale atX:2 atY:2 put:[NSNumber numberWithFloat:y_scale]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_scale];
 	
-
+	
 	// Move to centre of the screen
-	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:frame.size.width / 2]];
-	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:frame.size.height / 2]];
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_size / 2]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_size / 2]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
-	
-	return self;
-}
 
-- (IBAction)translate_X:(id)sender {
-	double x;
-	
-	if ([sender doubleValue] == 0.0) {
-		x = -50.0;
-	}
-	else {
-		x = 50.0;
-	}
-	
-	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x]];
-	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:0.0]];
-	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
-    [self setNeedsDisplay:YES];
-}
-
-- (IBAction)translate_Y:(id)sender {
-	double y;
-	
-	if ([sender doubleValue] == 0.0) {
-		y = -25.0;
-	}
-	else {
-		y = 25.0;
-	}
-	
-	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:0.0]];
-	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y]];
-	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
     [self setNeedsDisplay:YES];
 }
 
@@ -124,6 +133,9 @@
 	Matrix * m_draw = [Matrix newWithMultiply:m_points m2:m_product];
 	int p1, p2;
 	float x1, y1, x2, y2;
+	
+	x_size = rect.size.width;
+	y_size = rect.size.height;
 	
 	[NSBezierPath setDefaultLineWidth:1.0];
 	
@@ -136,8 +148,6 @@
 		x2 = [[m_draw atX:0 atY:p2] floatValue];
 		y2 = [[m_draw atX:1 atY:p2] floatValue];
 		
-		// TODO: Image needs to be 1/2 vertical height and in the centre
-		// this should be done via a translation I would think.
 		[aPath moveToPoint:NSMakePoint(x1, y1)];
 		[aPath lineToPoint:NSMakePoint(x2, y2)];
 	}

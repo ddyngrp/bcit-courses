@@ -19,6 +19,9 @@
 	Matrix * m_product;
 	Matrix * m_points;
 	Matrix * m_lines;
+	
+	int x_size;
+	int y_size;
 }
 
 // Data

@@ -16,7 +16,7 @@
 	return [[self alloc] initX:i initY:j];
 }
 
-- (void) release {
+- (void)release {
 	[super release];
 	
 	// free the used memory
@@ -226,7 +226,7 @@
 	maxX = x ;
 }
 
-- (int) maxX {
+- (int)maxX {
 	return maxX;
 }
 

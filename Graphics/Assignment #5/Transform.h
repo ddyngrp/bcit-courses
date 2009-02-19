@@ -22,6 +22,15 @@
 	
 	int x_size;
 	int y_size;
+	
+	Matrix * m_draw;
+
+    NSTimer * x_timer;
+    NSTimer * y_timer;
+    NSTimer * z_timer;
+    NSTimeInterval x_lastTime;
+    NSTimeInterval y_lastTime;
+    NSTimeInterval z_lastTime;
 }
 
 // Data
@@ -39,7 +48,15 @@
 - (IBAction)rotate_Y:(id)sender;
 - (IBAction)rotate_Z:(id)sender;
 - (IBAction)sheer_X:(id)sender;
-- (IBAction)rotation_animation:(id)sender;
+- (IBAction)anim_x:(id)sender;
+- (IBAction)anim_y:(id)sender;
+- (IBAction)anim_z:(id)sender;
 - (IBAction)reset:(id)sender;
+
+// Functions
+- (void)rotate;
+
+// Timers
+- (void)anim_x_go:(NSTimer *)aTimer;
 
 @end

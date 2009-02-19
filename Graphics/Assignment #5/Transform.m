@@ -42,6 +42,7 @@
 	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x]];
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:0.0]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
     [self setNeedsDisplay:YES];
 }
 
@@ -58,8 +59,323 @@
 	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:0.0]];
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
     [self setNeedsDisplay:YES];
 }
+
+- (IBAction)zoom:(id)sender {
+	float x_cen, y_cen, z_cen;
+	double z;
+	
+	if ([sender doubleValue] == 0.0) {
+		z = 0.9;
+	}
+	else {
+		z = 1.1;
+	}
+	
+	// Translate the image to 0,0
+	x_cen = [[m_draw atX:0 atY:0] floatValue];
+	y_cen = [[m_draw atX:1 atY:0] floatValue];
+	z_cen = [[m_draw atX:2 atY:0] floatValue];
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Scale the image
+	[m_scale atX:0 atY:0 put:[NSNumber numberWithFloat:z]];
+	[m_scale atX:1 atY:1 put:[NSNumber numberWithFloat:z]];
+	[m_scale atX:2 atY:2 put:[NSNumber numberWithFloat:z]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_scale];
+	
+	// Translate the image back
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+    [self setNeedsDisplay:YES];	
+}
+
+- (IBAction)rotate_X:(id)sender {
+	float x_cen, y_cen, z_cen;
+	double r;
+	
+	if ([sender doubleValue] == 0.0) {
+		r = -0.05;
+	}
+	else {
+		r = 0.05;
+	}
+	
+	// Translate the image to 0,0
+	x_cen = [[m_draw atX:0 atY:0] floatValue];
+	y_cen = [[m_draw atX:1 atY:0] floatValue];
+	z_cen = [[m_draw atX:2 atY:0] floatValue];
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Rotate the image bout the X axis
+	[m_rotate atX:0 atY:0 put:[NSNumber numberWithFloat:1.0]]; // 1
+	[m_rotate atX:1 atY:0 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:2 atY:0 put:[NSNumber numberWithFloat:0.0]]; // 0
+
+	[m_rotate atX:0 atY:1 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:1 atY:1 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	[m_rotate atX:2 atY:1 put:[NSNumber numberWithFloat:-sin(r)]]; // -sin
+
+	[m_rotate atX:0 atY:2 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:1 atY:2 put:[NSNumber numberWithFloat:sin(r)]]; // sin
+	[m_rotate atX:2 atY:2 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	m_product = [Matrix newWithMultiply:m_product m2:m_rotate];
+	
+	// Translate the image back
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+    [self setNeedsDisplay:YES];	
+}
+
+- (IBAction)rotate_Y:(id)sender {
+	float x_cen, y_cen, z_cen;
+	double r;
+	
+	if ([sender doubleValue] == 0.0) {
+		r = -0.05;
+	}
+	else {
+		r = 0.05;
+	}
+	
+	// Translate the image to 0,0
+	x_cen = [[m_draw atX:0 atY:0] floatValue];
+	y_cen = [[m_draw atX:1 atY:0] floatValue];
+	z_cen = [[m_draw atX:2 atY:0] floatValue];
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Rotate the image bout the X axis
+	[m_rotate atX:0 atY:0 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	[m_rotate atX:1 atY:0 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:2 atY:0 put:[NSNumber numberWithFloat:sin(r)]]; // sin
+	
+	[m_rotate atX:0 atY:1 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:1 atY:1 put:[NSNumber numberWithFloat:1.0]]; // 1
+	[m_rotate atX:2 atY:1 put:[NSNumber numberWithFloat:0.0]]; // 0
+	
+	[m_rotate atX:0 atY:2 put:[NSNumber numberWithFloat:-sin(r)]]; // -sin
+	[m_rotate atX:1 atY:2 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:2 atY:2 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	m_product = [Matrix newWithMultiply:m_product m2:m_rotate];
+	
+	// Translate the image back
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	[self setNeedsDisplay:YES];
+}
+
+- (IBAction)rotate_Z:(id)sender {
+	float x_cen, y_cen, z_cen;
+	double r;
+	
+	if ([sender doubleValue] == 0.0) {
+		r = -0.05;
+	}
+	else {
+		r = 0.05;
+	}
+	
+	// Translate the image to 0,0
+	x_cen = [[m_draw atX:0 atY:0] floatValue];
+	y_cen = [[m_draw atX:1 atY:0] floatValue];
+	z_cen = [[m_draw atX:2 atY:0] floatValue];
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Rotate the image bout the X axis
+	[m_rotate atX:0 atY:0 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	[m_rotate atX:1 atY:0 put:[NSNumber numberWithFloat:-sin(r)]]; // -sin
+	[m_rotate atX:2 atY:0 put:[NSNumber numberWithFloat:0.0]]; // 0
+	
+	[m_rotate atX:0 atY:1 put:[NSNumber numberWithFloat:sin(r)]]; // sin
+	[m_rotate atX:1 atY:1 put:[NSNumber numberWithFloat:cos(r)]]; // cos
+	[m_rotate atX:2 atY:1 put:[NSNumber numberWithFloat:0.0]]; // 0
+	
+	[m_rotate atX:0 atY:2 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:1 atY:2 put:[NSNumber numberWithFloat:0.0]]; // 0
+	[m_rotate atX:2 atY:2 put:[NSNumber numberWithFloat:1.0]]; // 1
+	m_product = [Matrix newWithMultiply:m_product m2:m_rotate];
+	
+	// Translate the image back
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	[self setNeedsDisplay:YES];
+}
+
+- (void)rotate {
+}
+
+- (IBAction)sheer_X:(id)sender {
+	double s;
+	
+	if ([sender doubleValue] == 0.0) {
+		s = -0.1;
+	}
+	else {
+		s = 0.1;
+	}
+	
+	// Find the closest point to 0,0,0 (iterate through our drawing)
+	float x_cen = MAXFLOAT, y_cen = MAXFLOAT, z_cen = MAXFLOAT;
+	int i;
+	for (i = 0; i < [m_draw maxY]; i++) {
+		if ([[m_draw atX:0 atY:i] floatValue] < x_cen) {
+			x_cen = [[m_draw atX:0 atY:i] floatValue];
+		}
+		if ([[m_draw atX:1 atY:i] floatValue] < y_cen) {
+			y_cen = [[m_draw atX:1 atY:i] floatValue];
+		}
+		if ([[m_draw atX:2 atY:i] floatValue] < z_cen) {
+			z_cen = [[m_draw atX:2 atY:i] floatValue];
+		}
+	}
+	
+	// Translate lower left to 0,0
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	// Sheer the image
+	[m_sheer atX:0 atY:1 put:[NSNumber numberWithFloat:s]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_sheer];
+	
+	// Translate the image back
+	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_cen]];
+	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
+	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+    [self setNeedsDisplay:YES];	
+}
+
+- (IBAction)anim_x:(id)sender {
+    if (x_timer != nil) {
+		[x_timer invalidate];
+		[x_timer release];
+		x_timer = nil;
+	}
+	else {
+		// We schedule a timer for a desired 30fps animation rate.
+		// In performAnimation: we determine exactly
+		// how much time has elapsed and animate accordingly.
+		x_timer = [[NSTimer scheduledTimerWithTimeInterval:(1.0/30.0)
+												  target:self
+												selector:@selector(anim_x_go:)
+												userInfo:nil
+												 repeats:YES] retain];
+
+		// The next two lines make sure that animation will continue to occur
+		// while modal panels are displayed and while event tracking is taking
+		// place (for example, while a slider is being dragged).
+		[[NSRunLoop currentRunLoop] addTimer:x_timer forMode:NSModalPanelRunLoopMode];
+		[[NSRunLoop currentRunLoop] addTimer:x_timer forMode:NSEventTrackingRunLoopMode];
+
+		x_lastTime = [NSDate timeIntervalSinceReferenceDate];
+	}
+}
+
+- (void)anim_x_go:(NSTimer *)aTimer {
+    // We determine how much time has elapsed since the last animation,
+    // and we advance the angle accordingly.
+    NSTimeInterval thisTime = [NSDate timeIntervalSinceReferenceDate];
+    [self rotate_X:nil];
+    x_lastTime = thisTime;
+}
+
+- (IBAction)anim_y:(id)sender {
+    if (y_timer != nil) {
+		[y_timer invalidate];
+		[y_timer release];
+		y_timer = nil;
+	}
+	else {
+		// We schedule a timer for a desired 30fps animation rate.
+		// In performAnimation: we determine exactly
+		// how much time has elapsed and animate accordingly.
+		y_timer = [[NSTimer scheduledTimerWithTimeInterval:(1.0/30.0)
+													target:self
+												  selector:@selector(anim_y_go:)
+												  userInfo:nil
+												   repeats:YES] retain];
+		
+		// The next two lines make sure that animation will continue to occur
+		// while modal panels are displayed and while event tracking is taking
+		// place (for example, while a slider is being dragged).
+		[[NSRunLoop currentRunLoop] addTimer:y_timer forMode:NSModalPanelRunLoopMode];
+		[[NSRunLoop currentRunLoop] addTimer:y_timer forMode:NSEventTrackingRunLoopMode];
+		
+		y_lastTime = [NSDate timeIntervalSinceReferenceDate];
+	}
+}
+
+- (void)anim_y_go:(NSTimer *)aTimer {
+    // We determine how much time has elapsed since the last animation,
+    // and we advance the angle accordingly.
+    NSTimeInterval thisTime = [NSDate timeIntervalSinceReferenceDate];
+    [self rotate_Y:nil];
+    y_lastTime = thisTime;
+}
+
+- (IBAction)anim_z:(id)sender {
+    if (z_timer != nil) {
+		[z_timer invalidate];
+		[z_timer release];
+		z_timer = nil;
+	}
+	else {
+		// We schedule a timer for a desired 30fps animation rate.
+		// In performAnimation: we determine exactly
+		// how much time has elapsed and animate accordingly.
+		z_timer = [[NSTimer scheduledTimerWithTimeInterval:(1.0/30.0)
+													target:self
+												  selector:@selector(anim_z_go:)
+												  userInfo:nil
+												   repeats:YES] retain];
+		
+		// The next two lines make sure that animation will continue to occur
+		// while modal panels are displayed and while event tracking is taking
+		// place (for example, while a slider is being dragged).
+		[[NSRunLoop currentRunLoop] addTimer:z_timer forMode:NSModalPanelRunLoopMode];
+		[[NSRunLoop currentRunLoop] addTimer:z_timer forMode:NSEventTrackingRunLoopMode];
+		
+		z_lastTime = [NSDate timeIntervalSinceReferenceDate];
+	}
+}
+
+- (void)anim_z_go:(NSTimer *)aTimer {
+    // We determine how much time has elapsed since the last animation,
+    // and we advance the angle accordingly.
+    NSTimeInterval thisTime = [NSDate timeIntervalSinceReferenceDate];
+    [self rotate_Z:nil];
+    z_lastTime = thisTime;
+}
+
 
 - (IBAction)reset:(id)sender {
 	int i, j;
@@ -90,13 +406,14 @@
 	}
 	
 	// Set to centre
-	float x_cen, y_cen;
+	float x_cen, y_cen, z_cen;
 	x_cen = [[m_points atX:0 atY:0] floatValue];
 	y_cen = [[m_points atX:1 atY:0] floatValue];
 	
 	// Move centre to 0,0
 	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:-x_cen]];
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:-y_cen]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:-z_cen]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
 	
 	// Scale to 50% of vertical height
@@ -123,6 +440,7 @@
 	// Move to centre of the screen
 	[m_transform atX:0 atY:3 put:[NSNumber numberWithFloat:x_size / 2]];
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_size / 2]];
+	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
 
     [self setNeedsDisplay:YES];
@@ -130,7 +448,7 @@
 
 - (void)drawRect:(NSRect)rect {
 	NSBezierPath * aPath = [NSBezierPath bezierPath];
-	Matrix * m_draw = [Matrix newWithMultiply:m_points m2:m_product];
+	m_draw = [Matrix newWithMultiply:m_points m2:m_product];
 	int p1, p2;
 	float x1, y1, x2, y2;
 	

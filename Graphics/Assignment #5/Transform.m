@@ -98,6 +98,8 @@
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_cen]];
 	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_cen]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+
+    [self setNeedsDisplay:YES];
 }
 
 - (IBAction)rotate_X:(id)sender {

@@ -23,14 +23,14 @@
 	int x_size;
 	int y_size;
 	
+	bool xAxis;
+	bool yAxis;
+	bool zAxis;
+	
 	Matrix * m_draw;
 
-    NSTimer * x_timer;
-    NSTimer * y_timer;
-    NSTimer * z_timer;
-    NSTimeInterval x_lastTime;
-    NSTimeInterval y_lastTime;
-    NSTimeInterval z_lastTime;
+    NSTimer * timer;
+    NSTimeInterval lastTime;
 }
 
 // Data
@@ -39,6 +39,7 @@
 
 // Drawing
 - (void)drawRect:(NSRect)rect;
+- (void)rotate:(bool)x y:(bool)y z:(bool)z angle:(double)r;
 
 // Custom methods for actions this view implements
 - (IBAction)translate_X:(id)sender;
@@ -48,15 +49,13 @@
 - (IBAction)rotate_Y:(id)sender;
 - (IBAction)rotate_Z:(id)sender;
 - (IBAction)sheer_X:(id)sender;
-- (IBAction)anim_x:(id)sender;
-- (IBAction)anim_y:(id)sender;
-- (IBAction)anim_z:(id)sender;
+- (IBAction)anim:(id)sender;
+- (IBAction)setXaxis:(id)sender;
+- (IBAction)setYaxis:(id)sender;
+- (IBAction)setZaxis:(id)sender;
 - (IBAction)reset:(id)sender;
 
-// Functions
-- (void)rotate;
-
 // Timers
-- (void)anim_x_go:(NSTimer *)aTimer;
+- (void)anim_go:(NSTimer *)aTimer;
 
 @end

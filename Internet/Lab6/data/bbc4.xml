@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- produced for the bleb.org TV system at Tue Feb 10 08:40:07 2009 -->
+<channel id="bbc4" source="BBC" date="10/02/2009">
+    <programme>
+        <flags></flags>
+        <desc>BBC FOUR is the BBC channel for people who want more. More depth, more range, more to stimulate the mind. More daily from 7.00pm.</desc>
+        <title>This is BBC FOUR</title>
+        <end>1858</end>
+        <start>1200</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>This is BBC FOUR. Programmes start at 7.00pm.</desc>
+        <title>This Is BBC FOUR</title>
+        <end>1900</end>
+        <start>1858</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>The latest national and international news, exploring the day's events from a global perspective. [S] Followed by Weather.</desc>
+        <title>World News Today</title>
+        <end>1930</end>
+        <start>1900</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Part of Reading Week. 2/3. Now We Are Six: A look at the books we first learn to read, from Alice in Wonderland to Winnie the Pooh.</desc>
+        <title>Picture Book</title>
+        <end>2030</end>
+        <start>1930</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Part of the American Folk Season. Profile of the late Odetta, dubbed the Queen of Folk. The film salutes the singer and civil rights campaigner using interviews and concert footage.</desc>
+        <title>Odetta Remembers</title>
+        <end>2100</end>
+        <start>2030</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>5/6. Dug: Sitcom set among the cabin crew of a passenger jet. Sebastian hits on a wild scheme to find fame, fortune and females for Steve by entering a song for Scotland at Eurovision.</desc>
+        <title>The High Life</title>
+        <end>2130</end>
+        <start>2100</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Comedy series set in a small Manchester public house. It is Joan and Eddie's anniversary and they plan to celebrate in style at The Grapes with a fish supper for afterwards. [AD,S]</desc>
+        <title>Early Doors</title>
+        <end>2200</end>
+        <start>2130</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>New Series. 1/13. For Those Who Think Young: On Valentine's Day, Don and Duck clash over an account and Betty runs into an old friend. Contains adult themes. Also in HD. [AD,S]</desc>
+        <title>Mad Men</title>
+        <end>2250</end>
+        <start>2200</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Danny has to fight for his career after leaving an important speech in a pub toilet. Contains strong language.</desc>
+        <title>Party Animals</title>
+        <end>2340</end>
+        <start>2250</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>4/6. Religion: Michael Smith weighs up the appeal of traditional religions as he travels the country. Contains some strong language.</desc>
+        <title>Citizen Smith</title>
+        <end>0010</end>
+        <start>2340</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Jonathan Ross hosts the annual celebration of world cinema from the BFI. Guests include Werner Herzog and John Hurt.</desc>
+        <title>BBC Four World Cinema Awards 2009</title>
+        <end>0110</end>
+        <start>0010</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>2/3. Now We Are Six: Series about our childhood books continues by looking at the time we begin to read, and how the magical interplay of words and images shapes our imagination.</desc>
+        <title>Picture Book</title>
+        <end>0210</end>
+        <start>0110</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Profile of the late Odetta, dubbed the Queen of Folk by Martin Luther King. Using interviews and concert footage, the film pays tribute to the singer and civil rights campaigner.</desc>
+        <title>Odetta Remembers</title>
+        <end>0240</end>
+        <start>0210</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>4/6. Religion: Michael Smith weighs up the appeal of traditional religions as he travels the country. Contains some strong language.</desc>
+        <title>Citizen Smith</title>
+        <end>0310</end>
+        <start>0240</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Jonathan Ross hosts the annual celebration of world cinema from the BFI. Guests include Werner Herzog and John Hurt. [S,SL]</desc>
+        <title>BBC Four World Cinema Awards 2009</title>
+        <end>0410</end>
+        <start>0310</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC FOUR is the BBC channel for people who want more. More depth, more range, more to stimulate the mind. More daily from 7.00pm.</desc>
+        <title>This is BBC FOUR</title>
+        <end>0530</end>
+        <start>0410</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC FOUR is the BBC channel for people who want more. More depth, more range, more to stimulate the mind. More daily from 7.00pm.</desc>
+        <title>This is BBC FOUR</title>
+        <end>0532</end>
+        <start>0530</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>BBC FOUR is the BBC channel for people who want more. More depth, more range, more to stimulate the mind. More daily from 7.00pm.</desc>
+        <title>This is BBC FOUR</title>
+        <end>1200</end>
+        <start>0532</start>
+    </programme>
+</channel>

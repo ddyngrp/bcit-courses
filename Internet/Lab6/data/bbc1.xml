@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- produced for the bleb.org TV system at Tue Feb 10 08:39:04 2009 -->
+<channel id="bbc1" source="BBC" date="10/02/2009">
+    <programme>
+        <flags></flags>
+        <desc>The latest news, sport, business and weather from the BBC's Breakfast team. [S] Including regional news at 25 and 55 minutes past each hour.</desc>
+        <title>Breakfast</title>
+        <end>0915</end>
+        <start>0600</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>7/10. Catching up with previous Wanted Down Under families. When last on the show, Wayne and Jo-Anne Manuel seemed set on a move to Perth. But what happened next?</desc>
+        <title>Wanted Down Under Revisited</title>
+        <end>1000</end>
+        <start>0915</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Martin Roberts and Lucy Alexander visit properties in Derby, Surrey and Cheshire. [S] Followed by BBC News; Weather.</desc>
+        <title>Homes Under the Hammer</title>
+        <end>1100</end>
+        <start>1000</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Property series. Ed Hall and Kristian Digby help a couple who have been looking for the perfect new home for over a year to find something special on the charming Kent coastline.</desc>
+        <title>To Buy or Not to Buy</title>
+        <end>1130</end>
+        <start>1100</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Jane and George Edmonds hope to raise 1,000 pounds to treat George to his ultimate dream. [S] Followed by BBC News; Weather.</desc>
+        <title>Cash in the Attic</title>
+        <end>1215</end>
+        <start>1130</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Antiques challenge. Kate Bliss and Thomas Plant help the teams at the Alexandra Palace antiques fair, while Tim Wonnacott admires some elegant wooden carvings at Petworth House.</desc>
+        <title>Bargain Hunt</title>
+        <end>1300</end>
+        <start>1215</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The latest national and international news stories from the BBC News team, followed by Weather.</desc>
+        <title>BBC News at One</title>
+        <end>1330</end>
+        <start>1300</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>From the Midlands and for the Midlands, the latest news, sport and weather with Midlands Today.</desc>
+        <title>Midlands Today</title>
+        <end>1345</end>
+        <start>1330</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Violent Delights Have Violent Ends: Heston helps a young teaching assistant through a crisis of confidence, and together they try to help one of the child gang members on the estate. [AD,S]</desc>
+        <title>Doctors</title>
+        <end>1415</end>
+        <start>1345</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Wrong Number: Drama series about a crime-solving medic. A kidnapper mistakenly calls Dr Sloan, demanding a ransom for somebody's son. Can Mark and Steve crack the kidnappers' code in time?</desc>
+        <title>Diagnosis Murder</title>
+        <end>1500</end>
+        <start>1415</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>The latest national and international news stories from the BBC News team. [S] Followed by Regional News and Weather.</desc>
+        <title>BBC News</title>
+        <end>1505</end>
+        <start>1500</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBeebies. 5/40. Arts and crafts. Mister Maker makes a surprising picture, creates a wobbly clown in under a minute and shows how to make a brilliant bubble wrap cactus that never needs watering.</desc>
+        <title>Mister Maker</title>
+        <end>1525</end>
+        <start>1505</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Match 5: Weredog v The Visitor: Animation featuring two rival thumb wrestling teams. The untested Weredog faces off against the maniacal technology of the evil Sinistra, The Visitor.</desc>
+        <title>Thumb Wrestling Federation</title>
+        <end>1530</end>
+        <start>1525</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Nevquest: Comedy series. Melanie appears before Nev in a dream as a Fairy Godmother, and before long Nev and Crazy Keith are on a quest to free the magical, wintry land of Nevia.</desc>
+        <title>Bear Behaving Badly</title>
+        <end>1550</end>
+        <start>1530</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. The Villainous Vacuum: Children's animation featuring the little kid with the mind-boggling imagination. Eliot thinks the new super powerful vacuum cleaner is a voracious monster.</desc>
+        <title>Eliot Kid</title>
+        <end>1605</end>
+        <start>1550</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Sistery Mystery: Children's sitcom. When a menace keeps playing pranks around the hotel, could two mysterious nuns have anything to do with it?</desc>
+        <title>Hotel Trubble</title>
+        <end>1635</end>
+        <start>1605</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. CBBC's Sorcerer's Apprentice reveals the secrets behind some of his magic tricks. Helen has a go at karate. Andy and Helen brave the elements to race each other on husky rigs.</desc>
+        <title>Blue Peter</title>
+        <end>1700</end>
+        <start>1635</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Conor's Little Sister: Children from across the UK talk about their interests and passions. Conor explains the pain his younger sister, seven-year-old Alice, injects into his world.</desc>
+        <title>MySay</title>
+        <end>1705</end>
+        <start>1700</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>CBBC. Daily news magazine keeping young viewers up to date on the latest stories and events happening at home and abroad.</desc>
+        <title>Newsround</title>
+        <end>1715</end>
+        <start>1705</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Anne Robinson presents the quick-fire general knowledge quiz in which contestants must decide at the end of each round which of their number should be eliminated.</desc>
+        <title>The Weakest Link</title>
+        <end>1800</end>
+        <start>1715</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The latest national and international news stories from the BBC News team, followed by Weather.</desc>
+        <title>BBC News at Six</title>
+        <end>1830</end>
+        <start>1800</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>From the Midlands and for the Midlands, the latest news, sport and weather with Midlands Today.</desc>
+        <title>Midlands Today</title>
+        <end>1900</end>
+        <start>1830</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Adrian Chiles, Christine Bleakley and guests celebrate all that is good about the country in which we live, with reports on stories from around the UK.</desc>
+        <title>The One Show</title>
+        <end>1930</end>
+        <start>1900</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Ricky and Bianca struggle with the truth, while Whitney's date ends in disaster. Garry makes a crushing decision, and Hev and Shirl do a little breaking and entering. [AD,S] Then BBC News.</desc>
+        <title>EastEnders</title>
+        <end>2000</end>
+        <start>1930</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Trust: Annalese is mistrusting of Michael when she opens one of his bank statements and catches him acting suspiciously with Donna. Meanwhile, D-day arrives for Ric and Connie. [AD,S]</desc>
+        <title>Holby City</title>
+        <end>2100</end>
+        <start>2000</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>God's Waiting Room: The team go undercover as they look into a suspicious death in an old people's home. Contains language which may offend. [AD,S]</desc>
+        <title>New Tricks</title>
+        <end>2200</end>
+        <start>2100</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>The latest national and international news, with reports from BBC correspondents worldwide.</desc>
+        <title>BBC News at Ten</title>
+        <end>2225</end>
+        <start>2200</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>From the Midlands and for the Midlands, the latest news, sport and weather with Midlands Today.</desc>
+        <title>Midlands Today</title>
+        <end>2235</end>
+        <start>2225</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>1/3. Quirky film in which Michael Mosley sets out to find what intelligence is, and where it comes from. He also tries to boost his brain power in an attempt to pass the Mensa test.</desc>
+        <title>Make Me Smart</title>
+        <end>2315</end>
+        <start>2235</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Film news and reviews. Jonathan casts a critical eye over new releases Notorious and The Pink Panther 2, and there is a look at the problems facing the independent film sector.</desc>
+        <title>Film 2009 with Jonathan Ross</title>
+        <end>2345</end>
+        <start>2315</start>
+    </programme>
+    <programme>
+        <flags>(1986) (S)</flags>
+        <desc>Mia Farrow, Michael Caine and Woody Allen star in an Academy Award-winning tale of three sisters living in New York, and their intertwining relationships with men.</desc>
+        <title>Hannah and Her Sisters</title>
+        <end>0130</end>
+        <start>2345</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>Detailed weather forecast.</desc>
+        <title>Weatherview</title>
+        <end>0135</end>
+        <start>0130</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>British Sign Language magazine series. See Hear talks to soldiers who have lost their hearing and looks at new measures being taken by the MoD to protect their troops' hearing. [S,SL]</desc>
+        <title>See Hear</title>
+        <end>0205</end>
+        <start>0135</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>Stop Press?: Series investigating the media revolution. Janet Street-Porter finds out how papers are coping with radical changes to the industry. [S,SL]</desc>
+        <title>Media Revolution</title>
+        <end>0235</end>
+        <start>0205</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>7/12. Costume drama. Lark Rise and Candleford are filled with fun and anticipation with the inauguration of a clock, paid for by James Dowland. But sadness looms for the Timmins family. [AD,S,SL]</desc>
+        <title>Lark Rise to Candleford</title>
+        <end>0335</end>
+        <start>0235</start>
+    </programme>
+    <programme>
+        <flags></flags>
+        <desc>4/8. The Middle East: Pete Owen Jones's epic journey exploring the world's beliefs continues in the Middle East, taking him to Syria, Samaria, northern Iraq and Jerusalem. [AD,S,SL]</desc>
+        <title>Around the World in 80 Faiths</title>
+        <end>0435</end>
+        <start>0335</start>
+    </programme>
+    <programme>
+        <flags>(S)</flags>
+        <desc>BBC One joins the BBC's rolling news channel for a night of news, with bulletins on the hour and the headlines every 15 minutes.</desc>
+        <title>BBC News</title>
+        <end>0600</end>
+        <start>0435</start>
+    </programme>
+</channel>

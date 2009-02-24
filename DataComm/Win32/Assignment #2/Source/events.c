@@ -220,7 +220,7 @@ BOOL CALLBACK Input_IP(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 
 	switch (message) {
 		case WM_INITDIALOG:
-			if (gIP != NULL) { // If previously input, place value in window
+			if ((void *)gIP != NULL) { // If previously input, place value in window
 				SendMessage(GetDlgItem(hDlg, IDC_IP_ADDRESS), IPM_SETADDRESS, 0, gIP);
 			}
 			SetFocus(GetDlgItem(hDlg, IDC_IP_ADDRESS));

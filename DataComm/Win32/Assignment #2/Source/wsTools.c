@@ -3,7 +3,8 @@
 --
 --	PROGRAM:		datagram_analyzer.exe
 --
---	FUNCTIONS:		
+--	FUNCTIONS:		ws_name_addr(char * host_name)
+--					ws_addr_name(LPDWORD ip_addr)
 --
 --
 --	DATE:			January 26, 2009
@@ -20,6 +21,7 @@
 ---------------------------------------------------------------------------------------*/
 
 #include <winsock2.h>
+#include <commctrl.h>
 #include "winMain.h"
 #include "wsTools.h"
 
@@ -31,6 +33,7 @@
 --	REVISIONS:	February 20, 2009 - Removed all references to OutputText(char *)
 --								  - Function now produces message boxes for errors
 --								  - Function now returns an int if successful
+--								  - Function sets global IP and host name
 -- 
 --	DESIGNER:	Steffen L. Norgren
 -- 
@@ -42,13 +45,15 @@
 --	RETURNS:	0 if invalid
 --				1 if valid
 -- 
---	NOTES:	Gets the canonical name associated with an internet IP address and
---			saves the results.
+--	NOTES:	Gets the IP address associated with a canonical name and saves the results.
 --
 ---------------------------------------------------------------------------------------*/
 int ws_name_addr(char * host_name) {
+	struct	hostent *hp;
+	struct	in_addr in;
 	char	**p;
 	LPSTR	psBuff;
+	BYTE	ip[4];
 
 	WORD wVersionRequested = MAKEWORD(2,2);
 	WSADATA wsaData;
@@ -63,41 +68,31 @@ int ws_name_addr(char * host_name) {
 			switch(h_errno) {
 				case HOST_NOT_FOUND:
 					wsprintf(psBuff, (LPCTSTR)"No such host %s\n", host_name);
-
 					MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-					
 					WSACleanup();
 					return 0;
 
 				case TRY_AGAIN:
 					wsprintf(psBuff, (LPCTSTR)"Host %s try again later\n", host_name);
-
 					MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-					
 					WSACleanup();
 					return 0;
 
 				case NO_RECOVERY:
 					wsprintf(psBuff, (LPCTSTR)"Host %s DNS Error\n", host_name);
-
 					MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-					
 					WSACleanup();
 					return 0;
 
 				case NO_ADDRESS:
 					wsprintf(psBuff, (LPCTSTR)"No IP Address for %s\n", host_name);
-
 					MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-					
 					WSACleanup();
 					return 0;
 
 				default:
 					wsprintf(psBuff, (LPCTSTR)"Unknown Error: %s\n", (LPCTSTR)h_errno);
-
 					MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-					
 					WSACleanup();
 					return 0;
 			}
@@ -105,7 +100,6 @@ int ws_name_addr(char * host_name) {
 		else {
 			for (p = hp->h_addr_list; *p != 0; p++) {
 				memcpy(&in.s_addr, *p, sizeof(in.s_addr));
-
 				wsprintf(psBuff, (LPCTSTR)"IP Address: %s\t Host Name: %s\n", inet_ntoa(in), hp->h_name);
 			}
 		}
@@ -115,6 +109,15 @@ int ws_name_addr(char * host_name) {
 	}
 
 	WSACleanup();
+
+	gHostName = hp->h_name;
+
+	// Set our global addresses
+	ip[0] = FIRST_IPADDRESS(in.s_addr);
+	ip[1] = SECOND_IPADDRESS(in.s_addr);
+	ip[2] = THIRD_IPADDRESS(in.s_addr);
+	ip[3] = FOURTH_IPADDRESS(in.s_addr);
+	gIP = MAKEIPADDRESS(ip[3], ip[2], ip[1], ip[0]);
 
 	return 1;
 }
@@ -127,6 +130,7 @@ int ws_name_addr(char * host_name) {
 --	REVISIONS:	February 20, 2009 - Removed all references to OutputText(char *)
 --								  - Function now produces message boxes for errors
 --								  - Function now returns an int if successful
+--								  - Function sets global IP and host name
 -- 
 --	DESIGNER:	Steffen L. Norgren
 -- 
@@ -138,13 +142,17 @@ int ws_name_addr(char * host_name) {
 --	RETURNS:	0 if invalid
 --				1 if valid
 -- 
---	NOTES:	Gets the IP address associated with a canonical name and saves the results.
+--	NOTES:	Gets the canonical name associated with an internet IP address and
+--			saves the results.
 --
 ---------------------------------------------------------------------------------------*/
 int ws_addr_name(LPDWORD ip_addr) {
+	struct	hostent *hp;
+	struct	in_addr in;
 	struct	in_addr my_addr, *addr_p;
 	char	**p;
 	LPSTR	psBuff;
+	BYTE	ip[4];
 
 	WORD wVersionRequested = MAKEWORD(2,2);
 	WSADATA wsaData;
@@ -164,9 +172,7 @@ int ws_addr_name(LPDWORD ip_addr) {
 
 	if (hp == NULL) {
 		wsprintf(psBuff, (LPCTSTR)"Host information for %s not found\n", inet_ntoa(my_addr));
-		
 		MessageBox(ghWndMain, psBuff, NULL, MB_OK | MB_ICONSTOP);
-		
 		WSACleanup();
 		return 0;
 	}
@@ -179,6 +185,14 @@ int ws_addr_name(LPDWORD ip_addr) {
 	}
 
 	WSACleanup();
+
+	// Set our global addresses
+	gHostName = hp->h_name;
+	ip[0] = FIRST_IPADDRESS(*ip_addr);
+	ip[1] = SECOND_IPADDRESS(*ip_addr);
+	ip[2] = THIRD_IPADDRESS(*ip_addr);
+	ip[3] = FOURTH_IPADDRESS(*ip_addr);
+	gIP = MAKEIPADDRESS(ip[3], ip[2], ip[1], ip[0]);
 
 	return 1;
 }

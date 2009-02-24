@@ -13,8 +13,9 @@
 HINSTANCE		ghInst;				// Main application's global instance
 HWND			ghWndMain;			// Main window's global handle
 HACCEL			ghAccel;			// Keyboard accelerator
-HWND			ghWndOutput;		// The output dialog
 int				mode, proto;		// The program's mode and protocol
+char *			gHostName;			// Peer Hostname
+DWORD			gIP;				// Peer IP Address
 
 // Global Functions
 LRESULT CALLBACK WndProc (HWND, UINT, WPARAM, LPARAM);

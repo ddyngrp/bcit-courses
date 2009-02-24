@@ -29,9 +29,9 @@
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	MenuDispatch
 -- 
---	DATE:		January 26, 2009
+--	DATE:		February 20, 2009
 -- 
---	REVISIONS:	February 20, 2009 - Modified for use in new program.
+--	REVISIONS:	
 -- 
 --	DESIGNER:	Steffen L. Norgren
 -- 
@@ -133,11 +133,17 @@ void MenuDispatch(UINT iMenuChoice, HWND hWnd, LPARAM lParam) {
 --
 ---------------------------------------------------------------------------------------*/
 BOOL CALLBACK Input_Host(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+	HMENU hMenu;
 	int cTxtLen;
 	PSTR pszHostName;
 
+	hMenu = GetMenu(ghWndMain);
+
 	switch (message) {
 		case WM_INITDIALOG:
+			if (gHostName != NULL) { // If previously input, place value in window
+				SetWindowText(GetDlgItem(hDlg, IDC_HOST_NAME), gHostName);
+			}
 			SetFocus(GetDlgItem(hDlg, IDC_HOST_NAME));
 			return FALSE;
 
@@ -162,9 +168,12 @@ BOOL CALLBACK Input_Host(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) 
 
 						// Validate host name
 						if (!ws_name_addr(pszHostName)) { // Lookup the host name
+							SetFocus(hDlg);
 							break;
 						}
 						else {
+							// Enable the Connect menu & close the dialogue
+							EnableMenuItem(hMenu, ID_FILE_CONNECT, MF_ENABLED);
 							EndDialog(hDlg, wParam);
 							return TRUE;
 						}
@@ -204,10 +213,16 @@ BOOL CALLBACK Input_Host(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) 
 --
 ---------------------------------------------------------------------------------------*/
 BOOL CALLBACK Input_IP(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+	HMENU	hMenu;
 	LPDWORD	pdwAddr;
+
+	hMenu = GetMenu(ghWndMain);
 
 	switch (message) {
 		case WM_INITDIALOG:
+			if (gIP != NULL) { // If previously input, place value in window
+				SendMessage(GetDlgItem(hDlg, IDC_IP_ADDRESS), IPM_SETADDRESS, 0, gIP);
+			}
 			SetFocus(GetDlgItem(hDlg, IDC_IP_ADDRESS));
 			return FALSE;
 
@@ -226,9 +241,12 @@ BOOL CALLBACK Input_IP(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 					else {
 						// Validate IP Address
 						if (!ws_addr_name(pdwAddr)) { // Look up the IP address
+							SetFocus(hDlg);
 							break;
 						}
 						else {
+							// Enable the Connect menu & close the dialogue
+							EnableMenuItem(hMenu, ID_FILE_CONNECT, MF_ENABLED);
 							EndDialog(hDlg, wParam);
 							return TRUE;
 						}

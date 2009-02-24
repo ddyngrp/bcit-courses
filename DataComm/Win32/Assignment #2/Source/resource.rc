@@ -1,0 +1,179 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Canada) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Connect\tCTRL+O",            ID_FILE_CONNECT
+        MENUITEM "&Disconnect\tCTRL+X",         ID_FILE_DISCONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tCTRL+Q",               ID_FILE_EXIT
+    END
+    POPUP "&Operation Mode"
+    BEGIN
+        MENUITEM "&Client\tCTRL+1",             ID_OPERATIONMODE_CLIENT
+        MENUITEM "&Server\tCTRL+2",             ID_OPERATIONMODE_SERVER
+        MENUITEM SEPARATOR
+        POPUP "Peer Address"
+        BEGIN
+            MENUITEM "&IP Address\tCTRL+I",         ID_PEERADDRESS_IPADDRESS
+            MENUITEM "&Hostname\tCTRL+H",           ID_PEERADDRESS_HOSTNAME
+        END
+    END
+    POPUP "Protocol"
+    BEGIN
+        MENUITEM "TCP\tCTRL+T",                 ID_PROTOCOL_TCP
+        MENUITEM "UDP\tCTRL+U",                 ID_PROTOCOL_UDP
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "Network.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "Q",            ID_FILE_EXIT,           VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_CONNECT,        VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_FILE_DISCONNECT,     VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_OPERATIONMODE_CLIENT, VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_OPERATIONMODE_SERVER, VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_PEERADDRESS_IPADDRESS, VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_PEERADDRESS_HOSTNAME, VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_PROTOCOL_TCP,        VIRTKEY, CONTROL, NOINVERT
+    "U",            ID_PROTOCOL_UDP,        VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_HOST_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 131
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_IP_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 148
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_HOST_INPUT DIALOGEX 0, 0, 138, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Input Host Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,28,25,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,81,25,50,14
+    LTEXT           "Host Name:",IDC_STATIC,7,9,38,8
+    EDITTEXT        IDC_HOST_NAME,47,7,84,14,ES_AUTOHSCROLL
+END
+
+IDD_IP_INPUT DIALOGEX 0, 0, 155, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Input IP Address"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,44,25,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,98,25,50,14
+    LTEXT           "IP Address:",IDC_STATIC,7,10,38,8
+    CONTROL         "",IDC_IP_ADDRESS,"SysIPAddress32",WS_TABSTOP,48,7,100,15
+END
+
+#endif    // English (Canada) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -26,7 +26,6 @@
 #include "winMain.h"
 #include "resource.h"
 
-
 // Private variables
 TCHAR	szAppName[] = TEXT("Datagram Analyzer, Assignment #2");
 

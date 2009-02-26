@@ -188,6 +188,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\wsCliSrv.c"
+				>
+			</File>
+			<File
 				RelativePath=".\wsTools.c"
 				>
 			</File>
@@ -203,6 +207,10 @@
 			</File>
 			<File
 				RelativePath=".\winMain.h"
+				>
+			</File>
+			<File
+				RelativePath=".\wsCliSrv.h"
 				>
 			</File>
 			<File

@@ -21,10 +21,10 @@
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
 
+#include "wsCliSrv.h" // Must be first!
 #include <windows.h>
-#include <windowsx.h>
-#include "resource.h"
 #include "winMain.h"
+#include "resource.h"
 
 // Private function prototypes
 int NEAR PaintWindow(HWND);
@@ -56,6 +56,15 @@ void InitWindow(HWND);
 ---------------------------------------------------------------------------------------*/
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
+	// Send socket messages to the client/server Proc
+	if (message == WM_SOCKET) {
+		if (mode == CLIENT) {
+			//ClientProc(hWnd, message, wParam, lParam);
+		}
+		else if (mode == SERVER) {
+			ServerProc(hWnd, message, wParam, lParam);
+		}
+	}
 	switch (message) {
 		case WM_CREATE: // window is created
 			InitWindow(hWnd);

@@ -1,6 +1,7 @@
 #ifndef _WINMAIN_H_
 #define _WINMAIN_H_
 
+
 // Global Definitions
 #define X_SIZE		640
 #define Y_SIZE		360
@@ -22,7 +23,7 @@ char *			gHostName;			// Peer Hostname
 DWORD			gIP;				// Peer IP Address
 
 // Global Functions
-LRESULT CALLBACK WndProc (HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void MenuDispatch(UINT, HWND, LPARAM);
 BOOL CALLBACK Input_IP(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK Input_Host(HWND, UINT, WPARAM, LPARAM);

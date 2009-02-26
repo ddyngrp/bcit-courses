@@ -20,6 +20,7 @@
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
 
+#include "wsCliSrv.h" // Must be first!
 #include <windows.h>
 #include <commctrl.h>
 #include "winMain.h"
@@ -56,6 +57,7 @@ void MenuDispatch(UINT iMenuChoice, HWND hWnd, LPARAM lParam) {
 	switch (iMenuChoice) {
 		// File Menu
 		case ID_FILE_CONNECT:
+			Server();
 			break;
 		case ID_FILE_DISCONNECT:
 			break;

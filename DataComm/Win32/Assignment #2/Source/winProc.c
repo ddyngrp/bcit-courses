@@ -34,9 +34,9 @@ void InitWindow(HWND);
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	WndProc
 -- 
---	DATE:		January 26, 2009
+--	DATE:		February 20, 2009
 -- 
---	REVISIONS:	February 20, 2009 - Modified for use in new program.
+--	REVISIONS:	
 -- 
 --	DESIGNER:	Steffen L. Norgren
 -- 
@@ -70,6 +70,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			break;
 
 		case WM_SIZE: // window is resized
+			{
+				// Main window size has changed, need to resize child windows
+				WORD wTop = 0;
+				WORD wHeight = HIWORD(lParam);
+				WORD wWidth = LOWORD(lParam);
+				RECT wRect;
+
+				GetWindowRect(ghWndMain, &wRect);
+
+				// Put Window in the middle
+				MoveWindow(ghWndOutput, 0, wTop, wWidth, wHeight, TRUE);
+				MoveWindow(GetDlgItem(ghWndOutput,IDD_OUTPUT), 0, 0, wWidth - 2, wHeight, TRUE);
+
+				/* Realign all the controls */
+				// Group Box Controls
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_GRP_SETTINGS), 9, 9, wWidth - 18, 72, TRUE);
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_BTN_OPEN), wWidth - 170, 25, 70, 24, TRUE);
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_BTN_SEND), wWidth - 90, 25, 70, 24, TRUE);
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_ED_FILE), 90, 54, wWidth - 110, 20, TRUE);
+				// Output List
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_LST_OUTPUT), 9, 85, wWidth - 18, wHeight - 120, TRUE);
+				// Clear & Save Log buttons
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_BTN_CLEAR), wWidth - 160, wHeight - 30, 70, 24, TRUE);
+				MoveWindow(GetDlgItem(ghWndOutput,IDC_BTN_SAVE), wWidth - 80, wHeight - 30, 70, 24, TRUE);
+
+				// Make sure we don't size the window beyond some minimum constraints
+				if (wWidth <= X_MIN_SIZE && wHeight > Y_MIN_SIZE) {
+					MoveWindow(ghWndMain, wRect.left, wRect.top, X_MIN_SIZE + 10, wRect.bottom - wRect.top, TRUE);
+				}
+				else if (wWidth <= X_MIN_SIZE && wHeight <= Y_MIN_SIZE) {
+					MoveWindow(ghWndMain, wRect.left, wRect.top, X_MIN_SIZE + 10, Y_MIN_SIZE + 10, TRUE);
+				}
+				else if (wWidth > X_MIN_SIZE && wHeight <= Y_MIN_SIZE) {
+					MoveWindow(ghWndMain, wRect.left, wRect.top, wRect.right - wRect.left, Y_MIN_SIZE + 10, TRUE);
+				}
+			}
 			break;
 
 		case WM_PAINT:
@@ -123,6 +159,13 @@ void InitWindow(HWND hWnd) {
 	// Set Operation mode to client and protocol to TCP
 	CheckMenuItem(hMenu, ID_OPERATIONMODE_CLIENT, MF_CHECKED);
 	CheckMenuItem(hMenu, ID_PROTOCOL_TCP, MF_CHECKED);
+
+	// Create our main output dialog, which is part of the main window
+	ghWndOutput = CreateDialog(ghInst, MAKEINTRESOURCE(IDD_OUTPUT), hWnd, Main_Output);
+
+	if (ghWndOutput == NULL) {
+		MessageBox(hWnd, TEXT("A child window failed to open."), NULL, MB_OK | MB_ICONSTOP);
+	}
 }
 
 /*--------------------------------------------------------------------------------------- 

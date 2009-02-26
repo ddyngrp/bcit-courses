@@ -119,6 +119,9 @@ int ws_name_addr(char * host_name) {
 	ip[3] = FOURTH_IPADDRESS(in.s_addr);
 	gIP = MAKEIPADDRESS(ip[3], ip[2], ip[1], ip[0]);
 
+	wsprintf(psBuff, (LPCTSTR)"%d.%d.%d.%d", ip[3], ip[2], ip[1], ip[0]);
+	gcIP = psBuff;
+
 	return 1;
 }
 
@@ -193,6 +196,9 @@ int ws_addr_name(LPDWORD ip_addr) {
 	ip[2] = THIRD_IPADDRESS(*ip_addr);
 	ip[3] = FOURTH_IPADDRESS(*ip_addr);
 	gIP = MAKEIPADDRESS(ip[3], ip[2], ip[1], ip[0]);
+
+	wsprintf(psBuff, (LPCTSTR)"%d.%d.%d.%d", ip[3], ip[2], ip[1], ip[0]);
+	gcIP = psBuff;
 
 	return 1;
 }

@@ -21,6 +21,7 @@
 ---------------------------------------------------------------------------------------*/
 
 #include "wsCliSrv.h" // Must be first!
+#include <winsock2.h>
 #include <windows.h>
 #include <commctrl.h>
 #include "winMain.h"
@@ -57,9 +58,23 @@ void MenuDispatch(UINT iMenuChoice, HWND hWnd, LPARAM lParam) {
 	switch (iMenuChoice) {
 		// File Menu
 		case ID_FILE_CONNECT:
-			Server();
+			if (mode == CLIENT) {
+				if (Client() == TRUE) {
+					EnableMenuItem(hMenu, ID_FILE_CONNECT, MF_DISABLED);
+					EnableMenuItem(hMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+				}
+			}
+			else if (mode == SERVER) {
+				if (Server() == TRUE) {
+					EnableMenuItem(hMenu, ID_FILE_CONNECT, MF_DISABLED);
+					EnableMenuItem(hMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+				}
+			}
 			break;
 		case ID_FILE_DISCONNECT:
+			EnableMenuItem(hMenu, ID_FILE_CONNECT, MF_ENABLED);
+			EnableMenuItem(hMenu, ID_FILE_DISCONNECT, MF_DISABLED);
+			PostMessage(ghWndMain, WM_SOCKET, SocketInfo->Socket, FD_CLOSE);
 			break;
 		case ID_FILE_EXIT:
 			PostMessage(hWnd, WM_CLOSE, 0, 0);
@@ -215,8 +230,11 @@ BOOL CALLBACK Main_Output(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 					}
 					return TRUE;
 				case IDC_BTN_SEND: // Send data
+					FillBuffer(4096);
+					PostMessage(ghWndMain, WM_SOCKET, SocketInfo->Socket, FD_WRITE);
 					return TRUE;
 				case IDC_BTN_CLEAR: // Clear log
+					ClearLog();
 					return TRUE;
 				case IDC_BTN_SAVE: // Save log file
 					{

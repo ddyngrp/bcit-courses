@@ -3,7 +3,7 @@
 
 #define PORT			9000
 #define DATA_BUFF_SIZE	8192
-#define WM_SOCKET		(WM_USER +5)
+
 
 #include <winsock2.h>
 
@@ -16,15 +16,17 @@ typedef struct _SOCKET_INFO {
 			BytesRECV;
 } SOCKET_INFO, * LPSOCKET_INFO;
 
-void Server(void);
-void Client(void);
+BOOL Server(void);
+BOOL Client(void);
 BOOL CALLBACK ServerProc(HWND, UINT, WPARAM, LPARAM);
+BOOL CALLBACK ClientProc(HWND, UINT, WPARAM, LPARAM);
 void CreateSocketInfo(SOCKET);
 LPSOCKET_INFO GetSocketInfo(SOCKET);
 void FreeSocketInfo(SOCKET);
 void AppendLog(char* str);
 void ClearLog(void);
+void FillBuffer(int);
 
-HWND ghWndSocket;	// Invisible window for the socket
+LPSOCKET_INFO SocketInfo;
 
 #endif

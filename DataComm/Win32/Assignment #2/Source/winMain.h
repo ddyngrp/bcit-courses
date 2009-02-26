@@ -11,6 +11,7 @@
 #define	SERVER		1
 #define	TCP			0
 #define	UDP			1
+#define WM_SOCKET		(WM_USER+1)
 
 // Global Variables
 HINSTANCE		ghInst;				// Main application's global instance
@@ -20,6 +21,7 @@ HACCEL			ghAccel;			// Keyboard accelerator
 HANDLE			ghOF, ghSF;			// Handles for opening and saving files
 int				mode, proto;		// The program's mode and protocol
 char *			gHostName;			// Peer Hostname
+char *			gcIP;				// IP Readably by inet_addr
 DWORD			gIP;				// Peer IP Address
 
 // Global Functions

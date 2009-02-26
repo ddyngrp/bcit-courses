@@ -22,7 +22,10 @@
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
 
+#include "wsCliSrv.h"
+#include <winsock2.h>
 #include <windows.h>
+#include <conio.h>
 #include "winMain.h"
 #include "resource.h"
 

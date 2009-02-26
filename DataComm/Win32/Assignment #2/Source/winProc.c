@@ -59,7 +59,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	// Send socket messages to the client/server Proc
 	if (message == WM_SOCKET) {
 		if (mode == CLIENT) {
-			//ClientProc(hWnd, message, wParam, lParam);
+			ClientProc(hWnd, message, wParam, lParam);
 		}
 		else if (mode == SERVER) {
 			ServerProc(hWnd, message, wParam, lParam);
@@ -153,9 +153,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 --
 ---------------------------------------------------------------------------------------*/
 void InitWindow(HWND hWnd) {
-	HMENU hMenu;
-
-	hMenu = GetMenu(hWnd);
+	HMENU hMenu = GetMenu(hWnd);
 
 	// Initialize default settings
 	mode = CLIENT;

@@ -135,7 +135,7 @@ void start_server(void) {
 						   in the future. This section should be fleshed out */
 						if (FD_ISSET(j, &master)) {
 							/* everyone except for the server */
-							if (j != listener && j == i) {
+							if (j != listener && j != i) {
 								if (send(j, buf, nBytes, 0) == -1) {
 									perror("send"); /* massive failure!!! */
 								}

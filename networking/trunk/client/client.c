@@ -6,10 +6,11 @@ int main(int argc, char* argv[])
 	char ass[INET6_ADDRSTRLEN];
 	char sendbuf[MAXLEN], recvbuf[MAXLEN];
 	int sockfd;
+	int ret;
 	
-	if (argc != 2)
+	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: <ip address>\n");
+		fprintf(stdout, "Usage: <ip address> <PORT>\n");
 		return 1;
 	}
 
@@ -17,44 +18,44 @@ int main(int argc, char* argv[])
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 	
-	if(!(getaddrinfo(argv[1],PORT,&hints,&serverinfo))) {
-		perror("get address info failed");
+	if((ret = getaddrinfo(argv[1],argv[2],&hints,&serverinfo)) != 0) {
+		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(ret));
 		return 1;
 	}
 
 	for (p = serverinfo; p !=NULL; p = p->ai_next ){
+
 		if ((sockfd = socket(p->ai_family,p->ai_socktype,p->ai_protocol)) == -1)
 		{
-			perror("Socket create fail.");
+			fprintf(stdout, "Socket create fail.\n");
 			continue;
 		}
-		
+
 		if((connect(sockfd,p->ai_addr,p->ai_addrlen))==-1)
 		{
-			perror("connection fail.");
+			fprintf(stdout, "connection fail.\n");
 			continue;
 		}
-		
 		break;
 	}
 
 	if (p == NULL)
 	{
-		perror(" failed to connect.");
+		perror(" failed to connect.\n");
 		return 2;
 	}
-
+	
 	inet_ntop(p->ai_family,get_in_addr((struct sockaddr*)p->ai_addr),ass,sizeof(ass));
 
 	freeaddrinfo(serverinfo);
 
 	while(fgets(sendbuf, MAXLEN, stdin)) {
 		if((send(sockfd, sendbuf, strlen(sendbuf), 0))==-1) {
-			perror("send failed");
+			fprintf(stdout, "send failed\n");
 		}
 		
 		if((recv(sockfd, recvbuf, MAXLEN, 0))==-1) {
-			perror("recv failed");
+			fprintf(stdout, "recv failed\n");
 		}
 	}
 

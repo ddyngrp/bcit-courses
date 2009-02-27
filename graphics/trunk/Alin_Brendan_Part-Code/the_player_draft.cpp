@@ -7,7 +7,7 @@ public:
 	DPlaya() : this.x_ = 0,  this.y_ = 0 , this.w_= 35, this.h_ = 35,
 					 this.image_ = loadImage(“default.png”){}
 
-	Dplaya(const int x, const int y, const int w, const itn h , const string pic) :
+	Dplaya(const int x, const int y, const int w, const int h , const string pic) :
 				 this.x_ = x,  this.y_ = y, this_w_ = w, this.h_ = h,
 					, this.image_ = loadImage(pic){}
 
@@ -18,14 +18,16 @@ public:
 	void refresh();
 
 	//getters 
-	 int getX(){return this.x_}
-	int getY() {return this.y_}
+	int getX(){return this.x_}
+	int getY(){return this.y_}
 	SDL_Surface* getImage() {return this.image}
 	
 	//setters
 	void setX(itn x){this.x_ = x}
 	void set(int y){this.y_ = y}
 	void setImage(const SDL_Surface* pic){this.image_ = pic}
+
+	/*To add the drop bomb */
 
 
 private:

@@ -54,9 +54,12 @@ int main(int argc, char* argv[])
 			fprintf(stdout, "send failed\n");
 		}
 		
-		if((recv(sockfd, recvbuf, MAXLEN, 0))==-1) {
+		if((recv(sockfd, recvbuf, MAXLEN, 0))==-1) 
+		{
 			fprintf(stdout, "recv failed\n");
 		}
+		
+		printf("%s", recvbuf);
 	}
 
 	return 0;

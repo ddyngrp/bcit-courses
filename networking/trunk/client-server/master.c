@@ -7,23 +7,21 @@
 #include "client.h"
 #include "server.h"
 
-void help(void);
+void usage(void);
 
 int main(int argc, char *argv[]) {
-	static char optstring[] = "c:s";
+	char optstring[] = "c:s";
 	int c;
 
-	if (argc == 1) {
-		help();
-		return 1;
-	}
+	if (argc == 1 || argc > 4) 
+		usage();
 
 	while ((c = getopt(argc, argv, optstring)) != -1) {
 		switch (c) {
 			case 'c':
 				if (argc != 4) {
-					fprintf(stderr, "Invalid arguments\n");
-					help();
+					fprintf(stderr, "Invalid number of arguments\n");
+					usage();
 				}
 				else {
 					fprintf(stderr, "Starting client...\n");
@@ -37,25 +35,25 @@ int main(int argc, char *argv[]) {
 			case '?':
 				if (optopt == 'c') {
 					fprintf(stderr, "Option -%c requires arguments.\n", optopt);
-					help();
+					usage();
 				}
 				else if (isprint(optopt)) {
 					fprintf(stderr, "Unknown option `-%c'.\n", optopt);
-					help();
+					usage();
 				}
 				else {
 					fprintf(stderr, "Unknown option character `\\x%x'.\n", optopt);
-					help();
+					usage();
 				}
 				break;
 			default:
 				abort();
 		}
 	}
-
-	return 1;
+	return EXIT_SUCCESS;
 }
 
-void help(void) {
+void usage(void) {
 	fprintf(stderr, "Usage: [-s] [-c <ip address> <port>]\n");
+	exit(EXIT_FAILURE);
 }

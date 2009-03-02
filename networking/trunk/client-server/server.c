@@ -3,14 +3,14 @@
 
 /* Initialize sockets, etc. */
 void start_server(void) {
-	fd_set	master;		/* the master file descriptor list */
-	fd_set	read_fds;	/* temp file descriptor for select() */
+	fd_set	master;		
+	fd_set	read_fds;
 	int		fd_max;
-	int		listener;	/* listening socket */
-	int		new_fd;		/* newly accept()ed socket descriptor */
-	struct sockaddr_storage remoteaddr;	/* client's address */
+	int		listener;
+	int		new_fd;	
+	struct sockaddr_storage remoteaddr;
 	socklen_t	addrlen;
-	char	buf[256];	/* buffer for received data */
+	char	buf[256];
 	int		nBytes;
 
 	/* Since we have the possibility for IPv6, we need to make sure
@@ -122,10 +122,11 @@ void start_server(void) {
 					else {
 						/* we got data from a client */
 						for (j = 0; j <= fd_max; j++) {
-							/* sent to every client -- this will be where we process data
-							   in the future. This section should be fleshed out */
 							if (FD_ISSET(j, &master)) {
-								/* only echo back to the client that connected */
+								/* only echo back to the client that connected
+								 * TODO: This is where we would flesh out how to deal
+								 * with the incoming data and to whom we would send it.
+								 */
 								if (j != listener && j == i) {
 									if (send(j, buf, nBytes, 0) == -1) {
 										perror("send"); /* massive failure!!! */

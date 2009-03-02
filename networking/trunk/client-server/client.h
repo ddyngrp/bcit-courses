@@ -1,5 +1,5 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef _CLIENT_H_
+#define _CLIENT_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,9 +12,9 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#define PORT 3840
-#define MAXLEN 1024
+#define MAXLEN	1024
 
-void *get_in_addr(struct sockaddr *sa);
+void start_client(char *, char *);
+void stop_client(void); /* implement later */
 
 #endif

@@ -1,15 +1,5 @@
 #include "server.h"
-
-/* Get sockaddr for IPv4 or IPv6 */
-void *get_in_addr(struct sockaddr *sa) {
-	/* Check if the address is IPv4 */
-	if (sa->sa_family == AF_INET) {
-		/* Return the IPv4 socket address */
-		return &(((struct sockaddr_in*)sa)->sin_addr);
-	}
-	/* Return the IPv6 socket address */
-	return &(((struct sockaddr_in6*)sa)->sin6_addr);
-}
+#include "tools.h"
 
 /* Initialize sockets, etc. */
 void start_server(void) {
@@ -20,7 +10,7 @@ void start_server(void) {
 	int		new_fd;		/* newly accept()ed socket descriptor */
 	struct sockaddr_storage remoteaddr;	/* client's address */
 	socklen_t	addrlen;
-	char	buf[8192];	/* buffer for received data */
+	char	buf[256];	/* buffer for received data */
 	int		nBytes;
 
 	/* Since we have the possibility for IPv6, we need to make sure
@@ -36,7 +26,7 @@ void start_server(void) {
 	FD_ZERO(&read_fds);
 
 	/* Get a new socket and bind it! */
-	memset(&hints, 0, sizeof hints);
+	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;		/* address family unspecified */
 	hints.ai_socktype = SOCK_STREAM;	/* streaming socket of course! */
 	hints.ai_flags = AI_PASSIVE;
@@ -47,7 +37,7 @@ void start_server(void) {
 	}
 
 	/* Setup the listening sockets */
-	for (p = ai; p != NULL; p->ai_next) {
+	for (p = ai; p != NULL; p = p->ai_next) {
 		listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
 		if (listener < 0) { /* yes it is free */
 			continue;
@@ -86,7 +76,7 @@ void start_server(void) {
 	fd_max = listener;
 
 	/* main read loop */
-	while (1) {
+	for (;;) {
 		read_fds = master; /* copy the master set */
 		if (select(fd_max+1, &read_fds, NULL, NULL, NULL) == -1) {
 			perror("select"); /* massive select failure */
@@ -96,48 +86,50 @@ void start_server(void) {
 		/* cycle through the connections, looking for data */
 		for (i = 0; i <= fd_max; i++) {
 			if (FD_ISSET(i, &read_fds)) { /* new connection */
-				/* manage the new connection */
-				addrlen = sizeof(remoteaddr);
-				new_fd = accept(listener, (struct sockaddr *)&remoteaddr, &addrlen);
-				
-				if (new_fd == -1) {
-					perror("accept"); /* obviously the server hates us */
-				}
-				else { /* the server loves us */
-					FD_SET(new_fd, &master); /* add to the master set */
-					if (new_fd > fd_max) { /* make sure we don't go over the limit */
-						fd_max = new_fd;
-					}
+				if (i == listener) {
+					/* manage the new connection */
+					addrlen = sizeof(remoteaddr);
+					new_fd = accept(listener, (struct sockaddr *)&remoteaddr, &addrlen);
 
-					printf("server: new connection from %s on socket %d\n",
-							inet_ntop(remoteaddr.ss_family, get_in_addr((struct sockaddr *)&remoteaddr),
-								remoteIP, INET6_ADDRSTRLEN), new_fd);
+					if (new_fd == -1) {
+						perror("accept"); /* obviously the server hates us */
 					}
-			}
-			else {
-				/* handle data from the client */
-				if ((nBytes = recv(i, buf, sizeof(buf), 0)) <= 0) {
-					/* got an error for client close the connection */
-					if (nBytes == 0) {
-						/* connection close */
-						printf("select: socket %d hung up\n", i);
+					else { /* the server loves us */
+						FD_SET(new_fd, &master); /* add to the master set */
+						if (new_fd > fd_max) { /* make sure we don't go over the limit */
+							fd_max = new_fd;
+						}
+
+						fprintf(stderr, "server: new connection from %s on socket %d\n",
+								inet_ntop(remoteaddr.ss_family, get_in_addr((struct sockaddr *)&remoteaddr),
+									remoteIP, INET6_ADDRSTRLEN), new_fd);
 					}
-					else {
-						perror("recv");
-					}
-					close(i);	/* goodbye */
-					FD_CLR(i, &master); /* remove from master set */
 				}
 				else {
-					/* we got data from a client */
-					for (j = 0; j <= fd_max; j++) {
-						/* sent to every client -- this will be where we process data
-						   in the future. This section should be fleshed out */
-						if (FD_ISSET(j, &master)) {
-							/* only echo back to the client that connected */
-							if (j != listener && j = i) {
-								if (send(j, buf, nBytes, 0) == -1) {
-									perror("send"); /* massive failure!!! */
+					/* handle data from the client */
+					if ((nBytes = recv(i, buf, sizeof(buf), 0)) <= 0) {
+						/* got an error for client close the connection */
+						if (nBytes == 0) {
+							/* connection close */
+							printf("select: socket %d hung up\n", i);
+						}
+						else {
+							perror("recv");
+						}
+						close(i);	/* goodbye */
+						FD_CLR(i, &master); /* remove from master set */
+					}
+					else {
+						/* we got data from a client */
+						for (j = 0; j <= fd_max; j++) {
+							/* sent to every client -- this will be where we process data
+							   in the future. This section should be fleshed out */
+							if (FD_ISSET(j, &master)) {
+								/* only echo back to the client that connected */
+								if (j != listener && j == i) {
+									if (send(j, buf, nBytes, 0) == -1) {
+										perror("send"); /* massive failure!!! */
+									}
 								}
 							}
 						}

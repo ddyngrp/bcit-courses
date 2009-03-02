@@ -1,6 +1,20 @@
 #include "network.h"
 
-/* set the connection type. either TCP or UDP */
+/***********************************************
+ * Function: set_conn_type
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: set_conn_type(int type)
+ *		int type: The type of connection to use
+ * 
+ * Returns: 0 on success or (-1) on error.
+ * 
+ * Description: Set the connection type.
+ ***********************************************/
 int set_conn_type(int type) {
 	if(type == TCP || type == UDP) {
 		conn_type = type;
@@ -11,7 +25,22 @@ int set_conn_type(int type) {
 	}
 }
 
-/* connect to the server, with IP or hostname "host", on port "port" */
+/***********************************************
+ * Function: conn_setup
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: conn_setup(char *host, char *port)
+ *		char *host: The IP-address or hostname to connect to
+ *		char *port: The port number to connect to
+ * 
+ * Returns: 0 on success, (-1) on failure.
+ * 
+ * Description: Connect to the specified host and port.
+ ***********************************************/
 int conn_setup(char *host, char *port) {
 	struct addrinfo hints, *results;
 	
@@ -35,29 +64,91 @@ int conn_setup(char *host, char *port) {
 	return 0;
 }
 
-/* send an empty packet to let the other side know we're still here */
-int keepalive() {
+
+/***********************************************
+ * Function: keepalive
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: keepalive()
+ * 
+ * Returns: Void.
+ * 
+ * Description: Send a KEEPALIVE packet to let the other side
+ *		know we're still here.
+ ***********************************************/
+void keepalive() {
 	unsigned char data = KEEPALIVE;
 	transfer(&data, 1);
-	return 0;
 }
 
-/* send the map to the clients */
-int send_map(unsigned char *map) {
-	/* not sure of actual map format yet */
+/***********************************************
+ * Function: send_map
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: send_map(unsigned char *map, size_t len)
+ *		unsigned char *map: The map's character representation
+ *		size_t len: The length of the map string
+ * 
+ * Returns: 0 on success or (-1) if malloc fails.
+ * 
+ * Description: Sends the map to the client.
+ ***********************************************/
+int send_map(unsigned char *map, size_t len) {
+	unsigned char *data = (unsigned char *)malloc(len + 1);
+	
+	if(data == NULL) {
+		fprintf(stderr, "malloc failed in send_map\n");
+		return -1;
+	}
+	
+	data[iTYPE] = MAP;
+	memcpy(data + 1, map, len);
+	
+	if(transfer(data, len + 1) < len + 1) { /* not the whole len was transfered */
+		return -1;
+	}
+	
 	return 0;
 }
 
 /* receive a map from the server */
-int recv_map(unsigned char *map) {
-	/* not sure of actual map format yet */
+int recv_map(unsigned char *map, size_t len) {
+	/* this is where logic converts the uchar* into the format they want */
 	return 0;
 }
 
-/* send a request to the server, asking if you can move to xy */
+/***********************************************
+ * Function: request_move
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: request_move(int x, int y)
+ *		int x: The x-coordinate the client wants to move to
+ *		int y: The y-coordinate the client wants to move to
+ * 
+ * Returns: 0 on success or (-1) if malloc fails.
+ * 
+ * Description: Send a request to the server, asking to move to xy
+ ***********************************************/
 int request_move(int x, int y) {
 	int len = sizeof(unsigned char) * ((sizeof(int) * 2) + 2);
 	unsigned char *data = (unsigned char *)malloc(len);
+	
+	if(data == NULL) {
+		fprintf(stderr, "malloc failed in request_move\n");
+		return -1;
+	}
 	
 	data[iTYPE] = MOVE;
 	add_coords_xy(x, y, data + 1, len - 1);
@@ -66,9 +157,24 @@ int request_move(int x, int y) {
 	return 0;
 }
 
-/* send a request to the server, asking if you can drop a bomb at current xy */
+/***********************************************
+ * Function: request_bomb
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: request_bomb(int type)
+ *		int type: The type of bomb to drop
+ * 
+ * Returns: 0 on success.
+ * 
+ * Description: Send a request to the server, asking to drop
+ *		a bomb at xy
+ ***********************************************/
 int request_bomb(int type) {
-	int len = (sizeof(int) * 2) + 2;
+	int len = sizeof(int) + 2;
 	unsigned char data[len];
 	
 	data[iTYPE] = BOMB;
@@ -79,7 +185,23 @@ int request_bomb(int type) {
 	return 0;
 }
 
-/* send a message to all the clients, saying that the bomb at xy blew up */
+/***********************************************
+ * Function: explode_bomb
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: explode_bomb(int x, int y)
+ *		int x: The x-coordinate of the bomb to blow up
+ *		int y: The y-coordinate of the bomb to blow up
+ * 
+ * Returns: 0 on success.
+ * 
+ * Description: Send a message to all the clients, saying that the
+ *		bomb at xy blew up.
+ ***********************************************/
 int explode_bomb(int x, int y) {
 	int len = sizeof(unsigned char) * ((sizeof(int) * 2) + 2);
 	unsigned char *data = (unsigned char *)malloc(len);
@@ -91,18 +213,50 @@ int explode_bomb(int x, int y) {
 	return 0;
 }
 
-/* transfer the data, regardless of TCP/UDP */
+/***********************************************
+ * Function: transfer
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: transfer(unsigned char *data, size_t len)
+ *		unsigned char *data: The string of data to transfer
+ *		size_t len: The length of the data string
+ * 
+ * Returns: 0 on success or (-1) on error.
+ * 
+ * Description: Transfer the data, regardless of TCP/UDP
+ ***********************************************/
 int transfer(unsigned char *data, size_t len) {
 	if(conn_type == TCP) {
-		send(sock, data, len, 0);
-	} else {
-		sendto(sock, data, len, 0, (struct sockaddr *)&server, sizeof(server));
+		return send(sock, data, len, 0);
+	} else if(conn_type == UDP) {
+		return sendto(sock, data, len, 0, (struct sockaddr *)&server, sizeof(server));
+	} else { /* this should never happen */
+		return -1;
 	}
-	
-	return 0;
 }
 
-/* writes xy into the char-string and appends a null-char at the end */
+/***********************************************
+ * Function: add_coords_xy
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: add_coords_xy(int x, int y, unsigned char *data, size_t len)
+ *		int x: The first coordinate to add
+ *		int y: The second coordinate to add
+ *		unsigned char *data: The data string to add the coords into
+ *		size_t len: The length of the data string
+ * 
+ * Returns: 0 on success or (-1) on error.
+ * 
+ * Description: Writes x and y into the string and appends a null-char
+ ***********************************************/
 int add_coords_xy(int x, int y, unsigned char *data, size_t len) {
 	if(len < (2 * sizeof(int)) + 1) {
 		fprintf(stderr, "len is < required length in add_coords_xy\n");
@@ -117,6 +271,23 @@ int add_coords_xy(int x, int y, unsigned char *data, size_t len) {
 	return 0;
 }
 
+/***********************************************
+ * Function: process_data
+ * 
+ * Designed by: David Young
+ * Coded by: David Young
+ * 
+ * Date: March 2, 2009
+ * 
+ * Interface: process_data(unsigned char *data, size_t len)
+ *		unsigned char *data: The string to get data from
+ *		size_t len: The length of the data string
+ * 
+ * Returns: 0 on success or a negative value on failure.
+ *		The failure values are listed in network.h
+ * 
+ * Description: Process the data that's received.
+ ***********************************************/
 /* process the data that's received */
 int process_data(unsigned char *data, size_t len) {
 	switch(data[iTYPE]) {
@@ -126,32 +297,32 @@ int process_data(unsigned char *data, size_t len) {
 		case MAP: /* deal with the map */
 			if(mode == CLIENT) {
 				/* update the map */
-			} else if(mode == SERVER){
-				/* why is the client sending the server a map? */
+			} else if(mode == SERVER){ /* why is the client sending the server a map? */
+				return ERR_SERV_RECV_MAP;
 			} else {
-				return -1;
+				return ERR_UNKNOWN_INPUT;
 			}
 			
 			break; /* end case MAP */
 			
-		case MOVE: /* move the player */
-			if(mode == CLIENT) {
-				/* move the player */
+		case MOVE: /* client requesting a move */
+			if(mode == CLIENT) { /* client shouldn't get a MOVE message */
+				return ERR_CLNT_RECV_MOVE;
 			} else if(mode == SERVER) {
 				/* the client wants to move to this position */
 			} else {
-				return -1;
+				return ERR_UNKNOWN_INPUT;
 			}
 			
 			break; /* end case MOVE */
 			
-		case BOMB: /* drop a bomb */
+		case BOMB: /* client requesting a bomb drop */
 			if(mode == CLIENT) {
-				/* drop a bomb here */
+				return ERR_CLNT_RECV_BOMB;
 			} else if(mode == SERVER) {
 				/* the client wants to drop a bomb of the specified type */
 			} else {
-				return -1;
+				return ERR_UNKNOWN_INPUT;
 			}
 			
 			break; /* end case BOMB */
@@ -159,16 +330,16 @@ int process_data(unsigned char *data, size_t len) {
 		case EXPLOSION: /* draw the explosion */
 			if(mode == CLIENT) {
 				/* draw the explosion */
-			} else if(mode == SERVER) {
-				/* why is the client sending us an explosion message? */
+			} else if(mode == SERVER) { /* only servers send EXPLOSION messages */
+				return ERR_SERV_RECV_EXPLOSION;
 			} else {
-				return -1;
+				return ERR_UNKNOWN_INPUT;
 			}
 			
 			break; /* end case EXPLOSION */
 			
 		default: /* this should never happen */
-			return -1;
+			return ERR_UNKNOWN_INPUT;
 	}
 	
 	return 0;

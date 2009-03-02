@@ -7,21 +7,37 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
+/* message types */
 #define KEEPALIVE	0
 #define MAP			1
 #define MOVE		2
 #define BOMB		4
 #define EXPLOSION	8
+/* end message types */
 
+/* program modes */
 #define CLIENT	0
 #define SERVER	1
+/* end program modes */
 
+/* important array indexes */
 #define iTYPE	0
+/* end important array indexes */
 
 #define LISTEN_PORT	"3840"
 
+/* protocol types */
 #define TCP SOCK_STREAM
 #define UDP SOCK_DGRAM
+/* protocol types */
+
+/* message-type errors for process_data */
+#define ERR_UNKNOWN_INPUT		(-1)
+#define ERR_SERV_RECV_MAP		(-2)
+#define ERR_SERV_RECV_EXPLOSION	(-3)
+#define ERR_CLNT_RECV_MOVE		(-4)
+#define ERR_CLNT_RECV_BOMB		(-5)
+/* end message-type errors */
 
 int conn_type = TCP;
 int sock = 0;
@@ -30,11 +46,11 @@ struct sockaddr_in server;
 
 int set_conn_type(int type);
 int conn_setup(char *host, char *port);
-int keepalive(); /* just an empty packet to let the other side know we're still here */
+void keepalive(); /* just an empty packet to let the other side know we're still here */
 
 /* look into using memcpy for map_class->char* and vise versa */
-int send_map(unsigned char *map); /* send the map */
-int recv_map(unsigned char *map); /* receive the map */
+int send_map(unsigned char *map, size_t len); /* send the map */
+int recv_map(unsigned char *map, size_t len); /* receive the map */
 
 int request_move(int x, int y); /* request a move to the xy-coord */
 int request_bomb(int type); /* request a bomb drop of the specified type */

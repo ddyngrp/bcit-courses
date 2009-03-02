@@ -15,6 +15,7 @@
 #define MAXLEN	1024
 
 void start_client(char *, char *);
+void test_data(int);
 void stop_client(void); /* implement later */
 
 #endif

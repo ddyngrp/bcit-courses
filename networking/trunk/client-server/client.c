@@ -41,6 +41,9 @@ void start_client(char * server, char * port) {
 
 	freeaddrinfo(serverinfo);
 
+	/* Sending test data */
+	/* test_data(sockfd); */
+
 	/* TODO: Add the ability to detect server disconnects */
 	while (fgets(sendbuf, MAXLEN, stdin)) {
 		int r;
@@ -55,4 +58,26 @@ void start_client(char * server, char * port) {
 		recvbuf[r] = '\0';
 		fprintf(stdout, "%s", recvbuf);
 	}
+}
+
+void test_data(int socket) {
+	char buf[1000000];
+	char recvbuf[MAXLEN];
+	int i, r;
+
+	for (i = 0; i < 1000000; i++) {
+		sprintf(buf, "%d\n", i);
+		if ((send(socket, buf, strlen(buf), 0)) == -1) {
+			perror("send() call failed");
+			continue;
+		}
+
+		if ((r = recv(socket, recvbuf, MAXLEN, 0)) == -1) {
+			perror("recv call() failed");
+			continue;
+		}
+		recvbuf[r] = '\0';
+		fprintf(stdout, "%s", recvbuf);
+	}
+	exit(0);
 }

@@ -47,9 +47,9 @@ const int TOTAL_TILES = 306;
 const int TILE_SPRITES = 3;
 
 //The different tile sprites
-const int ICECUBE= 0;
-const int EMPTYSPACE = 1;
-const int SNOWMAN= 2;
+const int ICECUBE= 0; //indestructable
+const int EMPTYSPACE = 1; //walkable path
+const int SNOWMAN= 2; //destructable
 
 //The bombs array index
 int BOMBS = 0;

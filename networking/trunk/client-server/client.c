@@ -43,14 +43,16 @@ void start_client(char * server, char * port) {
 
 	/* TODO: Add the ability to detect server disconnects */
 	while (fgets(sendbuf, MAXLEN, stdin)) {
+		int r;
 		if ((send(sockfd, sendbuf, strlen(sendbuf), 0)) == -1) {
-			perror("send");
+			perror("send() call failed.");
+			continue;
 		}
-		
-		if ((recv(sockfd, recvbuf, MAXLEN, 0)) == -1) {
-			perror("recv");
+		if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1) {
+			perror("recv call() failed.");
+			continue;
 		}
-		
+		recvbuf[r] = '\0';
 		fprintf(stdout, "%s", recvbuf);
 	}
 }

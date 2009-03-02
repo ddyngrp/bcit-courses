@@ -334,7 +334,7 @@ void Player::handle_input()
             case SDLK_UP: yVel -= TUX_HEIGHT / 7; break;
             case SDLK_DOWN: yVel += TUX_HEIGHT / 7; break;
             case SDLK_LEFT: xVel -= TUX_WIDTH / 7; break;
-<<<<<<< .mine
+
             case SDLK_SPACE: 
             	bombs[BOMBS].x = TILE_WIDTH*(int)((box.x+ TILE_WIDTH/2 -xVel)/TILE_WIDTH);
             	bombs[BOMBS].y = TILE_HEIGHT*(int)((box.y+TILE_HEIGHT/2 -yVel)/TILE_HEIGHT); 
@@ -343,16 +343,7 @@ void Player::handle_input()
             	if(++BOMBS == TOTAL_TILES)
             		BOMBS = 0;
             	break;
-=======
-            case SDLK_SPACE: 
-            	bombs[BOMBS].x = TILE_WIDTH*(int)((box.x+ TILE_WIDTH/2 -xVel)/TILE_WIDTH);
-            	bombs[BOMBS].y = TILE_HEIGHT*(int)((box.y+TILE_HEIGHT/2 -yVel)/TILE_HEIGHT); 
-            	apply_surface(bombs[BOMBS].x ,bombs[BOMBS].y , bomb, screen );
-            	
-            	if(++BOMBS >= TOTAL_TILES)
-            		BOMBS = 0;
-            	break;
->>>>>>> .r18
+
             case SDLK_RIGHT: xVel += TUX_WIDTH / 7; break;
             //escape will kill the game
             case SDLK_ESCAPE: quit=true;break;
@@ -521,43 +512,6 @@ int main( int argc, char* args[] )
     
     //Initialize the tiles
     for( int tx = 0, ty = -1; tx < TOTAL_TILES; tx++ )
-<<<<<<< .mine
-    {
-	if(tx==20 || tx ==21 || tx ==37 ||tx==19 )
-	{
-		genmap<< "01" <<' ';
-    		continue;
-    	}	
-    	if(tx%18==0)
-    	{
-    		if(++ty!=0)
-    		    genmap<<'\n';
-    		genmap<< "00" <<' ';
-    		continue; 
-    	}
-    	
-    	if(tx%18==16 || tx%18==17 )
-    	{
-    		genmap<< "00" <<' ';
-    		continue; 
-    	}
-    	
-    	if((tx < 18 || tx > TOTAL_TILES -19))
-    	{
-    		genmap<< "00" <<' ';
-    		continue;
-    	}
-    	
-    	if( ty%2 == 0 && tx%2 == 0)
-    	{
-    		genmap<< "00" <<' ';
-    		continue;
-    	}
-    	
-    	genmap<<'0'<<(rand()%2 + 1) <<' ';	
-    }
-    
-=======
     {
 	// Place empty spaces at player location, 2 locations right, and one down.
 	if(tx==20 || tx ==21 || tx ==37 ||tx==19 )
@@ -595,7 +549,7 @@ int main( int argc, char* args[] )
     	genmap<<'0'<<(rand()%2 + 1) <<' ';	
     }
     
->>>>>>> .r18
+
     genmap.close();
     //The frame rate regulator
     Timer fps;
@@ -605,7 +559,7 @@ int main( int argc, char* args[] )
     {
         return 1;
     }
-    background = load_image( "background01.xcf" );
+    background = load_image( "snowback.png" );
     bomb = load_image("tuxBommb2.xcf"); 
     apply_surface( FIELD_X_OFFSET, FIELD_Y_OFFSET, background, screen );
     //Load the files

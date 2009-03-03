@@ -7,12 +7,12 @@ user_map::user_map(const int **map, SDL_Surface *image_set, const int numImages,
 			 _numImages(numImages), _width(width), _height(height)
 { 
 	_image_set = SDL_ConvertSurface(image_set, NULL, NULL);
-	_map = new int*[_width];
+	/*_map = new int*[_width];
 	
 	for(int i = 0; i < _width; i++)
 		_map[i] = new int[_height];
 	
-	if(!(update_map(map, width, height)));
+	if(!(update_map(map, width, height)));*/
 		//throw something
 		//there's no way to return false on a ctor
 }

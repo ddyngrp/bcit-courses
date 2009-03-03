@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <iostream>
+#include <string.h>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 //#include "mitesh_is_a_sack.h"    please don't remove
@@ -10,7 +11,7 @@
 class user_map
 {
 	public:
-	user_map(const int **map, SDL_Surface *image_set,const int numImages, 
+	user_map(const int **map,SDL_Surface *image_set,const int numImages, 
 			 const int width, const int height);
 	~user_map();
 	

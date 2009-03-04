@@ -21,21 +21,3 @@ preserve. The two main reasons for preservation would be that either
 this is a major release of the software, whether alpha, beta, RC or RTM,
 or this is the most stable point of the software before major revisions
 on the trunk were applied.
-
-Graphics:
----------
-This is where the graphics team will store their project work.
-
-Logic:
-------
-This is where the logic team will store their project work.
-
-Networking:
------------
-This is where the networking team will store their project work.
-
-Integration:
-------------
-This is where all the teams will integrate their work to date in order
-to come up with working milestones. Basically this is where we try
-to get all of our code to work together throughout the project.

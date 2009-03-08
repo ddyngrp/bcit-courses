@@ -1,0 +1,42 @@
+Extract information from fire struct
+Draw center fire
+
+/*THIS IS FOR THE LEFT LENGTH OF FIRE*/
+if(leftLength != 0){
+  loadImage(leftFire);
+  drawImage((center.x - leftLength);
+  leftLength--;
+}
+loadImage(horizontalFire);
+loop(position = center.x - leftlength; position.x != center.x; position.x++)//if there is more than one, loop through each horizontal left position
+  drawImage(horizontalFire);
+
+/*THIS IS FOR THE RIGHT LENGTH OF DRAW FIRE*/
+if(rightLength != 0){
+  loadImage(rightFire);
+  drawImage((center.x + rightLength);
+  rightLength--;
+}
+loadImage(horizontalFire);
+loop(position = center.x + rightlength; position.x != center.x; position.x--)//if there is more than one, loop through each horizontal left position
+  drawImage(horizontalFire);
+
+/*THIS IS FOR THE TOP LENGTH OF DRAW FIRE*/
+if(topLength != 0){
+  loadImage(topFire);
+  drawImage((center.y + topLength);
+  topLength--;
+}
+loadImage(verticalFire);
+loop(position = center.y + topLength; position.y != center.y; position.y--)//if there is more than one, loop through each horizontal left position
+  drawImage(verticalFire);
+
+/*THIS IS FOR THE BOTTOM LENGTH OF FIRE*/
+if(bottomLength != 0){
+  loadImage(bottomFire);
+  drawImage((center.y - bottomLength);
+  bottomLength--;
+}
+loadImage(verticalFire);
+loop(position = center.y - toplength; position.y != center.y; position.y++)//if there is more than one, loop through each horizontal left position
+  drawImage(verticalFire);

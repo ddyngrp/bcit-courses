@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace GUI_Mockup
 {
-    public partial class Form1 : Form
+    public partial class CommAudio : Form
     {
-        public Form1()
+        public CommAudio()
         {
             InitializeComponent();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }

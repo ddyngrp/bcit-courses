@@ -1,0 +1,17 @@
+client upload
+	create service thread
+	send upload request //wait for response
+
+	if accepted //server ready
+	while not EOF
+		send file over control channel //TCP
+	kill thread
+
+
+client request upload(server side i assume??)
+	create file with specified name
+	send ready message
+
+	while not EOF
+		read data, save to the file
+	kill thread

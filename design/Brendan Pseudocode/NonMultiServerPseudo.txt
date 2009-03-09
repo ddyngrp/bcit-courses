@@ -1,0 +1,30 @@
+non-multicast server chosen
+
+start server_play()
+	release all semaphores
+	while not EOF 
+		if client picked a song
+			send client song data packets //over udp connection
+		else
+			send first song on the list data packets
+
+end server_play
+
+start server_pause()
+	decrement semaphore on any send threads //stop sending data
+end server_pause()
+
+start kill_all() //stop or connection closed
+	kill all threads
+	WSAcleanup()
+end kill_all
+
+start server_request_file
+	send listing of songs in music directory to client
+end server_request_file
+
+//dont know what server_upload is...i would think it would be send the file??
+
+start server_microphone
+	//see stephen pseudo code ^_^Y
+end server_microphone

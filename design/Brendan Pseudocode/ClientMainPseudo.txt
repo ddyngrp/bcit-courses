@@ -1,44 +1,36 @@
 connection accepted by server
 
-start void play_request()
+if play_request
 	send play request //control channel
 	if server accepts request
 		start filling buffer with data
 		play_sound()
-end play_request
 
-start play_sound()
+if play_sound
 	playsound (or whatever function we use) to play.
-end play_sound
 
-start nm_pause() //non-multicast
+if nm_pause //non-multicast
 	send pause request //control channel
 	non-multicast pause just makes the server stop sending.  Instead of us filling our buffer while they send
-end nm_pause
 
-start mc_pause() //multicast pause
+if  mc_pause() //multicast pause
 	send pause request //control channel
 	decrement receive semaphore //stops thread from accessing our buffer
-end mc_pause
 
-start file_upload()
+if file_upload()
 	send file upload message
 	if accepted
 		pick file to upload (sends through control channel) // client upload
-end file_upload
 
-start microphone_session()
+if microphone_session()
 	send microphone request
 	if accepted
 		see microphone diagram
-end microphone_session()
 
-start request_file()
+if request_file()
 	send file request
 	if accepted
 		pick song //client-download diagram
-		
-end request_file
-start stop
+
+if stop
 	send stop request //kill all threads/services
-end stop

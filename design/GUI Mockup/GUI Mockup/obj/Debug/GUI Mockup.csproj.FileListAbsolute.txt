@@ -1,8 +1,0 @@
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\bin\Debug\GUI Mockup.exe
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\bin\Debug\GUI Mockup.pdb
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\ResolveAssemblyReference.cache
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\GUI_Mockup.Form1.resources
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\GUI_Mockup.Properties.Resources.resources
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\GUI Mockup.csproj.GenerateResource.Cache
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\GUI Mockup.exe
-Z:\Projects\CommAudio\design\GUI Mockup\GUI Mockup\obj\Debug\GUI Mockup.pdb

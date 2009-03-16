@@ -1,0 +1,1 @@
+rm chat.xml ; gtk-builder-convert Chat\ Program.glade ./chat.xml ; make clean ; make ; ./chat

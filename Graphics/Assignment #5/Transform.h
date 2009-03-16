@@ -20,6 +20,8 @@
 	Matrix * m_points;
 	Matrix * m_lines;
 	
+	Matrix * m_tmp_sheer;
+	
 	int x_size;
 	int y_size;
 	

@@ -13,6 +13,6 @@
 
 }
 
-+ (void) raise ;
++ (void) raise;
 
 @end

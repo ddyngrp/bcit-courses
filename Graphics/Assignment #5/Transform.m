@@ -20,7 +20,7 @@
 	yAxis = FALSE;
 	zAxis = FALSE;
 	
-	// Read Data into our matricies
+	// Read Data into our matrices
 	if ([self readPoints:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Qpoints3D.dat"]] == NO) {
 		NSLog(@"Unable to read Qpoints.dat");
 	}
@@ -214,6 +214,7 @@
 
 - (IBAction)sheer_X:(id)sender {
 	float x_min = MAXFLOAT, y_min = MAXFLOAT, z_min = MAXFLOAT;
+	bool reanim = FALSE;
 	int i;
 	double s;
 	
@@ -228,31 +229,17 @@
 		[timer invalidate];
 		[timer release];
 		timer = nil;
-
-		for (i = 0; i < [m_points maxY]; i++) {
-			if ([[m_points atX:1 atY:i] floatValue] == 0) {
-				y_min = [[m_draw atX:1 atY:i] floatValue];
-				if ([[m_points atX:2 atY:i] floatValue] < z_min) {
-					z_min = [[m_draw atX:2 atY:i] floatValue];
-				}
-				if ([[m_points atX:0 atY:i] floatValue] < x_min) {
-					x_min = [[m_draw atX:0 atY:i] floatValue];
-				}
-			}
-		}
-		
-		[self anim:nil];
+		reanim = TRUE;
 	}
-	else {
-		for (i = 0; i < [m_points maxY]; i++) {
-			if ([[m_points atX:1 atY:i] floatValue] == 0) {
-				y_min = [[m_draw atX:1 atY:i] floatValue];
-				if ([[m_points atX:2 atY:i] floatValue] < z_min) {
-					z_min = [[m_draw atX:2 atY:i] floatValue];
-				}
-				if ([[m_points atX:0 atY:i] floatValue] < x_min) {
-					x_min = [[m_draw atX:0 atY:i] floatValue];
-				}
+	
+	for (i = 0; i < [m_points maxY]; i++) {
+		if ([[m_points atX:1 atY:i] floatValue] == 0) {
+			y_min = [[m_draw atX:1 atY:i] floatValue];
+			if ([[m_points atX:2 atY:i] floatValue] < z_min) {
+				z_min = [[m_draw atX:2 atY:i] floatValue];
+			}
+			if ([[m_points atX:0 atY:i] floatValue] < x_min) {
+				x_min = [[m_draw atX:0 atY:i] floatValue];
 			}
 		}
 	}
@@ -272,6 +259,11 @@
 	[m_transform atX:1 atY:3 put:[NSNumber numberWithFloat:y_min]];
 	[m_transform atX:2 atY:3 put:[NSNumber numberWithFloat:z_min]];
 	m_product = [Matrix newWithMultiply:m_product m2:m_transform];
+	
+	if (reanim) {
+		[self anim:nil];
+		reanim = FALSE;
+	}
 	
     [self setNeedsDisplay:YES];	
 }

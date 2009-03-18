@@ -1,1 +1,8 @@
+COMPILING:
 In order to compile this program, you need the GTK+2.0 developer libraries installed.
+
+BUGS:
+I have yet to figure out why clients that don't have focus have a large delay
+in displaying received text.
+
+To see the text immediately, move your mouse over the window and it should appear.

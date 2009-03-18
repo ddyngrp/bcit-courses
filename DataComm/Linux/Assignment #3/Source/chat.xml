@@ -1,129 +1,169 @@
 <?xml version="1.0"?>
-<!--Generated with glade3 3.4.5 on Wed Mar 11 04:18:26 2009 -->
+<!--Generated with glade3 3.4.5 on Wed Mar 18 05:28:29 2009 -->
 <interface>
   <object class="GtkUIManager" id="uimanager1">
     <child>
       <object class="GtkActionGroup" id="actiongroup1">
         <child>
-          <object class="GtkAction" id="menuitem1">
-            <property name="name">menuitem1</property>
+          <object class="GtkAction" id="menu_client_file">
+            <property name="name">menu_client_file</property>
             <property name="label" translatable="yes">_File</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem1">
-            <property name="stock_id" translatable="yes">gtk-new</property>
-            <property name="name">imagemenuitem1</property>
+          <object class="GtkAction" id="client_file_connect">
+            <property name="stock_id">gtk-connect</property>
+            <property name="name">client_file_connect</property>
+            <property name="label" translatable="yes">_Connect</property>
+            <signal handler="on_file_connect_activate" name="activate" object="dialogue_client_connect"/>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem2">
-            <property name="stock_id" translatable="yes">gtk-open</property>
-            <property name="name">imagemenuitem2</property>
+          <object class="GtkAction" id="client_file_save_log">
+            <property name="stock_id">gtk-save</property>
+            <property name="name">client_file_save_log</property>
+            <property name="label" translatable="yes">_Save Chat Log</property>
+            <signal handler="on_file_save_log_activate" name="activate"/>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem3">
-            <property name="stock_id" translatable="yes">gtk-save</property>
-            <property name="name">imagemenuitem3</property>
+          <object class="GtkAction" id="client_file_quit">
+            <property name="stock_id">gtk-quit</property>
+            <property name="name">client_file_quit</property>
+            <property name="label" translatable="yes">_Quit</property>
+            <signal handler="on_file_quit_activate" name="activate"/>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem4">
-            <property name="stock_id" translatable="yes">gtk-save-as</property>
-            <property name="name">imagemenuitem4</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="imagemenuitem5">
-            <property name="stock_id" translatable="yes">gtk-quit</property>
-            <property name="name">imagemenuitem5</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="menuitem2">
-            <property name="name">menuitem2</property>
-            <property name="label" translatable="yes">_Edit</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="imagemenuitem6">
-            <property name="stock_id" translatable="yes">gtk-cut</property>
-            <property name="name">imagemenuitem6</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="imagemenuitem7">
-            <property name="stock_id" translatable="yes">gtk-copy</property>
-            <property name="name">imagemenuitem7</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="imagemenuitem8">
-            <property name="stock_id" translatable="yes">gtk-paste</property>
-            <property name="name">imagemenuitem8</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="imagemenuitem9">
-            <property name="stock_id" translatable="yes">gtk-delete</property>
-            <property name="name">imagemenuitem9</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="menuitem3">
-            <property name="name">menuitem3</property>
+          <object class="GtkAction" id="menu_client_view">
+            <property name="name">menu_client_view</property>
             <property name="label" translatable="yes">_View</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="menuitem4">
-            <property name="name">menuitem4</property>
+          <object class="GtkAction" id="client_view_clear">
+            <property name="stock_id">gtk-clear</property>
+            <property name="name">client_view_clear</property>
+            <property name="label" translatable="yes">_Clear Chat Log</property>
+            <signal handler="on_client_view_clear_activate" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menu_client_help">
+            <property name="name">menu_client_help</property>
             <property name="label" translatable="yes">_Help</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem10">
-            <property name="stock_id" translatable="yes">gtk-about</property>
-            <property name="name">imagemenuitem10</property>
+          <object class="GtkAction" id="client_help_about">
+            <property name="stock_id">gtk-about</property>
+            <property name="name">client_help_about</property>
+            <property name="label" translatable="yes">_About</property>
+            <signal handler="on_help_about_activate" name="activate" object="dialogue_about"/>
           </object>
         </child>
       </object>
     </child>
     <ui>
-      <menubar name="menubar">
-        <menu action="menuitem1">
-          <menuitem action="imagemenuitem1"/>
-          <menuitem action="imagemenuitem2"/>
-          <menuitem action="imagemenuitem3"/>
-          <menuitem action="imagemenuitem4"/>
+      <menubar name="menubar_client">
+        <menu action="menu_client_file">
+          <menuitem action="client_file_connect"/>
+          <menuitem action="client_file_save_log"/>
           <separator/>
-          <menuitem action="imagemenuitem5"/>
+          <menuitem action="client_file_quit"/>
         </menu>
-        <menu action="menuitem2">
-          <menuitem action="imagemenuitem6"/>
-          <menuitem action="imagemenuitem7"/>
-          <menuitem action="imagemenuitem8"/>
-          <menuitem action="imagemenuitem9"/>
+        <menu action="menu_client_view">
+          <menuitem action="client_view_clear"/>
         </menu>
-        <menuitem action="menuitem3"/>
-        <menu action="menuitem4">
-          <menuitem action="imagemenuitem10"/>
+        <menu action="menu_client_help">
+          <menuitem action="client_help_about"/>
         </menu>
       </menubar>
     </ui>
   </object>
-  <object class="GtkWindow" id="mainWindow">
+  <object class="GtkUIManager" id="uimanager2">
+    <child>
+      <object class="GtkActionGroup" id="actiongroup2">
+        <child>
+          <object class="GtkAction" id="menu_server_file">
+            <property name="name">menu_server_file</property>
+            <property name="label" translatable="yes">_File</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="server_file_listen">
+            <property name="stock_id">gtk-connect</property>
+            <property name="name">server_file_listen</property>
+            <property name="label" translatable="yes">_Listen</property>
+            <signal handler="on_server_file_listen_activate" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="server_file_quit">
+            <property name="stock_id">gtk-quit</property>
+            <property name="name">server_file_quit</property>
+            <property name="label" translatable="yes">_Quit</property>
+            <signal handler="on_file_quit_activate" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menu_server_view">
+            <property name="name">menu_server_view</property>
+            <property name="label" translatable="yes">_View</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="server_view_clear">
+            <property name="stock_id">gtk-clear</property>
+            <property name="name">server_view_clear</property>
+            <property name="label" translatable="yes">_Clear Client Log</property>
+            <signal handler="on_server_view_clear_activate" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menu_help1">
+            <property name="name">menu_help1</property>
+            <property name="label" translatable="yes">_Help</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="server_help_about">
+            <property name="stock_id">gtk-about</property>
+            <property name="name">server_help_about</property>
+            <property name="label" translatable="yes">_About</property>
+            <signal handler="on_help_about_activate" name="activate" object="dialogue_about"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <ui>
+      <menubar name="menubar_server">
+        <menu action="menu_server_file">
+          <menuitem action="server_file_listen"/>
+          <separator/>
+          <menuitem action="server_file_quit"/>
+        </menu>
+        <menu action="menu_server_view">
+          <menuitem action="server_view_clear"/>
+        </menu>
+        <menu action="menu_help1">
+          <menuitem action="server_help_about"/>
+        </menu>
+      </menubar>
+    </ui>
+  </object>
+  <object class="GtkWindow" id="window_client">
     <property name="width_request">400</property>
     <property name="height_request">200</property>
     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_STRUCTURE_MASK</property>
-    <property name="title" translatable="yes">Multi-User Chat</property>
+    <property name="title" translatable="yes">Chat Client</property>
+    <property name="window_position">GTK_WIN_POS_CENTER</property>
     <signal handler="on_window_destroy" name="destroy"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
         <child>
-          <object class="GtkMenuBar" constructor="uimanager1" id="menubar">
+          <object class="GtkMenuBar" constructor="uimanager1" id="menubar_client">
             <property name="visible">True</property>
           </object>
           <packing>
@@ -140,9 +180,10 @@
                 <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                 <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                 <child>
-                  <object class="GtkTextView" id="chatOut">
+                  <object class="GtkTextView" id="text_chat_out">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="events">GDK_EXPOSURE_MASK | GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON1_MOTION_MASK | GDK_BUTTON2_MOTION_MASK | GDK_BUTTON3_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_FOCUS_CHANGE_MASK | GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK | GDK_VISIBILITY_NOTIFY_MASK | GDK_PROXIMITY_IN_MASK | GDK_PROXIMITY_OUT_MASK | GDK_SUBSTRUCTURE_MASK | GDK_SCROLL_MASK</property>
+                    <property name="editable">False</property>
                   </object>
                 </child>
               </object>
@@ -167,11 +208,12 @@
                     <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                     <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                     <child>
-                      <object class="GtkTextView" id="chatIn">
+                      <object class="GtkTextView" id="text_chat_input">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="has_focus">True</property>
                         <property name="is_focus">True</property>
+                        <property name="has_default">True</property>
                         <property name="events">GDK_ENTER_NOTIFY_MASK | GDK_STRUCTURE_MASK</property>
                       </object>
                     </child>
@@ -182,13 +224,14 @@
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkButton" id="clear">
+                      <object class="GtkButton" id="btn_clear">
                         <property name="width_request">60</property>
                         <property name="height_request">30</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="label" translatable="yes">Clear</property>
+                        <signal handler="on_btn_clear_activate" name="clicked"/>
                       </object>
                       <packing>
                         <property name="x">80</property>
@@ -196,13 +239,15 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="send">
+                      <object class="GtkButton" id="btn_send">
                         <property name="width_request">60</property>
                         <property name="height_request">30</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="label" translatable="yes">Send</property>
+                        <signal handler="on_btn_send_activate" name="clicked"/>
+                        <accelerator key="Return" modifiers="" signal="clicked"/>
                       </object>
                       <packing>
                         <property name="x">10</property>
@@ -228,6 +273,229 @@
         </child>
         <child>
           <object class="GtkStatusbar" id="statusbar">
+            <property name="visible">True</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="dialogue_about">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">About Glade</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="program_name">Chat Client/Server</property>
+    <property name="version">1.0</property>
+    <property name="copyright" translatable="yes">Copyright 2009, Steffen L. Norgren</property>
+    <property name="comments" translatable="yes">TCP Chat Client &amp; Server Application</property>
+    <property name="license" translatable="yes">This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
+    <property name="authors">Steffen L. Norgren - A00683006</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="layout_style">GTK_BUTTONBOX_END</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkDialog" id="dialogue_client_connect">
+    <property name="width_request">300</property>
+    <property name="height_request">100</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Connect to Server</property>
+    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="has_separator">False</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox2">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <object class="GtkAlignment" id="alignment1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkHBox" id="hbox2">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkLabel" id="label1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Server: </property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_server">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
+            <property name="visible">True</property>
+            <property name="layout_style">GTK_BUTTONBOX_END</property>
+            <child>
+              <object class="GtkButton" id="btn_cancel">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">Cancel</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_connect">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">Connect</property>
+                <signal handler="on_btn_connect_activate" name="clicked"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">btn_cancel</action-widget>
+      <action-widget response="0">btn_connect</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkWindow" id="window_main">
+    <property name="width_request">230</property>
+    <property name="height_request">50</property>
+    <property name="title" translatable="yes">Multi-user Chat Client/Server</property>
+    <property name="resizable">False</property>
+    <property name="window_position">GTK_WIN_POS_CENTER</property>
+    <signal handler="on_window_destroy" name="destroy"/>
+    <child>
+      <object class="GtkLayout" id="layout2">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkButton" id="btn_client">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="label" translatable="yes">Load Client</property>
+            <signal handler="on_btn_client_activate" name="clicked" object="window_client"/>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_server">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="label" translatable="yes">Load Server</property>
+            <signal handler="on_btn_server_activate" name="clicked" object="window_server"/>
+            <signal handler="on_window_destroy" name="destroy"/>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="window_server">
+    <property name="width_request">400</property>
+    <property name="height_request">200</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_STRUCTURE_MASK</property>
+    <property name="title" translatable="yes">Chat Server</property>
+    <property name="window_position">GTK_WIN_POS_CENTER</property>
+    <signal handler="on_window_destroy" name="destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox3">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkMenuBar" constructor="uimanager2" id="menubar_server">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox4">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <child>
+                  <object class="GtkTextView" id="text_client_list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar_server">
             <property name="visible">True</property>
             <property name="spacing">2</property>
           </object>

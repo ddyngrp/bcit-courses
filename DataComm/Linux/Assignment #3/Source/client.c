@@ -1,7 +1,51 @@
+/*------------------------------------------------------------------------------
+-- SOURCE FILE:	client.c - Receives data from a remote server via a socket
+-- 
+-- PROGRAM:     chat
+-- 
+-- FUNCTIONS:   start_client(const gchar * server)
+--              client_send(char * sendbuf)
+--              *client_recv(void *ptr)
+--              append_text(char * text)
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- NOTES: This deals with connecting to a remote server via a socket as well
+--        as maintaining a thread that reads incoming data from the socket.
+--        Additionally, this deals with displaying received data in the GUI.
+--
+------------------------------------------------------------------------------*/
+
 #include "client.h"
 #include "tools.h"
 #include "signal_handler.h"
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    start_client
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   start_client(const gchar * server)
+--                   server: the hostname or IP address of the server
+-- 
+-- RETURNS: 0  if successful
+--          -1 if there was an error
+-- 
+-- NOTES: This function creates a socket and connects to a specified server.
+--		  
+------------------------------------------------------------------------------*/
 int start_client(const gchar * server) {
 	struct addrinfo hints, *serverinfo, *p;
 	char serverIP[INET6_ADDRSTRLEN];
@@ -41,6 +85,26 @@ int start_client(const gchar * server) {
 	return 0;
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    client_send
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   client_send(char * sendbuf)
+--                   sendbuf: the data to be sent to the server
+-- 
+-- RETURNS: void
+-- 
+-- NOTES: This function simply sends data to a connected server. It also
+--        appends the client's hostname for identification.
+--		  
+------------------------------------------------------------------------------*/
 void client_send(char * sendbuf) {
 	int r;
 	char  text_out[MAXLEN];
@@ -56,6 +120,27 @@ void client_send(char * sendbuf) {
 	}
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    client_recv
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   *client_recv(void *ptr)
+--                   *ptr: a pointer to data to be handled by this function
+--                         NOTE: this is not used.
+-- 
+-- RETURNS: void
+-- 
+-- NOTES: This function is meant to be a thread that goes though an endless
+--        loop, looking for data incoming on the connected socket.
+--		  
+------------------------------------------------------------------------------*/
 void *client_recv(void *ptr) {
 	char	recvbuf[MAXLEN];
 	int		r;
@@ -71,6 +156,26 @@ void *client_recv(void *ptr) {
 	}
 }
 
+/*------------------------------------------------------------------------------
+-- FUNCTION:    append_text
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   append_text(char * text)
+--                   text: the text to be appended to the GUI's display
+-- 
+-- RETURNS: void	
+-- 
+-- NOTES: This function outputs any text passed though it into the chat client's
+--        main window.
+--		  
+------------------------------------------------------------------------------*/
 void append_text(char * text) {
 	GtkTextBuffer   *chat_out; 
 	GtkTextIter		iter;

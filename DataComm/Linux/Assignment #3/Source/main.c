@@ -1,3 +1,24 @@
+/*------------------------------------------------------------------------------
+-- SOURCE FILE:	main.c - The main entry point for the program.
+-- 
+-- PROGRAM:     chat
+-- 
+-- FUNCTIONS:   main(int argc, char *argv[]) 
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- NOTES: This is the main entry point for the porgram. It sets up the main
+--        GUI display and assigns the values to several global variables
+--        used for display output.
+--
+------------------------------------------------------------------------------*/
+
 #include "signal_handler.h"
 #include "client.h"
 

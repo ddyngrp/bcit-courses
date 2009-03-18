@@ -1,8 +1,15 @@
 COMPILING:
 In order to compile this program, you need the GTK+2.0 developer libraries installed.
+With the proper libraries installed, you should be able to compile the program by
+issuing the following command:
+
+$> make
 
 BUGS:
 I have yet to figure out why clients that don't have focus have a large delay
-in displaying received text.
+in displaying received text. To see the text immediately, move your mouse
+over the window and it should appear.
 
-To see the text immediately, move your mouse over the window and it should appear.
+If you try and run the program on localhost without an internet connection, the
+application will segfault.
+

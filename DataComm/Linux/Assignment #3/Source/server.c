@@ -1,8 +1,51 @@
+/*------------------------------------------------------------------------------
+-- SOURCE FILE:	server.c - Manages all incoming connections and data.
+-- 
+-- PROGRAM:     chat
+-- 
+-- FUNCTIONS:   *start_server(void *ptr)
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- NOTES: This listens for incoming socket connections as well as sending and
+--        receiving data from connected clients.
+--
+------------------------------------------------------------------------------*/
+
 #include "server.h"
 #include "signal_handler.h"
 #include "tools.h"
 
-/* Initialize sockets, etc. */
+/*------------------------------------------------------------------------------
+-- FUNCTION:    start_server
+-- 
+-- DATE:        March 18, 2009
+-- 
+-- REVISIONS:   
+-- 
+-- DESIGNER:    Steffen L. Norgren
+-- 
+-- PROGRAMMER:  Steffen L. Norgren
+-- 
+-- INTERFACE:   *start_server(void *ptr) 
+--                   *ptr: a pointer to data to be handled by this function
+--                         NOTE: this is not used.
+-- 
+-- RETURNS: void
+-- 
+-- NOTES: This function is meant to be created as a thread that sets up a
+--        network listening socket to wait for incoming connections. When a
+--        new connection is received, it is added to the master set. An
+--        infinite loop using select() to manage reading and writing to the
+--        set of socket connections.
+--		  
+------------------------------------------------------------------------------*/
 void *start_server(void *ptr) {
 	fd_set	master;
 	fd_set	read_fds;

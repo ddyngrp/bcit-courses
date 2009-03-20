@@ -3,9 +3,9 @@
 # Author: Steffen L. Norgren
 #
 
-CC=gcc # The compiler being used
-CFLAGS=-c -Wall -pedantic -ggdb	# Compiler command line options
-LDFLAGS=				# Linker command line options
+CC=gcc
+CFLAGS=-c -Wall -pedantic -ggdb
+LDFLAGS=
 SOURCES=master.c server.c client.c tools.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=clisrv

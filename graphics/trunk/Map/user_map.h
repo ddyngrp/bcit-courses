@@ -11,8 +11,9 @@
 class user_map
 {
 	public:
-	user_map(const int **map,SDL_Surface *image_set,const int numImages, 
-			 const int width, const int height);
+	user_map(const int **map,SDL_Surface *&image_set,const int &numImages, 
+			 const int &width, const int &height);
+			 
 	~user_map();
 	
 	bool draw_map(SDL_Surface *screen);

@@ -2,8 +2,8 @@
 
 
 //note: we need to add some more error checking (width/height > 0, etc) and throw exceptions
-user_map::user_map(const int **map, SDL_Surface *image_set, const int numImages, 
-			 const int width, const int height):
+user_map::user_map(const int **map, SDL_Surface *&image_set, const int &numImages, 
+			 const int &width, const int &height):
 			 _numImages(numImages), _width(width), _height(height)
 { 
 	_image_set = SDL_ConvertSurface(image_set, NULL, NULL);

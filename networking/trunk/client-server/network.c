@@ -82,7 +82,7 @@ int conn_setup(char *host, char *port) {
  ***********************************************/
 void keepalive() {
 	unsigned char data = KEEPALIVE;
-	transfer(&data, 1);
+	transfer(sock, &data, 1);
 }
 
 /***********************************************
@@ -101,8 +101,9 @@ void keepalive() {
  * 
  * Description: Sends the map to the client.
  ***********************************************/
-int send_map(unsigned char *map, size_t len) {
+int send_map(int *sockets, int num_sockets, unsigned char *map, size_t len) {
 	unsigned char *data = (unsigned char *)malloc(len + 1);
+	int a;
 	
 	if(data == NULL) {
 		fprintf(stderr, "malloc failed in send_map\n");
@@ -112,8 +113,10 @@ int send_map(unsigned char *map, size_t len) {
 	data[iTYPE] = MAP;
 	memcpy(data + 1, map, len);
 	
-	if(transfer(data, len + 1) < len + 1) { /* not the whole len was transfered */
-		return -1;
+	for(a = 0; a < num_sockets; a++) {
+		if(transfer(sockets[a], data, len + 1) < len + 1) { /* not the whole len was transfered */
+			return -1;
+		}
 	}
 	
 	return 0;
@@ -152,7 +155,7 @@ int request_move(int x, int y) {
 	
 	data[iTYPE] = MOVE;
 	add_coords_xy(x, y, data + 1, len - 1);
-	transfer(data, len);
+	transfer(sock, data, len); /* need to update this line to include a socket */
 	
 	return 0;
 }
@@ -180,7 +183,7 @@ int request_bomb(int type) {
 	data[iTYPE] = BOMB;
 	memcpy(data + 1, &type, sizeof(int));
 	data[len - 1] = '\0';
-	transfer(data, len);
+	transfer(sock, data, len); /* change this call so it uses a socket */
 	
 	return 0;
 }
@@ -208,7 +211,7 @@ int explode_bomb(int x, int y) {
 	
 	data[iTYPE] = EXPLOSION;
 	add_coords_xy(x, y, data + 1, len - 1);
-	transfer(data, len);
+	transfer(sock, data, len); /* change this line so it uses a socket */
 	
 	return 0;
 }
@@ -229,11 +232,15 @@ int explode_bomb(int x, int y) {
  * 
  * Description: Transfer the data, regardless of TCP/UDP
  ***********************************************/
-int transfer(unsigned char *data, size_t len) {
+int transfer(int sockt, unsigned char *data, size_t len) {
+	if(sockt == -1) { /* the socket is invalid */
+		return -1;
+	}
+	
 	if(conn_type == TCP) {
-		return send(sock, data, len, 0);
+		return send(sockt, data, len, 0);
 	} else if(conn_type == UDP) {
-		return sendto(sock, data, len, 0, (struct sockaddr *)&server, sizeof(server));
+		return sendto(sockt, data, len, 0, (struct sockaddr *)&server, sizeof(server));
 	} else { /* this should never happen */
 		return -1;
 	}
@@ -288,7 +295,6 @@ int add_coords_xy(int x, int y, unsigned char *data, size_t len) {
  * 
  * Description: Process the data that's received.
  ***********************************************/
-/* process the data that's received */
 int process_data(unsigned char *data, size_t len) {
 	switch(data[iTYPE]) {
 		case KEEPALIVE: /* do nothing */

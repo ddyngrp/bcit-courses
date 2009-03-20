@@ -3,7 +3,7 @@
 # Author: Steffen L. Norgren
 #
 
-CC=gcc					# The compiler being used
+CC=gcc # The compiler being used
 CFLAGS=-c -Wall -pedantic -ggdb	# Compiler command line options
 LDFLAGS=				# Linker command line options
 SOURCES=master.c server.c client.c tools.c

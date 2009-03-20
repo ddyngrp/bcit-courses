@@ -1,5 +1,6 @@
 #include "server.h"
 #include "tools.h"
+#include "network.c"
 
 /* Initialize sockets, etc. */
 void start_server(void) {
@@ -24,6 +25,8 @@ void start_server(void) {
 
 	FD_ZERO(&master);	/* clear the master and temp socket sets */
 	FD_ZERO(&read_fds);
+	
+	mode = SERVER; /* needed for network functions */
 
 	/* Get a new socket and bind it! */
 	memset(&hints, 0, sizeof(hints));
@@ -93,8 +96,7 @@ void start_server(void) {
 
 					if (new_fd == -1) {
 						perror("accept"); /* obviously the server hates us */
-					}
-					else { /* the server loves us */
+					} else { /* the server loves us */
 						FD_SET(new_fd, &master); /* add to the master set */
 						if (new_fd > fd_max) { /* make sure we don't go over the limit */
 							fd_max = new_fd;
@@ -104,23 +106,25 @@ void start_server(void) {
 								inet_ntop(remoteaddr.ss_family, get_in_addr((struct sockaddr *)&remoteaddr),
 									remoteIP, INET6_ADDRSTRLEN), new_fd);
 					}
-				}
-				else {
+				} else {
 					/* handle data from the client */
 					if ((nBytes = recv(i, buf, sizeof(buf), 0)) <= 0) {
 						/* got an error for client close the connection */
 						if (nBytes == 0) {
 							/* connection close */
 							printf("select: socket %d hung up\n", i);
-						}
-						else {
+						} else {
 							perror("recv");
 						}
 						close(i);	/* goodbye */
 						FD_CLR(i, &master); /* remove from master set */
-					}
-					else {
-						/* we got data from a client */
+					} else { /* we got data from a client */
+						if(process_data(buf, nBytes) < 0) { /* if there was an error processing the data */
+							perror("process_data");
+						} else {
+							
+						}
+						
 						for (j = 0; j <= fd_max; j++) {
 							if (FD_ISSET(j, &master)) {
 								/* only echo back to the client that connected

@@ -1,6 +1,6 @@
 #include "user_map.h"
 
-void genRandomMap(int[][] map);
+void genRandomMap(int map[][18]);
 
 SDL_Surface *load_image( std::string filename )
 {

@@ -1,10 +1,8 @@
 #include "user_map.h"
 
+#define TOTAL_TILES 306
 
-
-
-
-void genRandomMap(int[][] map)
+void genRandomMap(int map[][18])
 {
 	int tile,row;
 	//generate random map

@@ -1,5 +1,7 @@
 #include "user_map.h"
 
+void genRandomMap(int map[][]);
+
 SDL_Surface *load_image( std::string filename )
 {
 	SDL_RWops *rwop;
@@ -40,24 +42,31 @@ SDL_Surface *load_image( std::string filename )
 
 int main()
 {
-	int *map[18]={	{00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00,00},
+	int map[17][18];/*={{00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00,00},
 			{00, 01, 01, 02, 02, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 00,00},
 			{00, 01, 00, 01, 00, 01, 00, 01, 00, 01, 00, 01, 00, 01, 00, 01, 00,00},
 			{00,01, 01, 01, 01, 02, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 00, 00},
 			{00, 01 ,00, 01, 00, 02 ,00, 01, 00 ,01, 00, 01, 00, 01 ,00 ,01, 00,00},
 			{00, 01, 01, 01, 01, 02, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 00,00},
 			{00, 01, 00, 01, 00, 02, 00, 01, 00, 02, 00, 02, 00, 02, 00, 01, 00,00}
-			} ;
+			} ;*/
 			
-			
+	genRandomMap(map);		
 	SDL_Surface *image_set = load_image( "empty.xcf" );;
 	int numImages = 3;
 	int width = 18;
 	int height = 7;
-	
-	
-	
-	user_map::user_map *uMap = new user_map(map,image_set,numImages,width,height);
+	for( int i = 0 , j = 0 ; i < 306; i++)
+		{
+			if (i %18 == 0 )
+			{
+				printf("\n");
+				j++;
+			}
+			printf("%d",map[j][i%18]);
+		}
+		 
+	//user_map::user_map *uMap = new user_map(map,image_set,numImages,width,height);
 }
 
 

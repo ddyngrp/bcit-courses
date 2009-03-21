@@ -56,14 +56,14 @@ int main()
 	int numImages = 3;
 	int width = 18;
 	int height = 7;
-	for( int i = 0 , j = 0 ; i < 306; i++)
+	for( int i = 0 , j = -1 ; i < 306; i++)
 		{
 			if (i %18 == 0 )
 			{
 				printf("\n");
 				j++;
 			}
-			printf("%d",map[j][i%18]);
+			printf(" %d",map[j][i%18]);
 		}
 		 
 	//user_map::user_map *uMap = new user_map(map,image_set,numImages,width,height);

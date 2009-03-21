@@ -1,5 +1,5 @@
-#ifndef TUXBOMBER_NETWORK_H
-#define TUXBOMBER_NETWORK_H
+#ifndef _NETWORK_H_
+#define _NETWORK_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,6 +38,10 @@
 #define ERR_CLNT_RECV_MOVE		(-4)
 #define ERR_CLNT_RECV_BOMB		(-5)
 /* end message-type errors */
+
+/* global definitions */
+#define MAP_LEN	255
+/* end global definitions */
 
 int conn_type = TCP;
 int sock = 0;

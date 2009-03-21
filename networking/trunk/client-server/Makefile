@@ -6,7 +6,7 @@
 CC=gcc
 CFLAGS=-c -Wall -pedantic -ggdb
 LDFLAGS=
-SOURCES=master.c server.c client.c tools.c
+SOURCES=master.c server.c client.c tools.c network.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=clisrv
 

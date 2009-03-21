@@ -1,5 +1,6 @@
 #include "client.h"
 #include "tools.h"
+#include "network.h"
 
 void start_client(char * server, char * port) {
 	struct addrinfo hints, *serverinfo, *p;

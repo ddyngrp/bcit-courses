@@ -4,15 +4,15 @@
 
 /* Initialize sockets, etc. */
 void start_server(void) {
-	fd_set	master;		
-	fd_set	read_fds;
-	int		fd_max;
-	int		listener;
-	int		new_fd;	
-	struct sockaddr_storage remoteaddr;
-	socklen_t	addrlen;
-	char	buf[256];
-	int		nBytes;
+	fd_set			master;		
+	fd_set			read_fds;
+	int				fd_max;
+	int				listener;
+	int				new_fd;	
+	struct 			sockaddr_storage remoteaddr;
+	socklen_t		addrlen;
+	unsigned char	buf[256];
+	int				nBytes;
 
 	/* Since we have the possibility for IPv6, we need to make sure
 	   we can hold an address of that length. */
@@ -119,7 +119,7 @@ void start_server(void) {
 						close(i);	/* goodbye */
 						FD_CLR(i, &master); /* remove from master set */
 					} else { /* we got data from a client */
-						if(process_data(buf, nBytes) < 0) { /* if there was an error processing the data */
+						if (process_data(buf, nBytes) < 0) { /* if there was an error processing the data */
 							perror("process_data");
 						} else {
 							

@@ -88,20 +88,19 @@ start_fuse(const int x, const int y)
 	return;	
 }
 
-void
+/* NEED TO ADD PLAYER 
+bool
 add_player(void)
 {
 char packet;
 char packet2;
 
 	if (player_count == MAX_PLAYERS)
-		return;
-	packet2 = make_packet(TYPE_ADDYOU, player_count, 0);
-	// send packet to _ONLY_ the player who joined
+		return false;
 	packet = make_packet(TYPE_JOIN, player_count, 0);
 	// send packet to all clients	
 	player_count++;
-	init_player(player_count);
+	return true;
 }
 
 void

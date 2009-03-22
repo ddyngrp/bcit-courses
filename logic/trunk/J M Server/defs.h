@@ -15,10 +15,6 @@
 #define TYPE_DIE         4
 #define TYPE_POWERUP     5
 #define TYPE_JOIN        6
-#define TYPE_ADDYOU      7
-/* TYPE_ADDYOU tells the client what it's id
-   is so that it can send packets.  its
-   a really shitty name sry */
 
 #define MOVE_UP          0
 #define MOVE_DOWN        1

@@ -286,7 +286,7 @@ bool init()
 bool load_files()
 {
     //Load the Player image
-    square = load_image( "square.bmp" );
+    square = load_image( "batmanTuxSmal.gif" );
     bomb   = load_image( "circle.bmp" );
     wall2   = load_image( "wall.bmp" );
 
@@ -362,10 +362,10 @@ void Player::handle_input()
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: yVel -= 10; break;
-            case SDLK_DOWN: yVel += 10; break;
-            case SDLK_LEFT: xVel -= 10; break;
-            case SDLK_RIGHT: xVel += 10; break;
+            case SDLK_UP: yVel -= 7; break;
+            case SDLK_DOWN: yVel += 7; break;
+            case SDLK_LEFT: xVel -= 7; break;
+            case SDLK_RIGHT: xVel += 7; break;
             case SDLK_SPACE:	if(bombCount > 4)
             			{
             				break;
@@ -387,10 +387,10 @@ void Player::handle_input()
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: yVel += 10; break;
-            case SDLK_DOWN: yVel -= 10; break;
-            case SDLK_LEFT: xVel += 10; break;
-            case SDLK_RIGHT: xVel -= 10; break;
+            case SDLK_UP: yVel += 7; break;
+            case SDLK_DOWN: yVel -= 7; break;
+            case SDLK_LEFT: xVel += 7; break;
+            case SDLK_RIGHT: xVel -= 7; break;
             case SDLK_SPACE: break;
             default: ;
         }
@@ -404,11 +404,11 @@ void Player::move()
 	box.x += xVel;
 	box.y += yVel;
 	 
-	yt= box.y;
-	yb= box.y + 30;
+	yt= box.y + 15;
+	yb= box.y + 25;
 	
-	xl= box.x;
-	xr= box.x + 30;
+	xl= box.x + 10;
+	xr= box.x + 25;
 	/*
 	
 	printf("xl = %d\nxr = %d\nyt = %d\nyb= %d \n", xl/35, xr/35, yt/35 ,yb/35);
@@ -599,9 +599,10 @@ int main( int argc, char* args[] )
         //Show the wall
         //SDL_FillRect( screen, &wall, SDL_MapRGB( screen->format, 0x77, 0x77, 0x77 ) );
 
+        DrawMap();
         //Show the Player on the screen
         myPlayer.show();
-        DrawMap();
+
 
         //Update the screen
         if( SDL_Flip( screen ) == -1 )

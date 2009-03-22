@@ -399,7 +399,7 @@ void Player::handle_input()
 
 void Player::move()
 {
-	int yt,yb,xt,xb;
+	int yt,yb,xl,xr;
 	
 	box.x += xVel;
 	box.y += yVel;
@@ -407,15 +407,15 @@ void Player::move()
 	yt= box.y;
 	yb= box.y + 30;
 	
-	xt= box.x;
-	xb= box.x + 30;
+	xl= box.x;
+	xr= box.x + 30;
 	/*
 	
-	printf("xt = %d\nxb = %d\nyt = %d\nyb= %d \n", xt/35, xb/35, yt/35 ,yb/35);
-	printf("map: map[xt/35][yt/35], %d\n", map[xt/35][yt/35]);
-	printf("map: map[xb/35][yb/35], %d\n", map[xb/35][yb/35]);
-	printf("map: map[xt/35][yb/35], %d\n", map[xt/35][yb/35]);
-	printf("map: map[xb/35][yt/35], %d\n", map[xb/35][yt/35]);
+	printf("xl = %d\nxr = %d\nyt = %d\nyb= %d \n", xl/35, xr/35, yt/35 ,yb/35);
+	printf("map: map[xl/35][yt/35], %d\n", map[xl/35][yt/35]);
+	printf("map: map[xr/35][yb/35], %d\n", map[xr/35][yb/35]);
+	printf("map: map[xl/35][yb/35], %d\n", map[xl/35][yb/35]);
+	printf("map: map[xr/35][yt/35], %d\n", map[xr/35][yt/35]);
 	printf("*******\n");	
 	*/
 	prevX = box.x;
@@ -423,7 +423,8 @@ void Player::move()
 	
        
     //Move the Player up or down
-    if(map[xt/35][yt/35] != 0	|| map[xb/35][yb/35] != 0 || map[xt/35][yb/35] != 0	|| map[xb/35][yt/35] )
+    if(map[xl/35][yt/35] != 0 || map[xr/35][yb/35] != 0 
+    	|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
     {
     	box.y -= yVel;
     	box.x -= xVel;

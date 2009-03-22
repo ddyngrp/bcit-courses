@@ -202,7 +202,7 @@ bool set_tiles( Tile *tiles[] )
     int x = FIELD_X_OFFSET, y = FIELD_Y_OFFSET;
 
     //Open the map
-    std::ifstream map( "lazy.map" );
+    std::ifstream map( "lazyBack.map" );
 
     //If the map couldn't be loaded
     if( map == NULL )

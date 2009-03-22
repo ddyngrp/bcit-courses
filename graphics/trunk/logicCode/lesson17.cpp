@@ -163,6 +163,13 @@ void InitMap()
 
 	for(i = 0; i < GRIDSIZE; i++)
 	{
+		for(j = 0; j < GRIDSIZE; j++)
+		{
+			map[i][j] = 0; 
+		} 
+	}
+	for(i = 0; i < GRIDSIZE; i++)
+	{
 		map[0][i]  = WALL;
 		map[i][0]  = WALL;
 		map[GRIDSIZE - 1][i] = WALL;
@@ -177,7 +184,7 @@ void InitMap()
 		}
 	}
 	
-	map[1][1] = PLAYER1;
+	//map[1][1] = PLAYER1;
 }
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL )
@@ -355,10 +362,10 @@ void Player::handle_input()
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: yVel -= 5; break;
-            case SDLK_DOWN: yVel += 5; break;
-            case SDLK_LEFT: xVel -= 5; break;
-            case SDLK_RIGHT: xVel += 5; break;
+            case SDLK_UP: yVel -= 10; break;
+            case SDLK_DOWN: yVel += 10; break;
+            case SDLK_LEFT: xVel -= 10; break;
+            case SDLK_RIGHT: xVel += 10; break;
             case SDLK_SPACE:	if(bombCount > 4)
             			{
             				break;
@@ -380,10 +387,10 @@ void Player::handle_input()
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: yVel += 5; break;
-            case SDLK_DOWN: yVel -= 5; break;
-            case SDLK_LEFT: xVel += 5; break;
-            case SDLK_RIGHT: xVel -= 5; break;
+            case SDLK_UP: yVel += 10; break;
+            case SDLK_DOWN: yVel -= 10; break;
+            case SDLK_LEFT: xVel += 10; break;
+            case SDLK_RIGHT: xVel -= 10; break;
             case SDLK_SPACE: break;
             default: ;
         }
@@ -392,38 +399,35 @@ void Player::handle_input()
 
 void Player::move()
 {
+	int yt,yb,xt,xb;
+	
+	box.x += xVel;
+	box.y += yVel;
+	 
+	yt= box.y;
+	yb= box.y + 30;
+	
+	xt= box.x;
+	xb= box.x + 30;
+	/*
+	
+	printf("xt = %d\nxb = %d\nyt = %d\nyb= %d \n", xt/35, xb/35, yt/35 ,yb/35);
+	printf("map: map[xt/35][yt/35], %d\n", map[xt/35][yt/35]);
+	printf("map: map[xb/35][yb/35], %d\n", map[xb/35][yb/35]);
+	printf("map: map[xt/35][yb/35], %d\n", map[xt/35][yb/35]);
+	printf("map: map[xb/35][yt/35], %d\n", map[xb/35][yt/35]);
+	printf("*******\n");	
+	*/
 	prevX = box.x;
 	prevY = box.y;
-    //Move the Player left or right
-    box.x += xVel;
-    
-    if(map[(box.x+17.5) / 35][box.y + 17.5) / 35] == WALL || map[box.x / 35][box.y / 35] == BOMB1)
-    	box.x -= xVel;
-
-    //If the Player went too far to the left or right or has collided with the wall
-    /*if( ( box.x < 0 ) || ( box.x + SQUARE_WIDTH > SCREEN_WIDTH ) || ( check_collision( box, wall ) ) )
-    {
-        //Move back
-        box.x -= xVel;
-    }*/
-
+	
+       
     //Move the Player up or down
-    box.y += yVel;
-    
-    if(map[box.x / 35][box.y / 35] == WALL || map[box.x / 35][box.y / 35] == BOMB1)
-    	box.y -= yVel;
-
-    //If the Player went too far up or down or has collided with the wall
-    /*if( ( box.y < 0 ) || ( box.y + SQUARE_HEIGHT > SCREEN_HEIGHT ) || ( check_collision( box, wall ) ) )
+    if(map[xt/35][yt/35] != 0	|| map[xb/35][yb/35] != 0 || map[xt/35][yb/35] != 0	|| map[xb/35][yt/35] )
     {
-        //Move back
-        box.y -= yVel;
-    }*/
-    if(map[prevX/35][prevY/35] == PBOMB)
-    	map[prevX/35][prevY/35] = BOMB1;
-    else
-    	map[prevX/35][prevY/35] = 0;
-    map[box.x/35][box.y/35] = PLAYER1;
+    	box.y -= yVel;
+    	box.x -= xVel;
+	}
 }
 
 void Player::show()

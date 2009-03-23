@@ -74,7 +74,7 @@ int connection_setup(char * servIp)
 		exit(2);
 	}
 	else
-		printf("Connected.  Type a message to chat or press EOF to end your session.\n");
+		printf("Connected.\n");
 	
 	inet_ntop(servIter->ai_family,get_in_addr((struct sockaddr*)servIter->ai_addr),serverIP,sizeof(serverIP));
 	freeaddrinfo(serverinfo);

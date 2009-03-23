@@ -46,28 +46,15 @@ void fork_off(int sockfd)
 	SDL_Event event;
 	bool quit = false;
 	
+	/* TODO NETWORK: any of this stuff needed? Remove whatever's no longer necessary*/
 	clientLen = sizeof(clientInfo);
 	len = sizeof(clientInfo);
 	getsockname(sockfd,(struct sockaddr *)&clientInfo,&len);
 	memset(&in,0,sizeof(in));
 	in.s_addr = clientInfo.sin_addr.s_addr;
-	
-	
-	
-	/* Screen Initializers start */
-	SDL_Init( SDL_INIT_EVERYTHING );
-
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {//turn video on
-		printf("Unable to initialize SDL: %s\n", SDL_GetError());
-		exit(1);
-	}
-	atexit(SDL_Quit);
-	screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_SWSURFACE );//video settings  //SDL_DOUBLEBUF instead of SDL_SWSURFACE?
-	if (screen == NULL) {
-		printf("Unable to set video mode: %s\n", SDL_GetError());
-		exit(2);
-	}
-    /* Screen initializers end */
+    /* TODO END */
+    
+    
 	
 	if((pid = fork()) < 0)
 	{
@@ -104,7 +91,18 @@ void fork_off(int sockfd)
 				perror("recv call() failed.");
 				continue;
 			}
-			recvbuf[r] = '\0';
+			//recvbuf[r] = '\0';
+			
+			if (recbuf[0] == TYPE_MOVE)
+			{
+				redrawMap();
+			}
+			else if (recvbuf[0] == PLAYERMOVE)
+			{
+
+            }		
+			
+			
 		}
 	}
 }
@@ -134,7 +132,7 @@ void handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: /* send corresponding messages through the network */ break;
+            case SDLK_UP: /* TODO network: send corresponding messages through the network.  defs.h has the values of each key */ break;
             case SDLK_DOWN: 						 	    break;
             case SDLK_LEFT: 							    break;
             case SDLK_RIGHT:							    break;

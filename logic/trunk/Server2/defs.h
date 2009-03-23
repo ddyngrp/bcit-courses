@@ -1,21 +1,19 @@
 #ifndef DEFS_H
 
-#define GRID_EMPTY       0
-#define GRID_BOMB        1
-#define GRID_DBLOCK      2
-#define GRID_UBLOCK      3
-#define GRID_POWUP_NUM   4
-#define GRID_POWUP_RAD   5
-#define GRID_POWUP_SPIKE 6
+#define GRID_EMPTY       1
+#define GRID_BOMB        2
+#define GRID_DBLOCK      4
+#define GRID_UBLOCK      8
+#define GRID_POWUP_NUM   16
+#define GRID_POWUP_RAD   32
+#define GRID_POWUP_SPIKE 64
+#define GRID_FIRE        128
 
 #define TYPE_MOVE        0
-#define TYPE_QUIT        1
-#define TYPE_PLANT       2
-#define TYPE_EXPLODE     3
-#define TYPE_DIE         4
-#define TYPE_POWERUP     5
-#define TYPE_JOIN        6
-#define TYPE_START       7
+#define TYPE_PLANT       1
+#define TYPE_EXPLODE     2
+#define TYPE_DIE         3
+#define TYPE_POWERUP     4
 
 #define MOVE_UP          0
 #define MOVE_DOWN        1

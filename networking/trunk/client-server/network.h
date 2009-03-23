@@ -43,9 +43,9 @@
 #define MAP_LEN	255
 /* end global definitions */
 
-int conn_type = TCP;
-int sock = 0;
-int mode = CLIENT;
+static int conn_type = TCP;
+static int sock = 0;
+static int mode = CLIENT;
 struct sockaddr_in server;
 
 int set_conn_type(int type);

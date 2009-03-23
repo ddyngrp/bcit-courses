@@ -2,6 +2,8 @@
 #include "tools.h"
 #include "network.h"
 
+extern int mode, conn_type, sock;
+
 void start_client(char * server, char * port) {
 	struct addrinfo hints, *serverinfo, *p;
 	char serverIP[INET6_ADDRSTRLEN];

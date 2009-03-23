@@ -223,7 +223,7 @@ int request_move(int x, int y) {
 	
 	data[iTYPE] = MOVE;
 	add_coords_xy(x, y, data + 1, len - 1);
-	transfer(sock, data, len); /* need to update this line to include a socket */
+	transfer(sock, data, len);
 	
 	return 0;
 }
@@ -253,7 +253,7 @@ int request_bomb(int type) {
 	data[iTYPE] = BOMB;
 	memcpy(data + 1, &type, sizeof(int));
 	data[len - 1] = '\0';
-	transfer(sock, data, len); /* change this call so it uses a socket */
+	transfer(sock, data, len);
 	
 	return 0;
 }
@@ -284,7 +284,7 @@ int explode_bomb(int x, int y) {
 	
 	data[iTYPE] = EXPLOSION;
 	add_coords_xy(x, y, data + 1, len - 1);
-	transfer(sock, data, len); /* change this line so it uses a socket */
+	transfer(sock, data, len);
 	
 	return 0;
 }
@@ -385,7 +385,7 @@ int process_data(unsigned char *data, size_t len) {
 		case MAP: /* deal with the map */
 			if (mode == CLIENT) {
 				/* update the map */
-			} else if (mode == SERVER){ /* why is the client sending the server a map? */
+			} else if (mode == SERVER) { /* why is the client sending the server a map? */
 				return ERR_SERV_RECV_MAP;
 			} else {
 				return ERR_UNKNOWN_INPUT;

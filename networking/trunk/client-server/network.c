@@ -55,7 +55,7 @@
  *
  *****************************************************************************/
 int set_conn_type(int type) {
-	if (type == TCP || type == UDP) {
+	if(type == TCP || type == UDP) {
 		conn_type = type;
 		return 0;
 	} else {
@@ -90,7 +90,7 @@ int conn_setup(char *host, char *port) {
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = conn_type;
 	
-	if (getaddrinfo(host, port, &hints, &results) == -1) {
+	if(getaddrinfo(host, port, &hints, &results) == -1) {
 		fprintf(stderr, "getaddrinfo failed in %s:connect_to_server\n", __FILE__);
 		return -1;
 	}
@@ -99,7 +99,7 @@ int conn_setup(char *host, char *port) {
 	
 	memcpy(&server, (struct sockaddr_in *)results->ai_addr, sizeof(server));
 	
-	if (conn_type == TCP) {
+	if(conn_type == TCP) {
 		connect(sock, (struct sockaddr *)&server, sizeof(server));
 	}
 	
@@ -152,7 +152,7 @@ int send_map(int *sockets, int num_sockets, unsigned char *map, size_t len) {
 	unsigned char *data = (unsigned char *)malloc(len + 1);
 	int a;
 	
-	if (data == NULL) {
+	if(data == NULL) {
 		fprintf(stderr, "malloc failed in send_map\n");
 		return -1;
 	}
@@ -160,8 +160,8 @@ int send_map(int *sockets, int num_sockets, unsigned char *map, size_t len) {
 	data[iTYPE] = MAP;
 	memcpy(data + 1, map, len);
 	
-	for (a = 0; a < num_sockets; a++) {
-		if (transfer(sockets[a], data, len + 1) < len + 1) { /* not the whole len was transfered */
+	for(a = 0; a < num_sockets; a++) {
+		if(transfer(sockets[a], data, len + 1) < len + 1) { /* not the whole len was transfered */
 			return -1;
 		}
 	}
@@ -216,7 +216,7 @@ int request_move(int x, int y) {
 	int len = sizeof(unsigned char) * ((sizeof(int) * 2) + 2);
 	unsigned char *data = (unsigned char *)malloc(len);
 	
-	if (data == NULL) {
+	if(data == NULL) {
 		fprintf(stderr, "malloc failed in request_move\n");
 		return -1;
 	}
@@ -309,13 +309,13 @@ int explode_bomb(int x, int y) {
  *
  *****************************************************************************/
 int transfer(int sockt, unsigned char *data, size_t len) {
-	if (sockt == -1) { /* the socket is invalid */
+	if(sockt == -1) { /* the socket is invalid */
 		return -1;
 	}
 	
-	if (conn_type == TCP) {
+	if(conn_type == TCP) {
 		return send(sockt, data, len, 0);
-	} else if (conn_type == UDP) {
+	} else if(conn_type == UDP) {
 		return sendto(sockt, data, len, 0, (struct sockaddr *)&server, sizeof(server));
 	} else { /* this should never happen */
 		return -1;
@@ -344,7 +344,7 @@ int transfer(int sockt, unsigned char *data, size_t len) {
  *
  *****************************************************************************/
 int add_coords_xy(int x, int y, unsigned char *data, size_t len) {
-	if (len < (2 * sizeof(int)) + 1) {
+	if(len < (2 * sizeof(int)) + 1) {
 		fprintf(stderr, "len is < required length in add_coords_xy\n");
 		return -1;
 	}
@@ -383,9 +383,9 @@ int process_data(unsigned char *data, size_t len) {
 			break;
 			
 		case MAP: /* deal with the map */
-			if (mode == CLIENT) {
+			if(mode == CLIENT) {
 				/* update the map */
-			} else if (mode == SERVER) { /* why is the client sending the server a map? */
+			} else if(mode == SERVER) { /* why is the client sending the server a map? */
 				return ERR_SERV_RECV_MAP;
 			} else {
 				return ERR_UNKNOWN_INPUT;
@@ -394,9 +394,9 @@ int process_data(unsigned char *data, size_t len) {
 			break; /* end case MAP */
 			
 		case MOVE: /* client requesting a move */
-			if (mode == CLIENT) { /* client shouldn't get a MOVE message */
+			if(mode == CLIENT) { /* client shouldn't get a MOVE message */
 				return ERR_CLNT_RECV_MOVE;
-			} else if (mode == SERVER) {
+			} else if(mode == SERVER) {
 				/* the client wants to move to this position */
 			} else {
 				return ERR_UNKNOWN_INPUT;
@@ -405,9 +405,9 @@ int process_data(unsigned char *data, size_t len) {
 			break; /* end case MOVE */
 			
 		case BOMB: /* client requesting a bomb drop */
-			if (mode == CLIENT) {
+			if(mode == CLIENT) {
 				return ERR_CLNT_RECV_BOMB;
-			} else if (mode == SERVER) {
+			} else if(mode == SERVER) {
 				/* the client wants to drop a bomb of the specified type */
 			} else {
 				return ERR_UNKNOWN_INPUT;
@@ -416,9 +416,9 @@ int process_data(unsigned char *data, size_t len) {
 			break; /* end case BOMB */
 			
 		case EXPLOSION: /* draw the explosion */
-			if (mode == CLIENT) {
+			if(mode == CLIENT) {
 				/* draw the explosion */
-			} else if (mode == SERVER) { /* only servers send EXPLOSION messages */
+			} else if(mode == SERVER) { /* only servers send EXPLOSION messages */
 				return ERR_SERV_RECV_EXPLOSION;
 			} else {
 				return ERR_UNKNOWN_INPUT;
@@ -428,6 +428,99 @@ int process_data(unsigned char *data, size_t len) {
 			
 		default: /* this should never happen */
 			return ERR_UNKNOWN_INPUT;
+	}
+	
+	return 0;
+}
+
+int parse_info_byte(char *data) {
+	int type, player, extra;
+	
+	type = get_action_type(data[0]); /* gets bits xxx- ---- for action type */
+	player = get_player_id(data[0]); /* gets bits ---x xx-- for player id */
+	extra = get_extra_info(data[0]); /* gets bits ---- --xx for extra info */
+	
+	return 0;
+}
+
+int get_action_type(char info) {
+	switch(info >> 5) { /* bits xxx- ---- for action type */
+		case 0: /* movement */
+			break;
+			
+		case 1: /* player quit */
+			break;
+			
+		case 2: /* bomb planted */
+			break;
+			
+		case 3: /* bomb explodes */
+			break;
+			
+		case 4: /* player dies */
+			break;
+			
+		case 5: /* powerup */
+			break;
+			
+		case 6: /* currently not defined */
+		case 7: /* currently not defined */
+		default: /* this should never happen */
+			break;
+	}
+	
+	return 0;
+}
+
+int get_player_id(char info) {
+	switch((info >> 2) % 8) { /* bits ---x xx-- for player id */
+		case 0: /* player 1 */
+			break;
+			
+		case 1: /* player 2 */
+			break;
+			
+		case 2: /* player 3 */
+			break;
+			
+		case 3: /* player 4 */
+			break;
+			
+		case 4: /* player 5 */
+			break;
+			
+		case 5: /* player 6 */
+			break;
+			
+		case 6: /* player 7 */
+			break;
+			
+		case 7: /* player 8 */
+			break;
+			
+		default: /* this should never happen */
+			break;
+	}
+	
+	return 0;
+}
+
+int get_extra_info(char info) {
+	switch(info % 4) { /* bits ---- --xx for extra info */
+		case 0: /* up for movement. num_bombs++ for powerup */
+			break;
+			
+		case 1: /* down for movement. blast_radius++ for powerup */
+			break;
+			
+		case 2: /* left for movement. spikey bombs for powerup */
+			break;
+			
+		case 3: /* right for movement. unused for powerup */
+			break;
+			
+		default: /* this should never happen */
+			break;
 	}
 	
 	return 0;

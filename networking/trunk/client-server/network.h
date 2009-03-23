@@ -67,4 +67,9 @@ int add_coords_xy(int x, int y, unsigned char *data, size_t len);
 /* process the data that's received */
 int process_data(unsigned char *data, size_t len);
 
+int parse_info_byte(char *data);
+int get_action_type(char info);
+int get_player_id(char info);
+int get_extra_info(char info);
+
 #endif

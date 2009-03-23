@@ -2,16 +2,25 @@
 
 #define TOTAL_TILES 306
 
-void genRandomMap(int map[][18])
+int** genRandomMap(int rowNum, int colNum)
 {
 	int tile,row;
 	//generate random map
 	int sTime;
 	long lTime;
-
+	int **map;
+	//int map[rowNum][colNum];
+	int i;
 	lTime = time(NULL);
 	sTime = (unsigned)lTime/2;
 	srand(sTime);
+	
+	//map = (int **)malloc(sizeof(int) * (rowNum * colNum));
+	//map = new int[rowNum][colNum];
+
+	map = (int**)malloc(rowNum * sizeof(int *));
+	for(i = 0; i < rowNum; i++)
+		map[i] = (int*)malloc(colNum * sizeof(int));
 
 
 	for(tile = 0, row = -1  ;tile < 306; tile++ )
@@ -45,4 +54,6 @@ void genRandomMap(int map[][18])
 		// Places either emprow or destructable in every open location.
 		map[row][tile%18] = (rand()%2 + 1);
 	}
+
+	return map;
 }

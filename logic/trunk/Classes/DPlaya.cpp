@@ -46,9 +46,11 @@ void DPlaya::explodeBomb(int i)
 	this->droppedBombs_--;
 }
 
-void DPlaya::move()
+void DPlaya::move(user_map map)
 {
 	int yt,yb,xl,xr;
+	int xVel = 10;
+	int yVel = 10;
 	
 	x_ += xVel;
 	y_ += yVel;
@@ -69,8 +71,8 @@ void DPlaya::move()
 	*/
        
     //Move the Player up or down
-    if(map[xl/35][yt/35] != 0 || map[xr/35][yb/35] != 0 
-    	|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
+    if(map_[xl/35][yt/35] != 0 || map_[xr/35][yb/35] != 0 
+    	|| map_[xl/35][yb/35] != 0 || map_[xr/35][yt/35] != 0 )
     {
     	y_ -= yVel;
     	x_ -= xVel;

@@ -27,12 +27,13 @@ public:
 
 	virtual ~DPlaya(){};
 
+	//functions
 	void paint(DPlaya DPlaya, int x, int y, SDL_Surface* screen);
 	void refresh(SDL_Surface * screen);
 	void dropBomb();
 	void explodeBomb(int i);
 	bool canPlant(){return (numBombs_ < 5);}
-	void move();
+	void move(user_map map);
 
 	//getters
 	int getX(){return x_;}
@@ -50,7 +51,9 @@ public:
 	void setNumBombs(int numBombs){numBombs_ = numBombs;}
 	void setDroppedBombs(int droppedBombs){droppedBombs_ = droppedBombs;}
 	void killPlayer(){alive_ = false;}
+	void spawnPlayer(){alive_ = true;}
 	void setID(int id){DPlayaID_;}
+	void setMap(user_map *map){map = &map_;}
 
 	/*To add the drop bomb */
 
@@ -60,7 +63,6 @@ int x_, y_, w_,h_, numBombs_, droppedBombs_;
 int DPlayaID_;
 int bombPower_;
 bool alive_;
-extern UserMap map;
 //Bomb bombs[5]; //TODO bomb init !
 
 SDL_Surface* image_;

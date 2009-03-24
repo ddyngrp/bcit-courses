@@ -15,7 +15,7 @@
 #include "network.h"
 #include "user_map.h"
 
-user_map map;
+static user_map map;
 
 int main(int argc, char *argv[])
 {
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	int sockfd;
 	int r;
 	char recvbuf[MAXLEN];
-	Player allPlayers[8];
+	DPlaya allPlayers[8];
 
 
 	if (argc != 2) 

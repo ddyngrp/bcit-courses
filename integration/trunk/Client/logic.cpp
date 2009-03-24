@@ -14,7 +14,10 @@
 ---------------------------------------------------------------------------------------------*/
 #include "graphics.h"
 #include "logic.h"
+#include "Dplaya.h"
 SDL_Surface *screen  = NULL;
+
+extern user_map map;
 
 /*---------------------------------------------------------------------------------------------
 --      FUNCTION: 		fork_off
@@ -45,6 +48,7 @@ void fork_off(int sockfd)
 	struct sigaction sa;
 	SDL_Event event;
 	bool quit = false;
+	DPlaya tmpPlaya = new DPlaya();
 	
 	/* TODO NETWORK: any of this stuff needed? Remove whatever's no longer necessary*/
 	clientLen = sizeof(clientInfo);
@@ -93,13 +97,18 @@ void fork_off(int sockfd)
 			}
 			//recvbuf[r] = '\0';
 			
-			if (recbuf[0] == TYPE_MOVE)
+			if (recvbuf[0] == TYPE_MOVE)
 			{
+				//Change the string back into a class
+				memcpy(&tmpPlaya, recvbuf + 1, sizeof(tmpPlaya));
+				//We may need to change the id when we create the variable because it may be different.
+				allPlayers[tmpPlaya.id] = tmpPlaya;
 				redrawMap();
 			}
-			else if (recvbuf[0] == PLAYERMOVE)
+			else if (recvbuf[0] == TYPE_EXPLODE)
 			{
-
+				memcpy(&map, recvbuf + 1, sizeof(map));
+				redrawmap();
             }		
 			
 			
@@ -136,6 +145,8 @@ void handle_input(SDL_Event event)
             case SDLK_DOWN: 						 	    break;
             case SDLK_LEFT: 							    break;
             case SDLK_RIGHT:							    break;
+            case SDLK_SPACE:							    break;
+            case SDLK_ESCAPE:                               break; //Send it through TCP channel, call cleanup function
         }
     }
     //If a key was released
@@ -148,6 +159,8 @@ void handle_input(SDL_Event event)
             case SDLK_DOWN:									 break;
             case SDLK_LEFT: 								 break;
             case SDLK_RIGHT:								 break;
+            case SDLK_SPACE:							     break;
+            case SDLK_ESCAPE:                                break; //Send it through TCP channel, call cleanup function
         }
     }
 }

@@ -88,7 +88,7 @@ int connection_setup(char * servIp)
 --      DATE:           March 18, 2009
 --
 --      REVISIONS:      March 15 - Added this function on the advice of a classmate
---								   Source: http://beej.us     
+--								   Source: http://beej.us
 --
 --      DESIGNER:       Brian Hall
 --      PROGRAMMER:     Brian Hall

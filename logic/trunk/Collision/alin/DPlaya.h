@@ -7,7 +7,8 @@
 
 #ifndef DPLAYA_H_
 #define DPLAYA_H_
-#include "headerMain.h"
+//#include "headerMain.h"
+#include "general.h"
 
 class DPlaya {
 public:

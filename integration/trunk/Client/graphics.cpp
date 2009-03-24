@@ -15,7 +15,7 @@
 --      DESIGNER:     Jaymz Boilard, Colby Last & Lazy Foo Productions 
 --      PROGRAMMER:	  Jaymz Boilard, Colby Last & Lazy Foo Productions
 ---------------------------------------------------------------------------------------------*/
-#include "player.h"
+#include "DPlaya.h"
 #include "graphics.h"
 extern SDL_Surface *screen;
 using namespace std;

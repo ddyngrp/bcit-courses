@@ -10,21 +10,21 @@ user_map::~user_map()
 bool user_map::update_map(int **new_map, const int height, const int width) 
 {
 	int i, j;
-	int temp[_width][_height];
+	int temp[_height][_width];
 	if ((height != _height) || (width != _width))
 		 return false;
 
 	//create a copy of _map
-	for(i = 0; i < _width; i++)
+	for(i = 0; i < _height; i++)
 		for(j = 0; j < _width; j++)
 			temp[i][j] = _map[i][j];
 
-	for (i = 0; i < _width; i++)
+	for (i = 0; i < _height; i++)
 	{
-		for (j = 0; j < _height; j++)
+		for (j = 0; j < _width; j++)
 		{
 			//checks that the new value is within the bounds
-			if(new_map[i][j] > _numImages || new_map[i][j] < 0)
+			if((new_map[i][j] > _numImages) || (new_map[i][j] < 0))
 				return false;
 			temp[i][j] = new_map[i][j];
 		}
@@ -32,6 +32,8 @@ bool user_map::update_map(int **new_map, const int height, const int width)
 	memcpy(_map, temp, (sizeof(int) * _width * _height));
 	return true;
 }
+
+
 
 void user_map::set_images(SDL_Surface *new_image, const int numImages)
 {
@@ -45,6 +47,7 @@ void user_map::set_images(SDL_Surface *new_image, const int numImages)
 	_numImages = numImages;
 	_image_set = temp;
 }
+
 
 
 bool user_map::draw_map(SDL_Surface *screen)

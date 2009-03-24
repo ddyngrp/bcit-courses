@@ -61,7 +61,8 @@ int main()
 			printf(" %d",map[j][i%18]);
 		}
 		 
-	user_map::user_map *uMap = new user_map(map,image_set,numImages,width,height);
+	fflush(stdout);
+	user_map::user_map *uMap = new user_map(map,image_set,numImages,height,width);
 }
 
 

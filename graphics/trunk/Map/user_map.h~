@@ -16,13 +16,15 @@ class user_map
 				  const int &height,const int &width):
 				 _numImages(numImages), _width(width), _height(height)
 	{ 
-		_image_set = SDL_ConvertSurface(image_set, NULL, NULL);
-		_map = new int*[_width];
+		//memcpy(_image_set, *image_set, sizeof( SDL_Surface));
+		_image_set = image_set;
+		//_image_set = SDL_ConvertSurface(image_set, NULL, NULL);
+		_map = new int*[_height];
 	
-		for(int i = 0; i < _width; i++)
-			_map[i] = new int[_height];
+		for(int i = 0; i < _height; i++)
+			_map[i] = new int[_width];
 	
-		//if(!(update_map(map, height, width)));
+		if(!(update_map(map, height, width)));
 			//throw something
 			//there's no way to return false on a ctor
 	}

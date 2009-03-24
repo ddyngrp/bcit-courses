@@ -10,7 +10,7 @@ void start_client(char * server, char * port) {
 	char sendbuf[MAXLEN], recvbuf[MAXLEN];
 	int sockfd;
 	int ret;
-	
+
 	memset(&hints,0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
@@ -58,11 +58,86 @@ void start_client(char * server, char * port) {
 			perror("recv call() failed.");
 			continue;
 		}
+        /*************************************************************
+        ** creating udp socket to catch server tansaction.
+        **
+        ** by eddie
+        ******************/
+        if (strcmp(recvbuf,"start\n")==0){
+            start_udp_client();            
+        }
+        
+        
+        
+        
 		recvbuf[r] = '\0';
 		fprintf(stdout, "%s", recvbuf);
 	}
 }
 
+void start_udp_client(){
+
+	int sd;
+	char *hostname;
+	struct sockaddr_in udpserver, udpclient;
+	struct hostent *hp;
+	int udp_port = 8000;
+	char *inbuf,outbuf;
+
+
+
+    if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
+        perror("Can't crete a socket\n");
+        exit(1);
+    }
+    /*store server */
+    bzero((char*)&udpserver,sizeof(udpserver));
+    udpserver.sin_family=AF_INET;
+    udpserver.sin_port = htons(udp_port);
+    
+    if ((hp = gethostbyname(hostname))==NULL){
+        fprintf(stderr,"Can't get server's IP address\n");
+        exit(1);
+    }
+    
+    
+    bcopy(hp->h_addr, (char *)&udpserver.sin_addr,hp->h_length);
+    /*bind local address to the socket*/
+    bzero((char*)&udpclient,sizeof(udpclient));
+    udpclient.sin_family = AF_INET;
+    udpclient.sin_port = htons(0);
+    udpclient.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    if (bind(sd,(struct sockaddr *)&udpclient, sizeof(udpclient)) ==-1){
+        perror("Can't bind name to socket");
+        exit(1);
+    }
+    
+    /* sending keyboard inputs*/
+   while (fgets(inbuf, MAXLEN, stdin)){
+        if (sendto(sd,inbuf,strlen(inbuf),0,(struct sockaddr *)&server, sizeof(udpserver))==-1){
+            perror("sendto failure");
+            exit(1);
+        }
+        
+        /*receive data*/
+        
+        if (recvfrom(sd,outbuf,sizeof(outbuf),MAXLEN,0,(struct sockaddr *)&udpserver,sizeof(udpserver)) < 0){
+            perror("recvfrom error");
+            exit(1);
+        }
+        
+        if (strcmy(outbuf,"quit\n") == 0){
+            close(sd);
+            break;
+        }else{
+            printf("length = %d; buf =%s",strlen(outbuf),outbuf);
+            break;
+        }
+   
+   }
+
+}
 void test_data(int socket) {
 	char buf[1000000];
 	char recvbuf[MAXLEN];

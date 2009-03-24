@@ -19,7 +19,7 @@ class user_map
 		//memcpy(_image_set, *image_set, sizeof( SDL_Surface));
 		_image_set = image_set;
 		//_image_set = SDL_ConvertSurface(image_set, NULL, NULL);
-		_map = new int*[_height];
+		_map = new int*[_width];
 	
 		for(int i = 0; i < _height; i++)
 			_map[i] = new int[_width];

@@ -58,11 +58,11 @@ bool user_map::draw_map(SDL_Surface *screen)
 	srcTemp.w = srcTemp.h = BLOCK_SIZE;
 	destTemp.w = srcTemp.h = BLOCK_SIZE;
 
-	for(int i = 0; i < _width; i++)
+	for(int i = 0; i < _height; i++)
 	{
 		//sets which row we're going to draw
 		destTemp.y = BLOCK_SIZE * i;
-		for(int j = 0; j < _height; j++)
+		for(int j = 0; j < _width; j++)
 		{
 			//select which image to display from image set
 			srcTemp.y = BLOCK_SIZE * _map[i][j];

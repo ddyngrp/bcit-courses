@@ -7,6 +7,8 @@
 
 
 #define BLOCK_SIZE 35
+#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 800
 
 class user_map
 {

@@ -1,6 +1,23 @@
 #include "user_map.h"
 
+SDL_Surface *screen;
+
 int** genRandomMap(int rowNum, int colNum);
+
+void sdl_init(){
+  SDL_Init( SDL_INIT_EVERYTHING );
+  if (SDL_Init(SDL_INIT_VIDEO) != 0) {//turn video on
+    printf("Unable to initialize SDL: %s\n", SDL_GetError());
+    exit(1);
+  }
+  atexit(SDL_Quit);
+  screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_DOUBLEBUF);//video settings
+  if (screen == NULL) {
+    printf("Unable to set video mode: %s\n", SDL_GetError());
+    exit(2);
+  }
+  SDL_WM_SetCaption( "Tux Bomber", NULL ); 
+}
 
 SDL_Surface *load_image( std::string filename )
 {
@@ -63,7 +80,13 @@ int main()
 		 
 	fflush(stdout);
 
-	user_map::user_map *uMap = new user_map(map,image_set,numImages,height,width);
+	user_map *uMap = new user_map(map,image_set,numImages,height,width);
+
+	sdl_init();
+
+	uMap->draw_map(screen);
+
+	
 }
 
 

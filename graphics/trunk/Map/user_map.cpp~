@@ -33,6 +33,8 @@ bool user_map::update_map(int **new_map, const int height, const int width)
 	return true;
 }
 
+
+
 void user_map::set_images(SDL_Surface *new_image, const int numImages)
 {
 	SDL_Surface *temp;
@@ -47,6 +49,7 @@ void user_map::set_images(SDL_Surface *new_image, const int numImages)
 }
 
 
+
 bool user_map::draw_map(SDL_Surface *screen)
 {
 	SDL_Rect srcTemp, destTemp;
@@ -55,14 +58,14 @@ bool user_map::draw_map(SDL_Surface *screen)
 	srcTemp.w = srcTemp.h = BLOCK_SIZE;
 	destTemp.w = srcTemp.h = BLOCK_SIZE;
 
-	for(int i = 0; i < _width; i++)
+	for(int i = 0; i < _height; i++)
 	{
 		//sets which row we're going to draw
 		destTemp.y = BLOCK_SIZE * i;
-		for(int j = 0; j < _height; j++)
+		for(int j = 0; j < _width; j++)
 		{
 			//select which image to display from image set
-			srcTemp.y = BLOCK_SIZE * _map[i][j];
+			srcTemp.y = BLOCK_SIZE * this->_map[i][j];
 			//sets which column we're going to draw
 			destTemp.x = BLOCK_SIZE * j;
 			

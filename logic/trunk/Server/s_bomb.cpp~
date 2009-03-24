@@ -1,5 +1,4 @@
 #include "server.h"
-#include "
 
 void
 plant_bomb(const int index)

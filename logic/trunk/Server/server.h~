@@ -21,7 +21,6 @@ void   	start_fuse(void);
 void   	kill_if_here(const int, const int);
 bool   	check_block(const int, const int);
 void 	destroy_block(const int, const int);
-void    fire_to_map(struct fire);
 
 struct fire {
 	int up;

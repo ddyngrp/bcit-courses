@@ -10,14 +10,8 @@ user_map::~user_map()
 bool user_map::update_map(int **new_map, const int height, const int width) 
 {
 	int i, j;
-	int temp[_height][_width];
 	if ((height != _height) || (width != _width))
 		 return false;
-
-	//create a copy of _map
-	for(i = 0; i < _height; i++)
-		for(j = 0; j < _width; j++)
-			temp[i][j] = _map[i][j];
 
 	for (i = 0; i < _height; i++)
 	{
@@ -26,10 +20,13 @@ bool user_map::update_map(int **new_map, const int height, const int width)
 			//checks that the new value is within the bounds
 			if((new_map[i][j] > _numImages) || (new_map[i][j] < 0))
 				return false;
-			temp[i][j] = new_map[i][j];
 		}
 	}
-	memcpy(_map, temp, (sizeof(int) * _width * _height));
+
+	for (i = 0; i < _height; i++)
+		for (j = 0; j < _width; j++)
+			_map[i][j] = new_map[i][j];
+
 	return true;
 }
 

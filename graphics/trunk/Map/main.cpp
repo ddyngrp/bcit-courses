@@ -80,12 +80,12 @@ int main()
 		 
 	fflush(stdout);
 
-	user_map *uMap = new user_map(map,image_set,numImages,height,width);
+	user_map uMap(map,image_set,numImages,height,width);
 
 	sdl_init();
 
-	uMap->draw_map(screen);
 
+	uMap.draw_map(screen);
 	
 }
 

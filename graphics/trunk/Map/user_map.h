@@ -38,7 +38,7 @@ class user_map
 	bool update_map(int **new_map,const int height, const int width);
 	void set_images(SDL_Surface *new_image, const int numImages);
 
-	const int** get_map(){ return (const int**)_map;}
+	int** get_map(){ return (int**)_map;}
 
 	private:
 	int **_map;

@@ -433,17 +433,58 @@ int process_data(unsigned char *data, size_t len) {
 	return 0;
 }
 
-int parse_info_byte(char *data) {
+/******************************************************************************
+ *  Function:    parse_info_byte
+ * 
+ *  Date:        March 23, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   parse_info_byte(unsigned char *data)
+ *		            unsigned char *data: array of bytes that makes up the data.
+ * 
+ *  Returns:     The value of the byte that was parsed.
+ * 
+ *  Description: Gets the action, player and extra information from a byte.
+ *		The information is stored like this:
+ *			action:	xxx- ---- (first 3 bits)
+ *			player:	---x xx-- (second 3 bits)
+ *			extra:	---- --xx (last 2 bits)
+ *
+ *****************************************************************************/
+int parse_info_byte(unsigned char *data) {
 	int type, player, extra;
 	
 	type = get_action_type(data[0]); /* gets bits xxx- ---- for action type */
 	player = get_player_id(data[0]); /* gets bits ---x xx-- for player id */
 	extra = get_extra_info(data[0]); /* gets bits ---- --xx for extra info */
 	
-	return 0;
+	return data[0];
 }
 
-int get_action_type(char info) {
+/******************************************************************************
+ *  Function:    get_action_type
+ * 
+ *  Date:        March 23, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   get_action_type(int info)
+ *		            int info: the byte containing the information we want.
+ * 
+ *  Returns:     The value of the first 3 bits of the lowest-byte of info.
+ * 
+ *  Description: Bit shifts and gets the value of the bits marked x: "xxx- ----"
+ *		The value should be between 0 and 7 (3 bits).
+ *
+ *****************************************************************************/
+int get_action_type(int info) {
 	switch(info >> 5) { /* bits xxx- ---- for action type */
 		case 0: /* movement */
 			break;
@@ -469,10 +510,29 @@ int get_action_type(char info) {
 			break;
 	}
 	
-	return 0;
+	return (info >> 5);
 }
 
-int get_player_id(char info) {
+/******************************************************************************
+ *  Function:    get_player_id
+ * 
+ *  Date:        March 23, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   get_player_id(int info)
+ *		            int info: the byte containing the information we want.
+ * 
+ *  Returns:     The value of the second 3 bits of the lowest-byte of info.
+ * 
+ *  Description: Bit shifts and gets the value of the bits marked x: "---x xx--"
+ *		The value should be between 0 and 7 (3 bits).
+ *
+ *****************************************************************************/
+int get_player_id(int info) {
 	switch((info >> 2) % 8) { /* bits ---x xx-- for player id */
 		case 0: /* player 1 */
 			break;
@@ -505,7 +565,26 @@ int get_player_id(char info) {
 	return 0;
 }
 
-int get_extra_info(char info) {
+/******************************************************************************
+ *  Function:    get_extra_info
+ * 
+ *  Date:        March 23, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   get_extra_info(int info)
+ *		            int info: the byte containing the information we want.
+ * 
+ *  Returns:     The value of the last 2 bits of the lowest-byte of info.
+ * 
+ *  Description: Gets the value of the bits marked x: "---- --xx"
+ *		The value should be between 0 and 3 (2 bits).
+ *
+ *****************************************************************************/
+int get_extra_info(int info) {
 	switch(info % 4) { /* bits ---- --xx for extra info */
 		case 0: /* up for movement. num_bombs++ for powerup */
 			break;
@@ -524,4 +603,43 @@ int get_extra_info(char info) {
 	}
 	
 	return 0;
+}
+
+/******************************************************************************
+ *  Function:    create_info_byte
+ * 
+ *  Date:        March 23, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   create_info_byte(int info)
+ *		            int action: the action to be performed.
+ *					int player: the player who's doing it.
+ *					int extra: extra information about the action.
+ * 
+ *  Returns:     The compiled info byte, or 224 on error (a value that shouldn't happen).
+ * 
+ *  Description: Combines the 3 fields into the info byte format that the
+ *		logic group wanted.
+ *
+ *****************************************************************************/
+unsigned char create_info_byte(int action, int player, int extra) {
+	unsigned char info = 0;
+	
+	/* action only goes up to 5 cause that's all i was given. 6 and 7 are free,
+	 so i use 7's shifted form (224) as an error return value */
+	if(action >= 0 && action <= 5 && player >= 0 && player <= 7 && extra >= 0 && extra <= 3) {
+		info += action << 5;
+		info += player << 2;
+		info += extra;
+	} else {
+		fprintf(stderr, "Invalid input in create_info_byte\n");
+		fprintf(stderr, "\taction: %d, player: %d, extra: %d.\n", action, player, extra);
+		return 224;
+	}
+	
+	return info;
 }

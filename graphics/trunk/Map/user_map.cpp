@@ -70,6 +70,9 @@ bool user_map::draw_map(SDL_Surface *screen)
 				return false;
 		}
 	}
+
+	SDL_Flip(screen);	
+
 	return true;
 }
 

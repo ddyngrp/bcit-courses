@@ -61,32 +61,39 @@ int main()
 {
 	int **map;
 	
-	SDL_Surface *image_set = load_image( "empty.xcf" );;
+	sdl_init();
+
+	SDL_Surface *image_set = load_image( "empty.png" );
+
 	int numImages = 3;
 	int width = 18;
 	int height = 17;
 	
 	map = genRandomMap(height,width);
 
+	/*
 	for( int i = 0 , j = -1 ; i < 306; i++)
+	{
+		if (i %18 == 0 )
 		{
-			if (i %18 == 0 )
-			{
-				printf("\n");
-				j++;
-			}
-			printf(" %d",map[j][i%18]);
+			printf("\n");
+			j++;
 		}
-		 
+		printf(" %d",map[j][i%18]);
+	}
+	
+
 	fflush(stdout);
+	*/
 
 	user_map uMap(map,image_set,numImages,height,width);
 
-	sdl_init();
-
-
 	uMap.draw_map(screen);
+
+	//uMap.~user_map();
 	
+	sleep(100);
+	return 0;
 }
 
 

@@ -23,6 +23,10 @@ bool user_map::update_map(int **new_map, const int height, const int width)
 		}
 	}
 
+	for (i = 0; i < _height; i++)
+		for (j = 0; j < _width; j++)
+			_map[i][j] = new_map[i][j];
+
 	return true;
 }
 

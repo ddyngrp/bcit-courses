@@ -3,11 +3,11 @@
 # Author: Steffen L. Norgren
 #
 
-CC=gcc
+CC=g++
 CFLAGS=-c -Wall -pedantic -ggdb
 LDFLAGS=
-SOURCES=master.c server.c client.c tools.c network.c
-OBJECTS=$(SOURCES:.c=.o)
+SOURCES=master.cpp server.cpp client.cpp tools.cpp network.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=clisrv
 
 all: $(SOURCES) $(EXECUTABLE)

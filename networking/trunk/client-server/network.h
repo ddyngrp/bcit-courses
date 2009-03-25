@@ -41,12 +41,14 @@
 
 /* global definitions */
 #define MAP_LEN	255
+#define MAP_ROWS 15
+#define MAP_COLS 15
 /* end global definitions */
 
 static int conn_type = TCP;
 static int sock = 0;
 static int mode = CLIENT;
-struct sockaddr_in server;
+static struct sockaddr_in server;
 
 int set_conn_type(int type);
 int conn_setup(char *host, char *port);

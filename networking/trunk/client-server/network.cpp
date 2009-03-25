@@ -14,12 +14,16 @@
  *               transfer(unsigned char *data, size_t len)
  *               add_coords_xy(int x, int y, unsigned char *data, size_t len)
  *               process_data(unsigned char *data, size_t len)
+ *               parse_info_byte(unsigned char *data)
+ *               get_action_type(int info)
+ *               get_player_id(int info)
+ *               get_extra_info(int info)
+ *               create_info_byte(int action, int player, int extra)
  *               
  *  Date:        March 2, 2009
  *
  *  Revisions:   March 20, 2009 - Steffen L. Norgren
  *                   Updated headers to cornform to Aman's standards
- *                   TODO: Change dynamic arrays to conform to ISO C99 (unnecessary right now)
  * 
  *  Designer:    David Young
  *  Programmer:  David Young

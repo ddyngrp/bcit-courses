@@ -5,7 +5,7 @@
 
 CC=g++
 CFLAGS=-c -Wall -pedantic -ggdb
-LDFLAGS=
+LDFLAGS=-lpthread
 SOURCES=master.cpp server.cpp client.cpp tools.cpp network.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=clisrv

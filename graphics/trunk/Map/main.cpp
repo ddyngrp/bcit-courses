@@ -71,7 +71,7 @@ int main()
 	
 	map = genRandomMap(height,width);
 
-	/*
+	
 	for( int i = 0 , j = -1 ; i < 306; i++)
 	{
 		if (i %18 == 0 )
@@ -82,9 +82,9 @@ int main()
 		printf(" %d",map[j][i%18]);
 	}
 	
-
+	printf("\n");
 	fflush(stdout);
-	*/
+	
 
 	user_map uMap(map,image_set,numImages,height,width);
 

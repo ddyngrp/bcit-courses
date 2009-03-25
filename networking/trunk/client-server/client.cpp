@@ -58,13 +58,14 @@ void start_client(char * server, char * port) {
 			perror("recv call() failed.");
 			continue;
 		}
+		
         /*************************************************************
         ** creating udp socket to catch server tansaction.
         **
         ** by eddie
         ******************/
         if (strcmp(recvbuf,"start\n")==0){
-            start_udp_client();            
+            start_udp_client(server);            
         }
         
         
@@ -75,17 +76,17 @@ void start_client(char * server, char * port) {
 	}
 }
 
-void start_udp_client(){
+void start_udp_client(char *hostname){
 
 	int sd;
-	char *hostname;
+
 	struct sockaddr_in udpserver, udpclient;
 	struct hostent *hp;
 	int udp_port = 8000;
-	char *inbuf,outbuf;
+	char *inbuf,*outbuf;
 
 
-
+	printf("initializing the socket");
     if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
         perror("Can't crete a socket\n");
         exit(1);
@@ -115,23 +116,25 @@ void start_udp_client(){
     
     /* sending keyboard inputs*/
    while (fgets(inbuf, MAXLEN, stdin)){
+   	
+   	    printf("start sending...\n");
         if (sendto(sd,inbuf,strlen(inbuf),0,(struct sockaddr *)&server, sizeof(udpserver))==-1){
             perror("sendto failure");
             exit(1);
         }
-        
+        printf("stuff sent!\n");
         /*receive data*/
         
-        if (recvfrom(sd,outbuf,sizeof(outbuf),MAXLEN,0,(struct sockaddr *)&udpserver,sizeof(udpserver)) < 0){
+        if (recvfrom(sd,outbuf,MAXLEN,0,(struct sockaddr *)&udpserver,(socklen_t *)sizeof(udpserver)) < 0){
             perror("recvfrom error");
             exit(1);
         }
         
-        if (strcmy(outbuf,"quit\n") == 0){
+        if (strcmp(outbuf,"quit\n") == 0){
             close(sd);
             break;
         }else{
-            printf("length = %d; buf =%s",strlen(outbuf),outbuf);
+            printf("length = %d; buf =%s",(int)strlen(outbuf),outbuf);
             break;
         }
    

@@ -17,6 +17,6 @@
 void start_client(char *, char *);
 void test_data(int);
 void stop_client(void); /* implement later */
-void start_udp_client(void);
+void start_udp_client(char*);
 
 #endif

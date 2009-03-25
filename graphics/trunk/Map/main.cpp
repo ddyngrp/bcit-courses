@@ -1,60 +1,31 @@
 #include "user_map.h"
+#include "funcs.h"
 
 SDL_Surface *screen;
 
-int** genRandomMap(int rowNum, int colNum);
-
-void sdl_init(){
-  SDL_Init( SDL_INIT_EVERYTHING );
-  if (SDL_Init(SDL_INIT_VIDEO) != 0) {//turn video on
-    printf("Unable to initialize SDL: %s\n", SDL_GetError());
-    exit(1);
-  }
-  atexit(SDL_Quit);
-  screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_DOUBLEBUF);//video settings
-  if (screen == NULL) {
-    printf("Unable to set video mode: %s\n", SDL_GetError());
-    exit(2);
-  }
-  SDL_WM_SetCaption( "Tux Bomber", NULL ); 
-}
-
-SDL_Surface *load_image( std::string filename )
+void sdl_init()
 {
-	SDL_RWops *rwop;
-	rwop=SDL_RWFromFile(filename.c_str(), "rb");
-	
-    //The image that's loaded
-    SDL_Surface* loadedImage = NULL;
+    SDL_Init( SDL_INIT_EVERYTHING );
 
-    //The optimized surface that will be used
-    SDL_Surface* optimizedImage = NULL;
-	
-	if(IMG_isGIF(rwop))
-		loadedImage = IMG_LoadGIF_RW(rwop);
-    else
-        //Load the image
-    	loadedImage = IMG_Load( filename.c_str() );
-
-    //If the image loaded
-    if( loadedImage != NULL )
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
-        //Create an optimized surface
-        optimizedImage = SDL_DisplayFormat( loadedImage );
-
-        //Free the old surface
-        SDL_FreeSurface( loadedImage );
-
-        //If the surface was optimized
-        if( optimizedImage != NULL )
-        {
-            //Color key surface
-            SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF ) );
-        }
+        //turn video on
+        printf("Unable to initialize SDL: %s\n", SDL_GetError());
+        exit(1);
     }
 
-    //Return the optimized surface
-    return optimizedImage;
+    atexit(SDL_Quit);
+    
+    //video settings
+    screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_DOUBLEBUF);
+
+    if (screen == NULL)
+    {
+        printf("Unable to set video mode: %s\n", SDL_GetError());
+        exit(2);
+    }
+
+    SDL_WM_SetCaption( "Tux Bomber", NULL ); 
 }
 
 int main()
@@ -89,10 +60,10 @@ int main()
 	user_map uMap(map,image_set,numImages,height,width);
 
 	uMap.draw_map(screen);
-
-	//uMap.~user_map();
 	
 	sleep(100);
+
+    uMap.~user_map();
 	return 0;
 }
 

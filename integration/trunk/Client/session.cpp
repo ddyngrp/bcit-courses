@@ -21,70 +21,72 @@ int main(int argc, char *argv[])
 {
 	int c;
 	int makeRecord = 0;
-	int sockfd;
+	int tcpSockFd, udpSockFd;
 	int r;
-	char recvbuf[MAXLEN];
+	char recvbuf[MAXLEN], line[MAXLEN];
 	DPlaya allPlayers[8];
-
+	SDL_Surface * screen;
 
 	if (argc != 2) 
 	{
 	    fprintf(stderr, "Usage: [Server IP]\n");
-		return 1;
+		exit(1);
 	}
 
 	/* Negotiate connection with server */
-	sockfd = connection_setup(argv[1]);
+	tcpSockFd = connection_setup(argv[1]);
 	
 	/* wait until the user types "ready," will change once we have the menus */
 	while(fgets(line, MAXLEN, stdin) != NULL)
 	{
 		if(!strcmp(line, "ready"))
 		{
-			send(sockfd, "ready", 6, 0)
+			send(tcpSockFd, "ready", 6, 0);
 			break;
 		}
 	}
 	
 	/* Get the initial Map and list of Players */
-	if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1)
+	if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 	{
 		perror("recv call() failed.");
-		continue;
+		exit(2);
 	}
 	memcpy(&map, recvbuf, r);
-	if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1)
+	if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 	{
 		perror("recv call() failed.");
-		continue;
+		exit(3);
 	}
 	memcpy(&allPlayers, recvbuf, r);
+	close(tcpSockFd);
 
-	close(sockfd);
-	/* TODO Network: Create the UDP socket */
+	udpSockFd = start_udp_client(argv[1]);
 	
 	
 	/* TODO GRAPHICS: make sure this works.  Note: this will go earlier once we have menus working */
 	/* Screen Initializers start */
 	SDL_Init( SDL_INIT_EVERYTHING );
 
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {//turn video on
+	if (SDL_Init(SDL_INIT_VIDEO) != 0) //turn video on
+	{
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
-		exit(1);
+		exit(4);
 	}
 	atexit(SDL_Quit);
 	screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_SWSURFACE );//video settings  //SDL_DOUBLEBUF instead of SDL_SWSURFACE?
-	if (screen == NULL) {
+	if (screen == NULL)
+	{
 		printf("Unable to set video mode: %s\n", SDL_GetError());
-		exit(2);
+		exit(5);
 	}
     /* Screen initializers end */
     
     
 	
 	/* Creates an extra process: one reads the socket, and one gets messages from stdin */
-	/* Note: the sockfd should be the UDP connection once is established */
-	fork_off(sockfd, allPlayers);
+	/* Note: the tcpSockFd should be the UDP connection once is established */
+	fork_off(tcpSockFd, udpSockFd, allPlayers);
 
 	return 0;
 }

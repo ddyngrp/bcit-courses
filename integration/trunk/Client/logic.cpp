@@ -4,7 +4,7 @@
 --            
 --      PROGRAM:        TuxBomber 
 --
---      FUNCTIONS:      void fork_off(int sockfd)
+--      FUNCTIONS:      void fork_off(int tcpSockFd)
 --                      void handle_input()      
 --
 --      REVISIONS:      
@@ -14,7 +14,8 @@
 ---------------------------------------------------------------------------------------------*/
 #include "graphics.h"
 #include "logic.h"
-#include "Dplaya.h"
+#include "DPlaya.h"
+#include "user_map.h"
 SDL_Surface *screen  = NULL;
 
 extern user_map map;
@@ -27,7 +28,7 @@ extern user_map map;
 --      DESIGNER:       Jaymz Boilard
 --      PROGRAMMER:     Jaymz Boilard
 --
---      INTERFACE:      void fork_off(int sockfd, int makeRecord)
+--      INTERFACE:      void fork_off(int tcpSockFd, int makeRecord)
 --
 --      RETURNS:        void
 --
@@ -36,29 +37,14 @@ extern user_map map;
 --						commands incoming from the server & will call the functions needed to
 --						redraw the map based on that.
 ---------------------------------------------------------------------------------------------*/
-void fork_off(int sockfd)
+void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 {
-	struct in_addr in;
 	pid_t pid;
 	char sendbuf[MAXLEN], recvbuf[MAXLEN], buf[MAXLEN];
 	int r;
-	struct sockaddr_in clientInfo;
-	socklen_t clientLen;	
-	unsigned int len;
-	struct sigaction sa;
 	SDL_Event event;
 	bool quit = false;
 	DPlaya tmpPlaya = new DPlaya();
-	
-	/* TODO NETWORK: any of this stuff needed? Remove whatever's no longer necessary*/
-	clientLen = sizeof(clientInfo);
-	len = sizeof(clientInfo);
-	getsockname(sockfd,(struct sockaddr *)&clientInfo,&len);
-	memset(&in,0,sizeof(in));
-	in.s_addr = clientInfo.sin_addr.s_addr;
-    /* TODO END */
-    
-    
 	
 	if((pid = fork()) < 0)
 	{
@@ -73,7 +59,7 @@ void fork_off(int sockfd)
 			while( SDL_PollEvent( &event ) )
 			{
 			    //Handle events for the square
-			    handle_input(event);
+			    handle_input(tcpSockFd, udpSockFd, event);
 
 			    //If the user has Xed out the window
 			    if( event.type == SDL_QUIT )
@@ -90,7 +76,7 @@ void fork_off(int sockfd)
 		while(1)
 		{
 			/* receive data here and redraw map based on it */
-			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1)
+			if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 			{
 				perror("recv call() failed.");
 				continue;
@@ -110,7 +96,6 @@ void fork_off(int sockfd)
 				memcpy(&map, recvbuf + 1, sizeof(map));
 				redrawmap();
             }		
-			
 			
 		}
 	}
@@ -133,34 +118,30 @@ void fork_off(int sockfd)
 --						commands incoming from the server & will call the functions needed to
 --						redraw the map based on that.
 ---------------------------------------------------------------------------------------------*/
-void handle_input(SDL_Event event)
+void handle_input(int tcpSockFd, int udpSockFd, SDL_Event event)
 {
-    //If a key was pressed
-    if( event.type == SDL_KEYDOWN )
-    {
-        //Adjust the velocity
-        switch( event.key.keysym.sym )
-        {
-            case SDLK_UP: /* TODO network: send corresponding messages through the network.  defs.h has the values of each key */ break;
-            case SDLK_DOWN: 						 	    break;
-            case SDLK_LEFT: 							    break;
-            case SDLK_RIGHT:							    break;
-            case SDLK_SPACE:							    break;
-            case SDLK_ESCAPE:                               break; //Send it through TCP channel, call cleanup function
-        }
-    }
+	char * outBuf;
+    struct sockaddr_in server;
+    socklen_t servLen;        
+
+
     //If a key was released
-    else if( event.type == SDL_KEYUP )
+    if( event.type == SDL_KEYUP )
     {
-        //Adjust the velocity
-        switch( event.key.keysym.sym )
-        {
-            case SDLK_UP: /* send corresponding messages through the network */	 break;
-            case SDLK_DOWN:									 break;
-            case SDLK_LEFT: 								 break;
-            case SDLK_RIGHT:								 break;
-            case SDLK_SPACE:							     break;
-            case SDLK_ESCAPE:                                break; //Send it through TCP channel, call cleanup function
+        /* If the user ends, we want to tell the server through the control channel */
+		if(event.key.keysym.sym == SDLK_ESCAPE)
+		{
+			if (sendto(tcpSockFd,outBuf,strlen(outBuf),0,(struct sockaddr *)&server, sizeof(servLen))==-1)
+		        perror("sendto failure");
+			exit(1);
+		}
+			
+		/* Regular keystrokes we can send through UDP */
+		memcpy(outBuf, event.key.keysym.sym);
+		if (sendto(udpSockFd,outBuf,strlen(outBuf),0,(struct sockaddr *)&server, sizeof(servLen))==-1)
+		{
+            perror("sendto failure");
+            exit(1);
         }
     }
 }

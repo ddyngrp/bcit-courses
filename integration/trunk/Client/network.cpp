@@ -65,6 +65,8 @@ int connection_setup(char * servIp)
 			perror("client: connect");
 			continue;
 		}
+        char c = 0xFF;
+		send(sockfd, &c, 0);
 		break;
 	}
 
@@ -108,5 +110,58 @@ void *get_in_addr(struct sockaddr *sa)
 
 	/* Return the IPv6 socket address */
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
+
+/*---------------------------------------------------------------------------------------------
+--      FUNCTION: 	start_udp_client
+--
+--      REVISIONS:    March 27 - Took out the input/output loop & now return the socket D.
+--
+--      DESIGNER:       Network Group
+--      PROGRAMMER:     Network Group
+--
+--      INTERFACE:      void *get_in_addr(struct sockaddr *sa)
+--
+--      RETURNS:        The new socket descriptor
+--
+--      NOTES:          
+---------------------------------------------------------------------------------------------*/
+int start_udp_client(char *hostname)
+{
+
+	int sd;
+	struct sockaddr_in udpserver, udpclient;
+	struct hostent *hp;
+	int udp_port = 8000;
+
+	printf("initializing UDP socket");
+    if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1)
+	{
+        perror("Can't crete a socket\n");
+        exit(1);
+    }
+    /*store server */
+    bzero((char*)&udpserver,sizeof(udpserver));
+    udpserver.sin_family=AF_INET;
+    udpserver.sin_port = htons(udp_port);
+    
+    if ((hp = gethostbyname(hostname))==NULL)
+	{
+        fprintf(stderr,"Can't get server's IP address\n");
+        exit(1);
+    }
+    
+    bcopy(hp->h_addr, (char *)&udpserver.sin_addr,hp->h_length);
+    /*bind local address to the socket*/
+    bzero((char*)&udpclient,sizeof(udpclient));
+    udpclient.sin_family = AF_INET;
+    udpclient.sin_port = htons(0);
+    udpclient.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    if (bind(sd,(struct sockaddr *)&udpclient, sizeof(udpclient)) ==-1){
+        perror("Can't bind name to socket");
+        exit(1);
+    }
+	return sd;
 }
 

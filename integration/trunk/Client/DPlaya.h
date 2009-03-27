@@ -44,7 +44,7 @@ public:
 
 
 private:
-int x_, y_, w_,h_, numBombs_, droppedBombs_;
+int x_, y_, w_,h_, numBombs_, droppedBombs_, id;
 //Bomb bombs[5]; //TODO bomb init !
 
 SDL_Surface* image_;

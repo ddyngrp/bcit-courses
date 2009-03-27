@@ -3,10 +3,11 @@
 
 #include "general.h"
 #include "graphics.h"
+#include "DPlaya.h"
 
-void fork_off(int sockfd);
+void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[]);
 void sig_handler (int sig);
-void handle_input(SDL_Event event);
+void handle_input(int tcpSockFd, int udpSockFd, SDL_Event event);
 
 #endif
 

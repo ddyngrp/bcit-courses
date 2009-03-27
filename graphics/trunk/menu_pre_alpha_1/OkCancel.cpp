@@ -102,28 +102,18 @@ int OkCancel::start(SDL_Event event)
 				if((event.motion.x > 90) && (event.motion.x < 140) &&
 						(event.motion.y > 470) && (event.motion.y < 510))
 				{
-<<<<<<< .mine
-					if(loaded_ == num_options_ - 2)
-						continue;
-=======
 					if (loaded_ == num_options_ - 2)
 						continue;
->>>>>>> .r133
+
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, music_, 0);
 				}else
 					if((event.motion.x > 400) && (event.motion.x < 550) &&
 							(event.motion.y > 470) && (event.motion.y < 510))
 					{
-<<<<<<< .mine
-						if(loaded_ == num_options_ - 1)
-							continue;
-
-=======
 						if (loaded_ == num_options_ - 1)
 							continue;
 
->>>>>>> .r133
 						loaded_ = num_options_ - 1;
 						Mix_PlayChannel(-1, music_, 0);
 					}

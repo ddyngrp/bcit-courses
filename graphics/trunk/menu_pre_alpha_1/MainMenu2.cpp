@@ -1,0 +1,94 @@
+/*
+ * MainMenu2.cpp
+ *
+ *  Created on: 25-Mar-2009
+ *      Author: d3vil
+ */
+
+#include "MainMenu2.h"
+
+MainMenu2::MainMenu2(std::string fileNames[], std::string mfilename, std::string smfilename, SDL_Surface* screen)
+{
+	int i;
+	loaded_ = 0;
+	this->screen_ = screen;
+	for(i = 0; i < num_options_; i++)
+	{
+		this->fileNames_[i] = fileNames[i];
+		if (!loadBackground(fileNames_[i], i))
+		{
+			printf("File %s did not load.\n", fileNames_[i].c_str());
+			exit(1);
+		}
+	}
+	this->setMusic(Mix_LoadMUS( mfilename.c_str()));
+	this->setNexMusic(Mix_LoadWAV(smfilename.c_str()));
+
+}
+
+MainMenu2::~MainMenu2() {
+	for(int i =0; i< num_options_; i++)
+	{
+		SDL_FreeSurface(backgrounds_[i]);
+	}
+	Mix_FreeMusic( music_);
+	Mix_FreeChunk(nexMusic_);
+}
+
+bool MainMenu2::showLoaded()
+{
+	int i = SDL_BlitSurface( backgrounds_[loaded_],0, screen_, 0 );
+	if(!Mix_PlayingMusic())
+		Mix_PlayMusic( music_, -1 );
+	if (i == 0)
+			return (SDL_Flip( screen_ ) != -1);
+		else
+			return false;
+}
+
+int MainMenu2::start(SDL_Event event)
+{
+	loaded_ = 0;
+	while(this->showLoaded())
+	{
+		SDL_WaitEvent(&event);
+		if(event.type == SDL_KEYDOWN)
+		{
+			switch(event.key.keysym.sym)
+			{
+				case SDLK_UP:
+					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(loaded_ == num_options_ -1){
+						loaded_ = 1;
+					}else{
+						++loaded_;
+					}
+					break;
+
+				case SDLK_DOWN:
+					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(loaded_ < 2)
+					{
+						loaded_ = num_options_ -1;
+					}else{
+						--loaded_;
+					}
+					break;
+				case SDLK_F11:
+					return 'f';
+				case SDLK_ESCAPE:
+					Mix_PlayChannel(-1, nexMusic_, 0);
+					return 1;
+				case SDLK_RETURN:
+					if(loaded_ == 0)
+						break;
+					Mix_PlayChannel(-1, nexMusic_, 0);
+					return loaded_;
+				default:
+				break;
+			}
+		}
+	}
+	return 0;
+
+}

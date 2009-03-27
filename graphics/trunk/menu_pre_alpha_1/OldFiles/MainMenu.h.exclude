@@ -1,0 +1,66 @@
+/*
+ * MainMenu.h
+ *
+ *  Created on: 24-Mar-2009
+ *      Author: d3vil
+ */
+
+#ifndef MAINMENU_H_
+#define MAINMENU_H_
+#include "mainHeader.h"
+class MainMenu {
+public:
+	explicit MainMenu(std::string options[5],TTF_Font* optfont,TTF_Font* selectfont, SDL_Color optColor,
+						SDL_Surface * screen, std::string background);
+	virtual ~MainMenu();
+
+	//main menu background funcs
+	bool load_background(const SDL_Surface &background);
+	bool load_background(const std::string filename);
+	SDL_Surface* get_background() const;
+
+	bool set_screen(SDL_Surface* screen);
+	SDL_Surface* get_screen() const;
+
+	//main menu options funcs
+	void set_option(const std::string& option, int optionIndex);
+	std::string get_option(const int optionIndex);
+
+	//options display level funcs
+	int set_opt_level(const int level, const int optionIndex);
+	int set_opt_level(const int optionIndex, const std::string option);
+	int get_opt_level(const std::string option);
+	int get_opt_level(const int optionIndex);
+
+	//options display font fucs
+	void set_opt_font(const std::string font, const int font_size, const int optionIndex);
+	void set_opt_font(const std::string font, const int font_size, const std::string option);
+	void set_opt_color(SDL_Color colour, int optionIndex);
+	void set_opt_color(SDL_Color colour, const std::string option);
+
+	TTF_Font* get_opt_font(int optionIndex);
+	TTF_Font* get_opt_font(const std::string option);
+	SDL_Color get_opt_color(int optionIndex);
+	SDL_Color get_opt_color(const std::string option);
+
+	int getSelectedOption() const;
+    void setSelectedOption(int selectedOption_);
+    SDL_Surface **getMessages();
+    void setMessages();
+
+    void show();
+    void refresh();
+
+private:
+	int selectedOption_;
+	std::string options_[NUM_OPTS];
+	int optFontSize_[NUM_OPTS];
+	int optLevel_[NUM_OPTS];
+	TTF_Font* optFont_[NUM_OPTS];
+	SDL_Color optColor_[NUM_OPTS];
+	SDL_Surface * screen_;
+	SDL_Surface * background_;
+	SDL_Surface * messages_[NUM_OPTS];
+};
+
+#endif /* MAINMENU_H_ */

@@ -1,7 +1,7 @@
 #include "server.h"
 
 void
-explode_bomb(const int x, const int y, const int id, const int len)
+explode_bomb(const int x, const int y, const int len)
 {
 struct fire f;
 int j, k;

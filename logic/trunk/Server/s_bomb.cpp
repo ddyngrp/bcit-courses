@@ -21,7 +21,24 @@ int y;
 void
 start_fuse(const int x, const int y)
 {
-	return;	
+	p_thread_t pt;
+	struct coords c;
+	
+	c.x = x;
+	c.y = y;
+
+	if (pthread_create(&pt, NULL, countdown, (void *)&c) != 0) {
+		perror("pthread_create() failed");
+		return;
+	}
+}
+void
+countdown(void *param)
+{
+	struct coords c;
+	c = (struct coords *)param;
+
+	/* finish this muddafukka */	
 }
 
 

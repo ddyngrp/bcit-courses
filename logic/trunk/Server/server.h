@@ -13,9 +13,12 @@ void   	move_player(const int, const int);
 bool   	addPlayer(const int);
 DPlaya* getPlayer(const int);
 
+/* s_network.cpp */
+void recieve_packet(const char, const int);
+
 /* s_bomb.cpp */
 void   	plant_bomb(const int);
-void   	explode_bomb(const int, const int, const int, const int);
+void   	explode_bomb(const int, const int, const int);
 void   	start_fuse(void);
 void    fire_to_map(struct fire);
 
@@ -26,6 +29,10 @@ void 	destroy_block(const int, const int);
 
 struct fire {
 	int left, right, up, down;
+	int x,y;
+};
+
+struct coords {
 	int x,y;
 };
 

@@ -21,25 +21,24 @@ int y;
 void
 start_fuse(const int x, const int y)
 {
-	return;	
-}
+	p_thread_t pt;
+	struct coords c;
+	
+	c.x = x;
+	c.y = y;
 
+	if (pthread_create(&pt, NULL, countdown, (void *)&c) != 0) {
+		perror("pthread_create() failed");
+		return;
+	}
+}
 void
-recieve_packet(char b, int index)
+countdown(void *param)
 {
-	if (b == 0)
-		move_player(index, CS_UP);
-	else if (b == 1)
-		move_player(index, CS_DOWN);
-	else if (b == 2)
-		move_player(index, CS_LEFT);
-	else if (b == 3)
-		move_player(index, CS_RIGHT);
-	else if (b == 4)
-		plant_bomb(index);
-	else if (b == 5)
-		player_quit(index);
+	struct coords c;
+	c = (struct coords *)param;
+
+	
 }
 
-//send_player_class()
-//send_map()
+

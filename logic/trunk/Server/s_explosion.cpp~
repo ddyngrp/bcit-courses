@@ -1,6 +1,6 @@
 #include "server.h"
 
-struct fire
+void
 explode_bomb(const int x, const int y, const int id, const int len)
 {
 struct fire f;
@@ -10,35 +10,31 @@ int j, k;
 	f.y = y;
 
 	for (j = x, k = 0; j > 0 && k < len; --j, ++k) {
-		if (check_block(x,j)) 
+		if (block_here(x,j)) 
 			break;
 		kill_if_here(x,j);
-		send_map(grid);
 	}
 	f.up = k;	
 	for (j = x, k = 0; j < 15 && k < len; ++j, ++k) {
-		if (check_block(x,j))
+		if (block_here(x,j))
 			break;
 		kill_if_here(x,j);
-		send_map(grid);
 	}
 	f.down = k;
 	for (j = x, k = 0; j > 0 && k < len; --j, ++k) {
-		if (check_block(j,y))
+		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);
-		send_map(grid);
 	}
 	f.left = k;
 	for (j = x, k = 0; j < 15 && k < len; ++j, ++k) {
-		if (check_block(j,y))
+		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);
-		send_map(grid);
 	}
 	f.right = k;
 	fire_to_map(f);
-	return f;
+	send_map(grid);
 }
 
 void
@@ -46,14 +42,19 @@ fire_to_map(struct fire f)
 {
 int i;
 
-	for (i = f.y; i < (f.up + f.y); --i)
-		grid[f.x][i] = GRID_FIRE;
-	for (i = f.y; i > (f.down + f.y); ++i)
-		grid[f.x][i] = GRID_FIRE;
-	for (i = f.x; i < (f.left + f.x); --i)
-		grid[i][f.y] = GRID_FIRE;
-	for (i = f.x; i > (f.right + f.x); ++i)
-		grid[i][f.y] = GRID_FIRE;
+	grid[f.x][f.y] = GRID_CENTER;
+	for (i = (f.y - 1); i < (f.up - f.y + 1); --i)
+		grid[f.x][i] = GRID_HZ;
+	grid[f.x][i] = GRID_TOP;
+	for (i = (f.y + 1); i > (f.down + f.y - 1); ++i)
+		grid[f.x][i] = GRID_HZ;
+	grid[f.x][i] = GRID_BOTTOM;
+	for (i = (f.x - 1); i < (f.left - f.x + 1); --i)
+		grid[i][f.y] = GRID_VT;
+	grid[i][f.y] = GRID_LEFT;
+	for (i = (f.x + 1); i > (f.right + f.x - 1); ++i)
+		grid[i][f.y] = GRID_VT;
+	grid[i][f.y] = GRID_RIGHT;
 }
 
 void
@@ -69,7 +70,7 @@ int i;
 }
 
 bool
-check_block(const int x, const int y)
+block_here(const int x, const int y)
 {
 int i;
 

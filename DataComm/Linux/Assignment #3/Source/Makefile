@@ -5,7 +5,7 @@
 
 CC=gcc
 CFLAGS=-c -Wall -pedantic -ggdb -g
-LDFLAGS=
+LDFLAGS=-lpthread
 GTKFLAGS=-export-dynamic `pkg-config --cflags --libs gtk+-2.0`
 SOURCES=main.c signal_handler.c server.c tools.c client.c
 OBJECTS=$(SOURCES:.c=.o)

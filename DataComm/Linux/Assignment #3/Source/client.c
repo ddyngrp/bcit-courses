@@ -114,7 +114,6 @@ void client_send(char * sendbuf) {
 
 	sprintf(text_out, "%s > %s", host, sendbuf);
 
-
 	if ((r = send(sockfd, text_out, strlen(text_out), 0)) == -1) {
 		perror("send() call failed");
 	}

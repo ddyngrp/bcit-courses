@@ -43,6 +43,9 @@ int x_, y_, w_,h_, numBombs_, droppedBombs_;
 unsigned long ip_;
 bool alive_;
 bool connected_;
+char image_;
+char name[256];
+char colour_;
 
 SDL_Surface* image_;
 

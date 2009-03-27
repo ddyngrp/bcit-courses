@@ -10,7 +10,7 @@ void DPlaya::refresh(SDL_Surface * screen)
 	//SDL_BlitSurface( this->getImage(), NULL, screen, &position );
 }
 
-void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
+void DPlaya::paint(DPlaya player, int newX, int newY, SDL_Surface* screen)
 {
 	player.setX(newX);
 	player.setY(newY);
@@ -19,7 +19,8 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 
 void DPlaya::dropBomb()
 {
-	int i;
+int i;
+
 	for(i = 0; i < this->numBombs_; i++)
 	{
 		//if(this->bombs[i] == 0)
@@ -50,10 +51,10 @@ add_player(unsigned long ip)
 DPlaya *
 getPlayer(const int id)
 {
-	int i;
-	for (i = 0; i < num_players; ++i) {
+int i;
+
+	for (i = 0; i < num_players; ++i) 
 		if (player_array[i].DPlayaID_ == id)
 			return &(player_array[i]);
-	}
 	return NULL;
 }

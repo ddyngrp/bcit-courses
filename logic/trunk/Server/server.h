@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include "s_player.h"
+#include "defs.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -14,23 +15,24 @@ DPlaya* getPlayer(const int);
 
 /* s_bomb.cpp */
 void   	plant_bomb(const int);
-void   	explode_bomb(const int, const int);
+void   	explode_bomb(const int, const int, const int, const int);
 void   	start_fuse(void);
+void    fire_to_map(struct fire);
 
 /* s_explosion.cpp */
 void   	kill_if_here(const int, const int);
-bool   	check_block(const int, const int);
+bool   	block_here(const int, const int);
 void 	destroy_block(const int, const int);
-void    fire_to_map(struct fire);
 
 struct fire {
-	int up;
-	int down;
-	int left;
-	int right;
-	int x;
-	int y;
+	int left, right, up, down;
+	int x,y;
 };
+
+unsigned char 		grid[15][15];
+DPlaya 			player_array[MAX_PLAYERS];
+unsigned char 		player_count = 0;
+bool 			game_running = false;
 
 #define SERVER_H
 #endif

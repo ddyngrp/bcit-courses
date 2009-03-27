@@ -81,6 +81,7 @@ public:
 
 
     bool showLoaded();
+    bool move(int xStep, int yStep);
     int start(SDL_Event event);
     Mix_Chunk *getNexMusic() const
     {

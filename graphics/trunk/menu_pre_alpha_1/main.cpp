@@ -14,8 +14,10 @@
 int main( int argc, char* args[] )
 {
     //fullscreen flag
+	int i, width, height;
 	int mmresult, ocresult; //MainMenu result and OkCancel menu result
 	bool fulls = false, exitGame = false;
+	Uint32 countStart,fps;
     SDL_Event event;
     //filenames for options in main menu
     std::string mainOpts[MainMenu2::num_options_]={"img/MainBackgroundv3.png","img/ExitBackgroundv3.png",
@@ -49,6 +51,19 @@ int main( int argc, char* args[] )
 			break;
 		case 1:
 			//load ok_cancel dialog
+			fps = 50;
+			height = exitMenu.getBackground(0)->h;
+			for(i = 0 ; i < fps; i++)
+			{
+				countStart = SDL_GetTicks();
+				if(SDL_GetTicks() - countStart < 500 / fps)
+						SDL_Delay((500/fps) - (SDL_GetTicks() - countStart));
+				main.move(0,0);
+				exitMenu.move(0, ((250 + height)* i/(int)fps) - height);
+				SDL_Flip(screen);
+				countStart = SDL_GetTicks();
+			}
+			main.move(0,0);
 			ocresult = exitMenu.start(event);
 			switch (ocresult)
 			{
@@ -56,6 +71,16 @@ int main( int argc, char* args[] )
 				exitGame = true;
 				break;
 			case 2:
+				for(i = 0 ; i < fps; i++)
+				{
+					countStart = SDL_GetTicks();
+					if(SDL_GetTicks() - countStart < 500 / fps)
+							SDL_Delay((500/fps) - (SDL_GetTicks() - countStart));
+					main.move(0,0);
+					exitMenu.move(0, ((250 + height)* (fps - i)/(int)fps) - height);
+					SDL_Flip(screen);
+					countStart = SDL_GetTicks();
+				}
 				exitGame = false;
 				break;
 			}

@@ -46,6 +46,15 @@ bool MainMenu2::showLoaded()
 			return false;
 }
 
+bool MainMenu2::move(int xStep, int yStep)
+{
+	SDL_Rect offset;
+	offset.x = xStep;
+	offset.y = yStep;
+	int i = SDL_BlitSurface( backgrounds_[loaded_],0, screen_, &offset );
+	return i == 0;
+}
+
 int MainMenu2::start(SDL_Event event)
 {
 	loaded_ = 0;
@@ -92,30 +101,54 @@ int MainMenu2::start(SDL_Event event)
 			{
 				if((event.motion.x >300) && (event.motion.y < 150))
 				{
+<<<<<<< .mine
+					if(loaded_ == num_options_ - 1)
+						continue;
+=======
 					if (loaded_ == num_options_ - 1)
 						continue;
+>>>>>>> .r133
 					loaded_ = num_options_ - 1;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x < 400) && (event.motion.y < 300) && (event.motion.y > 150))
 				{
+<<<<<<< .mine
+					if(loaded_ == num_options_ - 2)
+						continue;
+
+=======
 					if (loaded_ == num_options_ - 2)
 						continue;
+>>>>>>> .r133
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x > 200) && (event.motion.y > 300) && (event.motion.y < 650))
 				{
+<<<<<<< .mine
+					if(loaded_ == num_options_ - 3)
+						continue;
+
+=======
 					if (loaded_ == num_options_ - 3)
 						continue;
+>>>>>>> .r133
 					loaded_ = num_options_ - 3;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x < 200) && (event.motion.y > 700))
 				{
+<<<<<<< .mine
+					if(loaded_ == num_options_ - 4)
+						continue;
+
+					loaded_ = 1;
+=======
 					if (loaded_ == num_options_ - 4)
 						continue;
 					loaded_ = num_options_ - 4;
+>>>>>>> .r133
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				{

@@ -92,22 +92,30 @@ int MainMenu2::start(SDL_Event event)
 			{
 				if((event.motion.x >300) && (event.motion.y < 150))
 				{
+					if (loaded_ == num_options_ - 1)
+						continue;
 					loaded_ = num_options_ - 1;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x < 400) && (event.motion.y < 300) && (event.motion.y > 150))
 				{
+					if (loaded_ == num_options_ - 2)
+						continue;
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x > 200) && (event.motion.y > 300) && (event.motion.y < 650))
 				{
+					if (loaded_ == num_options_ - 3)
+						continue;
 					loaded_ = num_options_ - 3;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				if((event.motion.x < 200) && (event.motion.y > 700))
 				{
-					loaded_ = 1;
+					if (loaded_ == num_options_ - 4)
+						continue;
+					loaded_ = num_options_ - 4;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 				}else
 				{

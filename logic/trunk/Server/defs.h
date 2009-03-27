@@ -1,19 +1,25 @@
 #ifndef DEFS_H
 
-#define GRID_EMPTY       	1
-#define GRID_BOMB        	2
-#define GRID_DBLOCK      	4
-#define GRID_UBLOCK      	8
-#define GRID_POWUP_NUM   	16
-#define GRID_POWUP_RAD   	32
-#define GRID_POWUP_SPIKE 	64
-#define GRID_FIRE        	128
+/* add player image, player name, player colour to player class */
+/* add alive boolean */
 
-#define TYPE_MOVE       	 0
-#define TYPE_PLANT       	1
-#define TYPE_EXPLODE     	2
-#define TYPE_DIE         	3
-#define TYPE_POWERUP     	4
+#define GRID_EMPTY       	0
+#define GRID_BOMB        	1
+#define GRID_DBLOCK      	2
+#define GRID_UBLOCK      	3
+#define GRID_POWUP_NUM   	4	
+#define GRID_POWUP_RAD      5	
+#define GRID_POWUP_SPIKE    6
+#define GRID_CENTER         7
+#define GRID_BOTTOM         8
+#define GRID_RIGHT          9
+#define GRID_LEFT           10
+#define GRID_TOP            11
+#define GRID_HZ             12
+#define GRID_VT             13	
+
+#define TYPE_CLASS          0
+#define TYPE_MAP            1
 
 #define MOVE_UP          	0
 #define MOVE_DOWN        	1

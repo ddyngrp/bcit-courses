@@ -88,6 +88,36 @@ int MainMenu2::start(SDL_Event event)
 				break;
 			}
 		}
+		else if (event.type == SDL_MOUSEMOTION)
+			{
+				if((event.motion.x >300) && (event.motion.y < 150))
+				{
+					loaded_ = num_options_ - 1;
+					Mix_PlayChannel(-1, nexMusic_, 0);
+				}else
+				if((event.motion.x < 400) && (event.motion.y < 300) && (event.motion.y > 150))
+				{
+					loaded_ = num_options_ - 2;
+					Mix_PlayChannel(-1, nexMusic_, 0);
+				}else
+				if((event.motion.x > 200) && (event.motion.y > 300) && (event.motion.y < 650))
+				{
+					loaded_ = num_options_ - 3;
+					Mix_PlayChannel(-1, nexMusic_, 0);
+				}else
+				if((event.motion.x < 200) && (event.motion.y > 700))
+				{
+					loaded_ = 1;
+					Mix_PlayChannel(-1, nexMusic_, 0);
+				}else
+				{
+					loaded_ = 0;
+				}
+			}
+		else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_)
+		{
+			return loaded_;
+		}
 	}
 	return 0;
 

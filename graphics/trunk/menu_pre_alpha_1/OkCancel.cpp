@@ -88,6 +88,29 @@ int OkCancel::start(SDL_Event event)
 				break;
 			}
 		}
+		else if (event.type == SDL_MOUSEMOTION)
+			{
+				if((event.motion.x > 90) && (event.motion.x < 140) &&
+						(event.motion.y > 470) && (event.motion.y < 510))
+				{
+					loaded_ = num_options_ - 2;
+					Mix_PlayChannel(-1, music_, 0);
+				}else
+					if((event.motion.x > 400) && (event.motion.x < 550) &&
+							(event.motion.y > 470) && (event.motion.y < 510))
+					{
+						loaded_ = num_options_ - 1;
+						Mix_PlayChannel(-1, music_, 0);
+					}
+				else
+				{
+					loaded_ = 0;
+				}
+			}
+			else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_)
+			{
+				return loaded_;
+			}
 	}
 	return 0;
 

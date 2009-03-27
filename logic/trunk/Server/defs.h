@@ -1,17 +1,17 @@
 #ifndef DEFS_H
 
-#define GRID_EMPTY       	0
-#define GRID_BOMB        	1
-#define GRID_DBLOCK      	2
-#define GRID_UBLOCK      	3
+#define GRID_UBLOCK      	0
+#define GRID_DBLOCK      	1
+#define GRID_EMPTY       	2
+#define GRID_BOMB        	3
 #define GRID_POWUP_NUM   	4	
 #define GRID_POWUP_RAD          5	
 #define GRID_POWUP_SPIKE        6
 #define GRID_CENTER             7
-#define GRID_BOTTOM             8
-#define GRID_RIGHT              9
+#define GRID_TOP                8
+#define GRID_BOTTOM             9
 #define GRID_LEFT               10
-#define GRID_TOP                11
+#define GRID_RIGHT              11
 #define GRID_HZ                 12
 #define GRID_VT                 13	
 

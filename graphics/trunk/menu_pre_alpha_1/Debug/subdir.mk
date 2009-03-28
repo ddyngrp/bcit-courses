@@ -7,18 +7,21 @@ CPP_SRCS += \
 ../Funcs.cpp \
 ../MainMenu2.cpp \
 ../OkCancel.cpp \
+../POptMenu.cpp \
 ../main.cpp 
 
 OBJS += \
 ./Funcs.o \
 ./MainMenu2.o \
 ./OkCancel.o \
+./POptMenu.o \
 ./main.o 
 
 CPP_DEPS += \
 ./Funcs.d \
 ./MainMenu2.d \
 ./OkCancel.d \
+./POptMenu.d \
 ./main.d 
 
 

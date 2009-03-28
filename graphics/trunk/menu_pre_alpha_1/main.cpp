@@ -25,6 +25,7 @@ int main( int argc, char* args[] )
 														,"img/OPTBackgroundv3.png"};
     //filenames for OkCnacel exit menu
     std::string exitOpts[OkCancel::num_options_] = {"img/OK_CANCEL_EXIT.xcf","img/OK_EXIT.xcf","img/CANCEL_EXIT.xcf"};
+    std::string models[POptMenu::num_models_] = {"0.png","1.png","2.xcf","3.png","4.png","5.png","6.png","7.png",};
     SDL_Surface *screen;
 
     //init SDL
@@ -36,11 +37,26 @@ int main( int argc, char* args[] )
     //create main menu and exit dialog
     MainMenu2 main(mainOpts, "sound/mc.ogg","sound/click.wav", screen);
     OkCancel  exitMenu(exitOpts, "sound/click.wav", screen);
+    POptMenu pMenu(models, mainOpts, "sound/mc.ogg","sound/click.wav", screen);
 
+    while(true)
+    {
+    	SDL_WaitEvent(&event);
+    			if(event.type == SDL_KEYDOWN)
+    			{
+    				switch(event.key.keysym.sym)
+    				{
+    					case SDLK_LEFT:
+    						 pMenu.showLoaded()
+    						break;
+    					case SDLK_RIGHT:
+    					    break;
+    				}
+    			}
+    }
 	mmresult = 0;
 	ocresult = 0;
 	exitGame = false;
-
 	while(!exitGame)
 	{
 		mmresult = main.start(event);

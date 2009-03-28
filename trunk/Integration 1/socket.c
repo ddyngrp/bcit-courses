@@ -65,6 +65,10 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	recvfrom(wParam, buffer, sizeof(buffer), 0, &from, &cSize);
 	count++;
 
+	/* Set the type according to the first packet */
+	if(strcmp(buffer, "Single Download") == 0)
+		server_download();
+
 	MessageBox(NULL, buffer, "Data Received!", MB_OK);
 }
 
@@ -95,7 +99,12 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 	memset(buffer, '\0', BUFSIZE);
 	if(ci.request == SINGLE_DL)
+	{
 		strcpy_s(buffer, BUFSIZE, "Single Download");
+		sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
+		client_download();
+		return;
+	}
 	else if(ci.request == SINGLE_UP)
 		strcpy_s(buffer, BUFSIZE, "Single Upload");
 	else if(ci.request == SINGLE_STREAM)

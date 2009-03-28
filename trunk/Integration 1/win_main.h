@@ -1,6 +1,7 @@
 #ifndef _WIN_MAIN_H_
 #define _WIN_MAIN_H_
 
+#include <winsock2.h>
 #include <windows.h>
 #include <windowsx.h>
 #include <mmsystem.h>
@@ -85,5 +86,9 @@ void clnt_recv_udp(char buf[]);
 void serv_broadcast_clicked(char fileName[80]);
 void clnt_recv_tcp(char buf[]);
 void serv_recv_tcp(char buf[]);
+
+/* Services */
+void server_download();
+void client_download();
 
 #endif

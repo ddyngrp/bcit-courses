@@ -17,7 +17,6 @@
 #include "DPlaya.h"
 #include "user_map.h"
 SDL_Surface *screen  = NULL;
-
 extern user_map map;
 
 /*---------------------------------------------------------------------------------------------
@@ -45,6 +44,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 	SDL_Event event;
 	bool quit = false;
 	DPlaya tmpPlaya = new DPlaya();
+	unsigned char tmpMap[15][15];
 	
 	if((pid = fork()) < 0)
 	{
@@ -89,14 +89,13 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 				memcpy(&tmpPlaya, recvbuf + 1, sizeof(tmpPlaya));
 				//We may need to change the id when we create the variable because it may be different.
 				allPlayers[tmpPlaya.id] = tmpPlaya;
-				redrawMap();
+				//redrawMap();
 			}
 			else if (recvbuf[0] == TYPE_EXPLODE)
 			{
-				memcpy(&map, recvbuf + 1, sizeof(map));
-				redrawmap();
+				memcpy(tmpMap, recvbuf + 1, sizeof(map));
+				map.redrawmap(&new_map, const int height, const int width);
             }		
-			
 		}
 	}
 }

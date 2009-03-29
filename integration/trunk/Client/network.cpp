@@ -65,8 +65,10 @@ int connection_setup(char * servIp)
 			perror("client: connect");
 			continue;
 		}
-        char c = 0xFF;
-		send(sockfd, &c, 0);
+        char c[2];
+		c[0] = 255;
+		c[1] = '\0';
+		send(sockfd, c, 2, 0);
 		break;
 	}
 

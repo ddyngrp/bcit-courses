@@ -15,7 +15,7 @@
 #include "network.h"
 #include "user_map.h"
 
-static user_map map;
+user_map map;
 
 int main(int argc, char *argv[])
 {
@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
 	char recvbuf[MAXLEN], line[MAXLEN];
 	DPlaya allPlayers[8];
 	SDL_Surface * screen;
+
+	unsigned char tmpMap[17][17];
+	unsigned char inMap[15][15];
+	memset(tmpMap, GRID_UBLOCK, 289); //fill the map with blocks
+	map.update_map(tmpMap, 17, 17);   //initial map
 
 	if (argc != 2) 
 	{
@@ -45,7 +50,7 @@ int main(int argc, char *argv[])
 			break;
 		}
 	}
-	
+
 	/* Get the initial Map and list of Players */
 	if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 	{

@@ -6,6 +6,7 @@
  */
 
 #include "DPlaya.h"
+#include <cmath>
 
 
 void DPlaya::refresh(SDL_Surface * screen)
@@ -46,25 +47,29 @@ void DPlaya::explodeBomb(int i)
 	this->droppedBombs_--;
 }
 
-void DPlaya::move(user_map mapGrid, int direction)
+void DPlaya::move(int** map, int direction)
 {
 	int yt,yb,xl,xr;
-	int xVel = 0;
-	int yVel = 0;
-	int **map;
-	map = mapGrid.get_map();
-	if(direction == 0)
-		yVel = -10;
+	/*if(direction == 0)
+		yVel = -7;
 	else if(direction == 1)
-		yVel = 10;
+		yVel = 7;
 	else if(direction == 2)
-		xVel = -10;
+		xVel = -7;
 	else if(direction == 3)
-		xVel = 10;
+		xVel = 7;
 
 	x_ += xVel;
 	y_ += yVel;
-	 
+	 */
+	if(direction == 0)
+		y_ += -7;
+	else if(direction == 1)
+		y_ += 7;
+	else if(direction == 2)
+		x_ += -7;
+	else if(direction == 3)
+		x_ += 7;
 	yt= y_ + 15;
 	yb= y_ + 25;
 	
@@ -72,10 +77,17 @@ void DPlaya::move(user_map mapGrid, int direction)
 	xr= x_ + 25;
        
     //Move the Player up or down
-    if(map[xl/35][yt/35] != 0 || map[xr/35][yb/35] != 0 
-    	|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
+    /*if(map[xl/35][yt/35] != 0) || map[xr/35][yb/35] != 0 
+		|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
     {
-    	y_ -= yVel;
-    	x_ -= xVel;
-    }
+		if(direction == 0)
+			y_ -= -7;
+		else if(direction == 1)
+			y_ -= 7;
+		else if(direction == 2)
+			x_ -= -7;
+		else if(direction == 3)
+			x_ -= 7;
+    }*/
+		
 }

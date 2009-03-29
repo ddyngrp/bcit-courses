@@ -22,7 +22,7 @@ public:
 				 x_ = x,  y_ = y, w_ = w, h_ = h, image_ = IMG_Load((char*)&pic);}
 
 	DPlaya(const DPlaya& old){ x_ = old.x_, y_ = old.y_, image_ = old.image_, w_ = old.w_, h_ = old.h_;}*/
-	DPlaya() : x_(0), y_(0), w_(35), h_(35), DPlayaID_(-1), alive_(false), image_(IMG_Load("default.png")){}
+	DPlaya() : x_(0), y_(0), w_(35), h_(35), xVel(0), yVel(0), DPlayaID_(-1), alive_(false), image_(IMG_Load("default.png")){}
 	DPlaya(const int x, const int y, const int w, const int h, char* pic) :
 				 x_(x),  y_(y), w_(w), h_(h), image_(IMG_Load(pic)){}
 	DPlaya(const DPlaya& old):x_(old.x_), y_(old.y_), image_(old.image_),
@@ -36,7 +36,7 @@ public:
 	void dropBomb();
 	void explodeBomb(int i);
 	bool canPlant(){return (numBombs_ < 5);}
-	void move(user_map mapGrid, int direction);
+	void move(int **mapGrid, int direction);
 
 	//getters
 	int getX(){return x_;}
@@ -56,15 +56,19 @@ public:
 	void killPlayer(){alive_ = false;}
 	void spawnPlayer(){alive_ = true;}
 	void setID(int id){DPlayaID_ = id;}
+	void setName(char *name){strcpy(name_, name);}
+	void setColor(char color){color_ = color;}
 
 	/*To add the drop bomb */
 
 
 private:
-int x_, y_, w_,h_, numBombs_, droppedBombs_;
+int x_, y_, w_,h_, numBombs_, droppedBombs_, xVel, yVel;
 int DPlayaID_;
 int bombPower_;
 bool alive_;
+char name_[256];
+char color_;
 //Bomb bombs[5]; //TODO bomb init !
 
 SDL_Surface* image_;

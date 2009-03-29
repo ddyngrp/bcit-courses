@@ -5,6 +5,8 @@
 
 SDL_Surface *screen;
 SDL_Event event;
+bool quit;
+
 
 void sdl_init()
 {
@@ -67,39 +69,64 @@ int main()
 	player.setImage("batmanTuxSmal.gif");
 	player.refresh(screen);
 	SDL_Flip(screen);
-	if( event.type == SDL_KEYDOWN )
-    	{
-        //Adjust the velocity
-        switch( event.key.keysym.sym )
-        {
-            case SDLK_UP:
-            case SDLK_DOWN:
-            case SDLK_LEFT:
-            case SDLK_RIGHT:
-				player.move(uMap, 1);
-				break;
-            case SDLK_SPACE:
-				//Send bomb request
-				break;
-            default: ;
-        }
-    	}
+	fflush(stdout);
+	while(quit == false)
+	{
+	while( SDL_PollEvent( &event ) )
+    {
+		//If the user has Xed out the window
+		if( event.type == SDL_QUIT )
+		{
+			//Quit the program
+			quit = true;
+		}
+		else if( event.type == SDL_KEYDOWN )
+		{
+			//Adjust the velocity
+			switch( event.key.keysym.sym )
+			{
+				case SDLK_UP:player.move(map, 0);
+					break;
+				case SDLK_DOWN:player.move(map, 1);
+					break;
+				case SDLK_LEFT:player.move(map, 2);
+					break;
+				case SDLK_RIGHT:
+					player.move(map, 3);
+					break;
+				case SDLK_SPACE:
+					//Send bomb request
+					break;
+				default: ;
+			}
+		}
     	//If a key was released
-    	else if( event.type == SDL_KEYUP )
-    	{
-        //Adjust the velocity
-        switch( event.key.keysym.sym )
-        {
-            case SDLK_DOWN: player.move(uMap, 1); break;
-            case SDLK_SPACE: break;
-            default: ;
-        }
-    	}
+		else if( event.type == SDL_KEYUP )
+		{
+			//Adjust the velocity
+			switch( event.key.keysym.sym )
+			{
+				case SDLK_UP: player.move(map, 0); break;
+				case SDLK_DOWN: player.move(map, 1); break;
+				case SDLK_LEFT: player.move(map, 2); break;
+				case SDLK_RIGHT: player.move(map, 3); break;
+				case SDLK_SPACE: break;
+				default: ;
+			}
+		}
+	}
+	uMap.draw_map(screen);
 	player.refresh(screen);
 	SDL_Flip(screen);
-	sleep(100);
-
-    	uMap.~user_map();
+}
+	/*sleep(2);
+	player.move(map, 1);
+	uMap.draw_map(screen);
+	player.refresh(screen);
+	SDL_Flip(screen);
+	sleep(4);*/
+	
+    uMap.~user_map();
 	return 0;
 }
 

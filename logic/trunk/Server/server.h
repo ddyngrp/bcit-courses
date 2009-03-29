@@ -1,10 +1,14 @@
 #ifndef SERVER_H
+#define SERVER_H
 
 #include <cstdio>
 #include "s_player.h"
 #include "defs.h"
+#include "headerMain.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "user_map.h"
+#include "funcs.h"
 
 /* s_movement.cpp */
 void   	move_player(const int, const int);
@@ -41,5 +45,4 @@ DPlaya 			player_array[MAX_PLAYERS];
 unsigned char 		player_count = 0;
 bool 			game_running = false;
 
-#define SERVER_H
 #endif

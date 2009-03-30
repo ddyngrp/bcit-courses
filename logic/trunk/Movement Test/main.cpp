@@ -69,7 +69,6 @@ int main()
 	player.setImage("batmanTuxSmal.gif");
 	player.refresh(screen);
 	SDL_Flip(screen);
-	fflush(stdout);
 	while(quit == false)
 	{
 	while( SDL_PollEvent( &event ) )
@@ -85,14 +84,41 @@ int main()
 			//Adjust the velocity
 			switch( event.key.keysym.sym )
 			{
-				case SDLK_UP:player.move(map, 0);
+				case SDLK_UP:
+					while(SDL_GetKeyState(NULL)[SDLK_UP])
+					{
+					SDL_PollEvent( &event );
+					player.move(map, 0);
+					uMap.draw_map(screen);
+					player.refresh(screen);
+					}
 					break;
-				case SDLK_DOWN:player.move(map, 1);
+				case SDLK_DOWN:
+					while(SDL_GetKeyState(NULL)[SDLK_DOWN])
+					{
+					SDL_PollEvent( &event );
+					player.move(map, 1);
+					uMap.draw_map(screen);
+					player.refresh(screen);
+					}				
 					break;
-				case SDLK_LEFT:player.move(map, 2);
+				case SDLK_LEFT:
+					while(SDL_GetKeyState(NULL)[SDLK_LEFT])
+					{
+					SDL_PollEvent( &event );
+					player.move(map, 2);
+					uMap.draw_map(screen);
+					player.refresh(screen);
+					}	
 					break;
 				case SDLK_RIGHT:
+					while(SDL_GetKeyState(NULL)[SDLK_RIGHT])
+					{
+					SDL_PollEvent( &event );
 					player.move(map, 3);
+					uMap.draw_map(screen);
+					player.refresh(screen);
+					}	
 					break;
 				case SDLK_SPACE:
 					//Send bomb request
@@ -105,18 +131,17 @@ int main()
 		{
 			//Adjust the velocity
 			switch( event.key.keysym.sym )
-			{
+			{/*
 				case SDLK_UP: player.move(map, 0); break;
 				case SDLK_DOWN: player.move(map, 1); break;
 				case SDLK_LEFT: player.move(map, 2); break;
 				case SDLK_RIGHT: player.move(map, 3); break;
 				case SDLK_SPACE: break;
-				default: ;
+				default: ;*/
 			}
 		}
 	}
-	uMap.draw_map(screen);
-	player.refresh(screen);
+	
 	SDL_Flip(screen);
 }
 	/*sleep(2);

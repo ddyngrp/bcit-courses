@@ -50,44 +50,39 @@ void DPlaya::explodeBomb(int i)
 void DPlaya::move(int** map, int direction)
 {
 	int yt,yb,xl,xr;
-	/*if(direction == 0)
-		yVel = -7;
-	else if(direction == 1)
-		yVel = 7;
-	else if(direction == 2)
-		xVel = -7;
-	else if(direction == 3)
-		xVel = 7;
-
-	x_ += xVel;
-	y_ += yVel;
-	 */
+	
 	if(direction == 0)
-		y_ += -7;
+		y_ += -3;
 	else if(direction == 1)
-		y_ += 7;
+		y_ += 3;
 	else if(direction == 2)
-		x_ += -7;
+		x_ += -3;
 	else if(direction == 3)
-		x_ += 7;
+		x_ += 3;
+	
 	yt= y_ + 15;
 	yb= y_ + 25;
 	
 	xl= x_ + 10;
 	xr= x_ + 25;
-       
+        printf("xl = %d\nxr = %d\nyt = %d\nyb= %d \n", xl/35, xr/35, yt/35 ,yb/35);
+	printf("map: map[xl/35][yt/35], %d\n", map[xl/35][yt/35]);
+	printf("map: map[xr/35][yb/35], %d\n", map[xr/35][yb/35]);
+	printf("map: map[xl/35][yb/35], %d\n", map[xl/35][yb/35]);
+	printf("map: map[xr/35][yt/35], %d\n", map[xr/35][yt/35]);
+	printf("*******\n");	
     //Move the Player up or down
-    /*if(map[xl/35][yt/35] != 0) || map[xr/35][yb/35] != 0 
-		|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
+    if(map[yt/35][xl/35] != 2 || map[yb/35][xr/35] != 2
+	|| map[yb/35][xl/35] != 2 || map[yt/35][xr/35] != 2)
     {
 		if(direction == 0)
-			y_ -= -7;
+			y_ -= -3;
 		else if(direction == 1)
-			y_ -= 7;
+			y_ -= 3;
 		else if(direction == 2)
-			x_ -= -7;
+			x_ -= -3;
 		else if(direction == 3)
-			x_ -= 7;
-    }*/
+			x_ -= 3;
+    }
 		
 }

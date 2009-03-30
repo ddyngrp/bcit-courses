@@ -50,6 +50,9 @@ static int sock = 0;
 static int mode = CLIENT;
 static struct sockaddr_in server;
 
+/* Return sockaddr struct in IPv4 or IPv6 format */
+void *get_in_addr(struct sockaddr *sa);
+
 int set_conn_type(int type);
 int conn_setup(char *host, char *port);
 void keepalive(); /* just an empty packet to let the other side know we're still here */

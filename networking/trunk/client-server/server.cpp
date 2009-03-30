@@ -1,5 +1,4 @@
 #include "server.h"
-#include "tools.h"
 #include "network.h"
 
 extern int mode, conn_type, sock;

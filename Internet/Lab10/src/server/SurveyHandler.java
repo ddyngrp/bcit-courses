@@ -20,7 +20,7 @@ public class SurveyHandler implements SurveyServer {
      * chosen one so far.
      */
     public int vote(int item) {
-        int maxVotes = 0;
+        int maxVotes = 1;
 
         System.out.println("Vote registered for: " + survey[0]);
         System.out.println("\tUser voted: " + survey[item]);
@@ -28,9 +28,9 @@ public class SurveyHandler implements SurveyServer {
         vote[item]++; // Increment the votes for the question
 
         // Return the item with the most votes
-        for (int i = 0; i < vote.length; i++) {
-            if (vote[i] > maxVotes) {
-                maxVotes = vote[i];
+        for (int i = 1; i < vote.length; i++) {
+            if (vote[i] > vote[maxVotes]) {
+                maxVotes = i;
             }
         }
 

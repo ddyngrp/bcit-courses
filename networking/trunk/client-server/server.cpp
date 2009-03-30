@@ -1,9 +1,44 @@
+/******************************************************************************
+ *  Source File: network.c
+ *
+ *  Program:     Tux Bomber
+ *
+ *  Functions:   start_server(void)
+ *               
+ *  Date:        March 2, 2009
+ *
+ *  Revisions:   March 30, 2009 - Steffen L. Norgren
+ *                   Added headers.
+ * 
+ *  Designer:    Steffen L. Norgren
+ *  Programmer:  Steffen L. Norgren
+ * 
+ *  Description: Manages all server-side network communications
+ *
+ *****************************************************************************/
+
 #include "server.h"
 #include "network.h"
 
 extern int mode, conn_type, sock;
 
-/* Initialize sockets, etc. */
+/******************************************************************************
+ *  Function:    start_server
+ * 
+ *  Date:        March 2, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    Steffen L. Norgren
+ *  Programmer:  Steffen L. Norgren
+ * 
+ *  Interface:   start_server(void)
+ * 
+ *  Returns:     void
+ * 
+ *  Description: Sets up server sockets and listens for new connections.
+ *
+ *****************************************************************************/
 void start_server(void) {
 	fd_set			master;		
 	fd_set			read_fds;

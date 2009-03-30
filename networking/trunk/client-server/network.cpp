@@ -32,11 +32,6 @@
  *  Designer:    David Young, Steffen L. Norgren
  *  Programmer:  David Young, Steffen L. Norgren
  * 
- *  Interface:   set_conn_type(int type)
- *		            int type: TCP or UDP connection type.
- * 
- *  Returns:     0 on success or (-1) on error.
- * 
  *  Description: Set the connection type to TCP or UDP.
  *
  *****************************************************************************/

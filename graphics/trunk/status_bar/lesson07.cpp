@@ -7,6 +7,7 @@ be redestributed without written permission.*/
 #include "SDL/SDL_ttf.h"
 #include <string>
 
+void draw_status_bar(std::string players[]);
 
 using namespace std;
 
@@ -19,6 +20,7 @@ const int SCREEN_BPP = 32;
 SDL_Surface *background = NULL;
 SDL_Surface *message = NULL;
 SDL_Surface *screen = NULL;
+SDL_Surface *tux[8];
 
 //The event structure
 SDL_Event event;
@@ -26,10 +28,10 @@ SDL_Event event;
 //The font that's going to be used
 TTF_Font *font = NULL;
 
-//The color of the font
-SDL_Color textColor = { 255, 255, 255 };
+//The color of the font  
+SDL_Color textColor = { 255,0, 0 };
 
-SDL_Surface *load_image( std::string filename )
+SDL_Surface *load_image( std::string filename)
 {
     //The image that's loaded
     SDL_Surface* loadedImage = NULL;
@@ -107,10 +109,18 @@ bool init()
 bool load_files()
 {
     //Load the background image
-    background = load_image( "background.png" );
+    background = load_image( "background1.jpg" );
+    tux[0] 		= load_image("tux.gif");
+    tux[1] 		= load_image("tux.gif");
+    tux[2] 		= load_image("tux.gif");
+    tux[3] 		= load_image("tux.gif");
+    tux[4] 		= load_image("tux.gif");
+    tux[5] 		= load_image("tux.gif");
+    tux[6] 		= load_image("tux.gif");
+    tux[7] 		= load_image("tux.gif");
 
     //Open the font
-    font = TTF_OpenFont( "lazy.ttf", 15 );
+    font = TTF_OpenFont( "ActionIs.ttf", 25);
 
     //If there was a problem in loading the background
     if( background == NULL )
@@ -146,58 +156,28 @@ void clean_up()
 
 int main( int argc, char* args[] )
 {
-     string playerList[] = {"player 1", "player 2", "player 3", "player 4",
+     string playerList[8] = {"player 1", "player 2", "player 3", "player 4",
 			  "player 5", "player 6", "player 7", "player 8"};
+    
     //Quit flag
     bool quit = false;
 
     //Initialize
     if( init() == false )
-    {
         return 1;
-    }
-
+ 
     //Load the files
     if( load_files() == false )
-    {
         return 1;
-    }
-
-    //Render the text
-     message = TTF_RenderText_Solid( font,"braendon" , textColor );
-    
-        
-   
-    //If there was an error in rendering the text
-   if( message == NULL )
-    {
-         return 1;
-    }
-
-    //Apply the images to the screen
-    
+
     apply_surface( 0, 0, background, screen );
-    
-    
-	int x =30,y=1;
-	for(int i =0; i < 8; i++)
-	{	
-		
-		
-		if(i % 2 == 0 && i != 0)
-		{
-			x += 150;
-			y = 1;	
-		}
-		apply_surface(x,y ,message, screen );
-		y *= 25;
-	}
 
+    
+	
+	draw_status_bar(playerList);	
     //Update the screen
     if( SDL_Flip( screen ) == -1 )
-    {
         return 1;
-    }
 
     //While the user hasn't quit
     while( quit == false )
@@ -218,4 +198,20 @@ int main( int argc, char* args[] )
     clean_up();
 
     return 0;
+}
+void draw_status_bar(std::string players[])
+{
+	int x =30,y=1;
+	for(int i =0; i < 8; i++)
+	{	
+		if(i % 2 == 0 && i != 0)
+		{
+			x += 150;
+			y = 1;	
+		}
+		message = TTF_RenderText_Solid( font,players[i].c_str() , textColor);
+		apply_surface(x,y ,message, screen );
+		apply_surface(x-30,y,tux[i],screen);
+		y *= 50;
+	}
 }

@@ -100,7 +100,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		client(hwnd);
+		setup_client(hwnd, SOCK_STREAM);
 		break;
 
 	case ID_MODE_SERVER:
@@ -110,7 +110,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		server(hwnd);
+		setup_server(hwnd, SOCK_STREAM);
 		break;
 
 
@@ -147,14 +147,14 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
 	case ID_FILE_LOCAL:
         if(busyFlag > 0) //we're already busy
-            return TRUE;
+            break;
         busyFlag = LOCALPLAY;
         memset(fileName, 0, 80);
 	    memset(pathName, 0, 80);
         browseFiles(hwnd, fileName, pathName);
         if(localSong_Init(hwnd, fileName) == FALSE)
             busyFlag = 0; //if we failed to open file
-        return FALSE;
+        break;
 
 	case ID_VIEW_CONNECTEDCLIENTS:
 		break;

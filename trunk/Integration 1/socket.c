@@ -129,6 +129,7 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			strcpy_s(buffer, BUFSIZE, "Single Upload");
 		else if(ci.request == SINGLE_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Stream");
+
 		else if(ci.request == MULTI_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Multicast");
 

@@ -83,8 +83,8 @@ int VersionCheck();
 void InitWindow(HWND);
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
-void client(HWND hwnd);
-void server(HWND hwnd);
+void setup_client(HWND hwnd, int type);
+void setup_server(HWND hwnd, int type);
 
 /* Local Play */
 BOOL localSong_Init(HWND hwnd, char * filename);

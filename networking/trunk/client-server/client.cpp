@@ -93,6 +93,70 @@ void start_udp_client(char *hostname){
 	char *inbuf,*outbuf;
 
 	printf("initializing the socket");
+	
+    if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
+        perror("Can't crete a socket\n");
+        exit(1);
+    }
+    
+    /*store server */
+    bzero((char*)&udpserver,sizeof(udpserver));
+    udpserver.sin_family=AF_INET;
+    udpserver.sin_port = htons(udp_port);
+    
+    if ((hp = gethostbyname(hostname))==NULL){
+        fprintf(stderr,"Can't get server's IP address\n");
+        exit(1);
+    }
+    
+    bcopy(hp->h_addr, (char *)&udpserver.sin_addr,hp->h_length);
+    /*bind local address to the socket*/
+    bzero((char*)&udpclient,sizeof(udpclient));
+    udpclient.sin_family = AF_INET;
+    udpclient.sin_port = htons(0);
+    udpclient.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    if (bind(sd,(struct sockaddr *)&udpclient, sizeof(udpclient)) ==-1){
+        perror("Can't bind name to socket");
+        exit(1);
+    }
+    
+    fflush(stdout);
+    /* sending keyboard inputs*/
+   for(;;){
+		printf("fgets >");
+		fflush(stdout);
+   		fgets(inbuf, MAXLEN, stdin);
+   		
+   	    printf("sending...\n");
+        fflush(stdout);
+        if (sendto(sd,inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+            perror("sendto failure");
+            exit(1);
+        }
+        
+        printf("receiving...\n");
+        fflush(stdout);
+        
+        /*receive data*/
+      	fflush(stdout);
+        if (recvfrom(sd,outbuf,MAXLEN,0,(struct sockaddr *)&udpserver,(socklen_t *)sizeof(udpserver)) < 0){
+            perror("recvfrom error");
+            exit(1);
+        }
+        printf("received...");
+        fflush(stdout);
+        
+        if (strcmp(outbuf,"quit\n") == 0){
+            close(sd);
+            break;
+        }else{
+            printf("length = %d; buf =%s",(int)strlen(outbuf),outbuf);
+            break;
+        }
+   
+   }
+
 	if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
 		perror("Can't crete a socket\n");
 		exit(1);

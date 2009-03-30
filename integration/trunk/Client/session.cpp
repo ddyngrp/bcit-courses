@@ -57,42 +57,31 @@ int main(int argc, char *argv[])
 		perror("recv call() failed.");
 		exit(2);
 	}
-	memcpy(&map, recvbuf, r);
+	memcpy(&inMap, recvbuf, r);
+	convertMap(inMap, tmpMap);
 	if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 	{
 		perror("recv call() failed.");
 		exit(3);
 	}
 	memcpy(&allPlayers, recvbuf, r);
-	close(tcpSockFd);
+	//close(tcpSockFd);
 
 	udpSockFd = start_udp_client(argv[1]);
 	
-	
 	/* TODO GRAPHICS: make sure this works.  Note: this will go earlier once we have menus working */
-	/* Screen Initializers start */
-	SDL_Init( SDL_INIT_EVERYTHING );
-
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) //turn video on
-	{
-		printf("Unable to initialize SDL: %s\n", SDL_GetError());
-		exit(4);
-	}
-	atexit(SDL_Quit);
-	screen = SDL_SetVideoMode(SCREEN_HEIGHT, SCREEN_WIDTH, 16, SDL_SWSURFACE );//video settings  //SDL_DOUBLEBUF instead of SDL_SWSURFACE?
-	if (screen == NULL)
-	{
-		printf("Unable to set video mode: %s\n", SDL_GetError());
-		exit(5);
-	}
-    /* Screen initializers end */
-    
-    
+	sdl_init(screen);
 	
 	/* Creates an extra process: one reads the socket, and one gets messages from stdin */
 	/* Note: the tcpSockFd should be the UDP connection once is established */
 	fork_off(tcpSockFd, udpSockFd, allPlayers);
 
 	return 0;
+}
+
+//waiting for server to write this
+convertMap(unsigned char inMap[15][15], unsigned char outMap[17][17])
+{
+
 }
 

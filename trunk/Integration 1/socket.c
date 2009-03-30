@@ -51,7 +51,6 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
-	SOCKADDR from;
 	char buffer[BUFSIZE];
 	int cSize;
 
@@ -63,19 +62,36 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 	if(ci.behavior == SERVER)
 	{
-		//recvfrom(wParam, buffer, sizeof(buffer), 0, &from, &cSize);
-		recv(wParam, buffer, sizeof(buffer), 0);
-		MessageBox(NULL, buffer, "Data Received!", MB_OK);
+		if(ci.request == SINGLE_UP)
+		{
+			client_download(wParam); /* The client's download is the inverse of the server's upload */
+			return;
+		}
+
+		if(recv(wParam, buffer, sizeof(buffer), 0) == -1)
+		{
+			if (WSAGetLastError() != WSAEWOULDBLOCK)
+			{
+				MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+				closesocket(wParam);
+			}
+		}
+
 		/* Set the type according to the first packet */
 		if(strcmp(buffer, "Single Download") == 0)
-			server_download(wParam);
+		{
+			ci.request = SINGLE_DL;
+			server_download(wParam); /* Go right to sending the file. */
+		}
+		else if(strcmp(buffer, "Single Upload") == 0)
+			ci.request = SINGLE_UP;
+			
 	}
 	else if (ci.behavior == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
 			client_download(wParam);
 	}
-
 	
 }
 
@@ -108,22 +124,27 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	if(ci.behavior == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
-		{
 			strcpy_s(buffer, BUFSIZE, "Single Download");
-			//sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
-			if(send(wParam, buffer, sizeof(buffer), 0) == -1){
-			  MessageBox(NULL, TEXT("TEST"), TEXT("TEST"), MB_OK);
-			}
-			//client_download();
-			return;
-		}
 		else if(ci.request == SINGLE_UP)
 			strcpy_s(buffer, BUFSIZE, "Single Upload");
 		else if(ci.request == SINGLE_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Stream");
 		else if(ci.request == MULTI_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Multicast");
-	}
 
-	//sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
+		if(send(wParam, buffer, sizeof(buffer), 0) == -1)
+		{
+			if (WSAGetLastError() != WSAEWOULDBLOCK)
+			{
+				MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+				closesocket(wParam);
+			}
+		}
+		//Sleep(1); prompt for file choice
+
+		if(ci.request == SINGLE_UP)
+			server_download(wParam); /* Client's upload is inverse of server's download */
+	}
+	else if (ci.behavior == SERVER)
+		MessageBox(NULL, TEXT("Warning: Asyncronous TCP write called by the serverk (should not happen).\n"), NULL, MB_OK);
 }

@@ -18,12 +18,8 @@
 --			selections and takes appropriate action depending on the user's input.
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
-
 #include "win_main.h"
 #include "resource.h"
-static int busyFlag = 0;
-WAVEFORMATEX pwfx;
-HWAVEOUT hwo;
 
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	MenuDispatch
@@ -33,8 +29,7 @@ HWAVEOUT hwo;
 --	REVISIONS:	
 -- 
 --	DESIGNER:	Steffen L. Norgren
--- 
---	PROGRAMMER:	Steffen L. Norgren
+--	PROGRAMMER:	Steffen L. Norgren & Jaymz Boilard
 -- 
 --	INTERFACE:	MenuDispatch(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --					HWND hWnd:		Window handle
@@ -51,7 +46,6 @@ HWAVEOUT hwo;
 ---------------------------------------------------------------------------------------*/
 BOOL CALLBACK MenuDispatch(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 	HMENU hMenu;
-
 	hMenu = GetMenu(ghWndMain);
 
 	switch (LOWORD(wParam)) {
@@ -70,13 +64,13 @@ BOOL CALLBACK MenuDispatch(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	Dlg_Main
 -- 
---	DATE:		March 16, 2009
--- 
---	REVISIONS:	
+--	DATE:		March 16
+--
+--	REVISIONS:	March 23 - Added code for local song play corresponding to the WM_COMMAND
+--						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOP
 -- 
 --	DESIGNER:	Steffen L. Norgren
--- 
---	PROGRAMMER:	Steffen L. Norgren
+--	PROGRAMMER:	Steffen L. Norgren & Jaymz Boilard
 -- 
 --	INTERFACE:	Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --					HWND hDlg:		Dialogue handle
@@ -93,7 +87,9 @@ BOOL CALLBACK MenuDispatch(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 ---------------------------------------------------------------------------------------*/
 BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 	HMENU hMenu;
-
+	char * fileName;
+    
+    fileName = "meow.wav";
 	hMenu = GetMenu(ghWndMain);
 
 	switch (message) {
@@ -104,8 +100,47 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 			break;
 
 		case WM_COMMAND: // Process user input
-			switch (LOWORD(wParam)) {
-				// Buttons
+			switch (LOWORD(wParam))
+			{
+				case IDC_BTN_PLAY:
+                    if(busyFlag == LOCALPLAY)
+                        localSong_Play();
+                    else if (busyFlag == NETWORKPLAY)
+					    waveOutRestart(hwo);
+					return FALSE;
+
+                case IDC_BTN_PAUSE:
+                    if(busyFlag == LOCALPLAY)
+                        localSong_Pause();
+					return FALSE;
+
+				case IDC_BTN_STOP:
+                    if(busyFlag == LOCALPLAY)
+                        localSong_Stop();
+                    else
+                        waveOutClose(hwo);
+                    busyFlag = 0;
+                    return FALSE;
+
+                //button should be disabled when we're not in client mode
+                case IDC_BTN_DOWNLOAD:
+                    /* Send our file name then wait for the WAVEFORMATEX structure 
+                    send(SocketInfo->Socket, fileName, sizeof(fileName), 0);
+                    recv(SocketInfo->Socket, buf, sizeof(buf), 0);
+                    memcpy(pwfx, SocketInfo->DataBuf, RecvBytes);
+                    waveOutOpen(&hwo, WAVE_MAPPER, pwfx, 0, NULL, CALLBACK_NULL);
+
+                    //Create UDP socket
+                    WaveLib_CreateThread(pWaveLib);*/
+                    return FALSE;
+
+                //button should be disabled when we're not in server mode
+                /* connection has already been set up after connect was pressed, so we can start
+                   sending right away. */
+                case IDC_BTN_BROADCAST:
+                    serv_broadcast(fileName);
+                    return FALSE;
+
 				default:
 					return FALSE;
 			}

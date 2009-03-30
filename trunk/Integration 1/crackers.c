@@ -1,5 +1,6 @@
 #include "crackers.h"
 #include "win_main.h"
+
 /*------------------------------------------------------------------------
 --		FUNCTION:		OnClose
 --
@@ -28,11 +29,13 @@ void OnClose(HWND hwnd)
 --
 --		DATE:			February 24, 2009
 --
---		REVISIONS:		(Date and Description)
+--		REVISIONS:		March 26 - Added code to make the menu items properly
+--								   gray, ungray, and add check marks as needed.
+--						March 29 - Moved the code for ID_FILE_LOCAL from
+--								   Menu_Dispatch to here.
 --
 --		DESIGNER:		Jerrod Hudson
---
---		PROGRAMMER:		Jerrod Hudson
+--		PROGRAMMER:		Jerrod Hudson & Jaymz Boilard
 --
 --		INTERFACE:		void OnCommand(HWND hwnd, int id, HWND hwndCtl,
 --						UINT codeNotify)
@@ -49,6 +52,7 @@ void OnClose(HWND hwnd)
 ------------------------------------------------------------------------*/
 void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
+	TCHAR fileName[80], pathName[80];
 	int iRc;
 	/* HINSTANCE hInstance = (HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE); */
 
@@ -141,6 +145,17 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		break;
 
 
+	case ID_FILE_LOCAL:
+        if(busyFlag > 0) //we're already busy
+            return TRUE;
+        busyFlag = LOCALPLAY;
+        memset(fileName, 0, 80);
+	    memset(pathName, 0, 80);
+        browseFiles(hwnd, fileName, pathName);
+        if(localSong_Init(hwnd, fileName) == FALSE)
+            busyFlag = 0; //if we failed to open file
+        return FALSE;
+
 	case ID_VIEW_CONNECTEDCLIENTS:
 		break;
 
@@ -180,6 +195,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 {
 	InitWindow(hwnd);
+	fileInit(hwnd); //set up file browsing
+	busyFlag = 0;
 	memset((char *)&ci, 0, sizeof(connectInfo));
 	ci.port	= DEFAULT_PORT;
 

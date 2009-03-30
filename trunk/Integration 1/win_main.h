@@ -69,6 +69,10 @@ SOCKADDR_IN		remote,				// Server socket information
 				local;				// Client socket information
 connectInfo		ci;					// Connection information
 
+int busyFlag;
+static WAVEFORMATEX pwfx;
+static HWAVEOUT hwo;
+
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK MenuDispatch(HWND, UINT, WPARAM, LPARAM);
@@ -93,7 +97,7 @@ void fileInit(HWND hwnd);
 
 /* Network Play */
 void clnt_recv_udp(char buf[]);
-void serv_broadcast_clicked(char fileName[80]);
+void serv_broadcast(char fileName[80]);
 void clnt_recv_tcp(char buf[]);
 void serv_recv_tcp(char buf[]);
 

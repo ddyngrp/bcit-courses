@@ -1,7 +1,6 @@
 #include "win_main.h"
 static MCIDEVICEID deviceID;
 static OPENFILENAME ofn;
-int busyFlag;
 
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	localSong_Init
@@ -43,7 +42,7 @@ BOOL localSong_Init(HWND hwnd, char * fileName)
         if (errno != 0)
             return FALSE;
     }
-    busyFlag = 0;
+    //busyFlag = 0;
     return TRUE;
 }
 
@@ -93,7 +92,7 @@ BOOL localSong_Pause(void)
 BOOL localSong_Play(void)
 {
     MCI_GENERIC_PARMS resume;
-    MCIERROR          errno;
+    int          errno;
 
     if (deviceID)
     {
@@ -123,7 +122,7 @@ BOOL localSong_Stop(void)
 {
     MCI_GENERIC_PARMS stop;
     MCI_GENERIC_PARMS close;
-    MCIERROR          errno;
+    int          errno;
 
     if (deviceID)
     {

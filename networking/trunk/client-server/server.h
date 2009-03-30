@@ -14,7 +14,6 @@
 #define PORT	"3840"
 
 void start_server(void);
-void stop_server(void); /* implement later */
 void start_udp_server(void);
 
 #endif

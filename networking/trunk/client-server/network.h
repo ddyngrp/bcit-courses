@@ -45,6 +45,7 @@
 #define MAP_COLS 15
 /* end global definitions */
 
+/* TODO: Move into struct */
 static int conn_type = TCP;
 static int sock = 0;
 static int mode = CLIENT;

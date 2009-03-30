@@ -22,6 +22,17 @@
 
 extern int mode, conn_type, sock;
 
+typedef struct _tmp_server {
+	fd_set	master,
+			read_fds;
+	int		listener,
+			fd_max,
+			new_fd,
+			recvBytes;
+
+	unsigned char	recvBuff[8192];
+} tmp_server, *ptmp_server;
+
 /******************************************************************************
  *  Function:    start_server
  * 
@@ -40,15 +51,11 @@ extern int mode, conn_type, sock;
  *
  *****************************************************************************/
 void start_server(void) {
-	fd_set			master;		
-	fd_set			read_fds;
-	int				fd_max;
-	int				listener;
-	int				new_fd;	
 	struct 			sockaddr_storage remoteaddr;
 	socklen_t		addrlen;
-	unsigned char	buf[256];
-	int				nBytes;
+
+	/* Allocate memory to the server struct */
+	tmp_server *ptmp_server = (tmp_server *)malloc(sizeof(tmp_server));
 
 	/* Since we have the possibility for IPv6, we need to make sure
 	   we can hold an address of that length. */
@@ -59,10 +66,13 @@ void start_server(void) {
 
 	struct addrinfo hints, *ai, *p;
 
-	FD_ZERO(&master);	/* clear the master and temp socket sets */
-	FD_ZERO(&read_fds);
+	FD_ZERO(&ptmp_server->master);	/* clear the ptmp_server->master and temp socket sets */
+	FD_ZERO(&ptmp_server->read_fds);
 	
 	mode = SERVER; /* needed for network functions */
+
+	/* Setup our server struct */
+
 
 	/* Get a new socket and bind it! */
 	memset(&hints, 0, sizeof(hints));
@@ -72,22 +82,22 @@ void start_server(void) {
 
 	if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
 		fprintf(stderr, "server: %s\n", gai_strerror(rv));
-		exit(1);
+		perror("getaddrinfo()");
 	}
 
 	/* Setup the listening sockets */
 	for (p = ai; p != NULL; p = p->ai_next) {
-		listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
-		if (listener < 0) { /* yes it is free */
+		ptmp_server->listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+		if (ptmp_server->listener < 0) { /* yes it is free */
 			continue;
 		}
 
 		/* Avoid address in use errors */
-		setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
+		setsockopt(ptmp_server->listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
 
 		/* Bind the socket, but close if in use */
-		if (bind(listener, p->ai_addr, p->ai_addrlen) < 0) {
-			close(listener);
+		if (bind(ptmp_server->listener, p->ai_addr, p->ai_addrlen) < 0) {
+			close(ptmp_server->listener);
 			continue;
 		}
 
@@ -96,86 +106,83 @@ void start_server(void) {
 
 	/* Exit if nothing was bound */
 	if (p == NULL) {
-		fprintf(stderr, "server: failed to bind\n");
-		exit(2);
+		perror("server: failed to bind\n");
 	}
 
 	freeaddrinfo(ai);	/* we no longer need this */
 
 	/* listen!! */
-	if (listen(listener, 10) == -1) {
+	if (listen(ptmp_server->listener, 10) == -1) {
 		perror("listen"); /* massive listening failure */
-		exit(3);
 	}
 
-	/* add the new listener to our master set */
-	FD_SET(listener, &master);
+	/* add the new ptmp_server->listener to our ptmp_server->master set */
+	FD_SET(ptmp_server->listener, &ptmp_server->master);
 
 	/* keep track of the biggest file descriptor */
-	fd_max = listener;
+	ptmp_server->fd_max = ptmp_server->listener;
 
 	/* main read loop */
 	for (;;) {
-		read_fds = master; /* copy the master set */
-		if (select(fd_max+1, &read_fds, NULL, NULL, NULL) == -1) {
+		ptmp_server->read_fds = ptmp_server->master; /* copy master set */
+		if (select(ptmp_server->fd_max+1, &ptmp_server->read_fds, NULL, NULL, NULL) == -1) {
 			perror("select"); /* massive select failure */
-			exit(4);
 		}
 
 		/* cycle through the connections, looking for data */
-		for (i = 0; i <= fd_max; i++) {
-			if (FD_ISSET(i, &read_fds)) { /* new connection */
-				if (i == listener) {
+		for (i = 0; i <= ptmp_server->fd_max; i++) {
+			if (FD_ISSET(i, &ptmp_server->read_fds)) { /* new connection */
+				if (i == ptmp_server->listener) {
 					/* manage the new connection */
 					addrlen = sizeof(remoteaddr);
-					new_fd = accept(listener, (struct sockaddr *)&remoteaddr, &addrlen);
+					ptmp_server->new_fd = accept(ptmp_server->listener, (struct sockaddr *)&remoteaddr, &addrlen);
 
-					if (new_fd == -1) {
+					if (ptmp_server->new_fd == -1) {
 						perror("accept"); /* obviously the server hates us */
 					} else { /* the server loves us */
-						FD_SET(new_fd, &master); /* add to the master set */
-						if (new_fd > fd_max) { /* make sure we don't go over the limit */
-							fd_max = new_fd;
+						FD_SET(ptmp_server->new_fd, &ptmp_server->master); /* add to the master set */
+						if (ptmp_server->new_fd > ptmp_server->fd_max) { /* make sure we don't go over the limit */
+							ptmp_server->fd_max = ptmp_server->new_fd;
 						}
 
 						fprintf(stderr, "server: new connection from %s on socket %d\n",
 								inet_ntop(remoteaddr.ss_family, get_in_addr((struct sockaddr *)&remoteaddr),
-									remoteIP, INET6_ADDRSTRLEN), new_fd);
+									remoteIP, INET6_ADDRSTRLEN), ptmp_server->new_fd);
 					}
 				} else {
 					/* handle data from the client */
-					if ((nBytes = recv(i, buf, sizeof(buf), 0)) <= 0) {
+					if ((ptmp_server->recvBytes = recv(i, ptmp_server->recvBuff, sizeof(ptmp_server->recvBuff), 0)) <= 0) {
 						/* got an error for client close the connection */
-						if (nBytes == 0) {
+						if (ptmp_server->recvBytes == 0) {
 							/* connection close */
 							printf("select: socket %d hung up\n", i);
 						} else {
 							perror("recv");
 						}
 						close(i);	/* goodbye */
-						FD_CLR(i, &master); /* remove from master set */
+						FD_CLR(i, &ptmp_server->master); /* remove from ptmp_server->master set */
 					} else { /* we got data from a client */
-						if (process_data(buf, nBytes) < 0) { /* if there was an error processing the data */
+						if (process_data(ptmp_server->recvBuff, ptmp_server->recvBytes) < 0) { /* if there was an error processing the data */
 							perror("process_data");
 						} else {
 							
 						}
 						
-						for (j = 0; j <= fd_max; j++) {
-							if (FD_ISSET(j, &master)) {
+						for (j = 0; j <= ptmp_server->fd_max; j++) {
+							if (FD_ISSET(j, &ptmp_server->master)) {
 								/* only echo back to the client that connected
 								 * TODO: This is where we would flesh out how to deal
 								 * with the incoming data and to whom we would send it.
 								 */
-								if (j != listener && j == i) {
-									if (send(j, buf, nBytes, 0) == -1) {
+								if (j != ptmp_server->listener && j == i) {
+									if (send(j, ptmp_server->recvBuff, ptmp_server->recvBytes, 0) == -1) {
 										perror("send"); /* massive failure!!! */
 									}
 								}
 							}
 						}
 
-						if(strcmp((const char*)buf, "start\n")==0) {
+						if(strcmp((const char*)ptmp_server->recvBuff, "start\n")==0) {
 							start_udp_server();
 						}
 					}
@@ -184,5 +191,3 @@ void start_server(void) {
 		} /* end of descriptor loop */
 	} /* end of infinite while loop */
 }
-
-

@@ -36,7 +36,7 @@ class user_map
 	bool draw_map(SDL_Surface *screen);
 	
 	bool update_map(int **new_map,const int height, const int width);
-	void set_images(SDL_Surface *new_image, const int numImages);
+	bool update_grid(const int gridx, const int gridy, const int newval);
 
 	int** get_map(){ return (int**)_map;}
 

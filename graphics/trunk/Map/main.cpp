@@ -1,5 +1,5 @@
 #include "user_map.h"
-#include "funcs.h"
+#include "init.h"
 
 SDL_Surface *screen;
 
@@ -33,10 +33,11 @@ int main()
 	int **map;
 	
 	sdl_init();
+	
+	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,0x00,0xFF,0xFF));
+	SDL_Surface *image_set = load_image( "tileset.png" );
 
-	SDL_Surface *image_set = load_image( "empty.png" );
-
-	int numImages = 3;
+	int numImages = 15;
 	int width = 18;
 	int height = 17;
 	
@@ -60,10 +61,12 @@ int main()
 	user_map uMap(map,image_set,numImages,height,width);
 
 	uMap.draw_map(screen);
-	
-	sleep(100);
+	sleep(5);
 
-    uMap.~user_map();
+	uMap.update_grid(15,15,12);
+	uMap.draw_map(screen);
+	sleep(1);
+	uMap.~user_map();
 	return 0;
 }
 

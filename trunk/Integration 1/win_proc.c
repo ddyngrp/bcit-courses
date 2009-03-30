@@ -48,18 +48,16 @@
 --	NOTES:	Windows procedure for the main window.
 --
 ---------------------------------------------------------------------------------------*/
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-	switch (message)
-	{
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
+	switch (message){
 		HANDLE_MSG(hWnd, WM_CREATE, OnCreate);
 		HANDLE_MSG(hWnd, WM_SIZE, OnSize);
 		HANDLE_MSG(hWnd, WM_COMMAND, OnCommand);
 		HANDLE_MSG(hWnd, WM_PAINT, OnPaint);
-		HANDLE_MSG(hWnd, WM_SOCKET, OnSocket);
 		HANDLE_MSG(hWnd, WM_CLOSE, OnClose);
+		HANDLE_MSG(hWnd, WM_SOCKET, OnSocket);
 		HANDLE_MSG(hWnd, WM_DESTROY, OnDestroy);
 	}
-
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
 

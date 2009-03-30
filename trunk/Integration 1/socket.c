@@ -51,7 +51,6 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
-	static int count = 0;
 	SOCKADDR from;
 	char buffer[BUFSIZE];
 	int cSize;
@@ -62,14 +61,22 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	cSize = sizeof(SOCKADDR);
 	memset(buffer, '\0', BUFSIZE);
 
-	recvfrom(wParam, buffer, sizeof(buffer), 0, &from, &cSize);
-	count++;
+	if(ci.behavior == SERVER)
+	{
+		//recvfrom(wParam, buffer, sizeof(buffer), 0, &from, &cSize);
+		recv(wParam, buffer, sizeof(buffer), 0);
+		MessageBox(NULL, buffer, "Data Received!", MB_OK);
+		/* Set the type according to the first packet */
+		if(strcmp(buffer, "Single Download") == 0)
+			server_download(wParam);
+	}
+	else if (ci.behavior == CLIENT)
+	{
+		if(ci.request == SINGLE_DL)
+			client_download(wParam);
+	}
 
-	/* Set the type according to the first packet */
-	if(strcmp(buffer, "Single Download") == 0)
-		server_download();
-
-	MessageBox(NULL, buffer, "Data Received!", MB_OK);
+	
 }
 
 
@@ -98,19 +105,25 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	extern connectInfo	ci;
 
 	memset(buffer, '\0', BUFSIZE);
-	if(ci.request == SINGLE_DL)
+	if(ci.behavior == CLIENT)
 	{
-		strcpy_s(buffer, BUFSIZE, "Single Download");
-		sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
-		client_download();
-		return;
+		if(ci.request == SINGLE_DL)
+		{
+			strcpy_s(buffer, BUFSIZE, "Single Download");
+			//sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
+			if(send(wParam, buffer, sizeof(buffer), 0) == -1){
+			  MessageBox(NULL, TEXT("TEST"), TEXT("TEST"), MB_OK);
+			}
+			//client_download();
+			return;
+		}
+		else if(ci.request == SINGLE_UP)
+			strcpy_s(buffer, BUFSIZE, "Single Upload");
+		else if(ci.request == SINGLE_STREAM)
+			strcpy_s(buffer, BUFSIZE, "Stream");
+		else if(ci.request == MULTI_STREAM)
+			strcpy_s(buffer, BUFSIZE, "Multicast");
 	}
-	else if(ci.request == SINGLE_UP)
-		strcpy_s(buffer, BUFSIZE, "Single Upload");
-	else if(ci.request == SINGLE_STREAM)
-		strcpy_s(buffer, BUFSIZE, "Stream");
-	else if(ci.request == MULTI_STREAM)
-		strcpy_s(buffer, BUFSIZE, "Multicast");
 
-	sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
+	//sendto(wParam, buffer, BUFSIZE, 0, (SOCKADDR *)&remote, sizeof(remote));
 }

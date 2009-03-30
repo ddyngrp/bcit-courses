@@ -48,6 +48,16 @@ typedef struct _CONNECTINFO
 	SOCKET			tcpSocket;
 } connectInfo;
 
+typedef struct _SOCKET_INFORMATION {
+	BOOL RecvPosted;
+	CHAR Buffer[BUFSIZE];
+	WSABUF DataBuf;
+	SOCKET Socket;
+	DWORD BytesSEND;
+	DWORD BytesRECV;
+	struct _SOCKET_INFORMATION *Next;
+} SOCKET_INFORMATION, * LPSOCKET_INFORMATION;
+
 // Global Variables
 static HINSTANCE		ghInst;				// Main application's global instance
 static HWND			ghWndMain,			// Main window's global handle
@@ -88,7 +98,9 @@ void clnt_recv_tcp(char buf[]);
 void serv_recv_tcp(char buf[]);
 
 /* Services */
-void server_download();
-void client_download();
+void server_download(WPARAM wParam);
+void client_download(WPARAM wParam);
+void FreeSocketInformation(SOCKET s);
+LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);
 
 #endif

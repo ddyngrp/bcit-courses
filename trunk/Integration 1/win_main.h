@@ -75,7 +75,6 @@ static HWAVEOUT hwo;
 
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-BOOL CALLBACK MenuDispatch(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK Dlg_Main(HWND, UINT, WPARAM, LPARAM);
 int InitApp(HINSTANCE, int);
 int VersionCheck();

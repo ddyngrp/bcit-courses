@@ -58,7 +58,8 @@ bool MainMenu2::move(int xStep, int yStep)
 int MainMenu2::start(SDL_Event event)
 {
 	loaded_ = 0;
-	while(this->showLoaded())
+	if(!this->showLoaded()) return 0;
+	while(true)
 	{
 		SDL_WaitEvent(&event);
 		if(event.type == SDL_KEYDOWN)
@@ -72,6 +73,7 @@ int MainMenu2::start(SDL_Event event)
 					}else{
 						++loaded_;
 					}
+					if(!this->showLoaded()) return 0;
 					break;
 
 				case SDLK_DOWN:
@@ -82,6 +84,7 @@ int MainMenu2::start(SDL_Event event)
 					}else{
 						--loaded_;
 					}
+					if(!this->showLoaded()) return 0;
 					break;
 				case SDLK_F11:
 					return 'f';
@@ -105,6 +108,7 @@ int MainMenu2::start(SDL_Event event)
 						continue;
 					loaded_ = num_options_ - 1;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showLoaded()) return 0;
 				}else
 				if((event.motion.x < 400) && (event.motion.y < 300) && (event.motion.y > 150))
 				{
@@ -114,6 +118,7 @@ int MainMenu2::start(SDL_Event event)
 
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showLoaded()) return 0;
 				}else
 				if((event.motion.x > 200) && (event.motion.y > 300) && (event.motion.y < 650))
 				{
@@ -123,6 +128,7 @@ int MainMenu2::start(SDL_Event event)
 
 					loaded_ = num_options_ - 3;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showLoaded()) return 0;
 				}else
 				if((event.motion.x < 200) && (event.motion.y > 700))
 				{
@@ -131,9 +137,11 @@ int MainMenu2::start(SDL_Event event)
 						continue;
 					loaded_ = num_options_ - 4;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showLoaded()) return 0;
 				}else
 				{
 					loaded_ = 0;
+					if(!this->showLoaded()) return 0;
 				}
 			}
 		else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_)

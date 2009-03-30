@@ -15,7 +15,7 @@ all: clean TuxMenu
 TuxMenu: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  *.cpp -Wall -o"TuxMenu" -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf
+	g++  *.cpp -Wall -O2 -o"TuxMenu" -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -57,7 +57,8 @@ bool OkCancel::move(int xstep, int ystep)
 int OkCancel::start(SDL_Event event)
 {
 	loaded_= 0;
-	while(this->showLoaded())
+	if(!this->showLoaded()) return 0;
+	while(true)
 	{
 		SDL_WaitEvent(&event);
 		if(event.type == SDL_KEYDOWN)
@@ -72,6 +73,7 @@ int OkCancel::start(SDL_Event event)
 						loaded_ = num_options_ -1;
 						Mix_PlayChannel(-1, music_, 0 );
 					}
+					if(!this->showLoaded()) return 0;
 					break;
 
 				case SDLK_DOWN:
@@ -83,6 +85,7 @@ int OkCancel::start(SDL_Event event)
 						loaded_ = num_options_ - 2;
 						Mix_PlayChannel(-1, music_, 0 );
 					}
+					if(!this->showLoaded()) return 0;
 					break;
 				case SDLK_ESCAPE:
 					return 2;
@@ -107,6 +110,7 @@ int OkCancel::start(SDL_Event event)
 
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, music_, 0);
+					if(!this->showLoaded()) return 0;
 				}else
 					if((event.motion.x > 400) && (event.motion.x < 550) &&
 							(event.motion.y > 470) && (event.motion.y < 510))
@@ -116,10 +120,15 @@ int OkCancel::start(SDL_Event event)
 
 						loaded_ = num_options_ - 1;
 						Mix_PlayChannel(-1, music_, 0);
+						if(!this->showLoaded()) return 0;
 					}
 				else
 				{
+					if(loaded_ == 0)
+						continue;
+
 					loaded_ = 0;
+					if(!this->showLoaded()) return 0;
 				}
 			}
 			else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_)

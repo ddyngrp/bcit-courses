@@ -8,21 +8,7 @@ import org.apache.xmlrpc.server.*;
  *
  * @author Steffen L. Norgren
  */
-public class Server implements SurveyServer {
-
-    public String[] survey() {
-        String[] tmp = {"1", "2", "3"};
-        return tmp;
-    }
-
-    public int vote(int item) {
-        return item;
-    }
-
-    public String report() {
-        String tmp = "asdasd";
-        return tmp;
-    }
+public class Server {
 
     public final static int PORT = 2000;
 
@@ -35,7 +21,7 @@ public class Server implements SurveyServer {
 
             // Register the handler class
             PropertyHandlerMapping phm = new PropertyHandlerMapping();
-            phm.addHandler("survey", SurveyServer.class);
+            phm.addHandler("survey", SurveyHandler.class);
             xmlRpcServer.setHandlerMapping(phm);
             System.out.println("Registered SurveyHandler class to [survey]");
 

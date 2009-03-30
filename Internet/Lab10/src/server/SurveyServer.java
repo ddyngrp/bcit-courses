@@ -6,6 +6,10 @@ package server;
  */
 public interface SurveyServer {
 
+    public String[] survey = {"What is the answer to life, the universe and everything?",
+                              "What?", "42", "I'm too depressed to answer."};
+    public int[] vote = {0, 0, 0, 0};
+
     /**
      * Return a survey questionaire, with the question
      * as the first array element and the possible

@@ -13,12 +13,21 @@ import java.io.*;
 public class Client {
 
     public final static int PORT = 2000;
+    public final static String SERVER = "localhost";
 
     public static void main(String[] args) {
+
         try {
             // Specify the server
             XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-            config.setServerURL(new URL("http://localhost:" + PORT));
+
+            if (args.length == 2) {
+                config.setServerURL(new URL("http://" + args[0] + ":" + args[1]));
+            }
+            else {
+                config.setServerURL(new URL("http://" + SERVER + ":" + PORT));
+            }
+            
             // Setup the client
             XmlRpcClient client = new XmlRpcClient();
             client.setConfig(config);

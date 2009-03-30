@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="GUI"
-	ProjectGUID="{CF26CB8F-5223-4E27-97CB-0F893E81E01D}"
-	RootNamespace="GUI"
+	Name="CommAudio"
+	ProjectGUID="{EE511D21-DDA6-433E-B448-8D9A949B7727}"
+	RootNamespace="CommAudio"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -60,6 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ws2_32.lib winmm.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -171,6 +172,34 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\client.c"
+				>
+			</File>
+			<File
+				RelativePath=".\crackers.c"
+				>
+			</File>
+			<File
+				RelativePath=".\local_play.c"
+				>
+			</File>
+			<File
+				RelativePath=".\network_play.c"
+				>
+			</File>
+			<File
+				RelativePath=".\server.c"
+				>
+			</File>
+			<File
+				RelativePath=".\services.c"
+				>
+			</File>
+			<File
+				RelativePath=".\socket.c"
+				>
+			</File>
+			<File
 				RelativePath=".\win_events.c"
 				>
 			</File>
@@ -189,7 +218,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\crackers.h"
+				>
+			</File>
+			<File
 				RelativePath=".\resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\socket.h"
 				>
 			</File>
 			<File

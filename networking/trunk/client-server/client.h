@@ -11,6 +11,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include "DPlaya.h"
 
 #define MAXLEN	1024
 
@@ -18,5 +19,7 @@ void start_client(char *, char *);
 void test_data(int);
 void stop_client(void); /* implement later */
 void start_udp_client(char*);
+int serialize_player(DPlaya *player, char *buf, size_t buflen);
+int unserialize_player(char *buf, DPlaya *player);
 
 #endif

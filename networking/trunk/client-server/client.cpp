@@ -1,7 +1,9 @@
 #include "client.h"
 #include "network.h"
+#include "DPlaya.h"
 
-#define MAX_LEN 1024W
+#define MAX_LEN 1024
+#define BUF_LEN 64
 
 extern int mode, conn_type, sock;
 
@@ -91,6 +93,7 @@ void start_udp_client(char *hostname){
 	struct hostent *hp;
 	int udp_port = 8000;
 	char inbuf[MAXLEN], outbuf[MAXLEN];
+	DPlaya p1, p2;
 	
     if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
         perror("Can't crete a socket\n");
@@ -126,34 +129,92 @@ void start_udp_client(char *hostname){
    		inbuf[0] = 0;
    		outbuf[0] = 0;
    		fgets(inbuf, MAXLEN, stdin);
+
+		inbuf[0] = '\0';
+		
+
+		p1.setX(1);
+		p1.setY(2);
+		p1.setNumBombs(3);
+		p1.setDroppedBombs(4);
+		p1.setID(5);
+
+		serialize_player(&p1, inbuf, BUF_LEN);
+
+		inbuf[(strlen(inbuf)+1)] = '\0';
         
         if (sendto(sd,inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
             perror("sendto failure");
             exit(1);
         }
 
-        
-        
-        if (strcmp(inbuf,"quit\n") == 0){
-            close(sd);
-            printf("closing udpserver\n");
-            fflush(stdout);
-           	return;
-        }else{
+		printf("len: %d\n", strlen(inbuf));
+		printf("buf: %s\n", inbuf);
 
-  			        /*receive data*/
-			if (recvfrom(sd,outbuf,MAXLEN,0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
-				perror("recvfrom error");
-				exit(1);
-			}
-            for(j=0; outbuf[j]!='\n'; j++);
-            outbuf[++j] = '\0';
-        	printf("received: %s", outbuf);
-  			fflush(stdout);
-        }
-        
+		if (recvfrom(sd,outbuf,MAXLEN,0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
+			perror("recvfrom error");
+			exit(1);
+		}
 
-        
-
+		unserialize_player(outbuf, &p2);
+		printf("%d,%d\n", p1.getX(), p2.getX());
+		printf("%d,%d\n", p1.getY(),p2.getY());
+		printf("%d,%d\n", p1.getNumBombs(),p2.getNumBombs());
+		printf("%d,%d\n", p1.getDroppedBombs(),p2.getDroppedBombs());
+		printf("%d,%d\n", p1.getDPlayaID(),p2.getDPlayaID());
 	}
+}
+
+
+/******************************************************************************
+ *  Function:    serialize_player
+ * 
+ *  Date:        March 30, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   serialize_player(DPlaya *player, char *buf, int buflen)
+ *		            DPlaya *player: Pointer to the DPlaya object to be serialized
+ *                  char *buf: buffer to put the serialized form of the player into
+ *					int buflen: the length of buf
+ * 
+ *  Returns:     0 on success or (-1) on failure.
+ * 
+ *  Description: Serialize player's data members into buf to be passed across the network.
+ *
+ *****************************************************************************/
+int serialize_player(DPlaya *player, char *buf, size_t buflen) {
+	if(buflen < sizeof(DPlaya)) {
+		return -1;
+	}
+	
+	memcpy(buf, player, sizeof(DPlaya));
+	return 0;
+}
+
+/******************************************************************************
+ *  Function:    unserialize_player
+ * 
+ *  Date:        March 30, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   unserialize_player(char *buf, DPlaya *player)
+ *					char *buf: buffer to get the serialized form of the player from
+ *		            DPlaya *player: Pointer to the DPlaya object to fill
+ * 
+ *  Returns:     0 on success or (-1) on failure.
+ * 
+ *  Description: Unserialize the info in buf and put it into player.
+ *
+ *****************************************************************************/
+int unserialize_player(char *buf, DPlaya *player) {
+	memcpy(player, buf, sizeof(DPlaya));
+	return 0;
 }

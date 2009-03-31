@@ -19,11 +19,23 @@ int main(int argc, char *argv[]) {
 	p1.setID(5);
 	
 	serialize_player(&p1, buf, BUF_LEN);
+<<<<<<< .mine
+
+
+
+
+
+
+
+
+
+=======
 
 	/* send....*/
 
 
 	/* recv.... */
+>>>>>>> .r185
 	unserialize_player(buf, &p2);
 
 	printf("%d %d\n", p1.getX(), p2.getX());

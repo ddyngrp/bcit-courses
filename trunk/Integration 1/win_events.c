@@ -27,7 +27,7 @@
 --	DATE:		March 16
 --
 --	REVISIONS:	March 23 - Added code for local song play corresponding to the WM_COMMAND
---						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOP
+--						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOPS
 -- 
 --	DESIGNER:	Steffen L. Norgren
 --	PROGRAMMER:	Steffen L. Norgren & Jaymz Boilard
@@ -80,6 +80,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
                     else
                         waveOutClose(hwo);
                     busyFlag = 0;
+					//EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_ENABLED);
                     return FALSE;
 
                 //button should be disabled when we're not in client mode

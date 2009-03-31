@@ -19,6 +19,7 @@
 #define EDITSIZE		50
 #define BUFSIZE			4096
 
+#define FILEBUFSIZE 120
 #define MAXBUFSIZE 8000
 #define LOCALPLAY 500
 #define NETWORKPLAY 501
@@ -96,12 +97,12 @@ void fileInit(HWND hwnd);
 
 /* Network Play */
 void clnt_recv_udp(char buf[]);
-void serv_broadcast(char fileName[80]);
+void serv_broadcast(char fileName[FILEBUFSIZE]);
 void clnt_recv_tcp(char buf[]);
 void serv_recv_tcp(char buf[]);
 
 /* Services */
-void server_download(WPARAM wParam);
+void server_download(WPARAM wParam, PTSTR	fileName);
 void client_download(WPARAM wParam);
 void FreeSocketInformation(SOCKET s);
 LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);

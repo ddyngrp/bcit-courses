@@ -19,7 +19,7 @@
 --						reading & sending packets until we reach end of
 --						file.
 ------------------------------------------------------------------------*/
-void server_download(WPARAM wParam)
+void server_download(WPARAM wParam, PTSTR	fileName)
 {
 	char outBuf[BUFSIZE];
 	DWORD bytesRead;
@@ -27,7 +27,7 @@ void server_download(WPARAM wParam)
 	DWORD Flags = 0;
 
 	/* Open the file */
-	if((hFile = CreateFile("testOut.wav", GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
+	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(NULL, TEXT("Error opening file!"), NULL, MB_ICONERROR);
 		return;
@@ -62,7 +62,7 @@ void server_download(WPARAM wParam)
 --		DESIGNER:		Jaymz Boilard
 --		PROGRAMMER:		Jaymz Boilard & Jerrod Hudson
 --
---		INTERFACE:		server_download(WPARAM wParam)
+--		INTERFACE:		client_download(WPARAM wParam)
 --
 --		RETURNS:		void
 --

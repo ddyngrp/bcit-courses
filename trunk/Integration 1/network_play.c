@@ -64,7 +64,7 @@ void clnt_recv_udp(char buf[])
 --	DESIGNER:	Jaymz Boilard
 --	PROGRAMMER:	Jaymz Boilard
 -- 
---	INTERFACE:	serv_broadcast(char fileName[80])
+--	INTERFACE:	serv_broadcast(char fileName[FILEBUFSIZE])
 -- 
 --	RETURNS:	void
 -- 
@@ -73,7 +73,7 @@ void clnt_recv_udp(char buf[])
 --          structure from the beginning of it.  Then we send it to the client and
 --          wait until the client responds with a ready message.
 ---------------------------------------------------------------------------------------*/
-void serv_broadcast(char fileName[80])
+void serv_broadcast(char fileName[FILEBUFSIZE])
 {
     char outBuf[MAXBUFSIZE];
     WAVEFORMATEX wavFmt;
@@ -100,7 +100,7 @@ void serv_broadcast(char fileName[80])
 --	DESIGNER:	Jaymz Boilard
 --	PROGRAMMER:	Jaymz Boilard
 -- 
---	INTERFACE:	serv_broadcast(char fileName[80])
+--	INTERFACE:	void serv_recv_tcp(char buf[])
 -- 
 --	RETURNS:	void
 -- 

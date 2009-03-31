@@ -9,7 +9,6 @@
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		void OnClose(HWND hwnd)
@@ -52,7 +51,7 @@ void OnClose(HWND hwnd)
 ------------------------------------------------------------------------*/
 void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
-	TCHAR fileName[80], pathName[80];
+	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
 	int iRc;
 	/* HINSTANCE hInstance = (HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE); */
 
@@ -72,6 +71,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			if(WSAGetLastError() != WSAEWOULDBLOCK)
 				MessageBox(NULL, "Unable to connect to server!", "ERROR", MB_OK);
 		}
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		break;
 
 	case ID_FILE_DISCONNECT:
@@ -92,7 +92,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		PostMessage(hwnd, WM_CLOSE, 0, 0);
 		break;
 
-
 	case ID_MODE_CLIENT:
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_CLIENT), hwnd, (DLGPROC)ClientProc);
 		ci.behavior = CLIENT;
@@ -112,7 +111,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
 		setup_server(hwnd, SOCK_STREAM);
 		break;
-
 
 	/* Note: These menu item checks can be put into a loop within a function */
 	case ID_SINGLE_DL:
@@ -144,13 +142,13 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		ci.request = MULTI_STREAM;
 		break;
 
-
 	case ID_FILE_LOCAL:
         if(busyFlag > 0) //we're already busy
             break;
+		//EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
         busyFlag = LOCALPLAY;
-        memset(fileName, 0, 80);
-	    memset(pathName, 0, 80);
+        memset(fileName, 0, FILEBUFSIZE);
+	    memset(pathName, 0, FILEBUFSIZE);
         browseFiles(hwnd, fileName, pathName);
         if(localSong_Init(hwnd, fileName) == FALSE)
             busyFlag = 0; //if we failed to open file
@@ -178,7 +176,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		int OnCreate(HWND hwnd,
@@ -201,7 +198,7 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	ci.port	= DEFAULT_PORT;
 
 	ghMenu = GetMenu(hwnd);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
 	return TRUE;
 }
@@ -214,7 +211,6 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		void OnDestroy(HWND hwnd)
@@ -237,7 +233,6 @@ void OnDestroy(HWND hwnd)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		void OnPaint(HWND hwnd)
@@ -264,7 +259,6 @@ void OnPaint(HWND hwnd)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		void OnSize(HWND hwnd, UINT state, int cx, int cy)
@@ -299,7 +293,6 @@ void OnSize(HWND hwnd, UINT state, int cx, int cy)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		void OnSocket(HWND hwnd, WPARAM wParam,

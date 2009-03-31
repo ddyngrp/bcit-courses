@@ -13,7 +13,6 @@
 --	REVISIONS:		
 --
 --	DESIGNERS:		Steffen L. Norgren
---
 --	PROGRAMMER:		Steffen L. Norgren
 --
 --	NOTES:	This is a simple menu event handler. It responds to user menu selections
@@ -33,7 +32,6 @@
 --	REVISIONS:	
 -- 
 --	DESIGNER:	Steffen L. Norgren
--- 
 --	PROGRAMMER:	Steffen L. Norgren
 -- 
 --	INTERFACE:	WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -69,7 +67,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		LRESULT CALLBACK WndProc(HWND hwnd,
@@ -128,7 +125,6 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --		REVISIONS:		(Date and Description)
 --
 --		DESIGNER:		Jerrod Hudson
---
 --		PROGRAMMER:		Jerrod Hudson
 --
 --		INTERFACE:		LRESULT CALLBACK WndProc(HWND hwnd,

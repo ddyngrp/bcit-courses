@@ -28,7 +28,8 @@ typedef struct _tmp_server {
 	int		listener,
 			fd_max,
 			new_fd,
-			recvBytes;
+			recvBytes,
+			mode;
 
 	unsigned char	recvBuff[8192];
 } tmp_server, *ptmp_server;
@@ -51,8 +52,9 @@ typedef struct _tmp_server {
  *
  *****************************************************************************/
 void start_server(void) {
-	struct 			sockaddr_storage remoteaddr;
-	socklen_t		addrlen;
+	struct sockaddr_storage	remoteaddr;
+	struct addrinfo			hints, *ai, *p;
+	socklen_t				addrlen;
 
 	/* Allocate memory to the server struct */
 	tmp_server *ptmp_server = (tmp_server *)malloc(sizeof(tmp_server));
@@ -64,15 +66,10 @@ void start_server(void) {
 	int yes = 1;	/* for setsockopt() SO_REUSEADDR, below */
 	int i, j, rv;
 
-	struct addrinfo hints, *ai, *p;
-
 	FD_ZERO(&ptmp_server->master);	/* clear the ptmp_server->master and temp socket sets */
 	FD_ZERO(&ptmp_server->read_fds);
 	
-	mode = SERVER; /* needed for network functions */
-
-	/* Setup our server struct */
-
+	ptmp_server->mode = SERVER; /* needed for network functions */
 
 	/* Get a new socket and bind it! */
 	memset(&hints, 0, sizeof(hints));
@@ -181,7 +178,8 @@ void start_server(void) {
 								}
 							}
 						}
-
+						
+						/* Check for UDP start signal */
 						if(strcmp((const char*)ptmp_server->recvBuff, "start\n")==0) {
 							start_udp_server();
 						}

@@ -7,36 +7,17 @@ be redestributed without written permission.*/
 #include "SDL/SDL_ttf.h"
 #include <string>
 
-void draw_status_bar(std::string players[]);
+void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *background,SDL_Surface *screen,TTF_Font *font ,SDL_Color textColor );
 
 using namespace std;
 
-//Screen attributes
-const int SCREEN_WIDTH = 600;
-const int SCREEN_HEIGHT = 200;
-const int SCREEN_BPP = 32;
-
-//The surfaces
-SDL_Surface *background = NULL;
-SDL_Surface *message = NULL;
-SDL_Surface *screen = NULL;
-SDL_Surface *tux[8];
-
-//The event structure
-SDL_Event event;
-
-//The font that's going to be used
-TTF_Font *font = NULL;
-
-//The color of the font  
-SDL_Color textColor = { 255,0, 0 };
 
 SDL_Surface *load_image( std::string filename)
 {
     //The image that's loaded
     SDL_Surface* loadedImage = NULL;
 
-    //The optimized surface that will be used
+    //The optiSDL_Surface *background = NULL;
     SDL_Surface* optimizedImage = NULL;
 
     //Load the image
@@ -76,40 +57,38 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination,
     SDL_BlitSurface( source, clip, destination, &offset );
 }
 
-bool init()
+int main( int argc, char* args[] )
 {
-    //Initialize all SDL subsystems
+	SDL_Surface *background = NULL;
+	SDL_Surface *screen = NULL;
+	SDL_Surface *tux[8];
+    
+    string playerList[8] = {"player 1", "player 2", "player 3", "player 4",
+			  "player 5", "player 6", "player 7", "player 8"};
+    SDL_Color textColor = { 255,0, 0 };
+    //The event structure
+	SDL_Event event;
+
+	//The font that's going to be used
+	TTF_Font *font = NULL;
+
+    //Quit flag
+    bool quit = false;
+
     if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
-    {
         return false;
-    }
-
-    //Set up the screen
-    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE );
-
+ 
     //If there was an error in setting up the screen
-    if( screen == NULL )
-    {
+    if((screen = SDL_SetVideoMode( 600,200, 32, SDL_SWSURFACE )) == NULL )
         return false;
-    }
 
     //Initialize SDL_ttf
     if( TTF_Init() == -1 )
-    {
         return false;
-    }
 
     //Set the window caption
     SDL_WM_SetCaption( "TTF Test", NULL );
 
-    //If everything initialized fine
-    return true;
-}
-
-bool load_files()
-{
-    //Load the background image
-    background = load_image( "background1.jpg" );
     tux[0] 		= load_image("tux.gif");
     tux[1] 		= load_image("tux.gif");
     tux[2] 		= load_image("tux.gif");
@@ -119,62 +98,19 @@ bool load_files()
     tux[6] 		= load_image("tux.gif");
     tux[7] 		= load_image("tux.gif");
 
-    //Open the font
-    font = TTF_OpenFont( "ActionIs.ttf", 25);
-
+   
     //If there was a problem in loading the background
-    if( background == NULL )
-    {
+    if((background = load_image( "background1.jpg" )) == NULL )
         return false;
-    }
 
     //If there was an error in loading the font
-    if( font == NULL )
-    {
+    if((font = TTF_OpenFont( "ActionIs.ttf", 25)) == NULL )
         return false;
-    }
 
-    //If everything loaded fine
-    return true;
-}
-
-void clean_up()
-{
-    //Free the surfaces
-    SDL_FreeSurface( background );
-    SDL_FreeSurface( message );
-
-    //Close the font that was used
-    TTF_CloseFont( font );
-
-    //Quit SDL_ttf
-    TTF_Quit();
-
-    //Quit SDL
-    SDL_Quit();
-}
-
-int main( int argc, char* args[] )
-{
-     string playerList[8] = {"player 1", "player 2", "player 3", "player 4",
-			  "player 5", "player 6", "player 7", "player 8"};
-    
-    //Quit flag
-    bool quit = false;
-
-    //Initialize
-    if( init() == false )
-        return 1;
- 
-    //Load the files
-    if( load_files() == false )
-        return 1;
-
     apply_surface( 0, 0, background, screen );
 
-    
 	
-	draw_status_bar(playerList);	
+	draw_status_bar(playerList,tux,background,screen,font,textColor);	
     //Update the screen
     if( SDL_Flip( screen ) == -1 )
         return 1;
@@ -193,14 +129,26 @@ int main( int argc, char* args[] )
             }
         }
     }
+	SDL_FreeSurface( background );
+    //Close the font that was used
+    TTF_CloseFont( font );
 
+    //Quit SDL_ttf
+    TTF_Quit();
+
+    //Quit SDL
+    SDL_Quit();
+    
     //Free surfaces and font then quit SDL_ttf and SDL
-    clean_up();
+    //clean_up();
 
     return 0;
 }
-void draw_status_bar(std::string players[])
+
+
+void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *background,SDL_Surface *screen,TTF_Font *font ,SDL_Color textColor )
 {
+	SDL_Surface *message;
 	int x =30,y=1;
 	for(int i =0; i < 8; i++)
 	{	
@@ -214,4 +162,6 @@ void draw_status_bar(std::string players[])
 		apply_surface(x-30,y,tux[i],screen);
 		y *= 50;
 	}
+	
+	    SDL_FreeSurface( message );
 }

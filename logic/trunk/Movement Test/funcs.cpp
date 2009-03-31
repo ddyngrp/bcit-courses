@@ -1,4 +1,4 @@
-#include "user_map.h"
+#include "Map/user_map.h"
 
 #define TOTAL_TILES 306
 
@@ -50,7 +50,7 @@ int** genRandomMap(int rowNum, int colNum)
 			continue;
 		}
 		// Places either emprow or destructable in every open location.
-		map[row][tile%18] = (rand()%2 + 1);	
+		map[row][tile%18] = 2;//(rand()%2 + 1);	
 	}
 	
 	//Clear spaces for player start positions

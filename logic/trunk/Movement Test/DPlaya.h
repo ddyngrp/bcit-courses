@@ -11,7 +11,7 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_thread.h" 
-#include "user_map.h"
+#include "Map/user_map.h"
 #include "funcs.h"
 
 class DPlaya {
@@ -36,7 +36,7 @@ public:
 	void dropBomb();
 	void explodeBomb(int i);
 	bool canPlant(){return (numBombs_ < 5);}
-	void move(int **mapGrid, int direction);
+	bool move(int **mapGrid, int direction);
 
 	//getters
 	int getX(){return x_;}
@@ -50,7 +50,7 @@ public:
 	//setters
 	void setX(int x){x_ = x;}
 	void setY(int y){y_ = y;}
-	void setImage(char* pic){image_ = load_image(pic);}
+	void setImage(const char* pic){image_ = load_image(pic);}
 	void setNumBombs(int numBombs){numBombs_ = numBombs;}
 	void setDroppedBombs(int droppedBombs){droppedBombs_ = droppedBombs;}
 	void killPlayer(){alive_ = false;}

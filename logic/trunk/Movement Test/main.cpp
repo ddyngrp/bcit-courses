@@ -38,6 +38,7 @@ int main()
 	int **map;
 	DPlaya player;
 	sdl_init();
+	bool refresh;
 
 	SDL_Surface *image_set = load_image( "empty.png" );
 
@@ -63,95 +64,88 @@ int main()
 	
 	player.setX(35);
 	player.setY(35);
-	user_map uMap(map,image_set,numImages,height,width);
-
+	user_map uMap(map,image_set,numImages, load_image( "Map/snowback.png" ),height,width);
+    SDL_BlitSurface(load_image( "Map/snowback.png" ),0,screen,0);
 	uMap.draw_map(screen);
 	player.setImage("batmanTuxSmal.gif");
 	player.refresh(screen);
 	SDL_Flip(screen);
 	while(quit == false)
 	{
-	while( SDL_PollEvent( &event ) )
-    {
-		//If the user has Xed out the window
-		if( event.type == SDL_QUIT )
-		{
-			//Quit the program
-			quit = true;
-		}
-		else if( event.type == SDL_KEYDOWN )
-		{
-			//Adjust the velocity
-			switch( event.key.keysym.sym )
-			{
-				case SDLK_UP:
-					while(SDL_GetKeyState(NULL)[SDLK_UP])
-					{
-					SDL_PollEvent( &event );
-					player.move(map, 0);
-					uMap.draw_map(screen);
-					player.refresh(screen);
-					}
-					break;
-				case SDLK_DOWN:
-					while(SDL_GetKeyState(NULL)[SDLK_DOWN])
-					{
-					SDL_PollEvent( &event );
-					player.move(map, 1);
-					uMap.draw_map(screen);
-					player.refresh(screen);
-					}				
-					break;
-				case SDLK_LEFT:
-					while(SDL_GetKeyState(NULL)[SDLK_LEFT])
-					{
-					SDL_PollEvent( &event );
-					player.move(map, 2);
-					uMap.draw_map(screen);
-					player.refresh(screen);
-					}	
-					break;
-				case SDLK_RIGHT:
-					while(SDL_GetKeyState(NULL)[SDLK_RIGHT])
-					{
-					SDL_PollEvent( &event );
-					player.move(map, 3);
-					uMap.draw_map(screen);
-					player.refresh(screen);
-					}	
-					break;
-				case SDLK_SPACE:
-					//Send bomb request
-					break;
-				default: ;
-			}
-		}
-    	//If a key was released
-		else if( event.type == SDL_KEYUP )
-		{
-			//Adjust the velocity
-			switch( event.key.keysym.sym )
-			{/*
-				case SDLK_UP: player.move(map, 0); break;
-				case SDLK_DOWN: player.move(map, 1); break;
-				case SDLK_LEFT: player.move(map, 2); break;
-				case SDLK_RIGHT: player.move(map, 3); break;
-				case SDLK_SPACE: break;
-				default: ;*/
-			}
-		}
-	}
+	    
+	    while( SDL_PollEvent( &event ) )
+        {
+		    //If the user has Xed out the window
+		    if( event.type == SDL_QUIT )
+		    {
+			    //Quit the program
+			    quit = true;
+		    }
+		    else if( event.type == SDL_KEYDOWN )
+		    {
+			    //Adjust the velocity
+			    switch( event.key.keysym.sym )
+			    {
+				    case SDLK_UP:
+					    refresh = player.move(map, 0);
+					    break;
+				    case SDLK_DOWN:
+					    refresh = player.move(map, 1);
+					    break;
+				    case SDLK_LEFT:
+					    refresh =  player.move(map, 2);
+					    break;
+				    case SDLK_RIGHT:
+					    refresh =  player.move(map, 3);
+					    break;
+				    case SDLK_SPACE:
+					    printf("Fire in the hole..!\n");
+                        refresh = true;
+					    break;
+				    default: ;
+			    }
+		    }
+        	
+	    }
 	
-	SDL_Flip(screen);
-}
-	/*sleep(2);
-	player.move(map, 1);
-	uMap.draw_map(screen);
-	player.refresh(screen);
-	SDL_Flip(screen);
-	sleep(4);*/
-	
-    uMap.~user_map();
+	    if(SDL_GetKeyState(NULL)[SDLK_UP])
+            refresh =  player.move(map, 0);
+        if(refresh){
+            uMap.draw_map(screen);
+            player.refresh(screen);
+            SDL_Flip(screen);
+            refresh = false;
+            }
+        if(SDL_GetKeyState(NULL)[SDLK_DOWN])
+            refresh =  player.move(map, 1);
+            
+        if(refresh){
+            uMap.draw_map(screen);
+            player.refresh(screen);
+            SDL_Flip(screen);
+            refresh = false;
+            }
+        if(SDL_GetKeyState(NULL)[SDLK_LEFT])
+            refresh =  player.move(map, 2);
+            
+        if(refresh){
+            uMap.draw_map(screen);
+            player.refresh(screen);
+            SDL_Flip(screen);
+            refresh = false;
+            }
+        if(SDL_GetKeyState(NULL)[SDLK_RIGHT])
+            refresh = player.move(map, 3);
+        
+        if(refresh){
+            uMap.draw_map(screen);
+            player.refresh(screen);
+            SDL_Flip(screen);
+            refresh = false;
+        }	
+    }
+		
+    //uMap.~user_map();
 	return 0;
 }
 

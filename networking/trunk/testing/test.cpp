@@ -19,8 +19,13 @@ int main(int argc, char *argv[]) {
 	p1.setID(5);
 	
 	serialize_player(&p1, buf, BUF_LEN);
+
+	/* send....*/
+
+
+	/* recv.... */
 	unserialize_player(buf, &p2);
-	
+
 	printf("%d %d\n", p1.getX(), p2.getX());
 	printf("%d %d\n", p1.getY(), p2.getY());
 	printf("%d %d\n", p1.getNumBombs(), p2.getNumBombs());

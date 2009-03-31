@@ -159,30 +159,36 @@ void start_server(void) {
 						close(i);	/* goodbye */
 						FD_CLR(i, &ptmp_server->master); /* remove from ptmp_server->master set */
 					} else { /* we got data from a client */
-						if (process_data(ptmp_server->recvBuff, ptmp_server->recvBytes) < 0) { /* if there was an error processing the data */
+						/*
+						if (process_data(ptmp_server->recvBuff, ptmp_server->recvBytes) < 0) { 
 							perror("process_data");
 						} else {
 							
-						}
+						}*/
+						for(j=0; ptmp_server->recvBuff[j]!='\n'; j++);
+						ptmp_server->recvBuff[++j] = '\0';
+
+						if(strcmp((const char*)ptmp_server->recvBuff, "start\n")==0) {
+							start_udp_server();
+						} else {
 						
-						for (j = 0; j <= ptmp_server->fd_max; j++) {
-							if (FD_ISSET(j, &ptmp_server->master)) {
-								/* only echo back to the client that connected
-								 * TODO: This is where we would flesh out how to deal
-								 * with the incoming data and to whom we would send it.
-								 */
-								if (j != ptmp_server->listener && j == i) {
-									if (send(j, ptmp_server->recvBuff, ptmp_server->recvBytes, 0) == -1) {
-										perror("send"); /* massive failure!!! */
+							for (j = 0; j <= ptmp_server->fd_max; j++) {
+								if (FD_ISSET(j, &ptmp_server->master)) {
+									/* only echo back to the client that connected
+									 * TODO: This is where we would flesh out how to deal
+									 * with the incoming data and to whom we would send it.
+									 */
+									if (j != ptmp_server->listener && j == i) {
+										if (send(j, ptmp_server->recvBuff, ptmp_server->recvBytes, 0) == -1) {
+											perror("send"); /* massive failure!!! */
+										}
 									}
 								}
 							}
 						}
 						
 						/* Check for UDP start signal */
-						if(strcmp((const char*)ptmp_server->recvBuff, "start\n")==0) {
-							start_udp_server();
-						}
+						
 					}
 				} /* end of handling data from the client */
 			} /* end of new connection */

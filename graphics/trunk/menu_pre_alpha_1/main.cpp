@@ -62,8 +62,8 @@ int main( int argc, char* args[] )
 			for(i = 0 ; i < fps; i++)
 			{
 				countStart = SDL_GetTicks();
-				if(SDL_GetTicks() - countStart < 500 / fps)
-						SDL_Delay((500/fps) - (SDL_GetTicks() - countStart));
+				if(SDL_GetTicks() - countStart < 1000 / fps)
+						SDL_Delay((1000/fps) - (SDL_GetTicks() - countStart));
 				main.move(0,0);
 				exitMenu.move(0, ((250 + height)* i/(int)fps) - height);
 				SDL_Flip(screen);
@@ -97,6 +97,7 @@ int main( int argc, char* args[] )
 			//load player options
 			main.setLoaded(0);
 			main.showLoaded();
+			pMenu.setLoaded(0);
 			fps = 60;
 			for(i = 0 ; i < fps; i++)
 			{
@@ -104,14 +105,29 @@ int main( int argc, char* args[] )
 				if(SDL_GetTicks() - countStart < 1000 / fps)
 						SDL_Delay((1000/fps) - (SDL_GetTicks() - countStart));
 				main.move(0 -(i * 10),0);
-				printf("done 1\n");
+				printf("done %d\n",(i+1) );
 				pMenu.move(600 - (i * 10),0);
-				printf("done 2\n");
+				printf("done %d\n",(i+1) );
 				SDL_Flip(screen);
 				countStart = SDL_GetTicks();
 			}
 			printf("done switch\n");
-			ocresult = pMenu.start(event);
+			pMenu.start();
+			main.setLoaded(0);
+			fps = 60;
+			for(i = 0 ; i < fps; i++)
+			{
+				countStart = SDL_GetTicks();
+				if(SDL_GetTicks() - countStart < 1000 / fps)
+						SDL_Delay((1000/fps) - (SDL_GetTicks() - countStart));
+				pMenu.move(0 +(i * 10),0);
+				printf("done %d\n",(i+1) );
+				main.move(-600 + (i * 10),0);
+				printf("done %d\n",(i+1) );
+				SDL_Flip(screen);
+				countStart = SDL_GetTicks();
+			}
+			printf("done switch\n");
 		case 3:
 			//load start game
 		case 4:

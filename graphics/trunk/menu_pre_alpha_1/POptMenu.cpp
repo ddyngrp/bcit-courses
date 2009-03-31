@@ -48,15 +48,15 @@ POptMenu::~POptMenu() {
 
 bool POptMenu::showModels()
 {
+	printf("Loading Models:");
 	SDL_Rect offset;
-	SDL_Surface* temp;
 	int i, toLoad, result;
 	double center, left1, left2, left3, right1, right2, right3;
 	offset.y = screen_->h - 300;
 
 	center = screen_->w / 2;
 	left1  = 0.75 * center;
-	left2  = 0.5 * center;
+	left2  = 0.50 * center;
 	left3  = 0.25 * center;
 
 	right1 = center + left3;
@@ -66,6 +66,7 @@ bool POptMenu::showModels()
 	for(i = 0; i < 3; i++ )
 	{
 		toLoad = (modelLoaded_ - 3) + i;
+		printf(".");
 		if (toLoad  <  0)
 		{
 			continue;
@@ -74,29 +75,29 @@ bool POptMenu::showModels()
 		switch (i){
 			case 0:
 			{
-				temp = zoomSurface(models_[toLoad], 0.7, 0.7, 1);
-				optimizeImg(temp);
-				offset.x = (int) left3 - (temp->w / 2);
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i] = zoomSurface(models_[toLoad], 0.7, 0.7, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int) left3 - (zoomed_[i]->w / 2);
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 
 			}
 
 			case 1:
 			{
-				temp = zoomSurface(models_[toLoad], 0.8, 0.8, 1);
-				optimizeImg(temp);
-				offset.x = (int)left2 - (temp->w / 2) ;
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i] = zoomSurface(models_[toLoad], 0.8, 0.8, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int)left2 - (zoomed_[i]->w / 2) ;
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 
 			}
 			case 2:
 			{
-				temp = zoomSurface(models_[toLoad], 0.9, 0.9, 1);
-				optimizeImg(temp);
-				offset.x = (int)left1 - (temp->w / 2);
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i] = zoomSurface(models_[toLoad], 0.9, 0.9, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int)left1 - (zoomed_[i]->w / 2);
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 
 			}
@@ -114,28 +115,28 @@ bool POptMenu::showModels()
 		switch (i){
 			case 4:
 			{
-				temp = zoomSurface(models_[toLoad], 0.9, 0.9, 1);
-				optimizeImg(temp);
-				offset.x = (int)right1 - (temp->w / 2);;
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i] = zoomSurface(models_[toLoad], 0.9, 0.9, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int)right1 - (zoomed_[i]->w / 2);;
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 
 			}
 			case 5:
 			{
-				temp= zoomSurface(models_[toLoad], 0.8, 0.8, 1);
-				optimizeImg(temp);
-				offset.x = (int)right2 - (temp->w / 2);
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i]= zoomSurface(models_[toLoad], 0.8, 0.8, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int)right2 - (zoomed_[i]->w / 2);
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 
 			}
 			case 6:
 			{
-				temp = zoomSurface(models_[toLoad], 0.7, 0.7, 1);
-				optimizeImg(temp);
-				offset.x = (int)right3 - (temp->w / 2);
-				result = SDL_BlitSurface( temp,0, screen_, &offset );
+				zoomed_[i] = zoomSurface(models_[toLoad], 0.7, 0.7, 1);
+				optimizeImg(&zoomed_[i]);
+				offset.x = (int)right3 - (zoomed_[i]->w / 2);
+				result = SDL_BlitSurface( zoomed_[i],0, screen_, &offset );
 				break;
 			}
 		}
@@ -152,7 +153,14 @@ bool POptMenu::showModels()
 }
 bool POptMenu::showloaded()
 {
-	return 	this->move(0,0) && 	this->showModels();
+	printf("Loadin backgrounds\n");
+	bool result = false;
+	result = move(0,0);
+	if(result){
+		printf("Background Loaded\n");
+		result = showModels();
+	}
+	return 	result;
 	}
 
 bool POptMenu::move(int xStep, int yStep)
@@ -164,8 +172,9 @@ bool POptMenu::move(int xStep, int yStep)
 	return i == 0;
 }
 
-int POptMenu::start(SDL_Event event)
+int POptMenu::start()
 {
+	SDL_Event event;
 	loaded_ = 0;
 	if(!this->showloaded()) return 0;
 	printf("models loaded!\n");

@@ -79,7 +79,7 @@ SDL_Surface *load_image( std::string filename )
 
 
 
-bool optimizeImg( SDL_Surface * img )
+bool optimizeImg( SDL_Surface ** img )
 {
     //The optimized surface that will be used
     SDL_Surface* optimizedImage = NULL;
@@ -87,16 +87,17 @@ bool optimizeImg( SDL_Surface * img )
     if( img != NULL )
     {
         //Create an optimized surface
-        optimizedImage = SDL_DisplayFormat(img);
+        optimizedImage = SDL_DisplayFormat(*img);
 
         //If the surface was optimized
         if( optimizedImage != NULL )
         {
-        	//Free the old surface
-        	SDL_FreeSurface(img);
+
             //Color key surface
             SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF ) );
-            img = new SDL_Surface((SDL_Surface&) *optimizedImage);
+            //Free the old surface
+            //SDL_FreeSurface(img);
+            *img = new SDL_Surface((SDL_Surface&) *optimizedImage);
             return true;
         }
 

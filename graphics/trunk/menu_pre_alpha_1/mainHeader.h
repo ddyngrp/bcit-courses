@@ -24,6 +24,6 @@
 
 bool init_everything(SDL_Surface* screen);
 SDL_Surface *load_image( std::string filename );
-bool optimizeImg( SDL_Surface * img );
+bool optimizeImg( SDL_Surface ** img );
 
 #endif /* MAINHEADER_H_ */

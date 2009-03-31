@@ -115,7 +115,17 @@ public:
     bool showModels();
     bool showloaded();
     bool move(int xStep, int yStep);
-    int start(SDL_Event event);
+    int start();
+
+    int getLoaded() const
+    {
+        return loaded_;
+    }
+
+    void setLoaded(int loaded)
+    {
+        this->loaded_ = loaded;
+    }
 
     int getModelLoaded() const
     {
@@ -153,6 +163,7 @@ private:
 	std::string modelNames_[num_models_]; // model files
 	SDL_Surface* backgrounds_[num_options_];//the actual loaded backgrounds
 	SDL_Surface* models_[num_models_];
+	SDL_Surface* zoomed_[7];	//shrink image of models
 	SDL_Surface* screen_;
 	Mix_Music *music_;
 	Mix_Chunk *nexMusic_;

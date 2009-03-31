@@ -3,6 +3,24 @@
 
 SDL_Surface *screen;
 
+/*------------------------------------------------------------------------------
+-- METHOD:		sdl_init
+--
+-- DATE:		March 16, 2009
+--
+-- REVISIONS:
+--
+-- DESIGNER:	
+--
+-- PROGRAMMER:	Alin Albu
+--
+-- INTERFACE:	void sdl_init()
+--
+-- RETURNS:
+--
+-- NOTES:
+-- Initialize the screen SDL_Surface.
+------------------------------------------------------------------------------*/
 void sdl_init()
 {
     SDL_Init( SDL_INIT_EVERYTHING );
@@ -28,6 +46,24 @@ void sdl_init()
     SDL_WM_SetCaption( "Tux Bomber", NULL ); 
 }
 
+/*------------------------------------------------------------------------------
+-- METHOD:		sdl_init
+--
+-- DATE:		March 16, 2009
+--
+-- REVISIONS:
+--
+-- DESIGNER:	
+--
+-- PROGRAMMER:	Tajinder Thind
+--
+-- INTERFACE:	int main()
+--
+-- RETURNS:		int
+--
+-- NOTES:
+-- This program tests the map class.
+------------------------------------------------------------------------------*/
 int main()
 {
 	unsigned char **map;
@@ -36,6 +72,7 @@ int main()
 	
 	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,0x00,0xFF,0xFF));
 	SDL_Surface *image_set = load_image( "tileset.png" );
+	SDL_Surface *background = load_image("snowback.png");
 
 	int numImages = 15;
 	int width = 18;
@@ -58,15 +95,20 @@ int main()
 	fflush(stdout);
 	
 
-	user_map uMap(map,image_set,numImages,height,width);
+	user_map uMap(map,image_set,numImages, background,height,width);
 
 	uMap.draw_map(screen);
+	SDL_Flip(screen);
 	sleep(5);
 
 	uMap.update_grid(15,15,12);
 	uMap.draw_map(screen);
+	SDL_Flip(screen);
 	sleep(1);
+	
 	uMap.~user_map();
+	
+	
 	return 0;
 }
 

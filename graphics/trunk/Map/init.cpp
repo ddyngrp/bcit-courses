@@ -2,6 +2,26 @@
 
 #define TOTAL_TILES 306
 
+/*----------------------------------------------------------------------
+-- METHOD:		genRandomMap
+--
+-- DATE:		March 16, 2009
+--
+-- REVISIONS:
+--
+-- DESIGNER:	Alin Albu
+--
+-- PROGRAMMER:	Alin Albu
+--
+-- INTERFACE:	unsigned char** genRandomMap(int rowNum, int colNum)
+--
+-- RETURNS:		void.
+--
+-- NOTES:
+-- Generates a random map contained within a 2D array with sizes
+-- specified by rowNum and colNum which are number of rows and columns
+-- respectivly. 
+----------------------------------------------------------------------*/
 unsigned char** genRandomMap(int rowNum, int colNum)
 {
 	int tile,row;
@@ -54,15 +74,42 @@ unsigned char** genRandomMap(int rowNum, int colNum)
 	}
 	
 	//Clear spaces for player start positions
-	map[1][1] = map[1][2] = map[2][1] = 2; //Player 1 (top left)
-	map[1][colNum - 3] = map[1][colNum - 4] = map[2][colNum - 3] = 2; //Player 2(Top right)
-	map[rowNum - 2][1] = map[rowNum - 2][2] = map[rowNum - 3][1] = 2; //Player 3(Bot Left)
+	
+	//Player 1 (top left)
+	map[1][1] = map[1][2] = map[2][1] = 2; 
+	
+	//Player 2(Top right)
+	map[1][colNum - 3] = map[1][colNum - 4] = map[2][colNum - 3] = 2;
+	
+	//Player 3(Bot Left)
+	map[rowNum - 2][1] = map[rowNum - 2][2] = map[rowNum - 3][1] = 2;
+	
+	//Player 4(Bot right)
 	map[rowNum - 2][colNum - 3] = map[rowNum - 3][colNum - 3] 
-		= map[rowNum - 2][colNum - 4] = 2; //Player 4(Bot right)
+		= map[rowNum - 2][colNum - 4] = 2;
 	
 	return map;
 }
 
+/*----------------------------------------------------------------------
+-- METHOD:		load_image
+--
+-- DATE:		March 16, 2009
+--
+-- REVISIONS:
+--
+-- DESIGNER:	Alin Albu
+--
+-- PROGRAMMER:	Alin Albu
+--
+-- INTERFACE:	SDL_Surface *load_image( std::string filename )
+--
+-- RETURNS:		SDL_Surface *
+--
+-- NOTES:
+-- Load an image into an SDL_Surface and then optimize and set 
+-- transparancy.
+----------------------------------------------------------------------*/
 SDL_Surface *load_image( std::string filename )
 {
 	SDL_RWops *rwop;
@@ -93,7 +140,8 @@ SDL_Surface *load_image( std::string filename )
         if( optimizedImage != NULL )
         {
             //Color key surface
-            SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF ) );
+            SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, 
+				SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF ) );
         }
     }
 

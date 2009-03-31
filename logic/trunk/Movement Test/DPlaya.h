@@ -28,7 +28,7 @@ public:
 	DPlaya(const DPlaya& old):x_(old.x_), y_(old.y_), image_(old.image_),
 						w_(old.w_), h_(old.h_){}
 
-	virtual ~DPlaya(){};
+	virtual ~DPlaya(){};   
 
 	//functions
 	void paint(DPlaya DPlaya, int x, int y, SDL_Surface* screen);

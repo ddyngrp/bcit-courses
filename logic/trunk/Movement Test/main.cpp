@@ -54,7 +54,7 @@ int main()
 		if (i %18 == 0 )
 		{
 			printf("\n");
-			j++;
+			j++;    
 		}
 		printf(" %d",map[j][i%18]);
 	}

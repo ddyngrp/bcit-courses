@@ -38,7 +38,7 @@ void DPlaya::dropBomb()
 	//bombs[i].setY(this.y_);
 	//bombs[i].startFuse();
 	//map.setCoords(this.x, this.y, 3); TODO not yet implemented by graphics
-	this->droppedBombs_++;
+	this->droppedBombs_++;    
 }
 
 void DPlaya::explodeBomb(int i)

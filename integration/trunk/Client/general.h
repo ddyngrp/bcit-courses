@@ -22,7 +22,5 @@
 /* Global Defines */
 #define PORT	"3840"
 #define MAXLEN	1024
-#define TYPE_MOVE 1
-#define TYPE_EXPLODE 2
 
 #endif

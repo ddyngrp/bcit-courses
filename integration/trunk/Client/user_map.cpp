@@ -7,7 +7,7 @@ user_map::~user_map()
 }
 
 //note: Strong Exception Safety! If invalid data is found, _map will contain old data!
-bool user_map::update_map(int **new_map, const int height, const int width) 
+bool user_map::update_map(unsigned char new_map[17][18], const int height, const int width) 
 {
 	int i, j;
 	if ((height != _height) || (width != _width))
@@ -30,22 +30,17 @@ bool user_map::update_map(int **new_map, const int height, const int width)
 	return true;
 }
 
+bool user_map::update_grid(const int gridx, const int gridy, const int newval){
+	if (gridx >= _width)
+		return false;
+	if (gridy >= _height)
+		return false;
+	if (newval >= _numImages)
+		return false;
 
-
-void user_map::set_images(SDL_Surface *new_image, const int numImages)
-{
-	SDL_Surface *temp;
-	temp = SDL_ConvertSurface(new_image, NULL /*this might not work*/,  NULL);
-	if(!temp)
-		return;
-	
-	if(numImages < 0)
-		return;
-	_numImages = numImages;
-	_image_set = temp;
+	_map[gridy][gridx] = newval;
+	return true;	
 }
-
-
 
 bool user_map::draw_map(SDL_Surface *screen)
 {

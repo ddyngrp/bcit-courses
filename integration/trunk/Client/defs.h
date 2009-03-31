@@ -1,4 +1,5 @@
 #ifndef DEFS_H
+#define DEFS_H
 
 #define GRID_EMPTY       0
 #define GRID_BOMB        1
@@ -29,5 +30,4 @@
 
 #define MAX_PLAYERS      8
 
-#define DEFS_H
 #endif

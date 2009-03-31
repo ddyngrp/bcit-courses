@@ -14,23 +14,26 @@
 #include "logic.h"
 #include "network.h"
 #include "user_map.h"
+#include "defs.h"
 
-user_map map;
+user_map *map;
 
 int main(int argc, char *argv[])
 {
-	int c;
+	int c, r, numImagesInSet = 15;
 	int makeRecord = 0;
 	int tcpSockFd, udpSockFd;
-	int r;
 	char recvbuf[MAXLEN], line[MAXLEN];
 	DPlaya allPlayers[8];
-	SDL_Surface * screen;
+	SDL_Surface * screen, *imageSet;
 
-	unsigned char tmpMap[17][17];
-	unsigned char inMap[15][15];
-	memset(tmpMap, GRID_UBLOCK, 289); //fill the map with blocks
-	map.update_map(tmpMap, 17, 17);   //initial map
+	//open the imageset
+	imageSet = load_image("tileset2.png");
+
+	unsigned char inMap[17][18];
+	memset(inMap, GRID_UBLOCK, 289); //fill the map with blocks
+	map = new user_map(inMap, imageSet, numImagesInSet, 17, 18);
+	map->update_map(inMap, 17, 18);   //initial map
 
 	if (argc != 2) 
 	{
@@ -58,7 +61,6 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 	memcpy(&inMap, recvbuf, r);
-	convertMap(inMap, tmpMap);
 	if ((r = recv(tcpSockFd, recvbuf, MAXLEN, 0)) == -1)
 	{
 		perror("recv call() failed.");
@@ -79,9 +81,4 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-//waiting for server to write this
-convertMap(unsigned char inMap[15][15], unsigned char outMap[17][17])
-{
-
-}
 

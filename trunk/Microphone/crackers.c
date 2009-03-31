@@ -156,7 +156,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		ci.request = MICROPHONE;
 
 		/* disable control buttons */
-		EnableWindow(GetDlgItem(hwnd, IDC_BTN_STOP), 
 		break;
 
 	case ID_FILE_LOCAL:
@@ -179,7 +178,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	case ID_HELP_DOCUMENTATION:
 		break;
 
-	case IDC_RECORD_BEG:
+	case IDC_BTN_RECORD:
 		mic_record_beg();
 		break;
 

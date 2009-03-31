@@ -3,20 +3,6 @@
 
 #define INP_BUFFER_SIZE 16384
 
-/* Reverses the recorded data in the buffer so playback will be normal */
-void reverse_memory(BYTE *pBuffer, int iLength)
-{
-	BYTE b;
-	int i;
-
-	for(i = 0; i < iLength / 2; i++)
-	{
-		b = pBuffer[i];
-		pBuffer[i] = pBuffer[iLength - i - 1];
-		pBuffer[iLength - i - 1] = b;
-	}
-}
-
 void mic_record_beg()
 {
 	pWaveHdr1 = malloc(sizeof(WAVEHDR));
@@ -81,6 +67,7 @@ void mic_record_end()
 	bEnding = TRUE;
 	waveInReset(hWaveIn);
 }
+
 
 void mic_play_beg()
 {

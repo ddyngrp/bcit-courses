@@ -170,6 +170,7 @@ int InitApp(HINSTANCE hInst, int nCmdShow) {
 	UpdateWindow(ghWndMain);
 
 	ghInst = hInst;	// set the global instance for this program
+	ghMenu = GetMenu(ghWndMain);
 
 	// set the global instance for the keyboard accelerator
 	ghAccel = LoadAccelerators(hInst, MAKEINTRESOURCE(IDR_ACCELERATOR));

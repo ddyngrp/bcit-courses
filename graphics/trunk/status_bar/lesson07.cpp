@@ -7,7 +7,7 @@ be redestributed without written permission.*/
 #include "SDL/SDL_ttf.h"
 #include <string>
 
-void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *background,SDL_Surface *screen,TTF_Font *font ,SDL_Color textColor );
+bool draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *screen,SDL_Color textColor );
 
 using namespace std;
 
@@ -103,14 +103,11 @@ int main( int argc, char* args[] )
     if((background = load_image( "background1.jpg" )) == NULL )
         return false;
 
-    //If there was an error in loading the font
-    if((font = TTF_OpenFont( "ActionIs.ttf", 25)) == NULL )
-        return false;
-
     apply_surface( 0, 0, background, screen );
 
 	
-	draw_status_bar(playerList,tux,background,screen,font,textColor);	
+	if(!draw_status_bar(playerList,tux,screen,textColor))
+		return 1;	
     //Update the screen
     if( SDL_Flip( screen ) == -1 )
         return 1;
@@ -145,12 +142,47 @@ int main( int argc, char* args[] )
     return 0;
 }
 
-
-void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *background,SDL_Surface *screen,TTF_Font *font ,SDL_Color textColor )
+/*------------------------------------------------------------------------------------------------------------------
+--       FUNCTION: 					draw_status_bar
+--
+--       DATE:                      March 16, 2009
+--
+--       REVISIONS:                 March 31, 2009
+--										Hard coded font and background.
+--
+--       DESIGNER:                  Brendan Neva & Mitesh Lad
+--
+--       PROGRAMMER: 			    Mitesh Lad & Brendan Neva
+--
+--       INTERFACE:                 void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *screen,SDL_Color textColor)
+--										players[] : A list of all players.
+--									    tux[]	  : A list of all tux images.
+--										screen    : the window in which the player names and images will go
+--										textColor : Text color
+--
+--       RETURNS:                   void.
+--
+--       NOTES:
+--				The purpose of this function is to load the necessary files such as the background image and font.
+				It displays the player name and character choice at the location specified by the for loop.  It has a maximum of
+				2 players per column and 8 players in total.
+----------------------------------------------------------------------------------------------------------------------*/
+bool draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *screen,SDL_Color textColor )
 {
+	SDL_Surface *background = NULL;
+	TTF_Font *font = NULL;
 	SDL_Surface *message;
-	int x =30,y=1;
-	for(int i =0; i < 8; i++)
+	int x =30,y=1, i = 0;
+	
+	if((background = load_image( "background1.jpg" )) == NULL )
+        return false;
+        
+    apply_surface(0,0,background,screen);
+	
+	if((font = TTF_OpenFont( "ActionIs.ttf", 25)) == NULL )
+    	return false;
+        
+	for(i =0; i < 8; i++)
 	{	
 		if(i % 2 == 0 && i != 0)
 		{
@@ -163,5 +195,8 @@ void draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *backg
 		y *= 50;
 	}
 	
-	    SDL_FreeSurface( message );
+	SDL_FreeSurface( background );
+	SDL_FreeSurface( message );
+	
+	return true;
 }

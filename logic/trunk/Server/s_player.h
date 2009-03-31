@@ -1,9 +1,8 @@
 #ifndef S_PLAYER_H
 #define S_PLAYER_H
-#include "server.h"
+//#include "server.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include "user_map.h"
 #include "funcs.h"
 
 class DPlaya {
@@ -21,7 +20,7 @@ public:
 	void dropBomb();
 	void explodeBomb(int i);
 	bool canPlant(){return (numBombs_ < 5);}
-	void move(user_map mapGrid, int direction);
+	void move(unsigned char map[17][18], int direction);
 
 	//getters
 	int getX(){return x_;}
@@ -31,6 +30,7 @@ public:
 	int getDPlayaID(){return DPlayaID_;}
 	bool getAlive(){return alive_;}
 	SDL_Surface* getImage() {return image_;}
+	int getBombPower() { return bombPower_; }
 
 	//setters
 	void setX(int x){x_ = x;}

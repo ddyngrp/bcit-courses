@@ -37,6 +37,13 @@ int j, k;
 	send_map(grid);
 }
 
+/* network will make this */
+void
+send_map(const unsigned char grid[17][18])
+{
+	return;
+}
+
 void
 fire_to_map(struct fire f)
 {
@@ -63,17 +70,21 @@ kill_if_here(const int x, const int y)
 int i;
 	
 	for (i = 0; i < MAX_PLAYERS; ++i) 
-		if (player_array[i].x_ == x && player_array[i].y_ == y) {
-			player_array[i].alive_ = 0;
+		if (player_array[i]->getX() == x && player_array[i]->getY() == y) {
+			player_array[i]->killPlayer();
 			send_player_class(player_array[i]);
 		}
+}
+
+void
+send_player_class(DPlaya *player)
+{
+	return;
 }
 
 bool
 block_here(const int x, const int y)
 {
-int i;
-
 	if (grid[x][y] == GRID_UBLOCK)
 		return true;
 	else if (grid[x][y] == GRID_DBLOCK) {
@@ -96,5 +107,5 @@ int i;
 	else if (i == 2)
 		grid[x][y] = GRID_POWUP_SPIKE;
 	else
-		grid[x][y] = GRID_EMTPY;
+		grid[x][y] = GRID_EMPTY;
 }

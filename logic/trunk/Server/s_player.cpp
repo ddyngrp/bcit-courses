@@ -38,13 +38,12 @@ void DPlaya::explodeBomb(int i)
 	this->droppedBombs_--;
 }
 
-void DPlaya::move(user_map mapGrid, int direction)
+void DPlaya::move(unsigned char map[17][18], int direction)
 {
 	int yt,yb,xl,xr;
 	int xVel = 0;
 	int yVel = 0;
-	int **map;
-	map = mapGrid.get_map();
+	
 	if(direction == 0)
 		yVel = -10;
 	else if(direction == 1)
@@ -72,13 +71,8 @@ void DPlaya::move(user_map mapGrid, int direction)
     }
 }
 
-DPlaya *
-getPlayer(const int id)
+void
+player_quit(const int playerID)
 {
-int i;
-
-	for (i = 0; i < num_players; ++i) 
-		if (player_array[i].DPlayaID_ == id)
-			return &(player_array[i]);
-	return NULL;
+	return;
 }

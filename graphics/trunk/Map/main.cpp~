@@ -63,7 +63,7 @@ int main()
 	uMap.draw_map(screen);
 	sleep(5);
 
-	uMap.update_grid(15,15,1);
+	uMap.update_grid(15,15,12);
 	uMap.draw_map(screen);
 	sleep(1);
 	uMap.~user_map();

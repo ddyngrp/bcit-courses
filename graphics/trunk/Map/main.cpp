@@ -30,7 +30,7 @@ void sdl_init()
 
 int main()
 {
-	int **map;
+	unsigned char **map;
 	
 	sdl_init();
 	

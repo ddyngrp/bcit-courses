@@ -2,23 +2,23 @@
 
 #define TOTAL_TILES 306
 
-int** genRandomMap(int rowNum, int colNum)
+unsigned char** genRandomMap(int rowNum, int colNum)
 {
 	int tile,row;
 	
 	int sTime;
 	long lTime;
-	int **map;
+	unsigned char **map;
 	int i;
 	lTime = time(NULL);
 	sTime = (unsigned)lTime/2;
 	srand(sTime);
 
 	//Initialize map	
-	map = (int**)malloc(rowNum * sizeof(int *));
+	map = (unsigned char**)malloc(rowNum * sizeof(unsigned char *));
 
 	for(i = 0; i < rowNum; i++)
-		map[i] = (int*)malloc(colNum * sizeof(int));
+		map[i] = (unsigned char*)malloc(colNum * sizeof(unsigned char));
 
 	//generate random map
 	for(tile = 0, row = -1  ;tile < 306; tile++ )

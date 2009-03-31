@@ -83,6 +83,16 @@ public:
     bool showLoaded();
     bool move(int xStep, int yStep);
     int start(SDL_Event event);
+    int getLoaded() const
+    {
+        return loaded_;
+    }
+
+    void setLoaded(int loaded)
+    {
+        this->loaded_ = loaded;
+    }
+
     Mix_Chunk *getNexMusic() const
     {
         return nexMusic_;

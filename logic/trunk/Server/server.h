@@ -41,6 +41,7 @@ struct fire {
 struct coords {
 	int x,y;
 	int len; 
+	int id;
 };
 
 unsigned char 		grid[17][18];

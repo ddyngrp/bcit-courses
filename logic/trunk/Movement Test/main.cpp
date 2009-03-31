@@ -65,7 +65,6 @@ int main()
 	player.setX(35);
 	player.setY(35);
 	user_map uMap(map,image_set,numImages, load_image( "Map/snowback.png" ),height,width);
-    SDL_BlitSurface(load_image( "Map/snowback.png" ),0,screen,0);
 	uMap.draw_map(screen);
 	player.setImage("batmanTuxSmal.gif");
 	player.refresh(screen);
@@ -108,7 +107,7 @@ int main()
         	
 	    }
 	
-	    if(SDL_GetKeyState(NULL)[SDLK_UP])
+	    if(SDL_GetKeyState(NULL)[SDLK_UP] && !SDL_GetKeyState(NULL)[SDLK_DOWN])
             refresh =  player.move(map, 0);
         if(refresh){
             uMap.draw_map(screen);
@@ -116,7 +115,7 @@ int main()
             SDL_Flip(screen);
             refresh = false;
             }
-        if(SDL_GetKeyState(NULL)[SDLK_DOWN])
+        if(SDL_GetKeyState(NULL)[SDLK_DOWN] && !SDL_GetKeyState(NULL)[SDLK_UP])
             refresh =  player.move(map, 1);
             
         if(refresh){
@@ -125,7 +124,7 @@ int main()
             SDL_Flip(screen);
             refresh = false;
             }
-        if(SDL_GetKeyState(NULL)[SDLK_LEFT])
+        if(SDL_GetKeyState(NULL)[SDLK_LEFT] && !SDL_GetKeyState(NULL)[SDLK_RIGHT])
             refresh =  player.move(map, 2);
             
         if(refresh){
@@ -134,7 +133,7 @@ int main()
             SDL_Flip(screen);
             refresh = false;
             }
-        if(SDL_GetKeyState(NULL)[SDLK_RIGHT])
+        if(SDL_GetKeyState(NULL)[SDLK_RIGHT] && !SDL_GetKeyState(NULL)[SDLK_LEFT])
             refresh = player.move(map, 3);
         
         if(refresh){

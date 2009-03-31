@@ -13,6 +13,7 @@
 #include "SDL/SDL_thread.h" 
 #include "Map/user_map.h"
 #include "funcs.h"
+#include "bomb.h"
 
 class DPlaya {
 public:
@@ -36,6 +37,7 @@ public:
 	void dropBomb();
 	bool canPlant(){return (numBombs_ < 5);}
 	bool move(int **mapGrid, int direction);
+	void *countdown(void* param);
 
 	//getters
 	int getX(){return x_;}
@@ -68,7 +70,7 @@ int bombPower_;
 bool alive_;
 char name_[256];
 char color_;
-//Bomb bombs[5]; //TODO bomb init !
+Bomb bombs[5]; //TODO bomb init !
 
 SDL_Surface* image_;
 

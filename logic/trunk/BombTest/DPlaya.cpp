@@ -25,12 +25,14 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 	refresh(screen);
 }
 
-/*void DPlaya::dropBomb()
-{
+void DPlaya::dropBomb()
+{	
+	int i;
 	struct coords c;
-	if(droppedBombs >= numBombs)
+	pthread_t pt;
+	if(droppedBombs_ >= numBombs_)
 		return;
-	for(int i = 0; i < numBombs_; i++)
+	for(i = 0; i < numBombs_; i++)
 	{
 		if(bombs[i].getBombID() != -1)
 			break;
@@ -38,14 +40,14 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 
 	bombs[i].setX(x_);
 	bombs[i].setY(y_);
-	bombs[i].setID(i);
+	bombs[i].setBombID(i);
 
 	c.x = x_;
 	c.y = y_;
 	c.len = bombPower_;
 	c.id = i;
 	
-	droppedBombs++;
+	droppedBombs_++;
 
 	bombs[i].startFuse();	
 
@@ -55,7 +57,7 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 	}
 }
 
-void DPlaya::countdown()
+void DPlaya::countdown(void *param)
 {
 	struct coords *c;
 
@@ -63,8 +65,8 @@ void DPlaya::countdown()
 
 	sleep(3);
 	bombs[c->id].detonate();
-	droppedBombs--;
-}*/
+	droppedBombs_--;	
+}
 
 bool DPlaya::move(int** map, int direction)
 {

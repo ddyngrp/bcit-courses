@@ -8,12 +8,6 @@
 
 class DPlaya {
 public:
-	/*DPlaya(){ x_ = 0,  y_ = 0 , w_= 35, h_ = 35, image_ = IMG_Load("default.png");}
-
-	DPlaya(const int x, const int y, const int w, const int h , const std::string pic){
-				 x_ = x,  y_ = y, w_ = w, h_ = h, image_ = IMG_Load((char*)&pic);}
-
-	DPlaya(const DPlaya& old){ x_ = old.x_, y_ = old.y_, image_ = old.image_, w_ = old.w_, h_ = old.h_;}*/
 	DPlaya() : x_(0), y_(0), w_(35), h_(35), DPlayaID_(-1), alive_(false), image_(IMG_Load("default.png")){}
 	DPlaya(const int x, const int y, const int w, const int h, char* pic) :
 				 x_(x),  y_(y), w_(w), h_(h), image_(IMG_Load(pic)){}

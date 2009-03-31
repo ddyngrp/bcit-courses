@@ -7,7 +7,7 @@ user_map::~user_map()
 }
 
 //note: Strong Exception Safety! If invalid data is found, _map will contain old data!
-bool user_map::update_map(int **new_map, const int height, const int width) 
+bool user_map::update_map(unsigned char **new_map, const int height, const int width) 
 {
 	int i, j;
 	if ((height != _height) || (width != _width))

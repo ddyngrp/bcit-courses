@@ -9,6 +9,7 @@
 #include "SDL/SDL_image.h"
 #include "user_map.h"
 #include "funcs.h"
+#include <pthread.h>
 
 /* s_movement.cpp */
 void   	move_player(const int, const int);
@@ -23,8 +24,9 @@ void recieve_packet(const char, const int);
 /* s_bomb.cpp */
 void   	plant_bomb(const int);
 void   	explode_bomb(const int, const int, const int);
-void   	start_fuse(void);
+void   	start_fuse(const int, const int, const int);
 void    fire_to_map(struct fire);
+void    countdown(void *);
 
 /* s_explosion.cpp */
 void   	kill_if_here(const int, const int);
@@ -38,10 +40,11 @@ struct fire {
 
 struct coords {
 	int x,y;
+	int len; 
 };
 
-unsigned char 		grid[15][15];
-DPlaya 			player_array[MAX_PLAYERS];
+unsigned char 		grid[17][18];
+DPlaya 			*player_array;
 unsigned char 		player_count = 0;
 bool 			game_running = false;
 

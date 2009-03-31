@@ -16,6 +16,3 @@ recieve_packet(char b, int index)
 	else if (b == 5)
 		player_quit(index);
 }
-
-//send_player_class()
-//send_map()

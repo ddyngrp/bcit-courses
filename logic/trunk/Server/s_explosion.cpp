@@ -9,25 +9,25 @@ int j, k;
 	f.x = x;
 	f.y = y;
 
-	for (j = x, k = 0; j > 0 && k < len; --j, ++k) {
+	for (j = x, k = 0; j > 1 && k < len; --j, ++k) {
 		if (block_here(x,j)) 
 			break;
 		kill_if_here(x,j);
 	}
 	f.up = k;	
-	for (j = x, k = 0; j < 15 && k < len; ++j, ++k) {
+	for (j = x, k = 0; j < 16 && k < len; ++j, ++k) {
 		if (block_here(x,j))
 			break;
 		kill_if_here(x,j);
 	}
 	f.down = k;
-	for (j = x, k = 0; j > 0 && k < len; --j, ++k) {
+	for (j = x, k = 0; j > 1 && k < len; --j, ++k) {
 		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);
 	}
 	f.left = k;
-	for (j = x, k = 0; j < 15 && k < len; ++j, ++k) {
+	for (j = x, k = 0; j < 16 && k < len; ++j, ++k) {
 		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);

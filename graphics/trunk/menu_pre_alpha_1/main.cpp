@@ -10,6 +10,7 @@
 #include "mainHeader.h"
 #include "MainMenu2.h"
 #include "OkCancel.h"
+#include "POptMenu.h"
 
 int main( int argc, char* args[] )
 {
@@ -25,35 +26,24 @@ int main( int argc, char* args[] )
 														,"img/OPTBackgroundv3.png"};
     //filenames for OkCnacel exit menu
     std::string exitOpts[OkCancel::num_options_] = {"img/OK_CANCEL_EXIT.xcf","img/OK_EXIT.xcf","img/CANCEL_EXIT.xcf"};
-    std::string models[POptMenu::num_models_] = {"0.png","1.png","2.xcf","3.png","4.png","5.png","6.png","7.png",};
+    std::string models[POptMenu::num_models_] = {"img/models/0.png","img/models/1.png","img/models/2.xcf","img/models/3.png","img/models/4.png"
+												,"img/models/5.png","img/models/6.png","img/models/7.png",};
+
+    std::string playaOpts[POptMenu::num_options_] = {"img/POptMainMenuv1.png","img/POptBackMenuv1.png", "img/POptModelMenuv1.png"
+													,"img/POptColourMenuv1.png", "img/POptNameMenuv1.png"};
     SDL_Surface *screen;
 
     //init SDL
     if (!init_everything(screen)){return 1;}
     //set the screen
-    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32,	SDL_SWSURFACE | SDL_DOUBLEBUF);
+    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_DOUBLEBUF);
     printf("Done init all Loading main...\n");
 
     //create main menu and exit dialog
     MainMenu2 main(mainOpts, "sound/mc.ogg","sound/click.wav", screen);
     OkCancel  exitMenu(exitOpts, "sound/click.wav", screen);
-    POptMenu pMenu(models, mainOpts, "sound/mc.ogg","sound/click.wav", screen);
+    POptMenu pMenu(models, playaOpts, "sound/mc.ogg","sound/click.wav", screen);
 
-    while(true)
-    {
-    	SDL_WaitEvent(&event);
-    			if(event.type == SDL_KEYDOWN)
-    			{
-    				switch(event.key.keysym.sym)
-    				{
-    					case SDLK_LEFT:
-    						 pMenu.showLoaded()
-    						break;
-    					case SDLK_RIGHT:
-    					    break;
-    				}
-    			}
-    }
 	mmresult = 0;
 	ocresult = 0;
 	exitGame = false;
@@ -90,8 +80,8 @@ int main( int argc, char* args[] )
 				for(i = 0 ; i < fps; i++)
 				{
 					countStart = SDL_GetTicks();
-					if(SDL_GetTicks() - countStart < 500 / fps)
-							SDL_Delay((500/fps) - (SDL_GetTicks() - countStart));
+					if(SDL_GetTicks() - countStart < 1000 / fps)
+							SDL_Delay((1000/fps) - (SDL_GetTicks() - countStart));
 					main.move(0,0);
 					exitMenu.move(0, ((250 + height)* (fps - i)/(int)fps) - height);
 					SDL_Flip(screen);
@@ -99,9 +89,29 @@ int main( int argc, char* args[] )
 				}
 				exitGame = false;
 				break;
+			default:
+				break;
 			}
+			break;
 		case 2:
 			//load player options
+			main.setLoaded(0);
+			main.showLoaded();
+			fps = 60;
+			for(i = 0 ; i < fps; i++)
+			{
+				countStart = SDL_GetTicks();
+				if(SDL_GetTicks() - countStart < 1000 / fps)
+						SDL_Delay((1000/fps) - (SDL_GetTicks() - countStart));
+				main.move(0 -(i * 10),0);
+				printf("done 1\n");
+				pMenu.move(600 - (i * 10),0);
+				printf("done 2\n");
+				SDL_Flip(screen);
+				countStart = SDL_GetTicks();
+			}
+			printf("done switch\n");
+			ocresult = pMenu.start(event);
 		case 3:
 			//load start game
 		case 4:

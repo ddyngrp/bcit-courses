@@ -2,6 +2,9 @@
 #define SERIALIZE_H_
 #include "DPlaya.h"
 
+#define MAP_ROWS 15
+#define MAP_COLS 15
+
 /* player stuff */
 int serialize_player(DPlaya *player, char *buf, size_t buflen);
 int unserialize_player(char *buf, DPlaya *player);

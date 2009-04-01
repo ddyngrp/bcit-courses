@@ -19,9 +19,9 @@ void start_client(char *, char *);
 void test_data(int);
 void stop_client(void); /* implement later */
 void start_udp_client(char*);
-void send_tcp(DPlaya p, int sockfd);
-DPlaya recv_tcp(int sockfd);
-void send_udp(DPlaya p1);
-DPlaya recv_udp(int socketfd);
+void send_tcp_player(DPlaya p, int sockfd);
+DPlaya recv_tcp_player(int sockfd);
+void send_udp_player(DPlaya p1);
+DPlaya recv_udp_player(int socketfd);
 
 #endif

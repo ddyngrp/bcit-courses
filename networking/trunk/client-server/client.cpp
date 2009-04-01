@@ -90,7 +90,7 @@ void start_client(char * server, char * port) {
 	}
 }
 
-void send_tcp(DPlaya p1, int sockfd) {
+void send_tcp_player(DPlaya p1, int sockfd) {
 	char buf[BUF_LEN];
 	serialize_player(&p1, buf, BUF_LEN);
 
@@ -99,7 +99,7 @@ void send_tcp(DPlaya p1, int sockfd) {
 	}
 }
 
-DPlaya recv_tcp(int sockfd) {
+DPlaya recv_tcp_player(int sockfd) {
 	DPlaya p1;
 	char buf[BUF_LEN];
 	int r;
@@ -192,7 +192,7 @@ void start_udp_client(char *hostname){
 	}
 }
 
-void send_udp(DPlaya p1, int socketfd) {
+void send_udp_player(DPlaya p1, int socketfd) {
 	char buf[BUF_LEN];
 	serialize_player(&p1, buf, BUF_LEN);
 	struct sockaddr_in udpserver;
@@ -203,7 +203,7 @@ void send_udp(DPlaya p1, int socketfd) {
     }
 }
 
-DPlaya recv_udp(int socketfd) {
+DPlaya recv_udp_player(int socketfd) {
 	DPlaya p1;
 	char buf[BUF_LEN];
 	struct sockaddr_in udpserver;

@@ -78,8 +78,15 @@ void start_client(char * server, char * port) {
 		if (strcmp(sendbuf,"start\n") == 0){
 			start_udp_client(server);            
 		} else {
-			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1) {
-				perror("recv call() failed.");
+			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) <= 0) {
+
+				if (r == 0) {
+					/* connection close */
+					printf("select: socket %d hung up\n", i);
+				} else {
+					perror("recv");
+				}
+
 				continue;
 			}
 			recvbuf[r] = '\0';

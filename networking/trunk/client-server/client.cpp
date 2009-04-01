@@ -80,7 +80,7 @@ void start_client(char * server, char * port) {
 		if (strcmp(sendbuf,"start\n") == 0){
 			start_udp_client(server);            
 		} else {
-			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1) {
+			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) == -1) {
 				perror("recv call() failed.");
 				continue;
 			}

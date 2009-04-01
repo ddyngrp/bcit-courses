@@ -58,3 +58,65 @@ int unserialize_player(char *buf, DPlaya *player) {
 	memcpy(player, buf, sizeof(DPlaya));
 	return 0;
 }
+
+/******************************************************************************
+ *  Function:    serialize_map
+ * 
+ *  Date:        April 1, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   serialize_map(char map[MAP_ROWS][MAP_COLS], char *serialized_form)
+ *					char map[MAP_ROWS][MAP_COLS]: the MAP_ROWS by MAP_COLS array
+ *						representing the map
+ *		            char *serialized_form: buffer for storing the serialized form
+ *						of the map
+ * 
+ *  Returns:     0 on success or (-1) on failure.
+ * 
+ *  Description: Serialize the info in map and put it into serialized_form.
+ *
+ *****************************************************************************/
+int serialize_map(char map[MAP_ROWS][MAP_COLS], char *serialized_form) {
+	for(int a = 0; a < MAP_ROWS; a++) {
+		for(int b = 0; b < MAP_COLS; b++) {
+			serialized_form[(a * MAP_ROWS) + b] = map[a][b];
+		}
+	}
+	
+	return 0;
+}
+
+/******************************************************************************
+ *  Function:    unserialize_map
+ * 
+ *  Date:        April 1, 2009
+ *
+ *  Revisions:   
+ * 
+ *  Designer:    David Young
+ *  Programmer:  David Young
+ * 
+ *  Interface:   unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS])
+ *		            char *serialized_form: buffer for storing the serialized form
+ *						of the map
+ *					char map[MAP_ROWS][MAP_COLS]: the MAP_ROWS by MAP_COLS array
+ *						representing the map
+ * 
+ *  Returns:     0 on success or (-1) on failure.
+ * 
+ *  Description: Unserialize the info in serialized_form and put it into map.
+ *
+ *****************************************************************************/
+int unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS]) {
+	for(int a = 0; a < MAP_ROWS; a++) {
+		for(int b = 0; b < MAP_COLS; b++) {
+			map[a][b] = serialized_form[(a * MAP_ROWS) + b];
+		}
+	}
+	
+	return 0;
+}

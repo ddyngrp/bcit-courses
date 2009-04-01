@@ -1,0 +1,6 @@
+<div id="footer" class="smallgraytext">
+    <a href=".">Home</a> |
+    <a href="league.jsp">League</a> | <a href="standings.jsp">Standings</a> |
+    <a href="schedule.jsp?team=1">Schedule</a> | <a href="history.jsp?team=1">History</a> |
+    <a href="update.jsp">Update</a> | <a href="predict.jsp">Predict</a></div>
+</div>

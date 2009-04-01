@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : 4711teams.xml
+    Created on : January 16, 2009, 3:06 PM
+    Author     : A00195498
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <team id="B1">
+        <members>Alex F &amp; Clay T</members>
+        <league>Belgium Jupiler</league>
+        <url>http://www.footbel.be/en/test.html</url>
+        <url>http://www.sport.be/fr/jupilerproleague/</url>
+    </team>
+    <team id="B2">
+        <members>Sameh H &amp; Jeff K</members>
+        <league>England National</league>
+        <url>http://www.footballconference.co.uk/</url>
+    </team>
+    <team id="B3">
+        <members>Jeff H &amp; Peter S</members>
+        <league>MLS</league>
+        <url>http://web.mlsnet.com/index.jsp</url>
+    </team>
+    <team id="B4">
+        <members>Thomas L &amp; Simon R</members>
+        <league>Spain League 2</league>
+        <url>http://www.lfp.es/</url>
+        <url>http://www.footballdata.com/leagues/Liga-BBVA/</url>
+    </team>
+    <team id="B5">
+        <members>Austin M &amp; Michael P</members>
+        <league>Netherlands Eredivisie</league>
+        <url>http://www.jupilerleague.nl/</url>
+    </team>
+    <team id="B6">
+        <members>Jim S &amp; Mark W</members>
+        <league>England League One</league>
+        <url>http://www.football-league.co.uk/page/League1Index/0,,10794,00.html</url>
+    </team>
+    <team id="B7">
+        <members>Colin B &amp; Aaron D</members>
+        <league>Uruguay Premier</league>
+        <url>http://uruguayanplayers.webs.com/primeradivision.htm</url>
+    </team>
+    <team id="F1">
+        <members>Curtis A &amp; Henry B</members>
+        <league>France Ligue 1</league>
+        <url>http://www.frenchleague.com/indexSite.asp</url>
+    </team>
+    <team id="F2">
+        <members>Clay S &amp; Tajinder T</members>
+        <league>Spain La Liga</league>
+        <url>http://www.lfp.es/</url>
+        <url>http://www.soccer-spain.com/</url>
+    </team>
+    <team id="F3">
+        <members>Alin A &amp; Brendan N</members>
+        <league>Romania Liga 1</league>
+        <url>http://www.liga1.ro/</url>
+    </team>
+    <team id="F4">
+        <members>Jerrod H &amp; Neena D</members>
+        <league>Germany Bundesliga</league>
+        <url>http://www.bundesliga.de/en/index.php</url>
+    </team>
+    <team id="F5">
+        <members>Mitesh L &amp; Max W</members>
+        <league>Argentina Premier</league>
+        <url>http://www.afa.org.ar/</url>
+    </team>
+    <team id="F6">
+        <members>Steffen N &amp; Douglas P</members>
+        <league>Denmark</league>
+        <url>http://www.dbu.dk/page.aspx?id=1884</url>
+    </team>
+    <team id="F7">
+        <members>Colby L &amp; Mang Z</members>
+        <league>Chinese Super</league>
+        <url></url>
+    </team>
+    <team id="F8">
+        <members>Kyle M &amp; Matt W</members>
+        <league>Turkish Super Lig</league>
+        <url>http://www.turkcellsuperlig.com/</url>
+    </team>
+    <team id="G1">
+        <members>Johnny T &amp; Wilfred L</members>
+        <league>Italy Serie A</league>
+        <url>http://www.lega-calcio.it/it.page</url>
+    </team>
+    <team id="G2">
+        <members>Heekyoung S &amp; Ying Quan Y</members>
+        <league>England Championship</league>
+        <url>hhttp://www.football-league.co.uk/page/ChampionshipHome/0,,10794,00.html</url>
+    </team>
+    <team id="G3">
+        <members>Priscilla A &amp; Rovin L</members>
+        <league>USL</league>
+        <url>http://www.uslsoccer.com/</url>
+    </team>
+    <team id="G4">
+        <members>James M &amp; Upkar R</members>
+        <league>Scotland Premier League</league>
+        <url>http://www.scotprem.com/</url>
+    </team>
+    <team id="G5">
+        <members>Leanne E &amp; Devin P</members>
+        <league>England Premier League</league>
+        <url>http://www.premierleague.com/page/Home/0,,12306,00.html</url>
+    </team>
+    <team id="G6">
+        <members>Jeffrey C &amp; Alex K</members>
+        <league>Portugal Superliga</league>
+        <url>http://pfutebol.com/</url>
+        <url>http://www.portuguesesoccernewslinks.com/Home_Page.html</url>
+    </team>
+    <team id="G7">
+        <members>Graham K &amp; Sunny K</members>
+        <league>Japan J-League</league>
+        <url>http://www.j-league.or.jp/eng/</url>
+    </team>
+</root>

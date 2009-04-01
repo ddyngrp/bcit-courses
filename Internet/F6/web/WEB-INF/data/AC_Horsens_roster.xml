@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE team SYSTEM "team_roster.dtd">
+
+<!--
+    Document   : AC_Horsens.xml
+    Created on : April 1, 2009, 12:59 AM
+    Author     : Steffen L. Norgren
+    Description: Team roster for AC Horsens
+        Purpose of the document follows.
+-->
+
+<team name="AC Horsens">
+    <player jersey="1">
+        <name>Søren Jochumsen</name>
+        <position>Goalkeeper</position>
+        <birthdate>1976-08-01</birthdate>
+    </player>
+    <player jersey="21">
+        <name>Lasse Sørensen</name>
+        <position>Goalkeeper</position>
+        <birthdate>1982-03-06</birthdate>
+    </player>
+    <player jersey="30">
+        <name>Allan Nielsen</name>
+        <position>Goalkeeper</position>
+        <birthdate>1987-07-28</birthdate>
+    </player>
+    <player jersey="2">
+        <name>Kenneth Emil Petersen</name>
+        <position>Forward</position>
+        <birthdate>1985-01-15</birthdate>
+    </player>
+    <player jersey="3">
+        <name>Morten 'Molle' Rasmussen</name>
+        <position>Forward</position>
+        <birthdate>1985-03-26</birthdate>
+    </player>
+    <player jersey="4">
+        <name>Mads Rieper</name>
+        <position>Forward</position>
+        <birthdate>1973-07-20</birthdate>
+    </player>
+    <player jersey="5">
+        <name>Adam Eckersley</name>
+        <position>Forward</position>
+        <birthdate>1985-09-07</birthdate>
+    </player>
+    <player jersey="22">
+        <name>Andreas Augustsson</name>
+        <position>Forward</position>
+        <birthdate>1976-11-26</birthdate>
+    </player>
+    <player jersey="24">
+        <name>Nabil Aslam</name>
+        <position>Forward</position>
+        <birthdate>1984-08-03</birthdate>
+    </player>
+    <player jersey="26">
+        <name>Marc Maze</name>
+        <position>Forward</position>
+        <birthdate>1988-10-17</birthdate>
+    </player>
+    <player jersey="6">
+        <name>Simon Nagel</name>
+        <position>Midfielder</position>
+        <birthdate>1985-07-05</birthdate>
+    </player>
+    <player jersey="8">
+        <name>Martin Spelmann</name>
+        <position>Midfielder</position>
+        <birthdate>1987-03-21</birthdate>
+    </player>
+    <player jersey="10">
+        <name>Allan Søgaard</name>
+        <position>Midfielder</position>
+        <birthdate>1978-01-20</birthdate>
+    </player>
+    <player jersey="11">
+        <name>Niels Lodberg</name>
+        <position>Midfielder</position>
+        <birthdate>1980-10-14</birthdate>
+    </player>
+    <player jersey="13">
+        <name>Thomas Kortegaard</name>
+        <position>Midfielder</position>
+        <birthdate>1984-07-02</birthdate>
+    </player>
+    <player jersey="14">
+        <name>Søren Friis</name>
+        <position>Midfielder</position>
+        <birthdate>1976-12-13</birthdate>
+    </player>
+    <player jersey="20">
+        <name>Janus Drachmann</name>
+        <position>Midfielder</position>
+        <birthdate>1988-05-11</birthdate>
+    </player>
+    <player jersey="23">
+        <name>Steffen Lauser</name>
+        <position>Midfielder</position>
+        <birthdate>1984-03-04</birthdate>
+    </player>
+    <player jersey="25">
+        <name>Yasin Avci</name>
+        <position>Midfielder</position>
+        <birthdate>1984-08-03</birthdate>
+    </player>
+    <player jersey="27">
+        <name>Anders Nøhr</name>
+        <position>Midfielder</position>
+        <birthdate>1981-09-03</birthdate>
+    </player>
+    <player jersey="9">
+        <name>Gilberto Macena</name>
+        <position>Defender</position>
+        <birthdate>1984-04-01</birthdate>
+    </player>
+    <player jersey="12">
+        <name>Rawez Lawan</name>
+        <position>Defender</position>
+        <birthdate>1987-10-04</birthdate>
+    </player>
+    <player jersey="16">
+        <name>Besart Berisha</name>
+        <position>Defender</position>
+        <birthdate>1985-07-29</birthdate>
+    </player>
+    <player jersey="17">
+        <name>Casper Johansen</name>
+        <position>Defender</position>
+        <birthdate>1988-07-28</birthdate>
+    </player>
+    <player jersey="19">
+        <name>Nick Christensen</name>
+        <position>Defender</position>
+        <birthdate>1985-08-28</birthdate>
+    </player>
+    <player jersey="29">
+        <name>Jimmy Mayasi</name>
+        <position>Defender</position>
+        <birthdate>1987-06-06</birthdate>
+    </player>
+</team>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE team SYSTEM "team_roster.dtd">
+
+<!--
+    Document   : Odense_BK.xml
+    Created on : April 1, 2009, 12:59 AM
+    Author     : Steffen L. Norgren
+    Description: Team roster for Odense BK
+        Purpose of the document follows.
+-->
+
+<team name="Odense BK">
+    <player jersey="1">
+        <name>Arkadiusz Onyszko</name>
+        <position>Goalkeeper</position>
+        <birthdate>1974-01-12</birthdate>
+    </player>
+    <player jersey="16">
+        <name>David Preece</name>
+        <position>Goalkeeper</position>
+        <birthdate>1976-08-26</birthdate>
+    </player>
+    <player jersey="35">
+        <name>Christian Kier</name>
+        <position>Goalkeeper</position>
+        <birthdate>1988-05-17</birthdate>
+    </player>
+    <player jersey="2">
+        <name>Espen Ruud</name>
+        <position>Forward</position>
+        <birthdate>1984-02-28</birthdate>
+    </player>
+    <player jersey="3">
+        <name>Atle Roar Håland</name>
+        <position>Forward</position>
+        <birthdate>1977-07-26</birthdate>
+    </player>
+    <player jersey="5">
+        <name>Anders Møller Christensen</name>
+        <position>Forward</position>
+        <birthdate>1977-07-26</birthdate>
+    </player>
+    <player jersey="6">
+        <name>Thomas Helveg</name>
+        <position>Forward</position>
+        <birthdate>1971-06-24</birthdate>
+    </player>
+    <player jersey="15">
+        <name>Chris Sørensen</name>
+        <position>Forward</position>
+        <birthdate>1977-07-27</birthdate>
+    </player>
+    <player jersey="18">
+        <name>Jonas Troest</name>
+        <position>Forward</position>
+        <birthdate>1985-03-04</birthdate>
+    </player>
+    <player jersey="20">
+        <name>Timmi Johansen</name>
+        <position>Forward</position>
+        <birthdate>1987-05-08</birthdate>
+    </player>
+    <player jersey="4">
+        <name>Hans Henrik Andreasen</name>
+        <position>Midfielder</position>
+        <birthdate>1979-01-10</birthdate>
+    </player>
+    <player jersey="8">
+        <name>Henrik Hansen</name>
+        <position>Midfielder</position>
+        <birthdate>1979-07-28</birthdate>
+    </player>
+    <player jersey="14">
+        <name>Esben Hansen</name>
+        <position>Midfielder</position>
+        <birthdate>1981-08-10</birthdate>
+    </player>
+    <player jersey="17">
+        <name>Morten Bisgaard</name>
+        <position>Midfielder</position>
+        <birthdate>1974-06-25</birthdate>
+    </player>
+    <player jersey="19">
+        <name>Eric Djemba-Djemba</name>
+        <position>Midfielder</position>
+        <birthdate>1981-05-04</birthdate>
+    </player>
+    <player jersey="21">
+        <name>Peter Nymann</name>
+        <position>Midfielder</position>
+        <birthdate>1982-08-22</birthdate>
+    </player>
+    <player jersey="23">
+        <name>Anders Nielsen</name>
+        <position>Midfielder</position>
+        <birthdate>1989-05-29</birthdate>
+    </player>
+    <player jersey="7">
+        <name>Peter Utaka</name>
+        <position>Defender</position>
+        <birthdate>1984-02-12</birthdate>
+    </player>
+    <player jersey="10">
+        <name>Björn Runström</name>
+        <position>Defender</position>
+        <birthdate>1984-03-01</birthdate>
+    </player>
+    <player jersey="11">
+        <name>Johan Absalonsen</name>
+        <position>Defender</position>
+        <birthdate>1985-09-16</birthdate>
+    </player>
+    <player jersey="22">
+        <name>Njogu Demba-Nyrén</name>
+        <position>Defender</position>
+        <birthdate>1979-06-26</birthdate>
+    </player>
+    <player jersey="28">
+        <name>Anders K. Jacobsen</name>
+        <position>Defender</position>
+        <birthdate>1989-10-27</birthdate>
+    </player>
+</team>

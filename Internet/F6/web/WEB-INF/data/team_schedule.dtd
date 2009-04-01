@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--- The root schedule -->
+<!ELEMENT schedule (game)*>
+<!ATTLIST schedule
+    team CDATA #IMPLIED
+  >
+
+<!--- A game between two teams. -->
+<!ELEMENT game (away|score|home|status)*>
+<!ATTLIST game
+    date CDATA #IMPLIED
+  >
+
+<!--- The game's current status. -->
+<!ELEMENT status (#PCDATA)>
+
+<!--- The home team. -->
+<!ELEMENT home (#PCDATA)>
+
+<!--- The final score. -->
+<!ELEMENT score (#PCDATA)>
+
+<!--- The away team. -->
+<!ELEMENT away (#PCDATA)>

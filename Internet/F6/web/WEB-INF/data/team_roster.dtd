@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--- The Football Team -->
+<!ELEMENT team (player)*>
+<!ATTLIST team
+    name CDATA #IMPLIED
+  >
+<!--- A player within the team -->
+<!ELEMENT player (birthdate|position|name)*>
+<!ATTLIST player
+    jersey CDATA #IMPLIED
+  >
+
+<!--- A player's name -->
+<!ELEMENT name (#PCDATA)>
+
+<!--- A player's position on the team -->
+<!ELEMENT position (#PCDATA)>
+
+<!--- A player's birthdate -->
+<!ELEMENT birthdate (#PCDATA)>

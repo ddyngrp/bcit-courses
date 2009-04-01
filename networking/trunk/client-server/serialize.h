@@ -7,5 +7,3 @@ int unserialize_player(char *buf, DPlaya *player);
 
 
 #endif
-
-

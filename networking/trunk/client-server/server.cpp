@@ -157,7 +157,7 @@ void start_server(void) {
 						FD_CLR(i, &ptcp_server->master); /* remove from ptcp_server->master set */
 					} else { /* we got data from a client */
 						if ((rv = process_data(ptcp_server->recvBuff, ptcp_server->recvBytes) < 0)) { 
-							perror("process_data");
+							/*perror("process_data");*/
 						}
 							
 						/* for (j = 0; ptcp_server->recvBuff[j] != '\n'; j++) {

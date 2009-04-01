@@ -115,7 +115,6 @@ void start_server(void) {
 	/* Setup our listening socket */
 	tcp_listen();
 
-	/* TODO: Turn this into a thread? */
 	/* main read loop */
 	for (;;) {
 		ptcp_server->read_fds = ptcp_server->master; /* copy master set */
@@ -159,18 +158,11 @@ void start_server(void) {
 						if ((rv = process_data(ptcp_server->recvBuff, ptcp_server->recvBytes) < 0)) { 
 							/*perror("process_data");*/
 						}
-							
-						/* for (j = 0; ptcp_server->recvBuff[j] != '\n'; j++) {
-							ptcp_server->recvBuff[++j] = '\0';
-						} */
 
 						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
 							/* Create UDP Server thread */
 							pthread_create(&udp_thread, NULL, start_udp_server, (void *)NULL);
 							/* start_udp_server(); */
-						}
-						else if (strcmp((const char *)ptcp_server->recvBuff, "stop\n") == 0) {
-							pthread_cancel(udp_thread);
 						}
 
 						/* Sending to clients is handled by network.cpp

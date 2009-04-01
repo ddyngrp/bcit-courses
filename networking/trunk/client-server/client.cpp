@@ -90,30 +90,6 @@ void start_client(char * server, char * port) {
 	}
 }
 
-void send_tcp_player(DPlaya p1, int sockfd) {
-	char buf[BUF_LEN];
-	serialize_player(&p1, buf, BUF_LEN);
-
-	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
-		perror("send() call failed.");
-	}
-}
-
-DPlaya recv_tcp_player(int sockfd) {
-	DPlaya p1;
-	char buf[BUF_LEN];
-	int r;
-
-	if ((r = recv(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
-		perror("recv call() failed.");
-		return p1;
-	}
-
-	unserialize_player(buf, &p1);
-
-	return p1;
-}
-
 void start_udp_client(char *hostname){
 	int sd;
 	struct sockaddr_in udpserver, udpclient;
@@ -192,10 +168,35 @@ void start_udp_client(char *hostname){
 	}
 }
 
-void send_udp_player(DPlaya p1, int socketfd) {
+void send_tcp_player(DPlaya p1, int sockfd) {
 	char buf[BUF_LEN];
 	serialize_player(&p1, buf, BUF_LEN);
+
+	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("send() call failed.");
+	}
+}
+
+DPlaya recv_tcp_player(int sockfd) {
+	DPlaya p1;
+	char buf[BUF_LEN];
+	int r;
+
+	if ((r = recv(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("recv call() failed.");
+		return p1;
+	}
+
+	unserialize_player(buf, &p1);
+
+	return p1;
+}
+
+void send_udp_player(DPlaya p1, int socketfd) {
+	char buf[BUF_LEN];
 	struct sockaddr_in udpserver;
+
+	serialize_player(&p1, buf, BUF_LEN);
 
 	if (sendto(socketfd, buf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
         perror("sendto failure");
@@ -207,14 +208,20 @@ DPlaya recv_udp_player(int socketfd) {
 	DPlaya p1;
 	char buf[BUF_LEN];
 	struct sockaddr_in udpserver;
+	int ret;
 
-	unserialize_player(buf, &p1);
-	
+	if ((ret = recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
+		if(ret == 0) {
+			fprintf(stderr, "Server closed\n", socketfd);
+		} else {
+			perror("recvfrom error");
+		}
 
-	if (recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
-		perror("recvfrom error");
-		exit(1);
+		exit(EXIT_FAILURE);
+	} else {
+		unserialize_player(buf, &p1);
 	}
 
+	return p1;
 }
 

@@ -9,6 +9,7 @@
 
 POptMenu::POptMenu(std::string modelNames[], std::string fileNames[], std::string mfilename, std::string smfilename, SDL_Surface* screen)
 {
+	printf("Creating Option Menu!\n");
 	int i;
 	loaded_ = 0;
 	modelLoaded_ = 0;
@@ -34,6 +35,7 @@ POptMenu::POptMenu(std::string modelNames[], std::string fileNames[], std::strin
 	}
 	this->setMusic(Mix_LoadMUS( mfilename.c_str()));
 	this->setNexMusic(Mix_LoadWAV(smfilename.c_str()));
+	printf("Option Menu Created!\n");
 
 }
 
@@ -153,7 +155,7 @@ bool POptMenu::showModels()
 }
 bool POptMenu::showloaded()
 {
-	printf("Loadin backgrounds\n");
+	printf("Loading backgrounds\n");
 	bool result = false;
 	result = move(0,0);
 	if(result){
@@ -165,6 +167,7 @@ bool POptMenu::showloaded()
 
 bool POptMenu::move(int xStep, int yStep)
 {
+	printf("Moving Option Menu");
 	SDL_Rect offset;
 	offset.x = xStep;
 	offset.y = yStep;
@@ -174,10 +177,10 @@ bool POptMenu::move(int xStep, int yStep)
 
 int POptMenu::start()
 {
+	printf("Option menu execution started\n");
 	SDL_Event event;
 	loaded_ = 0;
 	if(!this->showloaded()) return 0;
-	printf("models loaded!\n");
 	while(true)
 	{
 		SDL_WaitEvent(&event);

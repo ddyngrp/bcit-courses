@@ -9,6 +9,7 @@
 
 MainMenu2::MainMenu2(std::string fileNames[], std::string mfilename, std::string smfilename, SDL_Surface* screen)
 {
+	printf("Creating main menu\n");
 	int i;
 	loaded_ = 0;
 	this->screen_ = screen;
@@ -23,6 +24,7 @@ MainMenu2::MainMenu2(std::string fileNames[], std::string mfilename, std::string
 	}
 	this->setMusic(Mix_LoadMUS( mfilename.c_str()));
 	this->setNexMusic(Mix_LoadWAV(smfilename.c_str()));
+	printf("Creating main menu -- Done\n");
 
 }
 
@@ -37,27 +39,34 @@ MainMenu2::~MainMenu2() {
 
 bool MainMenu2::showLoaded()
 {
+	printf("Showing loaded Menu!\n");
 	int i = SDL_BlitSurface( backgrounds_[loaded_],0, screen_, 0 );
 	if(!Mix_PlayingMusic())
 		Mix_PlayMusic( music_, -1 );
-	if (i == 0)
+	if (i == 0){
 			return (SDL_Flip( screen_ ) != -1);
-		else
+	}
+		else{
+			printf("Showing loaded Menu -- Failed!\n");
 			return false;
+		}
 }
 
 bool MainMenu2::move(int xStep, int yStep)
 {
+	printf("Moving menu!\n");
 	SDL_Rect offset;
 	offset.x = xStep;
 	offset.y = yStep;
 	int i = SDL_BlitSurface( backgrounds_[loaded_],0, screen_, &offset );
 	return i == 0;
+	printf("Moving menu! -- Done\n");
 }
 
 int MainMenu2::start(SDL_Event event)
 {
 	loaded_ = 0;
+	printf("Main menu execution Started\n");
 	if(!this->showLoaded()) return 0;
 	while(true)
 	{
@@ -138,7 +147,7 @@ int MainMenu2::start(SDL_Event event)
 					loaded_ = num_options_ - 4;
 					Mix_PlayChannel(-1, nexMusic_, 0);
 					if(!this->showLoaded()) return 0;
-				}else
+				}else if(loaded_ != 0 )
 				{
 					loaded_ = 0;
 					if(!this->showLoaded()) return 0;

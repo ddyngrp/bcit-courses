@@ -9,6 +9,7 @@
 
 OkCancel::OkCancel(std::string fileNames[], std::string mfilename, SDL_Surface* screen)
 {
+	printf("Creating Ok_Cancel menu!\n");
 	int i;
 	loaded_ = 0;
 	this->screen_ = screen;
@@ -22,6 +23,7 @@ OkCancel::OkCancel(std::string fileNames[], std::string mfilename, SDL_Surface* 
 		}
 	}
 	this->setMusic(Mix_LoadWAV( mfilename.c_str() ));
+	printf("Done Ok_Cancel menu1\n");
 
 }
 
@@ -35,6 +37,7 @@ OkCancel::~OkCancel() {
 
 bool OkCancel::showLoaded()
 {
+	printf("Showing loaded Ok_Cancel\n");
 	SDL_Rect offset;
 	offset.x = 40;
 	offset.y =  250;
@@ -47,6 +50,7 @@ bool OkCancel::showLoaded()
 
 bool OkCancel::move(int xstep, int ystep)
 {
+	printf("Movin Ok_Cancel Menu\n");
 	SDL_Rect offset;
 	offset.x = 40;
 	offset.y = ystep > 250? 250: ystep;
@@ -56,6 +60,7 @@ bool OkCancel::move(int xstep, int ystep)
 
 int OkCancel::start(SDL_Event event)
 {
+	printf("Starting Ok_Cancel Menu!\n");
 	loaded_= 0;
 	if(!this->showLoaded()) return 0;
 	while(true)

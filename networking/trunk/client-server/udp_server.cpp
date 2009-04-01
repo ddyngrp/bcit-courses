@@ -5,7 +5,7 @@
 int serialize_player(DPlaya *player, char *buf, size_t buflen);
 int unserialize_player(char *buf, DPlaya *player);
 
-void start_udp_server() {
+void *start_udp_server(void *ptr) {
 	int sd, port = 8000, n, j;
 	socklen_t client_len;
 	char udpbuf[MAX_LEN];
@@ -59,7 +59,7 @@ void start_udp_server() {
 		if(strcmp(udpbuf, "quit\n")==0) {
 			close(sd);
 			printf("closing udp server..\n");
-			return;
+			return 0;
 		} else {
 			if(sendto(sd, udpbuf, n, 0, (struct sockaddr *)&udpclient, client_len) < 0) {
 				perror("Send To");
@@ -67,6 +67,7 @@ void start_udp_server() {
 			}
 		}
 	}
+	return 0;
 }
 
 

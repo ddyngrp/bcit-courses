@@ -225,24 +225,26 @@ int POptMenu::start()
 					Mix_PlayChannel(-1, nexMusic_, 0);
 					return 1;
 				case SDLK_RETURN:
-					if(loaded_ == 0)
+					if(loaded_ == 1){
+						Mix_PlayChannel(-1, nexMusic_, 0);
+						return loaded_;
+					}
 						break;
-					Mix_PlayChannel(-1, nexMusic_, 0);
-					return loaded_;
 				default:
 				break;
 			}
 		}
 		else if (event.type == SDL_MOUSEMOTION)
 			{
-				if((event.motion.x >300) && (event.motion.y < 150))
+				if((event.motion.x > 40) && (event.motion.x < 112) && (event.motion.y > 110) && (event.motion.y < 160))
 				{
 					if(loaded_ == num_options_ - 1)
 						continue;
 					loaded_ = num_options_ - 1;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showloaded()) return 0;
 				}else
-				if((event.motion.x < 400) && (event.motion.y < 300) && (event.motion.y > 150))
+					if((event.motion.x > 40) && (event.motion.x < 160) && (event.motion.y > 210) && (event.motion.y < 260))
 				{
 
 					if(loaded_ == num_options_ - 2)
@@ -250,8 +252,10 @@ int POptMenu::start()
 
 					loaded_ = num_options_ - 2;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showloaded()) return 0;
+
 				}else
-				if((event.motion.x > 200) && (event.motion.y > 300) && (event.motion.y < 650))
+					if((event.motion.x > 40) && (event.motion.x < 235) && (event.motion.y > 310) && (event.motion.y < 360))
 				{
 
 					if(loaded_ == num_options_ - 3)
@@ -259,20 +263,25 @@ int POptMenu::start()
 
 					loaded_ = num_options_ - 3;
 					Mix_PlayChannel(-1, nexMusic_, 0);
+					if(!this->showloaded()) return 0;
+
 				}else
-				if((event.motion.x < 200) && (event.motion.y > 700))
+					if((event.motion.x > 40) && (event.motion.x < 135) && (event.motion.y > 710) && (event.motion.y < 760))
 				{
 
 					if (loaded_ == num_options_ - 4)
 						continue;
 					loaded_ = num_options_ - 4;
 					Mix_PlayChannel(-1, nexMusic_, 0);
-				}else
+					if(!this->showloaded()) return 0;
+
+				}else if(loaded_ != 0)
 				{
 					loaded_ = 0;
+					if(!this->showloaded()) return 0;
 				}
 			}
-		else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_)
+		else if ((event.type == SDL_MOUSEBUTTONUP) && loaded_ == 1)
 		{
 			return loaded_;
 		}

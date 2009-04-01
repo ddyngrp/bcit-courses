@@ -66,6 +66,8 @@ void *start_udp_server(void *ptr) {
 				exit(EXIT_FAILURE);
 			}
 		}
+
+		pthread_testcancel();
 	}
 	return 0;
 }

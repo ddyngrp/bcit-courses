@@ -11,6 +11,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include "DPlaya.h"
+#include "serialize.h"
 
 #define PORT	"3840"
 

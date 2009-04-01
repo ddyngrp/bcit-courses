@@ -144,7 +144,7 @@ void start_udp_client(char *hostname){
 
 		inbuf[(strlen(inbuf)+1)] = '\0';
         
-        if (sendto(sd,inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+        if (sendto(sd,inbuf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
             perror("sendto failure");
             exit(1);
         }
@@ -152,7 +152,7 @@ void start_udp_client(char *hostname){
 		printf("len: %d\n", strlen(inbuf));
 		printf("buf: %s\n", inbuf);
 
-		if (recvfrom(sd,outbuf,MAXLEN,0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
+		if (recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
 			perror("recvfrom error");
 			exit(1);
 		}

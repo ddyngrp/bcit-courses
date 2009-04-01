@@ -34,6 +34,8 @@ void start_client(char * server, char * port) {
 	char sendbuf[MAXLEN], recvbuf[MAXLEN];
 	int sockfd;
 	int ret;
+	fd_set readfds;
+
 
 	memset(&hints,0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -78,21 +80,38 @@ void start_client(char * server, char * port) {
 		if (strcmp(sendbuf,"start\n") == 0){
 			start_udp_client(server);            
 		} else {
-			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) <= 0) {
-
-				if (r == 0) {
-					/* connection close */
-					printf("select: socket %d hung up\n", i);
-				} else {
-					perror("recv");
-				}
-
+			if ((r = recv(sockfd, recvbuf, MAXLEN, 0)) == -1) {
+				perror("recv call() failed.");
 				continue;
 			}
 			recvbuf[r] = '\0';
 			fprintf(stdout, "%s", recvbuf);
 		}
 	}
+}
+
+void send_tcp(DPlaya p1, int sockfd) {
+	char buf[BUF_LEN];
+	serialize_player(&p1, buf, BUF_LEN);
+
+	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("send() call failed.");
+	}
+}
+
+DPlaya recv_tcp(int sockfd) {
+	DPlaya p1;
+	char buf[BUF_LEN];
+	int r;
+
+	if ((r = recv(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("recv call() failed.");
+		return p1;
+	}
+
+	unserialize_player(buf, &p1);
+
+	return p1;
 }
 
 void start_udp_client(char *hostname){
@@ -171,5 +190,31 @@ void start_udp_client(char *hostname){
 		printf("%d,%d\n", p1.getDroppedBombs(),p2.getDroppedBombs());
 		printf("%d,%d\n", p1.getDPlayaID(),p2.getDPlayaID());
 	}
+}
+
+void send_udp(DPlaya p1, int socketfd) {
+	char buf[BUF_LEN];
+	serialize_player(&p1, buf, BUF_LEN);
+	struct sockaddr_in udpserver;
+
+	if (sendto(socketfd, buf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+        perror("sendto failure");
+        exit(1);
+    }
+}
+
+DPlaya recv_udp(int socketfd) {
+	DPlaya p1;
+	char buf[BUF_LEN];
+	struct sockaddr_in udpserver;
+
+	unserialize_player(buf, &p1);
+	
+
+	if (recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
+		perror("recvfrom error");
+		exit(1);
+	}
+
 }
 

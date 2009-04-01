@@ -31,9 +31,14 @@ void start_udp_server() {
 
 	for(;;) {
 		client_len = sizeof(udpclient);
-		if((n = recvfrom(sd, udpbuf, MAX_LEN, 0, (struct sockaddr *)&udpclient, &client_len)) < 0) {
-			perror("Recv From");
-			exit(EXIT_FAILURE);
+		if((n = recvfrom(sd, udpbuf, MAX_LEN, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
+			if(n == 0) {
+				fprintf(stderr,"Connection closed on socket: %d\n", sd);
+				continue;
+			} else {
+				perror("Recv From");
+				exit(EXIT_FAILURE);
+			}
 		}
 
 		for(j=0; udpbuf[j] != -1; j++);
@@ -64,5 +69,4 @@ void start_udp_server() {
 	}
 }
 
-#define BUF_LEN 64
 

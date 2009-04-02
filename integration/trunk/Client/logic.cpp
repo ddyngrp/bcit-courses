@@ -83,7 +83,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 				continue;
 			}
 			//recvbuf[r] = '\0';
-			memcpy(inMap, recvbuf, sizeof(inMap));
+			//memcpy(inMap, recvbuf, sizeof(inMap));
 			
 			if (recvbuf[0] == TYPE_MOVE)
 			{
@@ -106,7 +106,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 /*---------------------------------------------------------------------------------------------
 --      FUNCTION: 		handle_input
 --
---      REVISIONS:      
+--      REVISIONS:      April 2 - Changed sendto() to send() for the SDLK_ESCAPE since it's TCP
 --
 --      DESIGNER:       Jaymz Boilard
 --      PROGRAMMER:     Jaymz Boilard
@@ -128,12 +128,12 @@ void handle_input(int tcpSockFd, int udpSockFd, SDL_Event event)
 
 
     //If a key was released
-    if( event.type == SDL_KEYUP )
+    if( event.type == SDL_KEYDOWN )
     {
         /* If the user ends, we want to tell the server through the control channel */
 		if(event.key.keysym.sym == SDLK_ESCAPE)
 		{
-			if (sendto(tcpSockFd,outBuf,strlen(outBuf),0,(struct sockaddr *)&server, sizeof(servLen))==-1)
+			if (send(tcpSockFd,outBuf,strlen(outBuf),0,(struct sockaddr *)&server, sizeof(servLen))==-1)
 		        perror("sendto failure");
 			exit(1);
 		}

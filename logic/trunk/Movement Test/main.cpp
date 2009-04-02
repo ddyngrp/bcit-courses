@@ -33,6 +33,27 @@ void sdl_init()
     SDL_WM_SetCaption( "Tux Bomber", NULL ); 
 }
 
+/* 
+	For the final server main:
+	1. Create a socket & start listening for incomming connections.  When someone connects, we will
+	   store their IP, and give a player ID number corresponding to that ID, which will be stored in
+	   an array of all players.  This receiving connections loop is basically the same as the chat
+	   program assignment, we can snatch the code from there.
+	2. Eventually we will break out of this loop (ie. all players connected, or player types start, or
+	   person on server side just presses start, w/e).
+	3. Once we break out of the receiving loop, we have to start the game, so:
+	   - generate the map
+	   - initialize player information
+	   - send the map to all clients
+	   - send array of all player information to each client
+	4. Then we enter our main processing loop.   It's similar to the current SDL_PollEvent loop, but
+	   instead of waiting for a button to be pressed, we are waiting, via select(), for a client's
+	   incomming message.
+	5. When we get a message, we store it to a char (use the address, since recv() technically expects
+	   a character array) and call the recv_packet() function.
+
+*/
+
 int main()
 {
 	int **map;

@@ -66,6 +66,13 @@ void DPlaya::countdown()
 	droppedBombs--;
 }*/
 
+
+/* 
+	Note: map[][] = 2
+		  changed to '2' since the real map is now holding chars, 
+		  change it back if you need to re-test this, but remember
+		  that the final version is using chars.
+*/
 bool DPlaya::move(int** map, int direction)
 {
 	int yt,yb,xl,xr;
@@ -86,8 +93,8 @@ bool DPlaya::move(int** map, int direction)
 	xr= x_ + 27;
 		
     //Move the Player up or down
-    if(map[yt/35][xl/35] != 2 || map[yb/35][xr/35] != 2
-	|| map[yb/35][xl/35] != 2 || map[yt/35][xr/35] != 2)
+    if(map[yt/35][xl/35] != '2' || map[yb/35][xr/35] != '2'
+	|| map[yb/35][xl/35] != '2' || map[yt/35][xr/35] != '2')
     {
 		if(direction == 0)
 			y_ -= -3;

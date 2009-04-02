@@ -23,7 +23,14 @@
 #define MOVE_DOWN        	1
 #define MOVE_LEFT        	2
 #define MOVE_RIGHT       	3
+#define PLANT_BOMB			4
+#define PLAYER_QUIT			5
 
+/* 
+	Note: we don't need two definitions for the same thing, just use the above set.
+		  Left in for now in case something is using it, but we can remove these once
+		  we know they aren't being used anywhere.
+*/
 #define CS_UP          		0
 #define CS_DOWN        		1
 #define CS_LEFT        		2

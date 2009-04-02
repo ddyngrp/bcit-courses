@@ -76,8 +76,8 @@ static WAVEFORMATEX pwfx;
 static HWAVEOUT hwo;
 
 /* Microphone Globals */
-static BOOL			bRecording, bPlaying, bReverse, bPaused, bEnding, bTerminating;
-static DWORD		dwDataLength, dwRepititions = 1;
+static BOOL			bRecording, bPlaying, bEnding, bTerminating;
+static DWORD		dwDataLength, dwRepetitions = 1;
 static HWAVEIN		hWaveIn;
 static HWAVEOUT		hWaveOut;
 static PBYTE		pBuffer1, pBuffer2, pSaveBuffer, pNewBuffer;

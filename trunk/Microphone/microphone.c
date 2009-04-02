@@ -3,6 +3,23 @@
 
 #define INP_BUFFER_SIZE 16384
 
+/*------------------------------------------------------------------------
+--		FUNCTION:		mic_record_beg
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void mic_record_beg()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Prepares the headers for recording wave data
+--						from a microphone
+------------------------------------------------------------------------*/
 void mic_record_beg()
 {
 	pWaveHdr1 = malloc(sizeof(WAVEHDR));
@@ -62,13 +79,45 @@ void mic_record_beg()
 	waveInPrepareHeader(hWaveIn, pWaveHdr2, sizeof(WAVEHDR));
 }
 
+/*------------------------------------------------------------------------
+--		FUNCTION:		mic_record_end
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void mic_record_end()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Stops reading input from microphone
+------------------------------------------------------------------------*/
 void mic_record_end()
 {
 	bEnding = TRUE;
 	waveInReset(hWaveIn);
 }
 
-
+/*------------------------------------------------------------------------
+--		FUNCTION:		mic_play_beg
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void mic_play_beg()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Sets up wave format structure and attempts to
+--						open output device
+------------------------------------------------------------------------*/
 void mic_play_beg()
 {
 	waveform.wFormatTag			= WAVE_FORMAT_PCM;
@@ -83,3 +132,214 @@ void mic_play_beg()
 		MessageBox(ghWndMain, szOpenError, szAppName, MB_OK);
 }
 
+/*------------------------------------------------------------------------
+--		FUNCTION:		mic_play_end
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void mic_play_end()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Stops sending data to output device
+------------------------------------------------------------------------*/
+void mic_play_end()
+{
+	bEnding = TRUE;
+	waveOutReset(hWaveOut);
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		open_mic_device
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void open_mic_device()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Registers buffers to input device and begins
+--						reading input
+------------------------------------------------------------------------*/
+void open_mic_device()
+{
+	pSaveBuffer = realloc(pSaveBuffer, 1);
+
+	/* Enable & Disable buttons */
+
+	/* Add buffers to device */
+	waveInAddBuffer(hWaveIn, pWaveHdr1, sizeof(WAVEHDR));
+	waveInAddBuffer(hWaveIn, pWaveHdr2, sizeof(WAVEHDR));
+
+	/* Begin Sampling */
+	bRecording		= TRUE;
+	bEnding			= FALSE;
+	dwDataLength	= 0;
+
+	waveInStart(hWaveIn);
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		read_mic_data
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void read_mic_data(HWND hwnd, LPARAM buffer)
+--							HWND hwnd: handle for current window
+--							LPARAM buffer: sound data we want to send
+--
+--		RETURNS:		void
+--
+--		NOTES:			Copies mic data to an output buffer and sends
+--						across network
+------------------------------------------------------------------------*/
+void read_mic_data(HWND hwnd, LPARAM buffer)
+{
+	pNewBuffer = realloc(pSaveBuffer, dwDataLength + ((PWAVEHDR)buffer)->dwBytesRecorded);
+
+	if(pNewBuffer == NULL)
+	{
+		waveInClose(hWaveIn);
+		MessageBox(NULL, szMemError, szAppName, MB_OK);
+
+		return;
+	}
+
+	pSaveBuffer = pNewBuffer;
+	CopyMemory(pSaveBuffer + dwDataLength, ((PWAVEHDR)buffer)->lpData, ((PWAVEHDR)buffer)->dwBytesRecorded);
+
+	dwDataLength += ((PWAVEHDR)buffer)->dwBytesRecorded;
+
+	if(bEnding)
+	{
+		waveInClose(hWaveIn);
+		return;
+	}
+
+	/* Send new buffer to input device */
+	waveInAddBuffer(hWaveIn, (PWAVEHDR)buffer, sizeof(WAVEHDR));
+
+	/* call network streaming function here */
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		close_mic
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void close_mic(HWND hwnd)
+--
+--		RETURNS:		void
+--
+--		NOTES:			Unregister headers with device and free resources
+------------------------------------------------------------------------*/
+void close_mic(HWND hwnd)
+{
+	/* Free buffer memory */
+	waveInUnprepareHeader(hWaveIn, pWaveHdr1, sizeof(WAVEHDR));
+	waveInUnprepareHeader(hWaveIn, pWaveHdr2, sizeof(WAVEHDR));
+
+	free(pBuffer1);
+	free(pBuffer2);
+
+	/* Enable buttons here */
+
+	bRecording = FALSE;
+
+	if(bTerminating)
+		SendMessage(hwnd, WM_SYSCOMMAND, SC_CLOSE, 0L);
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		open_output_device
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void open_output_device()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Prepares the headers and plays audio data from
+--						remote microphone
+------------------------------------------------------------------------*/
+void open_output_device()
+{
+	/* Set up header */
+	pWaveHdr1->lpData			= pSaveBuffer;
+	pWaveHdr1->dwBufferLength	= dwDataLength;
+	pWaveHdr1->dwBytesRecorded	= 0;
+	pWaveHdr1->dwUser			= 0;
+	pWaveHdr1->dwFlags			= WHDR_BEGINLOOP | WHDR_ENDLOOP;
+	pWaveHdr1->dwLoops			= dwRepetitions;
+	pWaveHdr1->lpNext			= NULL;
+	pWaveHdr1->reserved			= 0;
+
+	/* Prepare and write */
+	waveOutPrepareHeader(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));
+	waveOutWrite(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));
+
+	bEnding = FALSE;
+	bPlaying = TRUE;
+}
+
+void output_done(HWND hwnd)
+{
+	/* Enable buttons here */
+
+	dwRepetitions = 1;
+	bPlaying = FALSE;
+
+	if(bTerminating)
+		SendMessage(hwnd, WM_SYSCOMMAND, SC_CLOSE, 0L);
+}
+
+BOOL terminate_mic(HWND hwnd)
+{
+	if(bRecording)
+	{
+		bTerminating = TRUE;
+		bEnding = TRUE;
+		waveInReset(hWaveIn);
+		return TRUE;
+	}
+
+	if(bPlaying)
+	{
+		bTerminating = TRUE;
+		bEnding = TRUE;
+		waveOutReset(hWaveOut);
+		return TRUE;
+	}
+
+	free(pWaveHdr1);
+	free(pWaveHdr2);
+	free(pSaveBuffer);
+	EndDialog(hwnd, 0);
+	
+	return TRUE;
+}

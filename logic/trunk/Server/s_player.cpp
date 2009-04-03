@@ -1,5 +1,7 @@
 #include "s_player.h"
 
+/* we need to get the fucking non-4 week old player.cpp in case they've changed stuff */
+
 void DPlaya::refresh(SDL_Surface * screen)
 {
 	SDL_Rect  position;
@@ -69,10 +71,4 @@ void DPlaya::move(unsigned char map[17][18], int direction)
     	y_ -= yVel;
     	x_ -= xVel;
     }
-}
-
-void
-player_quit(const int playerID)
-{
-	return;
 }

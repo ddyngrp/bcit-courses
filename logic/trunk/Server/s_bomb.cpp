@@ -5,6 +5,9 @@
 #include <string>
 #include <sstream>
 
+extern DPlaya 		   *player_array[8];
+extern unsigned char 	grid[17][18];
+
 void
 plant_bomb(const int index)
 {
@@ -29,8 +32,8 @@ int nBombs;
 void
 start_fuse(const int x, const int y, const int len)
 {
-	pthread_t pt;
-	struct coords c;
+pthread_t pt;
+struct coords c;
 	
 	c.x = x;
 	c.y = y;
@@ -45,7 +48,7 @@ start_fuse(const int x, const int y, const int len)
 void *
 countdown(void *param)
 {
-	struct coords *c;
+struct coords *c;
 
 	c = (struct coords *)param;
 

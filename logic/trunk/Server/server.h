@@ -16,7 +16,6 @@ void   	move_player(const int, const int);
 
 /* s_player.cpp */
 bool   	addPlayer(const int);
-void 	player_quit(const int playerID);
 
 /* s_network.cpp */
 void recieve_packet(const char, const int);
@@ -43,12 +42,7 @@ struct fire {
 struct coords {
 	int x,y;
 	int len;
-        int id; 
+    int id; 
 };
-
-unsigned char 		grid[17][18];
-DPlaya 			**player_array;
-unsigned char 		player_count = 0;
-bool 			game_running = false;
 
 #endif

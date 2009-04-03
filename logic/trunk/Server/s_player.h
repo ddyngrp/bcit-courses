@@ -1,6 +1,5 @@
 #ifndef S_PLAYER_H
 #define S_PLAYER_H
-//#include "server.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "funcs.h"
@@ -41,7 +40,6 @@ public:
 	void killPlayer(){alive_ = false;}
 	void spawnPlayer(){alive_ = true;}
 	void setID(int id){DPlayaID_ = id;}
-
 	/*To add the drop bomb */
 
 

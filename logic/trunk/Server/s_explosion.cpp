@@ -1,5 +1,8 @@
 #include "server.h"
 
+extern DPlaya 		   *player_array[8];
+extern unsigned char 	grid[17][18];
+
 void
 explode_bomb(const int x, const int y, const int len)
 {
@@ -37,9 +40,15 @@ int j, k;
 	send_map(grid);
 }
 
-/* network will make this */
+/* network will make this -- need in order to compile properly */
 void
 send_map(const unsigned char grid[17][18])
+{
+	return;
+}
+/* network will make this -- need in order to compile properly */
+void
+send_player_class(DPlaya *player)
 {
 	return;
 }
@@ -76,11 +85,7 @@ int i;
 		}
 }
 
-void
-send_player_class(DPlaya *player)
-{
-	return;
-}
+
 
 bool
 block_here(const int x, const int y)
@@ -94,12 +99,14 @@ block_here(const int x, const int y)
 	return false;
 }
 
+/* each powerup has a 1/9 chance of spawning.  6/9 chance
+   of no powerup spawning. */
 void
 destroy_block(const int x, const int y)
 {
 int i;
 	
-	i = rand() * 9; // powerup 1/3 of the time
+	i = rand() * 9;
 	if (i == 0)
 		grid[x][y] = GRID_POWUP_NUM;
 	else if (i == 1)

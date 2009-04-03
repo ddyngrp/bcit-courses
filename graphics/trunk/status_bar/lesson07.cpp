@@ -1,13 +1,7 @@
 /*This source code copyrighted by Lazy Foo' Productions (2004-2009) and may not
 be redestributed without written permission.*/
 
-//The headers
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_ttf.h"
-#include <string>
-
-bool draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *screen,SDL_Color textColor );
+#include "statusbar.h"
 
 using namespace std;
 
@@ -100,10 +94,10 @@ int main( int argc, char* args[] )
 
    
     //If there was a problem in loading the background
-    if((background = load_image( "background1.jpg" )) == NULL )
+    if((background = load_image(BACKROUND_IMG)) == NULL )
         return false;
 
-    apply_surface( 0, 0, background, screen );
+    apply_surface(0, 0, background, screen);
 
 	
 	if(!draw_status_bar(playerList,tux,screen,textColor))
@@ -141,6 +135,9 @@ int main( int argc, char* args[] )
 
     return 0;
 }
+/*
+THIS IS A COMMENT Following this comment
+*/
 
 /*------------------------------------------------------------------------------------------------------------------
 --       FUNCTION: 					draw_status_bar
@@ -172,27 +169,27 @@ bool draw_status_bar(std::string players[],SDL_Surface *tux[],SDL_Surface *scree
 	SDL_Surface *background = NULL;
 	TTF_Font *font = NULL;
 	SDL_Surface *message;
-	int x =30,y=1, i = 0;
+	int x = X_POS,y=1, i = 0;
 	
-	if((background = load_image( "background1.jpg" )) == NULL )
-        return false;
+	if((background = load_image( BACKGROUND_IMG )) == NULL )
+            return false;
         
-    apply_surface(0,0,background,screen);
+    	apply_surface(0,0,background,screen);
 	
-	if((font = TTF_OpenFont( "ActionIs.ttf", 25)) == NULL )
-    	return false;
+	if((font = TTF_OpenFont( FONT, FONT_SIZE)) == NULL )
+    	    return false;
         
-	for(i =0; i < 8; i++)
+	for(i =0; i < PLAYERCOUNT; i++)
 	{	
 		if(i % 2 == 0 && i != 0)
 		{
-			x += 150;
-			y = 1;	
+			x += INC_X;
+			y = RESET_Y;	
 		}
 		message = TTF_RenderText_Solid( font,players[i].c_str() , textColor);
 		apply_surface(x,y ,message, screen );
-		apply_surface(x-30,y,tux[i],screen);
-		y *= 50;
+		apply_surface(x-X_POS,y,tux[i],screen);
+		y *= INC_Y;
 	}
 	
 	SDL_FreeSurface( background );

@@ -133,9 +133,10 @@ bool user_map::draw_map(SDL_Surface *screen)
 	srcTemp.w = srcTemp.h = BLOCK_SIZE;
 	destTemp.w = srcTemp.h = BLOCK_SIZE;
 
-	if(SDL_BlitSurface(_background,0 , screen, 0))
+	if(SDL_BlitSurface(_background, 0 , screen, 0))
+	{
 			return false;
-			
+	}		
 	for(int i = 0; i < _height; i++)
 	{
 		//sets which row we're going to draw
@@ -148,7 +149,9 @@ bool user_map::draw_map(SDL_Surface *screen)
 			destTemp.x = BLOCK_SIZE * j;
 			
 			if(SDL_BlitSurface(_image_set, &srcTemp, screen, &destTemp))
+			{
 				return false;
+			}
 		}
 	}	
 

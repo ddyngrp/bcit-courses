@@ -49,7 +49,7 @@ class user_map
 		if(!(update_map(map, height, width)));
 			//throw something
 			//there's no way to return false on a ctor
-			_background = background;
+		_background = background;
 	}
 	
 /*------------------------------------------------------------------------------

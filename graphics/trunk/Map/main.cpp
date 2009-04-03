@@ -101,12 +101,12 @@ int main()
 	SDL_Flip(screen);
 	sleep(5);
 
-	uMap.update_grid(15,15,12);
-	uMap.draw_map(screen);
-	SDL_Flip(screen);
-	sleep(1);
+	//uMap.update_grid(15,15,12);
+	//uMap.draw_map(screen);
+	//SDL_Flip(screen);
+	//sleep(1);
 	
-	uMap.~user_map();
+	//uMap.~user_map();
 	
 	
 	return 0;

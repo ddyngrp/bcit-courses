@@ -50,6 +50,9 @@ void 	destroy_block(const int, const int);
 void 	send_player_class(DPlaya *player);
 void	send_map(const unsigned char grid[17][18]);
 
+/* s_init.cpp */
+bool	initialize_server(struct server_info *);
+
 struct fire {
 	int left, right, up, down;
 	int x,y;
@@ -58,7 +61,15 @@ struct fire {
 struct coords {
 	int x,y;
 	int len;
-    int id; 
+    	int id; 
+};
+
+struct server_info
+{
+	unsigned char 		grid[GRID_HEIGHT][GRID_WIDTH];
+	DPlaya 			    *player_array;
+	unsigned char 		player_count;
+	bool 			    game_running;
 };
 
 #endif

@@ -1,15 +1,9 @@
 #include "server.h"
 #include "defs.h"
 
-unsigned char 		grid[17][18];
-DPlaya 			    *player_array[8];
-unsigned char 		player_count = 0;
-bool 			    game_running = false;
-
 int
 main(void)
 {
-	// initialize server settings
 	fd_set	all_fds;		
 	fd_set	read_fds;
 	int nfds; /* The highest-numbered file descriptor in the set */
@@ -18,9 +12,17 @@ main(void)
 	int i, rv;
 	int startReceived = 0;
 	struct addrinfo hints, *ai, *servIter;
+	struct server_info *sInfo;
 
 	FD_ZERO(&all_fds);
 	FD_ZERO(&read_fds);
+	
+	// initialize server settings
+	if(!initialize_server(sInfo))
+	{
+		perror("ERROR: Unable to initialize server settings!\n");
+		exit(1);
+	}
 
 	/* Clear and set family attributes! */
 	memset(&hints, 0, sizeof(hints));

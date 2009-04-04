@@ -34,5 +34,7 @@
 
 #define MAX_PLAYERS      	8
 
+#define PORT 8000
+
 #define DEFS_H
 #endif

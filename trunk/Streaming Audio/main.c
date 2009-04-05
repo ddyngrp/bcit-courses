@@ -1,4 +1,5 @@
 #include "main.h"
+#include "buffers.h"
 
 int main(int argc, char* argv[]) {
 	HWAVEOUT		hWaveOut; /* device handle */
@@ -8,13 +9,6 @@ int main(int argc, char* argv[]) {
 	int				i;
 	DWORD			outBytes = 0;
 
-	/**
-	 * quick argument check
-	 */
-	/* if(argc != 2) {
-		fprintf(stderr, "usage: %s <filename>\n", argv[0]);
-		ExitProcess(1);
-	} */
 	argv[1] = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
 
 	/**
@@ -24,6 +18,7 @@ int main(int argc, char* argv[]) {
 	waveFreeBlockCount = BLOCK_COUNT;
 	waveCurrentBlock= 0;
 	InitializeCriticalSection(&waveCriticalSection);
+
 	/**
 	 * try and open the file
 	 */ 
@@ -104,72 +99,6 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-void writeAudioBlock(HWAVEOUT hWaveOut, LPSTR block, DWORD size) {
-	WAVEHDR header;
-
-	/**
-	 * initialise the block header with the size
-	 * and pointer.
-	 */
-	ZeroMemory(&header, sizeof(WAVEHDR));
-	header.dwBufferLength = size;
-	header.lpData = block;
-
-	/**
-	 * prepare the block for playback
-	 */
-	waveOutPrepareHeader(hWaveOut, &header, sizeof(WAVEHDR));
-
-	/**
-	 * write the block to the device. waveOutWrite returns immediately
-	 * unless a synchronous driver is used (not often).
-	 */
-	waveOutWrite(hWaveOut, &header, sizeof(WAVEHDR));
-
-	/**
-	 * wait a while for the block to play then start trying
-	 * to unprepare the header. this will fail until the block has
-	 * played.
-	 */
-	Sleep(500);
-	while(waveOutUnprepareHeader(hWaveOut, &header, sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {
-		Sleep(100);
-	}
-}
-
-LPSTR loadAudioBlock(const char* filename, DWORD* blockSize) {
-	HANDLE hFile= INVALID_HANDLE_VALUE;
-	DWORD size = 0;
-	DWORD readBytes = 0;
-	void* block = NULL;
-
-	/**
-	 * open the file
-	 */
-	if((hFile = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ,
-		NULL, OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
-			return NULL;
-	}
-	/**
-	 * get it's size, allocate memory and read the file
-	 * into memory. don't use this on large files!
-	 */
-	do {
-		if ((size = GetFileSize(hFile, NULL)) == 0) {
-			break;
-		}
-		if((block = HeapAlloc(GetProcessHeap(), 0, size)) == NULL) {
-			break;
-		}
-
-		ReadFile(hFile, block, size, &readBytes, NULL);
-	} while(0);
-
-	CloseHandle(hFile);
-	*blockSize = size;
-	return (LPSTR)block;
-}
-
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg,
 								 DWORD dwInstance, DWORD dwParam1, DWORD dwParam2) {
 	 /**
@@ -236,9 +165,9 @@ void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size) {
 		/** 
 		 * first make sure the header we're going to use is unprepared
 		 */
-		if(current->dwFlags & WHDR_PREPARED) 
+		if(current->dwFlags & WHDR_PREPARED) {
 			waveOutUnprepareHeader(hWaveOut, current, sizeof(WAVEHDR));
-
+		}
 
 		if(size < (int)(BLOCK_SIZE - current->dwUser)) {
 			memcpy(current->lpData + current->dwUser, data, size);
@@ -253,6 +182,8 @@ void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size) {
 		current->dwBufferLength = BLOCK_SIZE;
 		waveOutPrepareHeader(hWaveOut, current, sizeof(WAVEHDR));
 		waveOutWrite(hWaveOut, current, sizeof(WAVEHDR));
+
+		/* Critical section */
 		EnterCriticalSection(&waveCriticalSection);
 		waveFreeBlockCount--;
 		LeaveCriticalSection(&waveCriticalSection);

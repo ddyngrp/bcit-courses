@@ -9,8 +9,6 @@
 #define BLOCK_COUNT	20
 
 /* Function prototypes */
-void writeAudioBlock(HWAVEOUT, LPSTR, DWORD);
-LPSTR loadAudioBlock(const char*, DWORD*);
 static void CALLBACK waveOutProc(HWAVEOUT, UINT, DWORD, DWORD, DWORD);
 WAVEHDR* allocateBlocks(int, int);
 void freeBlocks(WAVEHDR*);

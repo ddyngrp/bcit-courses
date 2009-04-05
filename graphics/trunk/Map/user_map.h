@@ -4,6 +4,7 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
+#include "init.h"
 
 #define BLOCK_SIZE 35
 #define SCREEN_HEIGHT 600

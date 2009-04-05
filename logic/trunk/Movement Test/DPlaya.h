@@ -12,7 +12,7 @@
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_thread.h" 
 #include "Map/user_map.h"
-#include "funcs.h"
+#include "Map/init.h"
 
 class DPlaya {
 public:
@@ -33,9 +33,9 @@ public:
 	//functions
 	void paint(DPlaya DPlaya, int x, int y, SDL_Surface* screen);
 	void refresh(SDL_Surface * screen);
-	void dropBomb();
-	bool canPlant(){return (numBombs_ < 5);}
-	bool move(int **mapGrid, int direction);
+	bool canPlant();
+	bool move(unsigned char **mapGrid, int direction);
+	void explode();
 
 	//getters
 	int getX(){return x_;}
@@ -68,10 +68,8 @@ int bombPower_;
 bool alive_;
 char name_[256];
 char color_;
-//Bomb bombs[5]; //TODO bomb init !
 
 SDL_Surface* image_;
 
 };
-
 #endif /* DPLAYA_H_ */

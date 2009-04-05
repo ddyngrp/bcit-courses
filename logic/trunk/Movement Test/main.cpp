@@ -1,5 +1,4 @@
 #include "DPlaya.h"
-#include "funcs.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -56,7 +55,7 @@ void sdl_init()
 
 int main()
 {
-	int **map;
+	unsigned char **map;
 	DPlaya player;
 	sdl_init();
 	bool refresh;
@@ -67,7 +66,7 @@ int main()
 	int width = 18;
 	int height = 17;
 	
-	map = genRandomMap(height,width);
+	map = (unsigned char **)genRandomMap(height,width);
 
 	
 	for( int i = 0 , j = -1 ; i < 306; i++)

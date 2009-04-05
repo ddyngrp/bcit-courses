@@ -25,55 +25,16 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 	refresh(screen);
 }
 
-/*void DPlaya::dropBomb()
-{
-	struct coords c;
-	if(droppedBombs >= numBombs)
-		return;
-	for(int i = 0; i < numBombs_; i++)
-	{
-		if(bombs[i].getBombID() != -1)
-			break;
-	}
-
-	bombs[i].setX(x_);
-	bombs[i].setY(y_);
-	bombs[i].setID(i);
-
-	c.x = x_;
-	c.y = y_;
-	c.len = bombPower_;
-	c.id = i;
-	
-	droppedBombs++;
-
-	bombs[i].startFuse();	
-
-	if (pthread_create(&pt, NULL, countdown, (void *)&c) != 0) {
-		perror("pthread_create() failed");
-		return;
-	}
+bool DPlaya::canPlant()
+{	
+	if(droppedBombs_ >= numBombs_)
+		return false;
+	else
+		droppedBombs_++;
+	return true;
 }
 
-void DPlaya::countdown()
-{
-	struct coords *c;
-
-	c = (struct coords *)param;
-
-	sleep(3);
-	bombs[c->id].detonate();
-	droppedBombs--;
-}*/
-
-
-/* 
-	Note: map[][] = 2
-		  changed to '2' since the real map is now holding chars, 
-		  change it back if you need to re-test this, but remember
-		  that the final version is using chars.
-*/
-bool DPlaya::move(int** map, int direction)
+bool DPlaya::move(unsigned char** map, int direction)
 {
 	int yt,yb,xl,xr;
 	
@@ -93,8 +54,8 @@ bool DPlaya::move(int** map, int direction)
 	xr= x_ + 27;
 		
     //Move the Player up or down
-    if(map[yt/35][xl/35] != '2' || map[yb/35][xr/35] != '2'
-	|| map[yb/35][xl/35] != '2' || map[yt/35][xr/35] != '2')
+    if(map[yt/35][xl/35] != 2 || map[yb/35][xr/35] != 2
+	|| map[yb/35][xl/35] != 2 || map[yt/35][xr/35] != 2)
     {
 		if(direction == 0)
 			y_ -= -3;
@@ -109,4 +70,11 @@ bool DPlaya::move(int** map, int direction)
     }
     return true;
 		
+}
+
+void DPlaya::explode()
+{
+	if(droppedBombs_ == 0)
+		return;
+	droppedBombs_--;
 }

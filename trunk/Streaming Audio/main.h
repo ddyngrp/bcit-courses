@@ -5,7 +5,7 @@
 #include <mmsystem.h>
 #include <stdio.h>
 
-#define BLOCK_SIZE	8192
+#define BLOCK_SIZE	1024
 #define BLOCK_COUNT	20
 
 /* Function prototypes */

@@ -1,5 +1,8 @@
+#include <winsock2.h>
 #include "main.h"
-#include "buffers.h"
+
+#define SERVER_TCP_PORT	7000	// Default port
+#define BUFSIZE			1024	//Buffer length
 
 int main(int argc, char* argv[]) {
 	HWAVEOUT		hWaveOut; /* device handle */
@@ -9,7 +12,16 @@ int main(int argc, char* argv[]) {
 	int				i;
 	DWORD			outBytes = 0;
 
-	argv[1] = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
+	int n, ns, bytes_to_read;
+	int port = SERVER_TCP_PORT;
+	SOCKET sd;
+	struct hostent	*hp;
+	struct sockaddr_in server;
+	char  *host = "localhost", *bp, rbuf[BUFSIZE], sbuf[BUFSIZE], **pptr;
+	WSADATA WSAData;
+	WORD wVersionRequested;
+
+	char * fileName = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
 
 	/**
 	 * initialise the module variables
@@ -22,9 +34,10 @@ int main(int argc, char* argv[]) {
 	/**
 	 * try and open the file
 	 */ 
-	if((hFile = CreateFile(argv[1], GENERIC_READ, FILE_SHARE_READ, NULL,
+	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
 		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
 			fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], argv[1]);
+			system("pause");
 			ExitProcess(1);
 	}
 
@@ -51,15 +64,54 @@ int main(int argc, char* argv[]) {
 			ExitProcess(1);
 	}
 
+	/* Connect to the server - DELETE */
+	wVersionRequested = MAKEWORD( 2, 2 );
+	WSAStartup( wVersionRequested, &WSAData );
+
+	// Create the socket
+	if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+	{
+		perror("Cannot create socket");
+		system("pause");
+		exit(1);
+	}
+
+	// Initialize and set up the address structure
+	memset((char *)&server, 0, sizeof(struct sockaddr_in));
+	server.sin_family = AF_INET;
+	server.sin_port = htons(port);
+	if ((hp = gethostbyname(host)) == NULL)
+	{
+		fprintf(stderr, "Unknown server address\n");
+		exit(1);
+	}
+
+	// Copy the server address
+	memcpy((char *)&server.sin_addr, hp->h_addr, hp->h_length);
+
+	// Connecting to the server
+	if (connect (sd, (struct sockaddr *)&server, sizeof(server)) == -1)
+	{
+		fprintf(stderr, "Can't connect to server\n");
+		perror("connect");
+		system("pause");
+		exit(1);
+	}
+	
+	printf("Connected:    Server Name: %s\n", hp->h_name);
+	pptr = hp->h_addr_list;
+	printf("\t\tIP Address: %s\n", inet_ntoa(server.sin_addr));
+
 	/**
 	 * playback loop
 	 */
-	while(1) {
-		DWORD readBytes;
+	//while(1) {
+	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
+		DWORD readBytes = n;
 
-		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
-			break;
-		}
+		//if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
+		//	break;
+		//}
 
 		outBytes += readBytes / 1000;
 		printf("read %d KB\n", outBytes);
@@ -76,6 +128,9 @@ int main(int argc, char* argv[]) {
 
 		writeAudio(hWaveOut, buffer, sizeof(buffer));
 	}
+
+	closesocket(sd);
+	WSACleanup();
 
 	/**
 	 * wait for all blocks to complete
@@ -96,6 +151,9 @@ int main(int argc, char* argv[]) {
 	freeBlocks(waveBlocks);
 	waveOutClose(hWaveOut);
 	CloseHandle(hFile);
+
+	system("pause");
+
 	return 0;
 }
 

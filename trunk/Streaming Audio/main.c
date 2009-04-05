@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 	SOCKET sd;
 	struct hostent	*hp;
 	struct sockaddr_in server;
-	char  *host = "localhost", *bp, rbuf[BUFSIZE], sbuf[BUFSIZE], **pptr;
+	char  *host = "192.168.0.14", *bp, rbuf[BUFSIZE], sbuf[BUFSIZE], **pptr;
 	WSADATA WSAData;
 	WORD wVersionRequested;
 
@@ -34,12 +34,12 @@ int main(int argc, char* argv[]) {
 	/**
 	 * try and open the file
 	 */ 
-	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
-		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
-			fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], argv[1]);
-			system("pause");
-			ExitProcess(1);
-	}
+	//if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
+	//	OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
+	//		fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], argv[1]);
+	//		system("pause");
+	//		ExitProcess(1);
+	//}
 
 	/**
 	 * set up the WAVEFORMATEX structure.

@@ -154,9 +154,11 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	else if (ci.behavior == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
+		{
+			Sleep(1);
 			client_download(wParam);
+		}
 	}
-	
 }
 
 
@@ -187,7 +189,10 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	if(ci.behavior == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
+		{
 			strcpy_s(buffer, BUFSIZE, "Single Download");
+			Sleep(1);
+		}
 		else if(ci.request == SINGLE_UP)
 		{
 			strcpy_s(buffer, BUFSIZE, "Single Upload");

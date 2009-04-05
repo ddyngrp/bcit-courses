@@ -32,6 +32,7 @@ void OnClose(HWND hwnd)
 --								   gray, ungray, and add check marks as needed.
 --						March 29 - Moved the code for ID_FILE_LOCAL from
 --								   Menu_Dispatch to here.
+--						April 4  - 
 --
 --		DESIGNER:		Jerrod Hudson
 --		PROGRAMMER:		Jerrod Hudson & Jaymz Boilard
@@ -58,6 +59,14 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	switch(id)
 	{
 	case ID_FILE_CONNECT:
+		if(ci.behavior == SERVER)
+		{
+			setup_server(hwnd, SOCK_STREAM);
+			break;
+		}
+		else if(ci.behavior == CLIENT)
+			setup_client(hwnd, SOCK_STREAM);
+
 		if(ci.tcpSocket == INVALID_SOCKET)
 		{
 			MessageBox(NULL, "Invalid Socket!", "ERROR", MB_OK);
@@ -97,19 +106,18 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		ci.behavior = CLIENT;
 		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		setup_client(hwnd, SOCK_STREAM);
 		break;
 
 	case ID_MODE_SERVER:
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_SERVER), hwnd, (DLGPROC)ServerProc);
 		ci.behavior = SERVER;
+
 		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		setup_server(hwnd, SOCK_STREAM);
 		break;
 
 	/* Note: These menu item checks can be put into a loop within a function */
@@ -119,6 +127,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
 		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
 		ci.request = SINGLE_DL;
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_SINGLE_UP:
 		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
@@ -126,6 +135,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
 		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
 		ci.request = SINGLE_UP;
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_SINGLE_STREAM:
 		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
@@ -133,6 +143,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_CHECKED);
 		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
 		ci.request = SINGLE_STREAM;
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_MULTI_STREAM:
 		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
@@ -140,6 +151,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
 		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_CHECKED);
 		ci.request = MULTI_STREAM;
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 
 	case ID_FILE_LOCAL:

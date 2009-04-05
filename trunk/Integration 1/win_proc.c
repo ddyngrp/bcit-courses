@@ -141,6 +141,7 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
+
 	char temp[EDITSIZE];
 
 	switch(message)
@@ -156,6 +157,11 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			
 			if(temp[0] != '\0')
 				ci.port = atoi(temp);
+
+			/* Use this method to find checked items */
+			if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
+				MessageBox(NULL, (LPCSTR)"Checked!", NULL, MB_OK | MB_ICONSTOP);
+			}
 
 			EndDialog(hDlg, TRUE);
 			return TRUE;

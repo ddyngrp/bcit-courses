@@ -60,11 +60,12 @@ typedef struct _SOCKET_INFORMATION {
 } SOCKET_INFORMATION, * LPSOCKET_INFORMATION;
 
 // Global Variables
-static HINSTANCE		ghInst;				// Main application's global instance
+static HINSTANCE	ghInst;				// Main application's global instance
 static HWND			ghWndMain,			// Main window's global handle
-				ghDlgMain;			// Main dialogue window's global handle
-static HMENU			ghMenu;				// Main window's menu handle
-HACCEL			ghAccel;			// Keyboard accelerator
+					ghDlgMain;			// Main dialogue window's global handle
+static HMENU		ghMenu;				// Main window's menu handle
+
+HACCEL				ghAccel;			// Keyboard accelerator
 
 SOCKADDR_IN		remote,				// Server socket information
 				local;				// Client socket information

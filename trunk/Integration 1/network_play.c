@@ -107,7 +107,7 @@ void serv_broadcast(char fileName[FILEBUFSIZE])
 --	NOTES:	Called when the server receives a TCP message from the client.
 --          it checks the type of message and processes it accordingly
 --          "ready" message - reads the data portion of the file and sends
---                            it via UDP
+--          it via UDP.
 ---------------------------------------------------------------------------------------*/
 void serv_recv_tcp(char buf[])
 {

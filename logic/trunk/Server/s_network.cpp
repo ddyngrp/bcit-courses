@@ -25,17 +25,20 @@
 
 */
 
+extern DPlaya 	       *player_array[8];
+extern unsigned char 	grid[17][18];
+
 void
 recieve_packet(char b, int index)
 {
 	if (b == MOVE_UP) 
-		move_player(index, MOVE_UP);
+		player_array[index]->move(grid, MOVE_UP);
 	else if (b == MOVE_DOWN) 
-		move_player(index, MOVE_DOWN);
+		player_array[index]->move(grid, MOVE_DOWN);
 	else if (b == MOVE_LEFT) 
-		move_player(index, MOVE_LEFT);
+		player_array[index]->move(grid, MOVE_LEFT);
 	else if (b == MOVE_RIGHT)
-		move_player(index, MOVE_RIGHT);
+		player_array[index]->move(grid, MOVE_RIGHT);
 	else if (b == PLANT_BOMB)
 		plant_bomb(index);
 }

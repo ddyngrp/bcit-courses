@@ -3,12 +3,11 @@
 
 #include <cstdio>
 #include "s_player.h"
-#include "defs.h"
-#include "headerMain.h"
+#include "s_defs.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include "user_map.h"
-#include "funcs.h"
+#include "g_usermap.h"
+#include "g_funcs.h"
 #include <pthread.h>
 
 #include <stdio.h>
@@ -26,9 +25,6 @@
 #include <sys/ioctl.h>
 #include <sys/sem.h>
 #include <signal.h>
-
-/* s_movement.cpp */
-void   	move_player(const int, const int);
 
 /* s_player.cpp */
 bool   	addPlayer(const int);

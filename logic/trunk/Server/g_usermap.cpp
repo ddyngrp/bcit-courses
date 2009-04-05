@@ -1,4 +1,4 @@
-#include "user_map.h"
+#include "g_usermap.h"
 
 user_map::~user_map()
 {

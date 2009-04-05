@@ -1,5 +1,5 @@
-#include "server.h"
-#include "serialize.h"
+#include "s_server.h"
+#include "n_serialize.h"
 
 /*
 	Params:

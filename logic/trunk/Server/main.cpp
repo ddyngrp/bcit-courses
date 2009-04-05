@@ -1,5 +1,9 @@
-#include "server.h"
-#include "defs.h"
+#include "s_server.h"
+#include "s_defs.h"
+#include "n_network.h"
+
+DPlaya 		*player_array[8];
+unsigned char 	grid[17][18];
 
 int
 main(void)
@@ -105,95 +109,3 @@ main(void)
 	
 
 }
-
-/*------------------------------------------------------------------------------------------------------
---      FUNCTION: 		clientMessage
---
---      DATE:           March 18, 2009
---
---      REVISIONS:              
---
---      DESIGNER:       Jaymz Boilard
---      PROGRAMMER:     Jaymz Boilard
---
---      INTERFACE:      int new_client(int nfds, int listener, fd_set * all_fds)
---
---      RETURNS:        TRUE when a client sent us a message to start the game, else FALSE.
---
---      NOTES:          Called when the select command in server_main() finds a message from a 
---						client.
-------------------------------------------------------------------------------------------------------*/
-int clientMessage(int nfds, int listener, int i, fd_set * all_fds)
-{
-	char buf[256];
-	int nBytes, j;
-
-	if ((nBytes = recv(i, buf, sizeof(buf), 0)) <= 0)
-	{
-		/* Client gave an error or left, close it's connection & remove it from the set of FDs */
-		if (nBytes == 0)
-			printf("Client on socket %d left\n", i);
-		else
-			perror("recv");
-		close(i);
-		FD_CLR(i, all_fds);
-	}
-	else
-	{
-		/* we got data from a client */
-		for (j = 0; j <= nfds; j++)
-		{
-			if (FD_ISSET(j, all_fds))
-			{
-				if(j == listener || j == i)
-					continue;
-
-				/* The client sent us a start message */
-				if (!strcmp(buf, "start"))
-					return 1;		
-			}
-		}
-	}
-	/* No start message */
-	return 0;
-}
-
-/*------------------------------------------------------------------------------------------------------
---      FUNCTION: new_client
---
---      DATE:           March 18, 2009
---
---      REVISIONS:              
---
---      DESIGNER:       Jaymz Boilard
---      PROGRAMMER:     Jaymz Boilard
---
---      INTERFACE:      int new_client(int nfds, int listener, fd_set * all_fds)
---
---      RETURNS:        The highest-numbered file descriptor (nfds)
---
---      NOTES:          This function is called when the select() call from server_main finds 
---                      that the incoming message is a request to join the chat.  We will add its
---                      network information to the set of all file descriptors, and update the nfds.
-------------------------------------------------------------------------------------------------------*/
-int new_client(int nfds, int listener, fd_set * all_fds)
-{
-	socklen_t clientLen;
-	int new_fd;
-	struct sockaddr_in client;
-
-	clientLen = sizeof(client);
-	new_fd = accept(listener, (struct sockaddr *)&client, &clientLen);
-	if (new_fd == -1)
-		perror("accept");
-	else
-	{
-		FD_SET(new_fd, all_fds);	
-		printf("New connection from %s on socket %d\n", inet_ntoa(client.sin_addr), new_fd);
-	}
-	if (new_fd > nfds)
-		return new_fd;
-	else
-		return nfds;
-}
-

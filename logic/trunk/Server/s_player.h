@@ -2,7 +2,7 @@
 #define S_PLAYER_H
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include "funcs.h"
+#include "g_funcs.h"
 
 class DPlaya {
 public:

@@ -5,11 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
 #include <netdb.h>
+#include <unistd.h>
 
 /* message types */
 #define KEEPALIVE	0
-#define MAP			1
+#define MAP		1
 #define MOVE		2
 #define BOMB		4
 #define EXPLOSION	8
@@ -45,12 +47,6 @@
 #define MAP_COLS 15
 /* end global definitions */
 
-/* TODO: Move into struct */
-static int conn_type = TCP;
-static int sock = 0;
-static int mode = CLIENT;
-static struct sockaddr_in server;
-
 /* Return sockaddr struct in IPv4 or IPv6 format */
 void *get_in_addr(struct sockaddr *sa);
 
@@ -78,5 +74,10 @@ int get_action_type(int info);
 int get_player_id(int info);
 int get_extra_info(int info);
 unsigned char create_info_byte(int action, int player, int extra);
+
+int new_client(int, int, fd_set *);
+int clientMessage(int, int, int, fd_set *);
+
+
 
 #endif

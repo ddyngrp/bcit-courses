@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "DPlaya.h"
-#include "serialize.h"
+#include "s_player.h"
+#include "n_serialize.h"
 
 #define BUF_LEN 64
 

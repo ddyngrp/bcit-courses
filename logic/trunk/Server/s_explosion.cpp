@@ -1,4 +1,4 @@
-#include "server.h"
+#include "s_server.h"
 
 extern DPlaya 		   *player_array[8];
 extern unsigned char 	grid[17][18];

@@ -1,6 +1,6 @@
 #ifndef SERIALIZE_H_
 #define SERIALIZE_H_
-#include "DPlaya.h"
+#include "s_player.h"
 
 #define MAP_ROWS 17
 #define MAP_COLS 18
@@ -14,6 +14,5 @@ int unserialize_player(char *buf, DPlaya *player);
 int serialize_map(char map[MAP_ROWS][MAP_COLS], char *serialized_form);
 int unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS]);
 /* end map stuff */
-
 
 #endif

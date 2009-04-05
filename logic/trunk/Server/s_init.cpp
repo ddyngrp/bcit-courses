@@ -1,4 +1,4 @@
-#include "server.h"
+#include "s_server.h"
 
 bool initialize_server(struct server_info *sInfo)
 {	

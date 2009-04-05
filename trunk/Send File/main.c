@@ -3,17 +3,19 @@
 #include <stdio.h>
 #include <windows.h>
 
-#define SERVER_TCP_PORT	7000	// Default port
-#define BUFSIZE			1024	//Buffer length
+#define PORT	7000	/* Default port */
+#define BUFSIZE	1024	/* Buffer length */
 
 int main(int argc, char* argv[]) {
-	HANDLE hFile;
-	int	client_len, port = SERVER_TCP_PORT;
-	SOCKET sd, new_sd;
+	HANDLE	hFile;
+
+	/* TCP connection related variables */
+	int		client_len, port = PORT;
+	SOCKET	sd, new_sd;
 	struct	sockaddr_in server, client;
-	WSADATA WSAData;
-	WORD wVersionRequested;
-	char			buffer[BUFSIZE]; /* intermediate buffer for reading */
+	WSADATA	WSAData;
+	WORD	wVersionRequested;
+	char	buffer[BUFSIZE]; /* intermediate buffer for reading */
 
 	char * fileName = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
 

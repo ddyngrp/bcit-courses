@@ -1,27 +1,24 @@
 #include <winsock2.h>
 #include "main.h"
 
-#define SERVER_TCP_PORT	7000	// Default port
-#define BUFSIZE			1024	//Buffer length
+#define PORT	7000		/* Default port */
+#define HOST	"localhost"	/* Default server */
 
 int main(int argc, char* argv[]) {
 	HWAVEOUT		hWaveOut; /* device handle */
-	HANDLE			hFile;/* file handle */
 	WAVEFORMATEX	wfx; /* look this up in your documentation */
-	char			buffer[1024]; /* intermediate buffer for reading */
+	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 	int				i;
 	DWORD			outBytes = 0;
 
-	int n, ns, bytes_to_read;
-	int port = SERVER_TCP_PORT;
-	SOCKET sd;
-	struct hostent	*hp;
-	struct sockaddr_in server;
-	char  *host = "192.168.0.14", *bp, rbuf[BUFSIZE], sbuf[BUFSIZE], **pptr;
-	WSADATA WSAData;
-	WORD wVersionRequested;
-
-	char * fileName = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
+	/* TCP connection related variables */
+	int		n, port = PORT;
+	SOCKET	sd;
+	struct	hostent	*hp;
+	struct	sockaddr_in server;
+	char	*host = HOST, **pptr;
+	WSADATA	WSAData;
+	WORD	wVersionRequested;
 
 	/**
 	 * initialise the module variables
@@ -30,16 +27,6 @@ int main(int argc, char* argv[]) {
 	waveFreeBlockCount = BLOCK_COUNT;
 	waveCurrentBlock= 0;
 	InitializeCriticalSection(&waveCriticalSection);
-
-	/**
-	 * try and open the file
-	 */ 
-	//if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
-	//	OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
-	//		fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], argv[1]);
-	//		system("pause");
-	//		ExitProcess(1);
-	//}
 
 	/**
 	 * set up the WAVEFORMATEX structure.
@@ -103,26 +90,19 @@ int main(int argc, char* argv[]) {
 	printf("\t\tIP Address: %s\n", inet_ntoa(server.sin_addr));
 
 	/**
-	 * playback loop
+	 * playback loop - read from socket
 	 */
-	//while(1) {
 	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
-		DWORD readBytes = n;
-
-		//if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
-		//	break;
-		//}
-
-		outBytes += readBytes / 1000;
+		outBytes += n / 1000;
 		printf("read %d KB\n", outBytes);
 
-		if(readBytes == 0) {
+		if(n == 0) {
 			break;
 		}
 
-		if(readBytes < sizeof(buffer)) {
+		if(n < sizeof(buffer)) {
 			printf("at end of buffer\n");
-			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
+			memset(buffer + n, 0, sizeof(buffer) - n);
 			printf("after memcpy\n");
 		}
 
@@ -150,7 +130,6 @@ int main(int argc, char* argv[]) {
 	DeleteCriticalSection(&waveCriticalSection);
 	freeBlocks(waveBlocks);
 	waveOutClose(hWaveOut);
-	CloseHandle(hFile);
 
 	system("pause");
 

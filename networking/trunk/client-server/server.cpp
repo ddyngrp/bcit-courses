@@ -19,8 +19,11 @@
 
 #include "server.h"
 #include "network.h"
+#include "utils.h"
+#include "globals.h"
 
 extern int mode, conn_type, sock;
+extern DPlaya *player_array[MAX_PLAYERS];
 
 void tcp_listen(void) {
 	struct addrinfo	hints, *ai, *p;
@@ -95,6 +98,7 @@ void tcp_listen(void) {
  *****************************************************************************/
 void start_server(void) {
 	struct sockaddr_storage	remoteaddr;
+	struct sockaddr_in sa_in;
 	socklen_t				addrlen;
 	pthread_t				udp_thread;
 
@@ -105,7 +109,7 @@ void start_server(void) {
 	   we can hold an address of that length. */
 	char remoteIP[INET_ADDRSTRLEN];
 
-	int i, j, rv;
+	int i, j, rv, ret;
 
 	FD_ZERO(&ptcp_server->master);	/* clear the ptcp_server->master and temp socket sets */
 	FD_ZERO(&ptcp_server->read_fds);
@@ -129,6 +133,15 @@ void start_server(void) {
 					/* manage the new connection */
 					addrlen = sizeof(remoteaddr);
 					ptcp_server->new_fd = accept(ptcp_server->listener, (struct sockaddr *)&remoteaddr, &addrlen);
+					
+					memcpy(&sa_in, &remoteaddr, sizeof(sa_in));
+					
+					if((ret = add_player(sa_in.sin_addr.s_addr)) < 0) { /* spectator or error (depends what we want in the future) */
+						
+					} else  { /* player was successfully added */
+						DPlaya *player = player_array[ret];
+						printf("Player %d. x: %d, y: %d\n", player->getDPlayaID(), player->getX(), player->getY());
+					}
 
 					if (ptcp_server->new_fd == -1) {
 						perror("accept"); /* obviously the server hates us */

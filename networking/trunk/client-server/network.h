@@ -41,8 +41,8 @@
 
 /* global definitions */
 #define MAP_LEN	255
-#define MAP_ROWS 15
-#define MAP_COLS 15
+//#define MAP_ROWS 15
+//#define MAP_COLS 15
 /* end global definitions */
 
 /* TODO: Move into struct */

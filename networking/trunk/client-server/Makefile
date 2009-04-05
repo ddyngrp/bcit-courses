@@ -6,7 +6,7 @@
 CC=g++
 CFLAGS=-c -Wall -pedantic -ggdb
 LDFLAGS=-lpthread
-SOURCES=master.cpp server.cpp udp_server.cpp client.cpp network.cpp serialize.cpp
+SOURCES=globals.cpp master.cpp server.cpp udp_server.cpp client.cpp network.cpp serialize.cpp utils.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=clisrv
 

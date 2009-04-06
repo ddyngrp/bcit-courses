@@ -112,12 +112,10 @@ void start_server(void) {
 	   we can hold an address of that length. */
 	char remoteIP[INET_ADDRSTRLEN];
 
-	int i, j, rv, ret;
+	int i, j, ret;
 
 	FD_ZERO(&ptcp_server->master);	/* clear the ptcp_server->master and temp socket sets */
 	FD_ZERO(&ptcp_server->read_fds);
-	
-	ptcp_server->mode = SERVER; /* needed for network functions */
 
 	/* Setup our listening socket */
 	tcp_listen();
@@ -171,9 +169,9 @@ void start_server(void) {
 						close(i);	/* goodbye */
 						FD_CLR(i, &ptcp_server->master); /* remove from ptcp_server->master set */
 					} else { /* we got data from a client */
-						if ((rv = process_data(ptcp_server->recvBuff, ptcp_server->recvBytes) < 0)) { 
-							/*perror("process_data");*/
-						}
+						/*if ((rv = process_data(ptcp_server->recvBuff, ptcp_server->recvBytes) < 0)) { 
+							//perror("process_data");
+						}*/
 
 						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
 							/* Create UDP Server thread */

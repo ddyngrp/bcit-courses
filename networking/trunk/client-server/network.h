@@ -8,11 +8,8 @@
 #include <netdb.h>
 
 /* message types */
-#define KEEPALIVE	0
-#define MAP			1
-#define MOVE		2
-#define BOMB		4
-#define EXPLOSION	8
+#define MAP		0
+#define PLAYER		1
 /* end message types */
 
 /* program modes */
@@ -32,31 +29,18 @@
 /* protocol types */
 
 /* message-type errors for process_data */
-#define ERR_UNKNOWN_INPUT		(-1)
-#define ERR_SERV_RECV_MAP		(-2)
+#define ERR_UNKNOWN_INPUT	(-1)
+#define ERR_SERV_RECV_MAP	(-2)
 #define ERR_SERV_RECV_EXPLOSION	(-3)
-#define ERR_CLNT_RECV_MOVE		(-4)
-#define ERR_CLNT_RECV_BOMB		(-5)
+#define ERR_CLNT_RECV_MOVE	(-4)
+#define ERR_CLNT_RECV_BOMB	(-5)
 /* end message-type errors */
-
-/* global definitions */
-#define MAP_LEN	255
-//#define MAP_ROWS 15
-//#define MAP_COLS 15
-/* end global definitions */
-
-/* TODO: Move into struct */
-/*int conn_type = TCP;
-int sock = 0;
-int mode = CLIENT;
-struct sockaddr_in server;*/
 
 /* Return sockaddr struct in IPv4 or IPv6 format */
 void *get_in_addr(struct sockaddr *sa);
 
 int set_conn_type(int type);
 int conn_setup(char *host, char *port);
-void keepalive(); /* just an empty packet to let the other side know we're still here */
 
 /* send the map */
 int send_map(int sockets[], int num_sockets, unsigned char *map, size_t len);

@@ -21,8 +21,7 @@ struct tcp_server {
 	int		listener,
 			fd_max,
 			new_fd,
-			recvBytes,
-			mode;
+			recvBytes;
 
 	unsigned char	recvBuff[8192];
 };

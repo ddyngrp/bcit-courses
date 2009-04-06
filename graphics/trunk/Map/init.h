@@ -1,6 +1,7 @@
 #ifndef INIT_H
 #define INIT_H
-
+#include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
 #include <string>
 /*----------------------------------------------------------------------
 -- METHOD:		genRandomMap
@@ -23,7 +24,8 @@
 -- respectivly. 
 ----------------------------------------------------------------------*/
 unsigned char** genRandomMap(int rowNum, int colNum);
-
+void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL );
+void sdl_init(SDL_Surface * screen);
 /*----------------------------------------------------------------------
 -- METHOD:		load_image
 --
@@ -45,6 +47,6 @@ unsigned char** genRandomMap(int rowNum, int colNum);
 ----------------------------------------------------------------------*/
 SDL_Surface *load_image( std::string filename );
 
-void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL );
+
 
 #endif

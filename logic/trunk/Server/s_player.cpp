@@ -10,7 +10,7 @@ void DPlaya::refresh(SDL_Surface * screen)
 	SDL_BlitSurface( this->getImage(), NULL, screen, &position );
 }
 
-void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
+void DPlaya::paint(DPlaya &player, int newX , int newY, SDL_Surface* screen)
 {
 	player.setX(newX);
 	player.setY(newY);

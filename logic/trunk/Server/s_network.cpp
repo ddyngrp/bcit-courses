@@ -41,6 +41,8 @@ recieve_packet(char b, int index)
 		player_array[index]->move(grid, MOVE_RIGHT);
 	else if (b == PLANT_BOMB)
 		plant_bomb(index);
+	else if (b == PLAYER_QUIT)
+		player_array[index]->killPlayer();
 }
 
 

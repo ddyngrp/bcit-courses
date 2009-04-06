@@ -12,30 +12,31 @@ int j, k;
 	f.x = x;
 	f.y = y;
 
-	for (j = x, k = 0; j > 1 && k < len; --j, ++k) {
+	for (j = y, k = 0; j > 0 && k < len; --j, ++k) {
 		if (block_here(x,j)) 
 			break;
 		kill_if_here(x,j);
 	}
-	f.up = k;	
-	for (j = x, k = 0; j < 16 && k < len; ++j, ++k) {
+	f.up = k-1;	
+	for (j = y, k = 0; j < 17 && k < len; ++j, ++k) {
 		if (block_here(x,j))
 			break;
 		kill_if_here(x,j);
 	}
-	f.down = k;
-	for (j = x, k = 0; j > 1 && k < len; --j, ++k) {
+	f.down = k-1;
+	for (j = x, k = 0; j > 0 && k < len; --j, ++k) {
 		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);
 	}
-	f.left = k;
-	for (j = x, k = 0; j < 16 && k < len; ++j, ++k) {
+	f.left = k-1;
+	for (j = x, k = 0; j < 18 && k < len; ++j, ++k) {
 		if (block_here(j,y))
 			break;
 		kill_if_here(j,y);
 	}
-	f.right = k;
+	f.right = k-1;
+
 	fire_to_map(f);
 	send_map(grid);
 }
@@ -58,19 +59,19 @@ fire_to_map(struct fire f)
 {
 int i;
 
-	grid[f.x][f.y] = GRID_CENTER;
-	for (i = (f.y - 1); i < (f.up - f.y + 1); --i)
-		grid[f.x][i] = GRID_HZ;
-	grid[f.x][i] = GRID_TOP;
-	for (i = (f.y + 1); i > (f.down + f.y - 1); ++i)
-		grid[f.x][i] = GRID_HZ;
-	grid[f.x][i] = GRID_BOTTOM;
-	for (i = (f.x - 1); i < (f.left - f.x + 1); --i)
-		grid[i][f.y] = GRID_VT;
-	grid[i][f.y] = GRID_LEFT;
-	for (i = (f.x + 1); i > (f.right + f.x - 1); ++i)
-		grid[i][f.y] = GRID_VT;
-	grid[i][f.y] = GRID_RIGHT;
+	grid[f.y][f.x] = GRID_CENTER;
+	for (i = (f.y - 1); i > (f.y - f.up); --i) // goes till it == 1
+		grid[i][f.x] = GRID_VT;			
+	grid[i][f.x] = GRID_TOP;
+	for (i = (f.y + 1); i < (f.y + f.down); ++i)
+		grid[i][f.x] = GRID_VT;
+	grid[i][f.x] = GRID_BOTTOM;
+	for (i = (f.x - 1); i > (f.x - f.left); --i)
+		grid[f.y][i] = GRID_HZ;
+	grid[f.y][i] = GRID_LEFT;
+	for (i = (f.x + 1); i < (f.x + f.right); ++i)
+		grid[f.y][i] = GRID_HZ;
+	grid[f.y][i] = GRID_RIGHT;
 }
 
 void
@@ -85,15 +86,13 @@ int i;
 		}
 }
 
-
-
 bool
 block_here(const int x, const int y)
 {
-	if (grid[x][y] == GRID_UBLOCK)
+	if (grid[y][x] == GRID_UBLOCK)
 		return true;
-	else if (grid[x][y] == GRID_DBLOCK) {
-		destroy_block(x,y);
+	else if (grid[y][x] == GRID_DBLOCK) {
+		destroy_block(y,x);
 		return true;
 	}
 	return false;
@@ -108,11 +107,11 @@ int i;
 	
 	i = 3; /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: takign out ofr now implement plz */
 	if (i == 0)
-		grid[x][y] = GRID_POWUP_NUM;
+		grid[y][x] = GRID_POWUP_NUM;
 	else if (i == 1)
-		grid[x][y] = GRID_POWUP_RAD;
+		grid[y][x] = GRID_POWUP_RAD;
 	else if (i == 2)
-		grid[x][y] = GRID_POWUP_SPIKE;
+		grid[y][x] = GRID_POWUP_SPIKE;
 	else
-		grid[x][y] = GRID_EMPTY;
+		grid[y][x] = GRID_EMPTY;
 }

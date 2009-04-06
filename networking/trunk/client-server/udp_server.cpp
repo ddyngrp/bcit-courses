@@ -15,7 +15,7 @@ void *start_udp_server(void *ptr) {
 	socklen_t client_len;
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
-	DPlaya p1, p2;
+	DPlaya p1;
 	
 	printf("starting udp server..\n");
 	fflush(stdout);
@@ -36,7 +36,7 @@ void *start_udp_server(void *ptr) {
 
 	for(;;) {
 		client_len = sizeof(udpclient);
-		if((n = recvfrom(sd, udpbuf, MAX_LEN, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
+		if((n = recvfrom(sd, udpbuf, 2, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
 			if(n == 0) {
 				fprintf(stderr,"Connection closed on socket: %d\n", sd);
 				continue;
@@ -45,36 +45,19 @@ void *start_udp_server(void *ptr) {
 				exit(EXIT_FAILURE);
 			}
 		}
+
+		printf("recv: %s\n", udpbuf);
 		
 		if((player_loc = get_player_loc(udpclient.sin_addr.s_addr)) >= 0 && player_loc < MAX_PLAYERS) {
 			receive_packet(udpbuf[0], player_loc);
 		}
 
-		/*for(j=0; udpbuf[j] != -1; j++);
-		udpbuf[j] = '\0';
+		p1.setX(1);
+		p1.setY(2);
+		p1.setNumBombs(3);
 
-		printf("len: %d - buf: %s\n", strlen(udpbuf), udpbuf);
-
-		unserialize_player(udpbuf, &p1);
-
-		printf("%d\n", p1.getX());
-		printf("%d\n", p1.getY());
-		printf("%d\n", p1.getNumBombs());
-		printf("%d\n", p1.getDroppedBombs());
-		printf("%d\n", p1.getDPlayaID());
-
-		serialize_player(&p1, udpbuf, BUF_LEN);
-
-		if(strcmp(udpbuf, "quit\n")==0) {
-			close(sd);
-			printf("closing udp server..\n");
-			return 0;
-		} else {*/
-			if(sendto(sd, udpbuf, n, 0, (struct sockaddr *)&udpclient, client_len) < 0) {
-				perror("Send To");
-				exit(EXIT_FAILURE);
-			}
-//		}
+		send_udp_player(p1, sd, udpclient);
+		printf("sent p1\n");
 
 		pthread_testcancel();
 	}

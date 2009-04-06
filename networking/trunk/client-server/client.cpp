@@ -96,7 +96,9 @@ void start_udp_client(char *hostname){
 	struct hostent *hp;
 	int udp_port = 8000;
 	char inbuf[MAXLEN], outbuf[MAXLEN];
-	DPlaya p1, p2;
+	DPlaya p1;
+
+	printf("starting udp server..\n");
 	
     if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
         perror("Can't crete a socket\n");
@@ -128,100 +130,26 @@ void start_udp_client(char *hostname){
     fflush(stdout);
     /* sending keyboard inputs*/
    for(;;){
-   		//int j;
    		inbuf[0] = 0;
    		outbuf[0] = 0;
    		fgets(inbuf, MAXLEN, stdin);
 
-		inbuf[0] = '\0';
-		
+		inbuf[1] = '\0';
 
-		p1.setX(1);
-		p1.setY(2);
-		p1.setNumBombs(3);
-		p1.setDroppedBombs(4);
-		p1.setID(5);
-
-		serialize_player(&p1, inbuf, BUF_LEN);
-
-		inbuf[(strlen(inbuf)+1)] = '\0';
-        
-        if (sendto(sd,inbuf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
-            perror("sendto failure");
-            exit(1);
-        }
-
-		/*printf("len: %d\n", strlen(inbuf));
-		printf("buf: %s\n", inbuf);*/
+		if (sendto(sd, inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+			perror("sendto failure");
+			exit(1);
+	    	}
 
 		if (recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
 			perror("recvfrom error");
 			exit(1);
 		}
 
-		unserialize_player(outbuf, &p2);
-		printf("%d,%d\n", p1.getX(), p2.getX());
-		printf("%d,%d\n", p1.getY(),p2.getY());
-		printf("%d,%d\n", p1.getNumBombs(),p2.getNumBombs());
-		printf("%d,%d\n", p1.getDroppedBombs(),p2.getDroppedBombs());
-		printf("%d,%d\n", p1.getDPlayaID(),p2.getDPlayaID());
+		unserialize_player(outbuf, &p1);
+
+		printf("p1: %d %d %d\n", p1.getX(), p1.getY(), p1.getNumBombs());
 	}
 }
 
-void send_tcp_player(DPlaya p1, int sockfd) {
-	char buf[BUF_LEN];
-	serialize_player(&p1, buf, BUF_LEN);
-
-	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
-		perror("send() call failed.");
-	}
-}
-
-DPlaya recv_tcp_player(int sockfd) {
-	DPlaya p1;
-	char buf[BUF_LEN];
-	int r;
-
-	if ((r = recv(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
-		perror("recv call() failed.");
-		return p1;
-	}
-
-	unserialize_player(buf, &p1);
-
-	return p1;
-}
-
-void send_udp_player(DPlaya p1, int socketfd) {
-	char buf[BUF_LEN];
-	struct sockaddr_in udpserver;
-
-	serialize_player(&p1, buf, BUF_LEN);
-
-	if (sendto(socketfd, buf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
-        perror("sendto failure");
-        exit(1);
-    }
-}
-
-DPlaya recv_udp_player(int socketfd) {
-	DPlaya p1;
-	char buf[BUF_LEN];
-	struct sockaddr_in udpserver;
-	int ret;
-
-	if ((ret = recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
-		if(ret == 0) {
-			fprintf(stderr, "Server closed %d\n", socketfd);
-		} else {
-			perror("recvfrom error");
-		}
-
-		exit(EXIT_FAILURE);
-	} else {
-		unserialize_player(buf, &p1);
-	}
-
-	return p1;
-}
 

@@ -120,3 +120,59 @@ int unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS]) {
 	
 	return 0;
 }
+
+void send_tcp_player(DPlaya p1, int sockfd) {
+	char buf[BUF_LEN];
+	serialize_player(&p1, buf, BUF_LEN);
+
+	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("send() call failed.");
+	}
+}
+
+DPlaya recv_tcp_player(int sockfd) {
+	DPlaya p1;
+	char buf[BUF_LEN];
+	int r;
+
+	if ((r = recv(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
+		perror("recv call() failed.");
+		return p1;
+	}
+
+	unserialize_player(buf, &p1);
+
+	return p1;
+}
+
+void send_udp_player(DPlaya p1, int socketfd, struct sockaddr_in udpserver) {
+	char buf[BUF_LEN];
+
+	serialize_player(&p1, buf, BUF_LEN);
+
+	buf[(strlen(buf)+1)] = '\0';
+	
+	if (sendto(socketfd, buf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+        	perror("sendto failure");
+        	exit(1);
+    	}
+}
+
+void recv_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
+	char buf[BUF_LEN];
+	int ret;
+
+	if ((ret = recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
+		if(ret == 0) {
+			fprintf(stderr, "Server closed: %d\n", socketfd);
+		} else {
+			perror("recvfrom error");
+		}
+
+		exit(EXIT_FAILURE);
+	} else {
+		unserialize_player(buf, p1);
+	}
+
+}
+

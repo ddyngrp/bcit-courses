@@ -1,6 +1,5 @@
-#include "s_player.h"
-
-/* we need to get the fucking non-4 week old player.cpp in case they've changed stuff */
+#include "DPlaya.h"
+#include <cmath>
 
 void DPlaya::refresh(SDL_Surface * screen)
 {
@@ -18,57 +17,56 @@ void DPlaya::paint(DPlaya player, int newX , int newY, SDL_Surface* screen)
 	refresh(screen);
 }
 
-void DPlaya::dropBomb()
-{
-	int i;
-	for(i = 0; i < this->numBombs_; i++)
-	{
-		//if(this->bombs[i] == 0)
-		break;
-	}
-
-	//bombs[i].setX(this.x_);
-	//bombs[i].setY(this.y_);
-	//bombs[i].startFuse();
-	//map.setCoords(this.x, this.y, 3); TODO not yet implemented by graphics
-	this->droppedBombs_++;
+bool DPlaya::canPlant()
+{	
+	if(droppedBombs_ >= numBombs_)
+		return false;
+	else
+		droppedBombs_++;
+	return true;
 }
 
-void DPlaya::explodeBomb(int i)
-{
-	//bombs[i].detonate();
-	this->droppedBombs_--;
-}
-
-void DPlaya::move(unsigned char map[17][18], int direction)
+bool DPlaya::move(unsigned char** map, int direction)
 {
 	int yt,yb,xl,xr;
-	int xVel = 0;
-	int yVel = 0;
 	
 	if(direction == 0)
-		yVel = -10;
+		y_ += -3;
 	else if(direction == 1)
-		yVel = 10;
+		y_ += 3;
 	else if(direction == 2)
-		xVel = -10;
+		x_ += -3;
 	else if(direction == 3)
-		xVel = 10;
-
-	x_ += xVel;
-	y_ += yVel;
-	 
-	yt= y_ + 15;
-	yb= y_ + 25;
+		x_ += 3;
 	
-	xl= x_ + 10;
-	xr= x_ + 25;
-       
+	yt= y_ + 10;
+	yb= y_ + 30;
+	
+	xl= x_ + 8;
+	xr= x_ + 27;
+		
     //Move the Player up or down
-    if(map[xl/35][yt/35] != 0 || map[xr/35][yb/35] != 0 
-    	|| map[xl/35][yb/35] != 0 || map[xr/35][yt/35] != 0 )
+    if(map[yt/35][xl/35] != 2 || map[yb/35][xr/35] != 2
+	|| map[yb/35][xl/35] != 2 || map[yt/35][xr/35] != 2)
     {
-    	y_ -= yVel;
-    	x_ -= xVel;
+		if(direction == 0)
+			y_ -= -3;
+		else if(direction == 1)
+			y_ -= 3;
+		else if(direction == 2)
+			x_ -= -3;
+		else if(direction == 3)
+			x_ -= 3;
+			
+		return false;
     }
+    return true;
+		
+}
+
+void DPlaya::explode()
+{
+	if(droppedBombs_ == 0)
+		return;
+	droppedBombs_--;
 }

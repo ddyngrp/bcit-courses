@@ -6,8 +6,8 @@
 #include "s_defs.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include "g_usermap.h"
-#include "g_funcs.h"
+#include "Map/user_map.h"
+#include "Map/init.h"
 #include <pthread.h>
 
 #include <stdio.h>

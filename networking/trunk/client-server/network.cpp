@@ -51,7 +51,7 @@ int get_player_loc(unsigned long ip_netformat) {
 	int pos;
 	
 	for(pos = 0; pos < MAX_PLAYERS; pos++) {
-		if(player_array[pos]->get_ip_netformat() == ip_netformat) {
+		if(player_array[pos] != NULL && player_array[pos]->get_ip_netformat() == ip_netformat) {
 			return pos;
 		}
 	}

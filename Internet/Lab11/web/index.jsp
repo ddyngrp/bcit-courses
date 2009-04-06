@@ -1,6 +1,6 @@
 <%@page
     import="server.*"
-    %>
+%>
 <%-- 
     Document   : index
     Created on : 6-Apr-2009, 2:38:08 AM
@@ -12,9 +12,18 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-        SurveyHandler handler = SurveyHandler.instance();
+    SurveyHandler handler = SurveyHandler.instance();
+    String survey[] = handler.survey();
+    String output = "";
 
-        String survey[] = handler.survey();
+    for (int i = 0; i < survey.length; i++) {
+        if (i == 0) {
+            output += "<b>" + survey[i] + "</b><br />";
+        } else {
+            output += "<input type=\"radio\" name=\"vote\" value=\""
+                    + i + "\" /> " + survey[i] + "<br />";
+        }
+    }
 %>
 
 <html>
@@ -41,7 +50,7 @@
                     },
                     // Load this function on failure
                     error: function(error) {
-                        console.error('Error: ', error);
+                        console.error('submitVote()', error);
                     }
                 });
             }
@@ -51,16 +60,7 @@
         <div id="response"></div>
         <form name="voteForm" method="POST">
             <div id="results">
-                <%
-                for (int i = 0; i < survey.length; i++) {
-                    if (i == 0) {
-                        out.print("<b>" + survey[i] + "</b><br />");
-                    } else {
-                        out.println("<input type=\"radio\" name=\"vote\" value=\""
-                                + i + "\" /> " + survey[i] + "<br />");
-                    }
-                }
-                %>
+                <%=output%>
                 <br />
                 <a href="#" onClick="submitVote();" style="padding-left:22px;">Submit Vote</a>
             </div>

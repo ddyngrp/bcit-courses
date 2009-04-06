@@ -22,11 +22,10 @@ public:
 				 x_ = x,  y_ = y, w_ = w, h_ = h, image_ = IMG_Load((char*)&pic);}
 
 	DPlaya(const DPlaya& old){ x_ = old.x_, y_ = old.y_, image_ = old.image_, w_ = old.w_, h_ = old.h_;}*/
-	DPlaya() : x_(0), y_(0), w_(35), h_(35), xVel(0), yVel(0), DPlayaID_(-1), alive_(false), image_(IMG_Load("default.png")){}
+	DPlaya() : x_(0), y_(0), w_(35), h_(35), xVel(0), yVel(0), bombPower(2), DPlayaID_(-1), alive_(false), image_(IMG_Load("default.png")){}
 	DPlaya(const int x, const int y, const int w, const int h, char* pic) :
 				 x_(x),  y_(y), w_(w), h_(h), image_(IMG_Load(pic)){}
-	DPlaya(const DPlaya& old):x_(old.x_), y_(old.y_), image_(old.image_),
-						w_(old.w_), h_(old.h_){}
+	DPlaya(const DPlaya& old):x_(old.x_), y_(old.y_), w_(old.w_), h_(old.h_), image_(old.image_) {}
 
 	virtual ~DPlaya(){};   
 
@@ -34,7 +33,7 @@ public:
 	void paint(DPlaya DPlaya, int x, int y, SDL_Surface* screen);
 	void refresh(SDL_Surface * screen);
 	bool canPlant();
-	bool move(unsigned char **mapGrid, int direction);
+	bool move(unsigned char mapGrid[17][18], int direction);
 	void explode();
 
 	//getters
@@ -44,6 +43,7 @@ public:
 	int getDroppedBombs(){return droppedBombs_;}
 	int getDPlayaID(){return DPlayaID_;}
 	bool getAlive(){return alive_;}
+	int getBombPower(){return bombPower_;}
 	SDL_Surface* getImage() {return image_;}
 
 	//setters
@@ -63,6 +63,7 @@ public:
 
 private:
 int x_, y_, w_,h_, numBombs_, droppedBombs_, xVel, yVel;
+int bombPower;
 int DPlayaID_;
 int bombPower_;
 bool alive_;

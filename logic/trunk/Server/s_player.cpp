@@ -1,4 +1,4 @@
-#include "DPlaya.h"
+#include "s_player.h"
 #include <cmath>
 
 void DPlaya::refresh(SDL_Surface * screen)
@@ -26,7 +26,7 @@ bool DPlaya::canPlant()
 	return true;
 }
 
-bool DPlaya::move(unsigned char** map, int direction)
+bool DPlaya::move(unsigned char map[17][18], int direction)
 {
 	int yt,yb,xl,xr;
 	

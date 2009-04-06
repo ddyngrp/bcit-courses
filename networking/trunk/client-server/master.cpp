@@ -7,6 +7,8 @@
 #include "client.h"
 #include "server.h"
 
+extern struct tcp_server *ptcp_server;
+
 void usage(void);
 
 int main(int argc, char *argv[]) {

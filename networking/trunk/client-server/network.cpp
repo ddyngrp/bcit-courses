@@ -38,6 +38,39 @@
 
 #include "network.h"
 #include "serialize.h"
+#include "server_stuff/s_defs.h"
+#include "DPlaya.h"
+
+extern DPlaya *player_array[MAX_PLAYERS];
+extern unsigned char grid[15][15];
+extern int mode, conn_type, sock;
+extern struct tcp_server *ptcp_server;
+extern struct sockaddr_in server;
+
+int get_player_loc(unsigned long ip_netformat) {
+	int pos;
+	
+	for(pos = 0; pos < MAX_PLAYERS; pos++) {
+		if(player_array[pos]->get_ip_netformat() == ip_netformat) {
+			return pos;
+		}
+	}
+	
+	return -1;
+}
+
+void receive_packet(char b, int index) {
+	if (b == MOVE_UP) 
+		player_array[index]->move(grid, MOVE_UP);
+	else if (b == MOVE_DOWN) 
+		player_array[index]->move(grid, MOVE_DOWN);
+	else if (b == MOVE_LEFT) 
+		player_array[index]->move(grid, MOVE_LEFT);
+	else if (b == MOVE_RIGHT)
+		player_array[index]->move(grid, MOVE_RIGHT);
+//	else if (b == PLANT_BOMB)
+		//plant_bomb(index);
+}
 
 /******************************************************************************
  *  Function:    set_conn_type
@@ -278,9 +311,9 @@ int request_move(int x, int y) {
  *  Description: Send a request to the server, asking to drop a bomb at xy
  *
  *****************************************************************************/
-int request_bomb(int type) {
+/*int request_bomb(int type) {
 	int len = sizeof(int) + 2;
-	unsigned char data[len]; /* ISO C90 forbids variable-size array */
+	unsigned char data[len]; // ISO C90 forbids variable-size array
 	
 	data[iTYPE] = BOMB;
 	memcpy(data + 1, &type, sizeof(int));
@@ -288,7 +321,7 @@ int request_bomb(int type) {
 	transfer(sock, data, len);
 	
 	return 0;
-}
+}*/
 
 /******************************************************************************
  *  Function:    explode_bomb

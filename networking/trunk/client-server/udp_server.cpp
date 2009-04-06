@@ -1,12 +1,17 @@
 #include "server.h"
+#include "network.h"
+#include "globals.h"
+
 #define MAX_LEN 1024
 #define BUF_LEN 64
+
+extern int mode;
 
 int serialize_player(DPlaya *player, char *buf, size_t buflen);
 int unserialize_player(char *buf, DPlaya *player);
 
 void *start_udp_server(void *ptr) {
-	int sd, port = 8000, n, j;
+	int sd, port = 8000, n, player_loc;
 	socklen_t client_len;
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
@@ -40,8 +45,12 @@ void *start_udp_server(void *ptr) {
 				exit(EXIT_FAILURE);
 			}
 		}
+		
+		if((player_loc = get_player_loc(udpclient.sin_addr.s_addr)) >= 0 && player_loc < MAX_PLAYERS) {
+			receive_packet(udpbuf[0], player_loc);
+		}
 
-		for(j=0; udpbuf[j] != -1; j++);
+		/*for(j=0; udpbuf[j] != -1; j++);
 		udpbuf[j] = '\0';
 
 		printf("len: %d - buf: %s\n", strlen(udpbuf), udpbuf);
@@ -60,12 +69,12 @@ void *start_udp_server(void *ptr) {
 			close(sd);
 			printf("closing udp server..\n");
 			return 0;
-		} else {
+		} else {*/
 			if(sendto(sd, udpbuf, n, 0, (struct sockaddr *)&udpclient, client_len) < 0) {
 				perror("Send To");
 				exit(EXIT_FAILURE);
 			}
-		}
+//		}
 
 		pthread_testcancel();
 	}

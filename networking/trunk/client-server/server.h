@@ -27,8 +27,6 @@ struct tcp_server {
 	unsigned char	recvBuff[8192];
 };
 
-static struct tcp_server *ptcp_server;
-
 void tcp_listen(void);
 void start_server(void);
 void *start_udp_server(void *);

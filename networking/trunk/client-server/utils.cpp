@@ -17,8 +17,6 @@ int add_player(unsigned long ip_netformat) {
 		return (-1);
 	}
 	
-	//printf("in add_player %d\n", pos);
-	
 	player_array[pos] = new DPlaya();
 	
 	player_array[pos]->setX(pos);

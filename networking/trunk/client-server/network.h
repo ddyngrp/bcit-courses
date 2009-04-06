@@ -46,10 +46,10 @@
 /* end global definitions */
 
 /* TODO: Move into struct */
-static int conn_type = TCP;
-static int sock = 0;
-static int mode = CLIENT;
-static struct sockaddr_in server;
+/*int conn_type = TCP;
+int sock = 0;
+int mode = CLIENT;
+struct sockaddr_in server;*/
 
 /* Return sockaddr struct in IPv4 or IPv6 format */
 void *get_in_addr(struct sockaddr *sa);
@@ -78,5 +78,7 @@ int get_action_type(int info);
 int get_player_id(int info);
 int get_extra_info(int info);
 unsigned char create_info_byte(int action, int player, int extra);
+void receive_packet(char b, int index);
+int get_player_loc(unsigned long ip_netformat);
 
 #endif

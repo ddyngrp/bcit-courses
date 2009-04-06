@@ -34,7 +34,7 @@ void start_client(char * server, char * port) {
 	char sendbuf[MAXLEN], recvbuf[MAXLEN];
 	int sockfd;
 	int ret;
-	fd_set readfds;
+	//fd_set readfds;
 
 
 	memset(&hints,0, sizeof(hints));
@@ -128,7 +128,7 @@ void start_udp_client(char *hostname){
     fflush(stdout);
     /* sending keyboard inputs*/
    for(;;){
-   		int j;
+   		//int j;
    		inbuf[0] = 0;
    		outbuf[0] = 0;
    		fgets(inbuf, MAXLEN, stdin);
@@ -151,8 +151,8 @@ void start_udp_client(char *hostname){
             exit(1);
         }
 
-		printf("len: %d\n", strlen(inbuf));
-		printf("buf: %s\n", inbuf);
+		/*printf("len: %d\n", strlen(inbuf));
+		printf("buf: %s\n", inbuf);*/
 
 		if (recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
 			perror("recvfrom error");
@@ -212,7 +212,7 @@ DPlaya recv_udp_player(int socketfd) {
 
 	if ((ret = recvfrom(socketfd, buf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
 		if(ret == 0) {
-			fprintf(stderr, "Server closed\n", socketfd);
+			fprintf(stderr, "Server closed %d\n", socketfd);
 		} else {
 			perror("recvfrom error");
 		}

@@ -22,8 +22,11 @@
 #include "utils.h"
 #include "globals.h"
 
-extern int mode, conn_type, sock;
 extern DPlaya *player_array[MAX_PLAYERS];
+
+int mode = CLIENT, conn_type = TCP, sock = 0;
+struct tcp_server *ptcp_server;
+struct sockaddr_in server;
 
 void tcp_listen(void) {
 	struct addrinfo	hints, *ai, *p;

@@ -18,21 +18,23 @@
 #define DEFAULT_PORT	9000
 #define EDITSIZE		50
 #define BUFSIZE			4096
+#define BLOCK_SIZE		1024
+#define BLOCK_COUNT		20
 
-#define FILEBUFSIZE 120
-#define MAXBUFSIZE 8000
-#define LOCALPLAY 500
-#define NETWORKPLAY 501
+#define FILEBUFSIZE		120
+#define MAXBUFSIZE		8000
+#define LOCALPLAY		500
+#define NETWORKPLAY		501
 
 /* Mode macros  (we start at 1 so that 0 is assumed to be unset, thus we can find uninitialized variables easily) */
-#define SERVER 1
-#define CLIENT 2
-#define TCP 1
-#define IDP 2
-#define SINGLE_DL 1
-#define SINGLE_UP 2
-#define SINGLE_STREAM 3
-#define MULTI_STREAM 4
+#define SERVER			1
+#define CLIENT			2
+#define TCP				1
+#define IDP				2
+#define SINGLE_DL		1
+#define SINGLE_UP		2
+#define SINGLE_STREAM	3
+#define MULTI_STREAM	4
 
 /* Custom Message Cracker Definition */
 #define HANDLE_WM_SOCKET(hwnd, wParam, lParam, fn) \
@@ -64,16 +66,14 @@ static HINSTANCE	ghInst;				// Main application's global instance
 static HWND			ghWndMain,			// Main window's global handle
 					ghDlgMain;			// Main dialogue window's global handle
 static HMENU		ghMenu;				// Main window's menu handle
-
 HACCEL				ghAccel;			// Keyboard accelerator
+SOCKADDR_IN			remote,				// Server socket information
+					local;				// Client socket information
+connectInfo			ci;					// Connection information
 
-SOCKADDR_IN		remote,				// Server socket information
-				local;				// Client socket information
-connectInfo		ci;					// Connection information
-
-int busyFlag;
-static WAVEFORMATEX pwfx;
-static HWAVEOUT hwo;
+int					busyFlag;
+static				WAVEFORMATEX pwfx;
+static				HWAVEOUT hwo;
 
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -97,10 +97,11 @@ BOOL browseFiles(HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName);
 void fileInit(HWND hwnd);
 
 /* Network Play */
-void clnt_recv_udp(char buf[]);
-void serv_broadcast(char fileName[FILEBUFSIZE]);
-void clnt_recv_tcp(char buf[]);
-void serv_recv_tcp(char buf[]);
+void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size);
+void freeBlocks(WAVEHDR* blockArray);
+WAVEHDR* allocateBlocks(int size, int count);
+static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
+void receiveStream(WPARAM sd);
 
 /* Services */
 void server_download(WPARAM wParam, PTSTR	fileName);

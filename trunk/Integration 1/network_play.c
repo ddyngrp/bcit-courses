@@ -1,128 +1,342 @@
+/*---------------------------------------------------------------------------------------
+--	SOURCE FILE:	network_play.c - Contains all the function calls for sending and
+--									 receiving an audio stream.
+--
+--	PROGRAM:		music_streamer.exe
+--
+--	FUNCTIONS:		void receiveStream(WPARAM sd)
+--					static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, 
+--													 DWORD dwInstance, DWORD dwParam1, 
+--													 DWORD dwParam2)
+--					WAVEHDR* allocateBlocks(int size, int count)
+--					void freeBlocks(WAVEHDR* blockArray)
+--					void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
+--
+--	REVISIONS:		April 6 - Took the code from our test program and functionized it
+--							  to use here.
+--
+--	DESIGNERS:		Jaymz Boilard & Steffen L. Norgren
+--	PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--
+--	NOTES:
+---------------------------------------------------------------------------------------*/
 #include "win_main.h"
 extern HWAVEOUT hwo;
 static WAVEHDR songData;
 static HANDLE hFile;
 static DWORD bytesRead;
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	clnt_recv_tcp
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
--- 
---	INTERFACE:	void clnt_recv_tcp(char buf[])
--- 
---	RETURNS:	void
--- 
---	NOTES:	Called when the client receives a tcp message asynchronously.
----------------------------------------------------------------------------------------*/
-void clnt_recv_tcp(char buf[])
-{
-    WAVEFORMATEX wavFmt;  //format of the music
+/* Global Variables */
+static CRITICAL_SECTION waveCriticalSection;
+static WAVEHDR* waveBlocks;
+static volatile int waveFreeBlockCount;
+static int waveCurrentBlock;
 
-    if(strncmp("fmt", buf, 3) == 0)
-    {
-        memcpy(&wavFmt, buf+3, sizeof(wavFmt)); //get the format from server
-        waveOutOpen(&hwo, WAVE_MAPPER, &wavFmt, 0, NULL,CALLBACK_NULL); //open the playing device
-        waveOutPrepareHeader(hwo, &songData, sizeof(songData));
-        //initialize UDP socket
-        //send(tcpFd, "ready", 6, 0);
-    }
+/*------------------------------------------------------------------------
+--		FUNCTION:		receiveStream - The main function to receive a TCP 
+--						stream data and process that information.
+--
+--		REVISIONS:		April 6 - Took out the TCP connection stuff since we
+--								  already have that at this point.  Also added
+--								  a parameter WPARAM sd, which is the socket
+--								  from which we are receiving the data.
+--								- Miscellaneous code touch-ups (mainly
+--								  formatting and removing of test printf()'s)
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--
+--		INTERFACE:		void receiveStream(
+--								  WPARAM sd) //the socket to be used
+--
+--		RETURNS:		void
+--
+--		NOTES:			
+------------------------------------------------------------------------*/
+void receiveStream(WPARAM sd)
+{
+	HWAVEOUT		hWaveOut; /* device handle */
+	WAVEFORMATEX	wfx; /* look this up in your documentation */
+	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
+	int				i;
+	DWORD			outBytes = 0;
+	int		n;					/* Number of bytes received at a given time */
+
+	/* initialise the module variables */ 
+	waveBlocks = allocateBlocks(BLOCK_SIZE, BLOCK_COUNT);
+	waveFreeBlockCount = BLOCK_COUNT;
+	waveCurrentBlock= 0;
+	InitializeCriticalSection(&waveCriticalSection);
+
+	/* set up the WAVEFORMATEX structure. */
+	wfx.nSamplesPerSec = 44100;	/* sample rate */
+	wfx.wBitsPerSample = 16;	/* sample size */
+	wfx.nChannels= 2;			/* channels*/
+	wfx.cbSize = 0;				/* size of _extra_ info */
+	wfx.wFormatTag = WAVE_FORMAT_PCM;
+	wfx.nBlockAlign = (wfx.wBitsPerSample * wfx.nChannels) >> 3;
+	wfx.nAvgBytesPerSec = wfx.nBlockAlign * wfx.nSamplesPerSec;
+
+	/**
+	 * try to open the default wave device. WAVE_MAPPER is
+	 * a constant defined in mmsystem.h, it always points to the
+	 * default wave device on the system (some people have 2 or
+	 * more sound cards).
+	 */
+	if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
+		(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
+	{
+			MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
+			ExitProcess(1);
+	}
+
+	/* playback loop - read from socket */
+	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0)
+	{
+		outBytes += n / 1000;
+
+		if(n == 0)
+			break;
+		else if(n < sizeof(buffer))
+			memset(buffer + n, 0, sizeof(buffer) - n);
+
+		writeAudio(hWaveOut, buffer, sizeof(buffer));
+	}
+
+	closesocket(sd);
+	WSACleanup();
+
+	/* wait for all blocks to complete */
+	while(waveFreeBlockCount < BLOCK_COUNT)
+		Sleep(10);
+
+	/* unprepare any blocks that are still prepared */
+	for(i = 0; i < waveFreeBlockCount; i++)
+	{
+		if(waveBlocks[i].dwFlags & WHDR_PREPARED)
+			waveOutUnprepareHeader(hWaveOut, &waveBlocks[i], sizeof(WAVEHDR));
+	}
+	DeleteCriticalSection(&waveCriticalSection);
+	freeBlocks(waveBlocks);
+	waveOutClose(hWaveOut);
 }
 
-
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	clnt_recv_udp
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
--- 
---	INTERFACE:	void clnt_recv_udp(char buf[])
--- 
---	RETURNS:	void
--- 
---	NOTES:	Called when the client receives a udp message asynchronously.
---          Will be spawned as a new thread from the actual async receive part
----------------------------------------------------------------------------------------*/
-void clnt_recv_udp(char buf[])
+/*------------------------------------------------------------------------
+--		FUNCTION:		sendStream - The main function to send read the 
+--						file & send the streaming data.
+--
+--		REVISIONS:		April 6 - Took out the TCP connection stuff since we
+--								  already have that at this point.  Also added
+--								  a parameter WPARAM sd, which is the socket
+--								  from which we are receiving the data.
+--								- Miscellaneous code touch-ups (mainly
+--								  formatting and removing of test printf()'s)
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--
+--		INTERFACE:		void receiveStream(
+--								  WPARAM sd //the socket to be used
+--								  PTSTR fileName //pointer to the name of a file to send
+--
+--		RETURNS:		void
+--
+--		NOTES:			
+------------------------------------------------------------------------*/
+void sendStream(WPARAM sd, PTSTR fileName)
 {
-    memcpy(songData.lpData, buf, sizeof(buf));
-    songData.dwBufferLength = MAXBUFSIZE;
-    songData.dwBytesRecorded = sizeof(buf);
-    waveOutWrite(hwo, &songData, sizeof(songData));
+	/* TCP connection related variables */
+	char	buffer[BUFSIZE]; /* intermediate buffer for reading */
+
+	/* try and open the file */
+	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
+		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE)
+	{
+		MessageBox(hwnd,"Unable to open file.","Error", MB_OK);
+		ExitProcess(1);
+	}
+
+	while (TRUE)
+	{
+		DWORD readBytes;
+
+		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL))
+		{
+			closesocket(new_sd);
+			break;
+		}
+		if(readBytes == 0)
+		{
+			closesocket(new_sd);
+			break;
+		}
+		if(readBytes < sizeof(buffer)) /* We're at the end of file */
+			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
+
+		send(sd, buffer, BUFSIZE, 0);
+	}
+
+	closesocket(sd);
+	WSACleanup();
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	serv_broadcast
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
--- 
---	INTERFACE:	serv_broadcast(char fileName[FILEBUFSIZE])
--- 
---	RETURNS:	void
--- 
---	NOTES:	Called when the user on the server's side presses the broadcast
---          button.  All we do here is open the file and extract the WAVEFORMATEX
---          structure from the beginning of it.  Then we send it to the client and
---          wait until the client responds with a ready message.
----------------------------------------------------------------------------------------*/
-void serv_broadcast(char fileName[FILEBUFSIZE])
+/*------------------------------------------------------------------------
+--		FUNCTION:		waveOutProc
+--
+--		REVISIONS:		
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Steffen L. Norgren
+--
+--		INTERFACE:		static void CALLBACK waveOutProc(
+--								HWAVEOUT hWaveOut,         //audio device being used
+--								UINT uMsg,				   //type of message to process
+--								DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+--
+--		RETURNS:		void
+--
+--		NOTES:			The callback function which is passed into the
+--						asyncronous call to play the audio.  (ie. it performs
+--						its work as a separate thread).
+------------------------------------------------------------------------*/
+static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
 {
-    char outBuf[MAXBUFSIZE];
-    WAVEFORMATEX wavFmt;
+	/* pointer to free block counter */
+	 int* freeBlockCounter = (int*)dwInstance;
 
-    if(hFile = CreateFile(fileName, GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, NULL))
-    {
-        /* Skip unecessary stuff */
-        SetFilePointer(hFile, 12, NULL, FILE_CURRENT);
-        // ^ skip past the "fmt" as well?
-        ReadFile(hFile, &wavFmt, sizeof(wavFmt), &bytesRead, NULL);
-        
-        memcpy(outBuf, &wavFmt, sizeof(wavFmt));
-        //send(sockfd, outBuf, sizeof(outBuf), 0);
-        /* Loop skips to the data section */
-    }
-    //else: error msg
+	  /* ignore calls that occur due to openining and closing the device */
+	 if(uMsg != WOM_DONE)
+		 return;
+
+	 /* Critical Section */
+	 EnterCriticalSection(&waveCriticalSection);
+	 (*freeBlockCounter)++;
+	 LeaveCriticalSection(&waveCriticalSection);
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	serv_broadcast
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
--- 
---	INTERFACE:	void serv_recv_tcp(char buf[])
--- 
---	RETURNS:	void
--- 
---	NOTES:	Called when the server receives a TCP message from the client.
---          it checks the type of message and processes it accordingly
---          "ready" message - reads the data portion of the file and sends
---          it via UDP.
----------------------------------------------------------------------------------------*/
-void serv_recv_tcp(char buf[])
+/*------------------------------------------------------------------------
+--		FUNCTION:		allocateBlocks - Allocates a buffer to receive data in.
+--
+--		REVISIONS:		
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Steffen L. Norgren
+--
+--		INTERFACE:		WAVEHDR* allocateBlocks(int size, int count)
+--
+--		RETURNS:		A pointer to the wave header that will be used for
+--						our audio playback.
+--
+--		NOTES:			
+------------------------------------------------------------------------*/
+WAVEHDR* allocateBlocks(int size, int count)
 {
-    char outBuf[MAXBUFSIZE];
-    if(strcmp(buf, "ready") == 0)
-    {
-        //initialize UDP function
-        SetFilePointer(hFile, bytesRead + 12, NULL, FILE_CURRENT);
-        //we only get this msg if we've already sent the header, therefore we know that the file is open
-            //may need to set +12 to +15
-        do
-        {
-            ReadFile(hFile, outBuf, sizeof(outBuf), &bytesRead, NULL);
-            //send(udp_sockfd, outBuf, sizeof(bytesRead), 0);
-        }
-        while(bytesRead > 0);
-    }
+	unsigned char* buffer;
+	int i;
+	WAVEHDR* blocks;
+	DWORD totalBufferSize = (size + sizeof(WAVEHDR)) * count;
+
+	/* allocate memory for the entire set in one go */
+	if((buffer = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, totalBufferSize)) == NULL)
+	{
+		MessageBox(NULL, "Memory allocation error.", "Error", MB_OK);
+		ExitProcess(1);
+	}
+
+	/*  and set up the pointers to each bit */
+	blocks = (WAVEHDR*)buffer;
+	buffer += sizeof(WAVEHDR) * count;
+
+	for(i = 0; i < count; i++)
+	{
+		blocks[i].dwBufferLength = size;
+		blocks[i].lpData = buffer;
+		buffer += size;
+	}
+
+	return blocks;
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		freeBlocks - As the name implies.
+--
+--		REVISIONS:		
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Steffen L. Norgren
+--
+--		INTERFACE:		void freeBlocks(
+--						WAVEHDR* blockArray) //pointer to the array to be free'd
+--
+--		RETURNS:		void
+--
+--		NOTES:			Prevents memory leeks by freeing the data we
+--						allocated to the heap.
+------------------------------------------------------------------------*/
+void freeBlocks(WAVEHDR* blockArray)
+{
+	/* and this is why allocateBlocks works the way it does */ 
+	HeapFree(GetProcessHeap(), 0, blockArray);
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		writeAudio - Takes in our buffer of data and writes
+--						it to the audio device for playback.
+--
+--		REVISIONS:		
+--
+--		DESIGNER:		Steffen L. Norgren
+--		PROGRAMMER:		Steffen L. Norgren
+--
+--		INTERFACE:		void writeAudio(
+--							HWAVEOUT hWaveOut, //audio device being used
+--							LPSTR data,	//pointer to our buffer to be played
+--							int size)	//length of the buffer
+--
+--		RETURNS:		void
+--
+--		NOTES:			
+------------------------------------------------------------------------*/
+void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
+{
+	WAVEHDR* current;
+	int remain;
+	current = &waveBlocks[waveCurrentBlock];
+
+	while(size > 0)
+	{
+		/* first make sure the header we're going to use is unprepared */
+		if(current->dwFlags & WHDR_PREPARED)
+			waveOutUnprepareHeader(hWaveOut, current, sizeof(WAVEHDR));
+
+		if(size < (int)(BLOCK_SIZE - current->dwUser))
+		{
+			memcpy(current->lpData + current->dwUser, data, size);
+			current->dwUser += size;
+			break;
+		}
+
+		remain = BLOCK_SIZE - current->dwUser; /* Comment out? */
+		memcpy(current->lpData + current->dwUser, data, remain);
+		size -= remain;
+		data += remain;
+		current->dwBufferLength = BLOCK_SIZE;
+		waveOutPrepareHeader(hWaveOut, current, sizeof(WAVEHDR));
+		waveOutWrite(hWaveOut, current, sizeof(WAVEHDR));
+
+		/* Critical section */
+		EnterCriticalSection(&waveCriticalSection);
+		waveFreeBlockCount--;
+		LeaveCriticalSection(&waveCriticalSection);
+
+		/* wait for a block to become free */
+		while(!waveFreeBlockCount)
+			Sleep(10);
+
+		/* point to the next block */
+		waveCurrentBlock++;
+		waveCurrentBlock %= BLOCK_COUNT;
+		current = &waveBlocks[waveCurrentBlock];
+		current->dwUser = 0;
+	}
 }

@@ -99,7 +99,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
                 /* connection has already been set up after connect was pressed, so we can start
                    sending right away. */
                 case IDC_BTN_BROADCAST:
-                    serv_broadcast(fileName);
+                    //serv_broadcast(fileName);
                     return FALSE;
 
 				default:

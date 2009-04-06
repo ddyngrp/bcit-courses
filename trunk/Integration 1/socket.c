@@ -100,7 +100,8 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	sockRead
 -- 
---	REVISIONS:	March 26 
+--	REVISIONS:	April 6 - Added the SINGLE_STREAM case which will call the function 
+--						  receiveStream().
 -- 
 --	DESIGNER:	Jerrod Hudson, Jaymz Boilard
 --	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
@@ -157,6 +158,11 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		{
 			Sleep(1);
 			client_download(wParam);
+		}
+		else if(ci.request == SINGLE_STREAM)
+		{
+			Sleep(1);
+			receiveStream(wParam);
 		}
 	}
 }

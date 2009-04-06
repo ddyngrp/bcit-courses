@@ -1,0 +1,49 @@
+TO SERVER:
+---------
+
+Packet information:
+  - Type			= 3 bits
+  - PlayerID			= 3 bits
+  - Type specific information	= 2 bits
+
+^ The above works for all but bomb explosion.
+
+Bomb Explosion packet:
+  - Type			= 3 bits
+  - Map				= 255 bytes
+  - Grid co-ord of bomb to boom = 1 byte
+  - Explosion lengths		= 2 bytes
+
+Types:
+-----
+0 - Movement
+1 - Player Quit
+2 - Bomb Planted
+3 - Bomb Explodes
+4 - Player Dies
+5 - Powerup
+
+Player IDs:
+----------
+0 - Player 1
+1 - Player 2
+2 - Player 3
+3 - Player 4
+4 - Player 5
+5 - Player 6
+6 - Player 7
+7 - Player 8
+
+Type specific information:
+-------------------------
+MOVEMENT
+0 - Up
+1 - Down
+2 - Left
+3 - Right
+
+POWERUP
+0 - Increase # bombs
+1 - Increase blast radius
+2 - Spikey bombs!
+3 - Not used

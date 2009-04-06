@@ -35,9 +35,9 @@ start_fuse(const int x, const int y, const int len)
 pthread_t pt;
 struct coords c;
 	
-	c.x = x;
-	c.y = y;
-	c.len = len;
+	c.x 	= x;
+	c.y 	= y;
+	c.len 	= len;
 
 	if (pthread_create(&pt, NULL, countdown, (void *)&c) != 0) {
 		perror("pthread_create() failed");
@@ -54,6 +54,6 @@ struct coords *c;
 
 	sleep(3);
 	explode_bomb(c->x, c->y, c->len);
-
+	
 	return NULL;
 }

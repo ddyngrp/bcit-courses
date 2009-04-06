@@ -106,7 +106,7 @@ destroy_block(const int x, const int y)
 {
 int i;
 	
-	i = rand() * 9;
+	i = 3; /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: takign out ofr now implement plz */
 	if (i == 0)
 		grid[x][y] = GRID_POWUP_NUM;
 	else if (i == 1)

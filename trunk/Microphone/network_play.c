@@ -25,7 +25,7 @@ void clnt_recv_tcp(char buf[])
     if(strncmp("fmt", buf, 3) == 0)
     {
         memcpy(&wavFmt, buf+3, sizeof(wavFmt)); //get the format from server
-        waveOutOpen(&hwo, WAVE_MAPPER, &wavFmt, 0, NULL,CALLBACK_NULL); //open the playing device
+        waveOutOpen(&hwo, WAVE_MAPPER, &wavFmt, 0, NULL, CALLBACK_NULL); //open the playing device
         waveOutPrepareHeader(hwo, &songData, sizeof(songData));
         //initialize UDP socket
         //send(tcpFd, "ready", 6, 0);

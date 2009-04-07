@@ -208,7 +208,7 @@ void open_mic_device()
 --		NOTES:			Copies mic data to an output buffer and sends
 --						across network
 ------------------------------------------------------------------------*/
-void read_mic_data(HWND hwnd, LPARAM buffer)
+void read_mic_data(LPARAM buffer)
 {
 	pNewBuffer = realloc(pSaveBuffer, dwDataLength + ((PWAVEHDR)buffer)->dwBytesRecorded);
 
@@ -253,7 +253,7 @@ void read_mic_data(HWND hwnd, LPARAM buffer)
 --
 --		NOTES:			Unregister headers with device and free resources
 ------------------------------------------------------------------------*/
-void close_mic(HWND hwnd)
+void close_mic()
 {
 	/* Free buffer memory */
 	waveInUnprepareHeader(hWaveIn, pWaveHdr1, sizeof(WAVEHDR));
@@ -267,7 +267,7 @@ void close_mic(HWND hwnd)
 	bRecording = FALSE;
 
 	if(bTerminating)
-		SendMessage(hwnd, WM_SYSCOMMAND, SC_CLOSE, 0L);
+		SendMessage(ghWndMain, WM_SYSCOMMAND, SC_CLOSE, 0L);
 }
 
 /*------------------------------------------------------------------------
@@ -295,7 +295,7 @@ void open_output_device()
 	pWaveHdr1->dwBytesRecorded	= 0;
 	pWaveHdr1->dwUser			= 0;
 	pWaveHdr1->dwFlags			= WHDR_BEGINLOOP | WHDR_ENDLOOP;
-	pWaveHdr1->dwLoops			= dwRepetitions;
+	pWaveHdr1->dwLoops			= 0;
 	pWaveHdr1->lpNext			= NULL;
 	pWaveHdr1->reserved			= 0;
 
@@ -307,25 +307,57 @@ void open_output_device()
 	bPlaying = TRUE;
 }
 
-void output_done(HWND hwnd)
+/*------------------------------------------------------------------------
+--		FUNCTION:		close_output
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void close_output()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Stops playing output
+------------------------------------------------------------------------*/
+void close_output()
 {
 	/* Enable buttons here */
 
-	dwRepetitions = 1;
 	bPlaying = FALSE;
 
 	if(bTerminating)
-		SendMessage(hwnd, WM_SYSCOMMAND, SC_CLOSE, 0L);
+		SendMessage(ghWndMain, WM_SYSCOMMAND, SC_CLOSE, 0L);
 }
 
-BOOL terminate_mic(HWND hwnd)
+/*------------------------------------------------------------------------
+--		FUNCTION:		terminate_mic_session
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void terminate_mic_session()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Stops recording from mic or playing from device
+--						and frees resources.
+------------------------------------------------------------------------*/
+void terminate_mic_session()
 {
 	if(bRecording)
 	{
 		bTerminating = TRUE;
 		bEnding = TRUE;
 		waveInReset(hWaveIn);
-		return TRUE;
+		return;
 	}
 
 	if(bPlaying)
@@ -333,13 +365,32 @@ BOOL terminate_mic(HWND hwnd)
 		bTerminating = TRUE;
 		bEnding = TRUE;
 		waveOutReset(hWaveOut);
-		return TRUE;
+		return;
 	}
 
 	free(pWaveHdr1);
 	free(pWaveHdr2);
 	free(pSaveBuffer);
-	EndDialog(hwnd, 0);
-	
-	return TRUE;
+}
+
+/*------------------------------------------------------------------------
+--		FUNCTION:		output_done
+--
+--		DATE:			March 31, 2009
+--
+--		REVISIONS:		(Date & Revisions)
+--
+--		DESIGNER:		Charles Petzold
+--		PROGRAMMER:		Jerrod Hudson
+--
+--		INTERFACE:		void output_done()
+--
+--		RETURNS:		void
+--
+--		NOTES:			Unprepare header and close output device
+------------------------------------------------------------------------*/
+void output_done()
+{
+	waveOutUnprepareHeader(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));
+	waveOutClose(hWaveOut);
 }

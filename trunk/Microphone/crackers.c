@@ -47,8 +47,7 @@ void OnClose(HWND hwnd)
 --		RETURNS:		void
 --
 --		NOTES:			This function performs actions based on the
---						message ID.  Currently, only menu items are
---						processed here.
+--						message ID.
 ------------------------------------------------------------------------*/
 void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
@@ -94,23 +93,27 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
 
 	case ID_MODE_CLIENT:
-		DialogBox(ghInst, MAKEINTRESOURCE(IDD_CLIENT), hwnd, (DLGPROC)ClientProc);
-		ci.behavior = CLIENT;
-		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
-		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		client(hwnd);
+		if(DialogBox(ghInst, MAKEINTRESOURCE(IDD_CLIENT), hwnd, (DLGPROC)ClientProc))
+		{
+			ci.behavior = CLIENT;
+			CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
+			CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
+			EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
+			EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+			client(hwnd);
+		}
 		break;
 
 	case ID_MODE_SERVER:
-		DialogBox(ghInst, MAKEINTRESOURCE(IDD_SERVER), hwnd, (DLGPROC)ServerProc);
-		ci.behavior = SERVER;
-		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
-		server(hwnd);
+		if(DialogBox(ghInst, MAKEINTRESOURCE(IDD_SERVER), hwnd, (DLGPROC)ServerProc))
+		{
+			ci.behavior = SERVER;
+			CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
+			CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
+			EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+			EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+			server(hwnd);
+		}
 		break;
 
 
@@ -155,19 +158,19 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_CHECKED);
 		ci.request = MICROPHONE;
 
-		/* disable control buttons */
+		/* disable control buttons here */
 		break;
 
 	case ID_FILE_LOCAL:
         if(busyFlag > 0) //we're already busy
-            return TRUE;
+            break;
         busyFlag = LOCALPLAY;
         memset(fileName, 0, 80);
 	    memset(pathName, 0, 80);
         browseFiles(hwnd, fileName, pathName);
         if(localSong_Init(hwnd, fileName) == FALSE)
             busyFlag = 0; //if we failed to open file
-        return FALSE;
+        break;
 
 	case ID_VIEW_CONNECTEDCLIENTS:
 		break;
@@ -179,7 +182,45 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		break;
 
 	case IDC_BTN_RECORD:
+		/* initialize microphone settings */
 		mic_record_beg();
+		break;
+
+	case MM_WIM_OPEN:
+		/* start recording */
+		open_mic_device();
+		break;
+
+	case MM_WIM_DATA:
+		read_mic_data(id);
+		break;
+
+	case MM_WIM_CLOSE:
+		close_mic();
+		break;
+
+	case MM_WOM_OPEN:
+		open_output_device();
+		break;
+
+	case MM_WOM_DONE:
+		output_done();
+		break;
+
+	case MM_WOM_CLOSE:
+		close_output();
+		break;
+
+	case WM_SYSCOMMAND:
+		switch(LOWORD(id))
+		{
+		case SC_CLOSE:
+			terminate_mic_session();
+
+		default:
+			break;
+		}
+
 		break;
 
 	default:
@@ -218,7 +259,7 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	ci.port	= DEFAULT_PORT;
 
 	ghMenu = GetMenu(hwnd);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
 	return TRUE;
 }

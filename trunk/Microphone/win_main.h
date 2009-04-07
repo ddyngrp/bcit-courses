@@ -77,7 +77,7 @@ static HWAVEOUT hwo;
 
 /* Microphone Globals */
 static BOOL			bRecording, bPlaying, bEnding, bTerminating;
-static DWORD		dwDataLength, dwRepetitions = 1;
+static DWORD		dwDataLength;
 static HWAVEIN		hWaveIn;
 static HWAVEOUT		hWaveOut;
 static PBYTE		pBuffer1, pBuffer2, pSaveBuffer, pNewBuffer;
@@ -121,11 +121,16 @@ void FreeSocketInformation(SOCKET s);
 LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);
 
 /* Microphone */
-void reverse_memory(BYTE *pBuffer, int iLength);
 void mic_record_beg();
 void mic_record_end();
 void mic_play_beg();
 void mic_play_end();
-void mic_play_reverse();
+void terminate_mic_session();
+void output_done();
+void open_output_device();
+void close_mic();
+void read_mic_data(LPARAM buffer);
+void open_mic_device();
+void close_output();
 
 #endif

@@ -46,13 +46,14 @@ int main(int argc, char *argv[])
 	//map.update_map(inMap, 17, 18);   //initial map
 	map->draw_map(screen);
 	SDL_Flip(screen);
-	sleep(10);
+	sleep(2);
 
 	if (argc != 2)
 	{
 	    fprintf(stdout, "Usage: [Server IP]\n");
 		exit(1);
 	}
+
 /* TODO take out comment
 	/// Negotiate connection with server
 	tcpSockFd = connection_setup(argv[1]);

@@ -35,6 +35,7 @@ POptMenu::POptMenu(std::string modelNames[], std::string fileNames[], std::strin
 	}
 	this->setMusic(Mix_LoadMUS( mfilename.c_str()));
 	this->setNexMusic(Mix_LoadWAV(smfilename.c_str()));
+	this->colour_ = 0;
 	printf("Option Menu Created!\n");
 
 }
@@ -160,6 +161,7 @@ bool POptMenu::showloaded()
 	result = move(0,0);
 	if(result){
 		printf("Background Loaded\n");
+		showColors();
 		result = showModels();
 	}
 	return 	result;
@@ -175,6 +177,28 @@ bool POptMenu::move(int xStep, int yStep)
 	return i == 0;
 }
 
+bool POptMenu::showColors(int x, int y)
+{
+	SDL_Rect offset;
+	offset.x = x;
+	offset.y = y;
+	SDL_BlitSurface(colors_, 0,screen_, &offset);
+}
+bool POptMenu::showColors()
+{
+	if(loaded_ != num_options_ - 2)
+		return false;
+
+	SDL_Rect offset;
+	offset.x = colorTopX;
+	offset.y = colorTopY;
+	SDL_BlitSurface(colors_, 0,screen_, &offset);
+	offset.x = offset.x + 50 * colour_ % 300;
+	offset.y = offset.y + 50 * colour_ / 300;
+	SDL_BlitSurface(cselect_, 0,screen_, &offset);
+
+	return true;
+}
 int POptMenu::start()
 {
 	printf("Option menu execution started\n");
@@ -209,18 +233,22 @@ int POptMenu::start()
 					if(!this->showloaded()) return 0;
 					break;
 				case SDLK_LEFT:
-					 if(loaded_ != 2)
+					 if(loaded_ == 2)
+					 {
+						 if(!this->move(0,0)) return 0;
+						 this->setModelLoaded(this->getModelLoaded() - 1);
+						 this->showModels();
 						 break;
-					 if(!this->move(0,0)) return 0;
-					 this->setModelLoaded(this->getModelLoaded() - 1);
-					 this->showModels();
-					break;
+					 }
+					 break;
 				case SDLK_RIGHT:
-					if(loaded_ != 2)
-						 break;
-					if(!this->move(0,0)) return 0;
-					this->setModelLoaded(this->getModelLoaded() + 1);
-					this->showModels();
+					if(loaded_ == 2)
+					{
+						if(!this->move(0,0)) return 0;
+						this->setModelLoaded(this->getModelLoaded() + 1);
+						this->showModels();
+						break;
+					}
 					break;
 				case SDLK_F11:
 					return 'f';
@@ -247,7 +275,7 @@ int POptMenu::start()
 					Mix_PlayChannel(-1, nexMusic_, 0);
 					if(!this->showloaded()) return 0;
 				}else
-					if((event.motion.x > 40) && (event.motion.x < 160) && (event.motion.y > 210) && (event.motion.y < 260))
+					if((event.motion.x > 40) && (event.motion.y > 210) && (event.motion.y < 260))
 				{
 
 					if(loaded_ == num_options_ - 2)

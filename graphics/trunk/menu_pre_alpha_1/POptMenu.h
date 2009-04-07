@@ -16,6 +16,8 @@ public:
 
 	static const int num_options_ = 5;  //number of options
 	static const int num_models_ = 8;
+	static const int colorTopX = 300;
+	static const int colorTopY = 200;
 
 	int getNum_models() const{
 	        return num_models_;
@@ -114,8 +116,19 @@ public:
 
     bool showModels();
     bool showloaded();
+    bool showColors(int x, int y);
+    bool showColors();
     bool move(int xStep, int yStep);
     int start();
+    SDL_Surface *getColors() const
+    {
+        return colors_;
+    }
+
+    void setColors(SDL_Surface *colors)
+    {
+        this->colors_ = colors;
+    }
 
     int getLoaded() const
     {
@@ -159,12 +172,15 @@ public:
 private:
 	int loaded_;
 	int modelLoaded_;
+	int colour_;
 	std::string fileNames_[num_options_]; // background files
 	std::string modelNames_[num_models_]; // model files
 	SDL_Surface* backgrounds_[num_options_];//the actual loaded backgrounds
 	SDL_Surface* models_[num_models_];
 	SDL_Surface* zoomed_[7];	//shrink image of models
 	SDL_Surface* screen_;
+	SDL_Surface* colors_; //name colors
+	SDL_Surface* cselect_;
 	Mix_Music *music_;
 	Mix_Chunk *nexMusic_;
 

@@ -20,6 +20,10 @@ int main( int argc, char* args[] )
 	bool fulls = false, exitGame = false;
 	Uint32 countStart,fps;
     SDL_Event event;
+    SDL_Surface *screen;
+    SDL_Surface *colours;
+    //init SDL
+    if (!init_everything(screen)){return 1;}
     //filenames for options in main menu
     std::string mainOpts[MainMenu2::num_options_]={"img/MainBackgroundv3.png","img/ExitBackgroundv3.png",
 													"img/SelPlayerBackgroundv3.png","img/StartBackgroundv3.png"
@@ -31,10 +35,8 @@ int main( int argc, char* args[] )
 
     std::string playaOpts[POptMenu::num_options_] = {"img/POptMainMenuv1.png","img/POptBackMenuv1.png", "img/POptModelMenuv1.png"
 													,"img/POptColourMenuv1.png", "img/POptNameMenuv1.png"};
-    SDL_Surface *screen;
+    colours = load_image("img/colors.png");
 
-    //init SDL
-    if (!init_everything(screen)){return 1;}
     //set the screen
     screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_SWSURFACE | SDL_DOUBLEBUF );
     printf("Done init all Loading main...\n");
@@ -43,7 +45,7 @@ int main( int argc, char* args[] )
     MainMenu2 main(mainOpts, "sound/mc.ogg","sound/click.wav", screen);
     OkCancel  exitMenu(exitOpts, "sound/click.wav", screen);
     POptMenu pMenu(models, playaOpts, "sound/mc.ogg","sound/click.wav", screen);
-
+    pMenu.setColors(colours);
 	mmresult = 0;
 	ocresult = 0;
 	exitGame = false;

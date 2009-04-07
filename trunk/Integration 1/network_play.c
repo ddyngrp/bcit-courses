@@ -28,9 +28,9 @@ static DWORD bytesRead;
 
 /* Global Variables */
 static CRITICAL_SECTION waveCriticalSection;
-static WAVEHDR* waveBlocks;
-static volatile int waveFreeBlockCount;
-static int waveCurrentBlock;
+static WAVEHDR*			waveBlocks;
+static volatile int		waveFreeBlockCount;
+static int				waveCurrentBlock;
 
 /*------------------------------------------------------------------------
 --		FUNCTION:		receiveStream - The main function to receive a TCP 
@@ -152,7 +152,7 @@ void sendStream(WPARAM sd, PTSTR fileName)
 	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
 		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE)
 	{
-		MessageBox(hwnd,"Unable to open file.","Error", MB_OK);
+		MessageBox(NULL,"Unable to open file.","Error", MB_OK);
 		ExitProcess(1);
 	}
 
@@ -162,12 +162,12 @@ void sendStream(WPARAM sd, PTSTR fileName)
 
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL))
 		{
-			closesocket(new_sd);
+			closesocket(sd);
 			break;
 		}
 		if(readBytes == 0)
 		{
-			closesocket(new_sd);
+			closesocket(sd);
 			break;
 		}
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
@@ -199,7 +199,8 @@ void sendStream(WPARAM sd, PTSTR fileName)
 --						asyncronous call to play the audio.  (ie. it performs
 --						its work as a separate thread).
 ------------------------------------------------------------------------*/
-static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, 
+								 DWORD dwParam1, DWORD dwParam2)
 {
 	/* pointer to free block counter */
 	 int* freeBlockCounter = (int*)dwInstance;

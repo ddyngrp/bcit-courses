@@ -132,6 +132,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			return;
 		}
 
+		/* First packet we get in, which specifies the type of operation that the user wants to perform */
 		if(recv(wParam, buffer, sizeof(buffer), 0) == -1)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
@@ -150,6 +151,12 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(strcmp(buffer, "Single Upload") == 0)
 			ci.request = SINGLE_UP;
+		else if(strncmp(buffer, "Stream:", 7) == 0)
+		{
+			ci.request = SINGLE_STREAM;
+			fileName = buffer+7;	//separate the filename from the rest of the buffer
+			sendStream(wParam, fileName);
+		}
 			
 	}
 	else if (ci.behavior == CLIENT)
@@ -192,6 +199,8 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
 
 	memset(buffer, '\0', BUFSIZE);
+	memset(fileName, '\0', FILEBUFSIZE);
+	memset(pathName, '\0', FILEBUFSIZE);
 	if(ci.behavior == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
@@ -205,8 +214,11 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			browseFiles(hwnd, fileName, pathName);
 		}
 		else if(ci.request == SINGLE_STREAM)
-			strcpy_s(buffer, BUFSIZE, "Stream");
-
+		{
+			strcpy_s(buffer, BUFSIZE, "Stream:");
+			browseFiles(hwnd, fileName, pathName);
+			strcat(buffer, fileName);   //eg. Stream:C:\Windows\media\WinXPStartup.wav
+		}
 		else if(ci.request == MULTI_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Multicast");
 
@@ -224,6 +236,11 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			Sleep(1);
 			server_download(wParam, fileName); /* Client's upload is inverse of server's download */
 		}
+		/*else if(ci.request == SINGLE_STREAM)
+		{
+			Sleep(1);
+			receiveStream(wParam);
+		}*/
 	}
 	else if (ci.behavior == SERVER)
 		MessageBox(NULL, TEXT("Warning: Asyncronous TCP write called by the serverk (should not happen).\n"), NULL, MB_OK);

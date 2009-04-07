@@ -47,7 +47,8 @@
 --
 ---------------------------------------------------------------------------------------*/
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
-	switch (message){
+	switch (message)
+	{
 		HANDLE_MSG(hWnd, WM_CREATE, OnCreate);
 		HANDLE_MSG(hWnd, WM_SIZE, OnSize);
 		HANDLE_MSG(hWnd, WM_COMMAND, OnCommand);

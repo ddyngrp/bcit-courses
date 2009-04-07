@@ -102,6 +102,7 @@ void freeBlocks(WAVEHDR* blockArray);
 WAVEHDR* allocateBlocks(int size, int count);
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
 void receiveStream(WPARAM sd);
+void sendStream(WPARAM sd, PTSTR fileName);
 
 /* Services */
 void server_download(WPARAM wParam, PTSTR	fileName);

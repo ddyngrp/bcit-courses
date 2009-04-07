@@ -129,7 +129,7 @@ void start_udp_client(char *hostname){
     
     fflush(stdout);
     /* sending keyboard inputs*/
-   for(;;){
+	for(;;){
    		inbuf[0] = 0;
    		outbuf[0] = 0;
    		fgets(inbuf, MAXLEN, stdin);

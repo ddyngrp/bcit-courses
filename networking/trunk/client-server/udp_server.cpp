@@ -55,8 +55,9 @@ void *start_udp_server(void *ptr) {
 		p1.setX(1);
 		p1.setY(2);
 		p1.setNumBombs(3);
+		p1.setName("david");
 
-		send_udp_player(p1, sd, udpclient);
+		send_udp_player(&p1, sd, udpclient);
 		printf("sent p1\n");
 
 		pthread_testcancel();

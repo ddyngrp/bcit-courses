@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <iostream>
+#include <sstream>
+
 #include "DPlaya.h"
 #include "serialize.h"
 
@@ -11,28 +14,26 @@
  * 
  *  Date:        March 30, 2009
  *
- *  Revisions:   
+ *  Revisions:   April 6, 2009 - David Young
+ *					Changed to fix some bugs we were having with memcpy.
+ * 					Apparently memcpy can't be trusted for objects.
+ *					Changed parameters and return type.
  * 
  *  Designer:    David Young
  *  Programmer:  David Young
  * 
- *  Interface:   serialize_player(DPlaya *player, char *buf, int buflen)
+ *  Interface:   serialize_player(DPlaya *player)
  *		            DPlaya *player: Pointer to the DPlaya object to be serialized
- *                  char *buf: buffer to put the serialized form of the player into
- *					int buflen: the length of buf
  * 
- *  Returns:     0 on success or (-1) on failure.
+ *  Returns:     const char * containing the serialized form of the player.
  * 
- *  Description: Serialize player's data members into buf to be passed across the network.
+ *  Description: Serialize player's data members to be passed across the network.
  *
  *****************************************************************************/
-int serialize_player(DPlaya *player, char *buf, size_t buflen) {
-	if(buflen < sizeof(DPlaya)) {
-		return -1;
-	}
-	
-	memcpy(buf, player, sizeof(DPlaya));
-	return 0;
+const char *serialize_player(DPlaya *player) {
+	std::ostringstream oss(std::ios::binary);
+	oss.write((char *)player, sizeof(DPlaya));
+	return oss.str().c_str();
 }
 
 /******************************************************************************
@@ -123,7 +124,7 @@ int unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS]) {
 
 void send_tcp_player(DPlaya p1, int sockfd) {
 	char buf[BUF_LEN];
-	serialize_player(&p1, buf, BUF_LEN);
+	serialize_player(&p1);
 
 	if ((send(sockfd, buf, sizeof(DPlaya), 0)) == -1) {
 		perror("send() call failed.");
@@ -145,17 +146,11 @@ DPlaya recv_tcp_player(int sockfd) {
 	return p1;
 }
 
-void send_udp_player(DPlaya p1, int socketfd, struct sockaddr_in udpserver) {
-	char buf[BUF_LEN];
-
-	serialize_player(&p1, buf, BUF_LEN);
-
-	buf[(strlen(buf)+1)] = '\0';
-	
-	if (sendto(socketfd, buf,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
-        	perror("sendto failure");
-        	exit(1);
-    	}
+void send_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
+	if (sendto(socketfd, serialize_player(p1) ,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+       	perror("sendto failure");
+       	exit(1);
+    }
 }
 
 void recv_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
@@ -172,7 +167,7 @@ void recv_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
 		exit(EXIT_FAILURE);
 	} else {
 		unserialize_player(buf, p1);
+		printf("%d %d %d recv_udp_player\n", p1->getX(), p1->getY(), p1->getNumBombs());
 	}
-
 }
 

@@ -56,7 +56,7 @@ public:
 	void killPlayer(){alive_ = false;}
 	void spawnPlayer(){alive_ = true;}
 	void setID(int id){DPlayaID_ = id;}
-	void setName(char *name){strcpy(name_, name);}
+	void setName(const char *name){strcpy(name_, name);}
 	void setColor(char color){color_ = color;}
 	void set_ip_netformat(unsigned long ip) {ip_netformat_ = ip;}
 
@@ -67,7 +67,7 @@ private:
 int x_, y_, w_,h_, numBombs_, droppedBombs_, xVel, yVel;
 int DPlayaID_;
 int bombPower_;
-int ip_netformat_;
+unsigned long ip_netformat_;
 bool alive_;
 char name_[256];
 char color_;

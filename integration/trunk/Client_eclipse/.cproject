@@ -35,6 +35,7 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1288264669" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 <option id="gnu.cpp.link.option.libs.283194174" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="SDL"/>
+<listOptionValue builtIn="false" value="SDL_mixer"/>
 <listOptionValue builtIn="false" value="SDL_image"/>
 <listOptionValue builtIn="false" value="SDL_ttf"/>
 <listOptionValue builtIn="false" value="SDL_gfx"/>
@@ -301,6 +302,7 @@
 </scannerConfigBuildInfo>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="cdt.managedbuild.config.gnu.exe.release.1857387136">
 <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.release.1857387136" moduleId="org.eclipse.cdt.core.settings" name="Release">
@@ -594,6 +596,7 @@
 </scannerConfigBuildInfo>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">

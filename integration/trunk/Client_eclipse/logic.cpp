@@ -1,13 +1,13 @@
 /*---------------------------------------------------------------------------------------------
 --      SOURCE FILE:	logic.cpp - Main processor of what the client needs to do, may have
 --									some overlap with the network and graphics processing.
---            
---      PROGRAM:        TuxBomber 
+--
+--      PROGRAM:        TuxBomber
 --
 --      FUNCTIONS:      void fork_off(int tcpSockFd)
---                      void handle_input()      
+--                      void handle_input()
 --
---      REVISIONS:      
+--      REVISIONS:
 --
 --      DESIGNER:       Jaymz Boilard
 --      PROGRAMMER:		Jaymz Boilard
@@ -16,13 +16,10 @@
 #include "DPlaya.h"
 #include "Map/user_map.h"
 #include "defs.h"
-SDL_Surface *screen  = NULL;
-extern user_map map;
-
 /*---------------------------------------------------------------------------------------------
 --      FUNCTION: 		fork_off
 --
---      REVISIONS:      
+--      REVISIONS:
 --
 --      DESIGNER:       Jaymz Boilard
 --      PROGRAMMER:     Jaymz Boilard
@@ -36,7 +33,7 @@ extern user_map map;
 --						commands incoming from the server & will call the functions needed to
 --						redraw the map based on that.
 ---------------------------------------------------------------------------------------------*/
-void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
+void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[], user_map *map, SDL_Surface *screen)
 {
 	pid_t pid;
 	char sendbuf[MAXLEN], recvbuf[MAXLEN], buf[MAXLEN];
@@ -45,7 +42,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 	bool quit = false;
 	DPlaya  tmpPlaya;
 	unsigned char **inMap;
-	
+
 	if((pid = fork()) < 0)
 	{
     	perror("Fork");
@@ -69,7 +66,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 			    }
 			}
 		}
-		
+
 	}
 	else
 	{
@@ -83,7 +80,7 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 			}
 			//recvbuf[r] = '\0';
 			//memcpy(inMap, recvbuf, sizeof(inMap));
-			
+
 			if (recvbuf[0] == TYPE_MOVE)
 			{
 				//Change the string back into a class
@@ -95,9 +92,10 @@ void fork_off(int tcpSockFd, int udpSockFd, DPlaya allPlayers[])
 			else if (recvbuf[0] == TYPE_EXPLODE)
 			{
 				memcpy(inMap, recvbuf + 1, sizeof(map));
-				map.update_map(inMap, 17, 18);
-				map.draw_map(screen);
-            }		
+				map->update_map(inMap, 17, 18);
+				map->draw_map(screen);
+				SDL_Flip(screen);
+            }
 		}
 	}
 }
@@ -123,7 +121,7 @@ void handle_input(int tcpSockFd, int udpSockFd, SDL_Event event)
 {
 	char * outBuf;
     struct sockaddr_in server;
-    socklen_t servLen;        
+    socklen_t servLen;
 
 
     //If a key was released
@@ -136,7 +134,7 @@ void handle_input(int tcpSockFd, int udpSockFd, SDL_Event event)
 		        perror("sendto failure");
 			exit(1);
 		}
-			
+
 		/* Regular keystrokes we can send through UDP */
 		memcpy(outBuf, (void *)event.key.keysym.sym, sizeof(outBuf));
 		if (sendto(udpSockFd,outBuf,strlen(outBuf),0,(struct sockaddr *)&server, sizeof(servLen))==-1)

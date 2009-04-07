@@ -30,8 +30,8 @@ void *start_udp_server(void *ptr) {
 	udpserver.sin_port = htons(port);
 	udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
 	if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
-			perror("Binding Socket");
-			exit(EXIT_FAILURE);
+		perror("Binding Socket");
+		exit(EXIT_FAILURE);
 	}
 
 	for(;;) {
@@ -46,7 +46,7 @@ void *start_udp_server(void *ptr) {
 			}
 		}
 
-		printf("recv: %s\n", udpbuf);
+		printf("%s\n", udpbuf);
 		
 		if((player_loc = get_player_loc(udpclient.sin_addr.s_addr)) >= 0 && player_loc < MAX_PLAYERS) {
 			receive_packet(udpbuf[0], player_loc);
@@ -58,7 +58,6 @@ void *start_udp_server(void *ptr) {
 		p1.setName("david");
 
 		send_udp_player(&p1, sd, udpclient);
-		printf("sent p1\n");
 
 		pthread_testcancel();
 	}

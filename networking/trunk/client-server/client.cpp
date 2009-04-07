@@ -2,6 +2,7 @@
 #include "network.h"
 #include "DPlaya.h"
 #include "serialize.h"
+#include <sys/select.h>
 
 #define MAX_LEN 1024
 #define BUF_LEN 64
@@ -34,8 +35,8 @@ void start_client(char * server, char * port) {
 	char sendbuf[MAXLEN], recvbuf[MAXLEN];
 	int sockfd;
 	int ret;
-	//fd_set readfds;
-
+	fd_set rfds;
+	int stdin_fd = fileno(stdin);
 
 	memset(&hints,0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -70,24 +71,53 @@ void start_client(char * server, char * port) {
 
 	freeaddrinfo(serverinfo);
 
-	/* TODO: Add the ability to detect server disconnects */
-	while (fgets(sendbuf, MAXLEN, stdin)) {
+
+	for(;;) {
 		int r;
-		if ((send(sockfd, sendbuf, strlen(sendbuf), 0)) == -1) {
-			perror("send() call failed.");
-			continue;
+
+		FD_ZERO(&rfds);
+		FD_SET(sockfd, &rfds);
+		FD_SET(stdin_fd, &rfds);
+
+		if(select(sockfd+1, &rfds, NULL, NULL, NULL) == -1) {
+			perror("select() failed");	
 		}
-		if (strcmp(sendbuf,"start\n") == 0){
-			start_udp_client(server);            
-		} else {
-			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) == -1) {
+
+		if(FD_ISSET(sockfd, &rfds)) {
+			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) <= 0) {
+				if(r == 0) {
+					perror("server closed");
+					exit(EXIT_FAILURE);
+				}
 				perror("recv call() failed.");
 				continue;
 			}
 			recvbuf[r] = '\0';
 			fprintf(stdout, "%s", recvbuf);
+			if (strcmp(recvbuf,"start\n") == 0)
+				start_udp_client(server); 
+		} else if(FD_ISSET(stdin_fd, &rfds)) {
+			fgets(sendbuf, MAXLEN, stdin);
+			if ((send(sockfd, sendbuf, strlen(sendbuf), 0)) == -1) {
+				perror("send() call failed.");
+				continue;
+			}
+		   
+			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) == -1) {
+				if(r == 0) {
+					perror("server closed");
+					exit(EXIT_FAILURE);
+				}
+				perror("recv call() failed.");
+				continue;
+			}
+			recvbuf[r] = '\0';
+			fprintf(stdout, "%s", recvbuf);
+			if (strcmp(recvbuf,"start\n") == 0)
+				start_udp_client(server); 
 		}
 	}
+
 }
 
 void start_udp_client(char *hostname){
@@ -100,40 +130,40 @@ void start_udp_client(char *hostname){
 
 	printf("starting udp server..\n");
 	
-    if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
-        perror("Can't crete a socket\n");
-        exit(1);
-    }
-    
-    /*store server */
-    bzero((char*)&udpserver,sizeof(udpserver));
-    udpserver.sin_family=AF_INET;
-    udpserver.sin_port = htons(udp_port);
-    
-    if ((hp = gethostbyname(hostname))==NULL){
-        fprintf(stderr,"Can't get server's IP address\n");
-        exit(1);
-    }
-    
-    bcopy(hp->h_addr, (char *)&udpserver.sin_addr,hp->h_length);
-    /*bind local address to the socket*/
-    bzero((char*)&udpclient,sizeof(udpclient));
-    udpclient.sin_family = AF_INET;
-    udpclient.sin_port = htons(0);
-    udpclient.sin_addr.s_addr = htonl(INADDR_ANY);
-    
-    if (bind(sd,(struct sockaddr *)&udpclient, sizeof(udpclient)) ==-1){
-        perror("Can't bind name to socket");
-        exit(1);
-    }
-    
-    fflush(stdout);
+	if ((sd = socket(AF_INET,SOCK_DGRAM,0))==-1){
+		perror("Can't crete a socket\n");
+		exit(1);
+	}
+
+	/*store server */
+	bzero((char*)&udpserver,sizeof(udpserver));
+	udpserver.sin_family=AF_INET;
+	udpserver.sin_port = htons(udp_port);
+
+	if ((hp = gethostbyname(hostname))==NULL){
+		fprintf(stderr,"Can't get server's IP address\n");
+		exit(1);
+	}
+
+	bcopy(hp->h_addr, (char *)&udpserver.sin_addr,hp->h_length);
+	/*bind local address to the socket*/
+	bzero((char*)&udpclient,sizeof(udpclient));
+	udpclient.sin_family = AF_INET;
+	udpclient.sin_port = htons(0);
+	udpclient.sin_addr.s_addr = htonl(INADDR_ANY);
+
+	if (bind(sd,(struct sockaddr *)&udpclient, sizeof(udpclient)) ==-1){
+		perror("Can't bind name to socket");
+		exit(1);
+	}
+
+	fflush(stdout);
     /* sending keyboard inputs*/
 	for(;;){
+		int n;
    		inbuf[0] = 0;
    		outbuf[0] = 0;
    		fgets(inbuf, MAXLEN, stdin);
-
 		inbuf[1] = '\0';
 
 		if (sendto(sd, inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
@@ -141,7 +171,12 @@ void start_udp_client(char *hostname){
 			exit(1);
 	    	}
 
-		if (recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver)) < 0){
+		if ((n = recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
+			if(n==0) {
+				printf("server hung up\n");
+				exit(EXIT_FAILURE);
+			}
+		
 			perror("recvfrom error");
 			exit(1);
 		}

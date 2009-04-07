@@ -173,25 +173,27 @@ void start_server(void) {
 							//perror("process_data");
 						}*/
 
-						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
-							/* Create UDP Server thread */
-							pthread_create(&udp_thread, NULL, start_udp_server, (void *)NULL);
-							/* start_udp_server(); */
-						}
+
 
 						/* Sending to clients is handled by network.cpp
 						 * enable this for echo testing */
-						else {
-							for (j = 0; j <= ptcp_server->fd_max; j++) {
-								if (FD_ISSET(j, &ptcp_server->master)) {
-									if (j != ptcp_server->listener && j == i) {
-										if (send(j, ptcp_server->recvBuff, ptcp_server->recvBytes, 0) == -1) {
-											perror("send");
-										}
+						for (j = 0; j <= ptcp_server->fd_max; j++) {
+							if (FD_ISSET(j, &ptcp_server->master)) {
+								if (j != ptcp_server->listener /*&& j == i*/) {
+									if (send(j, ptcp_server->recvBuff, ptcp_server->recvBytes, 0) == -1) {
+										perror("send");
 									}
 								}
 							}
 						}
+
+						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
+							/* Create UDP Server thread */
+							pthread_create(&udp_thread, NULL, start_udp_server, (void *)NULL);
+							/* start_udp_server(); */
+						} /*else {
+							printf("%s", (const char*)ptcp_server->recvBuff);
+						}*/
 					}
 				} /* end of handling data from the client */
 			} /* end of new connection */

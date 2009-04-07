@@ -148,9 +148,9 @@ DPlaya recv_tcp_player(int sockfd) {
 
 void send_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
 	if (sendto(socketfd, serialize_player(p1) ,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
-       	perror("sendto failure");
-       	exit(1);
-    }
+	       	perror("sendto failure");
+	       	exit(1);
+	}
 }
 
 void recv_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {

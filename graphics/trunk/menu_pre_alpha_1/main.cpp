@@ -36,7 +36,7 @@ int main( int argc, char* args[] )
     //init SDL
     if (!init_everything(screen)){return 1;}
     //set the screen
-    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_DOUBLEBUF);
+    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_SWSURFACE | SDL_DOUBLEBUF );
     printf("Done init all Loading main...\n");
 
     //create main menu and exit dialog
@@ -136,7 +136,7 @@ int main( int argc, char* args[] )
 		case 'f': //full screen
 			fulls = !fulls;
 			screen = fulls?SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32,	SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN):
-							SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32,	SDL_SWSURFACE | SDL_DOUBLEBUF );
+							SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32,	 SDL_SWSURFACE | SDL_DOUBLEBUF  );
 			break;
 		}
 	}

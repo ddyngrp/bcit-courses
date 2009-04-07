@@ -20,7 +20,7 @@ bool init_everything(SDL_Surface* screen)
     }
     printf("...");
     //Set up the screen
-    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_SWSURFACE | SDL_DOUBLEBUF );
+    screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME );
 
     //If there was an error in setting up the screen
     if( screen == NULL )

@@ -16,6 +16,12 @@ void *start_udp_server(void *ptr) {
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
 	DPlaya p1;
+	struct tcp_server *fdcollection;
+
+	fdcollection = (struct tcp_server *)ptr;
+
+
+	FD_ZERO(&fdcollection->master);
 	
 	printf("starting udp server..\n");
 	fflush(stdout);
@@ -35,6 +41,7 @@ void *start_udp_server(void *ptr) {
 	}
 
 	for(;;) {
+		int j;
 		client_len = sizeof(udpclient);
 		if((n = recvfrom(sd, udpbuf, 2, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
 			if(n == 0) {
@@ -57,7 +64,14 @@ void *start_udp_server(void *ptr) {
 		p1.setNumBombs(3);
 		p1.setName("david");
 
-		send_udp_player(&p1, sd, udpclient);
+		/*for (j = 0; j <= fdcollection->fd_max; j++) {
+			if (FD_ISSET(j, &fdcollection->master)) {
+				if (j != fdcollection->listener && j == i) {*/
+					send_udp_player(&p1, j, udpclient);
+				/*}
+			}
+		}*/
+		
 
 		pthread_testcancel();
 	}

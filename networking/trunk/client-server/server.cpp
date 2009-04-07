@@ -189,7 +189,7 @@ void start_server(void) {
 
 						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
 							/* Create UDP Server thread */
-							pthread_create(&udp_thread, NULL, start_udp_server, (void *)NULL);
+							pthread_create(&udp_thread, NULL, start_udp_server, (void *) &ptcp_server);
 							/* start_udp_server(); */
 						} /*else {
 							printf("%s", (const char*)ptcp_server->recvBuff);
@@ -200,3 +200,6 @@ void start_server(void) {
 		} /* end of descriptor loop */
 	} /* end of infinite while loop */
 }
+
+
+

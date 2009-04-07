@@ -122,6 +122,7 @@ int unserialize_map(char *serialized_form, char map[MAP_ROWS][MAP_COLS]) {
 	return 0;
 }
 
+/* implement this.. */
 void send_tcp_player(DPlaya p1, int sockfd) {
 	char buf[BUF_LEN];
 	serialize_player(&p1);
@@ -131,6 +132,7 @@ void send_tcp_player(DPlaya p1, int sockfd) {
 	}
 }
 
+/* implement this.. */
 DPlaya recv_tcp_player(int sockfd) {
 	DPlaya p1;
 	char buf[BUF_LEN];
@@ -146,6 +148,7 @@ DPlaya recv_tcp_player(int sockfd) {
 	return p1;
 }
 
+/* works .. */
 void send_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
 	if (sendto(socketfd, serialize_player(p1) ,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
 	       	perror("sendto failure");
@@ -153,6 +156,7 @@ void send_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
 	}
 }
 
+/* doesn't work.. */
 void recv_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
 	char buf[BUF_LEN];
 	int ret;

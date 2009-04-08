@@ -1,6 +1,7 @@
 #include "server.h"
 #include "network.h"
 #include "globals.h"
+#include "utils.h"
 
 #define MAX_LEN 1024
 #define BUF_LEN 64
@@ -31,6 +32,8 @@ void *start_udp_server(void *ptr) {
 		exit(EXIT_FAILURE);
 	}
 
+	printf("%d line\n", __LINE__);
+
 	bzero((char *)&udpserver, sizeof(udpserver));
 	udpserver.sin_family = AF_INET;
 	udpserver.sin_port = htons(port);
@@ -40,10 +43,14 @@ void *start_udp_server(void *ptr) {
 		exit(EXIT_FAILURE);
 	}
 
+printf("%d line\n", __LINE__);
+
 	for(;;) {
 		int j;
 		client_len = sizeof(udpclient);
+printf("%d line\n", __LINE__);
 		if((n = recvfrom(sd, udpbuf, 2, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
+printf("%d line\n", __LINE__);
 			if(n == 0) {
 				fprintf(stderr,"Connection closed on socket: %d\n", sd);
 				continue;

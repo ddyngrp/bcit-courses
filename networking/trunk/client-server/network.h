@@ -63,6 +63,5 @@ int get_player_id(int info);
 int get_extra_info(int info);
 unsigned char create_info_byte(int action, int player, int extra);
 void receive_packet(char b, int index);
-int get_player_loc(unsigned long ip_netformat);
 
 #endif

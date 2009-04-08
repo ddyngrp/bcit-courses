@@ -87,12 +87,6 @@ void client_download(WPARAM wParam)
 	/* Clear the buffer */
 	memset(buffer, 0, sizeof(buffer));
 
-	if((hFile = CreateFile("testIn.wav", GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
-	{
-		MessageBox(NULL, TEXT("Error opening file!"), NULL, MB_ICONERROR);
-		return;
-	}
-
 	if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
 	{
 		if (WSAGetLastError() != WSAEWOULDBLOCK)
@@ -106,7 +100,13 @@ void client_download(WPARAM wParam)
 		if(strncmp(buffer, "FILE", 4) == 0)
 		{
 			receiveFileList(wParam, buffer);
-			CloseHandle(hFile);
+			//CloseHandle(hFile);
+			return;
+		}
+
+		if((hFile = CreateFile(ci.DLfileName, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
+		{
+			MessageBox(NULL, TEXT("Error opening file!"), NULL, MB_ICONERROR);
 			return;
 		}
 

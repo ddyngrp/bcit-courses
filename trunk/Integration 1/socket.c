@@ -115,8 +115,9 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char buffer[BUFSIZE];
+	int bytesRead;
 	int cSize;
-	PTSTR fileName;
+	static BOOL firstTime = TRUE;
 
 	if(wParam == INVALID_SOCKET)
 		return;
@@ -128,6 +129,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	{
 		if(ci.request == SINGLE_UP)
 		{
+			strcpy(ci.DLfileName, "upload_file");
 			client_download(wParam); /* The client's download is the inverse of the server's upload */
 			return;
 		}
@@ -145,7 +147,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if(ci.request == SINGLE_DL) //need to set request to 0 when we click on server & gray the other request items
 			server_download(wParam, buffer); /* Go right to sending the file. */
 		else if(ci.request == SINGLE_STREAM)
-			sendStream(wParam, fileName);
+			sendStream(wParam, buffer);
 
 		/* Set the type according to the first packet */
 		if(strcmp(buffer, "Single Download") == 0)
@@ -170,8 +172,22 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
-			Sleep(1);
-			receiveStream(wParam);
+			if(firstTime == FALSE)
+				receiveStream(wParam);
+			else
+			{
+				if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
+				{
+					if (WSAGetLastError() != WSAEWOULDBLOCK)
+					{
+						MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+						closesocket(wParam);
+					}
+				}
+				receiveFileList(wParam, buffer);
+				firstTime = FALSE;
+			}
+			
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
@@ -222,11 +238,7 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			browseFiles(hwnd, fileName, pathName);
 		}
 		else if(ci.request == SINGLE_STREAM)
-		{
 			strcpy_s(buffer, BUFSIZE, "Stream");
-			browseFiles(hwnd, fileName, pathName);
-			strcat(buffer, fileName);   //eg. Stream:C:\Windows\media\WinXPStartup.wav
-		}
 		else if(ci.request == MULTI_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Multicast");
 

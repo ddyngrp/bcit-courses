@@ -89,7 +89,8 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 					fileName = GetSelList();
 					memset(outBuf, '\0', 200);
 					strcpy(outBuf, fileName);
-					strcpy((char *)outBuf, fileName); 
+					strcpy((char *)outBuf, fileName);
+					strcpy(ci.DLfileName, fileName);
 
 					if(send(ci.tcpSocket, outBuf, sizeof(outBuf), 0) == -1)
 					{

@@ -18,7 +18,7 @@
 #define DEFAULT_PORT	9000
 #define EDITSIZE		50
 #define BUFSIZE			4096
-#define BLOCK_SIZE		1024
+#define BLOCK_SIZE		44100
 #define BLOCK_COUNT		20
 
 #define FILEBUFSIZE		120
@@ -48,6 +48,7 @@ typedef struct _CONNECTINFO
 	int behavior;  //server or client
 	int request;	//DL, UP, stream, multi stream
 	int protocol;
+	char DLfileName[200]; //the name of the file to create when we download a song
 	SOCKET			tcpSocket;
 } connectInfo;
 

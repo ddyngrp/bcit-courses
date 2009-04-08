@@ -69,7 +69,7 @@ void receiveStream(WPARAM sd)
 	InitializeCriticalSection(&waveCriticalSection);
 
 	/* set up the WAVEFORMATEX structure. */
-	wfx.nSamplesPerSec = 44100;	/* sample rate */
+	wfx.nSamplesPerSec = 8600;	/* sample rate */
 	wfx.wBitsPerSample = 16;	/* sample size */
 	wfx.nChannels= 2;			/* channels*/
 	wfx.cbSize = 0;				/* size of _extra_ info */
@@ -100,7 +100,7 @@ void receiveStream(WPARAM sd)
 		else if(n < sizeof(buffer))
 			memset(buffer + n, 0, sizeof(buffer) - n);
 
-		writeAudio(hWaveOut, buffer, sizeof(buffer));
+		writeAudio(hWaveOut, buffer, n);
 	}
 
 	closesocket(sd);
@@ -146,7 +146,7 @@ void receiveStream(WPARAM sd)
 void sendStream(WPARAM sd, PTSTR fileName)
 {
 	/* TCP connection related variables */
-	char	buffer[BUFSIZE]; /* intermediate buffer for reading */
+	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 
 	/* try and open the file */
 	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
@@ -173,7 +173,8 @@ void sendStream(WPARAM sd, PTSTR fileName)
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
 
-		send(sd, buffer, BUFSIZE, 0);
+		send(sd, buffer, readBytes, 0);
+		Sleep(1000);
 	}
 
 	closesocket(sd);

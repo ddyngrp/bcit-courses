@@ -220,5 +220,3 @@ void start_server(void) {
 	} /* end of infinite while loop */
 }
 
-
-

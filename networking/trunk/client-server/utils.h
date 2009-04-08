@@ -7,5 +7,6 @@
 
 int add_player(unsigned long ip_netformat);
 int get_player_loc(unsigned long ip_netformat);
+int get_first_avail();
 
 #endif

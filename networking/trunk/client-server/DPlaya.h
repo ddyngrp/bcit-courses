@@ -3,6 +3,11 @@
  *
  *  Created on: Mar 19, 2009
  *      Author: root
+ *
+ *	Revisions:
+ *		April 8, 2009 - David Young
+ *			Added ip_netformat_ field and getters/setters.
+ *			Fixed misc bugs.
  */
 
 #ifndef DPLAYA_H_
@@ -64,16 +69,16 @@ public:
 
 
 private:
-int x_, y_, w_,h_, numBombs_, droppedBombs_, xVel, yVel;
-int DPlayaID_;
-int bombPower_;
-unsigned long ip_netformat_;
-bool alive_;
-char name_[256];
-char color_;
-//Bomb bombs[5]; //TODO bomb init !
+	int x_, y_, w_,h_, numBombs_, droppedBombs_, xVel, yVel;
+	int DPlayaID_;
+	int bombPower_;
+	unsigned long ip_netformat_;
+	bool alive_;
+	char name_[256];
+	char color_;
+	//Bomb bombs[5]; //TODO bomb init !
 
-SDL_Surface* image_;
+	SDL_Surface* image_;
 
 };
 

@@ -3,23 +3,22 @@
  *
  *  Program:     Tux Bomber
  *
- *  Functions:   *get_in_addr(struct sockaddr *sa)
- *               send_map(unsigned char *map, size_t len)
- *               recv_map(unsigned char *map, size_t len)
- *               transfer(unsigned char *data, size_t len)
- *               add_coords_xy(int x, int y, unsigned char *data, size_t len)
- *               process_data(unsigned char *data, size_t len)
- *               
- *  Date:        March 2, 2009
+ *  Functions:  *get_in_addr(struct sockaddr *sa)
+ *				void receive_packet(char b, int index)
+ *              
+ *  Date:       March 2, 2009
  *
- *  Revisions:   March 20, 2009 - Steffen L. Norgren
+ *  Revisions:  March 20, 2009 - Steffen L. Norgren
  *                   Updated headers to cornform to Aman's standards
- *               March 29, 2009 - Steffen L. Norgren
+ *              March 29, 2009 - Steffen L. Norgren
  *                   Moved the sole function from "tools.c" to here as it
  *                   can be considered part of networking.
  *				April 6, 2009 - David Young
  *					Changed a WHOLE bunch of stuff yesterday and today.
  *					Today I took out a bunch of functions that aren't being used anymore.
+ *				April 8, 2009 - David Young
+ *					Took out almost every network-related function I
+ *					had previously written. (No longer needed)
  * 
  *  Designer:    David Young, Steffen L. Norgren
  *  Programmer:  David Young, Steffen L. Norgren

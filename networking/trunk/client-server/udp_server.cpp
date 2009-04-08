@@ -25,22 +25,19 @@ void *start_udp_server(void *ptr) {
 	printf("starting udp server..\n");
 	fflush(stdout);
 
-	for(i=0; i < 8; i++) {
-		if((sd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
-			perror("Socket Creation");
-			exit(EXIT_FAILURE);
-		}
-
-		bzero((char *)&udpserver, sizeof(udpserver));
-		udpserver.sin_family = AF_INET;
-		udpserver.sin_port = htons(port);
-		udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
-		if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
-			perror("Binding Socket");
-			exit(EXIT_FAILURE);
-		}
+	if((sd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
+		perror("Socket Creation");
+		exit(EXIT_FAILURE);
 	}
 
+	bzero((char *)&udpserver, sizeof(udpserver));
+	udpserver.sin_family = AF_INET;
+	udpserver.sin_port = htons(port);
+	udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
+	if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
+		perror("Binding Socket");
+		exit(EXIT_FAILURE);
+	}
 
 	for(;;) {
 		client_len = sizeof(udpclient);
@@ -65,6 +62,7 @@ void *start_udp_server(void *ptr) {
 		p1.setNumBombs(3);
 		p1.setName("david");
 
+		/* need to send to all clients.. */
 		send_udp_player(&p1, sd, udpclient);
 
 		pthread_testcancel();

@@ -113,7 +113,7 @@ void start_server(void) {
 	char remoteIP[INET_ADDRSTRLEN];
 	client_obj c_info[8];
 
-	int i, j, ret, ci, ii;
+	int i, j, ret, ci, ii=0;
 
 	for(ci=0; ci < 8; ci++) {
 		c_info[ci].ip = -1;

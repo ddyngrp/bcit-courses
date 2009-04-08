@@ -84,10 +84,10 @@ void start_client(char * server, char * port) {
 		}
 
 		if(FD_ISSET(sockfd, &rfds)) {
-			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) <= 0) {
+			if ((r = recv(sockfd, recvbuf, sizeof(recvbuf), 0)) == -1) {
 				if(r == 0) {
 					perror("server closed");
-					exit(EXIT_FAILURE);
+					//exit(EXIT_FAILURE);
 				}
 				perror("recv call() failed.");
 				continue;

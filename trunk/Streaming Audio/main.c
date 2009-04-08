@@ -1,8 +1,11 @@
 #include <winsock2.h>
 #include "main.h"
 
-#define PORT	7000		/* Default port */
-#define HOST	"localhost"	/* Default server */
+#define PORT		9000		/* Default port */
+#define HOST		"localhost"	/* Default server */
+#define BLOCK_SIZE	44100
+#define BLOCK_COUNT	200
+
 
 int main(int argc, char* argv[]) {
 	HWAVEOUT		hWaveOut; /* device handle */
@@ -12,7 +15,7 @@ int main(int argc, char* argv[]) {
 	DWORD			outBytes = 0;
 
 	/* TCP connection related variables */
-	int		n, port = PORT;
+	int		n, port = PORT, server_len;
 	SOCKET	sd;
 	struct	hostent	*hp;
 	struct	sockaddr_in server;
@@ -56,7 +59,7 @@ int main(int argc, char* argv[]) {
 	WSAStartup( wVersionRequested, &WSAData );
 
 	// Create the socket
-	if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+	if ((sd = socket(PF_INET, SOCK_DGRAM, 0)) == -1)
 	{
 		perror("Cannot create socket");
 		system("pause");
@@ -89,12 +92,18 @@ int main(int argc, char* argv[]) {
 	pptr = hp->h_addr_list;
 	printf("\t\tIP Address: %s\n", inet_ntoa(server.sin_addr));
 
+	server_len = sizeof(server);
+
+	/* send a single byte */
+	sendto(sd, "1", sizeof("1"), 0, (struct sockaddr *)&server, server_len);
+
 	/**
 	 * playback loop - read from socket
 	 */
-	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
-		outBytes += n / 1000;
-		printf("read %d KB\n", outBytes);
+	//while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
+	while ((n = recvfrom (sd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server, &server_len)) != 0) {
+		outBytes += n;
+		printf("recv %d\n", n);
 
 		if(n == 0) {
 			break;
@@ -212,12 +221,14 @@ void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size) {
 			break;
 		}
 
-		remain = BLOCK_SIZE - current->dwUser; /* Comment out? */
+		remain = BLOCK_SIZE - current->dwUser;
 		memcpy(current->lpData + current->dwUser, data, remain);
 		size -= remain;
 		data += remain;
 		current->dwBufferLength = BLOCK_SIZE;
 		waveOutPrepareHeader(hWaveOut, current, sizeof(WAVEHDR));
+
+		printf("\twaveCurrentBlock = %d\n", waveCurrentBlock);
 		waveOutWrite(hWaveOut, current, sizeof(WAVEHDR));
 
 		/* Critical section */

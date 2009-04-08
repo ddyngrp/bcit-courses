@@ -3,14 +3,14 @@
 #include <stdio.h>
 #include <windows.h>
 
-#define PORT	7000	/* Default port */
-#define BUFSIZE	1024	/* Buffer length */
+#define PORT	9000	/* Default port */
+#define BUFSIZE	44100	/* Buffer length */
 
 int main(int argc, char* argv[]) {
 	HANDLE	hFile;
 
 	/* TCP connection related variables */
-	int		client_len, port = PORT;
+	int		client_len, port = PORT, n;
 	SOCKET	sd, new_sd;
 	struct	sockaddr_in server, client;
 	WSADATA	WSAData;
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 	WSAStartup(wVersionRequested, &WSAData);
 
 	// Create a stream socket
-	if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+	if ((sd = socket(PF_INET, SOCK_DGRAM, 0)) == -1) {
 		perror ("Can't create a socket");
 		exit(1);
 	}
@@ -56,10 +56,12 @@ int main(int argc, char* argv[]) {
 
 	client_len = sizeof(client); 
 
-	if ((new_sd = accept (sd, (struct sockaddr *)&client, &client_len)) == -1) {
+	/*if ((new_sd = accept (sd, (struct sockaddr *)&client, &client_len)) == -1) {
 		fprintf(stderr, "Can't accept client\n"); 
 		exit(1);
-	}
+	}*/
+
+	recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
 
 	printf(" Remote Address:  %s\n", inet_ntoa(client.sin_addr));
 
@@ -67,12 +69,10 @@ int main(int argc, char* argv[]) {
 		DWORD readBytes;
 
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
-			closesocket(new_sd);
 			break;
 		}
 
 		if(readBytes == 0) {
-			closesocket(new_sd);
 			break;
 		}
 
@@ -82,7 +82,9 @@ int main(int argc, char* argv[]) {
 			printf("after memcpy\n");
 		}
 
-		send(new_sd, buffer, BUFSIZE, 0);
+		//send(sd, buffer, BUFSIZE, 0);
+		Sleep(10);
+		sendto (sd, buffer, BUFSIZE, 0, (struct sockaddr *)&client, client_len);
 	}
 
 	closesocket(sd);

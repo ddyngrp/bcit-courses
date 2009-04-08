@@ -111,8 +111,15 @@ void start_server(void) {
 	/* Since we have the possibility for IPv6, we need to make sure
 	   we can hold an address of that length. */
 	char remoteIP[INET_ADDRSTRLEN];
+	client_obj c_info[8];
 
-	int i, j, ret;
+	int i, j, ret, ci, ii;
+
+	for(ci=0; ci < 8; ci++) {
+		c_info[ci].ip = -1;
+		c_info[ci].client_desc = -1;
+	}
+	ci = 0;
 
 	FD_ZERO(&ptcp_server->master);	/* clear the ptcp_server->master and temp socket sets */
 	FD_ZERO(&ptcp_server->read_fds);
@@ -137,6 +144,9 @@ void start_server(void) {
 					
 					memcpy(&sa_in, &remoteaddr, sizeof(sa_in));
 					
+					c_info[ii].ip = sa_in.sin_addr.s_addr;
+					c_info[ii++].client_desc = i;
+
 					if((ret = add_player(sa_in.sin_addr.s_addr)) < 0) { /* spectator or error (depends what we want in the future) */
 						
 					} else  { /* player was successfully added */
@@ -163,6 +173,15 @@ void start_server(void) {
 						if (ptcp_server->recvBytes == 0) {
 							/* connection close */
 							printf("select: socket %d hung up\n", i);
+
+							for (j = 0; j <= ptcp_server->fd_max; j++) {
+								for(ii=0; ii < 8; ii++) {								
+									if(c_info[ii].client_desc==j) {
+										c_info[j].ip = -1;
+										c_info[j].client_desc = -1;
+									}
+								}
+							}	
 						} else {
 							perror("recv");
 						}
@@ -189,7 +208,7 @@ void start_server(void) {
 
 						if (strcmp((const char*)ptcp_server->recvBuff, "start\n") == 0) {
 							/* Create UDP Server thread */
-							pthread_create(&udp_thread, NULL, start_udp_server, (void *) &ptcp_server);
+							pthread_create(&udp_thread, NULL, start_udp_server, (void *) &c_info);
 							/* start_udp_server(); */
 						} /*else {
 							printf("%s", (const char*)ptcp_server->recvBuff);

@@ -26,6 +26,11 @@ struct tcp_server {
 	unsigned char	recvBuff[8192];
 };
 
+typedef struct _client_obj {
+	unsigned long ip;
+	int client_desc;
+} client_obj, *pclient_obj;
+
 void tcp_listen(void);
 void start_server(void);
 void *start_udp_server(void *);

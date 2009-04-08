@@ -17,40 +17,34 @@ void *start_udp_server(void *ptr) {
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
 	DPlaya p1;
-	struct tcp_server *fdcollection;
+	client_obj c_list[8];
+	int i=0;
 
-	fdcollection = (struct tcp_server *)ptr;
-
-
-	FD_ZERO(&fdcollection->master);
+	memcpy(c_list, ptr, sizeof(client_obj) * 8);
 	
 	printf("starting udp server..\n");
 	fflush(stdout);
 
-	if((sd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
-		perror("Socket Creation");
-		exit(EXIT_FAILURE);
+	for(i=0; i < 8; i++) {
+		if((sd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
+			perror("Socket Creation");
+			exit(EXIT_FAILURE);
+		}
+
+		bzero((char *)&udpserver, sizeof(udpserver));
+		udpserver.sin_family = AF_INET;
+		udpserver.sin_port = htons(port);
+		udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
+		if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
+			perror("Binding Socket");
+			exit(EXIT_FAILURE);
+		}
 	}
 
-	printf("%d line\n", __LINE__);
-
-	bzero((char *)&udpserver, sizeof(udpserver));
-	udpserver.sin_family = AF_INET;
-	udpserver.sin_port = htons(port);
-	udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
-	if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
-		perror("Binding Socket");
-		exit(EXIT_FAILURE);
-	}
-
-printf("%d line\n", __LINE__);
 
 	for(;;) {
-		int j;
 		client_len = sizeof(udpclient);
-printf("%d line\n", __LINE__);
 		if((n = recvfrom(sd, udpbuf, 2, 0, (struct sockaddr *)&udpclient, &client_len)) <= 0) {
-printf("%d line\n", __LINE__);
 			if(n == 0) {
 				fprintf(stderr,"Connection closed on socket: %d\n", sd);
 				continue;
@@ -71,18 +65,10 @@ printf("%d line\n", __LINE__);
 		p1.setNumBombs(3);
 		p1.setName("david");
 
-		/*for (j = 0; j <= fdcollection->fd_max; j++) {
-			if (FD_ISSET(j, &fdcollection->master)) {
-				if (j != fdcollection->listener && j == i) {*/
-					send_udp_player(&p1, j, udpclient);
-				/*}
-			}
-		}*/
-		
+		send_udp_player(&p1, sd, udpclient);
 
 		pthread_testcancel();
 	}
 	return 0;
 }
-
 

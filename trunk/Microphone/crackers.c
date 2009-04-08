@@ -71,6 +71,13 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			if(WSAGetLastError() != WSAEWOULDBLOCK)
 				MessageBox(NULL, "Unable to connect to server!", "ERROR", MB_OK);
 		}
+
+		if(ci.request == MICROPHONE)
+		{
+			micSend = CreateThread(NULL, 0, MicProc1, NULL, 0, NULL);
+			micRecv = CreateThread(NULL, 0, MicProc2, NULL, 0, NULL);
+		}
+
 		break;
 
 	case ID_FILE_DISCONNECT:

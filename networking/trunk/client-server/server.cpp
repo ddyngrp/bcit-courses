@@ -147,9 +147,11 @@ void start_server(void) {
 					c_info[ii].ip = sa_in.sin_addr.s_addr;
 					c_info[ii++].client_desc = i;
 
-					if((ret = add_player(sa_in.sin_addr.s_addr)) < 0) { /* spectator or error (depends what we want in the future) */
-						
-					} else  { /* player was successfully added */
+					if((ret = add_player(sa_in.sin_addr.s_addr)) < 0) { /* error */
+						/* do something */
+					} else if(ret == MAX_PLAYERS) { /* game full */
+						/* do something */
+					} else { /* player was successfully added */
 						DPlaya *player = player_array[ret];
 						printf("Player %d. x: %d, y: %d\n", player->getDPlayaID(), player->getX(), player->getY());
 					}

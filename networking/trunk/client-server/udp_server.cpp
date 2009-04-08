@@ -17,23 +17,21 @@ void *start_udp_server(void *ptr) {
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
 	DPlaya p1;
-	client_obj c_list[8];
-	int i=0;
+	struct sockaddr_in clientIP[8]; /* TODO: remove the magic number of 8 evertwhere */
 
-	memcpy(c_list, ptr, sizeof(client_obj) * 8);
-	
 	printf("starting udp server..\n");
 	fflush(stdout);
 
-	if((sd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
+	if((sd = socket(PF_INET, SOCK_DGRAM, 0)) == -1) {
 		perror("Socket Creation");
 		exit(EXIT_FAILURE);
 	}
 
 	bzero((char *)&udpserver, sizeof(udpserver));
-	udpserver.sin_family = AF_INET;
+	udpserver.sin_family = PF_INET;
 	udpserver.sin_port = htons(port);
 	udpserver.sin_addr.s_addr = htonl(INADDR_ANY);
+
 	if(bind(sd, (struct sockaddr *)&udpserver, sizeof(udpserver)) == -1) {
 		perror("Binding Socket");
 		exit(EXIT_FAILURE);
@@ -50,9 +48,27 @@ void *start_udp_server(void *ptr) {
 				exit(EXIT_FAILURE);
 			}
 		}
+		else {
+			int i;
+			for (i = 0; i < 8; i++) {
+				if (clientIP[i].sin_addr.s_addr == udpclient.sin_addr.s_addr) {
+					i = -1;
+					break;
+				}
+			}
+			if (i != -1) {
+				for (i = 0; i < 8; i++) {
+					if (clientIP[i].sin_addr.s_addr == 0) {
+						printf("assigned client\n");
+						clientIP[i] = udpclient;
+						break;
+					}
+				}
+			}
+		}
 
 		printf("%s\n", udpbuf);
-		
+
 		if((player_loc = get_player_loc(udpclient.sin_addr.s_addr)) >= 0 && player_loc < MAX_PLAYERS) {
 			receive_packet(udpbuf[0], player_loc);
 		}
@@ -63,7 +79,12 @@ void *start_udp_server(void *ptr) {
 		p1.setName("david");
 
 		/* need to send to all clients.. */
-		send_udp_player(&p1, sd, udpclient);
+		for (int i = 0; i < 8; i++) {
+			if (clientIP[i].sin_addr.s_addr != 0) {
+				printf("sending to %d\n", i);
+				send_udp_player(&p1, sd, clientIP[i]);
+			}
+		}
 
 		pthread_testcancel();
 	}

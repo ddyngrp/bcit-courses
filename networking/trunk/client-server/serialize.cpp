@@ -7,6 +7,8 @@
 #include "DPlaya.h"
 #include "serialize.h"
 
+#include <arpa/inet.h> /* TODO: Remove this when finished debugging */
+
 #define BUF_LEN 64
 
 /******************************************************************************
@@ -150,10 +152,16 @@ DPlaya recv_tcp_player(int sockfd) {
 
 /* works .. */
 void send_udp_player(DPlaya *p1, int socketfd, struct sockaddr_in udpserver) {
+	char tmp[255]; /* TODO: Remove when functioning */
+
 	if (sendto(socketfd, serialize_player(p1) ,sizeof(DPlaya),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
 	       	perror("sendto failure");
 	       	exit(1);
 	}
+
+	/* TODO: Remove when functioning */
+	inet_ntop(udpserver.sin_family, &udpserver.sin_addr, tmp, sizeof(tmp));
+	fprintf(stderr, "server: sent to %s\n", tmp);
 }
 
 /* doesn't work.. */

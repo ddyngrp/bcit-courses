@@ -17,7 +17,11 @@ void *start_udp_server(void *ptr) {
 	char udpbuf[MAX_LEN];
 	struct sockaddr_in udpserver, udpclient;
 	DPlaya p1;
-	struct sockaddr_in clientIP[8]; /* TODO: remove the magic number of 8 evertwhere */
+	struct sockaddr_in clientIP[8];/* TODO: remove the magic number of 8 evertwhere */
+
+	for (int i = 0; i < 8; i++) {
+		clientIP[i].sin_addr.s_addr = 0;
+	}
 
 	printf("starting udp server..\n");
 	fflush(stdout);

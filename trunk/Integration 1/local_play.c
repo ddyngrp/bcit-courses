@@ -1,6 +1,5 @@
 #include "win_main.h"
 static MCIDEVICEID deviceID;
-static OPENFILENAME ofn;
 
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	localSong_Init
@@ -134,67 +133,4 @@ BOOL localSong_Stop(void)
         deviceID = 0;
     }
     return TRUE;
-}
-
-/*---------------------------------------------------------------------------------
--- FUNCTION: browseFiles
---
--- REVISIONS:
---
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
---
--- INTERFACE: BOOL browseFiles(HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
---
--- RETURNS: The status of GetOpenFileName(), as a boolean
---
--- NOTES: Pops open a file browser to let a user choose a song.
-------------------------------------------------------------------------------------*/
-BOOL browseFiles(HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
-{
-	ofn.hwndOwner = hwnd;
-	ofn.lpstrFile = pstrFileName;
-	ofn.lpstrFileTitle = pstrTitleName;
-	ofn.Flags = OFN_HIDEREADONLY | OFN_CREATEPROMPT;
-	return GetOpenFileName(&ofn);
-}
-
-/*---------------------------------------------------------------------------------
--- FUNCTION: fileInit
---
--- REVISIONS:
---
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
---
--- INTERFACE: void fileInit(HWND hwnd)
---
--- RETURNS: void
---
--- NOTES: Initializes the OPENFILENAME structure for later use.
-------------------------------------------------------------------------------------*/
-void fileInit(HWND hwnd)
-{
-	static TCHAR szFilter[] = TEXT("All Files (*.*)\0*.*\0\0");
-	
-	ofn.lStructSize       = sizeof(OPENFILENAME);
-	ofn.hwndOwner         = hwnd;
-	ofn.hInstance         = NULL;
-	ofn.lpstrFilter       = szFilter;
-	ofn.lpstrCustomFilter = NULL;
-	ofn.nMaxCustFilter    = 0;
-	ofn.nFilterIndex      = 0;
-	ofn.lpstrFile         = NULL;   
-	ofn.nMaxFile          = MAX_PATH;
-	ofn.lpstrFileTitle    = NULL;       
-	ofn.nMaxFileTitle     = MAX_PATH;
-	ofn.lpstrInitialDir   = NULL;
-	ofn.lpstrTitle        = NULL;
-	ofn.Flags             = 0;  
-	ofn.nFileOffset       = 0;
-	ofn.nFileExtension    = 0;
-	ofn.lpstrDefExt       = TEXT("wav");
-	ofn.lCustData         = 0L;
-	ofn.lpfnHook          = NULL;
-	ofn.lpTemplateName    = NULL;
 }

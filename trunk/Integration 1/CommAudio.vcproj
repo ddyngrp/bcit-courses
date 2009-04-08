@@ -181,6 +181,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\helper.c"
+				>
+			</File>
+			<File
 				RelativePath=".\local_play.c"
 				>
 			</File>

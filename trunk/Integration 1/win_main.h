@@ -62,14 +62,14 @@ typedef struct _SOCKET_INFORMATION {
 } SOCKET_INFORMATION, * LPSOCKET_INFORMATION;
 
 // Global Variables
-static HINSTANCE	ghInst;				// Main application's global instance
-static HWND			ghWndMain,			// Main window's global handle
-					ghDlgMain;			// Main dialogue window's global handle
-static HMENU		ghMenu;				// Main window's menu handle
-HACCEL				ghAccel;			// Keyboard accelerator
-SOCKADDR_IN			remote,				// Server socket information
-					local;				// Client socket information
-connectInfo			ci;					// Connection information
+HINSTANCE	ghInst;				// Main application's global instance
+HWND		ghWndMain,			// Main window's global handle
+			ghDlgMain;			// Main dialogue window's global handle
+HMENU		ghMenu;				// Main window's menu handle
+HACCEL		ghAccel;			// Keyboard accelerator
+SOCKADDR_IN	remote,				// Server socket information
+			local;				// Client socket information
+connectInfo	ci;					// Connection information
 
 int					busyFlag;
 static				WAVEFORMATEX pwfx;
@@ -109,5 +109,11 @@ void server_download(WPARAM wParam, PTSTR	fileName);
 void client_download(WPARAM wParam);
 void FreeSocketInformation(SOCKET s);
 LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);
+
+/* Helper Functions */
+void sendFileList(WPARAM wParam);
+void receiveFileList(WPARAM wParam, char buf[]);
+void AppendList(char * str);
+char* GetSelList(void);
 
 #endif

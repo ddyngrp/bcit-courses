@@ -103,6 +103,13 @@ void client_download(WPARAM wParam)
 	}
 	else
 	{
+		if(strncmp(buffer, "FILE", 4) == 0)
+		{
+			receiveFileList(wParam, buffer);
+			CloseHandle(hFile);
+			return;
+		}
+
 		/* Append the data to the end of the file & close it */
 		WriteFile(hFile, buffer, bytesRead, &bytesWritten, &lpOver);
 		CloseHandle(hFile);

@@ -19,11 +19,11 @@
 #define IDC_BTN_PAUSE                   1012
 #define IDC_BUTTON5                     1013
 #define IDC_BTN_RECORD                  1013
-#define IDC_LIST1                       1014
+#define IDC_LST_PLAY                    1014
 #define IDC_BTN_DOWNLOAD                1015
 #define IDC_BTN_REMOVE                  1016
 #define IDC_BTN_ADD                     1017
-#define IDC_CHECK1                      1017
+#define IDC_CHECK1                      1018
 #define IDD_CLIENT                      9000
 #define IDC_CEDIT1                      9001
 #define IDC_CEDIT2                      9002
@@ -31,7 +31,6 @@
 #define IDC_SEDIT1                      9004
 #define IDC_MULTICAST                   9005
 #define ID_FILE_LOCAL                   9010
-
 #define ID_FILE_CONNECT                 40002
 #define ID_FILE_DISCONNECT              40003
 #define ID_FILE_EXIT                    40004
@@ -40,10 +39,10 @@
 #define ID_VIEW_CONNECTEDCLIENTS        40007
 #define ID_HELP_ABOUT                   40008
 #define ID_HELP_DOCUMENTATION           40009
-#define ID_SINGLE_DL					40010
-#define ID_SINGLE_UP					40011
-#define ID_SINGLE_STREAM				40012
-#define ID_MULTI_STREAM					40013
+#define ID_SINGLE_DL                    40010
+#define ID_SINGLE_UP                    40011
+#define ID_SINGLE_STREAM                40012
+#define ID_MULTI_STREAM                 40013
 
 // Next default values for new objects
 // 

@@ -273,19 +273,19 @@ void OnPaint(HWND hwnd)
 --		DESIGNER:		Jerrod Hudson
 --		PROGRAMMER:		Jerrod Hudson
 --
---		INTERFACE:		void OnSize(HWND hwnd, UINT state, int cx, int cy)
+--		INTERFACE:		void OnSize(HWND hwnd, UINT state, int cy, int cx)
 --							HWND hwnd: Handle to the window to paint
 --							UINT state: State of the window
---							int cx: width of the client window
 --							int cy: height of the client window
+--							int cx: width of the client window
 --
 --		RETURNS:		void
 --
 --		NOTES:			Operations to perform when the window is resized.
 ------------------------------------------------------------------------*/
-void OnSize(HWND hwnd, UINT state, int cx, int cy)
+void OnSize(HWND hwnd, UINT state, int cy, int cx)
 {
-	// Main window size has changed, need to resize child windows
+	/* Main window size has changed, need to resize child windows */
 	WORD wTop = 0;
 	WORD wHeight = cx;
 	WORD wWidth = cy;
@@ -293,7 +293,7 @@ void OnSize(HWND hwnd, UINT state, int cx, int cy)
 
 	GetWindowRect(ghWndMain, &wRect);
 
-	// Put Window in the middle
+	/* Put Window in the middle */
 	MoveWindow(ghDlgMain, 0, wTop, wWidth, wHeight, TRUE);
 }
 

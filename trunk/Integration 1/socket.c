@@ -142,22 +142,24 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			}
 		}
 
+		if(ci.request == SINGLE_DL) //need to set request to 0 when we click on server & gray the other request items
+			server_download(wParam, buffer); /* Go right to sending the file. */
+		else if(ci.request == SINGLE_STREAM)
+			sendStream(wParam, fileName);
+
 		/* Set the type according to the first packet */
 		if(strcmp(buffer, "Single Download") == 0)
 		{
 			ci.request = SINGLE_DL;
-			fileName = "testOut.wav";
-			server_download(wParam, fileName); /* Go right to sending the file. */
+			sendFileList(wParam);
 		}
 		else if(strcmp(buffer, "Single Upload") == 0)
 			ci.request = SINGLE_UP;
-		else if(strncmp(buffer, "Stream:", 7) == 0)
+		else if(strcmp(buffer, "Stream") == 0)
 		{
 			ci.request = SINGLE_STREAM;
-			fileName = buffer+7;	//separate the filename from the rest of the buffer
-			sendStream(wParam, fileName);
+			sendFileList(wParam);
 		}
-			
 	}
 	else if (ci.behavior == CLIENT)
 	{
@@ -171,6 +173,11 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			Sleep(1);
 			receiveStream(wParam);
 		}
+		else if(ci.request == SINGLE_STREAM)
+		{
+
+			receiveFileList(wParam, buffer);
+		}
 	}
 }
 
@@ -183,6 +190,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 --						 - Changed the name to writeTCPsocket, since we will only
 --						   be using this one for sending control messages.  A
 --						   separate one will be used for UDP transfers.
+--				April 6 - Added a memset to clear all the buffers due to an error.
 -- 
 --	DESIGNER:	Jerrod Hudson, Jaymz Boilard
 --	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
@@ -215,7 +223,7 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
-			strcpy_s(buffer, BUFSIZE, "Stream:");
+			strcpy_s(buffer, BUFSIZE, "Stream");
 			browseFiles(hwnd, fileName, pathName);
 			strcat(buffer, fileName);   //eg. Stream:C:\Windows\media\WinXPStartup.wav
 		}

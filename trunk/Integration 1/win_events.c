@@ -48,8 +48,8 @@
 BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 	HMENU hMenu;
 	char * fileName;
+	char outBuf[200];
     
-    fileName = "meow.wav";
 	hMenu = GetMenu(ghWndMain);
 
 	switch (message) {
@@ -85,14 +85,20 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 
                 //button should be disabled when we're not in client mode
                 case IDC_BTN_DOWNLOAD:
-                    /* Send our file name then wait for the WAVEFORMATEX structure 
-                    send(SocketInfo->Socket, fileName, sizeof(fileName), 0);
-                    recv(SocketInfo->Socket, buf, sizeof(buf), 0);
-                    memcpy(pwfx, SocketInfo->DataBuf, RecvBytes);
-                    waveOutOpen(&hwo, WAVE_MAPPER, pwfx, 0, NULL, CALLBACK_NULL);
 
-                    //Create UDP socket
-                    WaveLib_CreateThread(pWaveLib);*/
+					fileName = GetSelList();
+					memset(outBuf, '\0', 200);
+					strcpy(outBuf, fileName);
+					strcpy((char *)outBuf, fileName); 
+
+					if(send(ci.tcpSocket, outBuf, sizeof(outBuf), 0) == -1)
+					{
+						if (WSAGetLastError() != WSAEWOULDBLOCK)
+						{
+							MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+							closesocket(wParam);
+						}
+					}
                     return FALSE;
 
                 //button should be disabled when we're not in server mode

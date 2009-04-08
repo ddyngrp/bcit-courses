@@ -79,7 +79,7 @@ BEGIN
     PUSHBUTTON      "Stop",IDC_BTN_STOP,39,51,28,14
     PUSHBUTTON      "Pause",IDC_BTN_PAUSE,70,51,28,14
     PUSHBUTTON      "Record",IDC_BTN_RECORD,101,51,28,14
-    LISTBOX         IDC_LIST1,142,11,95,66,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LST_PLAY,142,11,95,66,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "Download",IDC_BTN_DOWNLOAD,143,82,39,14
     PUSHBUTTON      "-",IDC_BTN_REMOVE,222,82,14,14
     PUSHBUTTON      "+",IDC_BTN_ADD,205,82,14,14
@@ -139,8 +139,8 @@ BEGIN
     BEGIN
         MENUITEM "&Connect\tCtrl+O",            ID_FILE_CONNECT
         MENUITEM "&Disconnect\tCtrl+D",         ID_FILE_DISCONNECT
-		MENUITEM SEPARATOR
-		MENUITEM "&Play Local File",            ID_FILE_LOCAL
+        MENUITEM SEPARATOR
+        MENUITEM "&Play Local File",            ID_FILE_LOCAL
         MENUITEM SEPARATOR
         MENUITEM "&Exit\tCtrl+Q",               ID_FILE_EXIT
     END
@@ -148,11 +148,11 @@ BEGIN
     BEGIN
         MENUITEM "&Client\tCtrl+1",             ID_MODE_CLIENT
         MENUITEM "&Server\tCtrl+2",             ID_MODE_SERVER
-		MENUITEM SEPARATOR
-		MENUITEM "&Download Single",            ID_SINGLE_DL
-		MENUITEM "&Upload Single",              ID_SINGLE_UP
-		MENUITEM "&Single Stream",				ID_SINGLE_STREAM
-		MENUITEM "&Multicast Stream",			ID_MULTI_STREAM
+        MENUITEM SEPARATOR
+        MENUITEM "&Download Single",            ID_SINGLE_DL
+        MENUITEM "&Upload Single",              ID_SINGLE_UP
+        MENUITEM "&Single Stream",              ID_SINGLE_STREAM
+        MENUITEM "&Multicast Stream",           ID_MULTI_STREAM
     END
     POPUP "&View"
     BEGIN

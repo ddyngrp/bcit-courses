@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	DWORD totalRead = 0;
 
 
-	char * fileName = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
+	char * fileName = "C:\\Ensemble.wav"; /* Hard-code filename */
 
 	wVersionRequested = MAKEWORD(2, 2);
 	WSAStartup(wVersionRequested, &WSAData);

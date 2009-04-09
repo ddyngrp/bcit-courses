@@ -2,7 +2,7 @@
 #include "main.h"
 
 #define PORT		7000		/* Default port */
-#define HOST		"localhost"	/* Default server */
+#define HOST		"biohazard"	/* Default server */
 #define BLOCK_SIZE	8820		/* 0.20 seconds of audio */
 #define BLOCK_COUNT	10			/* Buffers 2.00 seconds of audio */
 #define	PLAY_BYTE	"1"			/* Byte that is sent to receive next block */

@@ -34,10 +34,12 @@ void server_download(WPARAM wParam, PTSTR	fileName)
 	}
 	while(1)
 	{
+		memset(outBuf,'\0',BUFSIZE);
 		ReadFile(hFile, outBuf, BUFSIZE, &bytesRead, NULL);
 		if(bytesRead == 0)
 		{
 			/* End of file, close & exit. */
+			send(wParam, "Last Pkt\0", 9, 0);
 			CancelIo(hFile);
 			break;
 		}
@@ -114,6 +116,6 @@ void client_download(WPARAM wParam)
 		WriteFile(hFile, buffer, bytesRead, &bytesWritten, &lpOver);
 		CloseHandle(hFile);
 	}
-	if((bytesRead < BUFSIZE) && (!strcmp(buffer, ""))) /* Last packet, but not an empty packet. Needs to be fixed. */
+	if(!strcmp(buffer,"Last Pkt")) /* Last packet, but not an empty packet. Needs to be fixed. */
 		MessageBox(NULL, "File download completed!", "Operation Completed", MB_OK);
 }

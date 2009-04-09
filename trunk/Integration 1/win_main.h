@@ -75,6 +75,7 @@ connectInfo	ci;					// Connection information
 int					busyFlag;
 static				WAVEFORMATEX pwfx;
 static				HWAVEOUT hwo;
+static BOOL streamInProgress;
 
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -103,7 +104,7 @@ void freeBlocks(WAVEHDR* blockArray);
 WAVEHDR* allocateBlocks(int size, int count);
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
 void receiveStream(WPARAM sd);
-void sendStream(WPARAM sd, PTSTR fileName);
+void sendStream(WPARAM sd);
 
 /* Services */
 void server_download(WPARAM wParam, PTSTR	fileName);

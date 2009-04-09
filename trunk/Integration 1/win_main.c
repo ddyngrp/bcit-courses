@@ -176,6 +176,7 @@ int InitApp(HINSTANCE hInst, int nCmdShow) {
 
 	// set the global instance for the keyboard accelerator
 	ghAccel = LoadAccelerators(hInst, MAKEINTRESOURCE(IDR_ACCELERATOR));
+	streamInProgress = FALSE;
 
 	return TRUE;
 }

@@ -1,5 +1,4 @@
 #include "socket.h"
-
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	sockAccept
 -- 
@@ -147,7 +146,14 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if(ci.request == SINGLE_DL) //need to set request to 0 when we click on server & gray the other request items
 			server_download(wParam, buffer); /* Go right to sending the file. */
 		else if(ci.request == SINGLE_STREAM)
-			sendStream(wParam, buffer);
+		{
+			strcpy(ci.DLfileName, buffer);
+			if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0))
+				{
+					MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+					exit(1);
+				}
+		}
 
 		/* Set the type according to the first packet */
 		if(strcmp(buffer, "Single Download") == 0)
@@ -173,7 +179,17 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		else if(ci.request == SINGLE_STREAM)
 		{
 			if(firstTime == FALSE)
-				receiveStream(wParam);
+			{
+				if(streamInProgress == FALSE)
+				{
+					streamInProgress = TRUE;
+					if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)receiveStream,wParam,0,0))
+					{
+						MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+						exit(1);
+					}
+				}
+			}
 			else
 			{
 				if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
@@ -191,8 +207,8 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
-
-			receiveFileList(wParam, buffer);
+			if(firstTime == TRUE)
+				receiveFileList(wParam, buffer);
 		}
 	}
 }

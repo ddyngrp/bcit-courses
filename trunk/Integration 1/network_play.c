@@ -113,6 +113,7 @@ void receiveStream(WPARAM sd)
 	DeleteCriticalSection(&waveCriticalSection);
 	freeBlocks(waveBlocks);
 	waveOutClose(hWaveOut);
+	streamInProgress = FALSE;
 }
 
 /*------------------------------------------------------------------------
@@ -137,14 +138,14 @@ void receiveStream(WPARAM sd)
 --
 --		NOTES:			
 ------------------------------------------------------------------------*/
-void sendStream(WPARAM sd, PTSTR fileName)
+void sendStream(WPARAM sd)
 {
 	HANDLE hFile;
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 
 	/* try and open the file */
-	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
+	if((hFile = CreateFile(ci.DLfileName, GENERIC_READ, FILE_SHARE_READ, NULL,
 		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(NULL,"Unable to open file.","Error", MB_OK);

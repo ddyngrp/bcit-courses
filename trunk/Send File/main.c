@@ -58,11 +58,6 @@ int main(int argc, char* argv[]) {
 
 	client_len = sizeof(client); 
 
-	/*if ((new_sd = accept (sd, (struct sockaddr *)&client, &client_len)) == -1) {
-		fprintf(stderr, "Can't accept client\n"); 
-		exit(1);
-	}*/
-
 	/* Wait for client connection */
 	printf("Waiting for client...\n");
 	recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);

@@ -1,7 +1,7 @@
 #include <winsock2.h>
 #include "main.h"
 
-#define PORT		9000		/* Default port */
+#define PORT		7000		/* Default port */
 #define HOST		"localhost"	/* Default server */
 #define BLOCK_SIZE	8820		/* 0.20 seconds of audio */
 #define BLOCK_COUNT	10			/* Buffers 2.00 seconds of audio */

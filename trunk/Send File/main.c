@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <windows.h>
 
-#define PORT	9000	/* Default port */
+#define PORT	7000	/* Default port */
 #define BUFSIZE	8820	/* 0.20 seconds of audio */
 
 int main(int argc, char* argv[]) {
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 	WSAStartup(wVersionRequested, &WSAData);
 
 	// Create a stream socket
-	if ((sd = socket(PF_INET, SOCK_DGRAM, 0)) == -1) {
+	if ((sd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
 		perror ("Can't create a socket");
 		exit(1);
 	}
@@ -51,10 +51,6 @@ int main(int argc, char* argv[]) {
 		perror("Can't bind name to socket");
 		exit(1);
 	}
-
-	// Listen for connections
-	// queue up to 1 connect requests
-	listen(sd, 1);
 
 	client_len = sizeof(client); 
 

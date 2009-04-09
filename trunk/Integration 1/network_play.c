@@ -21,10 +21,6 @@
 --	NOTES:
 ---------------------------------------------------------------------------------------*/
 #include "win_main.h"
-extern HWAVEOUT hwo;
-static WAVEHDR songData;
-static HANDLE hFile;
-static DWORD bytesRead;
 
 /* Global Variables */
 static CRITICAL_SECTION waveCriticalSection;
@@ -69,7 +65,7 @@ void receiveStream(WPARAM sd)
 	InitializeCriticalSection(&waveCriticalSection);
 
 	/* set up the WAVEFORMATEX structure. */
-	wfx.nSamplesPerSec = 8600;	/* sample rate */
+	wfx.nSamplesPerSec = 44100;	/* sample rate */
 	wfx.wBitsPerSample = 16;	/* sample size */
 	wfx.nChannels= 2;			/* channels*/
 	wfx.cbSize = 0;				/* size of _extra_ info */
@@ -91,15 +87,13 @@ void receiveStream(WPARAM sd)
 	}
 
 	/* playback loop - read from socket */
-	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0)
+	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) 
 	{
 		outBytes += n / 1000;
-
 		if(n == 0)
 			break;
 		else if(n < sizeof(buffer))
 			memset(buffer + n, 0, sizeof(buffer) - n);
-
 		writeAudio(hWaveOut, buffer, n);
 	}
 
@@ -145,6 +139,7 @@ void receiveStream(WPARAM sd)
 ------------------------------------------------------------------------*/
 void sendStream(WPARAM sd, PTSTR fileName)
 {
+	HANDLE hFile;
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 
@@ -174,7 +169,7 @@ void sendStream(WPARAM sd, PTSTR fileName)
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
 
 		send(sd, buffer, readBytes, 0);
-		Sleep(1000);
+		Sleep(200);
 	}
 
 	closesocket(sd);
@@ -325,12 +320,13 @@ void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
 		current->dwBufferLength = BLOCK_SIZE;
 		waveOutPrepareHeader(hWaveOut, current, sizeof(WAVEHDR));
 		waveOutWrite(hWaveOut, current, sizeof(WAVEHDR));
-
+		
 		/* Critical section */
 		EnterCriticalSection(&waveCriticalSection);
 		waveFreeBlockCount--;
 		LeaveCriticalSection(&waveCriticalSection);
-
+		
+		
 		/* wait for a block to become free */
 		while(!waveFreeBlockCount)
 			Sleep(10);

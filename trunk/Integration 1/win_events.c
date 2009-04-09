@@ -92,7 +92,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 					strcpy((char *)outBuf, fileName);
 					strcpy(ci.DLfileName, fileName);
 
-					if(send(ci.tcpSocket, outBuf, sizeof(outBuf), 0) == -1)
+					if(send(ci.tcpSocket, outBuf, strlen(outBuf), 0) == -1)
 					{
 						if (WSAGetLastError() != WSAEWOULDBLOCK)
 						{

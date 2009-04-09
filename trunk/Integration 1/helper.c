@@ -42,7 +42,7 @@ void sendFileList(WPARAM wParam)
 	}
 	while(FindNextFile(FF,&wfd));
 
-	if(send(wParam, buf, sizeof(buf), 0) == -1)
+	if(send(wParam, buf, strlen(buf), 0) == -1)
 	{
 		if (WSAGetLastError() != WSAEWOULDBLOCK)
 		{

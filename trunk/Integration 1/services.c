@@ -114,6 +114,6 @@ void client_download(WPARAM wParam)
 		WriteFile(hFile, buffer, bytesRead, &bytesWritten, &lpOver);
 		CloseHandle(hFile);
 	}
-	if(bytesRead < BUFSIZE) /* Last packet */
+	if((bytesRead < BUFSIZE) && (!strcmp(buffer, ""))) /* Last packet, but not an empty packet. Needs to be fixed. */
 		MessageBox(NULL, "File download completed!", "Operation Completed", MB_OK);
 }

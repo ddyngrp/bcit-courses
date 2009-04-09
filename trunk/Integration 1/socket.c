@@ -129,7 +129,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	{
 		if(ci.request == SINGLE_UP)
 		{
-			strcpy(ci.DLfileName, "upload_file");
+			strcpy(ci.DLfileName, "upload_file.wav");
 			client_download(wParam); /* The client's download is the inverse of the server's upload */
 			return;
 		}
@@ -242,7 +242,7 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		else if(ci.request == MULTI_STREAM)
 			strcpy_s(buffer, BUFSIZE, "Multicast");
 
-		if(send(wParam, buffer, sizeof(buffer), 0) == -1)
+		if(send(wParam, buffer,strlen(buffer) /*sizeof(buffer)*/, 0) == -1)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
 			{

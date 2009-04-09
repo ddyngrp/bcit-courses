@@ -19,7 +19,7 @@
 #define EDITSIZE		50
 #define BUFSIZE			4096
 #define BLOCK_SIZE		44100
-#define BLOCK_COUNT		20
+#define BLOCK_COUNT		2000
 
 #define FILEBUFSIZE		120
 #define MAXBUFSIZE		8000

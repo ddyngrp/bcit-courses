@@ -127,6 +127,8 @@ void start_udp_client(char *hostname){
 	int udp_port = 8000;
 	char inbuf[MAXLEN], outbuf[MAXLEN];
 	DPlaya p1;
+	fd_set rfds;
+	int stdin_fd = fileno(stdin);
 
 	printf("starting udp server..\n");
 	
@@ -163,27 +165,37 @@ void start_udp_client(char *hostname){
 		int n;
    		inbuf[0] = 0;
    		outbuf[0] = 0;
-   		fgets(inbuf, MAXLEN, stdin);
 		inbuf[1] = '\0';
 
-		if (sendto(sd, inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
-			perror("sendto failure");
-			exit(1);
-	    	}
+		FD_ZERO(&rfds);
+		FD_SET(sd, &rfds);
+		FD_SET(stdin_fd, &rfds);
 
-		if ((n = recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
-			if(n==0) {
-				printf("server hung up\n");
-				exit(EXIT_FAILURE);
-			}
+		select(sd+1, &rfds, NULL, NULL, NULL);
+		if(FD_ISSET(sd, &rfds)) {
+			if ((n = recvfrom(sd,outbuf,sizeof(DPlaya),0,NULL,(socklen_t *)sizeof(udpserver))) <= 0){
+				if(n==0) {
+					printf("server hung up\n");
+					exit(EXIT_FAILURE);
+				}
 		
-			perror("recvfrom error");
-			exit(1);
+				perror("recvfrom error");
+				exit(1);
+			} else {
+				unserialize_player(outbuf, &p1);
+				printf("p1: %d %d %d\n", p1.getX(), p1.getY(), p1.getNumBombs());
+			}
+		} else if(FD_ISSET(stdin_fd, &rfds)) {
+			if(fgets(inbuf, 2, stdin) == NULL) {
+				perror("fgets() call failed");
+				continue;
+			}
+
+			if (sendto(sd, inbuf,strlen(inbuf),0,(struct sockaddr *)&udpserver, sizeof(udpserver))==-1){
+				perror("sendto failure");
+				continue;
+			}
 		}
-
-		unserialize_player(outbuf, &p1);
-
-		printf("p1: %d %d %d\n", p1.getX(), p1.getY(), p1.getNumBombs());
 	}
 }
 

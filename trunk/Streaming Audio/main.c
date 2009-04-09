@@ -3,9 +3,9 @@
 
 #define PORT		9000		/* Default port */
 #define HOST		"localhost"	/* Default server */
-#define BLOCK_SIZE	44100
-#define BLOCK_COUNT	400
-
+#define BLOCK_SIZE	8820		/* 0.20 seconds of audio */
+#define BLOCK_COUNT	10			/* Buffers 2.00 seconds of audio */
+#define	PLAY_BYTE	"1"			/* Byte that is sent to receive next block */
 
 int main(int argc, char* argv[]) {
 	HWAVEOUT		hWaveOut; /* device handle */
@@ -97,17 +97,17 @@ int main(int argc, char* argv[]) {
 	/**
 	 * playback loop - read from socket
 	 */
-	//while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
 	while (TRUE) {
 		/* send a single byte */
-		sendto(sd, "1", sizeof("1"), 0, (struct sockaddr *)&server, server_len);
+		sendto(sd, PLAY_BYTE, sizeof(PLAY_BYTE), 0, (struct sockaddr *)&server, server_len);
 
-		if ((n = recvfrom (sd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server, &server_len)) != 0) {
-			printf("error\n");
+		if ((n = recvfrom (sd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server, &server_len)) <= 0) {
+			printf("No Server!\n");
+			system("pause");
 		}
 
 		outBytes += n;
-		printf("recv %d\ntotal recv'd = %d", n, outBytes);
+		printf("recv %d\ntotal recv'd = %d\n", n, outBytes);
 
 		if(n == 0) {
 			break;
@@ -119,7 +119,13 @@ int main(int argc, char* argv[]) {
 			printf("after memcpy\n");
 		}
 
-		writeAudio(hWaveOut, buffer, sizeof(buffer));
+		if (strcmp(buffer, "EOF") == 0) {
+			printf("End of transmission.\n");
+			break;
+		}
+		else {
+			writeAudio(hWaveOut, buffer, sizeof(buffer));
+		}
 	}
 
 	closesocket(sd);

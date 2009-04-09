@@ -4,7 +4,7 @@
 #include <windows.h>
 
 #define PORT	9000	/* Default port */
-#define BUFSIZE	44100	/* Buffer length */
+#define BUFSIZE	8820	/* 0.20 seconds of audio */
 
 int main(int argc, char* argv[]) {
 	HANDLE	hFile;
@@ -16,6 +16,8 @@ int main(int argc, char* argv[]) {
 	WSADATA	WSAData;
 	WORD	wVersionRequested;
 	char	buffer[BUFSIZE]; /* intermediate buffer for reading */
+	DWORD totalRead = 0;
+
 
 	char * fileName = "Z:\\ironix\\Downloads\\Ensemble.wav"; /* Hard-code filename */
 
@@ -61,18 +63,24 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}*/
 
-	//printf(" Remote Address:  %s\n", inet_ntoa(client.sin_addr));
+	/* Wait for client connection */
+	printf("Waiting for client...\n");
+	recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
+	printf("Client IP Connected: %s\n", inet_ntoa(client.sin_addr));
 
 	while (TRUE) {
 		DWORD readBytes;
-
-		recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
 
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
 			break;
 		}
 
+		totalRead += readBytes;
+
+		printf("read = %d\n", totalRead);
+
 		if(readBytes == 0) {
+			sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len);
 			break;
 		}
 
@@ -82,9 +90,10 @@ int main(int argc, char* argv[]) {
 			printf("after memcpy\n");
 		}
 
-		//send(sd, buffer, BUFSIZE, 0);
-		Sleep(100);
-		sendto (sd, buffer, BUFSIZE, 0, (struct sockaddr *)&client, client_len);
+		sendto(sd, buffer, BUFSIZE, 0, (struct sockaddr *)&client, client_len);
+
+		/* Wait for signal from client before sending next block */
+		recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
 	}
 
 	closesocket(sd);

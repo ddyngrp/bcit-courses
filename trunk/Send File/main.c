@@ -61,12 +61,12 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}*/
 
-	recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
-
-	printf(" Remote Address:  %s\n", inet_ntoa(client.sin_addr));
+	//printf(" Remote Address:  %s\n", inet_ntoa(client.sin_addr));
 
 	while (TRUE) {
 		DWORD readBytes;
+
+		recvfrom(sd, 0, 0, 0, (struct sockaddr *)&client, &client_len);
 
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL)) {
 			break;
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
 		}
 
 		//send(sd, buffer, BUFSIZE, 0);
-		Sleep(10);
+		Sleep(100);
 		sendto (sd, buffer, BUFSIZE, 0, (struct sockaddr *)&client, client_len);
 	}
 

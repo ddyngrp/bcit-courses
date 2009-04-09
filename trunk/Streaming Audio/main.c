@@ -4,7 +4,7 @@
 #define PORT		9000		/* Default port */
 #define HOST		"localhost"	/* Default server */
 #define BLOCK_SIZE	44100
-#define BLOCK_COUNT	200
+#define BLOCK_COUNT	400
 
 
 int main(int argc, char* argv[]) {
@@ -94,16 +94,20 @@ int main(int argc, char* argv[]) {
 
 	server_len = sizeof(server);
 
-	/* send a single byte */
-	sendto(sd, "1", sizeof("1"), 0, (struct sockaddr *)&server, server_len);
-
 	/**
 	 * playback loop - read from socket
 	 */
 	//while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) {
-	while ((n = recvfrom (sd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server, &server_len)) != 0) {
+	while (TRUE) {
+		/* send a single byte */
+		sendto(sd, "1", sizeof("1"), 0, (struct sockaddr *)&server, server_len);
+
+		if ((n = recvfrom (sd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server, &server_len)) != 0) {
+			printf("error\n");
+		}
+
 		outBytes += n;
-		printf("recv %d\n", n);
+		printf("recv %d\ntotal recv'd = %d", n, outBytes);
 
 		if(n == 0) {
 			break;

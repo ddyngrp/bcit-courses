@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 	 */
 	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
 		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) {
-			fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], argv[1]);
+			fprintf(stderr, "%s: unable to open file '%s'\n", argv[0], fileName);
 			system("pause");
 			ExitProcess(1);
 	}

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Streaming Audio"
-	ProjectGUID="{6ABAB276-E7E4-406E-9914-08CBA6F1832B}"
-	RootNamespace="StreamingAudio"
+	Name="Server"
+	ProjectGUID="{6847F07A-548C-43F0-BF36-C10188FB4E7C}"
+	RootNamespace="Server"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -60,7 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ws2_32.lib winmm.lib"
+				AdditionalDependencies="ws2_32.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -181,10 +181,6 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\main.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

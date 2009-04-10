@@ -66,19 +66,23 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
                     if(busyFlag == LOCALPLAY)
                         localSong_Play();
                     else if (busyFlag == NETWORKPLAY)
-					    waveOutRestart(hwo);
+					    waveOutRestart(hWaveOut);
+					else if(ci.request == SINGLE_STREAM)
+						waveOutRestart(hWaveOut);
 					return FALSE;
 
                 case IDC_BTN_PAUSE:
                     if(busyFlag == LOCALPLAY)
                         localSong_Pause();
+					else if(ci.request == SINGLE_STREAM)
+						waveOutPause(hWaveOut);
 					return FALSE;
 
 				case IDC_BTN_STOP:
                     if(busyFlag == LOCALPLAY)
                         localSong_Stop();
                     else
-                        waveOutClose(hwo);
+                        waveOutClose(hWaveOut);
                     busyFlag = 0;
 					//EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_ENABLED);
                     return FALSE;

@@ -51,7 +51,6 @@ static int				waveCurrentBlock;
 ------------------------------------------------------------------------*/
 void receiveStream(WPARAM sd)
 {
-	HWAVEOUT		hWaveOut; /* device handle */
 	WAVEFORMATEX	wfx; /* look this up in your documentation */
 	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 	int				i;
@@ -65,13 +64,11 @@ void receiveStream(WPARAM sd)
 	InitializeCriticalSection(&waveCriticalSection);
 
 	/* set up the WAVEFORMATEX structure. */
-	wfx.nSamplesPerSec = 44100;	/* sample rate */
-	wfx.wBitsPerSample = 16;	/* sample size */
-	wfx.nChannels= 2;			/* channels*/
-	wfx.cbSize = 0;				/* size of _extra_ info */
-	wfx.wFormatTag = WAVE_FORMAT_PCM;
-	wfx.nBlockAlign = (wfx.wBitsPerSample * wfx.nChannels) >> 3;
-	wfx.nAvgBytesPerSec = wfx.nBlockAlign * wfx.nSamplesPerSec;
+	//wfx.nSamplesPerSec = 44100;	/* sample rate */
+	//wfx.wBitsPerSample = 16;	/* sample size */
+
+	//wfx.cbSize = 0;				/* size of _extra_ info */
+
 
 	/**
 	 * try to open the default wave device. WAVE_MAPPER is
@@ -79,16 +76,21 @@ void receiveStream(WPARAM sd)
 	 * default wave device on the system (some people have 2 or
 	 * more sound cards).
 	 */
-	if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
-		(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
-	{
-			MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
-			ExitProcess(1);
-	}
-
+	
 	/* playback loop - read from socket */
 	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) 
 	{
+		/* first 4 bytes in a file, so set the header information */
+		if(strncmp(buffer, "RIFF", 4) == 0)
+		{
+			memcpy(&wfx, buffer+20, sizeof(wfx));
+			if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
+				(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
+			{
+					MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
+					ExitProcess(1);
+			}
+		}
 		outBytes += n / 1000;
 		if(n == 0)
 			break;

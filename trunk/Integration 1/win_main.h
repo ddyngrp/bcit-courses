@@ -62,6 +62,17 @@ typedef struct _SOCKET_INFORMATION {
 	struct _SOCKET_INFORMATION *Next;
 } SOCKET_INFORMATION, * LPSOCKET_INFORMATION;
 
+typedef struct _customWaveFmt
+{
+    WORD        wFormatTag;         /* format type */
+    WORD        nChannels;          /* number of channels 
+                                        (i.e. mono, stereo...) */
+    DWORD       nSamplesPerSec;     /* sample rate */
+    DWORD       nAvgBytesPerSec;    /* for buffer estimation */
+    WORD        nBlockAlign;        /* block size of data */
+    WORD        wBitsPerSample;     /* number of bits per */
+} cWAVEFMT;
+
 // Global Variables
 HINSTANCE	ghInst;				// Main application's global instance
 HWND		ghWndMain,			// Main window's global handle
@@ -74,7 +85,7 @@ connectInfo	ci;					// Connection information
 
 int					busyFlag;
 static				WAVEFORMATEX pwfx;
-static				HWAVEOUT hwo;
+static				HWAVEOUT hWaveOut;
 static BOOL streamInProgress;
 
 // Global Functions

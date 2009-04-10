@@ -128,5 +128,7 @@ void sendFileList(WPARAM wParam);
 void receiveFileList(WPARAM wParam, char buf[]);
 void AppendList(char * str);
 char* GetSelList(void);
+void menu_down();
+void menu_up();
 
 #endif

@@ -104,9 +104,65 @@ char* GetSelList() {
 }
 
 /*---------------------------------------------------------------------------------
--- FUNCTION: browseFiles
+-- FUNCTION:	menu_up - Moves the current selection down within the list box.
 --
 -- REVISIONS:
+--
+--	DESIGNER:	Brendan Neva
+--	PROGRAMMER:	Brendan Neva
+--
+-- INTERFACE:   void menu_down()
+--
+-- RETURNS: void
+--
+-- NOTES:   Does nothing if we are at the end.
+------------------------------------------------------------------------------------*/
+void menu_up()
+{
+	int currentIndex = 0;
+
+	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
+	currentIndex = ListBox_GetCurSel(list);
+
+	if(currentIndex-1 < 0)
+		return;
+	else
+		ListBox_SetCurSel(list,currentIndex-1);
+}
+
+/*---------------------------------------------------------------------------------
+-- FUNCTION:	menu_down - Moves the current selection down within the list box.
+--
+-- REVISIONS:
+--
+--	DESIGNER:	Brendan Neva
+--	PROGRAMMER:	Brendan Neva
+--
+-- INTERFACE:   void menu_down()
+--
+-- RETURNS: void
+--
+-- NOTES:   Does nothing if we are at the end.
+------------------------------------------------------------------------------------*/
+void menu_down()
+{
+	int currentIndex = 0;
+	int fileCount = 0;
+
+	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
+	currentIndex = ListBox_GetCurSel(list);
+	fileCount = ListBox_GetCount(list);
+
+	if(currentIndex+1 > fileCount)
+		return;
+	else
+		ListBox_SetCurSel(list,currentIndex+1);
+}
+
+/*---------------------------------------------------------------------------------
+-- FUNCTION: browseFiles
+--
+-- DATE:	April 10
 --
 --	DESIGNER:	Jaymz Boilard
 --	PROGRAMMER:	Jaymz Boilard
@@ -129,10 +185,10 @@ BOOL browseFiles(HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
 /*---------------------------------------------------------------------------------
 -- FUNCTION: fileInit
 --
--- REVISIONS:
+-- DATE:	April 10
 --
---	DESIGNER:	Jaymz Boilard
---	PROGRAMMER:	Jaymz Boilard
+-- DESIGNER:	Jaymz Boilard
+-- PROGRAMMER:	Jaymz Boilard
 --
 -- INTERFACE: void fileInit(HWND hwnd)
 --

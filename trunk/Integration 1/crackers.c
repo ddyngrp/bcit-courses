@@ -108,6 +108,12 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+
+		/* Let client specify the request type */
+		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_ENABLED);
 		break;
 
 	case ID_MODE_SERVER:
@@ -118,6 +124,13 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+
+		/* Don't want to know request type if we're server, the client has to specify */
+		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+		ci.request = 0;
 		break;
 
 	/* Note: These menu item checks can be put into a loop within a function */
@@ -157,7 +170,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	case ID_FILE_LOCAL:
         if(busyFlag > 0) //we're already busy
             break;
-		//EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
         busyFlag = LOCALPLAY;
         memset(fileName, 0, FILEBUFSIZE);
 	    memset(pathName, 0, FILEBUFSIZE);
@@ -210,8 +223,15 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	ci.port	= DEFAULT_PORT;
 
 	ghMenu = GetMenu(hwnd);
+
+	/* We can't connect or disconnect until connection settings chosen */
 	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+	/* Don't want to know request type if we're server, the client has to specify */
+	EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
 	return TRUE;
 }
 

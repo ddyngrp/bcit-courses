@@ -49,6 +49,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 	HMENU hMenu;
 	char * fileName;
 	char outBuf[200];
+	DWORD errNo;
     
 	hMenu = GetMenu(ghWndMain);
 
@@ -75,7 +76,15 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
                     if(busyFlag == LOCALPLAY)
                         localSong_Pause();
 					else if(ci.request == SINGLE_STREAM)
-						waveOutPause(hWaveOut);
+					{
+						if(waveOutPause(hWaveOut) != MMSYSERR_NOERROR)
+						{
+							errNo = GetLastError();
+							MessageBox(NULL, "Can't pause", "Error", 0);
+							
+							return FALSE;
+						}
+					}
 					return FALSE;
 
 				case IDC_BTN_STOP:

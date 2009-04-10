@@ -31,8 +31,8 @@ void sendFileList(WPARAM wParam)
 	/* Server Stuff */
 	if ((FF = FindFirstFile("*.wav",&wfd)) == INVALID_HANDLE_VALUE) 
 	{
-	  printf ("Invalid file handle. Error is %u.\n", GetLastError());
-	  return (-1);
+		MessageBox(NULL, "Invalid file handle", "Error", 0);
+		return;
 	}
 
 	do
@@ -102,8 +102,6 @@ char* GetSelList() {
 
 	return selItem;
 }
-
-
 
 /*---------------------------------------------------------------------------------
 -- FUNCTION: browseFiles

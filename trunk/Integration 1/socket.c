@@ -148,7 +148,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		else if(ci.request == SINGLE_STREAM)
 		{
 			strcpy(ci.DLfileName, buffer);
-			if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0))
+			if(!CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0))
 				{
 					MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
 					exit(1);

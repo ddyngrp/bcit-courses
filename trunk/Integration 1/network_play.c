@@ -10,7 +10,7 @@
 --													 DWORD dwParam2)
 --					WAVEHDR* allocateBlocks(int size, int count)
 --					void freeBlocks(WAVEHDR* blockArray)
---					void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
+--					void writeAudio(LPSTR data, int size)
 --
 --	REVISIONS:		April 6 - Took the code from our test program and functionized it
 --							  to use here.
@@ -96,7 +96,7 @@ void receiveStream(WPARAM sd)
 			break;
 		else if(n < sizeof(buffer))
 			memset(buffer + n, 0, sizeof(buffer) - n);
-		writeAudio(hWaveOut, buffer, n);
+		writeAudio(buffer, n);
 	}
 
 	closesocket(sd);
@@ -289,7 +289,6 @@ void freeBlocks(WAVEHDR* blockArray)
 --		PROGRAMMER:		Steffen L. Norgren
 --
 --		INTERFACE:		void writeAudio(
---							HWAVEOUT hWaveOut, //audio device being used
 --							LPSTR data,	//pointer to our buffer to be played
 --							int size)	//length of the buffer
 --
@@ -297,7 +296,7 @@ void freeBlocks(WAVEHDR* blockArray)
 --
 --		NOTES:			
 ------------------------------------------------------------------------*/
-void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
+void writeAudio(LPSTR data, int size)
 {
 	WAVEHDR* current;
 	int remain;

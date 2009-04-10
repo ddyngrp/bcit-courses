@@ -85,7 +85,7 @@ connectInfo	ci;					// Connection information
 
 int					busyFlag;
 static				WAVEFORMATEX pwfx;
-static				HWAVEOUT hWaveOut;
+HWAVEOUT hWaveOut;
 static BOOL streamInProgress;
 
 // Global Functions
@@ -110,7 +110,7 @@ BOOL browseFiles(HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName);
 void fileInit(HWND hwnd);
 
 /* Network Play */
-void writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size);
+void writeAudio(LPSTR data, int size);
 void freeBlocks(WAVEHDR* blockArray);
 WAVEHDR* allocateBlocks(int size, int count);
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);

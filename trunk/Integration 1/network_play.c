@@ -172,7 +172,7 @@ void sendStream(WPARAM sd)
 		{
 			/* Send EOF notification to the client */
 			/* sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len); */
-			closesocket(sd);
+			closesocket(ci.udpSocket);
 			break;
 		}
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */

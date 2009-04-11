@@ -54,6 +54,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
 	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
 	int iRc;
+	char ipAddr[EDITSIZE] = "IP: ";
 
 	switch(id)
 	{
@@ -62,6 +63,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		{
 			setup_server(hwnd, SOCK_STREAM);
 			setup_server(hwnd, SOCK_DGRAM);
+			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
+			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP: 127.0.0.1");
 			break;
 		}
 		else if(ci.behaviour == CLIENT) {
@@ -83,6 +86,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 				MessageBox(NULL, "Unable to connect to server!", "ERROR", MB_OK);
 		}
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)ipAddr);
 		break;
 
 	case ID_FILE_DISCONNECT:
@@ -97,6 +102,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Disconnected");
 		break;
 
 	case ID_FILE_EXIT:
@@ -116,6 +122,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_ENABLED);
 		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_ENABLED);
 		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_ENABLED);
+
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Client");
 		break;
 
 	case ID_MODE_SERVER:
@@ -132,6 +140,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Server");
 		ci.request = 0;
 		break;
 
@@ -235,6 +244,12 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+
+	/* Create status bar & initialize fields */
+	ghStatus = CreateStatusWindow(WS_CHILD|WS_VISIBLE, "Status: Disconnected", hwnd, STATUS_BAR);
+	SendMessage(ghStatus,SB_SETPARTS,(WPARAM)nParts,(LPARAM)&width);
+	SendMessage(ghStatus, SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode:");
+	SendMessage(ghStatus, SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP:");
 	return TRUE;
 }
 

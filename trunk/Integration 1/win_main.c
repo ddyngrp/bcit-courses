@@ -163,7 +163,7 @@ int InitApp(HINSTANCE hInst, int nCmdShow) {
 
 	// Create the main window
 	ghWndMain = CreateWindow(szAppName, szAppName,
-		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_BORDER | WS_SIZEBOX,
+		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_BORDER,
 		ptWindow.x, ptWindow.y,
 		X_SIZE, Y_SIZE,
 		NULL, NULL, hInst, NULL);

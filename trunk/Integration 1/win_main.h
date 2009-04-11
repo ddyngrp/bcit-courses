@@ -7,6 +7,8 @@
 #include <mmsystem.h>
 #include <stdio.h>
 #include <conio.h>
+#include "commctrl.h"
+#pragma comment(lib,"comctl32.lib")
 
 // Global Definitions
 #define X_SIZE			380
@@ -22,6 +24,7 @@
 #define BUFSIZE			4096
 #define BLOCK_SIZE		44100
 #define BLOCK_COUNT		10
+#define STATUS_BAR		2001
 
 #define FILEBUFSIZE		120
 #define MAXBUFSIZE		8000
@@ -80,7 +83,8 @@ typedef struct _customWaveFmt
 // Global Variables
 HINSTANCE	ghInst;		/* Main application's global instance */
 HWND		ghWndMain,	/* Main window's global handle */
-			ghDlgMain;	/* Main dialogue window's global handle */
+			ghDlgMain,
+			ghStatus;	/* Main dialogue window's global handle */
 HMENU		ghMenu;		/* Main window's menu handle */
 HACCEL		ghAccel;	/* Keyboard accelerator */
 SOCKADDR_IN	remote,		/* Server socket information */
@@ -93,6 +97,11 @@ int			busyFlag;
 static		WAVEFORMATEX pwfx;
 HWAVEOUT	hWaveOut;
 static BOOL	streamInProgress;
+
+/* Status Bar Information */
+static int nParts = 3;
+static int width[] = {115,225,-1};
+static int parts[] = {0, 1, 2};
 
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);

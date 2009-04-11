@@ -69,8 +69,6 @@ HACCEL					ghAccel;			// Keyboard accelerator
 SOCKADDR_IN				remote,				// Server socket information
 						local;				// Client socket information
 connectInfo				ci;					// Connection information
-static HANDLE			micSend, micRecv;	// Threads for 2-way mic
-static HWND				tHwnd[2];			// window handles used for threads
 static TCHAR			szAppName[] = TEXT("Comm Audio - Music Streamer");
 
 int busyFlag;

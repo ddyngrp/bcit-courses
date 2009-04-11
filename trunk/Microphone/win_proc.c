@@ -57,6 +57,43 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 		HANDLE_MSG(hWnd, WM_CLOSE, OnClose);
 		HANDLE_MSG(hWnd, WM_SOCKET, OnSocket);
 		HANDLE_MSG(hWnd, WM_DESTROY, OnDestroy);
+
+	case MM_WIM_OPEN:
+		/* start recording */
+		open_mic_device();
+		break;
+
+	case MM_WIM_DATA:
+		read_mic_data(id);
+		break;
+
+	case MM_WIM_CLOSE:
+		close_mic();
+		break;
+
+	case MM_WOM_OPEN:
+		open_output_device();
+		break;
+
+	case MM_WOM_DONE:
+		output_done();
+		break;
+
+	case MM_WOM_CLOSE:
+		close_output();
+		break;
+
+	case WM_SYSCOMMAND:
+		switch(LOWORD(id))
+		{
+		case SC_CLOSE:
+			terminate_mic_session();
+
+		default:
+			break;
+		}
+
+		break;
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }

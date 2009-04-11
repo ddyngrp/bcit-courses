@@ -14,12 +14,14 @@
 #define X_MIN_SIZE		450
 #define Y_MIN_SIZE		200
 #define NUMCONNECTIONS	5
-#define WM_SOCKET		10000
-#define DEFAULT_PORT	9000
+#define WM_TCP_SOCKET	10000
+#define WM_UDP_SOCKET	10001
+#define TCP_PORT		9000
+#define	UDP_PORT		7000
 #define EDITSIZE		50
 #define BUFSIZE			4096
 #define BLOCK_SIZE		44100
-#define BLOCK_COUNT		2000
+#define BLOCK_COUNT		10
 
 #define FILEBUFSIZE		120
 #define MAXBUFSIZE		8000
@@ -37,19 +39,21 @@
 #define MULTI_STREAM	4
 
 /* Custom Message Cracker Definition */
-#define HANDLE_WM_SOCKET(hwnd, wParam, lParam, fn) \
+#define HANDLE_WM_TCP_SOCKET(hwnd, wParam, lParam, fn) \
 	((fn)((hwnd), (wParam), (lParam)), 0L)
 
 /* Connection Information */
 typedef struct _CONNECTINFO
 {
-	char ip[EDITSIZE];  //just used for client to store the data entered in dialogue box
-	int port;
-	int behavior;  //server or client
-	int request;	//DL, UP, stream, multi stream
-	int protocol;
-	char DLfileName[200]; //the name of the file to create when we download a song
-	SOCKET			tcpSocket;
+	char	ip[EDITSIZE];	/* just used for client to store the data entered in dialogue box */
+	int		tcp_port,
+			udp_port,
+			behaviour,		/* server or client */
+			request,		/* DL, UP, stream, multi stream */
+			protocol;
+	char	DLfileName[200];/* the name of the file to create when we download a song */
+	SOCKET	tcpSocket,
+			udpSocket;
 } connectInfo;
 
 typedef struct _SOCKET_INFORMATION {
@@ -64,29 +68,31 @@ typedef struct _SOCKET_INFORMATION {
 
 typedef struct _customWaveFmt
 {
-    WORD        wFormatTag;         /* format type */
-    WORD        nChannels;          /* number of channels 
-                                        (i.e. mono, stereo...) */
-    DWORD       nSamplesPerSec;     /* sample rate */
-    DWORD       nAvgBytesPerSec;    /* for buffer estimation */
-    WORD        nBlockAlign;        /* block size of data */
-    WORD        wBitsPerSample;     /* number of bits per */
+    WORD	wFormatTag;			/* format type */
+    WORD	nChannels;			/* number of channels 
+								   (i.e. mono, stereo...) */
+    DWORD	nSamplesPerSec;		/* sample rate */
+    DWORD	nAvgBytesPerSec;	/* for buffer estimation */
+    WORD	nBlockAlign;		/* block size of data */
+    WORD	wBitsPerSample;		/* number of bits per */
 } cWAVEFMT;
 
 // Global Variables
-HINSTANCE	ghInst;				// Main application's global instance
-HWND		ghWndMain,			// Main window's global handle
-			ghDlgMain;			// Main dialogue window's global handle
-HMENU		ghMenu;				// Main window's menu handle
-HACCEL		ghAccel;			// Keyboard accelerator
-SOCKADDR_IN	remote,				// Server socket information
-			local;				// Client socket information
-connectInfo	ci;					// Connection information
+HINSTANCE	ghInst;		/* Main application's global instance */
+HWND		ghWndMain,	/* Main window's global handle */
+			ghDlgMain;	/* Main dialogue window's global handle */
+HMENU		ghMenu;		/* Main window's menu handle */
+HACCEL		ghAccel;	/* Keyboard accelerator */
+SOCKADDR_IN	remote,		/* Server socket information */
+			local,
+			udp_remote,
+			udp_local;	/* Client socket information */
+connectInfo	ci;			/* Connection information */
 
-int					busyFlag;
-static				WAVEFORMATEX pwfx;
-HWAVEOUT hWaveOut;
-static BOOL streamInProgress;
+int			busyFlag;
+static		WAVEFORMATEX pwfx;
+HWAVEOUT	hWaveOut;
+static BOOL	streamInProgress;
 
 // Global Functions
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);

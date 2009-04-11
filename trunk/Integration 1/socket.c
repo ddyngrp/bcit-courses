@@ -1,42 +1,14 @@
 #include "socket.h"
+
 /*--------------------------------------------------------------------------------------- 
---	FUNCTION:	sockAccept
+--	FUNCTION:	tcp_sockConnect
 -- 
 --	REVISIONS:
 -- 
 --	DESIGNER:	Jerrod Hudson
 --	PROGRAMMER:	Jerrod Hudson
 -- 
---	INTERFACE:	void writeTCPsock(HWND hwnd,		//handle to the window
---								  WPARAM wParam,	//the socket descriptor being used
---								   LPARAM lParam)
--- 
---	RETURNS:	void
--- 
---	NOTES:		Used by the server to accept an incoming request by a client.
----------------------------------------------------------------------------------------*/
-void sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
-{
-	SOCKET sd_acc;
-
-	if(wParam == INVALID_SOCKET)
-		return;
-
-	sd_acc = accept(wParam, NULL, NULL);
-
-	if(sd_acc == INVALID_SOCKET)
-		MessageBox(NULL, "Unable to create accept socket!", "ERROR", MB_OK);
-}
-
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	sockConnect
--- 
---	REVISIONS:
--- 
---	DESIGNER:	Jerrod Hudson
---	PROGRAMMER:	Jerrod Hudson
--- 
---	INTERFACE:	void writeTCPsock(HWND hwnd,		//handle to the window
+--	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
 --								  WPARAM wParam,	//the socket descriptor being used
 --								LPARAM lParam)
 -- 
@@ -51,14 +23,43 @@ void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 }
 
 /*--------------------------------------------------------------------------------------- 
---	FUNCTION:	sockConnect
+--	FUNCTION:	tcp_sockAccept
 -- 
 --	REVISIONS:
 -- 
 --	DESIGNER:	Jerrod Hudson
 --	PROGRAMMER:	Jerrod Hudson
 -- 
---	INTERFACE:	void writeTCPsock(HWND hwnd,		//handle to the window
+--	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
+--								  WPARAM wParam,	//the socket descriptor being used
+--								   LPARAM lParam)
+-- 
+--	RETURNS:	void
+-- 
+--	NOTES:		Used by the server to accept an incoming request by a client.
+---------------------------------------------------------------------------------------*/
+void tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
+{
+	SOCKET sd_acc;
+
+	if(wParam == INVALID_SOCKET)
+		return;
+
+	sd_acc = accept(wParam, NULL, NULL);
+
+	if(sd_acc == INVALID_SOCKET)
+		MessageBox(NULL, "Unable to create accept socket!", "ERROR", MB_OK);
+}
+
+/*--------------------------------------------------------------------------------------- 
+--	FUNCTION:	tcp_sockConnect
+-- 
+--	REVISIONS:
+-- 
+--	DESIGNER:	Jerrod Hudson
+--	PROGRAMMER:	Jerrod Hudson
+-- 
+--	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
 --								  WPARAM wParam,	//not used right now
 --								LPARAM lParam)		//used to get the last error
 -- 
@@ -66,7 +67,7 @@ void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 -- 
 --	NOTES:		Checks for an error on connection and prints it in a MessageBox.
 ---------------------------------------------------------------------------------------*/
-void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
+void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	int errNum;
 	char *error;
@@ -97,7 +98,7 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 }
 
 /*--------------------------------------------------------------------------------------- 
---	FUNCTION:	sockRead
+--	FUNCTION:	tcp_sockRead
 -- 
 --	REVISIONS:	April 6 - Added the SINGLE_STREAM case which will call the function 
 --						  receiveStream().
@@ -105,13 +106,13 @@ void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 --	DESIGNER:	Jerrod Hudson, Jaymz Boilard
 --	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
 -- 
---	INTERFACE:	void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--	INTERFACE:	void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 -- 
 --	RETURNS:	void
 -- 
 --	NOTES:		Reads from a socket asyncronously when we get a message in.
 ---------------------------------------------------------------------------------------*/
-void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
+void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char buffer[BUFSIZE];
 	int bytesRead;
@@ -124,7 +125,7 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	cSize = sizeof(SOCKADDR);
 	memset(buffer, '\0', BUFSIZE);
 
-	if(ci.behavior == SERVER)
+	if(ci.behaviour == SERVER)
 	{
 		if(ci.request == SINGLE_UP)
 		{
@@ -145,31 +146,30 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 		if(ci.request == SINGLE_DL) //need to set request to 0 when we click on server & gray the other request items
 			server_download(wParam, buffer); /* Go right to sending the file. */
-		else if(ci.request == SINGLE_STREAM)
-		{
+		else if(ci.request == SINGLE_STREAM) {
 			strcpy(ci.DLfileName, buffer);
 			if(!CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0))
-				{
-					MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
-					exit(1);
-				}
+			{
+				MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+				exit(1);
+			}
 		}
 
 		/* Set the type according to the first packet */
-		if(strcmp(buffer, "Single Download") == 0)
-		{
+		if(strcmp(buffer, "Single Download") == 0) {
 			ci.request = SINGLE_DL;
 			sendFileList(wParam);
 		}
-		else if(strcmp(buffer, "Single Upload") == 0)
+		else if(strcmp(buffer, "Single Upload") == 0) {
 			ci.request = SINGLE_UP;
+		}
 		else if(strcmp(buffer, "Stream") == 0)
 		{
 			ci.request = SINGLE_STREAM;
 			sendFileList(wParam);
 		}
 	}
-	else if (ci.behavior == CLIENT)
+	else if (ci.behaviour == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
 		{
@@ -178,48 +178,26 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
-			if(firstTime == FALSE)
+			if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
 			{
-				if(streamInProgress == FALSE)
+				if (WSAGetLastError() != WSAEWOULDBLOCK)
 				{
-					streamInProgress = TRUE;
-					if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)receiveStream,wParam,0,0))
-					{
-						MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
-						exit(1);
-					}
+					MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+					closesocket(wParam);
 				}
 			}
-			else
-			{
-				if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
-				{
-					if (WSAGetLastError() != WSAEWOULDBLOCK)
-					{
-						MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
-						closesocket(wParam);
-					}
-				}
-				receiveFileList(wParam, buffer);
-				firstTime = FALSE;
-			}
-			
-		}
-		else if(ci.request == SINGLE_STREAM)
-		{
-			if(firstTime == TRUE)
-				receiveFileList(wParam, buffer);
+			receiveFileList(wParam, buffer);
 		}
 	}
 }
 
 
 /*--------------------------------------------------------------------------------------- 
---	FUNCTION:	writeTCPsock
+--	FUNCTION:	tcp_sockWrite
 -- 
 --	REVISIONS:	March 26 - Added a check for the request type, which changes the
 --						   the outbound buffer correspondingly.
---						 - Changed the name to writeTCPsocket, since we will only
+--						 - Changed the name to tcp_sockWriteet, since we will only
 --						   be using this one for sending control messages.  A
 --						   separate one will be used for UDP transfers.
 --				April 6 - Added a memset to clear all the buffers due to an error.
@@ -227,13 +205,13 @@ void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 --	DESIGNER:	Jerrod Hudson, Jaymz Boilard
 --	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
 -- 
---	INTERFACE:	void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--	INTERFACE:	void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 -- 
 --	RETURNS:	void
 -- 
 --	NOTES:	Writes to a socket, used for the control channel.
 ---------------------------------------------------------------------------------------*/
-void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
+void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char	buffer[BUFSIZE];
 	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
@@ -241,7 +219,7 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	memset(buffer, '\0', BUFSIZE);
 	memset(fileName, '\0', FILEBUFSIZE);
 	memset(pathName, '\0', FILEBUFSIZE);
-	if(ci.behavior == CLIENT)
+	if(ci.behaviour == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
 		{
@@ -278,6 +256,6 @@ void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			receiveStream(wParam);
 		}*/
 	}
-	else if (ci.behavior == SERVER)
+	else if (ci.behaviour == SERVER)
 		MessageBox(NULL, TEXT("Warning: Asyncronous TCP write called by the serverk (should not happen).\n"), NULL, MB_OK);
 }

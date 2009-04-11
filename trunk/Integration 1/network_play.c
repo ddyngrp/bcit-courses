@@ -51,35 +51,32 @@ static int				waveCurrentBlock;
 ------------------------------------------------------------------------*/
 void receiveStream(WPARAM sd)
 {
-	WAVEFORMATEX	wfx; /* look this up in your documentation */
+	WAVEFORMATEX	wfx;				/* look this up in your documentation */
 	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
-	int				i;
+	int				i, n, remote_len;
 	DWORD			outBytes = 0;
-	int		n;					/* Number of bytes received at a given time */
+	char * play_byte = "1";
+
+	remote_len = sizeof(udp_remote);
 
 	/* initialise the module variables */ 
-	waveBlocks = allocateBlocks(BLOCK_SIZE, BLOCK_COUNT);
-	waveFreeBlockCount = BLOCK_COUNT;
-	waveCurrentBlock= 0;
+	waveBlocks			= allocateBlocks(BLOCK_SIZE, BLOCK_COUNT);
+	waveFreeBlockCount	= BLOCK_COUNT;
+	waveCurrentBlock	= 0;
 	InitializeCriticalSection(&waveCriticalSection);
-
-	/* set up the WAVEFORMATEX structure. */
-	//wfx.nSamplesPerSec = 44100;	/* sample rate */
-	//wfx.wBitsPerSample = 16;	/* sample size */
-
-	//wfx.cbSize = 0;				/* size of _extra_ info */
-
-
-	/**
-	 * try to open the default wave device. WAVE_MAPPER is
-	 * a constant defined in mmsystem.h, it always points to the
-	 * default wave device on the system (some people have 2 or
-	 * more sound cards).
-	 */
 	
 	/* playback loop - read from socket */
-	while ((n = recv(sd, buffer, sizeof(buffer), 0)) != 0) 
+	while (TRUE) 
 	{
+		/* send play signal */
+		sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+
+		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0,
+				(struct sockaddr *)&udp_remote, &remote_len)) <= 0) {
+			MessageBox(NULL, "No Server!", "Error", MB_OK);
+			ExitProcess(1);
+		}
+
 		/* first 4 bytes in a file, so set the header information */
 		if(strncmp(buffer, "RIFF", 4) == 0)
 		{
@@ -91,11 +88,12 @@ void receiveStream(WPARAM sd)
 					ExitProcess(1);
 			}
 		}
-		outBytes += n / 1000;
+
 		if(n == 0)
 			break;
 		else if(n < sizeof(buffer))
 			memset(buffer + n, 0, sizeof(buffer) - n);
+
 		writeAudio(buffer, n);
 	}
 
@@ -143,6 +141,8 @@ void receiveStream(WPARAM sd)
 void sendStream(WPARAM sd)
 {
 	HANDLE hFile;
+	int		remote_len;
+
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 
@@ -154,28 +154,37 @@ void sendStream(WPARAM sd)
 		ExitProcess(1);
 	}
 
+	remote_len = sizeof(udp_local); 
+
+	/* Wait for client to send initial UDP packet to determine the address */
+	recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+
 	while (TRUE)
 	{
 		DWORD readBytes;
 
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL))
 		{
-			closesocket(sd);
+			closesocket(ci.udpSocket);
 			break;
 		}
 		if(readBytes == 0)
 		{
+			/* Send EOF notification to the client */
+			/* sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len); */
 			closesocket(sd);
 			break;
 		}
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
 
-		send(sd, buffer, readBytes, 0);
-		Sleep(200);
+		sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, remote_len);
+
+		/* Wait for signal from client before sending next block */
+		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
 	}
 
-	closesocket(sd);
+	closesocket(ci.udpSocket);
 	WSACleanup();
 }
 

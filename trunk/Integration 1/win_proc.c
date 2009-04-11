@@ -54,7 +54,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 		HANDLE_MSG(hWnd, WM_COMMAND, OnCommand);
 		HANDLE_MSG(hWnd, WM_PAINT, OnPaint);
 		HANDLE_MSG(hWnd, WM_CLOSE, OnClose);
-		HANDLE_MSG(hWnd, WM_SOCKET, OnSocket);
+		HANDLE_MSG(hWnd, WM_TCP_SOCKET, OnTCPSocket);
 		HANDLE_MSG(hWnd, WM_DESTROY, OnDestroy);
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
@@ -99,7 +99,7 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			GetDlgItemText(hDlg, IDC_CEDIT2, port, 5);
 
 			if(port[0] != '\0')
-				ci.port = atoi(port);
+				ci.tcp_port = atoi(port);
 
 			if(ci.ip[0] != '\0')
 				EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
@@ -157,7 +157,7 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			GetDlgItemText(hDlg, IDC_SEDIT1, temp, 26);
 			
 			if(temp[0] != '\0')
-				ci.port = atoi(temp);
+				ci.tcp_port = atoi(temp);
 
 			/* Use this method to find checked items */
 			if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {

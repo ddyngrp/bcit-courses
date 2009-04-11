@@ -4,7 +4,7 @@
 #include <windows.h>
 
 #define PORT	7000	/* Default port */
-#define BUFSIZE	8820	/* 0.20 seconds of audio */
+#define BUFSIZE	44100	/* 0.20 seconds of audio */
 
 int main(int argc, char* argv[]) {
 	HANDLE	hFile;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
 	WSADATA	WSAData;
 	WORD	wVersionRequested;
 	char	buffer[BUFSIZE]; /* intermediate buffer for reading */
-	DWORD totalRead = 0;
+	DWORD	totalRead = 0;
 
 
 	char * fileName = "C:\\Ensemble.wav"; /* Hard-code filename */

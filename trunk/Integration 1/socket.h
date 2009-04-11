@@ -4,10 +4,13 @@
 #include <stdio.h>
 #include "win_main.h"
 
-void sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam);
+/* Universal Socket Functions */
 void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam);
-void sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam);
-void sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam);
-void writeTCPsock(HWND hwnd, WPARAM wParam, LPARAM lParam);
+
+/* TCP Socket Functions */
+void tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam);
+void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam);
+void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam);
+void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam);
 
 #endif

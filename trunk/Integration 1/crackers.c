@@ -54,18 +54,20 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
 	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
 	int iRc;
-	/* HINSTANCE hInstance = (HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE); */
 
 	switch(id)
 	{
 	case ID_FILE_CONNECT:
-		if(ci.behavior == SERVER)
+		if(ci.behaviour == SERVER)
 		{
 			setup_server(hwnd, SOCK_STREAM);
+			setup_server(hwnd, SOCK_DGRAM);
 			break;
 		}
-		else if(ci.behavior == CLIENT)
+		else if(ci.behaviour == CLIENT) {
 			setup_client(hwnd, SOCK_STREAM);
+			setup_client(hwnd, SOCK_DGRAM);
+		}
 
 		if(ci.tcpSocket == INVALID_SOCKET)
 		{
@@ -103,7 +105,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
 	case ID_MODE_CLIENT:
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_CLIENT), hwnd, (DLGPROC)ClientProc);
-		ci.behavior = CLIENT;
+		ci.behaviour = CLIENT;
 		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
@@ -118,7 +120,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
 	case ID_MODE_SERVER:
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_SERVER), hwnd, (DLGPROC)ServerProc);
-		ci.behavior = SERVER;
+		ci.behaviour = SERVER;
 
 		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
 		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
@@ -220,7 +222,8 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	fileInit(hwnd); //set up file browsing
 	busyFlag = 0;
 	memset((char *)&ci, 0, sizeof(connectInfo));
-	ci.port	= DEFAULT_PORT;
+	ci.tcp_port	= TCP_PORT;
+	ci.udp_port = UDP_PORT;
 
 	ghMenu = GetMenu(hwnd);
 
@@ -318,7 +321,7 @@ void OnSize(HWND hwnd, UINT state, int cy, int cx)
 }
 
 /*------------------------------------------------------------------------
---		FUNCTION:		OnSocket
+--		FUNCTION:		OnTCPSocket
 --
 --		DATE:			February 24, 2009
 --
@@ -327,7 +330,7 @@ void OnSize(HWND hwnd, UINT state, int cy, int cx)
 --		DESIGNER:		Jerrod Hudson
 --		PROGRAMMER:		Jerrod Hudson
 --
---		INTERFACE:		void OnSocket(HWND hwnd, WPARAM wParam,
+--		INTERFACE:		void OnTCPSocket(HWND hwnd, WPARAM wParam,
 --						LPARAM lParam)
 --						HWND hwnd: Handle to the window to paint
 --						WPARAM wParam: Socket descriptor
@@ -337,12 +340,12 @@ void OnSize(HWND hwnd, UINT state, int cy, int cx)
 --
 --		NOTES:			Performs flag specific socket operations.
 ------------------------------------------------------------------------*/
-void OnSocket(HWND hwnd, WPARAM wParam, LPARAM lParam)
+void OnTCPSocket(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	switch(WSAGETSELECTEVENT(lParam))
 	{
 	case FD_ACCEPT:
-		sockAccept(hwnd, wParam, lParam);
+		tcp_sockAccept(hwnd, wParam, lParam);
 		break;
 
 	case FD_CLOSE:
@@ -350,15 +353,15 @@ void OnSocket(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		break;
 	
 	case FD_CONNECT:
-		sockConnect(hwnd, wParam, lParam);
+		tcp_sockConnect(hwnd, wParam, lParam);
 		break;
 
 	case FD_READ:
-		sockRead(hwnd, wParam, lParam);
+		tcp_sockRead(hwnd, wParam, lParam);
 		break;
 
 	case FD_WRITE:
-		writeTCPsock(hwnd, wParam, lParam);
+		tcp_sockWrite(hwnd, wParam, lParam);
 		break;
 
 	default:

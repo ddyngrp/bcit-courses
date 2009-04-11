@@ -114,6 +114,15 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 							closesocket(wParam);
 						}
 					}
+
+					/* This is WRONG!!! */
+					Sleep(100);
+					if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)receiveStream,ci.udpSocket,0,0))
+					{
+						MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+						exit(1);
+					}
+
                     return FALSE;
 
                 //button should be disabled when we're not in server mode

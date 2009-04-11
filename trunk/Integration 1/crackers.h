@@ -11,6 +11,7 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct);
 void OnDestroy(HWND hwnd);
 void OnPaint(HWND hwnd);
 void OnSize(HWND hwnd, UINT state, int cx, int cy);
-void OnSocket(HWND hwnd, WPARAM wParam, LPARAM lParam);
+void OnTCPSocket(HWND hwnd, WPARAM wParam, LPARAM lParam);
+void OnUDPSocket(HWND hwnd, WPARAM wParam, LPARAM lParam);
 
 #endif

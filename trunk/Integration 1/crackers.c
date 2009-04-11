@@ -52,9 +52,9 @@ void OnClose(HWND hwnd)
 ------------------------------------------------------------------------*/
 void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
-	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
+	TCHAR fileName[FILE_PATH_SIZE], pathName[FILE_PATH_SIZE];
 	int iRc;
-	char ipAddr[EDITSIZE] = "IP: ";
+	char ipAddr[TEMP_BUFF_SIZE] = "IP: ";
 
 	switch(id)
 	{
@@ -88,7 +88,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		}
 		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
-		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)ipAddr);
 		break;
 
 	case ID_FILE_DISCONNECT:
@@ -186,8 +185,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
             break;
 		EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
         busyFlag = LOCALPLAY;
-        memset(fileName, 0, FILEBUFSIZE);
-	    memset(pathName, 0, FILEBUFSIZE);
+        memset(fileName, 0, FILE_PATH_SIZE);
+	    memset(pathName, 0, FILE_PATH_SIZE);
         browseFiles(hwnd, fileName, pathName);
         if(localSong_Init(hwnd, fileName) == FALSE)
             busyFlag = 0; //if we failed to open file

@@ -230,11 +230,11 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char	buffer[BUFSIZE];
-	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
+	TCHAR fileName[FILE_PATH_SIZE], pathName[FILE_PATH_SIZE];
 
 	memset(buffer, '\0', BUFSIZE);
-	memset(fileName, '\0', FILEBUFSIZE);
-	memset(pathName, '\0', FILEBUFSIZE);
+	memset(fileName, '\0', FILE_PATH_SIZE);
+	memset(pathName, '\0', FILE_PATH_SIZE);
 	if(ci.behaviour == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)

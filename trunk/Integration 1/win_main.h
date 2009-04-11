@@ -10,32 +10,34 @@
 #include "commctrl.h"
 #pragma comment(lib,"comctl32.lib")
 
-// Global Definitions
+/* GUI Definitions */
 #define X_SIZE			380
 #define Y_SIZE			240
 #define X_MIN_SIZE		450
 #define Y_MIN_SIZE		200
+#define STATUS_BAR		2001
+
+/* Connection Definitions */
 #define NUMCONNECTIONS	5
 #define WM_TCP_SOCKET	10000
 #define WM_UDP_SOCKET	10001
 #define TCP_PORT		9000
 #define	UDP_PORT		7000
-#define EDITSIZE		50
+
+/* Buffer Definitions */
 #define BUFSIZE			4096
 #define BLOCK_SIZE		44100
 #define BLOCK_COUNT		10
-#define STATUS_BAR		2001
+#define TEMP_BUFF_SIZE	200
+#define FILE_PATH_SIZE	255
 
-#define FILEBUFSIZE		120
-#define MAXBUFSIZE		8000
+/* Flag Definitions */
 #define LOCALPLAY		500
 #define NETWORKPLAY		501
 
 /* Mode macros  (we start at 1 so that 0 is assumed to be unset, thus we can find uninitialized variables easily) */
 #define SERVER			1
 #define CLIENT			2
-#define TCP				1
-#define IDP				2
 #define SINGLE_DL		1
 #define SINGLE_UP		2
 #define SINGLE_STREAM	3
@@ -48,13 +50,14 @@
 /* Connection Information */
 typedef struct _CONNECTINFO
 {
-	char	ip[EDITSIZE];	/* just used for client to store the data entered in dialogue box */
+	char	ip[TEMP_BUFF_SIZE];	/* just used for client to store the data entered in dialogue box */
 	int		tcp_port,
 			udp_port,
 			behaviour,		/* server or client */
 			request,		/* DL, UP, stream, multi stream */
 			protocol;
-	char	DLfileName[200];/* the name of the file to create when we download a song */
+	/* the name of the file to create when we download a song */
+	char	DLfileName[FILE_PATH_SIZE];
 	SOCKET	tcpSocket,
 			udpSocket;
 } connectInfo;

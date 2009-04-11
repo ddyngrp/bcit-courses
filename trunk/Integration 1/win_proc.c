@@ -84,7 +84,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	char port[EDITSIZE];
+	char port[TEMP_BUFF_SIZE];
 
 	switch(message)
 	{
@@ -142,8 +142,7 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-
-	char temp[EDITSIZE];
+	char temp[TEMP_BUFF_SIZE];
 
 	switch(message)
 	{

@@ -47,11 +47,11 @@
 --
 ---------------------------------------------------------------------------------------*/
 BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
-	HMENU hMenu;
-	char * fileName;
-	char outBuf[200];
-	DWORD errNo;
-	static HANDLE streamThread;
+	HMENU	hMenu;
+	char	* fileName;
+	char	outBuf[TEMP_BUFF_SIZE];
+	DWORD	errNo;
+	static	HANDLE streamThread;
     
 	hMenu = GetMenu(ghWndMain);
 
@@ -102,7 +102,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
                 case IDC_BTN_DOWNLOAD:
 
 					fileName = GetSelList();
-					memset(outBuf, '\0', 200);
+					memset(outBuf, '\0', TEMP_BUFF_SIZE);
 					strcpy(outBuf, fileName);
 					strcpy((char *)outBuf, fileName);
 					strcpy(ci.DLfileName, fileName);
@@ -116,16 +116,17 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 						}
 					}
 
-					if(streamThread != NULL)
+					if(streamThread != NULL) {
 						TerminateThread(streamThread,0);
+					}
 
 					Sleep(100);
 
-					streamThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)receiveStream,wParam,0,0);
-					if(streamThread == NULL)
+					if((streamThread = CreateThread(NULL, 0, 
+						(LPTHREAD_START_ROUTINE)receiveStream, wParam, 0, 0)) == NULL)
 					{
 						MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
-						exit(1);
+						ExitProcess(1);
 					}
 
                     return FALSE;

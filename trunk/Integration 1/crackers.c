@@ -67,7 +67,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP: 127.0.0.1");
 			break;
 		}
-		else if(ci.behaviour == CLIENT) {
+		else if(ci.behaviour == CLIENT) 
+		{
 			setup_client(hwnd, SOCK_STREAM);
 			setup_client(hwnd, SOCK_DGRAM);
 		}
@@ -124,6 +125,8 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_ENABLED);
 
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Client");
+		strcat(ipAddr, ci.ip);
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)ipAddr);
 		break;
 
 	case ID_MODE_SERVER:

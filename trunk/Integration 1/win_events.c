@@ -51,6 +51,7 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 	char * fileName;
 	char outBuf[200];
 	DWORD errNo;
+	static HANDLE streamThread;
     
 	hMenu = GetMenu(ghWndMain);
 
@@ -115,9 +116,13 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 						}
 					}
 
-					/* This is WRONG!!! */
+					if(streamThread != NULL)
+						TerminateThread(streamThread,0);
+
 					Sleep(100);
-					if(!CreateThread(NULL,NULL,(LPTHREAD_START_ROUTINE)receiveStream,ci.udpSocket,0,0))
+
+					streamThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)receiveStream,wParam,0,0);
+					if(streamThread == NULL)
 					{
 						MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
 						exit(1);

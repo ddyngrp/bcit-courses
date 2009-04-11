@@ -71,10 +71,12 @@ void receiveStream(WPARAM sd)
 		/* send play signal */
 		sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
 
-		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0,
-				(struct sockaddr *)&udp_remote, &remote_len)) <= 0) {
+		/* Gets blocked here forever */
+		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0, (struct sockaddr *)&udp_remote, &remote_len)) <= 0)
+		{
 			MessageBox(NULL, "No Server!", "Error", MB_OK);
-			ExitProcess(1);
+			waveOutClose(hWaveOut);
+			ExitThread(0);
 		}
 
 		/* first 4 bytes in a file, so set the header information */
@@ -92,13 +94,14 @@ void receiveStream(WPARAM sd)
 		if(n == 0)
 			break;
 		else if(n < sizeof(buffer))
+		{
 			memset(buffer + n, 0, sizeof(buffer) - n);
+			writeAudio(buffer, n);
+			break;
+		}
 
 		writeAudio(buffer, n);
 	}
-
-	closesocket(sd);
-	WSACleanup();
 
 	/* wait for all blocks to complete */
 	while(waveFreeBlockCount < BLOCK_COUNT)
@@ -114,6 +117,7 @@ void receiveStream(WPARAM sd)
 	freeBlocks(waveBlocks);
 	waveOutClose(hWaveOut);
 	streamInProgress = FALSE;
+	ExitThread(0);
 }
 
 /*------------------------------------------------------------------------
@@ -142,6 +146,7 @@ void sendStream(WPARAM sd)
 {
 	HANDLE hFile;
 	int		remote_len;
+	DWORD readBytes;
 
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
@@ -161,19 +166,18 @@ void sendStream(WPARAM sd)
 
 	while (TRUE)
 	{
-		DWORD readBytes;
-
 		if(!ReadFile(hFile, buffer, sizeof(buffer), &readBytes, NULL))
 		{
 			closesocket(ci.udpSocket);
-			break;
+			CloseHandle(hFile);
+			ExitThread(0);
 		}
 		if(readBytes == 0)
 		{
 			/* Send EOF notification to the client */
-			/* sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len); */
-			closesocket(ci.udpSocket);
-			break;
+			//sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len);
+			CloseHandle(hFile);
+			ExitThread(0);
 		}
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
@@ -183,9 +187,7 @@ void sendStream(WPARAM sd)
 		/* Wait for signal from client before sending next block */
 		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
 	}
-
-	closesocket(ci.udpSocket);
-	WSACleanup();
+	ExitThread(0);
 }
 
 /*------------------------------------------------------------------------

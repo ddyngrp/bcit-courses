@@ -118,6 +118,12 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	int bytesRead;
 	int cSize;
 	static BOOL firstTime = TRUE;
+	static HANDLE streamThread;
+
+	/* For testing if we need to r
+	HWND listBox;
+	int listIndex;
+	LPCSTR curSong;*/
 
 	if(wParam == INVALID_SOCKET)
 		return;
@@ -148,7 +154,17 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			server_download(wParam, buffer); /* Go right to sending the file. */
 		else if(ci.request == SINGLE_STREAM) {
 			strcpy(ci.DLfileName, buffer);
-			if(!CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0))
+			/*list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
+			listIndex = ListBox_GetCurSel(list);*/
+
+
+			if(streamThread != NULL)
+			{
+				TerminateThread(streamThread,0);
+			}
+
+			streamThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0);
+			if(streamThread == NULL)
 			{
 				MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
 				exit(1);

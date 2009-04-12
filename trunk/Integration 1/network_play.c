@@ -51,11 +51,12 @@ static int				waveCurrentBlock;
 ------------------------------------------------------------------------*/
 void receiveStream(WPARAM sd)
 {
-	WAVEFORMATEX	wfx;				/* look this up in your documentation */
+	WAVEFORMATEX	wfx;
 	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 	int				i, n, remote_len;
 	DWORD			outBytes = 0;
-	char * play_byte = "1";
+	char			* play_byte = "1";
+	BOOL			firstRun = TRUE;
 
 	remote_len = sizeof(udp_remote);
 
@@ -64,12 +65,14 @@ void receiveStream(WPARAM sd)
 	waveFreeBlockCount	= BLOCK_COUNT;
 	waveCurrentBlock	= 0;
 	InitializeCriticalSection(&waveCriticalSection);
-	
+
 	/* playback loop - read from socket */
 	while (TRUE) 
 	{
-		/* send play signal */
-		sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+		if (ci.request != MULTI_STREAM) {
+			/* send play signal */
+			sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+		}
 
 		/* Gets blocked here forever */
 		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0, (struct sockaddr *)&udp_remote, &remote_len)) <= 0)
@@ -82,19 +85,24 @@ void receiveStream(WPARAM sd)
 		/* first 4 bytes in a file, so set the header information */
 		if(strncmp(buffer, "RIFF", 4) == 0)
 		{
-			waveOutClose(hWaveOut);
 			memcpy(&wfx, buffer+20, sizeof(wfx));
-			if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
-				(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
-			{
-					MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
-					ExitProcess(1);
+
+			if (ci.request != MULTI_STREAM || firstRun == TRUE) {
+				waveOutClose(hWaveOut);
+			
+				if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
+					(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
+				{
+						MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
+						ExitProcess(1);
+				}
+				firstRun = FALSE;
 			}
 		}
 
 		if(n == 0)
 			break;
-		else if(n < sizeof(buffer))
+		else if(n < sizeof(buffer) && n != 1024)
 		{
 			memset(buffer + n, 0, sizeof(buffer) - n);
 			writeAudio(buffer, n);
@@ -145,9 +153,9 @@ void receiveStream(WPARAM sd)
 ------------------------------------------------------------------------*/
 void sendStream(WPARAM sd)
 {
-	HANDLE hFile;
-	int		remote_len;
-	DWORD readBytes;
+	HANDLE	hFile;
+	int		remote_len, i;
+	DWORD	readBytes;
 
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
@@ -160,10 +168,12 @@ void sendStream(WPARAM sd)
 		ExitProcess(1);
 	}
 
-	remote_len = sizeof(udp_local); 
+	remote_len = sizeof(udp_remote); 
 
-	/* Wait for client to send initial UDP packet to determine the address */
-	recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+	if (ci.request != MULTI_STREAM) {
+		/* Wait for client to send initial UDP packet to determine the address */
+		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+	}
 
 	while (TRUE)
 	{
@@ -173,6 +183,18 @@ void sendStream(WPARAM sd)
 			CloseHandle(hFile);
 			ExitThread(0);
 		}
+
+		/* first 4 bytes in a file, so set the header information */
+		if(strncmp(buffer, "RIFF", 4) == 0)
+		{
+			memcpy(&ci.waveFormat, buffer, sizeof(WAVEFORMATEX)+20);
+		}
+
+		if (ci.newClient == TRUE) {
+			ci.newClient = FALSE;
+			sendto(ci.udpSocket, ci.waveFormat, sizeof(ci.waveFormat), 0, (struct sockaddr *)&udp_local, remote_len);
+		}
+
 		if(readBytes == 0)
 		{
 			/* Send EOF notification to the client */
@@ -183,10 +205,17 @@ void sendStream(WPARAM sd)
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
 
-		sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, remote_len);
 
-		/* Wait for signal from client before sending next block */
-		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+		if (ci.request == MULTI_STREAM) {
+			sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_local, remote_len);
+			Sleep(200);
+		}
+		else {
+			sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, remote_len);
+
+			/* Wait for signal from client before sending next block */
+			recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+		}
 	}
 	ExitThread(0);
 }

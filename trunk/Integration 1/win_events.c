@@ -72,6 +72,8 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 					    waveOutRestart(hWaveOut);
 					else if(ci.request == SINGLE_STREAM)
 						waveOutRestart(hWaveOut);
+					else if (ci.request == MULTI_STREAM)
+						waveOutSetVolume(hWaveOut, 0xFFFFFFFF);
 					return FALSE;
 
                 case IDC_BTN_PAUSE:
@@ -86,6 +88,9 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 							
 							return FALSE;
 						}
+					}
+					else if (ci.request == MULTI_STREAM) {
+						waveOutSetVolume(hWaveOut, 0x00000000);
 					}
 					return FALSE;
 
@@ -131,11 +136,21 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 
                     return FALSE;
 
-                //button should be disabled when we're not in server mode
                 /* connection has already been set up after connect was pressed, so we can start
                    sending right away. */
                 case IDC_BTN_BROADCAST:
-                    //serv_broadcast(fileName);
+					strcpy(ci.DLfileName, GetSelList());
+
+					if(streamThread != NULL) {
+						TerminateThread(streamThread,0);
+					}
+
+					if((streamThread = CreateThread(NULL, 0, 
+						(LPTHREAD_START_ROUTINE)sendStream, wParam, 0, 0)) == NULL)
+					{
+						MessageBox(NULL, "Thread creation failed", NULL,MB_OK);
+						ExitProcess(1);
+					}
                     return FALSE;
 
 				case IDC_BTN_ADD:

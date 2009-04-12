@@ -55,6 +55,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	TCHAR fileName[FILE_PATH_SIZE], pathName[FILE_PATH_SIZE];
 	int iRc;
 	char ipAddr[TEMP_BUFF_SIZE] = "IP: ";
+	static	HANDLE streamThread;
 
 	switch(id)
 	{
@@ -65,12 +66,31 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			setup_server(hwnd, SOCK_DGRAM);
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP: 127.0.0.1");
+
+			if (ci.request == MULTI_STREAM) {
+				sendFileList(0);
+			}
 			break;
 		}
 		else if(ci.behaviour == CLIENT) 
 		{
 			setup_client(hwnd, SOCK_STREAM);
 			setup_client(hwnd, SOCK_DGRAM);
+			
+			if (ci.request == MULTI_STREAM) {
+				if(streamThread != NULL) {
+					TerminateThread(streamThread,0);
+				}
+
+				Sleep(100);
+
+				if((streamThread = CreateThread(NULL, 0, 
+					(LPTHREAD_START_ROUTINE)receiveStream, ci.udpSocket, 0, 0)) == NULL)
+				{
+					MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+					ExitProcess(1);
+				}
+			}
 		}
 
 		if(ci.tcpSocket == INVALID_SOCKET)
@@ -143,7 +163,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
 		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Server");
-		ci.request = 0;
+		/* ci.request = 0; */
 		break;
 
 	/* Note: These menu item checks can be put into a loop within a function */
@@ -235,6 +255,7 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	memset((char *)&ci, 0, sizeof(connectInfo));
 	ci.tcp_port	= TCP_PORT;
 	ci.udp_port = UDP_PORT;
+	ci.newClient = FALSE;
 
 	ghMenu = GetMenu(hwnd);
 

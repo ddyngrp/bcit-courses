@@ -184,6 +184,9 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			ci.request = SINGLE_STREAM;
 			sendFileList(wParam);
 		}
+		else if (strcmp(buffer, "Multicast") == 0) {
+			ci.newClient = TRUE;
+		}
 	}
 	else if (ci.behaviour == CLIENT)
 	{

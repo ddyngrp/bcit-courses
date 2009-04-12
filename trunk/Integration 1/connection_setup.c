@@ -26,8 +26,9 @@
 ------------------------------------------------------------------------*/
 void setup_client(HWND hwnd, int type)
 {
-	WSADATA				wsaData;
-	char				arg;
+	WSADATA	wsaData;
+	char	arg, yes = 1;
+	struct	ip_mreq mreq;
 
 	if((WSAStartup(MAKEWORD(2, 2), &wsaData)) == -1)
 	{
@@ -58,8 +59,36 @@ void setup_client(HWND hwnd, int type)
 
 		memset((char *)&udp_remote, 0, sizeof(SOCKADDR_IN));
 		udp_remote.sin_family = AF_INET;
-		udp_remote.sin_addr.s_addr = inet_addr(ci.ip);
 		udp_remote.sin_port = htons(ci.udp_port);
+
+		/* Check if we're multicasting and set appropriate connection settings */
+		if (ci.request == MULTI_STREAM) {
+			/* allow multiple sockets to use the same PORT number */
+			if (setsockopt(ci.udpSocket, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) < 0) {
+				MessageBox(NULL, "Reusing ADDR failed", "ERROR", MB_OK);
+				ExitProcess(1);
+			}
+			udp_remote.sin_addr.s_addr = htonl(INADDR_ANY);
+
+			/* bind to receive address */
+			if (bind(ci.udpSocket, (struct sockaddr *)&udp_remote, sizeof(udp_remote)) < 0) {
+				MessageBox(NULL, "Multicast bind() error!", "ERROR", MB_OK);
+				ExitProcess(1);
+			}
+
+			/* use setsockopt() to request that the kernel join a multicast group */
+			mreq.imr_multiaddr.s_addr=inet_addr(MULTICAST_GROUP);
+			mreq.imr_interface.s_addr=htonl(INADDR_ANY);
+
+			if (setsockopt(ci.udpSocket, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&mreq, sizeof(mreq)) < 0) {
+				MessageBox(NULL, "Multicast: Reusing ADDR failed", "ERROR", MB_OK);
+				ExitProcess(1);
+			}
+		}
+		else {
+			udp_remote.sin_addr.s_addr = inet_addr(ci.ip);
+		}
+
 	}
 }
 
@@ -88,8 +117,8 @@ void setup_client(HWND hwnd, int type)
 ------------------------------------------------------------------------*/
 void setup_server(HWND hwnd, int type)
 {
-	WSADATA				wsaData;
-	char				arg;
+	WSADATA	wsaData;
+	char	arg;
 
 	if((WSAStartup(MAKEWORD(2, 2), &wsaData)) == -1)
 	{
@@ -128,11 +157,17 @@ void setup_server(HWND hwnd, int type)
 
 		memset((char *)&udp_local, 0, sizeof(SOCKADDR_IN));
 		udp_local.sin_family = AF_INET;
-		udp_local.sin_addr.s_addr = INADDR_ANY;
 		udp_local.sin_port = htons(ci.udp_port);
 
-		/* Bind address to socket */
-		if(bind(ci.udpSocket, (SOCKADDR *)&udp_local, sizeof(SOCKADDR)) == SOCKET_ERROR)
-			MessageBox(NULL, "Unable to bind address to socket!", "ERROR", MB_OK);
+		/* Check if we're multicasting and set appropriate connection settings */
+		if (ci.request == MULTI_STREAM) {
+			udp_local.sin_addr.s_addr = inet_addr(MULTICAST_GROUP);
+		}
+		else {
+			udp_local.sin_addr.s_addr = INADDR_ANY;
+			/* Bind address to socket */
+			if(bind(ci.udpSocket, (SOCKADDR *)&udp_local, sizeof(SOCKADDR)) == SOCKET_ERROR)
+				MessageBox(NULL, "Unable to bind address to socket!", "ERROR", MB_OK);
+		}
 	}
 }

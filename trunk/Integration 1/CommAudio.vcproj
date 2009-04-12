@@ -61,7 +61,6 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="WS2_32.Lib&#x0D;&#x0A;winmm.lib"
-				AdditionalDependencies="ws2_32.lib winmm.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"

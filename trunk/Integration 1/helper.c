@@ -42,13 +42,18 @@ void sendFileList(WPARAM wParam)
 	}
 	while(FindNextFile(FF,&wfd));
 
-	if(send(wParam, buf, strlen(buf), 0) == -1)
-	{
-		if (WSAGetLastError() != WSAEWOULDBLOCK)
+	if (ci.request != MULTI_STREAM) {
+		if(send(wParam, buf, strlen(buf), 0) == -1)
 		{
-			MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
-			closesocket(wParam);
+			if (WSAGetLastError() != WSAEWOULDBLOCK)
+			{
+				MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+				closesocket(wParam);
+			}
 		}
+	}
+	else { /* Populate locally if in multicast mode */
+		receiveFileList(wParam, buf);
 	}
 }
 

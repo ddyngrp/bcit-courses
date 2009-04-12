@@ -147,28 +147,26 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	switch(message)
 	{
 	case WM_INITDIALOG:
+		if (ci.request == MULTI_STREAM) {
+			SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_SETCHECK, BST_CHECKED, 0);
+		}
 		return TRUE;
 
 	case WM_COMMAND:
 		switch(LOWORD(wParam))
 		{
-		case IDOK:
-			GetDlgItemText(hDlg, IDC_SEDIT1, temp, 26);
-			
-			if(temp[0] != '\0')
-				ci.tcp_port = atoi(temp);
+			case IDOK:
+				/* Use this method to find checked items */
+				if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
+					ci.request = MULTI_STREAM;
+				}
 
-			/* Use this method to find checked items */
-			if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
-				MessageBox(NULL, (LPCSTR)"Checked!", NULL, MB_OK | MB_ICONSTOP);
-			}
+				EndDialog(hDlg, TRUE);
+				return TRUE;
 
-			EndDialog(hDlg, TRUE);
-			return TRUE;
-
-		case IDCANCEL:
-			EndDialog(hDlg, FALSE);
-			return TRUE;
+			case IDCANCEL:
+				EndDialog(hDlg, FALSE);
+				return TRUE;
 		}
 	}
 

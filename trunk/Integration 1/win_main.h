@@ -2,13 +2,17 @@
 #define _WIN_MAIN_H_
 
 #include <winsock2.h>
+#include <Ws2tcpip.h>
 #include <windows.h>
 #include <windowsx.h>
 #include <mmsystem.h>
 #include <stdio.h>
 #include <conio.h>
 #include "commctrl.h"
+/* Removes the requirement to link to the libraries manually */
 #pragma comment(lib,"comctl32.lib")
+#pragma comment(lib,"ws2_32.lib")
+#pragma comment(lib,"winmm.lib")
 
 /* GUI Definitions */
 #define X_SIZE			380
@@ -23,11 +27,12 @@
 #define WM_UDP_SOCKET	10001
 #define TCP_PORT		9000
 #define	UDP_PORT		7000
+#define	MULTICAST_GROUP	"237.137.137.137"
 
 /* Buffer Definitions */
 #define BUFSIZE			4096
 #define BLOCK_SIZE		44100
-#define BLOCK_COUNT		10
+#define BLOCK_COUNT		500
 #define TEMP_BUFF_SIZE	200
 #define FILE_PATH_SIZE	255
 
@@ -56,8 +61,10 @@ typedef struct _CONNECTINFO
 			behaviour,		/* server or client */
 			request,		/* DL, UP, stream, multi stream */
 			protocol;
+	BOOL	newClient;
 	/* the name of the file to create when we download a song */
 	char	DLfileName[FILE_PATH_SIZE];
+	char	waveFormat[1024];
 	SOCKET	tcpSocket,
 			udpSocket;
 } connectInfo;

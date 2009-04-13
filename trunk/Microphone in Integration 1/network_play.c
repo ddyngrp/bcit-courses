@@ -82,6 +82,7 @@ void receiveStream(WPARAM sd)
 		/* first 4 bytes in a file, so set the header information */
 		if(strncmp(buffer, "RIFF", 4) == 0)
 		{
+			waveOutClose(hWaveOut);
 			memcpy(&wfx, buffer+20, sizeof(wfx));
 			if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
 				(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)

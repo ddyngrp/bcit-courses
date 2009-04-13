@@ -116,6 +116,9 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 						}
 					}
 
+					if(ci.request == SINGLE_DL)
+						break;
+
 					if(streamThread != NULL)
 						TerminateThread(streamThread,0);
 

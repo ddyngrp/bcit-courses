@@ -1,5 +1,5 @@
-#ifndef CRACKERS_H
-#define CRACKERS_H
+#ifndef _WIN_EVENTS_H_
+#define _WIN_EVENTS_H_
 
 #include "win_main.h"
 #include "resource.h"

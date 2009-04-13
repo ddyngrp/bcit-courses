@@ -216,7 +216,7 @@ void read_mic_data(LPARAM buffer)
 	if(pNewBuffer == NULL)
 	{
 		waveInClose(hWaveIn);
-		MessageBox(NULL, szMemError, NULL, MB_OK);
+		MessageBox(ghWndMain, szMemError, (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 
 		return;
 	}

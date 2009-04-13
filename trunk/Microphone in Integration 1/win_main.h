@@ -8,26 +8,32 @@
 #include <stdio.h>
 #include <conio.h>
 #include "commctrl.h"
+/* Removes the requirement to link to the libraries manually */
 #pragma comment(lib,"comctl32.lib")
+#pragma comment(lib,"ws2_32.lib")
+#pragma comment(lib,"winmm.lib")
 
-// Global Definitions
+/* GUI Definitions */
 #define X_SIZE			380
 #define Y_SIZE			240
-#define X_MIN_SIZE		450
-#define Y_MIN_SIZE		200
+#define STATUS_BAR		2001
+
+/* Connection Definitions */
 #define NUMCONNECTIONS	5
 #define WM_TCP_SOCKET	10000
 #define WM_UDP_SOCKET	10001
 #define TCP_PORT		9000
 #define	UDP_PORT		7000
-#define EDITSIZE		50
-#define BUFSIZE			4096
-#define BLOCK_SIZE		44100
-#define BLOCK_COUNT		10
-#define STATUS_BAR		2001
+#define	MULTICAST_GROUP	"237.137.137.137"
 
-#define FILEBUFSIZE		120
-#define MAXBUFSIZE		8000
+/* Buffer Definitions */
+#define BLOCK_SIZE		44100
+#define BLOCK_COUNT		20
+#define TEMP_BUFF_SIZE	200
+#define FILE_PATH_SIZE	255
+#define FILE_BUFF_SIZE	4096
+
+/* Flag Definitions */
 #define LOCALPLAY		500
 #define NETWORKPLAY		501
 
@@ -49,26 +55,28 @@
 /* Connection Information */
 typedef struct _CONNECTINFO
 {
-	char	ip[EDITSIZE];	/* just used for client to store the data entered in dialogue box */
+			/* just used for client to store the data entered in dialogue box */
+	char	ip[TEMP_BUFF_SIZE];
 	int		tcp_port,
 			udp_port,
-			behaviour,		/* server or client */
-			request,		/* DL, UP, stream, multi stream */
+			behaviour,	/* server or client */
+			request,	/* DL, UP, stream, multi stream */
 			protocol;
-	char	DLfileName[200];/* the name of the file to create when we download a song */
+			/* the name of the file to create when we download a song */
+	char	DLfileName[FILE_PATH_SIZE];
 	SOCKET	tcpSocket,
 			udpSocket,
 			tcpSock2;
 } connectInfo;
 
 typedef struct _SOCKET_INFORMATION {
-	BOOL RecvPosted;
-	CHAR Buffer[BUFSIZE];
-	WSABUF DataBuf;
-	SOCKET Socket;
-	DWORD BytesSEND;
-	DWORD BytesRECV;
-	struct _SOCKET_INFORMATION *Next;
+	BOOL	RecvPosted;
+	CHAR	Buffer[FILE_BUFF_SIZE];
+	WSABUF	DataBuf;
+	SOCKET	Socket;
+	DWORD	BytesSEND,
+			BytesRECV;
+	struct	_SOCKET_INFORMATION *Next;
 } SOCKET_INFORMATION, * LPSOCKET_INFORMATION;
 
 typedef struct _customWaveFmt
@@ -142,8 +150,8 @@ void writeAudio(LPSTR data, int size);
 void freeBlocks(WAVEHDR* blockArray);
 WAVEHDR* allocateBlocks(int size, int count);
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
-void receiveStream(WPARAM sd);
-void sendStream(WPARAM sd);
+DWORD WINAPI receiveStream(LPVOID iValue);
+DWORD WINAPI sendStream(LPVOID iValue);
 
 /* Services */
 void server_download(WPARAM wParam, PTSTR	fileName);
@@ -155,7 +163,7 @@ LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);
 void sendFileList(WPARAM wParam);
 void receiveFileList(WPARAM wParam, char buf[]);
 void AppendList(char * str);
-char* GetSelList(void);
+void GetSelList(char * selItem);
 void menu_down();
 void menu_up();
 

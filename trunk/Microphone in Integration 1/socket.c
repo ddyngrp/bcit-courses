@@ -47,8 +47,10 @@ void tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 	sd_acc = accept(wParam, NULL, NULL);
 
-	if(sd_acc == INVALID_SOCKET)
-		MessageBox(NULL, "Unable to create accept socket!", "ERROR", MB_OK);
+	if(sd_acc == INVALID_SOCKET) {
+		MessageBox(ghWndMain, (LPCSTR)"Unable to create accept socket!",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+	}
 }
 
 /*--------------------------------------------------------------------------------------- 
@@ -94,7 +96,7 @@ void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 
-	MessageBox(NULL, error, "ERROR", MB_OK);
+	MessageBox(ghWndMain, error, (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 }
 
 /*--------------------------------------------------------------------------------------- 
@@ -114,7 +116,7 @@ void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 ---------------------------------------------------------------------------------------*/
 void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
-	char buffer[BUFSIZE];
+	char buffer[FILE_BUFF_SIZE];
 	int bytesRead;
 	int cSize;
 	static HANDLE streamThread;
@@ -125,13 +127,13 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		return;
 
 	cSize = sizeof(SOCKADDR);
-	memset(buffer, '\0', BUFSIZE);
+	memset(buffer, '\0', FILE_BUFF_SIZE);
 
 	if(ci.behaviour == SERVER)
 	{
 		if(ci.request == SINGLE_UP)
 		{
-			strcpy(ci.DLfileName, "upload_file.wav");
+			strcpy_s(ci.DLfileName, sizeof(ci.DLfileName), "upload_file.wav");
 			client_download(wParam); /* The client's download is the inverse of the server's upload */
 			return;
 		}
@@ -141,7 +143,8 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
 			{
-				MessageBox(NULL, TEXT("recv() failed with error \n"), NULL, MB_OK);
+				MessageBox(ghWndMain, (LPCSTR)"recv() failed.",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 				closesocket(wParam);
 			}
 		}
@@ -150,20 +153,21 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			server_download(wParam, buffer); /* Go right to sending the file. */
 		else if(ci.request == SINGLE_STREAM)
 		{
-			strcpy(ci.DLfileName, buffer);
+			strcpy_s(ci.DLfileName, sizeof(ci.DLfileName), buffer);
 
 			if(streamThread != NULL)
 				TerminateThread(streamThread,0);
 
-			streamThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)sendStream,wParam,0,0);
+			streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)sendStream, (LPVOID)wParam, 0, 0);
 			if(streamThread == NULL)
 			{
-				MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
-				exit(1);
+				MessageBox(ghWndMain, (LPCSTR)"Thread creation failed",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				ExitProcess(1);
 			}
 		}
 		else if(ci.request == MICROPHONE)
-			waveOutWrite(hWaveOut, buffer, sizeof(WAVEHDR));
+			waveOutWrite(hWaveOut, (WAVEHDR *)buffer, sizeof(WAVEHDR));
 
 		/* Set the type according to the first packet */
 		if(strcmp(buffer, "Single Download") == 0)
@@ -194,11 +198,12 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
-			if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
+			if((bytesRead = recv(wParam, buffer, FILE_BUFF_SIZE, 0)) == -1)
 			{
 				if (WSAGetLastError() != WSAEWOULDBLOCK)
 				{
-					MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+					MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
+						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 					closesocket(wParam);
 				}
 			}
@@ -206,11 +211,12 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == MICROPHONE)
 		{
-			if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
+			if((bytesRead = recv(wParam, buffer, FILE_BUFF_SIZE, 0)) == -1)
 			{
 				if (WSAGetLastError() != WSAEWOULDBLOCK)
 				{
-					MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+					MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
+						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 					closesocket(wParam);
 				}
 			}
@@ -242,36 +248,38 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 ---------------------------------------------------------------------------------------*/
 void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
-	char	buffer[BUFSIZE];
-	TCHAR fileName[FILEBUFSIZE], pathName[FILEBUFSIZE];
+	char	buffer[FILE_BUFF_SIZE];
+	TCHAR	fileName[FILE_PATH_SIZE], pathName[FILE_PATH_SIZE];
 
-	memset(buffer, '\0', BUFSIZE);
-	memset(fileName, '\0', FILEBUFSIZE);
-	memset(pathName, '\0', FILEBUFSIZE);
+	memset(buffer, '\0', FILE_BUFF_SIZE);
+	memset(fileName, '\0', FILE_PATH_SIZE);
+	memset(pathName, '\0', FILE_PATH_SIZE);
+
 	if(ci.behaviour == CLIENT)
 	{
 		if(ci.request == SINGLE_DL)
 		{
-			strcpy_s(buffer, BUFSIZE, "Single Download");
+			strcpy_s(buffer, FILE_BUFF_SIZE, "Single Download");
 			Sleep(1);
 		}
 		else if(ci.request == SINGLE_UP)
 		{
-			strcpy_s(buffer, BUFSIZE, "Single Upload");
+			strcpy_s(buffer, FILE_BUFF_SIZE, "Single Upload");
 			browseFiles(hwnd, fileName, pathName);
 		}
 		else if(ci.request == SINGLE_STREAM)
-			strcpy_s(buffer, BUFSIZE, "Stream");
+			strcpy_s(buffer, FILE_BUFF_SIZE, "Stream");
 		else if(ci.request == MULTI_STREAM)
-			strcpy_s(buffer, BUFSIZE, "Multicast");
+			strcpy_s(buffer, FILE_BUFF_SIZE, "Multicast");
 		else if(ci.request == MICROPHONE)
-			strcpy_s(buffer, BUFSIZE, "Microphone");
+			strcpy_s(buffer, FILE_BUFF_SIZE, "Microphone");
 
 		if(send(wParam, buffer,strlen(buffer) /*sizeof(buffer)*/, 0) == -1)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
 			{
-				MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+					MessageBox(ghWndMain, (LPCSTR)"send() failed.",
+						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 				closesocket(wParam);
 			}
 		}
@@ -287,6 +295,9 @@ void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			mic_record_beg(); //start the microphone input
 		}
 	}
-	else if (ci.behaviour == SERVER)
-		MessageBox(NULL, TEXT("Warning: Asyncronous TCP write called by the serverk (should not happen).\n"), NULL, MB_OK);
+	else if (ci.behaviour == SERVER) {
+		MessageBox(ghWndMain,
+			(LPCSTR)"Warning: Asyncronous TCP write called by the serverk (should not happen).\n",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+	}
 }

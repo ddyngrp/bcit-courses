@@ -21,7 +21,7 @@
 ------------------------------------------------------------------------*/
 void server_download(WPARAM wParam, PTSTR	fileName)
 {
-	char outBuf[BUFSIZE];
+	char outBuf[FILE_BUFF_SIZE];
 	DWORD bytesRead;
 	HANDLE hFile;
 	DWORD Flags = 0;
@@ -29,13 +29,14 @@ void server_download(WPARAM wParam, PTSTR	fileName)
 	/* Open the file */
 	if((hFile = CreateFile(fileName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
 	{
-		MessageBox(NULL, TEXT("Error opening file!"), NULL, MB_ICONERROR);
+		MessageBox(ghWndMain, (LPCSTR)"Error opening file!",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		return;
 	}
 	while(1)
 	{
-		memset(outBuf,'\0',BUFSIZE);
-		ReadFile(hFile, outBuf, BUFSIZE, &bytesRead, NULL);
+		memset(outBuf,'\0',FILE_BUFF_SIZE);
+		ReadFile(hFile, outBuf, FILE_BUFF_SIZE, &bytesRead, NULL);
 		if(bytesRead == 0)
 		{
 			/* End of file, close & exit. */
@@ -48,7 +49,8 @@ void server_download(WPARAM wParam, PTSTR	fileName)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
 			{
-				MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+				MessageBox(ghWndMain, (LPCSTR)"send() failed.",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 				closesocket(wParam);
 			}
 		}
@@ -76,7 +78,7 @@ void server_download(WPARAM wParam, PTSTR	fileName)
 ------------------------------------------------------------------------*/
 void client_download(WPARAM wParam)
 {
-	char buffer[BUFSIZE];
+	char buffer[FILE_BUFF_SIZE];
 	DWORD bytesWritten;
 	HANDLE hFile;
 	OVERLAPPED lpOver;
@@ -89,11 +91,12 @@ void client_download(WPARAM wParam)
 	/* Clear the buffer */
 	memset(buffer, 0, sizeof(buffer));
 
-	if((bytesRead = recv(wParam, buffer, BUFSIZE, 0)) == -1)
+	if((bytesRead = recv(wParam, buffer, FILE_BUFF_SIZE, 0)) == -1)
 	{
 		if (WSAGetLastError() != WSAEWOULDBLOCK)
 		{
-			MessageBox(NULL, TEXT("WSARecv() failed with error \n"), NULL, MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			closesocket(wParam);
 		}
 	}
@@ -108,7 +111,8 @@ void client_download(WPARAM wParam)
 
 		if((hFile = CreateFile(ci.DLfileName, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)
 		{
-			MessageBox(NULL, TEXT("Error opening file!"), NULL, MB_ICONERROR);
+			MessageBox(ghWndMain, (LPCSTR)"Error opening file!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			return;
 		}
 
@@ -116,6 +120,8 @@ void client_download(WPARAM wParam)
 		WriteFile(hFile, buffer, bytesRead, &bytesWritten, &lpOver);
 		CloseHandle(hFile);
 	}
-	if(!strcmp(buffer,"Last Pkt")) /* Last packet, but not an empty packet. Needs to be fixed. */
-		MessageBox(NULL, "File download completed!", "Operation Completed", MB_OK);
+	if(!strcmp(buffer,"Last Pkt")) { /* Last packet, but not an empty packet. Needs to be fixed. */
+		MessageBox(ghWndMain, (LPCSTR)"File download completed!",
+			(LPCSTR)"Operation Completed", MB_OK | MB_ICONINFORMATION);
+	}
 }

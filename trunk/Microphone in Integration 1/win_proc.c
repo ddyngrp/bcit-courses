@@ -21,8 +21,7 @@
 ---------------------------------------------------------------------------------------*/
 
 #include "win_main.h"
-#include "resource.h"
-#include "crackers.h"
+#include "win_events.h"
 
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	WndProc
@@ -71,7 +70,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			break;
 
 		case MM_WOM_OPEN: //called on waveOutOpen()
-			open_output_device(lParam);
+			open_output_device((char *)lParam);
 			break;
 
 		case MM_WOM_DONE:
@@ -121,7 +120,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	char port[EDITSIZE];
+	char port[TEMP_BUFF_SIZE];
 
 	switch(message)
 	{
@@ -180,7 +179,7 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 
-	char temp[EDITSIZE];
+	char temp[TEMP_BUFF_SIZE];
 
 	switch(message)
 	{
@@ -198,7 +197,7 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 			/* Use this method to find checked items */
 			if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
-				MessageBox(NULL, (LPCSTR)"Checked!", NULL, MB_OK | MB_ICONSTOP);
+				MessageBox(ghWndMain, (LPCSTR)"Checked!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			}
 
 			EndDialog(hDlg, TRUE);

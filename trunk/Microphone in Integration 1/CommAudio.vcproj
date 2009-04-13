@@ -61,7 +61,6 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="WS2_32.Lib&#x0D;&#x0A;winmm.lib"
-				AdditionalDependencies="ws2_32.lib winmm.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -177,10 +176,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\crackers.c"
-				>
-			</File>
-			<File
 				RelativePath=".\helper.c"
 				>
 			</File>
@@ -223,15 +218,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\crackers.h"
-				>
-			</File>
-			<File
 				RelativePath=".\resource.h"
 				>
 			</File>
 			<File
 				RelativePath=".\socket.h"
+				>
+			</File>
+			<File
+				RelativePath=".\win_events.h"
 				>
 			</File>
 			<File

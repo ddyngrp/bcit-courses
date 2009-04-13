@@ -22,23 +22,24 @@ static OPENFILENAME ofn;
 ------------------------------------------------------------------------------------*/
 void sendFileList(WPARAM wParam)
 {
-	char buf[BUFSIZE];
+	char buf[FILE_BUFF_SIZE];
 	WIN32_FIND_DATA wfd;
 	HANDLE FF;
-	memset(buf, '\0', BUFSIZE);
-	strcpy(buf, "FILES:");
+	memset(buf, '\0', FILE_BUFF_SIZE);
+	strcpy_s(buf, sizeof(buf), "FILES:");
 	
 	/* Server Stuff */
 	if ((FF = FindFirstFile("*.wav",&wfd)) == INVALID_HANDLE_VALUE) 
 	{
-		MessageBox(NULL, "Invalid file handle", "Error", 0);
+		MessageBox(ghWndMain, (LPCSTR)"Unable to find any .wav files in current directory.",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		return;
 	}
 
 	do
 	{
-		strcat(buf, wfd.cFileName);
-		strcat(buf, ":");
+		strcat_s(buf, sizeof(buf), wfd.cFileName);
+		strcat_s(buf, sizeof(buf), ":");
 	}
 	while(FindNextFile(FF,&wfd));
 
@@ -46,7 +47,7 @@ void sendFileList(WPARAM wParam)
 	{
 		if (WSAGetLastError() != WSAEWOULDBLOCK)
 		{
-			MessageBox(NULL, TEXT("send() failed with error \n"), NULL, MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"send() failed.", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			closesocket(wParam);
 		}
 	}
@@ -72,15 +73,15 @@ void sendFileList(WPARAM wParam)
 ------------------------------------------------------------------------------------*/
 void receiveFileList(WPARAM wParam, char buf[])
 {
-	char * pch;
+	char * pch, * nextToken;
 
 	/* Client Stuff */
-	pch = strtok(buf, ":");
-	pch = strtok(NULL, ":");
+	pch = strtok_s(buf, ":", &nextToken);
+	pch = strtok_s(NULL, ":", &nextToken);
 	while(pch != NULL)
 	{
 		AppendList(pch);
-		pch = strtok(NULL, ":");
+		pch = strtok_s(NULL, ":", &nextToken);
 	}
 }
 
@@ -94,13 +95,10 @@ void AppendList(char *str)
 	SetFocus(list);
 }
 
-char* GetSelList() {
+void GetSelList(char * selItem) {
 	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
-	char selItem[255];
 
 	ListBox_GetText(list, ListBox_GetCurSel(list), selItem);
-
-	return selItem;
 }
 
 /*---------------------------------------------------------------------------------

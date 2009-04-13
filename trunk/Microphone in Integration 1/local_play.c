@@ -29,7 +29,8 @@ BOOL localSong_Init(HWND hwnd, char * fileName)
                               (DWORD_PTR)&openParams);
     if (errno != 0) 
     {
-        MessageBox(hwnd,"Unable to open file.","Error", MB_OK);
+		MessageBox(ghWndMain, (LPCSTR)"Unable to open file.",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
         return FALSE;
     }
     else 

@@ -31,18 +31,19 @@ void setup_client(HWND hwnd, int type)
 
 	if((WSAStartup(MAKEWORD(2, 2), &wsaData)) == -1)
 	{
-		MessageBox(NULL, "WSAStartup failed!", "ERROR", MB_OK);
+		MessageBox(ghWndMain, (LPCSTR)"WSAStartup failed!",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		WSACleanup();
 	}
 
 	if (type == SOCK_STREAM) {
 		/* Create TCP socket */
 		if((ci.tcpSocket = socket(AF_INET, type, IPPROTO_TCP)) == INVALID_SOCKET)
-			MessageBox(NULL, "Unable to create TCP socket!", "ERROR", MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"Unable to create TCP socket!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 
 		/* Set SO_REUSEADDR for port reuseability */
 		if(setsockopt(ci.tcpSocket, SOL_SOCKET, SO_REUSEADDR, &arg, sizeof(arg)) == -1)
-			MessageBox(NULL, "Unable to set SO_REUSEADDR", "ERROR", MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"Unable to set SO_REUSEADDR", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 
 		memset((char *)&remote, 0, sizeof(SOCKADDR_IN));
 		remote.sin_family = AF_INET;
@@ -54,7 +55,7 @@ void setup_client(HWND hwnd, int type)
 	else if (type == SOCK_DGRAM) {
 		/* Create UDP socket */
 		if((ci.udpSocket = socket(AF_INET, type, IPPROTO_UDP)) == INVALID_SOCKET)
-			MessageBox(NULL, "Unable to create UDP socket!", "ERROR", MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"Unable to create UDP socket!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 
 		memset((char *)&udp_remote, 0, sizeof(SOCKADDR_IN));
 		udp_remote.sin_family = AF_INET;
@@ -93,19 +94,23 @@ void setup_server(HWND hwnd, int type)
 
 	if((WSAStartup(MAKEWORD(2, 2), &wsaData)) == -1)
 	{
-		MessageBox(NULL, "WSAStartup failed!", "ERROR", MB_OK);
+		MessageBox(ghWndMain, (LPCSTR)"WSAStartup failed!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		WSACleanup();
 	}
 
 	if (type == SOCK_STREAM)
 	{
 		/* Create TCP socket */
-		if((ci.tcpSocket = socket(AF_INET, type, IPPROTO_TCP)) == INVALID_SOCKET)
-			MessageBox(NULL, "Unable to create TCP socket!", "ERROR", MB_OK);
+		if((ci.tcpSocket = socket(AF_INET, type, IPPROTO_TCP)) == INVALID_SOCKET) {
+			MessageBox(ghWndMain, (LPCSTR)"Unable to create TCP socket!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+		}
 
 		/* Set SO_REUSEADDR for port reuseability */
-		if(setsockopt(ci.tcpSocket, SOL_SOCKET, SO_REUSEADDR, &arg, sizeof(arg)) == -1)
-			MessageBox(NULL, "Unable to set SO_REUSEADDR", "ERROR", MB_OK);
+		if(setsockopt(ci.tcpSocket, SOL_SOCKET, SO_REUSEADDR, &arg, sizeof(arg)) == -1) {
+			MessageBox(ghWndMain, (LPCSTR)"msg",
+				(LPCSTR)"Unable to set SO_REUSEADDR", MB_OK | MB_ICONSTOP);
+		}
 
 		memset((char *)&local, 0, sizeof(SOCKADDR_IN));
 		local.sin_family = AF_INET;
@@ -113,19 +118,25 @@ void setup_server(HWND hwnd, int type)
 		local.sin_port = htons(ci.tcp_port);
 
 		/* Bind address to socket */
-		if(bind(ci.tcpSocket, (SOCKADDR *)&local, sizeof(SOCKADDR)) == SOCKET_ERROR)
-			MessageBox(NULL, "Unable to bind address to socket!", "ERROR", MB_OK);
+		if(bind(ci.tcpSocket, (SOCKADDR *)&local, sizeof(SOCKADDR)) == SOCKET_ERROR) {
+			MessageBox(ghWndMain, (LPCSTR)"Unable to bind address to socket!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+		}
 
 		/* Set max number of connections */
-		if(listen(ci.tcpSocket, NUMCONNECTIONS))
-			MessageBox(NULL, "Unable to set number of connections!", "ERROR", MB_OK);
+		if(listen(ci.tcpSocket, NUMCONNECTIONS)) {
+			MessageBox(ghWndMain, (LPCSTR)"Unable to set number of connections!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+		}
 
 		WSAAsyncSelect(ci.tcpSocket, hwnd, WM_TCP_SOCKET, FD_READ | FD_ACCEPT | FD_CLOSE);
 	}
 	else if (type == SOCK_DGRAM) {
 		/* Create TCP socket */
-		if((ci.udpSocket = socket(AF_INET, type, IPPROTO_UDP)) == INVALID_SOCKET)
-			MessageBox(NULL, "Unable to create UDP socket!", "ERROR", MB_OK);
+		if((ci.udpSocket = socket(AF_INET, type, IPPROTO_UDP)) == INVALID_SOCKET) {
+			MessageBox(ghWndMain, (LPCSTR)"Unable to create UDP socket!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+		}
 
 		memset((char *)&udp_local, 0, sizeof(SOCKADDR_IN));
 		udp_local.sin_family = AF_INET;
@@ -133,7 +144,9 @@ void setup_server(HWND hwnd, int type)
 		udp_local.sin_port = htons(ci.udp_port);
 
 		/* Bind address to socket */
-		if(bind(ci.udpSocket, (SOCKADDR *)&udp_local, sizeof(SOCKADDR)) == SOCKET_ERROR)
-			MessageBox(NULL, "Unable to bind address to socket!", "ERROR", MB_OK);
+		if(bind(ci.udpSocket, (SOCKADDR *)&udp_local, sizeof(SOCKADDR)) == SOCKET_ERROR) {
+			MessageBox(ghWndMain, (LPCSTR)"Unable to bind address to socket!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+		}
 	}
 }

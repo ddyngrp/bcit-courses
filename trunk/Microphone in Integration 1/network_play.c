@@ -49,17 +49,17 @@ static int				waveCurrentBlock;
 --
 --		NOTES:			
 ------------------------------------------------------------------------*/
-void receiveStream(WPARAM sd)
+DWORD WINAPI receiveStream(LPVOID iValue)
 {
 	WAVEFORMATEX	wfx;				/* look this up in your documentation */
 	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 	int				i, n, remote_len;
 	DWORD			outBytes = 0;
-	char * play_byte = "1";
+	char			* play_byte = "1";
 
 	remote_len = sizeof(udp_remote);
 
-	/* initialise the module variables */ 
+	/* initialise the module variables */
 	waveBlocks			= allocateBlocks(BLOCK_SIZE, BLOCK_COUNT);
 	waveFreeBlockCount	= BLOCK_COUNT;
 	waveCurrentBlock	= 0;
@@ -74,7 +74,7 @@ void receiveStream(WPARAM sd)
 		/* Gets blocked here forever */
 		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0, (struct sockaddr *)&udp_remote, &remote_len)) <= 0)
 		{
-			MessageBox(NULL, "No Server!", "Error", MB_OK);
+			MessageBox(ghWndMain, (LPCSTR)"No Server!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			waveOutClose(hWaveOut);
 			ExitThread(0);
 		}
@@ -87,8 +87,9 @@ void receiveStream(WPARAM sd)
 			if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
 				(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
 			{
-					MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
-					ExitProcess(1);
+				MessageBox(ghWndMain, (LPCSTR)"Unable to open mapper device.",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				ExitProcess(1);
 			}
 		}
 
@@ -143,7 +144,7 @@ void receiveStream(WPARAM sd)
 --
 --		NOTES:			
 ------------------------------------------------------------------------*/
-void sendStream(WPARAM sd)
+DWORD WINAPI sendStream(LPVOID iValue)
 {
 	HANDLE hFile;
 	int		remote_len;
@@ -156,7 +157,8 @@ void sendStream(WPARAM sd)
 	if((hFile = CreateFile(ci.DLfileName, GENERIC_READ, FILE_SHARE_READ, NULL,
 		OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE)
 	{
-		MessageBox(NULL,"Unable to open file.","Error", MB_OK);
+		MessageBox(ghWndMain, (LPCSTR)"Unable to open file.",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		ExitProcess(1);
 	}
 
@@ -248,10 +250,14 @@ WAVEHDR* allocateBlocks(int size, int count)
 	WAVEHDR* blocks;
 	DWORD totalBufferSize = (size + sizeof(WAVEHDR)) * count;
 
+	/* Free any current memory blocks */
+	freeBlocks(waveBlocks);
+
 	/* allocate memory for the entire set in one go */
 	if((buffer = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, totalBufferSize)) == NULL)
 	{
-		MessageBox(NULL, "Memory allocation error.", "Error", MB_OK);
+		MessageBox(ghWndMain, (LPCSTR)"Memory allocation error.",
+			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		ExitProcess(1);
 	}
 

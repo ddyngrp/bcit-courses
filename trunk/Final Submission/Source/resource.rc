@@ -1,0 +1,193 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "Q",            ID_FILE_EXIT,           VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_CONNECT,        VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_FILE_DISCONNECT,     VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_MODE_CLIENT,         VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_MODE_SERVER,         VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 249, 144
+STYLE DS_ABSALIGN | DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Playlist",IDC_GRP_PLAYLIST,5,0,239,139
+    PUSHBUTTON      "Broadcast Selection",IDC_BTN_BROADCAST,73,120,73,14,WS_DISABLED
+    PUSHBUTTON      "Pause",IDC_BTN_PAUSE,167,120,70,14,WS_DISABLED
+    LISTBOX         IDC_LST_PLAY,13,12,224,104,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Download/Play",IDC_BTN_DOWNLOAD,14,120,56,14,WS_DISABLED
+END
+
+IDD_CLIENT DIALOGEX 0, 0, 177, 45
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Client Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,60,26,55,14
+    PUSHBUTTON      "Cancel",IDCANCEL,122,26,50,14
+    LTEXT           "Server Address:",IDC_STC_IP,5,8,53,8
+    EDITTEXT        IDC_EDT_IPADDR,60,5,112,14,ES_AUTOHSCROLL
+END
+
+IDD_SERVER DIALOGEX 0, 0, 115, 42
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Server Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,5,23,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,60,23,50,14
+    CONTROL         "      Multicast Mode",IDC_MULTICAST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,7,75,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 244
+        BOTTOMMARGIN, 139
+    END
+
+    IDD_CLIENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 172
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_SERVER, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 110
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 37
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Connect\tCtrl+O",            ID_FILE_CONNECT, INACTIVE
+        MENUITEM "&Disconnect\tCtrl+D",         ID_FILE_DISCONNECT, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Play Local File",            ID_FILE_LOCAL
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit\tCtrl+Q",               ID_FILE_EXIT
+    END
+    POPUP "&Mode"
+    BEGIN
+        MENUITEM "&Client\tCtrl+1",             ID_MODE_CLIENT
+        MENUITEM "&Server\tCtrl+2",             ID_MODE_SERVER
+        MENUITEM SEPARATOR
+        MENUITEM "&Download Single",            ID_SINGLE_DL, INACTIVE
+        MENUITEM "&Upload Single",              ID_SINGLE_UP, INACTIVE
+        MENUITEM "&Single Stream",              ID_SINGLE_STREAM, INACTIVE
+        MENUITEM "&Multicast Stream",           ID_MULTI_STREAM, INACTIVE
+        MENUITEM "&Voice Chat",                 ID_2WAY_MICROPHONE, INACTIVE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "audiocd.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -22,8 +22,7 @@ void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		shutdown(wParam, 2);
 		closesocket(wParam);
 	}
-	else { /* End our currently running thread */
-		/* Stop running threads */
+	else if (ci.request != MULTI_STREAM) { /* End our currently running thread */
 		if(streamThread != NULL)
 			TerminateThread(streamThread,0);
 

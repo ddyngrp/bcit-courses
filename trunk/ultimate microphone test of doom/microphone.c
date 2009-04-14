@@ -129,7 +129,7 @@ void mic_play_beg()
 	waveform.nBlockAlign = (waveform.wBitsPerSample * waveform.nChannels) >> 3;
 	waveform.nAvgBytesPerSec = waveform.nBlockAlign * waveform.nSamplesPerSec;
 
-	waveOutClose(hWaveOut);
+	//waveOutClose(hWaveOut);
 	if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &waveform, (DWORD)ghWndMain, 0, CALLBACK_WINDOW))
 		MessageBox(ghWndMain, szOpenError,NULL, MB_OK);
 }

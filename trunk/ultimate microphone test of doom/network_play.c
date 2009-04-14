@@ -376,32 +376,23 @@ void unprepareMicPlay()
 
 DWORD WINAPI receiveMicThread(LPVOID iValue) {
 	char micBuffer[BLOCK_SIZE];
-	int bytesRead, errNo;
 	int remote_len;
 	char * play_byte = "1";
 
+	prepareMicPlay();
+
 	remote_len = sizeof(udp_remote); 
-					
-	sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+				
+	mic_play_beg();
 
-	Sleep(100);
-
-	while (TRUE) {
-		if((bytesRead = recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0,
-			(struct sockaddr *)&udp_remote, &remote_len)) == -1)
-		{
-			errNo = WSAGetLastError();
-			//if (errNo != WSAEWOULDBLOCK)
-			//{
-			//	MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
-			//		(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-			//	closesocket(ci.udpSocket);
-			//}
+	for (;;) {
+		if (1 != 1) {
+			continue;
 		}
-		mic_play_beg();
-		writeAudio(micBuffer, sizeof(micBuffer));
-		mic_play_end();
-	}
+		recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, &remote_len);
 
-	return (DWORD)iValue;
+		Sleep(100);
+		writeAudio(micBuffer, sizeof(micBuffer));
+		//mic_play_end();
+	}
 }

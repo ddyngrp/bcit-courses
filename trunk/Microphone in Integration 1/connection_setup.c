@@ -152,8 +152,8 @@ void setup_server(HWND hwnd, int type)
 	thisHost = gethostbyname("");
 	ip = inet_ntoa(*(struct in_addr *)*thisHost->h_addr_list);
 
-	strcat(ipStatus, "IP: ");
-	strcat(ipStatus, ip);
+	strcat_s(ipStatus, sizeof(ipStatus), "IP: ");
+	strcat_s(ipStatus, sizeof(ipStatus), ip);
 
 	SendMessage(ghStatus, SB_SETTEXT, (WPARAM)parts[2], (LPARAM)ipStatus);
 

@@ -1,3 +1,5 @@
+// FIX Headers
+
 /*-----------------------------------------------------------------------------
 --	SOURCE FILE:	network_play.c
 --
@@ -391,5 +393,43 @@ void writeAudio(LPSTR data, int size)
 		waveCurrentBlock %= BLOCK_COUNT;
 		current = &waveBlocks[waveCurrentBlock];
 		current->dwUser = 0;
+	}
+}
+
+void prepareMicPlay()
+{
+	waveBlocks			= allocateBlocks(BLOCK_SIZE, BLOCK_COUNT);
+	waveFreeBlockCount	= BLOCK_COUNT;
+	waveCurrentBlock	= 0;
+	InitializeCriticalSection(&waveCriticalSection);
+}
+
+void unprepareMicPlay()
+{
+	DeleteCriticalSection(&waveCriticalSection);
+	freeBlocks(waveBlocks);
+	waveOutClose(hWaveOut);
+}
+
+DWORD WINAPI receiveMicThread(LPVOID iValue) {
+	char micBuffer[BLOCK_SIZE];
+	int remote_len;
+	char * play_byte = "1";
+
+	prepareMicPlay();
+
+	remote_len = sizeof(udp_remote); 
+				
+	mic_play_beg();
+
+	for (;;) {
+		if (1 != 1) {
+			continue;
+		}
+		recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, &remote_len);
+
+		Sleep(100);
+		writeAudio(micBuffer, sizeof(micBuffer));
+		//mic_play_end();
 	}
 }

@@ -82,6 +82,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			break;
 
 		case MM_WOM_DONE:
+			if (1 != 1) {
+				break;
+			}
 			//output_done();
 			break;
 

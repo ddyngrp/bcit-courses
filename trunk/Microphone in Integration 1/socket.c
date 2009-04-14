@@ -229,8 +229,12 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			else if(strcmp(buffer, "Microphone") == 0)
 			{
 				ci.request = MICROPHONE;
-				Sleep(100);
-				mic_record_beg();
+				//prepareMicPlay();
+				//Sleep(100);
+				//mic_record_beg();
+				/* Put receiveStream thread here */
+				streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveMicThread,
+					(LPVOID)wParam, 0, 0);
 			}
 		}
 		else {
@@ -301,9 +305,6 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 				ExitProcess(1);
 			}
-
-			mic_play_beg();
-			open_output_device(buffer);
 		}	
 	}
 	initButtons();

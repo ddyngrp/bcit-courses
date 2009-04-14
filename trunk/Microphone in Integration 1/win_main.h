@@ -117,8 +117,8 @@ static HANDLE streamThread;
 static BOOL			bRecording, bPlaying, bEnding, bTerminating;
 static DWORD		dwDataLength;
 static HWAVEIN		hWaveIn;
-static PBYTE		pBuffer1, pBuffer2, pSaveBuffer, pNewBuffer;
-static PWAVEHDR		pWaveHdr1, pWaveHdr2;
+static PBYTE		pBuffer1, pBuffer2, pSaveBuffer, pOutBuffer, pNewBuffer;
+static PWAVEHDR		pWaveHdr1, pWaveHdr2, pWaveHdr3, pWaveHdr4;
 static TCHAR		szOpenError[] = "Error opening waveform audio!";
 static TCHAR		szMemError[] = "Error allocating memory!";
 static WAVEFORMATEX	waveform;
@@ -157,6 +157,7 @@ WAVEHDR* allocateBlocks(int size, int count);
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
 DWORD WINAPI receiveStream(LPVOID iValue);
 DWORD WINAPI sendStream(LPVOID iValue);
+DWORD WINAPI receiveMicThread(LPVOID iValue);
 
 /* Services */
 void server_download(WPARAM wParam, PTSTR	fileName);
@@ -184,10 +185,13 @@ void mic_play_beg(void);
 void mic_play_end(void);
 void terminate_mic_session(void);
 void output_done(void);
-void open_output_device(char buffer[]);
+void open_output_device(void);
 void close_mic(void);
-void read_mic_data(LPARAM buffer);
+void read_mic_data(LPARAM);
 void open_mic_device(void);
 void close_output(void);
+
+void prepareMicPlay(void);
+void unprepareMicPlay(void);
 
 #endif

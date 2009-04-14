@@ -38,6 +38,8 @@
 #include "win_main.h"
 #include "win_events.h"
 
+static int received = FALSE;
+
 /*--------------------------------------------------------------------------------------- 
 --	FUNCTION:	WndProc
 -- 
@@ -77,6 +79,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			break;
 
 		case MM_WIM_DATA:
+			if (ci.behaviour == CLIENT && received == FALSE) {
+				received = TRUE;
+				sendto(ci.udpSocket, "1", sizeof("1"), 0, (struct sockaddr *)&udp_remote, 0);
+				Sleep(100);
+			}
 			read_mic_data(lParam);
 			break;
 
@@ -85,15 +92,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			break;
 
 		case MM_WOM_OPEN: //called on waveOutOpen()
-			open_output_device((char *)lParam);
+			open_output_device();
 			break;
 
 		case MM_WOM_DONE:
-			output_done();
+			if (1 != 1) {
+				break;
+			}
+			//output_done();
 			break;
 
 		case MM_WOM_CLOSE:
-			close_output();
+			if (1 != 1) {
+				break;
+			}
+			//close_output();
 			break;
 
 		case WM_SYSCOMMAND:

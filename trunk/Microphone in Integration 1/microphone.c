@@ -58,14 +58,15 @@ void mic_record_beg()
 		return;
 	}
 
-	waveform.wFormatTag			= WAVE_FORMAT_PCM;
-	waveform.nChannels			= 1;
-	waveform.nSamplesPerSec		= 11025;
-	waveform.nAvgBytesPerSec	= 11025;
-	waveform.nBlockAlign		= 1;
-	waveform.wBitsPerSample		= 8;
-	waveform.cbSize				= 0;
+	waveform.nSamplesPerSec = 44100; /* sample rate */
+	waveform.wBitsPerSample = 16; /* sample size */
+	waveform.nChannels= 2; /* channels*/
+	waveform.cbSize = 0; /* size of _extra_ info */
+	waveform.wFormatTag = WAVE_FORMAT_PCM;
+	waveform.nBlockAlign = (waveform.wBitsPerSample * waveform.nChannels) >> 3;
+	waveform.nAvgBytesPerSec = waveform.nBlockAlign * waveform.nSamplesPerSec;
 
+	waveInClose(hWaveIn);
 	if(waveInOpen(&hWaveIn, WAVE_MAPPER, &waveform, (DWORD)ghWndMain, 0, CALLBACK_WINDOW))
 	{
 		free(pBuffer1);
@@ -135,15 +136,15 @@ void mic_record_end()
 -----------------------------------------------------------------------------*/
 void mic_play_beg()
 {
-	waveform.nSamplesPerSec = 44100; /* sample rate */
-	waveform.wBitsPerSample = 16; /* sample size */
-	waveform.nChannels= 2; /* channels*/
-	waveform.cbSize = 0; /* size of _extra_ info */
-	waveform.wFormatTag = WAVE_FORMAT_PCM;
-	waveform.nBlockAlign = (waveform.wBitsPerSample * waveform.nChannels) >> 3;
+	waveform.nSamplesPerSec	= 44100; /* sample rate */
+	waveform.wBitsPerSample	= 16; /* sample size */
+	waveform.nChannels		= 2; /* channels*/
+	waveform.cbSize			= 0; /* size of _extra_ info */
+	waveform.wFormatTag		= WAVE_FORMAT_PCM;
+	waveform.nBlockAlign	= (waveform.wBitsPerSample * waveform.nChannels) >> 3;
 	waveform.nAvgBytesPerSec = waveform.nBlockAlign * waveform.nSamplesPerSec;
 
-	waveOutClose(hWaveOut);
+	//waveOutClose(hWaveOut);
 	if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &waveform, (DWORD)ghWndMain, 0, CALLBACK_WINDOW))
 		MessageBox(ghWndMain, szOpenError,NULL, MB_OK);
 }
@@ -246,7 +247,9 @@ void read_mic_data(LPARAM buffer)
 		return;
 	}
 	/* call network streaming function here */
-	send(ci.tcpSock2,((PWAVEHDR)buffer)->lpData, ((PWAVEHDR)buffer)->dwBytesRecorded,0);
+
+	sendto(ci.udpSocket,((PWAVEHDR)buffer)->lpData, BLOCK_SIZE,0, (struct sockaddr *)&udp_remote, sizeof(udp_remote));
+
 	/* Send new buffer to input device */
 	waveInAddBuffer(hWaveIn, (PWAVEHDR)buffer, sizeof(WAVEHDR));
 }
@@ -302,21 +305,34 @@ void close_mic()
 --	NOTES: Prepares the headers and plays audio data from
 --	remote microphone
 -----------------------------------------------------------------------------*/
-void open_output_device(char buffer[])
+void open_output_device()
 {
+	pWaveHdr3 = malloc(sizeof(WAVEHDR));
+	pWaveHdr4 = malloc(sizeof(WAVEHDR));
+	pOutBuffer = GlobalAlloc(0, BLOCK_SIZE);
+
 	/* Set up header */
-	pWaveHdr1->lpData			= buffer;
-	pWaveHdr1->dwBufferLength	= dwDataLength;
-	pWaveHdr1->dwBytesRecorded	= 0;
-	pWaveHdr1->dwUser			= 0;
-	pWaveHdr1->dwFlags			= WHDR_BEGINLOOP | WHDR_ENDLOOP;
-	pWaveHdr1->dwLoops			= 0;
-	pWaveHdr1->lpNext			= NULL;
-	pWaveHdr1->reserved			= 0;
+	pWaveHdr3->lpData			= pOutBuffer;
+	pWaveHdr3->dwBufferLength	= BLOCK_SIZE;
+	pWaveHdr3->dwBytesRecorded	= 0;
+	pWaveHdr3->dwUser			= 0;
+	pWaveHdr3->dwFlags			= WHDR_PREPARED;
+	pWaveHdr3->dwLoops			= 0;
+	pWaveHdr3->lpNext			= NULL;
+	pWaveHdr3->reserved			= 0;
+
+	pWaveHdr4->lpData			= pOutBuffer;
+	pWaveHdr4->dwBufferLength	= BLOCK_SIZE;
+	pWaveHdr4->dwBytesRecorded	= 0;
+	pWaveHdr4->dwUser			= 0;
+	pWaveHdr4->dwFlags			= WHDR_PREPARED;
+	pWaveHdr4->dwLoops			= 0;
+	pWaveHdr4->lpNext			= NULL;
+	pWaveHdr4->reserved			= 0;
 
 	/* Prepare and write */
-	waveOutPrepareHeader(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));
-	waveOutWrite(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));
+	waveOutPrepareHeader(hWaveOut, pWaveHdr3, sizeof(WAVEHDR));
+	waveOutWrite(hWaveOut, pWaveHdr3, sizeof(WAVEHDR));
 
 	bEnding = FALSE;
 	bPlaying = TRUE;

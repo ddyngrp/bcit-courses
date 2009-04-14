@@ -229,10 +229,7 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			else if(strcmp(buffer, "Microphone") == 0)
 			{
 				ci.request = MICROPHONE;
-				//prepareMicPlay();
-				//Sleep(100);
-				//mic_record_beg();
-				/* Put receiveStream thread here */
+				mic_record_beg();
 				streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveMicThread,
 					(LPVOID)wParam, 0, 0);
 			}
@@ -381,8 +378,10 @@ void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		}
 		else if(ci.request == MICROPHONE) /* We should only get here once, the data sends are non-async */
 		{
-			Sleep(100);
-			mic_record_beg(); //start the microphone input
+			/* Start Microphone Input */
+			mic_record_beg();
+			streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveMicThread,
+				(LPVOID)wParam, 0, 0);
 		}
 	}
 	else if (ci.behaviour == SERVER) {

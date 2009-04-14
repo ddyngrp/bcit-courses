@@ -79,7 +79,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			break;
 
 		case MM_WIM_DATA:
-			if (ci.behaviour == CLIENT && received == FALSE) {
+			if (received == FALSE) {
 				received = TRUE;
 				sendto(ci.udpSocket, "1", sizeof("1"), 0, (struct sockaddr *)&udp_remote, 0);
 				Sleep(100);

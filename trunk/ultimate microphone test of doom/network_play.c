@@ -385,7 +385,7 @@ DWORD WINAPI receiveMicThread(LPVOID iValue) {
 	if((bytesRead = recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, &remote_len)) == -1)
 	{
 		errNo = WSAGetLastError();
-		if (WSAGetLastError() != WSAEWOULDBLOCK)
+		if (errNo != WSAEWOULDBLOCK)
 		{
 			MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
 				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);

@@ -1,3 +1,18 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	win_proc.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		
+--	PROGRAMMERS:	
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------
 --	SOURCE FILE:	winProc.c -   Handles the program's main window and associated events
 --
@@ -175,15 +190,17 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	switch(message)
 	{
 		case WM_INITDIALOG:
+			if (ci.request == MULTI_STREAM) {
+				SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_SETCHECK, BST_CHECKED, 0);
+			}
 			return TRUE;
 
 		case WM_COMMAND:
 			switch(LOWORD(wParam))
 			{
 			case IDOK:
-				/* Use this method to find checked items */
 				if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
-					MessageBox(ghWndMain, (LPCSTR)"Checked!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+					ci.request = MULTI_STREAM;
 				}
 
 				EndDialog(hDlg, TRUE);
@@ -195,5 +212,162 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 	}
 
+	return FALSE;
+}
+
+/*--------------------------------------------------------------------------------------- 
+--	FUNCTION:	MainDlgProc
+-- 
+--	DATE:		March 16
+--
+--	REVISIONS:	March 23 - Added code for local song play corresponding to the WM_COMMAND
+--						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOPS
+--				April 10 - Added up/down button handlers
+-- 
+--	DESIGNER:	Steffen L. Norgren
+--	PROGRAMMER:	Steffen L. Norgren & Jaymz Boilard
+-- 
+--	INTERFACE:	MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+--					HWND hDlg:		Dialogue handle
+--					UINT message:	Dialogue message
+--					WPARAM wParam:	Dialogue message parameter (depends on message)
+--					LPARAM lParam:	Dialogue message parameter (depends on message)
+-- 
+--	RETURNS:	0:	the message was processed
+--				!0:	the message was not processed and passed to DefWindowProc
+-- 
+--	NOTES:	This function simply deals with dialogue events caused by user input and
+--			calls the appropriate function based on the user's input.
+--
+---------------------------------------------------------------------------------------*/
+BOOL CALLBACK MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+	HMENU hMenu;
+	char	fileName[FILE_BUFF_SIZE];
+	char	outBuf[TEMP_BUFF_SIZE];
+	DWORD	errNo;
+	static	HANDLE streamThread;
+	char	play_pause[10];
+    
+	hMenu = GetMenu(ghWndMain);
+
+	switch (message) {
+		case WM_INITDIALOG:
+			return FALSE;
+
+		case WM_SETFOCUS:
+			break;
+
+		case WM_COMMAND: // Process user input
+			switch (LOWORD(wParam))
+			{
+                case IDC_BTN_PAUSE:
+					GetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), play_pause, sizeof(play_pause));
+					if (ci.request != MULTI_STREAM) {
+						if(strcmp(play_pause, "Pause") == 0) {
+							SetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), (LPCSTR)"Play");
+							if(busyFlag == LOCALPLAY)
+								localSong_Pause();
+							else if(ci.request == SINGLE_STREAM)
+							{
+								if(waveOutPause(hWaveOut) != MMSYSERR_NOERROR)
+								{
+									errNo = GetLastError();
+									MessageBox(NULL, "Can't pause", "Error", 0);
+									
+									return FALSE;
+								}
+							}
+						}
+						else {
+							SetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), (LPCSTR)"Pause");
+							if(busyFlag == LOCALPLAY)
+								localSong_Play();
+							else if (busyFlag == NETWORKPLAY)
+								waveOutRestart(hWaveOut);
+							else if(ci.request == SINGLE_STREAM)
+								waveOutRestart(hWaveOut);
+						}
+					}
+					else {
+						if(strcmp(play_pause, "Mute") == 0) {
+							SetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), (LPCSTR)"Un-mute");
+							waveOutSetVolume(hWaveOut, 0x00000000);
+						}
+						else {
+							SetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), (LPCSTR)"Mute");
+							waveOutSetVolume(hWaveOut, 0xFFFFFFFF);
+						}
+					}
+					return FALSE;
+
+				case IDC_BTN_DOWNLOAD:
+
+					if (ci.behaviour == CLIENT && ci.request == SINGLE_STREAM) {
+
+						/* Disable the button until the previous thread is terminated */
+						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), FALSE);
+
+						GetSelList(fileName);
+						memset(outBuf, '\0', TEMP_BUFF_SIZE);
+						strcpy_s(outBuf, sizeof(outBuf), fileName);
+						strcpy_s(ci.DLfileName, sizeof(ci.DLfileName), fileName);
+
+						if(send(ci.tcpSocket, outBuf, strlen(outBuf), 0) == -1)
+						{
+							if (WSAGetLastError() != WSAEWOULDBLOCK)
+							{
+								MessageBox(ghWndMain, (LPCSTR)"send() failed.",
+									(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+								closesocket(wParam);
+							}
+						}
+
+						if(ci.request == SINGLE_DL)
+							break;
+
+						if(streamThread != NULL)
+							TerminateThread(streamThread,0);
+
+						Sleep(200);
+
+						streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveStream, (LPVOID)wParam, 0, 0);
+						if(streamThread == NULL)
+						{
+							MessageBox(ghWndMain, (LPCSTR)"Thread creation failed.",
+								(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+							ExitProcess(1);
+						}
+
+						SetFocus(GetDlgItem(ghDlgMain, IDC_LST_PLAY));
+
+						/* Re-enable the button now */
+						Sleep(400);
+						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), TRUE);
+					}
+                    return FALSE;
+
+                case IDC_BTN_BROADCAST:
+					GetSelList(ci.DLfileName);
+
+					if(streamThread != NULL) {
+						TerminateThread(streamThread,0);
+						Sleep(200);
+					}
+
+					if((streamThread = CreateThread(NULL, 0, 
+						(LPTHREAD_START_ROUTINE)sendStream, (LPVOID)wParam, 0, 0)) == NULL)
+					{
+						MessageBox(NULL, "Thread creation failed", NULL,MB_OK);
+						ExitProcess(1);
+					}
+
+					SetFocus(GetDlgItem(ghDlgMain, IDC_LST_PLAY));
+                    return FALSE;
+
+				default:
+					return FALSE;
+			}
+			return TRUE;
+	}
 	return FALSE;
 }

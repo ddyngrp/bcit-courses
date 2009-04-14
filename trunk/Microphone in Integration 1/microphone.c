@@ -1,25 +1,41 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	microphone.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		
+--	PROGRAMMERS:	
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
+
 #include "win_main.h"
 #include "resource.h"
 
 #define INP_BUFFER_SIZE 44100
 
-/*------------------------------------------------------------------------
---		FUNCTION:		mic_record_beg
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		mic_record_beg
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void mic_record_beg()
+--	INTERFACE:		mic_record_beg()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Prepares the headers for recording wave data
---						from a microphone
-------------------------------------------------------------------------*/
+--	NOTES: Prepares the headers for recording wave data
+--	from a microphone
+-----------------------------------------------------------------------------*/
 void mic_record_beg()
 {
 	pWaveHdr1 = malloc(sizeof(WAVEHDR));
@@ -79,45 +95,44 @@ void mic_record_beg()
 	waveInPrepareHeader(hWaveIn, pWaveHdr2, sizeof(WAVEHDR));
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		mic_record_end
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		mic_record_end
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void mic_record_end()
+--	INTERFACE:		mic_record_end()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Stops reading input from microphone
-------------------------------------------------------------------------*/
+--	NOTES: Stops reading input from microphone
+-----------------------------------------------------------------------------*/
 void mic_record_end()
 {
 	bEnding = TRUE;
 	waveInReset(hWaveIn);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		mic_play_beg
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		mic_play_beg
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void mic_play_beg()
+--	INTERFACE:		mic_play_beg()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Sets up wave format structure and attempts to
---						open output device
-------------------------------------------------------------------------*/
+--	NOTES: Sets up wave format structure and attempts to open output device
+-----------------------------------------------------------------------------*/
 void mic_play_beg()
 {
 	waveform.nSamplesPerSec = 44100; /* sample rate */
@@ -133,45 +148,45 @@ void mic_play_beg()
 		MessageBox(ghWndMain, szOpenError,NULL, MB_OK);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		mic_play_end
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		mic_play_end
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void mic_play_end()
+--	INTERFACE:		mic_play_end()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Stops sending data to output device
-------------------------------------------------------------------------*/
+--	NOTES: Stops sending data to output device
+-----------------------------------------------------------------------------*/
 void mic_play_end()
 {
 	bEnding = TRUE;
 	waveOutReset(hWaveOut);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		open_mic_device
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		open_mic_device
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void open_mic_device()
+--	INTERFACE:		open_mic_device()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Registers buffers to input device and begins
---						reading input
-------------------------------------------------------------------------*/
+--	NOTES: Registers buffers to input device and begins
+--	reading input
+-----------------------------------------------------------------------------*/
 void open_mic_device()
 {
 	pSaveBuffer = realloc(pSaveBuffer, 1);
@@ -190,25 +205,24 @@ void open_mic_device()
 	waveInStart(hWaveIn);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		read_mic_data
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		read_mic_data
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void read_mic_data(HWND hwnd, LPARAM buffer)
---							HWND hwnd: handle for current window
---							LPARAM buffer: sound data we want to send
+--	INTERFACE:		read_mic_data(LPARAM buffer)
+--						LPARAM buffer: The buffer to which data is sent
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Copies mic data to an output buffer and sends
---						across network
-------------------------------------------------------------------------*/
+--	NOTES: Copies mic data to an output buffer and sends
+--	across network
+-----------------------------------------------------------------------------*/
 void read_mic_data(LPARAM buffer)
 {
 	pNewBuffer = realloc(pSaveBuffer, dwDataLength + ((PWAVEHDR)buffer)->dwBytesRecorded);
@@ -237,22 +251,23 @@ void read_mic_data(LPARAM buffer)
 	waveInAddBuffer(hWaveIn, (PWAVEHDR)buffer, sizeof(WAVEHDR));
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		close_mic
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		close_mic
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void close_mic(HWND hwnd)
+--	INTERFACE:		close_mic(HWND hwnd)
+--						HWND hwnd: Handle to the calling window
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Unregister headers with device and free resources
-------------------------------------------------------------------------*/
+--	NOTES: Unregister headers with device and free resources
+-----------------------------------------------------------------------------*/
 void close_mic()
 {
 	/* Free buffer memory */
@@ -270,23 +285,23 @@ void close_mic()
 		SendMessage(ghWndMain, WM_SYSCOMMAND, SC_CLOSE, 0L);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		open_output_device
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		open_output_device
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void open_output_device()
+--	INTERFACE:		open_output_device()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Prepares the headers and plays audio data from
---						remote microphone
-------------------------------------------------------------------------*/
+--	NOTES: Prepares the headers and plays audio data from
+--	remote microphone
+-----------------------------------------------------------------------------*/
 void open_output_device(char buffer[])
 {
 	/* Set up header */
@@ -307,22 +322,22 @@ void open_output_device(char buffer[])
 	bPlaying = TRUE;
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		close_output
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		close_output
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void close_output()
+--	INTERFACE:		close_output()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Stops playing output
-------------------------------------------------------------------------*/
+--	NOTES: Stops playing output
+-----------------------------------------------------------------------------*/
 void close_output()
 {
 	/* Enable buttons here */
@@ -333,23 +348,23 @@ void close_output()
 		SendMessage(ghWndMain, WM_SYSCOMMAND, SC_CLOSE, 0L);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		terminate_mic_session
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		terminate_mic_session
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void terminate_mic_session()
+--	INTERFACE:		terminate_mic_session()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Stops recording from mic or playing from device
---						and frees resources.
-------------------------------------------------------------------------*/
+--	NOTES: Stops recording from mic or playing from device
+--	and frees resources.
+-----------------------------------------------------------------------------*/
 void terminate_mic_session()
 {
 	if(bRecording)
@@ -373,22 +388,22 @@ void terminate_mic_session()
 	free(pSaveBuffer);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		output_done
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		output_done
 --
---		DATE:			March 31, 2009
+--	DATE:			2009-03-31
 --
---		REVISIONS:		(Date & Revisions)
+--	REVISIONS:		
 --
---		DESIGNER:		Charles Petzold
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Charles Petzold
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		void output_done()
+--	INTERFACE:		output_done()
 --
---		RETURNS:		void
+--	RETURNS:		void
 --
---		NOTES:			Unprepare header and close output device
-------------------------------------------------------------------------*/
+--	NOTES: Unprepare header and close output device
+-----------------------------------------------------------------------------*/
 void output_done()
 {
 	waveOutUnprepareHeader(hWaveOut, pWaveHdr1, sizeof(WAVEHDR));

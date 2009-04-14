@@ -1,21 +1,41 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	socket.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		Jerrod Hudson
+--	PROGRAMMERS:	Jerrod Hudson, Jaymz Boilard, Steffen L. Norgren
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
+
 #include "socket.h"
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	tcp_sockConnect
--- 
---	REVISIONS:
--- 
---	DESIGNER:	Jerrod Hudson
---	PROGRAMMER:	Jerrod Hudson
--- 
---	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
---								  WPARAM wParam,	//the socket descriptor being used
---								LPARAM lParam)
--- 
---	RETURNS:	void
--- 
---	NOTES:		Disables the sends and receives on a socket and closes the descriptor.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		sockClose
+--
+--	DATE:			2009-03-29
+--
+--	REVISIONS:		2009-04-13 - Steffen, added thread termination.
+--
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson, Steffen L. Norgren
+--
+--	INTERFACE:		sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--						HWND hwnd: The handle to the calling window.
+--						WPARAM wParam: The socket we wish to close
+--						LPARAM lParam: -1 if we're not in multicast.
+--
+--	RETURNS:		void
+--
+--	NOTES: Closes the socket and terminates any associated threads if we're
+--	in multicast mode.
+-----------------------------------------------------------------------------*/
 void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	if (lParam != -1) {
@@ -32,22 +52,26 @@ void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	}
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	tcp_sockAccept
--- 
---	REVISIONS:
--- 
---	DESIGNER:	Jerrod Hudson
---	PROGRAMMER:	Jerrod Hudson
--- 
---	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
---								  WPARAM wParam,	//the socket descriptor being used
---								   LPARAM lParam)
--- 
---	RETURNS:	void
--- 
---	NOTES:		Used by the server to accept an incoming request by a client.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		tcp_sockAccept
+--
+--	DATE:			2009-03-29
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson, Steffen L. Norgren
+--
+--	INTERFACE:		tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--						HWND hwnd: The handle to the calling window.
+--						WPARAM wParam: The socket we wish to close
+--						LPARAM lParam: unused
+--						
+--
+--	RETURNS:		void
+--
+--	NOTES: Used by the server to accept an incoming request by a client.
+-----------------------------------------------------------------------------*/
 void tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	SOCKET sd_acc;
@@ -63,22 +87,25 @@ void tcp_sockAccept(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	}
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	tcp_sockConnect
--- 
---	REVISIONS:
--- 
---	DESIGNER:	Jerrod Hudson
---	PROGRAMMER:	Jerrod Hudson
--- 
---	INTERFACE:	void tcp_sockWrite(HWND hwnd,		//handle to the window
---								  WPARAM wParam,	//not used right now
---								LPARAM lParam)		//used to get the last error
--- 
---	RETURNS:	void
--- 
---	NOTES:		Checks for an error on connection and prints it in a MessageBox.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		tcp_sockConnect
+--
+--	DATE:			2009-03-29
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson
+--
+--	INTERFACE:		tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--						HWND hwnd: The handle to the calling window.
+--						WPARAM wParam: The socket we wish to close
+--						LPARAM lParam: unused
+--
+--	RETURNS:		void
+--
+--	NOTES: Checks for an error on connection and prints it in a MessageBox.
+-----------------------------------------------------------------------------*/
 void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	int errNum;
@@ -109,21 +136,26 @@ void tcp_sockConnect(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	MessageBox(ghWndMain, error, (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	tcp_sockRead
--- 
---	REVISIONS:	April 6 - Added the SINGLE_STREAM case which will call the function 
---						  receiveStream().
--- 
---	DESIGNER:	Jerrod Hudson, Jaymz Boilard
---	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
--- 
---	INTERFACE:	void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
--- 
---	RETURNS:	void
--- 
---	NOTES:		Reads from a socket asyncronously when we get a message in.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		tcp_sockRead
+--
+--	DATE:			2009-03-29
+--
+--	REVISIONS:		2009-04-06 - Jaymz, Added the SINGLE_STREAM case which will
+--								 call the function receiveStream().
+--
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson, Jaymz Boilard, Steffen L. Norgren
+--
+--	INTERFACE:		tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--						HWND hwnd: The handle to the calling window.
+--						WPARAM wParam: The socket we wish to close
+--						LPARAM lParam: unused
+--
+--	RETURNS:		void
+--
+--	NOTES: Reads from a socket asyncronously when we get a message in.
+-----------------------------------------------------------------------------*/
 void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char buffer[FILE_BUFF_SIZE];
@@ -175,27 +207,41 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 				ExitProcess(1);
 			}
 		}
-		else if(ci.request == MICROPHONE)
+		else if(ci.request == MICROPHONE) {
 			waveOutWrite(hWaveOut, (WAVEHDR *)buffer, sizeof(WAVEHDR));
+		}
 
 		/* Set the type according to the first packet */
-		if(strcmp(buffer, "Single Download") == 0)
-		{
-			ci.request = SINGLE_DL;
-			sendFileList(wParam);
+		if (ci.request != MULTI_STREAM) {
+			if(strcmp(buffer, "Single Download") == 0)
+			{
+				ci.request = SINGLE_DL;
+				sendFileList(wParam);
+			}
+			else if(strcmp(buffer, "Single Upload") == 0) {
+				ci.request = SINGLE_UP;
+			}
+			else if(strcmp(buffer, "Stream") == 0)
+			{
+				ci.request = SINGLE_STREAM;
+				sendFileList(wParam);
+			}
+			else if(strcmp(buffer, "Microphone") == 0)
+			{
+				ci.request = MICROPHONE;
+				Sleep(100);
+				mic_record_beg();
+			}
 		}
-		else if(strcmp(buffer, "Single Upload") == 0)
-			ci.request = SINGLE_UP;
-		else if(strcmp(buffer, "Stream") == 0)
-		{
-			ci.request = SINGLE_STREAM;
-			sendFileList(wParam);
-		}
-		else if(strcmp(buffer, "Microphone") == 0)
-		{
-			ci.request = MICROPHONE;
-			Sleep(100);
-			mic_record_beg();
+		else {
+			if (strcmp(buffer, "Multicast") == 0)
+			{
+				ci.request = MULTI_STREAM;
+			}
+			else {
+				strcpy_s(buffer, FILE_BUFF_SIZE, "NO");
+				send(wParam, buffer, strlen(buffer) /*sizeof(buffer)*/, 0);
+			}
 		}
 	}
 	else if (ci.behaviour == CLIENT)
@@ -204,6 +250,22 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		{
 			Sleep(1);
 			client_download(wParam);
+		}
+		else if (ci.request == SINGLE_UP) {
+			if((bytesRead = recv(wParam, buffer, FILE_BUFF_SIZE, 0)) == -1)
+			{
+				if (WSAGetLastError() != WSAEWOULDBLOCK)
+				{
+					MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
+						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+					closesocket(wParam);
+				}
+			}
+			if (strncmp(buffer, "NO", 2) == 0) {
+				MessageBox(ghWndMain, (LPCSTR)"Server says NO!",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				ExitProcess(1);
+			}
 		}
 		else if(ci.request == SINGLE_STREAM)
 		{
@@ -215,6 +277,11 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 					closesocket(wParam);
 				}
+			}
+			if (strncmp(buffer, "NO", 2) == 0) {
+				MessageBox(ghWndMain, (LPCSTR)"Server says NO!",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				ExitProcess(1);
 			}
 			receiveFileList(wParam, buffer);
 		}
@@ -229,6 +296,12 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 					closesocket(wParam);
 				}
 			}
+			if (strncmp(buffer, "NO", 2) == 0) {
+				MessageBox(ghWndMain, (LPCSTR)"Server says NO!",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				ExitProcess(1);
+			}
+
 			mic_play_beg();
 			open_output_device(buffer);
 		}	
@@ -237,25 +310,30 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 }
 
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	tcp_sockWrite
--- 
---	REVISIONS:	March 26 - Added a check for the request type, which changes the
---						   the outbound buffer correspondingly.
---						 - Changed the name to tcp_sockWriteet, since we will only
---						   be using this one for sending control messages.  A
---						   separate one will be used for UDP transfers.
---				April 6 - Added a memset to clear all the buffers due to an error.
--- 
---	DESIGNER:	Jerrod Hudson, Jaymz Boilard
---	PROGRAMMER:	Jerrod Hudson, Jaymz Boilard
--- 
---	INTERFACE:	void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
--- 
---	RETURNS:	void
--- 
---	NOTES:	Writes to a socket, used for the control channel.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		tcp_sockWrite
+--
+--	DATE:			2009-03-29
+--
+--	REVISIONS:		2009-03-26 - Jerrod, Added a check for the request type, which changes the
+--								 the outbound buffer correspondingly.
+--							   - Jaymz, Changed the name to tcp_sockWriteet, since we will only
+--								 be using this one for sending control messages.  A
+--								 separate one will be used for UDP transfers.
+--					2009-04-06 - Jaymz, Added a memset to clear all the buffers due to an error.
+--
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson, Jaymz Boilard, Steffen L. Norgren
+--
+--	INTERFACE:		tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
+--						HWND hwnd: The handle to the calling window.
+--						WPARAM wParam: The socket we wish to close
+--						LPARAM lParam: unused
+--
+--	RETURNS:		void
+--
+--	NOTES: Writes to a socket, used for the control channel.
+-----------------------------------------------------------------------------*/
 void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	char	buffer[FILE_BUFF_SIZE];
@@ -270,11 +348,12 @@ void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if(ci.request == SINGLE_DL)
 		{
 			strcpy_s(buffer, FILE_BUFF_SIZE, "Single Download");
-			Sleep(1);
+			Sleep(10);
 		}
 		else if(ci.request == SINGLE_UP)
 		{
 			strcpy_s(buffer, FILE_BUFF_SIZE, "Single Upload");
+			Sleep(10);
 			browseFiles(hwnd, fileName, pathName);
 		}
 		else if(ci.request == SINGLE_STREAM)
@@ -288,8 +367,8 @@ void tcp_sockWrite(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		{
 			if (WSAGetLastError() != WSAEWOULDBLOCK)
 			{
-					MessageBox(ghWndMain, (LPCSTR)"send() failed.",
-						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				MessageBox(ghWndMain, (LPCSTR)"send() failed.",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 				closesocket(wParam);
 			}
 		}

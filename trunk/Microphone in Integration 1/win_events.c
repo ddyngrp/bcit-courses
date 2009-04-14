@@ -1,10 +1,25 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	win_events.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		
+--	PROGRAMMERS:	
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------
 --	SOURCE FILE:	win_events.c - A general purpose event handler for menus and dialogs.
 --
 --	PROGRAM:		music_streamer.exe
 --
 --	FUNCTIONS:		MenuDispatch(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
---					Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+--					MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --
 --	DATE:			March 16, 2009
 --
@@ -19,142 +34,6 @@
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
 #include "win_events.h"
-
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	Dlg_Main
--- 
---	DATE:		March 16
---
---	REVISIONS:	March 23 - Added code for local song play corresponding to the WM_COMMAND
---						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOPS
---				April 10 - Added up/down button handlers
--- 
---	DESIGNER:	Steffen L. Norgren
---	PROGRAMMER:	Steffen L. Norgren & Jaymz Boilard
--- 
---	INTERFACE:	Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
---					HWND hDlg:		Dialogue handle
---					UINT message:	Dialogue message
---					WPARAM wParam:	Dialogue message parameter (depends on message)
---					LPARAM lParam:	Dialogue message parameter (depends on message)
--- 
---	RETURNS:	0:	the message was processed
---				!0:	the message was not processed and passed to DefWindowProc
--- 
---	NOTES:	This function simply deals with dialogue events caused by user input and
---			calls the appropriate function based on the user's input.
---
----------------------------------------------------------------------------------------*/
-BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
-	HMENU hMenu;
-	char	fileName[FILE_BUFF_SIZE];
-	char	outBuf[TEMP_BUFF_SIZE];
-	DWORD	errNo;
-	static	HANDLE streamThread;
-    
-	hMenu = GetMenu(ghWndMain);
-
-	switch (message) {
-		case WM_INITDIALOG:
-			return FALSE;
-
-		case WM_SETFOCUS:
-			break;
-
-		case WM_COMMAND: // Process user input
-			switch (LOWORD(wParam))
-			{
-				case IDC_BTN_PLAY:
-                    if(busyFlag == LOCALPLAY)
-                        localSong_Play();
-                    else if (busyFlag == NETWORKPLAY)
-					    waveOutRestart(hWaveOut);
-					else if(ci.request == SINGLE_STREAM)
-						waveOutRestart(hWaveOut);
-					return FALSE;
-
-                case IDC_BTN_PAUSE:
-                    if(busyFlag == LOCALPLAY)
-                        localSong_Pause();
-					else if(ci.request == SINGLE_STREAM)
-					{
-						if(waveOutPause(hWaveOut) != MMSYSERR_NOERROR)
-						{
-							errNo = GetLastError();
-							MessageBox(ghWndMain, (LPCSTR)"Error pausing.",
-								(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-							
-							return FALSE;
-						}
-					}
-					return FALSE;
-
-				case IDC_BTN_STOP:
-                    if(busyFlag == LOCALPLAY)
-                        localSong_Stop();
-                    else
-                        waveOutClose(hWaveOut);
-                    busyFlag = 0;
-					EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_ENABLED);
-                    return FALSE;
-
-                /* TODO: Should be disabled as server and certain client modes */
-				case IDC_BTN_DOWNLOAD:
-
-					if (ci.behaviour == CLIENT && ci.request == SINGLE_STREAM) {
-
-						/* Disable the button until the previous thread is terminated */
-						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), FALSE);
-
-						GetSelList(fileName);
-						memset(outBuf, '\0', TEMP_BUFF_SIZE);
-						strcpy_s(outBuf, sizeof(outBuf), fileName);
-						strcpy_s(ci.DLfileName, sizeof(ci.DLfileName), fileName);
-
-						if(send(ci.tcpSocket, outBuf, strlen(outBuf), 0) == -1)
-						{
-							if (WSAGetLastError() != WSAEWOULDBLOCK)
-							{
-								MessageBox(ghWndMain, (LPCSTR)"send() failed.",
-									(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-								closesocket(wParam);
-							}
-						}
-
-						if(ci.request == SINGLE_DL)
-							break;
-
-						if(streamThread != NULL)
-							TerminateThread(streamThread,0);
-
-						Sleep(200);
-
-						streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveStream, (LPVOID)wParam, 0, 0);
-						if(streamThread == NULL)
-						{
-							MessageBox(ghWndMain, (LPCSTR)"Thread creation failed.",
-								(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-							ExitProcess(1);
-						}
-
-						SetFocus(GetDlgItem(ghDlgMain, IDC_LST_PLAY));
-
-						/* Re-enable the button now */
-						Sleep(400);
-						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), TRUE);
-					}
-                    return FALSE;
-
-                case IDC_BTN_BROADCAST:
-                    return FALSE;
-
-				default:
-					return FALSE;
-			}
-			return TRUE;
-	}
-	return FALSE;
-}
 
 /*------------------------------------------------------------------------
 --		FUNCTION:		OnClose
@@ -218,7 +97,10 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			setup_server(hwnd, SOCK_STREAM);
 			setup_server(hwnd, SOCK_DGRAM);
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
-			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP: 127.0.0.1");
+
+			if (ci.request == MULTI_STREAM) {
+				sendFileList(0);
+			}
 
 			if(ci.tcpSocket == INVALID_SOCKET)
 			{
@@ -231,22 +113,35 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			setup_client(hwnd, SOCK_STREAM);
 			setup_client(hwnd, SOCK_DGRAM);
 
-			connect(ci.tcpSocket, (SOCKADDR *)&remote, sizeof(remote));
+			if (ci.request == MULTI_STREAM) {
+				if(streamThread != NULL) {
+					TerminateThread(streamThread,0);
+				}
 
-			if(ci.tcpSocket == INVALID_SOCKET)
-			{
-				if(WSAGetLastError() != WSAEWOULDBLOCK) {
-					MessageBox(ghWndMain, (LPCSTR)"Unable to connect to server!",
-						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				Sleep(100);
+
+				if((streamThread = CreateThread(NULL, 0, 
+					(LPTHREAD_START_ROUTINE)receiveStream, (LPVOID)ci.udpSocket, 0, 0)) == NULL)
+				{
+					MessageBox(NULL,"Thread creation failed",NULL,MB_OK);
+					ExitProcess(1);
+				}
+			}
+			else {
+				connect(ci.tcpSocket, (SOCKADDR *)&remote, sizeof(remote));
+
+				if(ci.tcpSocket == INVALID_SOCKET)
+				{
+					if(WSAGetLastError() != WSAEWOULDBLOCK) {
+						MessageBox(ghWndMain, (LPCSTR)"Unable to connect to server!",
+							(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+					}
 				}
 			}
 		}
 
 		connectActions();
 		initButtons();
-
-		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
-		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)ipAddr);
 		break;
 
 	case ID_FILE_DISCONNECT:
@@ -268,7 +163,9 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		initButtons();
 		ClearList();
 
-		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Disconnected");
+		SendMessage(ghStatus, SB_SETTEXT, (WPARAM)parts[0], (LPARAM)"Status: Disconnected");
+		SendMessage(ghStatus, SB_SETTEXT, (WPARAM)parts[1], (LPARAM)"Mode: ");
+		SendMessage(ghStatus, SB_SETTEXT, (WPARAM)parts[2], (LPARAM)"IP: ");
 		break;
 
 	case ID_FILE_EXIT:
@@ -295,7 +192,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		setActions();
 
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Server");
-		ci.request = 0;
 		break;
 
 	/* Note: These menu item checks can be put into a loop within a function */
@@ -333,13 +229,14 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
             busyFlag = 0; //if we failed to open file
         break;
 
-	case ID_VIEW_CONNECTEDCLIENTS:
-		break;
-
 	case ID_HELP_ABOUT:
-		break;
-
-	case ID_HELP_DOCUMENTATION:
+		MessageBox(ghWndMain, (LPCSTR)"COMP 4985 - Assignment #3, Comm Audio\n\n"
+			"Programmers:\n"
+			"\tJaymz Boilard\n"
+			"\tJerrod Hudson\n"
+			"\tBrendan Neva\n"
+			"\tSteffen L. Norgren\n",
+			(LPCSTR)"About CommAudio", MB_OK | MB_ICONINFORMATION);
 		break;
 
 	default:

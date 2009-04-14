@@ -1,21 +1,43 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	local_play.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		localSong_Init(HWND hwnd, char * fileName)
+--					localSong_Pause()
+--					localSong_Play()
+--					localSong_Stop()
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		Brendan Neva
+--	PROGRAMMERS:	Brendan Neva
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
+
 #include "win_main.h"
 static MCIDEVICEID deviceID;
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	localSong_Init
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
--- 
---	INTERFACE:	BOOL localSong_Init(HWND hwnd, char * fileName)
--- 
---	RETURNS:	void
--- 
---	NOTES:	Initializes all the variables necessary to play a song locally,
---          using the MCI interface.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		localSong_Init
+--
+--	DATE:			2009-04-03
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Brendan Neva
+--	PROGRAMMER(S):	Brendan Neva
+--
+--	INTERFACE:		localSong_Init(HWND hwnd, char * fileName)
+--
+--	RETURNS:		TRUE:	Success
+--					FALSE:	Failure
+--
+--	NOTES: Initializes all the variables necessary to play a song locally,
+--	using the MCI interface.
+-----------------------------------------------------------------------------*/
 BOOL localSong_Init(HWND hwnd, char * fileName)
 {
     MCI_WAVE_OPEN_PARMS	openParams;
@@ -46,20 +68,23 @@ BOOL localSong_Init(HWND hwnd, char * fileName)
 	return TRUE;
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	localSong_Pause
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
--- 
---	INTERFACE:	BOOL localSong_Pause(void)
--- 
---	RETURNS:	void
--- 
---	NOTES:	    Pause the playback via MCI library.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		localSong_Pause
+--
+--	DATE:			2009-04-03
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Brendan Neva
+--	PROGRAMMER(S):	Brendan Neva
+--
+--	INTERFACE:		localSong_Pause()
+--
+--	RETURNS:		TRUE:	Success
+--					FALSE:	Failure
+--
+--	NOTES: Pause the playback via MCI library.
+-----------------------------------------------------------------------------*/
 BOOL localSong_Pause(void)
 {
     MCI_GENERIC_PARMS pause;
@@ -75,20 +100,23 @@ BOOL localSong_Pause(void)
     return TRUE;
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	localSong_Play
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
--- 
---	INTERFACE:	BOOL localSong_Pause(void)
--- 
---	RETURNS:	void
--- 
---	NOTES:	    Play the playback via MCI library.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		localSong_Play
+--
+--	DATE:			2009-04-03
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Brendan Neva
+--	PROGRAMMER(S):	Brendan Neva
+--
+--	INTERFACE:		localSong_Play()
+--
+--	RETURNS:		TRUE:	Success
+--					FALSE:	Failure
+--
+--	NOTES: Play the playback via MCI library.
+-----------------------------------------------------------------------------*/
 BOOL localSong_Play(void)
 {
     MCI_GENERIC_PARMS resume;
@@ -104,20 +132,23 @@ BOOL localSong_Play(void)
     return TRUE;
 }
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	localSong_Stop
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
--- 
---	INTERFACE:	BOOL localSong_Pause(void)
--- 
---	RETURNS:	void
--- 
---	NOTES:	    Stop the playback via MCI library.
----------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		localSong_Stop
+--
+--	DATE:			2009-04-03
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Brendan Neva
+--	PROGRAMMER(S):	Brendan Neva
+--
+--	INTERFACE:		localSong_Stop(void)
+--
+--	RETURNS:		TRUE:	Success
+--					FALSE:	Failure
+--
+--	NOTES: Stop the playback via MCI library.
+-----------------------------------------------------------------------------*/
 BOOL localSong_Stop(void)
 {
     MCI_GENERIC_PARMS stop;

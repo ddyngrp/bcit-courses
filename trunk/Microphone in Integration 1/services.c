@@ -1,25 +1,42 @@
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	services.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		server_download(WPARAM wParam, PTSTR fileName)
+--					client_download(WPARAM wParam)
+--
+--
+--	DATE:			2009-03-29
+--
+--	DESIGNER(S):	Jaymz Boilard
+--	PROGRAMMER(S):	Jaymz Boilard & Jerrod Hudson
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
+
 #include "win_main.h"
 
-
-/*------------------------------------------------------------------------
---		FUNCTION:		server_download
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		server_download
 --
---		REVISIONS:		March 29 - Added a sleep after each packet send so 
---									that the client can keep up with us.
+--	DATE:			2009-03-29
 --
---		DESIGNER:		Jaymz Boilard
---		PROGRAMMER:		Jaymz Boilard & Jerrod Hudson
+--	REVISIONS:		March 29 - Jerrod, Added a sleep after each packet send so 
+--							   that the client can keep up with us.
 --
---		INTERFACE:		server_download(WPARAM wParam)
+--	DESIGNER(S):	Jaymz Boilard
+--	PROGRAMMER(S):	Jaymz Boilard & Jerrod Hudson
 --
---		RETURNS:		void
+--	INTERFACE:		server_download(WPARAM wParam, PTSTR fileName)
 --
---		NOTES:			The server's response when prompted by the client
---						to service a download request.  It opens the file,
---						reading & sending packets until we reach end of
---						file.
-------------------------------------------------------------------------*/
-void server_download(WPARAM wParam, PTSTR	fileName)
+--	RETURNS:		void
+--
+--	NOTES: The server's response when prompted by the client to service a
+--	download request.  It opens the file, reading & sending packets until
+--	we reach end of file.
+-----------------------------------------------------------------------------*/
+void server_download(WPARAM wParam, PTSTR fileName)
 {
 	char outBuf[FILE_BUFF_SIZE];
 	DWORD bytesRead;
@@ -58,24 +75,25 @@ void server_download(WPARAM wParam, PTSTR	fileName)
 	}
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		client_download
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		client_download
 --
---		REVISIONS:
+--	DATE:			2009-03-29
 --
---		DESIGNER:		Jaymz Boilard
---		PROGRAMMER:		Jaymz Boilard & Jerrod Hudson
+--	REVISIONS:		
 --
---		INTERFACE:		client_download(WPARAM wParam)
+--	DESIGNER(S):	Jaymz Boilard
+--	PROGRAMMER(S):	Jaymz Boilard & Jerrod Hudson
 --
---		RETURNS:		void
+--	INTERFACE:		client_download(WPARAM wParam)
 --
---		NOTES:			Called asyncronously when the request type is set 
---						to download & the connection has already been
---						established.  It opens the file and writes the
---						incoming packet to the end of it, and displays a
---						message when we are done transferring.
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: Called asyncronously when the request type is set to download & the
+--	connection has already been established.  It opens the file and writes the
+--	incoming packet to the end of it, and displays a message when we are done
+--	transferring.
+-----------------------------------------------------------------------------*/
 void client_download(WPARAM wParam)
 {
 	char buffer[FILE_BUFF_SIZE];
@@ -105,8 +123,12 @@ void client_download(WPARAM wParam)
 		if(strncmp(buffer, "FILE", 4) == 0)
 		{
 			receiveFileList(wParam, buffer);
-			//CloseHandle(hFile);
 			return;
+		}
+		else if (strncmp(buffer, "NO", 2) == 0) {
+			MessageBox(ghWndMain, (LPCSTR)"Server says NO!",
+				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+			ExitProcess(1);
 		}
 
 		if((hFile = CreateFile(ci.DLfileName, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, NULL)) == INVALID_HANDLE_VALUE)

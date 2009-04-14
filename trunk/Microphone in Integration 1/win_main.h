@@ -2,6 +2,7 @@
 #define _WIN_MAIN_H_
 
 #include <winsock2.h>
+#include <Ws2tcpip.h>
 #include <windows.h>
 #include <windowsx.h>
 #include <mmsystem.h>
@@ -28,10 +29,11 @@
 
 /* Buffer Definitions */
 #define BLOCK_SIZE		44100
-#define BLOCK_COUNT		20
+#define BLOCK_COUNT		100
 #define TEMP_BUFF_SIZE	200
 #define FILE_PATH_SIZE	255
 #define FILE_BUFF_SIZE	4096
+#define WAVE_HEAD_SIZE	128
 
 /* Flag Definitions */
 #define LOCALPLAY		500
@@ -62,11 +64,13 @@ typedef struct _CONNECTINFO
 			behaviour,	/* server or client */
 			request,	/* DL, UP, stream, multi stream */
 			protocol;
+	BOOL	newClient;	/* we send the wave header to new clients */
 			/* the name of the file to create when we download a song */
 	char	DLfileName[FILE_PATH_SIZE];
+	char	waveFormat[WAVE_HEAD_SIZE];
 	SOCKET	tcpSocket,
 			udpSocket,
-			tcpSock2;
+			tcpSock2;		/* TODO: Find the meaning of this */
 } connectInfo;
 
 typedef struct _SOCKET_INFORMATION {
@@ -127,7 +131,7 @@ static int parts[] = {0, 1, 2};
 
 /* Global Functions */
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-BOOL CALLBACK Dlg_Main(HWND, UINT, WPARAM, LPARAM);
+BOOL CALLBACK MainDlgProc(HWND, UINT, WPARAM, LPARAM);
 int InitApp(HINSTANCE, int);
 int VersionCheck();
 

@@ -1,4 +1,19 @@
-/*---------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	win_main.c
+--
+--	PROGRAM:		CommAudio.exe
+--
+--	FUNCTIONS:		
+--
+--
+--	DATE:			
+--
+--	DESIGNERS:		
+--	PROGRAMMERS:	
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
 --	SOURCE FILE:	winMain.c -   Program's main entry point.
 --
 --	PROGRAM:		music_streamer.exe
@@ -17,9 +32,9 @@
 --
 --	PROGRAMMER:		Steffen L. Norgren
 --
---	NOTES:	Program's main entry point. This is where the application loads all
---			its necessary resources and sets up the initial parameters.
----------------------------------------------------------------------------------------*/
+--	NOTES:	Program's main entry point. This is where the application loads
+--			all its necessary resources and sets up the initial parameters.
+-----------------------------------------------------------------------------*/
 
 #include "win_main.h"
 #include "resource.h"
@@ -203,7 +218,7 @@ int InitApp(HINSTANCE hInst, int nCmdShow) {
 ---------------------------------------------------------------------------------------*/
 void InitWindow(HWND hWnd) {
 	// Create our main output dialog, which is part of the main window
-	ghDlgMain = CreateDialog(ghInst, MAKEINTRESOURCE(IDD_MAIN), hWnd, Dlg_Main);
+	ghDlgMain = CreateDialog(ghInst, MAKEINTRESOURCE(IDD_MAIN), hWnd, MainDlgProc);
 
 	if (ghDlgMain == NULL) {
 		MessageBox(hWnd, TEXT("Failed to create ghDlgMain!"), NULL, MB_OK | MB_ICONSTOP);

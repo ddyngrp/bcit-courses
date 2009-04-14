@@ -1,25 +1,26 @@
-/*---------------------------------------------------------------------------------------
---	SOURCE FILE:	network_play.c - Contains all the function calls for sending and
---									 receiving an audio stream.
+/*-----------------------------------------------------------------------------
+--	SOURCE FILE:	network_play.c
 --
---	PROGRAM:		music_streamer.exe
+--	PROGRAM:		CommAudio.exe
 --
---	FUNCTIONS:		void receiveStream(WPARAM sd)
---					static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, 
---													 DWORD dwInstance, DWORD dwParam1, 
---													 DWORD dwParam2)
---					WAVEHDR* allocateBlocks(int size, int count)
---					void freeBlocks(WAVEHDR* blockArray)
---					void writeAudio(LPSTR data, int size)
+--	FUNCTIONS:		receiveStream(WPARAM sd)
+--					waveOutProc(HWAVEOUT hWaveOut,
+--								UINT uMsg, 
+--								DWORD dwInstance,
+--								DWORD dwParam1, 
+--								DWORD dwParam2)
+--					allocateBlocks(int size, int count)
+--					freeBlocks(WAVEHDR* blockArray)
+--					writeAudio(LPSTR data, int size)
 --
---	REVISIONS:		April 6 - Took the code from our test program and functionized it
---							  to use here.
 --
---	DESIGNERS:		Jaymz Boilard & Steffen L. Norgren
---	PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--	DATE:			2009-04-06
 --
---	NOTES:
----------------------------------------------------------------------------------------*/
+--	DESIGNERS:		David Overton
+--	PROGRAMMERS:	David Overton, Jaymz Boilard, Steffen L. Norgren
+--
+--	NOTES:	
+-----------------------------------------------------------------------------*/
 #include "win_main.h"
 
 /* Global Variables */
@@ -28,34 +29,36 @@ static WAVEHDR*			waveBlocks;
 static volatile int		waveFreeBlockCount;
 static int				waveCurrentBlock;
 
-/*------------------------------------------------------------------------
---		FUNCTION:		receiveStream - The main function to receive a TCP 
---						stream data and process that information.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		receiveStream
 --
---		REVISIONS:		April 6 - Took out the TCP connection stuff since we
---								  already have that at this point.  Also added
---								  a parameter WPARAM sd, which is the socket
---								  from which we are receiving the data.
---								- Miscellaneous code touch-ups (mainly
---								  formatting and removing of test printf()'s)
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--	REVISIONS:		2009-04-06 - Jaymz, Took out the TCP connection stuff since
+--								 we already have that at this point. Also added
+--								 a parameter WPARAM sd, which is the socket
+--								 from which we are receiving the data.
+--							   - Jaymz, Miscellaneous code touch-ups (mainly
+--								 formatting and removing of test printf()'s)
 --
---		INTERFACE:		void receiveStream(
---								  WPARAM sd) //the socket to be used
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Jaymz Boilard, Steffen L. Norgren
 --
---		RETURNS:		void
+--	INTERFACE:		receiveStream(LPVOID iValue)
 --
---		NOTES:			
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: The main function to receive a UDP stream of data and process
+--	that information.
+-----------------------------------------------------------------------------*/
 DWORD WINAPI receiveStream(LPVOID iValue)
 {
-	WAVEFORMATEX	wfx;				/* look this up in your documentation */
+	WAVEFORMATEX	wfx;
 	char			buffer[BLOCK_SIZE]; /* intermediate buffer for reading */
 	int				i, n, remote_len;
 	DWORD			outBytes = 0;
 	char			* play_byte = "1";
+	BOOL			firstRun = TRUE;
 
 	remote_len = sizeof(udp_remote);
 
@@ -68,10 +71,11 @@ DWORD WINAPI receiveStream(LPVOID iValue)
 	/* playback loop - read from socket */
 	while (TRUE) 
 	{
-		/* send play signal */
-		sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+		if (ci.request != MULTI_STREAM) {
+			/* send play signal */
+			sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+		}
 
-		/* Gets blocked here forever */
 		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0, (struct sockaddr *)&udp_remote, &remote_len)) <= 0)
 		{
 			waveOutClose(hWaveOut);
@@ -81,20 +85,24 @@ DWORD WINAPI receiveStream(LPVOID iValue)
 		/* first 4 bytes in a file, so set the header information */
 		if(strncmp(buffer, "RIFF", 4) == 0)
 		{
-			waveOutClose(hWaveOut);
 			memcpy(&wfx, buffer+20, sizeof(wfx));
-			if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
-				(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
-			{
-				MessageBox(ghWndMain, (LPCSTR)"Unable to open mapper device.",
-					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-				ExitProcess(1);
+
+			if (ci.request != MULTI_STREAM || firstRun == TRUE) {
+				waveOutClose(hWaveOut);
+			
+				if(waveOutOpen(&hWaveOut, WAVE_MAPPER, &wfx, (DWORD_PTR)waveOutProc,
+					(DWORD_PTR)&waveFreeBlockCount, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
+				{
+						MessageBox(NULL, "Unable to open mapper device.", "Error", MB_OK);
+						ExitProcess(1);
+				}
+				firstRun = FALSE;
 			}
 		}
 
 		if(n == 0)
 			break;
-		else if(n < sizeof(buffer))
+		else if(n < sizeof(buffer) && n != WAVE_HEAD_SIZE)
 		{
 			memset(buffer + n, 0, sizeof(buffer) - n);
 			writeAudio(buffer, n);
@@ -121,28 +129,27 @@ DWORD WINAPI receiveStream(LPVOID iValue)
 	ExitThread(0);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		sendStream - The main function to send read the 
---						file & send the streaming data.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		sendStream
 --
---		REVISIONS:		April 6 - Took out the TCP connection stuff since we
---								  already have that at this point.  Also added
---								  a parameter WPARAM sd, which is the socket
---								  from which we are receiving the data.
---								- Miscellaneous code touch-ups (mainly
---								  formatting and removing of test printf()'s)
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Jaymz Boilard & Steffen L. Norgren
+--	REVISIONS:		2009-04-06 - Jaymz, Took out the TCP connection stuff since
+--								 we already have that at this point. Also added
+--								 a parameter WPARAM sd, which is the socket
+--								 from which we are receiving the data.
+--							   - Jaymz, Miscellaneous code touch-ups (mainly
+--								 formatting and removing of test printf()'s)
 --
---		INTERFACE:		void receiveStream(
---								  WPARAM sd //the socket to be used
---								  PTSTR fileName //pointer to the name of a file to send
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Jaymz Boilard, Steffen L. Norgren
 --
---		RETURNS:		void
+--	INTERFACE:		sendStream(LPVOID iValue)
 --
---		NOTES:			
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: The main function to read a file & send streaming data over UDP.
+-----------------------------------------------------------------------------*/
 DWORD WINAPI sendStream(LPVOID iValue)
 {
 	HANDLE	hFile;
@@ -163,8 +170,10 @@ DWORD WINAPI sendStream(LPVOID iValue)
 
 	remote_len = sizeof(udp_local); 
 
-	/* Wait for client to send initial UDP packet to determine the address */
-	recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+	if (ci.request != MULTI_STREAM) {
+		/* Wait for client to send initial UDP packet to determine the address */
+		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+	}
 
 	while (TRUE)
 	{
@@ -174,43 +183,64 @@ DWORD WINAPI sendStream(LPVOID iValue)
 			CloseHandle(hFile);
 			ExitThread(0);
 		}
+
+		/* first 4 bytes in a file, so set the header information */
+		if(strncmp(buffer, "RIFF", 4) == 0)
+		{
+			memcpy(&ci.waveFormat, buffer, sizeof(WAVEFORMATEX)+20);
+		}
+
+		/* send wave header information for new clients */
+		if (ci.newClient == TRUE) {
+			ci.newClient = FALSE;
+			sendto(ci.udpSocket, ci.waveFormat, sizeof(ci.waveFormat), 0, (struct sockaddr *)&udp_local, remote_len);
+		}
+
 		if(readBytes == 0)
 		{
-			/* Send EOF notification to the client */
-			//sendto(sd, "EOF", sizeof("EOF"), 0, (struct sockaddr *)&client, client_len);
 			CloseHandle(hFile);
 			ExitThread(0);
 		}
 		if(readBytes < sizeof(buffer)) /* We're at the end of file */
 			memset(buffer + readBytes, 0, sizeof(buffer) - readBytes);
 
-		sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, remote_len);
 
-		/* Wait for signal from client before sending next block */
-		recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+		if (ci.request == MULTI_STREAM) {
+			sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_local, remote_len);
+			Sleep(225);
+		}
+		else {
+			sendto(ci.udpSocket, buffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, remote_len);
+
+			/* Wait for signal from client before sending next block */
+			recvfrom(ci.udpSocket, 0, 0, 0, (struct sockaddr *)&udp_remote, &remote_len);
+		}
 	}
 	ExitThread(0);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		waveOutProc
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		waveOutProc
 --
---		REVISIONS:		
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Steffen L. Norgren
+--	REVISIONS:		
 --
---		INTERFACE:		static void CALLBACK waveOutProc(
---								HWAVEOUT hWaveOut,         //audio device being used
---								UINT uMsg,				   //type of message to process
---								DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Steffen L. Norgren
 --
---		RETURNS:		void
+--	INTERFACE:		waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance,
+--								DWORD dwParam1, DWORD dwParam2)
+--						HWAVEOUT hWaveOut: Handle to the audio output device
+--						UINT uMesg: Message that the procedure handles
+--						DWORD dwInstance: The procedure's instance
+--						DWORD dwParam1 & dwParam2: Unknown and forgotten.
 --
---		NOTES:			The callback function which is passed into the
---						asyncronous call to play the audio.  (ie. it performs
---						its work as a separate thread).
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: The callback function which is passed into the asyncronous call to
+--	play the audio (i.e. it performs its work as a separate thread).
+-----------------------------------------------------------------------------*/
 static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance, 
 								 DWORD dwParam1, DWORD dwParam2)
 {
@@ -227,21 +257,24 @@ static void CALLBACK waveOutProc(HWAVEOUT hWaveOut, UINT uMsg, DWORD dwInstance,
 	 LeaveCriticalSection(&waveCriticalSection);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		allocateBlocks - Allocates a buffer to receive data in.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		allocateBlocks
 --
---		REVISIONS:		
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Steffen L. Norgren
+--	REVISIONS:		
 --
---		INTERFACE:		WAVEHDR* allocateBlocks(int size, int count)
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Steffen L. Norgren
 --
---		RETURNS:		A pointer to the wave header that will be used for
---						our audio playback.
+--	INTERFACE:		allocateBlocks(int size, int count)
+--						int size: The size of each block
+--						int count: The amount of blocks
 --
---		NOTES:			
-------------------------------------------------------------------------*/
+--	RETURNS:		WAVEHDR *: Pointer to the allocated blocks.
+--
+--	NOTES: Allocates a buffer to receive data in.
+-----------------------------------------------------------------------------*/
 WAVEHDR* allocateBlocks(int size, int count)
 {
 	unsigned char* buffer;
@@ -274,45 +307,48 @@ WAVEHDR* allocateBlocks(int size, int count)
 	return blocks;
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		freeBlocks - As the name implies.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		freeBlocks
 --
---		REVISIONS:		
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Steffen L. Norgren
+--	REVISIONS:		
 --
---		INTERFACE:		void freeBlocks(
---						WAVEHDR* blockArray) //pointer to the array to be free'd
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Steffen L. Norgren
 --
---		RETURNS:		void
+--	INTERFACE:		freeBlocks(WAVEHDR* blockArray)
+--						WAVEHDR* blockArray: The array that we wish to free.
 --
---		NOTES:			Prevents memory leeks by freeing the data we
---						allocated to the heap.
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: Prevents memory leeks by freeing the data ww allocated to the heap.
+-----------------------------------------------------------------------------*/
 void freeBlocks(WAVEHDR* blockArray)
 {
 	/* and this is why allocateBlocks works the way it does */ 
 	HeapFree(GetProcessHeap(), 0, blockArray);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		writeAudio - Takes in our buffer of data and writes
---						it to the audio device for playback.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		writeAudio
 --
---		REVISIONS:		
+--	DATE:			2009-04-06
 --
---		DESIGNER:		Steffen L. Norgren
---		PROGRAMMER:		Steffen L. Norgren
+--	REVISIONS:		
 --
---		INTERFACE:		void writeAudio(
---							LPSTR data,	//pointer to our buffer to be played
---							int size)	//length of the buffer
+--	DESIGNER(S):	David Overton
+--	PROGRAMMER(S):	David Overton, Steffen L. Norgren
 --
---		RETURNS:		void
+--	INTERFACE:		writeAudio(LPSTR data, int size)
+--						LPSTR data: The buffer we're playing
+--						int size: The size of the buffer
 --
---		NOTES:			
-------------------------------------------------------------------------*/
+--	RETURNS:		void
+--
+--	NOTES: Takes in our buffer of data and writes it to the audio device
+--	for playback.
+-----------------------------------------------------------------------------*/
 void writeAudio(LPSTR data, int size)
 {
 	WAVEHDR* current;

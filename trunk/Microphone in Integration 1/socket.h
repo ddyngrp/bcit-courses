@@ -1,5 +1,5 @@
-#ifndef SOCKET_H
-#define SOCKET_H
+#ifndef _SOCKET_H_
+#define _SOCKET_H_
 
 #include <stdio.h>
 #include "win_main.h"

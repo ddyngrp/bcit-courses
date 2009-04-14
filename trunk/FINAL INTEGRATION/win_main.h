@@ -29,7 +29,7 @@
 
 /* Buffer Definitions */
 #define BLOCK_SIZE		44100
-#define BLOCK_COUNT		100
+#define BLOCK_COUNT		500
 #define TEMP_BUFF_SIZE	200
 #define FILE_PATH_SIZE	255
 #define FILE_BUFF_SIZE	4096

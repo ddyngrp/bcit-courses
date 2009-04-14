@@ -428,8 +428,8 @@ DWORD WINAPI receiveMicThread(LPVOID iValue) {
 		}
 		recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, &remote_len);
 
-		Sleep(100);
-
 		writeAudio(micBuffer, sizeof(micBuffer));
+
+		Sleep(225);
 	}
 }

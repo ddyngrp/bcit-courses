@@ -91,22 +91,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 			close_mic();
 			break;
 
-		case MM_WOM_OPEN: //called on waveOutOpen()
+		case MM_WOM_OPEN: /* called on waveOutOpen() */
 			open_output_device();
 			break;
 
 		case MM_WOM_DONE:
-			if (1 != 1) {
-				break;
-			}
-			//output_done();
+			/* output_done(); */
 			break;
 
 		case MM_WOM_CLOSE:
-			if (1 != 1) {
-				break;
-			}
-			//close_output();
+			/* close_output(); */
 			break;
 
 		case WM_SYSCOMMAND:

@@ -371,6 +371,10 @@ void initMenu() {
 void connectActions() {
 	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+	EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
+	
+	busyFlag = NETWORKPLAY;
+	localSong_Stop();
 }
 
 /*-----------------------------------------------------------------------------
@@ -392,6 +396,7 @@ void connectActions() {
 void disconnectActions() {
 	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
 	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_ENABLED);
 
 	checkMenuItem(0);
 }

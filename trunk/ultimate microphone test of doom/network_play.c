@@ -378,23 +378,30 @@ DWORD WINAPI receiveMicThread(LPVOID iValue) {
 	char micBuffer[BLOCK_SIZE];
 	int bytesRead, errNo;
 	int remote_len;
+	char * play_byte = "1";
 
-	remote_len = sizeof(udp_local); 
-
+	remote_len = sizeof(udp_remote); 
 					
-	if((bytesRead = recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0, (struct sockaddr *)&udp_remote, &remote_len)) == -1)
-	{
-		errNo = WSAGetLastError();
-		if (errNo != WSAEWOULDBLOCK)
+	sendto(ci.udpSocket, play_byte, sizeof(play_byte), 0, (struct sockaddr *)&udp_remote, remote_len);
+
+	Sleep(100);
+
+	while (TRUE) {
+		if((bytesRead = recvfrom(ci.udpSocket, micBuffer, BLOCK_SIZE, 0,
+			(struct sockaddr *)&udp_remote, &remote_len)) == -1)
 		{
-			MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
-				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-			closesocket(ci.udpSocket);
+			errNo = WSAGetLastError();
+			//if (errNo != WSAEWOULDBLOCK)
+			//{
+			//	MessageBox(ghWndMain, (LPCSTR)"WSARecv() failed.",
+			//		(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+			//	closesocket(ci.udpSocket);
+			//}
 		}
+		mic_play_beg();
+		writeAudio(micBuffer, sizeof(micBuffer));
+		mic_play_end();
 	}
-	mic_play_beg();
-	writeAudio(micBuffer, sizeof(micBuffer));
-	mic_play_end();
 
 	return (DWORD)iValue;
 }

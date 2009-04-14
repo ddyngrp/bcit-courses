@@ -234,7 +234,7 @@ void read_mic_data(LPARAM buffer)
 	}
 	/* call network streaming function here */
 
-	sendto(ci.udpSocket,((PWAVEHDR)buffer)->lpData, ((PWAVEHDR)buffer)->dwBytesRecorded,0, (struct sockaddr *)&udp_remote, sizeof(udp_remote));
+	sendto(ci.udpSocket,((PWAVEHDR)buffer)->lpData, BLOCK_SIZE,0, (struct sockaddr *)&udp_remote, sizeof(udp_remote));
 
 	/* Send new buffer to input device */
 	waveInAddBuffer(hWaveIn, (PWAVEHDR)buffer, sizeof(WAVEHDR));

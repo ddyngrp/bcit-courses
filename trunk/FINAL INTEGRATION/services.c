@@ -7,8 +7,6 @@
 --					client_download(WPARAM wParam)
 --
 --
---	DATE:			2009-03-29
---
 --	DESIGNER(S):	Jaymz Boilard
 --	PROGRAMMER(S):	Jaymz Boilard & Jerrod Hudson
 --

@@ -18,8 +18,6 @@
 --					checkMenuItem(int item)
 --					
 --
---	DATE:			2009-03-30
---
 --	DESIGNERS:		Jaymz Boilard
 --	PROGRAMMERS:	Jaymz Boilard, Steffen L. Norgren
 --

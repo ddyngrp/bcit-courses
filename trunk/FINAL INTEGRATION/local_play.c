@@ -9,8 +9,6 @@
 --					localSong_Stop()
 --
 --
---	DATE:			
---
 --	DESIGNERS:		Brendan Neva
 --	PROGRAMMERS:	Brendan Neva
 --

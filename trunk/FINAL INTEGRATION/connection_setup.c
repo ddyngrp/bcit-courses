@@ -7,8 +7,6 @@
 --					setup_server(HWND hwnd, int type)
 --
 --
---	DATE:			2009-02-24
---
 --	DESIGNER(S):	Jerrod Hudson
 --	PROGRAMMER(S):	Jerrod Hudson, Steffen L. Norgren
 --

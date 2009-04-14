@@ -1,38 +1,3 @@
-/*-----------------------------------------------------------------------------
---	SOURCE FILE:	win_events.c
---
---	PROGRAM:		CommAudio.exe
---
---	FUNCTIONS:		
---
---
---	DATE:			
---
---	DESIGNERS:		
---	PROGRAMMERS:	
---
---	NOTES:	
------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------
---	SOURCE FILE:	win_events.c - A general purpose event handler for menus and dialogs.
---
---	PROGRAM:		music_streamer.exe
---
---	FUNCTIONS:		MenuDispatch(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
---					MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
---
---	DATE:			March 16, 2009
---
---	REVISIONS:		
---
---	DESIGNERS:		Steffen L. Norgren
---
---	PROGRAMMER:		Steffen L. Norgren
---
---	NOTES:	This is a simple menu event handler. It responds to user menu and dialog
---			selections and takes appropriate action depending on the user's input.
---			Remember to add "WS2_32.Lib" to the project source list.
----------------------------------------------------------------------------------------*/
 #include "win_events.h"
 
 /*------------------------------------------------------------------------

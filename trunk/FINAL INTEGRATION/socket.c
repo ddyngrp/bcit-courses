@@ -6,8 +6,6 @@
 --	FUNCTIONS:		
 --
 --
---	DATE:			
---
 --	DESIGNERS:		Jerrod Hudson
 --	PROGRAMMERS:	Jerrod Hudson, Jaymz Boilard, Steffen L. Norgren
 --

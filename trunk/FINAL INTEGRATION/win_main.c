@@ -1,20 +1,5 @@
 /*-----------------------------------------------------------------------------
---	SOURCE FILE:	win_main.c
---
---	PROGRAM:		CommAudio.exe
---
---	FUNCTIONS:		
---
---
---	DATE:			
---
---	DESIGNERS:		
---	PROGRAMMERS:	
---
---	NOTES:	
------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------
---	SOURCE FILE:	winMain.c -   Program's main entry point.
+--	SOURCE FILE:	winMain.c
 --
 --	PROGRAM:		music_streamer.exe
 --
@@ -22,6 +7,7 @@
 --							LPSTR lpCmdLine, int nCmdShow)
 --					VersionCheck()
 --					InitApp(HINSTANCE hInst, int nCmdShow)
+--					InitWindow(HWND hWnd)
 --
 --
 --	DATE:			March 16, 2009
@@ -42,19 +28,18 @@
 // Private variables
 TCHAR	szAppName[] = TEXT("Comm Audio - Music Streamer");
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	WinMain
--- 
---	DATE:		March 16, 2009
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Steffen L. Norgren
--- 
---	PROGRAMMER:	Steffen L. Norgren
--- 
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		WinMain
+--
+--	DATE:			2009-03-16
+--
+--	REVISIONS:		
+--
+--	DESIGNER(S):	Steffen L. Norgren
+--	PROGRAMMER(S):	Steffen L. Norgren
+--
 --	INTERFACE:	WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
---						 LPSTR lpCmdLine, int nCmdShow)
+--					LPSTR lpCmdLine, int nCmdShow)
 --					HINSTANCE hInstance:		this application's instance
 --					HINSTANCE hPrevInstance:	previous instance of this application
 --					LPSTR lpCmdLine:			command line parameters
@@ -64,7 +49,7 @@ TCHAR	szAppName[] = TEXT("Comm Audio - Music Streamer");
 --				1: for success
 -- 
 --	NOTES:	Start application and process all window messages.
----------------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------*/
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	MSG msg;
 

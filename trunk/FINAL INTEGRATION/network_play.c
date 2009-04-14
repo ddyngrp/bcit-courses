@@ -1,5 +1,3 @@
-// FIX Headers
-
 /*-----------------------------------------------------------------------------
 --	SOURCE FILE:	network_play.c
 --
@@ -15,8 +13,6 @@
 --					freeBlocks(WAVEHDR* blockArray)
 --					writeAudio(LPSTR data, int size)
 --
---
---	DATE:			2009-04-06
 --
 --	DESIGNERS:		David Overton
 --	PROGRAMMERS:	David Overton, Jaymz Boilard, Steffen L. Norgren

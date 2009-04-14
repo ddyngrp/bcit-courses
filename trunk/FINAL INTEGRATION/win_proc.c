@@ -1,34 +1,16 @@
-/*-----------------------------------------------------------------------------
---	SOURCE FILE:	win_proc.c
---
---	PROGRAM:		CommAudio.exe
---
---	FUNCTIONS:		
---
---
---	DATE:			
---
---	DESIGNERS:		
---	PROGRAMMERS:	
---
---	NOTES:	
------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------
---	SOURCE FILE:	winProc.c -   Handles the program's main window and associated events
+--	SOURCE FILE:	winProc.c -   
 --
 --	PROGRAM:		music_streamer.exe
 --
 --	FUNCTIONS:		WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
---					InitWindow(HWND hWnd)
---					PaintWindow(HWND hWnd)
+--					ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+--					ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+--					MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --
---
---	DATE:			March 16, 2009
---
---	REVISIONS:		
 --
 --	DESIGNERS:		Steffen L. Norgren
---	PROGRAMMER:		Steffen L. Norgren
+--	PROGRAMMER:		Steffen L. Norgren, Jerrod Hudson
 --
 --	NOTES:	This is a simple menu event handler. It responds to user menu selections
 --			and takes appropriate action depending on the user's selection.
@@ -40,28 +22,27 @@
 
 static int received = FALSE;
 
-/*--------------------------------------------------------------------------------------- 
---	FUNCTION:	WndProc
--- 
---	DATE:		March 16, 2009
--- 
---	REVISIONS:	
--- 
---	DESIGNER:	Steffen L. Norgren
---	PROGRAMMER:	Steffen L. Norgren
--- 
---	INTERFACE:	WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
---					HWND hWnd:		Window handle
---					UINT message:	Window message
---					WPARAM wParam:	Window message parameter (depends on message)
---					LPARAM lParam:	Window message parameter (depends on message)
--- 
---	RETURNS:	0: If message was processed
---				Otherwise it will return the value of DefWindowProc
--- 
---	NOTES:	Windows procedure for the main window.
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		WndProc
 --
----------------------------------------------------------------------------------------*/
+--	DATE:			2009-03-16
+--
+--	REVISIONS:		2009-04-12 - Jerrod, modified to simplify message passing.
+--
+--	DESIGNER(S):	Steffen L. Norgren
+--	PROGRAMMER(S):	Steffen L. Norgren, Jerrod Hudson
+--
+--	INTERFACE:		WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+--						HWND hWnd:		Window handle
+--						UINT message:	Window message
+--						WPARAM wParam:	Window message parameter (depends on message)
+--						LPARAM lParam:	Window message parameter (depends on message)
+--
+--	RETURNS:		0: If message was processed
+--					Otherwise it will return the value of DefWindowProc
+-- 
+--	NOTES: Windows procedure for the main window.
+-----------------------------------------------------------------------------*/
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 	switch (message)
 	{
@@ -118,28 +99,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		ClientProc
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		ClientProc
 --
---		DATE:			February 20, 2009
+--	DATE:			2009-02-20
 --
---		REVISIONS:		(Date and Description)
+--	REVISIONS:		
 --
---		DESIGNER:		Jerrod Hudson
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		LRESULT CALLBACK WndProc(HWND hwnd,
+--	INTERFACE:		LRESULT CALLBACK ClientProc(HWND hwnd,
 --						UINT message, WPARAM wParam, LPARAM lParam)
---							HWND hwnd: Handle to the client dialog
---							UINT message: Current message ID
---							WPARAM wParam: Message parameter
---							LPARAM lParam: Message parameter
+--						HWND hwnd: Handle to the client dialog
+--						UINT message: Current message ID
+--						WPARAM wParam: Message parameter
+--						LPARAM lParam: Message parameter
+--				
 --
---		RETURNS:		The result of the processed message
+--	RETURNS:		The result of the processed message
 --
---		NOTES:			This is the message handler for the client
---						dialog box.
-------------------------------------------------------------------------*/
+--	NOTES: This is the message handler for the client dialog box.
+-----------------------------------------------------------------------------*/
 BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message)
@@ -170,28 +151,28 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	return FALSE;
 }
 
-/*------------------------------------------------------------------------
---		FUNCTION:		ServerProc
+/*-----------------------------------------------------------------------------
+--	FUNCTION:		ServerProc
 --
---		DATE:			February 20, 2009
+--	DATE:			2009-02-20
 --
---		REVISIONS:		(Date and Description)
+--	REVISIONS:		
 --
---		DESIGNER:		Jerrod Hudson
---		PROGRAMMER:		Jerrod Hudson
+--	DESIGNER(S):	Jerrod Hudson
+--	PROGRAMMER(S):	Jerrod Hudson
 --
---		INTERFACE:		LRESULT CALLBACK WndProc(HWND hwnd,
+--	INTERFACE:		LRESULT CALLBACK WndProc(HWND hwnd,
 --						UINT message, WPARAM wParam, LPARAM lParam)
---							HWND hwnd: Handle to the server dialog
---							UINT message: Current message ID
---							WPARAM wParam: Message parameter
---							LPARAM lParam: Message parameter
+--						HWND hwnd: Handle to the client dialog
+--						UINT message: Current message ID
+--						WPARAM wParam: Message parameter
+--						LPARAM lParam: Message parameter
+--				
 --
---		RETURNS:		The result of the processed message
+--	RETURNS:		The result of the processed message
 --
---		NOTES:			This is the message handler for the server
---						dialog box.
-------------------------------------------------------------------------*/
+--	NOTES: This is the message handler for the server dialog box.
+-----------------------------------------------------------------------------*/
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch(message)
@@ -222,13 +203,14 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	return FALSE;
 }
 
-/*--------------------------------------------------------------------------------------- 
+/*----------------------------------------------------------------------------- 
 --	FUNCTION:	MainDlgProc
 -- 
 --	DATE:		March 16
 --
---	REVISIONS:	March 23 - Added code for local song play corresponding to the WM_COMMAND
---						   messages: IDC_BTN_PLAY, IDC_BTN_PAUSE, & IDC_BTN_STOPS
+--	REVISIONS:	March 23 - Added code for local song play corresponding to the
+--						   WM_COMMAND messages: IDC_BTN_PLAY, IDC_BTN_PAUSE,
+--						   & IDC_BTN_STOPS
 --				April 10 - Added up/down button handlers
 -- 
 --	DESIGNER:	Steffen L. Norgren
@@ -246,7 +228,7 @@ BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 --	NOTES:	This function simply deals with dialogue events caused by user input and
 --			calls the appropriate function based on the user's input.
 --
----------------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------*/
 BOOL CALLBACK MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 	HMENU hMenu;
 	char	fileName[FILE_BUFF_SIZE];

@@ -95,66 +95,21 @@ void AppendList(char *str)
 	SetFocus(list);
 }
 
+void ClearList() {
+	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
+	int count, i;
+
+	count = ListBox_GetCount(list);
+
+	for (i = 0; i < count; i++) {
+		ListBox_DeleteString(list, 0);
+	}
+}
+
 void GetSelList(char * selItem) {
 	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
 
 	ListBox_GetText(list, ListBox_GetCurSel(list), selItem);
-}
-
-/*---------------------------------------------------------------------------------
--- FUNCTION:	menu_up - Moves the current selection down within the list box.
---
--- REVISIONS:
---
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
---
--- INTERFACE:   void menu_down()
---
--- RETURNS: void
---
--- NOTES:   Does nothing if we are at the end.
-------------------------------------------------------------------------------------*/
-void menu_up()
-{
-	int currentIndex = 0;
-
-	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
-	currentIndex = ListBox_GetCurSel(list);
-
-	if(currentIndex-1 < 0)
-		return;
-	else
-		ListBox_SetCurSel(list,currentIndex-1);
-}
-
-/*---------------------------------------------------------------------------------
--- FUNCTION:	menu_down - Moves the current selection down within the list box.
---
--- REVISIONS:
---
---	DESIGNER:	Brendan Neva
---	PROGRAMMER:	Brendan Neva
---
--- INTERFACE:   void menu_down()
---
--- RETURNS: void
---
--- NOTES:   Does nothing if we are at the end.
-------------------------------------------------------------------------------------*/
-void menu_down()
-{
-	int currentIndex = 0;
-	int fileCount = 0;
-
-	HWND list = GetDlgItem(ghDlgMain, IDC_LST_PLAY);
-	currentIndex = ListBox_GetCurSel(list);
-	fileCount = ListBox_GetCount(list);
-
-	if(currentIndex+1 > fileCount)
-		return;
-	else
-		ListBox_SetCurSel(list,currentIndex+1);
 }
 
 /*---------------------------------------------------------------------------------
@@ -218,4 +173,119 @@ void fileInit(HWND hwnd)
 	ofn.lCustData         = 0L;
 	ofn.lpfnHook          = NULL;
 	ofn.lpTemplateName    = NULL;
+}
+
+void initButtons() {
+	EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PLAY), FALSE);
+	EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), FALSE);
+	EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_STOP), FALSE);
+	EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_BROADCAST), FALSE);
+
+	if (ci.behaviour == SERVER) {
+		EnableMenuItem(ghMenu, ID_VIEW_CONNECTEDCLIENTS, MF_ENABLED);
+		if (ci.request == MULTI_STREAM) {
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_BROADCAST), TRUE);
+		}
+	}
+	else if (ci.behaviour == CLIENT) {
+		if (ci.request == SINGLE_DL) {
+		}
+		else if (ci.request == SINGLE_UP) {
+		}
+		else if (ci.request == SINGLE_STREAM) {
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PLAY), TRUE);
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), TRUE);
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_STOP), TRUE);
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), TRUE);
+		}
+		else if (ci.request == MULTI_STREAM) {
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PLAY), TRUE);
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), TRUE);
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_STOP), TRUE);
+		}
+		else if (ci.request == MICROPHONE) {
+		}
+	}
+}
+
+void initMenu() {
+	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_VIEW_CONNECTEDCLIENTS, MF_GRAYED);
+	checkMenuItem(0);
+}
+
+void connectActions() {
+	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+}
+
+void disconnectActions() {
+	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+
+	checkMenuItem(0);
+}
+
+void setActions() {
+	if (ci.behaviour == CLIENT) {
+		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
+		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+
+		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_ENABLED);
+	}
+	else if (ci.behaviour == SERVER) {
+		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
+		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
+		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+
+		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_GRAYED);
+	}
+	else {
+		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
+		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+
+		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_GRAYED);
+	}
+}
+
+void checkMenuItem(int item) {
+	CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
+	CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
+	CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
+	CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
+	CheckMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_UNCHECKED);
+
+	if (item == 0) {
+		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
+		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+	}
+	else {
+		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
+		CheckMenuItem(ghMenu, item, MF_CHECKED);
+	}
 }

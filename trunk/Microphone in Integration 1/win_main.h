@@ -15,7 +15,7 @@
 
 /* GUI Definitions */
 #define X_SIZE			380
-#define Y_SIZE			240
+#define Y_SIZE			295
 #define STATUS_BAR		2001
 
 /* Connection Definitions */
@@ -107,6 +107,7 @@ int			busyFlag;
 static		WAVEFORMATEX pwfx;
 HWAVEOUT	hWaveOut;
 static BOOL	streamInProgress;
+static HANDLE streamThread;
 
 /* Microphone Globals */
 static BOOL			bRecording, bPlaying, bEnding, bTerminating;
@@ -124,7 +125,7 @@ static int nParts = 3;
 static int width[] = {115,225,-1};
 static int parts[] = {0, 1, 2};
 
-// Global Functions
+/* Global Functions */
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 BOOL CALLBACK Dlg_Main(HWND, UINT, WPARAM, LPARAM);
 int InitApp(HINSTANCE, int);
@@ -163,21 +164,26 @@ LPSOCKET_INFORMATION GetSocketInformation(SOCKET s);
 void sendFileList(WPARAM wParam);
 void receiveFileList(WPARAM wParam, char buf[]);
 void AppendList(char * str);
+void ClearList(void);
 void GetSelList(char * selItem);
-void menu_down();
-void menu_up();
+void initMenu(void);
+void initButtons(void);
+void disconnectActions(void);
+void connectActions(void);
+void setActions(void);
+void checkMenuItem(int);
 
 /* Microphone */
-void mic_record_beg();
-void mic_record_end();
-void mic_play_beg();
-void mic_play_end();
-void terminate_mic_session();
-void output_done();
+void mic_record_beg(void);
+void mic_record_end(void);
+void mic_play_beg(void);
+void mic_play_end(void);
+void terminate_mic_session(void);
+void output_done(void);
 void open_output_device(char buffer[]);
-void close_mic();
+void close_mic(void);
 void read_mic_data(LPARAM buffer);
-void open_mic_device();
-void close_output();
+void open_mic_device(void);
+void close_output(void);
 
 #endif

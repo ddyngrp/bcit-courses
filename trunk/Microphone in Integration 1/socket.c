@@ -18,8 +18,19 @@
 ---------------------------------------------------------------------------------------*/
 void sockClose(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
-	shutdown(wParam, 2);
-	closesocket(wParam);
+	if (lParam != -1) {
+		shutdown(wParam, 2);
+		closesocket(wParam);
+	}
+	else { /* End our currently running thread */
+		/* Stop running threads */
+		if(streamThread != NULL)
+			TerminateThread(streamThread,0);
+
+		ci.request = 0;
+
+		Sleep(200);
+	}
 }
 
 /*--------------------------------------------------------------------------------------- 
@@ -119,7 +130,6 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	char buffer[FILE_BUFF_SIZE];
 	int bytesRead;
 	int cSize;
-	static HANDLE streamThread;
 	static BOOL firstTime = TRUE;
 	ci.tcpSock2 = wParam;
 
@@ -224,6 +234,7 @@ void tcp_sockRead(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			open_output_device(buffer);
 		}	
 	}
+	initButtons();
 }
 
 

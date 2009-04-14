@@ -74,7 +74,6 @@ DWORD WINAPI receiveStream(LPVOID iValue)
 		/* Gets blocked here forever */
 		if ((n = recvfrom(ci.udpSocket, buffer, sizeof(buffer), 0, (struct sockaddr *)&udp_remote, &remote_len)) <= 0)
 		{
-			MessageBox(ghWndMain, (LPCSTR)"No Server!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 			waveOutClose(hWaveOut);
 			ExitThread(0);
 		}
@@ -146,9 +145,9 @@ DWORD WINAPI receiveStream(LPVOID iValue)
 ------------------------------------------------------------------------*/
 DWORD WINAPI sendStream(LPVOID iValue)
 {
-	HANDLE hFile;
+	HANDLE	hFile;
 	int		remote_len;
-	DWORD readBytes;
+	DWORD	readBytes;
 
 	/* TCP connection related variables */
 	char	buffer[BLOCK_SIZE]; /* intermediate buffer for reading */

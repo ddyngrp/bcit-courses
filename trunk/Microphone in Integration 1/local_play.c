@@ -18,9 +18,9 @@ static MCIDEVICEID deviceID;
 ---------------------------------------------------------------------------------------*/
 BOOL localSong_Init(HWND hwnd, char * fileName)
 {
-    MCI_WAVE_OPEN_PARMS  openParams;
-    MCI_PLAY_PARMS      playParams;
-    int           errno;
+    MCI_WAVE_OPEN_PARMS	openParams;
+    MCI_PLAY_PARMS		playParams;
+    int					errno;
 
     memset(&openParams, 0, sizeof(MCI_WAVE_OPEN_PARMS));
     openParams.lpstrDeviceType = "waveaudio";
@@ -42,8 +42,8 @@ BOOL localSong_Init(HWND hwnd, char * fileName)
         if (errno != 0)
             return FALSE;
     }
-    //busyFlag = 0;
-    return TRUE;
+
+	return TRUE;
 }
 
 /*--------------------------------------------------------------------------------------- 

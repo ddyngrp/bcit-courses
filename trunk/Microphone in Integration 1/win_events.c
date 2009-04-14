@@ -18,7 +18,6 @@
 --			selections and takes appropriate action depending on the user's input.
 --			Remember to add "WS2_32.Lib" to the project source list.
 ---------------------------------------------------------------------------------------*/
-#include "win_main.h"
 #include "win_events.h"
 
 /*--------------------------------------------------------------------------------------- 
@@ -146,19 +145,8 @@ BOOL CALLBACK Dlg_Main(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
 					}
                     return FALSE;
 
-                //button should be disabled when we're not in server mode
-                /* connection has already been set up after connect was pressed, so we can start
-                   sending right away. */
                 case IDC_BTN_BROADCAST:
-                    //serv_broadcast(fileName);
                     return FALSE;
-
-				case IDC_BTN_ADD:
-					menu_up();
-					break;
-				case IDC_BTN_REMOVE:
-					menu_down();
-					break;
 
 				default:
 					return FALSE;
@@ -220,7 +208,6 @@ void OnClose(HWND hwnd)
 void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
 	TCHAR fileName[FILE_BUFF_SIZE], pathName[FILE_BUFF_SIZE];
-	int iRc;
 	char ipAddr[TEMP_BUFF_SIZE] = "IP: ";
 
 	switch(id)
@@ -232,47 +219,55 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 			setup_server(hwnd, SOCK_DGRAM);
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
 			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)"IP: 127.0.0.1");
-			break;
+
+			if(ci.tcpSocket == INVALID_SOCKET)
+			{
+				MessageBox(ghWndMain, (LPCSTR)"Invalid Socket!",
+					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+			}
 		}
 		else if(ci.behaviour == CLIENT) 
 		{
 			setup_client(hwnd, SOCK_STREAM);
 			setup_client(hwnd, SOCK_DGRAM);
-		}
 
-		if(ci.tcpSocket == INVALID_SOCKET)
-		{
-			MessageBox(ghWndMain, (LPCSTR)"Invalid Socket!",
-				(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-			break;
-		}
+			connect(ci.tcpSocket, (SOCKADDR *)&remote, sizeof(remote));
 
-		iRc = connect(ci.tcpSocket, (SOCKADDR *)&remote, sizeof(remote));
-
-		if(iRc == INVALID_SOCKET)
-		{
-			if(WSAGetLastError() != WSAEWOULDBLOCK) {
-				MessageBox(ghWndMain, (LPCSTR)"Unable to connect to server!",
-					(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+			if(ci.tcpSocket == INVALID_SOCKET)
+			{
+				if(WSAGetLastError() != WSAEWOULDBLOCK) {
+					MessageBox(ghWndMain, (LPCSTR)"Unable to connect to server!",
+						(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				}
 			}
 		}
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
+
+		connectActions();
+		initButtons();
+
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[2],(LPARAM)ipAddr);
 		break;
 
 	case ID_FILE_DISCONNECT:
+		/* Stop running threads */
+		if(streamThread != NULL)
+			TerminateThread(streamThread,0);
+
+		Sleep(200);
+
+		/* Close open sockets */
 		sockClose(hwnd, ci.tcpSocket, 0);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
-		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
+		sockClose(hwnd, ci.udpSocket, 0);
+
+		ci.behaviour = 0;
+		ci.request = 0;
+
+		disconnectActions();
+		setActions();
+		initButtons();
+		ClearList();
+
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Disconnected");
 		break;
 
@@ -283,16 +278,9 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	case ID_MODE_CLIENT:
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_CLIENT), hwnd, (DLGPROC)ClientProc);
 		ci.behaviour = CLIENT;
-		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_CHECKED);
-		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_UNCHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
 
-		/* Let client specify the request type */
-		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_ENABLED);
-		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_ENABLED);
-		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_ENABLED);
-		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_ENABLED);
+		checkMenuItem(0);
+		setActions();
 
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Client");
 		strcat_s(ipAddr, sizeof(ipAddr), ci.ip);
@@ -303,64 +291,34 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		DialogBox(ghInst, MAKEINTRESOURCE(IDD_SERVER), hwnd, (DLGPROC)ServerProc);
 		ci.behaviour = SERVER;
 
-		CheckMenuItem(ghMenu, ID_MODE_CLIENT, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MODE_SERVER, MF_CHECKED);
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
-		EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_ENABLED);
+		checkMenuItem(0);
+		setActions();
 
-		/* Don't want to know request type if we're server, the client has to specify */
-		EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
-		EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
 		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[1],(LPARAM)"Mode: Server");
 		ci.request = 0;
 		break;
 
 	/* Note: These menu item checks can be put into a loop within a function */
 	case ID_SINGLE_DL:
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_CHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
+		checkMenuItem(ID_SINGLE_DL);
 		ci.request = SINGLE_DL;
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_SINGLE_UP:
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_CHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
+		checkMenuItem(ID_SINGLE_UP);
 		ci.request = SINGLE_UP;
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_SINGLE_STREAM:
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_CHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
+		checkMenuItem(ID_SINGLE_STREAM);
 		ci.request = SINGLE_STREAM;
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	case ID_MULTI_STREAM:
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_CHECKED);
+		checkMenuItem(ID_MULTI_STREAM);
 		ci.request = MULTI_STREAM;
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
 		break;
 	
 	case ID_2WAY_MICROPHONE:
-		CheckMenuItem(ghMenu, ID_SINGLE_DL, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_UP, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_SINGLE_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_MULTI_STREAM, MF_UNCHECKED);
-		CheckMenuItem(ghMenu, ID_2WAY_MICROPHONE, MF_CHECKED);
+		checkMenuItem(ID_2WAY_MICROPHONE);
 		ci.request = MICROPHONE;
-		EnableMenuItem(ghMenu, ID_FILE_CONNECT,MF_ENABLED);
-
-		/* disable control buttons here */
 		break;
 
 	case ID_FILE_LOCAL:
@@ -413,6 +371,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 {
 	InitWindow(hwnd);
+
 	fileInit(hwnd); //set up file browsing
 	busyFlag = 0;
 	memset((char *)&ci, 0, sizeof(connectInfo));
@@ -420,15 +379,7 @@ int OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
 	ci.udp_port = UDP_PORT;
 
 	ghMenu = GetMenu(hwnd);
-
-	/* We can't connect or disconnect until connection settings chosen */
-	EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_GRAYED);
-	EnableMenuItem(ghMenu, ID_FILE_DISCONNECT, MF_GRAYED);
-	/* Don't want to know request type if we're server, the client has to specify */
-	EnableMenuItem(ghMenu, ID_SINGLE_DL, MF_GRAYED);
-	EnableMenuItem(ghMenu, ID_SINGLE_UP, MF_GRAYED);
-	EnableMenuItem(ghMenu, ID_SINGLE_STREAM, MF_GRAYED);
-	EnableMenuItem(ghMenu, ID_MULTI_STREAM, MF_GRAYED);
+	initMenu();
 
 	/* Create status bar & initialize fields */
 	ghStatus = CreateStatusWindow(WS_CHILD|WS_VISIBLE, "Status: Disconnected", hwnd, STATUS_BAR);
@@ -549,7 +500,7 @@ void OnTCPSocket(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case FD_CLOSE:
-		sockClose(hwnd, wParam, lParam);
+		sockClose(hwnd, wParam, -1);
 		break;
 	
 	case FD_CONNECT:

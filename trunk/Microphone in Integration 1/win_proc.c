@@ -120,8 +120,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	char port[TEMP_BUFF_SIZE];
-
 	switch(message)
 	{
 	case WM_INITDIALOG:
@@ -131,11 +129,7 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		switch(LOWORD(wParam))
 		{
 		case IDOK:
-			GetDlgItemText(hDlg, IDC_CEDIT1, ci.ip, 26);
-			GetDlgItemText(hDlg, IDC_CEDIT2, port, 5);
-
-			if(port[0] != '\0')
-				ci.tcp_port = atoi(port);
+			GetDlgItemText(hDlg, IDC_EDT_IPADDR, ci.ip, 26);
 
 			if(ci.ip[0] != '\0')
 				EnableMenuItem(ghMenu, ID_FILE_CONNECT, MF_ENABLED);
@@ -178,35 +172,27 @@ BOOL CALLBACK ClientProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 ------------------------------------------------------------------------*/
 BOOL CALLBACK ServerProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-
-	char temp[TEMP_BUFF_SIZE];
-
 	switch(message)
 	{
-	case WM_INITDIALOG:
-		return TRUE;
+		case WM_INITDIALOG:
+			return TRUE;
 
-	case WM_COMMAND:
-		switch(LOWORD(wParam))
-		{
-		case IDOK:
-			GetDlgItemText(hDlg, IDC_SEDIT1, temp, 26);
-			
-			if(temp[0] != '\0')
-				ci.tcp_port = atoi(temp);
+		case WM_COMMAND:
+			switch(LOWORD(wParam))
+			{
+			case IDOK:
+				/* Use this method to find checked items */
+				if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
+					MessageBox(ghWndMain, (LPCSTR)"Checked!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				}
 
-			/* Use this method to find checked items */
-			if (SendMessage(GetDlgItem(hDlg, IDC_MULTICAST), BM_GETCHECK, 0, 0) == BST_CHECKED) {
-				MessageBox(ghWndMain, (LPCSTR)"Checked!", (LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+				EndDialog(hDlg, TRUE);
+				return TRUE;
+
+			case IDCANCEL:
+				EndDialog(hDlg, FALSE);
+				return TRUE;
 			}
-
-			EndDialog(hDlg, TRUE);
-			return TRUE;
-
-		case IDCANCEL:
-			EndDialog(hDlg, FALSE);
-			return TRUE;
-		}
 	}
 
 	return FALSE;

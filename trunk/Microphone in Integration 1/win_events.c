@@ -96,7 +96,6 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		{
 			setup_server(hwnd, SOCK_STREAM);
 			setup_server(hwnd, SOCK_DGRAM);
-			SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
 
 			if (ci.request == MULTI_STREAM) {
 				sendFileList(0);
@@ -142,6 +141,7 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
 		connectActions();
 		initButtons();
+		SendMessage(ghStatus,SB_SETTEXT,(WPARAM)parts[0],(LPARAM)"Status: Connected");
 		break;
 
 	case ID_FILE_DISCONNECT:
@@ -218,15 +218,16 @@ void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 		break;
 
 	case ID_FILE_LOCAL:
-        if(busyFlag > 0) //we're already busy
-            break;
-		EnableMenuItem(ghMenu, ID_FILE_LOCAL, MF_GRAYED);
+		localSong_Stop();
+		EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), TRUE);
+		SetWindowText(GetDlgItem(ghDlgMain, IDC_BTN_PAUSE), (LPCSTR)"Pause");
         busyFlag = LOCALPLAY;
         memset(fileName, 0, FILE_BUFF_SIZE);
 	    memset(pathName, 0, FILE_BUFF_SIZE);
         browseFiles(hwnd, fileName, pathName);
-        if(localSong_Init(hwnd, fileName) == FALSE)
-            busyFlag = 0; //if we failed to open file
+		if(localSong_Init(hwnd, fileName) == FALSE) {
+            busyFlag = 0; /* if we failed to open file */
+		}
         break;
 
 	case ID_HELP_ABOUT:

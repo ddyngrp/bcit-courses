@@ -50,7 +50,8 @@ void server_download(WPARAM wParam, PTSTR fileName)
 			(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
 		return;
 	}
-	while(1)
+
+	while(TRUE)
 	{
 		memset(outBuf,'\0',FILE_BUFF_SIZE);
 		ReadFile(hFile, outBuf, FILE_BUFF_SIZE, &bytesRead, NULL);

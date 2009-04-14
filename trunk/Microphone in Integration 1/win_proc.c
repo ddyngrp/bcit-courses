@@ -302,7 +302,8 @@ BOOL CALLBACK MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 				case IDC_BTN_DOWNLOAD:
 
-					if (ci.behaviour == CLIENT && ci.request == SINGLE_STREAM) {
+					if (ci.behaviour == CLIENT && (ci.request == SINGLE_STREAM
+						|| ci.request == SINGLE_DL)) {
 
 						/* Disable the button until the previous thread is terminated */
 						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), FALSE);
@@ -322,26 +323,25 @@ BOOL CALLBACK MainDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 							}
 						}
 
-						if(ci.request == SINGLE_DL)
-							break;
+						if (ci.request == SINGLE_STREAM) {
+							if(streamThread != NULL)
+								TerminateThread(streamThread,0);
 
-						if(streamThread != NULL)
-							TerminateThread(streamThread,0);
+							Sleep(200);
 
-						Sleep(200);
+							streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveStream, (LPVOID)wParam, 0, 0);
+							if(streamThread == NULL)
+							{
+								MessageBox(ghWndMain, (LPCSTR)"Thread creation failed.",
+									(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
+								ExitProcess(1);
+							}
 
-						streamThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)receiveStream, (LPVOID)wParam, 0, 0);
-						if(streamThread == NULL)
-						{
-							MessageBox(ghWndMain, (LPCSTR)"Thread creation failed.",
-								(LPCSTR)"Error!", MB_OK | MB_ICONSTOP);
-							ExitProcess(1);
+							SetFocus(GetDlgItem(ghDlgMain, IDC_LST_PLAY));
+
+							/* Re-enable the button now */
+							Sleep(400);
 						}
-
-						SetFocus(GetDlgItem(ghDlgMain, IDC_LST_PLAY));
-
-						/* Re-enable the button now */
-						Sleep(400);
 						EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), TRUE);
 					}
                     return FALSE;

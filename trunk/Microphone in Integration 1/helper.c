@@ -308,6 +308,7 @@ void initButtons() {
 	}
 	else if (ci.behaviour == CLIENT) {
 		if (ci.request == SINGLE_DL) {
+			EnableWindow(GetDlgItem(ghDlgMain, IDC_BTN_DOWNLOAD), TRUE);
 		}
 		else if (ci.request == SINGLE_UP) {
 		}

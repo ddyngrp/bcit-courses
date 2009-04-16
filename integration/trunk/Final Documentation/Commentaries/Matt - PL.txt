@@ -1,0 +1,7 @@
+Challenges faced as a Project Manager - In charge of Resources:
+
+As a fellow student that happens to be new to project management, I found this to be a deceptively complicated project to organize evenly. The largest problem I found myself faced with, over and over, was finding jobs for people to do that did not seem like pointless "busy work". Fortunately, this class in general was fairly receptive to instruction, and did not make my job harder than it needed to be.
+
+One further problem I encountered in this project was dealing with internal disputes within groups, or the state of the general morale of the class. When you get a large group of sleep depraved coders together, there is bound to be disputes. These disputes typically need some form of mediator, or resolution to ensure that crankiness does not take hold of the reigns and halt any progress. This was something I found myself having to deal with on a very subtle scale, whenever large groups of us were working on cooperating code.
+
+I would say that this was a succesful project, regardless of how well it scores technically. It may not seem like a triumph from an outside observer, but from the inside, I can see how much time and thought was put in to this project. I've seen these guys work for the last year, and I know what is acceptable, and what is beyond. I can safely say that this group put their heart into Tux Bomber.

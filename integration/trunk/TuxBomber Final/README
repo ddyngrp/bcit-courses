@@ -1,0 +1,27 @@
+SERVER FINAL
+============
+
+Go into root folder.
+Type "make"
+./TuxBomber_Server [x] to start the game where x is the number of expected clients
+
+
+TuxBomberClient
+===============
+
+Go into root folder
+Type "make"
+./TuxBomber to start the game
+
+Go into Game Options to specify the IP address of the server.
+Start game to enter pending mode, waiting for server to start the game.
+Server will only start the game when expected number of clients have joined the server.
+Arrow keys to move around, Spacebar to drop a bomb.
+
+
+
+
+NOTE: 
+
+Certain SDL libraries are needed to run this program.
+SDL, SDL_image, SDL_mixer, SDL_gfx, SDL_ttf

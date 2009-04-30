@@ -1,0 +1,23 @@
+SVN Repository Layout
+=====================
+
+Trunk:
+------
+Trunk would be the main body of development, originating from the start
+of the project until the present. There is only one version of the code
+living in the trunk at any one point in time, the latest version.
+
+Branches:
+---------
+Branches will be a copy of code derived from a certain point in the trunk
+that is used for applying major changes to the code while preserving the
+integrity of the code in the trunk. If the major changes work according
+to plan, they are usually merged back into the trunk.
+
+Tags:
+-----
+Tags will be a point in time on the trunk or a branch that you wish to
+preserve. The two main reasons for preservation would be that either
+this is a major release of the software, whether alpha, beta, RC or RTM,
+or this is the most stable point of the software before major revisions
+on the trunk were applied.

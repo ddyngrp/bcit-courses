@@ -1,0 +1,18 @@
+2009-05-01  Steffen L. Norgren  <ironix@trollop.org>
+
+        Updated the project's structure and added a docs folder as well as
+        a ChangeLog. Additionally replaced all 4-space sequences with
+        a single tab. This needs to be undone in the future in order to
+        adhere to WebKit coding standards.
+
+        * ChangeLog: created and populated the file
+        * main.c: replaced spaces with tabs
+
+2009-04-30  Doug Penner  <darwinsurvivor@gmail.com>
+
+        Created a simple WebKit browser that takes a URL as a command-line
+        argument.
+
+        * main.c: created simple Gtk+ WebKit Browser.
+        * MakeFile: created a MakeFile for the project.
+

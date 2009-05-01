@@ -1,18 +1,36 @@
-/*
- * This is the main file that is loaded in order to generate and load the web browser.
+/**
+ * SECTION:main
+ * @short_description: The main entry point for the #Spry web browser
+ *
+ * #Spry is a WebKit browser based on Gtk+ meant for the ARM processor.
  */
 
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
 
-/* called when window is closed to kill gtk */
+/**
+ * destroy_cb:
+ * @widget: pointer to the widget being destroyed
+ * @data: additional parameter data
+ *
+ * Called when the GtkWidget is closed
+ **/
 static void
 destroy_cb (GtkWidget* widget, gpointer data)
 {
 	gtk_main_quit ();
 }
 
-/* This is the main function called when the program is started. */
+/**
+ * main:
+ * @argc: number of arguments passed in
+ * @argv: the arguments passed via the command line
+ *
+ * Creates a new browser window that points to a URL that was passed
+ * in cia @argv
+ *
+ * Returns: %0 if the operation succeeded, else %1.
+ **/
 int
 main (int argc, char* argv[])
 {
@@ -50,7 +68,8 @@ main (int argc, char* argv[])
 	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
 	
 	/* load web page */
-	webkit_web_view_open (web_view, (gchar*)argv[1]);
+	webkit_web_view_load_uri (web_view, (gchar*)argv[1]);
+	/* webkit_web_view_open (web_view, (gchar*)argv[1]); */
 
 	/* make everything visible and start gtk */
 	gtk_widget_grab_focus (GTK_WIDGET (web_view));

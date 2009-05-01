@@ -1,13 +1,11 @@
-# Makefile for simple server
-#
-# Author: Steffen L. Norgren
-#
+# Makefile for Spry
 
 CC=gcc
 CFLAGS=-c -Wall -pedantic -ggdb -g
 LDFLAGS=-lpthread
-GTKFLAGS=-export-dynamic `pkg-config --cflags --libs gtk+-2.0`
-WEBKITFLAGS=-L /usr/lib -I /usr/include/webkit-1.0/ -g `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0 webkit-1.0`
+GTKOPTS=-export-dynamic `pkg-config --cflags --libs gtk+-2.0`
+WEBKITOPTS=-L /usr/lib -I /usr/local/include/webkit-1.0/ -g `pkg-config --libs webkit-1.0`
+MISCOPTS=-I /usr/include/libsoup-2.4/
 SOURCES=main.c 
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=spry
@@ -15,10 +13,10 @@ EXECUTABLE=spry
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): 	$(OBJECTS)
-		$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(GTKFLAGS) $(WEBKITFLAGS)
+		$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(GTKOPTS) $(WEBKITOPTS) $(MISCOPTS)
 
 .c.o:
-		$(CC) $(CFLAGS) $< -o $@ $(GTKFLAGS) $(WEBKITFLAGS)
+		$(CC) $(CFLAGS) $< -o $@ $(GTKOPTS) $(WEBKITOPTS) $(MISCOPTS)
 
 clean:
 		rm $(OBJECTS) $(EXECUTABLE)

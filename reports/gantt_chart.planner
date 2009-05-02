@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project name="" company="" manager="" phase="" project-start="20090430T000000Z" mrproject-version="2" calendar="1">
+  <properties/>
+  <phases/>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="Working" description="A default working day"/>
+      <day-type id="1" name="Nonworking" description="A default non working day"/>
+      <day-type id="2" name="Use base" description="Use day from base calendar"/>
+    </day-types>
+    <calendar id="1" name="Default">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0800" end="1200"/>
+          <interval start="1300" end="1700"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days/>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="Initial Prototype" note="" work="115200" start="20090430T000000Z" end="20090430T170000Z" work-start="20090430T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="2" name="Context Screen" note="" work="28800" start="20090430T170000Z" end="20090501T170000Z" work-start="20090501T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="3" name="Graphics (icons)" note="" work="28800" start="20090430T000000Z" end="20090430T170000Z" work-start="20090430T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="4" name="Dissable Selection" note="" work="86400" start="20090430T170000Z" end="20090504T120000Z" work-start="20090501T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="5" name="benchmarking" note="" work="28800" start="20090430T170000Z" end="20090501T170000Z" work-start="20090501T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="6" name="Fullscreen" note="" work="28800" start="20090430T170000Z" end="20090501T170000Z" work-start="20090501T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="7" name="Command Line Argument Parsing" note="" work="28800" start="20090430T000000Z" end="20090430T170000Z" work-start="20090430T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="8" name="Wiki Development" note="" work="432000" start="20090430T000000Z" end="20090505T150000Z" work-start="20090430T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="9" name="Project Completion" note="" work="0" start="20090522T000000Z" end="20090522T000000Z" work-start="20090522T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20090522T000000Z"/>
+    </task>
+  </tasks>
+  <resource-groups/>
+  <resources>
+    <resource id="1" name="Doug Penner" short-name="doug" type="1" units="0" email="darwinsurvivor@gmail.com" note="" std-rate="0"/>
+    <resource id="2" name="Steffen Norgren" short-name="steffen" type="1" units="0" email="ironix@gmail.com" note="" std-rate="0"/>
+    <resource id="3" name="Eddie Zhang" short-name="eddie" type="1" units="0" email="edisonhammer@gmail.com" note="" std-rate="0"/>
+    <resource id="4" name="Brendan Neva" short-name="brendan" type="1" units="0" email="bneva1@my.bcit.ca" note="" std-rate="0"/>
+  </resources>
+  <allocations>
+    <allocation task-id="4" resource-id="1" units="100"/>
+    <allocation task-id="2" resource-id="1" units="100"/>
+    <allocation task-id="1" resource-id="1" units="100"/>
+    <allocation task-id="8" resource-id="1" units="100"/>
+    <allocation task-id="1" resource-id="2" units="100"/>
+    <allocation task-id="4" resource-id="2" units="100"/>
+    <allocation task-id="8" resource-id="2" units="100"/>
+    <allocation task-id="1" resource-id="3" units="100"/>
+    <allocation task-id="8" resource-id="3" units="100"/>
+    <allocation task-id="1" resource-id="4" units="100"/>
+    <allocation task-id="8" resource-id="4" units="100"/>
+  </allocations>
+</project>

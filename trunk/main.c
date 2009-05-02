@@ -68,8 +68,7 @@ main (int argc, char* argv[])
 	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
 	
 	/* load web page */
-	webkit_web_view_load_uri (web_view, (gchar*)argv[1]);
-	/* webkit_web_view_open (web_view, (gchar*)argv[1]); */
+	webkit_web_view_open (web_view, (gchar*)argv[1]);
 
 	/* make everything visible and start gtk */
 	gtk_widget_grab_focus (GTK_WIDGET (web_view));

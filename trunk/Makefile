@@ -5,7 +5,7 @@ CFLAGS=-c -Wall -pedantic -ggdb -g
 LDFLAGS=-lpthread
 GTKOPTS=-export-dynamic `pkg-config --cflags --libs gtk+-2.0`
 WEBKITOPTS=-L /usr/lib -I /usr/local/include/webkit-1.0/ -g `pkg-config --libs webkit-1.0`
-MISCOPTS=-I /usr/include/libsoup-2.4/
+MISCOPTS=
 SOURCES=main.c 
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=spry

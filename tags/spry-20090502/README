@@ -1,0 +1,14 @@
+This is a simple WebKit based app written using GTK.
+
+BUILD:
+make
+
+
+INSTALL
+<todo>
+
+
+RUN:
+./spry http://<your_address_here>
+
+Note: You must add the "http://" or it WILL NOT WORK!

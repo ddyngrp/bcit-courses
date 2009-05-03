@@ -1,25 +1,35 @@
-/**
- * SECTION:main
- * @short_description: The main entry point for the #Spry web browser
- *
- * #Spry is a WebKit browser based on Gtk+ meant for the ARM processor.
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * main.c
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ * 
+ * main.c is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * main.c is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+
+#include <config.h>
 
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
 
-/**
- * destroy_cb:
- * @widget: pointer to the widget being destroyed
- * @data: additional parameter data
- *
- * Called when the GtkWidget is closed
- **/
-static void
-destroy_cb (GtkWidget* widget, gpointer data)
-{
-	gtk_main_quit ();
-}
+#include "callbacks.h"
+
 
 /**
  * main:
@@ -32,20 +42,23 @@ destroy_cb (GtkWidget* widget, gpointer data)
  * Returns: %0 if the operation succeeded, else %1.
  **/
 int
-main (int argc, char* argv[])
+main (int argc, char *argv[])
 {
 	GtkWidget* scrolled_window;
-	WebKitWebView* web_view;
 	GtkWidget* main_window;
-	
+	WebKitWebView* web_view;
+
+	/* sets the gtk locale for the current system */
+	gtk_set_locale ();
+
 	/* grap gtk-specific arguments and apply accordingly */
 	gtk_init (&argc, &argv);
-	
+
 	/* check for g_thread support */
 	if (!g_thread_supported ()) {
 		g_thread_init (NULL);
 	}
-	
+
 	/* verify address was given */
 	if (argc < 2) {
 		g_print("No Address Specified\n");
@@ -56,7 +69,7 @@ main (int argc, char* argv[])
 	main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size (GTK_WINDOW (main_window), 800, 600);
 	gtk_widget_set_name (main_window, "Spry");
-	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy_cb), NULL);
+	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
 	
 	/* create scrolled window (viewport) and add to main window*/
 	scrolled_window = gtk_scrolled_window_new (NULL, NULL);

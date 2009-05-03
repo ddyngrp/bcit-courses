@@ -486,7 +486,6 @@ uninstall-am: uninstall-binPROGRAMS uninstall-local
 
 # Remove glade directory on uninstall
 uninstall-local:
-	-rm -r $(gladedir)
 	-rm -r $(datadir)/spry
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -197,7 +197,7 @@ AM_CFLAGS = \
 spry_SOURCES = \
 	callbacks.c \
 	callbacks.h \
-	main.c
+	main.c 
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic

@@ -19,26 +19,26 @@
     </calendar>
   </calendars>
   <tasks>
-    <task id="1" name="Initial Prototype" note="" work="115200" start="20090430T000000Z" end="20090501T133000Z" work-start="20090430T103000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work"/>
-    <task id="2" name="benchmarking" note="" work="28800" start="20090504T000000Z" end="20090505T133000Z" work-start="20090504T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="1" name="Initial Prototype" note="" work="162000" start="20090430T000000Z" end="20090504T114500Z" work-start="20090430T103000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="2" name="benchmarking" note="" work="234000" duration="216000" start="20090504T114500Z" end="20090520T114500Z" work-start="20090504T114500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
       <constraint type="start-no-earlier-than" time="20090504T000000Z"/>
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
     </task>
-    <task id="3" name="Fullscreen" note="" work="28800" start="20090504T000000Z" end="20090505T133000Z" work-start="20090504T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="3" name="Fullscreen" note="" work="36000" start="20090504T114500Z" end="20090506T114500Z" work-start="20090504T114500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20090504T000000Z"/>
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
     </task>
-    <task id="4" name="Context Screen" note="" work="28800" start="20090505T133000Z" end="20090507T113000Z" work-start="20090505T133000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="4" name="Context Screen" note="" work="72000" start="20090506T114500Z" end="20090512T114500Z" work-start="20090506T114500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20090504T000000Z"/>
       <predecessors>
         <predecessor id="1" predecessor-id="3" type="FS"/>
       </predecessors>
     </task>
-    <task id="5" name="Dissable Selection" note="" work="86400" start="20090507T113000Z" end="20090511T133000Z" work-start="20090507T113000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="5" name="Dissable Selection" note="" work="144000" start="20090512T114500Z" end="20090518T114500Z" work-start="20090512T114500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="4" type="FS"/>
       </predecessors>
@@ -46,41 +46,41 @@
     <task id="6" name="Graphics (icons)" note="" work="36000" start="20090504T000000Z" end="20090505T153000Z" work-start="20090504T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20090504T000000Z"/>
     </task>
-    <task id="7" name="Command Line Argument Parsing" note="" work="36000" start="20090504T000000Z" end="20090505T153000Z" work-start="20090504T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="7" name="Command Line Argument Parsing" note="" work="18000" start="20090504T000000Z" end="20090504T153000Z" work-start="20090504T103000Z" percent-complete="50" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20090504T000000Z"/>
     </task>
-    <task id="8" name="Documentation" note="" work="280800" start="20090430T000000Z" end="20090521T133000Z" work-start="20090430T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="8" name="Documentation" note="" work="288000" start="20090430T000000Z" end="20090521T153000Z" work-start="20090430T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
     <task id="9" name="Wiki Development" note="" work="288000" duration="288000" start="20090430T000000Z" end="20090521T153000Z" work-start="20090430T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
-    <task id="10" name="WebKit Research" note="" work="216000" start="20090430T000000Z" end="20090515T153000Z" work-start="20090430T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-    <task id="11" name="GTK Research" note="" work="216000" start="20090430T000000Z" end="20090515T153000Z" work-start="20090430T103000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="10" name="WebKit Research" note="" work="216000" duration="252000" start="20090430T000000Z" end="20090519T153000Z" work-start="20090430T103000Z" percent-complete="10" priority="0" type="normal" scheduling="fixed-duration"/>
+    <task id="11" name="GTK Research" note="" work="216000" duration="252000" start="20090430T000000Z" end="20090519T153000Z" work-start="20090430T103000Z" percent-complete="30" priority="0" type="normal" scheduling="fixed-duration"/>
     <task id="12" name="Project Completion" note="" work="0" start="20090522T000000Z" end="20090522T000000Z" work-start="20090522T103000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20090522T000000Z"/>
     </task>
   </tasks>
   <resource-groups/>
   <resources>
-    <resource id="1" name="Doug Penner" short-name="doug" type="1" units="0" email="darwinsurvivor@gmail.com" note="" std-rate="0"/>
-    <resource id="2" name="Steffen Norgren" short-name="steffen" type="1" units="0" email="ironix@gmail.com" note="" std-rate="0"/>
-    <resource id="3" name="Eddie Zhang" short-name="eddie" type="1" units="0" email="edisonhammer@gmail.com" note="" std-rate="0"/>
-    <resource id="4" name="Brendan Neva" short-name="brendan" type="1" units="0" email="bneva1@my.bcit.ca" note="" std-rate="0"/>
+    <resource id="1" name="Brendan Neva" short-name="brendan" type="1" units="0" email="bneva1@my.bcit.ca" note="" std-rate="0"/>
+    <resource id="2" name="Eddie Zhang" short-name="eddie" type="1" units="0" email="edisonhammer@gmail.com" note="" std-rate="0"/>
+    <resource id="3" name="Steffen Norgren" short-name="steffen" type="1" units="0" email="ironix@gmail.com" note="" std-rate="0"/>
+    <resource id="4" name="Doug Penner" short-name="doug" type="1" units="0" email="darwinsurvivor@gmail.com" note="" std-rate="0"/>
   </resources>
   <allocations>
-    <allocation task-id="11" resource-id="1" units="100"/>
-    <allocation task-id="3" resource-id="1" units="100"/>
-    <allocation task-id="5" resource-id="1" units="100"/>
-    <allocation task-id="4" resource-id="1" units="100"/>
+    <allocation task-id="2" resource-id="1" units="108"/>
     <allocation task-id="1" resource-id="1" units="100"/>
     <allocation task-id="9" resource-id="1" units="25"/>
-    <allocation task-id="10" resource-id="2" units="100"/>
-    <allocation task-id="7" resource-id="2" units="100"/>
+    <allocation task-id="8" resource-id="2" units="100"/>
+    <allocation task-id="6" resource-id="2" units="100"/>
     <allocation task-id="1" resource-id="2" units="100"/>
-    <allocation task-id="5" resource-id="2" units="100"/>
     <allocation task-id="9" resource-id="2" units="25"/>
-    <allocation task-id="8" resource-id="3" units="100"/>
-    <allocation task-id="6" resource-id="3" units="100"/>
+    <allocation task-id="10" resource-id="3" units="86"/>
+    <allocation task-id="7" resource-id="3" units="100"/>
     <allocation task-id="1" resource-id="3" units="100"/>
+    <allocation task-id="5" resource-id="3" units="100"/>
     <allocation task-id="9" resource-id="3" units="25"/>
-    <allocation task-id="2" resource-id="4" units="100"/>
+    <allocation task-id="11" resource-id="4" units="86"/>
+    <allocation task-id="3" resource-id="4" units="100"/>
+    <allocation task-id="5" resource-id="4" units="100"/>
+    <allocation task-id="4" resource-id="4" units="100"/>
     <allocation task-id="1" resource-id="4" units="100"/>
     <allocation task-id="9" resource-id="4" units="25"/>
   </allocations>

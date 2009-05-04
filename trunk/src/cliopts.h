@@ -19,4 +19,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _CLIOPTS_H_
+#define _CLIOPTS_H_
+
+#include <getopt.h>
+
 SPRY_CONF* parse_args(int argc, char *argv[]);
+void init_spry_conf(SPRY_CONF* conf);
+
+#endif

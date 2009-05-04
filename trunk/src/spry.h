@@ -19,6 +19,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _SPRY_H_
+#define _SPRY_H_
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -47,3 +50,5 @@ typedef struct _spry_conf {
 			has_future;
 	int		window_size[2];
 } SPRY_CONF, *pSPRY_CONF;
+
+#endif

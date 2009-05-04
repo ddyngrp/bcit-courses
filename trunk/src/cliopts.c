@@ -28,10 +28,25 @@
 
 SPRY_CONF* parse_args(int argc, char *argv[]) {
 	SPRY_CONF *conf;
+	int	c;
 
 	conf = malloc(sizeof(SPRY_CONF));
 
-	
+	while (1) {
+		static struct option long_options[] =
+		{
+			/* These options set a flag */
+			{"fullscreen", no_argument, 0, 1},
+			{"f", no_argument, 0, 1},
+			/* These options set a value */
+			{"width", required_argument, 0, 'w'},
+			{"height", required_argument, 0, 'h'},
+			{0, 0, 0, 0}
+		};
+	}
 
 	return conf;
+}
+
+void init_spry_conf(SPRY_CONF* conf) {
 }

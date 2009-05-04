@@ -27,13 +27,13 @@
 
 
 void
-destroy (GtkWidget *widget, gpointer data)
+destroy (GtkWidget* widget, gpointer data)
 {
 	gtk_main_quit ();
 }
 
 void
-double_click (GtkWidget *widget, gpointer data)
+double_click (GtkWidget* widget, gpointer data)
 {
 	g_print("test");
 }

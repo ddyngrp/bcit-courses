@@ -21,5 +21,5 @@
 
 #include <gtk/gtk.h>
 
-void destroy (GtkWidget *widget, gpointer data);
-void double_click (GtkWidget *widget, gpointer data);
+void destroy (GtkWidget* widget, gpointer data);
+void double_click (GtkWidget* widget, gpointer data);

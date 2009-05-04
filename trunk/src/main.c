@@ -68,18 +68,15 @@ main (int argc, char *argv[])
 	conf = parse_args(argc, argv);
 
 	/* create main window */
-	main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_default_size (GTK_WINDOW (main_window), 800, 600);
-	gtk_widget_set_name (main_window, "Spry");
+	main_window = generate_main_window();
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
 	
 	/* create scrolled window (viewport) and add to main window*/
-	scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+	scrolled_window = generate_scrolled_window();
 	gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);
 
 	/* create web view and add to scrolled window */
-	web_view = WEBKIT_WEB_VIEW (webkit_web_view_new ());
+	web_view = generate_web_view();
 	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
 	
 	/* load web page */

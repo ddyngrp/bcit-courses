@@ -19,7 +19,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _CALLBACKS_H
+#define _CALLBACKS_H
+
 #include <gtk/gtk.h>
 
 void destroy (GtkWidget* widget, gpointer data);
 void double_click (GtkWidget* widget, gpointer data);
+
+#endif

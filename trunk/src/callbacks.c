@@ -25,13 +25,26 @@
 
 #include "callbacks.h"
 
-
+/**
+ * destroy:
+ * @widget: The widget that called the function
+ * @data: Any additional data passed to the function
+ *
+ * Closes the program when the window is closed.
+ **/
 void
 destroy (GtkWidget* widget, gpointer data)
 {
 	gtk_main_quit ();
 }
 
+/**
+ * destroy:
+ * @widget: The widget that called the function
+ * @data: Any additional data passed to the function
+ *
+ * Handles a double-click (soon to be bound to the context menu)
+ **/
 void
 double_click (GtkWidget* widget, gpointer data)
 {

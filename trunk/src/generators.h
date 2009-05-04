@@ -19,4 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _GENERATORS_H
+#define _GENERATORS_H
+
 #include <gtk/gtk.h>
+#include <webkit/webkit.h>
+#include "spry.h"
+
+GtkWidget*      generate_scrolled_window(SPRY_CONF* conf);
+GtkWidget*      generate_main_window(SPRY_CONF* conf);
+WebKitWebView*  generate_web_view(SPRY_CONF* conf);
+
+#endif

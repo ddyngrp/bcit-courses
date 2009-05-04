@@ -27,6 +27,14 @@
 #include "callbacks.h"
 #include "spry.h"
 
+/**
+ * generate_scrolled_window:
+ * @conf: pointer to a struct of config settings
+ *
+ * Creates a scrolled window to put a web_view into.
+ *
+ * Returns: A pointer to the scrolled window.
+ **/
 GtkWidget*
 generate_scrolled_window(SPRY_CONF* conf) {
     GtkWidget* scrolled_window = gtk_scrolled_window_new (NULL, NULL);
@@ -34,6 +42,14 @@ generate_scrolled_window(SPRY_CONF* conf) {
     return scrolled_window;
 }
 
+/**
+ * generate_main_window:
+ * @conf: pointer to a struct of config settings
+ *
+ * Creates main window.
+ *
+ * Returns: A pointer to the main window.
+ **/
 GtkWidget*
 generate_main_window(SPRY_CONF* conf) {
 	GtkWidget* main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -43,6 +59,14 @@ generate_main_window(SPRY_CONF* conf) {
     return main_window;
 }
 
+/**
+ * generate_web_view:
+ * @conf: pointer to a struct of config settings
+ *
+ * Creates a WebKit web View that holds the WebKit ViewPort.
+ *
+ * Returns: A pointer to the Web View.
+ **/
 WebKitWebView*
 generate_web_view(SPRY_CONF* conf) {
 	WebKitWebView* web_view = WEBKIT_WEB_VIEW (webkit_web_view_new ());

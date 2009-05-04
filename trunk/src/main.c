@@ -30,7 +30,9 @@
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
 
+#include "spry.h"
 #include "callbacks.h"
+#include "cliopts.h"
 
 
 /**
@@ -46,9 +48,10 @@
 int
 main (int argc, char *argv[])
 {
-	GtkWidget* scrolled_window;
-	GtkWidget* main_window;
-	WebKitWebView* web_view;
+	GtkWidget*		scrolled_window;
+	GtkWidget*		main_window;
+	WebKitWebView*	web_view;
+	SPRY_CONF*		conf;
 
 	/* sets the gtk locale for the current system */
 	gtk_set_locale ();
@@ -60,12 +63,9 @@ main (int argc, char *argv[])
 	if (!g_thread_supported ()) {
 		g_thread_init (NULL);
 	}
-
-	/* verify address was given */
-	if (argc < 2) {
-		g_print("No Address Specified\n");
-		return 1;
-	}
+	
+	/* parse command line arguments and return the initial struct */
+	conf = parse_args(argc, argv);
 
 	/* create main window */
 	main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);

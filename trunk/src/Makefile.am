@@ -17,7 +17,10 @@ bin_PROGRAMS = spry
 spry_SOURCES = \
 	callbacks.c \
 	callbacks.h \
-	main.c 
+	main.c \
+	cliopts.c \
+	cliopts.h \
+	spry.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic

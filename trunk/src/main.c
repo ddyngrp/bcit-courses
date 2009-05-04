@@ -67,25 +67,33 @@ main (int argc, char *argv[])
 	
 	/* parse command line arguments and return the initial struct */
 	conf = parse_args(argc, argv);
+    
+    /* THIS SHOULD BE HANDLED INSIDE PARSE_ARGS: REMOVE WHEN DONE!!!! */
+    if (argc < 2) {
+        g_print("No Website Specified\n");
+        return 1;
+    }
+    (*conf).init_url = argv[1];
+    
 
-	/* create main window */
-	main_window = generate_main_window(conf);
+    /* Create GTK Objects */
+	main_window = generate_main_window(conf);   /* Main Window */
+	scrolled_window = generate_scrolled_window(conf);   /* Scrolled Window */
+	web_view = generate_web_view(conf); /* WebKit ViewPort */
+    
+    /* Connect Signals */
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
 	
-	/* create scrolled window (viewport) and add to main window*/
-	scrolled_window = generate_scrolled_window(conf);
+	/* Put GTK Objects inside each-other and make them visible */
 	gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);
-
-	/* create web view and add to scrolled window */
-	web_view = generate_web_view(conf);
 	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
-	
-	/* load web page */
-	webkit_web_view_open (web_view, (gchar*)argv[1]);
-
-	/* make everything visible and start gtk */
 	gtk_widget_grab_focus (GTK_WIDGET (web_view));
 	gtk_widget_show_all (main_window);
+	
+	/* load web page */
+	webkit_web_view_open (web_view, (gchar*)(*conf).init_url);
+
+	/* Start GTK */
 	gtk_main ();
 
 	/* done */

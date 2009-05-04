@@ -33,6 +33,7 @@
 #include "spry.h"
 #include "callbacks.h"
 #include "cliopts.h"
+#include "generators.h"
 
 
 /**
@@ -68,15 +69,15 @@ main (int argc, char *argv[])
 	conf = parse_args(argc, argv);
 
 	/* create main window */
-	main_window = generate_main_window();
+	main_window = generate_main_window(conf);
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
 	
 	/* create scrolled window (viewport) and add to main window*/
-	scrolled_window = generate_scrolled_window();
+	scrolled_window = generate_scrolled_window(conf);
 	gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);
 
 	/* create web view and add to scrolled window */
-	web_view = generate_web_view();
+	web_view = generate_web_view(conf);
 	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
 	
 	/* load web page */

@@ -29,7 +29,7 @@
 
 GtkWidget*
 generate_scrolled_window(SPRY_CONF* conf) {
-    GtkWiget* scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    GtkWidget* scrolled_window = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
     return scrolled_window;
 }

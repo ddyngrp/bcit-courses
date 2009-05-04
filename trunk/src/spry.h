@@ -46,6 +46,7 @@ typedef struct _spry_conf {
 	int		fullscreen,
 			context_menu,
 			scrollbars,
+			resizable,
 			has_past,
 			has_future;
 	int		window_size[2];

@@ -31,6 +31,7 @@ SPRY_CONF* parse_args(int argc, char *argv[]) {
 	int	c;
 
 	conf = malloc(sizeof(SPRY_CONF));
+	init_spry_conf(conf);
 
 	while (1) {
 		static struct option long_options[] =
@@ -43,10 +44,19 @@ SPRY_CONF* parse_args(int argc, char *argv[]) {
 			{"height", required_argument, 0, 'h'},
 			{0, 0, 0, 0}
 		};
+		break;
 	}
 
 	return conf;
 }
 
 void init_spry_conf(SPRY_CONF* conf) {
+	conf->fullscreen = 1;
+	conf->context_menu = 1;
+	conf->scrollbars = 1;
+	conf->resizable = 1;
+	conf->has_past = 0;
+	conf->has_future = 0;
+	conf->window_size[0] = 320;
+	conf->window_size[1] = 240;
 }

@@ -73,7 +73,7 @@ main (int argc, char *argv[])
         g_print("No Website Specified\n");
         return 1;
     }
-    (*conf).init_url = argv[1];
+    conf->init_url = argv[1];
     
 
     /* Create GTK Objects */
@@ -91,7 +91,7 @@ main (int argc, char *argv[])
 	gtk_widget_show_all (main_window);
 	
 	/* load web page */
-	webkit_web_view_open (web_view, (gchar*)(*conf).init_url);
+	webkit_web_view_open (web_view, (gchar*)conf->init_url);
 
 	/* Start GTK */
 	gtk_main ();

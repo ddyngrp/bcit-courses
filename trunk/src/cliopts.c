@@ -24,11 +24,14 @@
 #endif
 
 #include "spry.h"
+#include "cliopts.h"
 
 SPRY_CONF* parse_args(int argc, char *argv[]) {
 	SPRY_CONF *conf;
 
 	conf = malloc(sizeof(SPRY_CONF));
+
+	
 
 	return conf;
 }

@@ -20,7 +20,9 @@ spry_SOURCES = \
 	main.c \
 	cliopts.c \
 	cliopts.h \
-	spry.h
+	spry.h \
+	generators.c \
+	generators.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic

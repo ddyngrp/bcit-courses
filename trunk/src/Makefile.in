@@ -45,7 +45,8 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_spry_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT) cliopts.$(OBJEXT)
+am_spry_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT) cliopts.$(OBJEXT) \
+	generators.$(OBJEXT)
 spry_OBJECTS = $(am_spry_OBJECTS)
 am__DEPENDENCIES_1 =
 spry_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -200,7 +201,9 @@ spry_SOURCES = \
 	main.c \
 	cliopts.c \
 	cliopts.h \
-	spry.h
+	spry.h \
+	generators.c \
+	generators.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic
@@ -280,6 +283,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cliopts.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/generators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 
 .c.o:

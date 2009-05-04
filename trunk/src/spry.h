@@ -26,12 +26,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * SPRY_CONF:
+ * @init_url: initial url #char*
+ * @fullscreen: fullscreen mode enabled #int
+ * @context_menu: context menu enabled #int
+ * @scrollbars: scrollbars enabled #int
+ * @has_past: whether there is a previous URL #int
+ * @has_future: whether there is a next URL #int
+ * @window_size: the size of the browser window #int[2]
+ *
+ * This holds all command-line option settings as well as general configuration
+ */
 typedef struct _spry_conf {
-	char	*init_url;		/* initial URL passed via command line */
-	int		fullscreen,		/* enable / disalbe fullscreen */
-			context_menu,	/* enable / disable context menu */
-			scrollbars,		/* enable / disable scrollbars */
-			has_past,		/* whether there pages in the history */
-			has_future;		/* whether there are pages in the future */
-	int		window_size[2];	/* the initial size of the window in x,y */
-} SPRY_CONF, *PSPRY_CONF;
+	char	*init_url;
+	int		fullscreen,
+			context_menu,
+			scrollbars,
+			has_past,
+			has_future;
+	int		window_size[2];
+} SPRY_CONF, *pSPRY_CONF;

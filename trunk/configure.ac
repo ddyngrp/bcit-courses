@@ -21,7 +21,7 @@ AM_PROG_LIBTOOL
 
 
 
-PKG_CHECK_MODULES(SPRY, [gtk+-2.0 >= 2.14.2 webkit-1.0 >= 1.0])
+PKG_CHECK_MODULES(SPRY, [gtk+-2.0 >= 2.14.2 webkit-1.0 >= 0~svn40814])
 
 
 

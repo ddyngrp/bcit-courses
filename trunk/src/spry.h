@@ -37,8 +37,6 @@
 #include <webkit/webkit.h>
 
 
-#define OPTS_ERROR 10
-
 /**
  * SPRY_CONF:
  * @init_url: initial url #char*

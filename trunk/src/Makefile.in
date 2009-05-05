@@ -46,7 +46,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_spry_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT) cliopts.$(OBJEXT) \
-	generators.$(OBJEXT)
+	generators.$(OBJEXT) browser.$(OBJEXT)
 spry_OBJECTS = $(am_spry_OBJECTS)
 am__DEPENDENCIES_1 =
 spry_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -203,7 +203,9 @@ spry_SOURCES = \
 	cliopts.h \
 	spry.h \
 	generators.c \
-	generators.h
+	generators.h \
+	browser.c \
+	browser.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic
@@ -281,6 +283,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/browser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cliopts.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/generators.Po@am__quote@

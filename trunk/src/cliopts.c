@@ -19,10 +19,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include "spry.h"
 #include "cliopts.h"
 
@@ -42,27 +38,27 @@ SPRY_CONF* parse_args (int argc, char *argv[])
 	};
 
 	conf = malloc (sizeof (SPRY_CONF));
-	init_spry_conf(conf);
+	init_spry_conf (conf);
 
 	while (1) {
 		c = getopt_long (argc, argv, "fcszw:h:", long_options, &option_index);
 
 		if (c == -1) {
 			spry_usage ();
-			/* exit (OPTS_ERROR); */
 			break;
 		}
 
 		switch (c)
 		{
 			case 0:
-				if (long_options[option_index].name)
+				if (long_options[option_index].flag != 0) {
+					spry_usage ();
 					break;
+				}
 				printf ("option %s", long_options[option_index].name);
 				break;
 			default:
 				spry_usage ();
-				/* exit (OPTS_ERROR); */
 				break;
 		}
 	}
@@ -84,4 +80,6 @@ void init_spry_conf (SPRY_CONF* conf)
 }
 
 void spry_usage () {
+	g_print ("Usage...\n");
+	exit (OPTS_ERROR);
 }

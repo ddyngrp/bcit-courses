@@ -19,10 +19,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include "callbacks.h"
 
 /**
@@ -39,7 +35,7 @@ destroy (GtkWidget* widget, gpointer data)
 }
 
 /**
- * destroy:
+ * double_click:
  * @widget: The widget that called the function
  * @data: Any additional data passed to the function
  *
@@ -49,4 +45,30 @@ void
 double_click (GtkWidget* widget, gpointer data)
 {
 	g_print("test");
+}
+
+/**
+ * do_nothing:
+ * @widget: The widget that called the function
+ * @data: Any additional data passed to the function
+ *
+ * Does nothing on an event (for capturing events)
+ **/
+void
+do_nothing (GtkWidget* widget, gpointer data) {}
+
+
+/**
+ * Event callback
+ * @widget: The widget that created the event
+ * @event: The event itself
+ * @callback_data: any additional data
+ * 
+ * Simply captures the event
+ **/
+gint
+event_capture (GtkWidget *widget, GdkEvent *event, gpointer callback_data ) {
+    gint ret = 0;
+    g_print("event\n");
+    return ret;
 }

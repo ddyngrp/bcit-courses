@@ -29,6 +29,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <gtk/gtk.h>
+#include <webkit/webkit.h>
+
+
 #define OPTS_ERROR 10
 
 /**

@@ -5,7 +5,8 @@ libwebkit-1.0.so.1                                        	/usr/lib/libwebkit-1.
 libgtk-x11-2.0.so.0                                        	/usr/lib/libgtk-x11-2.0.so.0 							  4.0MB
 libgdk-x11-2.0.so.0                                        	/usr/lib/libgdk-x11-2.0.so.0							  4.0MB
 libatk-1.0.so.0                                        		/usr/lib/libatk-1.0.so.0 							126.6KB
-libpangoft2-1.0.so.0                                        	/usr/lib/libpangoft2-1.0.so.0							183.6KB	libgdk_pixbuf-2.0.so.0                                        	/usr/lib/libgdk_pixbuf-2.0.so.0 						110.9KB
+libpangoft2-1.0.so.0                                        	/usr/lib/libpangoft2-1.0.so.0							183.6KB
+libgdk_pixbuf-2.0.so.0                                        	/usr/lib/libgdk_pixbuf-2.0.so.0 						110.9KB
 libm.so.6                                        		/lib/libm.so.6 									530.2KB
 libpangocairo-1.0.so.0                                        	/usr/lib/libpangocairo-1.0.so.0 						 47.1KB
 libgio-2.0.so.0                                        		/usr/lib/libgio-2.0.so.0 							487.1KB

@@ -22,7 +22,9 @@ spry_SOURCES = \
 	cliopts.h \
 	spry.h \
 	generators.c \
-	generators.h
+	generators.h \
+	browser.c \
+	browser.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic

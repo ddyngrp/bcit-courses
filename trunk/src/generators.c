@@ -32,7 +32,8 @@
  * Returns: A pointer to the scrolled window.
  **/
 GtkWidget*
-generate_scrolled_window(SPRY_CONF* conf) {
+generate_scrolled_window(SPRY_CONF* conf)
+{
     GtkWidget* scrolled_window = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
     return scrolled_window;
@@ -47,7 +48,8 @@ generate_scrolled_window(SPRY_CONF* conf) {
  * Returns: A pointer to the main window.
  **/
 GtkWidget*
-generate_main_window(SPRY_CONF* conf) {
+generate_main_window(SPRY_CONF* conf)
+{
 	GtkWidget* main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size (GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
 	gtk_widget_set_name (main_window, "Spry");
@@ -64,7 +66,8 @@ generate_main_window(SPRY_CONF* conf) {
  * Returns: A pointer to the Web View.
  **/
 WebKitWebView*
-generate_web_view(SPRY_CONF* conf) {
+generate_web_view(SPRY_CONF* conf)
+{
 	WebKitWebView* web_view = WEBKIT_WEB_VIEW (webkit_web_view_new ());
     return web_view;
 }

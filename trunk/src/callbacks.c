@@ -55,7 +55,9 @@ double_click (GtkWidget* widget, gpointer data)
  * Does nothing on an event (for capturing events)
  **/
 void
-do_nothing (GtkWidget* widget, gpointer data) {}
+do_nothing (GtkWidget* widget, gpointer data)
+{
+}
 
 
 /**
@@ -67,7 +69,8 @@ do_nothing (GtkWidget* widget, gpointer data) {}
  * Simply captures the event
  **/
 gint
-event_capture (GtkWidget *widget, GdkEvent *event, gpointer callback_data ) {
+event_capture (GtkWidget *widget, GdkEvent *event, gpointer callback_data )
+{
     gint ret = 0;
     g_print("event\n");
     return ret;

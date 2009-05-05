@@ -83,6 +83,7 @@ main (int argc, char *argv[])
     
     /* Connect Signals */
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
+    /* g_signal_connect (G_OBJECT (web_view), "button_release_event", G_CALLBACK (event_capture), NULL); */
 	
 	/* Put GTK Objects inside each-other and make them visible */
 	gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);

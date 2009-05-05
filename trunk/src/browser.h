@@ -24,5 +24,6 @@
 #define _BROWSER_H
 
 #include <gtk/gtk.h>
+void browser_open (SPRY_CONF* conf, gconf* url);
 
 #endif

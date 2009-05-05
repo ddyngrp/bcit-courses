@@ -26,32 +26,54 @@
 #include "spry.h"
 #include "cliopts.h"
 
-SPRY_CONF* parse_args(int argc, char *argv[]) {
+SPRY_CONF* parse_args (int argc, char *argv[])
+{
 	SPRY_CONF *conf;
-	int	c;
+	int	c, option_index = 0;
+	static struct option long_options[] =
+	{
+		{"fullscreen", no_argument, 0, 'f'},
+		{"no-context-menu", no_argument, 0, 'c'},
+		{"no-scrollbars", no_argument, 0, 's'},
+		{"fixed-size", no_argument, 0, 'z'},
+		{"width", required_argument, 0, 'w'},
+		{"height", required_argument, 0, 'h'},
+		{0, 0, 0, 0}
+	};
 
-	conf = malloc(sizeof(SPRY_CONF));
+	conf = malloc (sizeof (SPRY_CONF));
 	init_spry_conf(conf);
 
 	while (1) {
-		static struct option long_options[] =
+		c = getopt_long (argc, argv, "fcszw:h:", long_options, &option_index);
+
+		if (c == -1) {
+			spry_usage ();
+			/* exit (OPTS_ERROR); */
+			break;
+		}
+
+		switch (c)
 		{
-			/* These options set a flag */
-			{"fullscreen", no_argument, 0, 1},
-			{"f", no_argument, 0, 1},
-			/* These options set a value */
-			{"width", required_argument, 0, 'w'},
-			{"height", required_argument, 0, 'h'},
-			{0, 0, 0, 0}
-		};
-		break;
+			case 0:
+				if (long_options[option_index].name)
+					break;
+				printf ("option %s", long_options[option_index].name);
+				break;
+			default:
+				spry_usage ();
+				/* exit (OPTS_ERROR); */
+				break;
+		}
 	}
 
 	return conf;
 }
 
-void init_spry_conf(SPRY_CONF* conf) {
-	conf->fullscreen = 1;
+void init_spry_conf (SPRY_CONF* conf)
+{
+	conf->init_url = "http://www.google.ca";
+	conf->fullscreen = 0;
 	conf->context_menu = 1;
 	conf->scrollbars = 1;
 	conf->resizable = 1;
@@ -59,4 +81,7 @@ void init_spry_conf(SPRY_CONF* conf) {
 	conf->has_future = 0;
 	conf->window_size[0] = 320;
 	conf->window_size[1] = 240;
+}
+
+void spry_usage () {
 }

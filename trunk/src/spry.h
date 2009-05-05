@@ -29,6 +29,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define OPTS_ERROR 10
+
 /**
  * SPRY_CONF:
  * @init_url: initial url #char*

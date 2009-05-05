@@ -53,7 +53,7 @@ generate_scrolled_window(SPRY_CONF* conf) {
 GtkWidget*
 generate_main_window(SPRY_CONF* conf) {
 	GtkWidget* main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_default_size (GTK_WINDOW (main_window), 800, 600);
+	gtk_window_set_default_size (GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
 	gtk_widget_set_name (main_window, "Spry");
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
     return main_window;

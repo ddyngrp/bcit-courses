@@ -24,7 +24,8 @@
 
 #include <getopt.h>
 
-SPRY_CONF* parse_args(int argc, char *argv[]);
-void init_spry_conf(SPRY_CONF* conf);
+SPRY_CONF* parse_args (int argc, char *argv[]);
+void init_spry_conf (SPRY_CONF* conf);
+void spry_usage (void);
 
 #endif

@@ -81,5 +81,5 @@ void init_spry_conf (SPRY_CONF* conf)
 
 void spry_usage () {
 	g_print ("Usage...\n");
-	exit (OPTS_ERROR);
+	/* exit (OPTS_ERROR); */
 }

@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "spry.h"
 #include "callbacks.h"
 
 /**
@@ -57,8 +58,30 @@ double_click (GtkWidget* widget, gpointer data)
 void
 do_nothing (GtkWidget* widget, gpointer data)
 {
+    g_print("I have done nothing ;)\n");
 }
 
+/**
+ * toggle_fullscreen:
+ * @widget: The widget that called the function
+ * @data: Spry Config Struct
+ *
+ * Does nothing on an event (for capturing events)
+ **/
+void
+toggle_fullscreen (GtkWidget* widget, gpointer data)
+{
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    g_print("Now toggling fullscreen: ");
+    if (conf->fullscreen)
+    {
+        g_print("Restoring\n");
+        conf->fullscreen = FALSE;
+    } else {
+        g_print("Fullscreening\n");
+        conf->fullscreen = TRUE;
+    }
+}
 
 /**
  * Event callback

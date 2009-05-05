@@ -49,6 +49,17 @@
  *
  * This holds all command-line option settings as well as general configuration
  */
+
+typedef struct _spry_gtk_objects {
+    GtkWidget*      main_window;
+    GtkWidget*      v_box;
+    GtkWidget*      toolbar;
+    GtkWidget*      toolbar_fullscreen;
+    GtkWidget*      scrolled_window;
+    WebKitWebView*  web_view;
+    
+} SPRY_GTK_OBJECTS, *pSPRY_GTK_OBJECTS;
+
 typedef struct _spry_conf {
 	char	*init_url;
 	int		fullscreen,
@@ -58,6 +69,7 @@ typedef struct _spry_conf {
 			has_past,
 			has_future;
 	int		window_size[2];
+    SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
 
 #endif

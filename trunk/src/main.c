@@ -23,6 +23,7 @@
 #include "callbacks.h"
 #include "cliopts.h"
 #include "generators.h"
+#include "browser.h"
 
 
 /**
@@ -38,9 +39,7 @@
 int
 main (int argc, char *argv[])
 {
-	GtkWidget*		scrolled_window;
-	GtkWidget*		main_window;
-	WebKitWebView*	web_view;
+    /* Declare conf struct */
 	SPRY_CONF*		conf;
 
 	/* sets the gtk locale for the current system */
@@ -50,29 +49,19 @@ main (int argc, char *argv[])
 	gtk_init (&argc, &argv);
 
 	/* check for g_thread support */
-	if (!g_thread_supported ()) {
+	if (!g_thread_supported ())
+    {
 		g_thread_init (NULL);
 	}
 	
 	/* parse command line arguments and return the initial struct */
 	conf = parse_args(argc, argv);
     
-    /* Create GTK Objects */
-	main_window = generate_main_window(conf);   /* Main Window */
-	scrolled_window = generate_scrolled_window(conf);   /* Scrolled Window */
-	web_view = generate_web_view(conf); /* WebKit ViewPort */
-    
-    /* Connect Signals */
-	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
+    /* Create the GUI (main window) */
+    generate_gui(conf);
 	
-	/* Put GTK Objects inside each-other and make them visible */
-	gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);
-	gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET (web_view));
-	gtk_widget_grab_focus (GTK_WIDGET (web_view));
-	gtk_widget_show_all (main_window);
-	
-	/* load web page */
-	webkit_web_view_open (web_view, (gchar*)conf->init_url);
+	/* load the web page */
+    browser_open(conf, (gchar*)conf->init_url);
 
 	/* Start GTK */
 	gtk_main ();

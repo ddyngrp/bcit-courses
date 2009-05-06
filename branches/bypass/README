@@ -1,0 +1,9 @@
+To install this application, simply execute the following steps:
+
+        1. ./autogen.sh
+        2. ./configure
+        3. make
+        4. make install
+
+The fourth step will install the program to /usr/local/bin. To remove the
+application, simple type "make uninstall".

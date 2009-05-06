@@ -36,3 +36,39 @@ browser_open (SPRY_CONF* conf, char* url)
     webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)url);
     g_print("Opened\n");
 }
+
+/**
+ * browser_home:
+ * @conf: Spry configuration struct
+ *
+ * Goes to homepage (specified at application launch).
+ **/
+void
+browser_home (SPRY_CONF* conf)
+{
+	g_print("Opening Homepage: %s\n", conf->init_url);
+    webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)conf->init_url);
+    g_print("Opened\n");
+}
+
+/**
+ * browser_back:
+ * @conf: Spry configuration struct
+ *
+ * Goes back in history.
+ **/
+void browser_back (SPRY_CONF* conf)
+{
+    g_print("Back\n");
+}
+
+/**
+ * browser_forward:
+ * @conf: Spry configuration struct
+ *
+ * Goes forward in history.
+ **/
+void browser_forward (SPRY_CONF* conf)
+{
+    g_print("Forward\n");
+}

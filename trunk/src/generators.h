@@ -26,9 +26,9 @@
 #include <webkit/webkit.h>
 #include "spry.h"
 
-void            generate_gui(SPRY_CONF* conf);
-GtkWidget*      generate_main_window(SPRY_CONF* conf);
-GtkWidget*      generate_toolbar(SPRY_CONF* conf);
-GtkWidget*      generate_toolbar_fullscreen(SPRY_CONF* conf);
+SPRY_GTK_OBJECTS*    generate_gui(SPRY_CONF* conf);
+GtkWidget*          generate_main_window(SPRY_CONF* conf);
+GtkWidget*          generate_toolbar(SPRY_CONF* conf);
+GtkWidget*          generate_toolbar_fullscreen(SPRY_CONF* conf);
 
 #endif

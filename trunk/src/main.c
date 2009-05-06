@@ -58,7 +58,7 @@ main (int argc, char *argv[])
 	conf = parse_args(argc, argv);
     
     /* Create the GUI (main window) */
-    generate_gui(conf);
+    conf->gtk_objects = generate_gui(conf);
 	
 	/* load the web page */
     browser_open(conf, (gchar*)conf->init_url);

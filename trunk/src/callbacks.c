@@ -21,80 +21,70 @@
 
 #include "spry.h"
 #include "callbacks.h"
+#include "browser.h"
+#include "gui_funcs.h"
 
 /**
- * destroy:
+ * callback_destroy:
  * @widget: The widget that called the function
  * @data: Any additional data passed to the function
  *
  * Closes the program when the window is closed.
  **/
 void
-destroy (GtkWidget* widget, gpointer data)
+callback_destroy (GtkWidget* widget, gpointer data)
 {
 	gtk_main_quit ();
 }
 
 /**
- * double_click:
+ * callback_minimize:
  * @widget: The widget that called the function
  * @data: Any additional data passed to the function
  *
- * Handles a double-click (soon to be bound to the context menu)
+ * Minimizes the window.
  **/
 void
-double_click (GtkWidget* widget, gpointer data)
+callback_minimize (GtkWidget* widget, gpointer data)
 {
-	g_print("test");
+	gui_minimize ((SPRY_CONF*)data);
 }
 
 /**
- * do_nothing:
- * @widget: The widget that called the function
- * @data: Any additional data passed to the function
- *
- * Does nothing on an event (for capturing events)
+ * callback_back:
+ * @widget: The button that was clicked
+ * @data: pointer to SPRY_CONF struct
+ * 
+ * Goes back in history
  **/
 void
-do_nothing (GtkWidget* widget, gpointer data)
+callback_back (GtkWidget* widget, gpointer data)
 {
-    g_print("I have done nothing ;)\n");
+    browser_back((SPRY_CONF*) data);
 }
 
 /**
- * toggle_fullscreen:
+ * callback_forward:
+ * @widget: The button that was clicked
+ * @data: pointer to SPRY_CONF struct
+ * 
+ * Goes forward in history
+ **/
+void
+callback_forward (GtkWidget* widget, gpointer data)
+{
+    browser_forward((SPRY_CONF*) data);
+}
+
+/**
+ * callback_fullscreen:
  * @widget: The widget that called the function
  * @data: Spry Config Struct
  *
  * Does nothing on an event (for capturing events)
  **/
 void
-toggle_fullscreen (GtkWidget* widget, gpointer data)
+callback_fullscreen (GtkWidget* widget, gpointer data)
 {
-    SPRY_CONF* conf = (SPRY_CONF*) data;
-    g_print("Now toggling fullscreen: ");
-    if (conf->fullscreen)
-    {
-        g_print("Restoring\n");
-        conf->fullscreen = FALSE;
-    } else {
-        g_print("Fullscreening\n");
-        conf->fullscreen = TRUE;
-    }
-}
-
-/**
- * Event callback
- * @widget: The widget that created the event
- * @event: The event itself
- * @callback_data: any additional data
- * 
- * Simply captures the event
- **/
-gint
-event_capture (GtkWidget *widget, GdkEvent *event, gpointer callback_data )
-{
-    gint ret = 0;
-    g_print("event\n");
-    return ret;
+    gui_fullscreen(data);
 }

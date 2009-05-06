@@ -20,6 +20,7 @@
  */
 
 #include "generators.h"
+#include "browser.h"
 #include "callbacks.h"
 #include "spry.h"
 
@@ -29,13 +30,11 @@
  *
  * Creates a the entire gui (main window).
  **/
-void
+SPRY_GTK_OBJECTS*
 generate_gui (SPRY_CONF* conf)
 {
     
     SPRY_GTK_OBJECTS* gtk_objects = malloc (sizeof (SPRY_GTK_OBJECTS));
-    
-    conf->gtk_objects = gtk_objects;
     
     /* Create GTK Objects */
 	gtk_objects->main_window        = generate_main_window(conf);       /* Main Window */
@@ -56,11 +55,20 @@ generate_gui (SPRY_CONF* conf)
 	gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->scrolled_window      , FALSE, FALSE, 0);
     
     /* Connect Signals */
-	g_signal_connect (G_OBJECT (gtk_objects->main_window), "destroy", G_CALLBACK (destroy), NULL);
+	g_signal_connect (G_OBJECT (gtk_objects->main_window), "destroy", G_CALLBACK (callback_destroy), NULL);
     
-    /* Make all objects visible */
+    /* show objects */
 	gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
 	gtk_widget_show_all (gtk_objects->main_window);
+    
+    if (conf->fullscreen)
+    {
+        gtk_widget_hide (gtk_objects->toolbar);
+    } else {
+        gtk_widget_hide (gtk_objects->toolbar_fullscreen);
+    }
+    
+    return gtk_objects;
 }
 
 /**
@@ -89,8 +97,12 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     gtk_container_add (GTK_CONTAINER (toolbar_fullscreen), close);
     
     /* Connect buttons to actions */
-	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (toggle_fullscreen) , conf);
-	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (destroy)           , NULL);
+	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
+    
+    /* show buttons */
+    gtk_widget_show(fullscreen);
+    gtk_widget_show(close);
     
     /* Return toolbar */
     return toolbar_fullscreen;
@@ -134,12 +146,19 @@ generate_toolbar (SPRY_CONF* conf)
     gtk_widget_set_size_request (back, 10, 10);
     
     /* Connect buttons to actions */
-	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (toggle_fullscreen) , conf);
-	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (do_nothing)        , NULL);
-	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (do_nothing)        , NULL);
-	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (do_nothing)        , NULL);
-	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (destroy)           , NULL);
+	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
+	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
+	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , NULL);
+	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
+    /* Show buttons */
+    gtk_widget_show(fullscreen);
+    gtk_widget_show(back);
+    gtk_widget_show(forward);
+    gtk_widget_show(minimize);
+    gtk_widget_show(close);
+        
     /* Return toolbar */
     return toolbar;
 }
@@ -158,6 +177,6 @@ generate_main_window (SPRY_CONF* conf)
 	GtkWidget* main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size (GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
 	gtk_widget_set_name (main_window, "Spry");
-	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (destroy), NULL);
+	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (callback_destroy), NULL);
     return main_window;
 }

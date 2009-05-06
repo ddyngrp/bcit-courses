@@ -24,7 +24,9 @@ spry_SOURCES = \
 	generators.c \
 	generators.h \
 	browser.c \
-	browser.h
+	browser.h \
+	gui_funcs.c \
+	gui_funcs.h
 
 spry_LDFLAGS = \
 	-Wl,--export-dynamic

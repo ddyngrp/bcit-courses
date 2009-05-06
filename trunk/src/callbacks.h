@@ -24,10 +24,11 @@
 
 #include <gtk/gtk.h>
 
-void destroy (GtkWidget* widget, gpointer data);
-void double_click (GtkWidget* widget, gpointer data);
-void do_nothing (GtkWidget* widget, gpointer data);
-void toggle_fullscreen (GtkWidget* widget, gpointer data);
-gint event_capture (GtkWidget *widget, GdkEvent *event, gpointer callback_data );
+void callback_destroy       (GtkWidget* widget, gpointer data);
+void callback_minimize      (GtkWidget* widget, gpointer data);
+void callback_back          (GtkWidget* widget, gpointer data);
+void callback_forward       (GtkWidget* widget, gpointer data);
+void callback_fullscreen    (GtkWidget* widget, gpointer data);
+void callback_forward       (GtkWidget* widget, gpointer data);
 
 #endif

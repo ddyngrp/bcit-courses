@@ -50,6 +50,22 @@
  * This holds all command-line option settings as well as general configuration
  */
 
+
+/* browser statuses */
+#define HAS_PAST    0x1
+#define HAS_FUTURE  0x2
+
+/* modes */
+#define FULLSCREEN  0x1
+#define TOOLBAR     0x2
+#define CONTEXT     0x4
+
+/* features_enabled */
+#define FULLSCREEN_ENABLED      0x1
+#define SCROLLBARS_ENABLED      0x2
+#define CONTEXT_MENU_ENABLED    0x4
+
+/* Holds main gtk objects used in the window */
 typedef struct _spry_gtk_objects {
     GtkWidget*      main_window;
     GtkWidget*      v_box;
@@ -61,7 +77,8 @@ typedef struct _spry_gtk_objects {
     
 } SPRY_GTK_OBJECTS, *pSPRY_GTK_OBJECTS;
 
-typedef struct _spry_conf {
+/* Spry browser configuration */
+typedef struct _spry_conf { /* This is the old version, see below */
 	char	*init_url;
 	int		fullscreen,
 			context_menu,
@@ -72,5 +89,17 @@ typedef struct _spry_conf {
 	int		window_size[2];
     SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
+
+/*
+ * This should replace the above struct
+typedef struct _spry_conf {
+	char	*init_url;
+	int		mode,
+            features,
+            browser_status,
+	int		window_size[2];
+    SPRY_GTK_OBJECTS* gtk_objects;
+} SPRY_CONF, *pSPRY_CONF;
+*/
 
 #endif

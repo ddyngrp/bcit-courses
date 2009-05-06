@@ -94,12 +94,10 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     /* Declarations */
     GtkWidget*  toolbar_fullscreen;
     GtkWidget*  fullscreen;
-    GtkWidget*  close;
     
     /* Create buttons */
     toolbar_fullscreen  = gtk_hbox_new(TRUE, 0);
     fullscreen          = gtk_button_new_with_label("[]");
-    close               = gtk_button_new_with_label("X");
     
     /* Add buttons to toolbar */
     gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, fullscreen, TRUE, TRUE, 0);
@@ -112,7 +110,6 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     
     /* show buttons */
     gtk_widget_show(fullscreen);
-    gtk_widget_show(close);
     
     /* Return toolbar */
     return toolbar_fullscreen;
@@ -146,11 +143,11 @@ generate_toolbar (SPRY_CONF* conf)
     close       = gtk_button_new_with_label("X");
     
     /* Add buttons to toolbar */
-    gtk_box_pack_end ((GtkBox*) toolbar, back, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) toolbar, forward, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) toolbar, fullscreen, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) toolbar, minimize, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) toolbar, close, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, back, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, forward, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, fullscreen, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, minimize, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, close, TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);

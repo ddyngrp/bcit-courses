@@ -40,11 +40,13 @@ gui_fullscreen (SPRY_CONF* conf)
         conf->fullscreen = FALSE;
         gtk_widget_show(conf->gtk_objects->toolbar);
         gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
+        gtk_window_unfullscreen((GtkWindow*) conf->gtk_objects->main_window);
     } else {
         g_print("Fullscreening\n");
         conf->fullscreen = TRUE;
         gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
         gtk_widget_hide(conf->gtk_objects->toolbar);
+        gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
     }
 }
 

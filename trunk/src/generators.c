@@ -41,7 +41,8 @@ generate_gui (SPRY_CONF* conf)
     gtk_objects->v_box              = gtk_vbox_new(FALSE, 0);           /* holds all the toolbars */
     gtk_objects->toolbar            = generate_toolbar(conf);
     gtk_objects->toolbar_fullscreen = generate_toolbar_fullscreen(conf);
-    gtk_objects->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    gtk_objects->context_menu       = generate_context_menu (conf);
+    gtk_objects->scrolled_window    = gtk_scrolled_window_new (NULL, NULL);
 	gtk_objects->web_view           = WEBKIT_WEB_VIEW (webkit_web_view_new ());
     
     /* Configure scrolled window */
@@ -52,10 +53,8 @@ generate_gui (SPRY_CONF* conf)
     gtk_container_add   (GTK_CONTAINER (gtk_objects->scrolled_window)   , GTK_WIDGET (gtk_objects->web_view));
     gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar              , FALSE, FALSE, 0);
     gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar_fullscreen   , FALSE, FALSE, 0);
+    gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->context_menu         , FALSE, FALSE, 0);
 	gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->scrolled_window      , FALSE, FALSE, 0);
-    
-    /* Connect Signals */
-	g_signal_connect (G_OBJECT (gtk_objects->main_window), "destroy", G_CALLBACK (callback_destroy), NULL);
     
     /* show objects */
 	gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
@@ -88,17 +87,18 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     GtkWidget*  close;
     
     /* Create buttons */
-    toolbar_fullscreen  = gtk_hbutton_box_new();
+    toolbar_fullscreen  = gtk_hbox_new(TRUE, 0);
     fullscreen          = gtk_button_new_with_label("[]");
     close               = gtk_button_new_with_label("X");
     
     /* Add buttons to toolbar */
-    gtk_container_add (GTK_CONTAINER (toolbar_fullscreen), fullscreen);
-    gtk_container_add (GTK_CONTAINER (toolbar_fullscreen), close);
+    gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, fullscreen, TRUE, TRUE, 0);
+    
+    /* Configure objects */
+    gtk_widget_set_size_request (fullscreen, 10, 10);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
-	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
     /* show buttons */
     gtk_widget_show(fullscreen);
@@ -128,7 +128,7 @@ generate_toolbar (SPRY_CONF* conf)
     GtkWidget*  close;
     
     /* Create buttons */
-    toolbar     = gtk_hbutton_box_new();
+    toolbar     = gtk_hbox_new(TRUE, 0);
     back        = gtk_button_new_with_label("<-");
     forward     = gtk_button_new_with_label("->");
     fullscreen  = gtk_button_new_with_label("[]");
@@ -136,14 +136,11 @@ generate_toolbar (SPRY_CONF* conf)
     close       = gtk_button_new_with_label("X");
     
     /* Add buttons to toolbar */
-    gtk_container_add (GTK_CONTAINER (toolbar), back);
-    gtk_container_add (GTK_CONTAINER (toolbar), forward);
-    gtk_container_add (GTK_CONTAINER (toolbar), fullscreen);
-    gtk_container_add (GTK_CONTAINER (toolbar), minimize);
-    gtk_container_add (GTK_CONTAINER (toolbar), close);
-    
-    /* Configure objects */
-    gtk_widget_set_size_request (back, 10, 10);
+    gtk_box_pack_end ((GtkBox*) toolbar, back, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) toolbar, forward, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) toolbar, fullscreen, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) toolbar, minimize, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) toolbar, close, TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
@@ -164,6 +161,62 @@ generate_toolbar (SPRY_CONF* conf)
 }
 
 /**
+ * generate_context_menu:
+ * @conf: pointer to a struct of config settings
+ *
+ * Creates the context menu.
+ *
+ * Returns: A pointer to the context menu.
+ **/
+GtkWidget*
+generate_context_menu (SPRY_CONF* conf)
+{
+    /* Declarations */
+    GtkWidget*  menu;
+    GtkWidget*  back;
+    GtkWidget*  forward;
+    GtkWidget*  home;
+    GtkWidget*  fullscreen;
+    GtkWidget*  minimize;
+    GtkWidget*  close;
+    
+    /* Create buttons */
+    menu        = gtk_vbox_new(TRUE, 0);
+    back        = gtk_button_new_with_label("<-");
+    forward     = gtk_button_new_with_label("->");
+    home        = gtk_button_new_with_label("H");
+    fullscreen  = gtk_button_new_with_label("[]");
+    minimize    = gtk_button_new_with_label("-");
+    close       = gtk_button_new_with_label("X");
+    
+    /* Add buttons to toolbar */
+    gtk_box_pack_end ((GtkBox*) menu, back, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) menu, forward, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) menu, fullscreen, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) menu, minimize, TRUE, TRUE, 0);
+    gtk_box_pack_end ((GtkBox*) menu, close, TRUE, TRUE, 0);
+    
+    /* Connect buttons to actions */
+	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
+	g_signal_connect (G_OBJECT (home)       , "clicked", G_CALLBACK (callback_home)         , conf);
+	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
+	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , NULL);
+	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
+    
+    /* Show buttons */
+    gtk_widget_show(fullscreen);
+    gtk_widget_show(back);
+    gtk_widget_show(home);
+    gtk_widget_show(forward);
+    gtk_widget_show(minimize);
+    gtk_widget_show(close);
+        
+    /* Return toolbar */
+    return menu;
+}
+
+/**
  * generate_main_window:
  * @conf: pointer to a struct of config settings
  *
@@ -174,9 +227,18 @@ generate_toolbar (SPRY_CONF* conf)
 GtkWidget*
 generate_main_window (SPRY_CONF* conf)
 {
+    /* Create Window */
 	GtkWidget* main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    
+    /* Resize the window */
 	gtk_window_set_default_size (GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
+    
+    /* Set window name (taskbar / titlebar) */
 	gtk_widget_set_name (main_window, "Spry");
+    
+    /* Connect close signal to quit */
 	g_signal_connect (G_OBJECT (main_window), "destroy", G_CALLBACK (callback_destroy), NULL);
+    
+    /* Return window */
     return main_window;
 }

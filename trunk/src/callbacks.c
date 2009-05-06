@@ -77,6 +77,19 @@ callback_forward (GtkWidget* widget, gpointer data)
 }
 
 /**
+ * callback_home:
+ * @widget: The button that was clicked
+ * @data: pointer to SPRY_CONF struct
+ * 
+ * Goes to the home page.
+ **/
+void
+callback_home (GtkWidget* widget, gpointer data)
+{
+    browser_home((SPRY_CONF*) data);
+}
+
+/**
  * callback_fullscreen:
  * @widget: The widget that called the function
  * @data: Spry Config Struct

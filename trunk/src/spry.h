@@ -55,6 +55,7 @@ typedef struct _spry_gtk_objects {
     GtkWidget*      v_box;
     GtkWidget*      toolbar;
     GtkWidget*      toolbar_fullscreen;
+    GtkWidget*      context_menu;
     GtkWidget*      scrolled_window;
     WebKitWebView*  web_view;
     

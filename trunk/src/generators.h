@@ -28,6 +28,7 @@
 
 SPRY_GTK_OBJECTS*    generate_gui(SPRY_CONF* conf);
 GtkWidget*          generate_main_window(SPRY_CONF* conf);
+GtkWidget*          generate_context_menu(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar_fullscreen(SPRY_CONF* conf);
 

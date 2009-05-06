@@ -27,6 +27,7 @@
 void callback_destroy       (GtkWidget* widget, gpointer data);
 void callback_minimize      (GtkWidget* widget, gpointer data);
 void callback_back          (GtkWidget* widget, gpointer data);
+void callback_home          (GtkWidget* widget, gpointer data);
 void callback_forward       (GtkWidget* widget, gpointer data);
 void callback_fullscreen    (GtkWidget* widget, gpointer data);
 void callback_forward       (GtkWidget* widget, gpointer data);

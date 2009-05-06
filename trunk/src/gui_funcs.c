@@ -58,5 +58,28 @@ void
 gui_minimize (SPRY_CONF* conf)
 {
     g_print("Minimize\n");
-    
+}
+
+/**
+ * toggle_context:
+ * @conf: Spry configuration struct
+ *
+ * Toggles the context menu
+ **/
+void
+gui_context (SPRY_CONF* conf)
+{
+    g_print("Context Menu\n");
+    printf("conf: %p\n", conf);
+    printf("toggle: %i\n", conf->context_menu);
+    if (conf->context_menu)
+    {
+        gtk_widget_hide(conf->gtk_objects->context_menu);
+        gtk_widget_show(conf->gtk_objects->scrolled_window);
+        conf->context_menu = FALSE;
+    } else {
+        gtk_widget_hide(conf->gtk_objects->scrolled_window);
+        gtk_widget_show(conf->gtk_objects->context_menu);
+        conf->context_menu = TRUE;
+    }
 }

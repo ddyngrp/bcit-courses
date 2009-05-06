@@ -51,15 +51,16 @@ generate_gui (SPRY_CONF* conf)
 	/* Put GTK Objects inside each-other and make them visible */
 	gtk_container_add   (GTK_CONTAINER (gtk_objects->main_window)       , gtk_objects->v_box                );
     gtk_container_add   (GTK_CONTAINER (gtk_objects->scrolled_window)   , GTK_WIDGET (gtk_objects->web_view));
-    gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar              , FALSE, FALSE, 0);
-    gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar_fullscreen   , FALSE, FALSE, 0);
-    gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->context_menu         , FALSE, FALSE, 0);
-	gtk_box_pack_end    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->scrolled_window      , FALSE, FALSE, 0);
+    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar              , FALSE, FALSE, 0);
+    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar_fullscreen   , FALSE, FALSE, 0);
+    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->context_menu         , TRUE , TRUE , 0);
+	gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->scrolled_window      , TRUE , TRUE , 0);
     
     /* show objects */
 	gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
 	gtk_widget_show_all (gtk_objects->main_window);
     
+    /* detect fullscreen mode */
     if (conf->fullscreen)
     {
         gtk_widget_hide (gtk_objects->toolbar);
@@ -67,6 +68,15 @@ generate_gui (SPRY_CONF* conf)
         gtk_widget_hide (gtk_objects->toolbar_fullscreen);
     }
     
+    /* detect context_menu mode */
+    if (conf->context_menu)
+    {
+        gtk_widget_hide (gtk_objects->scrolled_window);
+    } else {
+        gtk_widget_hide (gtk_objects->context_menu);
+    }
+    
+    /* return gtk_objects */
     return gtk_objects;
 }
 
@@ -146,7 +156,7 @@ generate_toolbar (SPRY_CONF* conf)
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
 	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
 	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
-	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , NULL);
+	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
 	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
     /* Show buttons */
@@ -181,7 +191,7 @@ generate_context_menu (SPRY_CONF* conf)
     GtkWidget*  close;
     
     /* Create buttons */
-    menu        = gtk_vbox_new(TRUE, 0);
+    menu        = gtk_table_new(2, 3, TRUE);
     back        = gtk_button_new_with_label("<-");
     forward     = gtk_button_new_with_label("->");
     home        = gtk_button_new_with_label("H");
@@ -190,18 +200,19 @@ generate_context_menu (SPRY_CONF* conf)
     close       = gtk_button_new_with_label("X");
     
     /* Add buttons to toolbar */
-    gtk_box_pack_end ((GtkBox*) menu, back, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) menu, forward, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) menu, fullscreen, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) menu, minimize, TRUE, TRUE, 0);
-    gtk_box_pack_end ((GtkBox*) menu, close, TRUE, TRUE, 0);
+    gtk_table_attach(GTK_TABLE (menu), back         , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), home         , 1, 2, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), forward      , 2, 3, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), minimize     , 0, 1, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), fullscreen   , 1, 2, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), close        , 2, 3, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
 	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
 	g_signal_connect (G_OBJECT (home)       , "clicked", G_CALLBACK (callback_home)         , conf);
 	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
-	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , NULL);
+	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
 	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
     /* Show buttons */

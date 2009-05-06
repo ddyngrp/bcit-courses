@@ -45,13 +45,14 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_spry_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT) cliopts.$(OBJEXT) \
-	generators.$(OBJEXT) browser.$(OBJEXT) gui_funcs.$(OBJEXT)
+am_spry_OBJECTS = spry-callbacks.$(OBJEXT) spry-main.$(OBJEXT) \
+	spry-cliopts.$(OBJEXT) spry-generators.$(OBJEXT) \
+	spry-browser.$(OBJEXT) spry-gui_funcs.$(OBJEXT)
 spry_OBJECTS = $(am_spry_OBJECTS)
 am__DEPENDENCIES_1 =
 spry_DEPENDENCIES = $(am__DEPENDENCIES_1)
 spry_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(spry_LDFLAGS) \
+	--mode=link $(CCLD) $(spry_CFLAGS) $(CFLAGS) $(spry_LDFLAGS) \
 	$(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -209,6 +210,9 @@ spry_SOURCES = \
 	gui_funcs.c \
 	gui_funcs.h
 
+spry_CFLAGS = \
+	-static
+
 spry_LDFLAGS = \
 	-Wl,--export-dynamic
 
@@ -285,12 +289,12 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/browser.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cliopts.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/generators.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gui_funcs.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-browser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-callbacks.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-cliopts.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-generators.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-gui_funcs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/spry-main.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -312,6 +316,90 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
+
+spry-callbacks.o: callbacks.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-callbacks.o -MD -MP -MF $(DEPDIR)/spry-callbacks.Tpo -c -o spry-callbacks.o `test -f 'callbacks.c' || echo '$(srcdir)/'`callbacks.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-callbacks.Tpo $(DEPDIR)/spry-callbacks.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='callbacks.c' object='spry-callbacks.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-callbacks.o `test -f 'callbacks.c' || echo '$(srcdir)/'`callbacks.c
+
+spry-callbacks.obj: callbacks.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-callbacks.obj -MD -MP -MF $(DEPDIR)/spry-callbacks.Tpo -c -o spry-callbacks.obj `if test -f 'callbacks.c'; then $(CYGPATH_W) 'callbacks.c'; else $(CYGPATH_W) '$(srcdir)/callbacks.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-callbacks.Tpo $(DEPDIR)/spry-callbacks.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='callbacks.c' object='spry-callbacks.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-callbacks.obj `if test -f 'callbacks.c'; then $(CYGPATH_W) 'callbacks.c'; else $(CYGPATH_W) '$(srcdir)/callbacks.c'; fi`
+
+spry-main.o: main.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-main.o -MD -MP -MF $(DEPDIR)/spry-main.Tpo -c -o spry-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-main.Tpo $(DEPDIR)/spry-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='main.c' object='spry-main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+
+spry-main.obj: main.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-main.obj -MD -MP -MF $(DEPDIR)/spry-main.Tpo -c -o spry-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-main.Tpo $(DEPDIR)/spry-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='main.c' object='spry-main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+spry-cliopts.o: cliopts.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-cliopts.o -MD -MP -MF $(DEPDIR)/spry-cliopts.Tpo -c -o spry-cliopts.o `test -f 'cliopts.c' || echo '$(srcdir)/'`cliopts.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-cliopts.Tpo $(DEPDIR)/spry-cliopts.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='cliopts.c' object='spry-cliopts.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-cliopts.o `test -f 'cliopts.c' || echo '$(srcdir)/'`cliopts.c
+
+spry-cliopts.obj: cliopts.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-cliopts.obj -MD -MP -MF $(DEPDIR)/spry-cliopts.Tpo -c -o spry-cliopts.obj `if test -f 'cliopts.c'; then $(CYGPATH_W) 'cliopts.c'; else $(CYGPATH_W) '$(srcdir)/cliopts.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-cliopts.Tpo $(DEPDIR)/spry-cliopts.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='cliopts.c' object='spry-cliopts.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-cliopts.obj `if test -f 'cliopts.c'; then $(CYGPATH_W) 'cliopts.c'; else $(CYGPATH_W) '$(srcdir)/cliopts.c'; fi`
+
+spry-generators.o: generators.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-generators.o -MD -MP -MF $(DEPDIR)/spry-generators.Tpo -c -o spry-generators.o `test -f 'generators.c' || echo '$(srcdir)/'`generators.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-generators.Tpo $(DEPDIR)/spry-generators.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='generators.c' object='spry-generators.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-generators.o `test -f 'generators.c' || echo '$(srcdir)/'`generators.c
+
+spry-generators.obj: generators.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-generators.obj -MD -MP -MF $(DEPDIR)/spry-generators.Tpo -c -o spry-generators.obj `if test -f 'generators.c'; then $(CYGPATH_W) 'generators.c'; else $(CYGPATH_W) '$(srcdir)/generators.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-generators.Tpo $(DEPDIR)/spry-generators.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='generators.c' object='spry-generators.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-generators.obj `if test -f 'generators.c'; then $(CYGPATH_W) 'generators.c'; else $(CYGPATH_W) '$(srcdir)/generators.c'; fi`
+
+spry-browser.o: browser.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-browser.o -MD -MP -MF $(DEPDIR)/spry-browser.Tpo -c -o spry-browser.o `test -f 'browser.c' || echo '$(srcdir)/'`browser.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-browser.Tpo $(DEPDIR)/spry-browser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='browser.c' object='spry-browser.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-browser.o `test -f 'browser.c' || echo '$(srcdir)/'`browser.c
+
+spry-browser.obj: browser.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-browser.obj -MD -MP -MF $(DEPDIR)/spry-browser.Tpo -c -o spry-browser.obj `if test -f 'browser.c'; then $(CYGPATH_W) 'browser.c'; else $(CYGPATH_W) '$(srcdir)/browser.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-browser.Tpo $(DEPDIR)/spry-browser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='browser.c' object='spry-browser.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-browser.obj `if test -f 'browser.c'; then $(CYGPATH_W) 'browser.c'; else $(CYGPATH_W) '$(srcdir)/browser.c'; fi`
+
+spry-gui_funcs.o: gui_funcs.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-gui_funcs.o -MD -MP -MF $(DEPDIR)/spry-gui_funcs.Tpo -c -o spry-gui_funcs.o `test -f 'gui_funcs.c' || echo '$(srcdir)/'`gui_funcs.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-gui_funcs.Tpo $(DEPDIR)/spry-gui_funcs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gui_funcs.c' object='spry-gui_funcs.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-gui_funcs.o `test -f 'gui_funcs.c' || echo '$(srcdir)/'`gui_funcs.c
+
+spry-gui_funcs.obj: gui_funcs.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -MT spry-gui_funcs.obj -MD -MP -MF $(DEPDIR)/spry-gui_funcs.Tpo -c -o spry-gui_funcs.obj `if test -f 'gui_funcs.c'; then $(CYGPATH_W) 'gui_funcs.c'; else $(CYGPATH_W) '$(srcdir)/gui_funcs.c'; fi`
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/spry-gui_funcs.Tpo $(DEPDIR)/spry-gui_funcs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gui_funcs.c' object='spry-gui_funcs.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(spry_CFLAGS) $(CFLAGS) -c -o spry-gui_funcs.obj `if test -f 'gui_funcs.c'; then $(CYGPATH_W) 'gui_funcs.c'; else $(CYGPATH_W) '$(srcdir)/gui_funcs.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

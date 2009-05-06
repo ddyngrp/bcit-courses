@@ -71,9 +71,6 @@ gui_minimize (SPRY_CONF* conf)
 void
 gui_context (SPRY_CONF* conf)
 {
-    g_print("Context Menu\n");
-    printf("conf: %p\n", conf);
-    printf("toggle: %i\n", conf->context_menu);
     if (conf->context_menu)
     {
         gtk_widget_hide(conf->gtk_objects->context_menu);

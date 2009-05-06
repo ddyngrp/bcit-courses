@@ -130,29 +130,40 @@ generate_toolbar (SPRY_CONF* conf)
     GtkWidget*  toolbar;
     GtkWidget*  back;
     GtkWidget*  forward;
+    GtkWidget*  home;
     GtkWidget*  fullscreen;
     GtkWidget*  minimize;
     GtkWidget*  close;
     
     /* Create buttons */
     toolbar     = gtk_hbox_new(TRUE, 0);
-    back        = gtk_button_new_with_label("<-");
-    forward     = gtk_button_new_with_label("->");
-    fullscreen  = gtk_button_new_with_label("[]");
-    minimize    = gtk_button_new_with_label("-");
-    close       = gtk_button_new_with_label("X");
+    back        = gtk_button_new();
+    forward     = gtk_button_new();
+    home        = gtk_button_new_with_label("H");
+    fullscreen  = gtk_button_new();
+    minimize    = gtk_button_new();
+    close       = gtk_button_new();
+    
+    /* add images */
+    gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
+    gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
+    gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
+    gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
     
     /* Add buttons to toolbar */
-    gtk_box_pack_start ((GtkBox*) toolbar, back, TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, forward, TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, fullscreen, TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, minimize, TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, close, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, back         , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, forward      , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, home         , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, fullscreen   , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, minimize     , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, close        , TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
 	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
-	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
+	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)      , conf);
+	g_signal_connect (G_OBJECT (home)       , "clicked", G_CALLBACK (callback_home)         , conf);
 	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
 	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
@@ -160,6 +171,7 @@ generate_toolbar (SPRY_CONF* conf)
     gtk_widget_show(fullscreen);
     gtk_widget_show(back);
     gtk_widget_show(forward);
+    gtk_widget_show(home);
     gtk_widget_show(minimize);
     gtk_widget_show(close);
         
@@ -189,12 +201,19 @@ generate_context_menu (SPRY_CONF* conf)
     
     /* Create buttons */
     menu        = gtk_table_new(2, 3, TRUE);
-    back        = gtk_button_new_with_label("<-");
-    forward     = gtk_button_new_with_label("->");
+    back        = gtk_button_new();
+    forward     = gtk_button_new();
     home        = gtk_button_new_with_label("H");
-    fullscreen  = gtk_button_new_with_label("[]");
-    minimize    = gtk_button_new_with_label("-");
-    close       = gtk_button_new_with_label("X");
+    fullscreen  = gtk_button_new();
+    minimize    = gtk_button_new();
+    close       = gtk_button_new();
+    
+    /* add images */
+    gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
+    gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
+    gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
+    gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
     
     /* Add buttons to toolbar */
     gtk_table_attach(GTK_TABLE (menu), back         , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);

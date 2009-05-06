@@ -1,3 +1,13 @@
+2009-05-05  Steffen L. Norgren  <ironix@trollop.org>
+
+		Created a command-line option parser using getopt_long.
+
+		Created a SPRY_CONF struct to hold flags set via the command line.
+
+		* cliopts.c: handles all command-line options
+		* cliopts.h: function definitions.
+		* spry.h: general header for program, holds SPRY_CONF struct
+
 2009-05-03  Steffen L. Norgren  <ironix@trollop.org>
 
 		Created an Anjuta project to aid in development of the project. Anjuta

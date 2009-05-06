@@ -5,7 +5,7 @@
  *                    Steffen L. Norgren <ironix@trollop.org>
  *                    Eddie Zhang <edisonhammer@gmail.com>
  * 
- * main.c is free software: you can redistribute it and/or modify it
+ * cliopts.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -22,6 +22,16 @@
 #include "spry.h"
 #include "cliopts.h"
 
+/**
+ * parse_args:
+ * @argc: number of arguments passed in
+ * @argv: the arguments passed via the command line
+ *
+ * Initializes the SPRY_CONF struct and then parses command-line options to set
+ * the appropriate flag or setting inside the SPRY_CONF struct.
+ *
+ * Returns: %SPRY_CONF struct
+ **/
 SPRY_CONF*
 parse_args (int argc, char *argv[])
 {
@@ -116,6 +126,12 @@ parse_args (int argc, char *argv[])
 	return conf;
 }
 
+/**
+ * init_spry_conf:
+ * @conf: pointer to the #SPRY_CONF struct
+ *
+ * Initializes the SPRY_CONF struct with default values.
+ **/
 void
 init_spry_conf (SPRY_CONF* conf)
 {
@@ -130,8 +146,16 @@ init_spry_conf (SPRY_CONF* conf)
 	conf->window_size[1] = 240;
 }
 
+/**
+ * spry_usage:
+ * @command: the command to load the program (e.g. "./spry")
+ * @err: the type of error that initiated this function
+ *
+ * Prints out the command-line usage for the application as well as handling
+ * command-line option errors.
+ **/
 void
-spry_usage (char * command, int err)
+spry_usage (char* command, int err)
 {
 	if (err == OPTS_HELP)
 	{

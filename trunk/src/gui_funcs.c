@@ -1,18 +1,16 @@
-
-
 /*
- * bui_funcs.c
+ * gui_funcs.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
  *                    Brendan Neva <bneva1@my.bcit.ca>
  *                    Steffen L. Norgren <ironix@trollop.org>
  *                    Eddie Zhang <edisonhammer@gmail.com>
  * 
- * bui_funcs.c is free software: you can redistribute it and/or modify it
+ * gui_funcs.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * bui_funcs.c is distributed in the hope that it will be useful, but
+ * gui_funcs.c is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Lesser General Public License for more details.
@@ -34,16 +32,16 @@ void
 gui_fullscreen (SPRY_CONF* conf)
 {
     g_print("Now toggling fullscreen: ");
-    if (conf->fullscreen)
+    if (conf->mode & FULLSCREEN)
     {
         g_print("Restoring\n");
-        conf->fullscreen = FALSE;
+        conf->mode = conf->mode & !FULLSCREEN;
         gtk_widget_show(conf->gtk_objects->toolbar);
         gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
         gtk_window_unfullscreen((GtkWindow*) conf->gtk_objects->main_window);
     } else {
         g_print("Fullscreening\n");
-        conf->fullscreen = TRUE;
+        conf->mode = conf->mode | FULLSCREEN;
         gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
         gtk_widget_hide(conf->gtk_objects->toolbar);
         gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
@@ -51,10 +49,10 @@ gui_fullscreen (SPRY_CONF* conf)
 }
 
 /**
- * toggle_fullscreen:
+ * gui_minimize:
  * @conf: Spry configuration struct
  *
- * Toggles fullscreen
+ * Toggles window minimize status
  **/
 void
 gui_minimize (SPRY_CONF* conf)
@@ -63,22 +61,33 @@ gui_minimize (SPRY_CONF* conf)
 }
 
 /**
- * toggle_context:
+ * gui_context:
  * @conf: Spry configuration struct
  *
  * Toggles the context menu
  **/
 void
-gui_context (SPRY_CONF* conf)
+gui_context (SPRY_CONF* conf, int value)
 {
-    if (conf->context_menu)
+    if (conf->mode & CONTEXT)
     {
         gtk_widget_hide(conf->gtk_objects->context_menu);
         gtk_widget_show(conf->gtk_objects->scrolled_window);
-        conf->context_menu = FALSE;
+        conf->mode = conf->mode & !CONTEXT;
     } else {
         gtk_widget_hide(conf->gtk_objects->scrolled_window);
         gtk_widget_show(conf->gtk_objects->context_menu);
-        conf->context_menu = TRUE;
+        conf->mode = conf->mode | CONTEXT;
     }
+}
+
+/**
+ * gui_apply_mode:
+ * @conf: Spry configuration struct
+ * 
+ * Applies settings defined in the configuration struct
+ **/
+void
+gui_apply_mode (SPRY_CONF* conf) {
+    
 }

@@ -5,12 +5,12 @@
  *                    Steffen L. Norgren <ironix@trollop.org>
  *                    Eddie Zhang <edisonhammer@gmail.com>
  * 
- * callbacks.h is free software: you can redistribute it and/or modify it
+ * generators.h is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * callbacks.h is distributed in the hope that it will be useful, but
+ * generators.h is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Lesser General Public License for more details.
@@ -22,11 +22,9 @@
 #ifndef _GENERATORS_H
 #define _GENERATORS_H
 
-#include <gtk/gtk.h>
-#include <webkit/webkit.h>
 #include "spry.h"
 
-SPRY_GTK_OBJECTS*    generate_gui(SPRY_CONF* conf);
+SPRY_GTK_OBJECTS*   generate_gui(SPRY_CONF* conf);
 GtkWidget*          generate_main_window(SPRY_CONF* conf);
 GtkWidget*          generate_context_menu(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar(SPRY_CONF* conf);

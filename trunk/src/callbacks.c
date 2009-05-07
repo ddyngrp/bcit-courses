@@ -47,7 +47,7 @@ callback_destroy (GtkWidget* widget, gpointer data)
 void
 callback_minimize (GtkWidget* widget, gpointer data)
 {
-	gui_context ((SPRY_CONF*)data);
+	gui_context ((SPRY_CONF*)data, TOGGLE);
 	/* TODO: replace: gui_minimize ((SPRY_CONF*)data); */
 }
 
@@ -113,5 +113,5 @@ callback_fullscreen (GtkWidget* widget, gpointer data)
 void
 callback_context (GtkWidget* widget, gpointer data)
 {
-    gui_context((SPRY_CONF*) data);
+    gui_context((SPRY_CONF*) data, TOGGLE);
 }

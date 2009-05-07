@@ -5,7 +5,7 @@
  *                    Steffen L. Norgren <ironix@trollop.org>
  *                    Eddie Zhang <edisonhammer@gmail.com>
  * 
- * cliopts.h is free software: you can redistribute it and/or modify it
+ * spry.h is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -50,6 +50,8 @@
  * This holds all command-line option settings as well as general configuration
  */
 
+/* basic usage options */
+#define TOGGLE      -1
 
 /* browser statuses */
 #define HAS_PAST    0x1
@@ -64,6 +66,7 @@
 #define FULLSCREEN_ENABLED      0x1
 #define SCROLLBARS_ENABLED      0x2
 #define CONTEXT_MENU_ENABLED    0x4
+#define RESIZE_ENABLED          0x8
 
 /* Holds main gtk objects used in the window */
 typedef struct _spry_gtk_objects {
@@ -78,7 +81,8 @@ typedef struct _spry_gtk_objects {
 } SPRY_GTK_OBJECTS, *pSPRY_GTK_OBJECTS;
 
 /* Spry browser configuration */
-typedef struct _spry_conf { /* This is the old version, see below */
+/*
+typedef struct _spry_conf {
 	char	*init_url;
 	int		fullscreen,
 			context_menu,
@@ -89,17 +93,15 @@ typedef struct _spry_conf { /* This is the old version, see below */
 	int		window_size[2];
     SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
+*/
 
-/*
- * This should replace the above struct
 typedef struct _spry_conf {
 	char	*init_url;
 	int		mode,
             features,
-            browser_status,
+            browser_status;
 	int		window_size[2];
     SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
-*/
 
 #endif

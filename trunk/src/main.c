@@ -20,11 +20,8 @@
  */
 
 #include "spry.h"
-#include "callbacks.h"
 #include "cliopts.h"
 #include "generators.h"
-#include "browser.h"
-
 
 /**
  * main:

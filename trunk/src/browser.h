@@ -1,4 +1,3 @@
-
 /*
  * browser.h
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
@@ -23,7 +22,8 @@
 #ifndef _BROWSER_H
 #define _BROWSER_H
 
-#include <gtk/gtk.h>
+#include "spry.h"
+
 void browser_open (SPRY_CONF* conf, gchar* url);
 void browser_home (SPRY_CONF* conf);
 void browser_back (SPRY_CONF* conf);

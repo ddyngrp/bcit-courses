@@ -85,19 +85,19 @@ parse_args (int argc, char *argv[])
 				break;
 
 			case 'f':
-				conf->fullscreen = 1;
+                conf->mode = conf->mode | FULLSCREEN;
 				break;
 
 			case 'c':
-				conf->context_menu = 0;
+                conf->features = conf->features & !CONTEXT_MENU_ENABLED;
 				break;
 
 			case 's':
-				conf->scrollbars = 0;
+                conf->features = conf->features & !SCROLLBARS_ENABLED;
 				break;
 
 			case 'z':
-				conf->resizable = 0;
+                conf->features = conf->features & !RESIZE_ENABLED;
 				break;
 
 			case 'x':
@@ -135,15 +135,12 @@ parse_args (int argc, char *argv[])
 void
 init_spry_conf (SPRY_CONF* conf)
 {
-	conf->init_url = "http://www.google.ca";
-	conf->fullscreen = 0;
-	conf->context_menu = 1;
-	conf->scrollbars = 1;
-	conf->resizable = 1;
-	conf->has_past = 0;
-	conf->has_future = 0;
-	conf->window_size[0] = 320;
-	conf->window_size[1] = 240;
+	conf->init_url          = "http://www.google.ca";
+    conf->features          = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED;
+    conf->mode              = TOOLBAR;
+    conf->browser_status    = 0;
+	conf->window_size[0]    = 320;
+	conf->window_size[1]    = 240;
 }
 
 /**

@@ -20,7 +20,6 @@
  */
 
 #include "generators.h"
-#include "browser.h"
 #include "callbacks.h"
 #include "spry.h"
 
@@ -29,6 +28,8 @@
  * @conf: pointer to a struct of config settings
  *
  * Creates a the entire gui (main window).
+ * 
+ * Returns: struct of main gtk objects.
  **/
 SPRY_GTK_OBJECTS*
 generate_gui (SPRY_CONF* conf)
@@ -61,7 +62,7 @@ generate_gui (SPRY_CONF* conf)
 	gtk_widget_show_all (gtk_objects->main_window);
     
     /* detect fullscreen mode */
-    if (conf->fullscreen)
+    if (conf->mode & FULLSCREEN)
     {
         gtk_widget_hide (gtk_objects->toolbar);
     } else {
@@ -69,7 +70,7 @@ generate_gui (SPRY_CONF* conf)
     }
     
     /* detect context_menu mode */
-    if (conf->context_menu)
+    if (conf->mode & CONTEXT)
     {
         gtk_widget_hide (gtk_objects->scrolled_window);
     } else {
@@ -139,7 +140,7 @@ generate_toolbar (SPRY_CONF* conf)
     toolbar     = gtk_hbox_new(TRUE, 0);
     back        = gtk_button_new();
     forward     = gtk_button_new();
-    home        = gtk_button_new_with_label("H");
+    home        = gtk_button_new();
     fullscreen  = gtk_button_new();
     minimize    = gtk_button_new();
     close       = gtk_button_new();
@@ -147,6 +148,7 @@ generate_toolbar (SPRY_CONF* conf)
     /* add images */
     gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
     gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) home      , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
     gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
     gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
     gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
@@ -203,7 +205,7 @@ generate_context_menu (SPRY_CONF* conf)
     menu        = gtk_table_new(2, 3, TRUE);
     back        = gtk_button_new();
     forward     = gtk_button_new();
-    home        = gtk_button_new_with_label("H");
+    home        = gtk_button_new();
     fullscreen  = gtk_button_new();
     minimize    = gtk_button_new();
     close       = gtk_button_new();
@@ -211,6 +213,7 @@ generate_context_menu (SPRY_CONF* conf)
     /* add images */
     gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
     gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) home      , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
     gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
     gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
     gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );

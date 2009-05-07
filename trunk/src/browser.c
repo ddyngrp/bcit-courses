@@ -1,4 +1,3 @@
-
 /*
  * browser.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
@@ -26,6 +25,7 @@
 /**
  * browser_open:
  * @conf: Spry configuration struct
+ * @url: The url to open
  *
  * Opens a page.
  **/
@@ -46,9 +46,7 @@ browser_open (SPRY_CONF* conf, char* url)
 void
 browser_home (SPRY_CONF* conf)
 {
-	g_print("Opening Homepage: %s\n", conf->init_url);
-    webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)conf->init_url);
-    g_print("Opened\n");
+    browser_open(conf, conf->init_url);
 }
 
 /**

@@ -58,6 +58,7 @@ browser_home (SPRY_CONF* conf)
 void browser_back (SPRY_CONF* conf)
 {
     g_print("Back\n");
+    webkit_web_view_go_back (conf->gtk_objects->web_view);
 }
 
 /**
@@ -69,4 +70,5 @@ void browser_back (SPRY_CONF* conf)
 void browser_forward (SPRY_CONF* conf)
 {
     g_print("Forward\n");
+    webkit_web_view_go_forward (conf->gtk_objects->web_view);
 }

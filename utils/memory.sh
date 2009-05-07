@@ -12,6 +12,7 @@ do
 			i=`echo $i + 1 | bc`
 		done
 		echo $mem2
+		echo $mem2 >> log.txt
 		i=0
 	fi
 done

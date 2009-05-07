@@ -32,9 +32,7 @@
 void
 browser_open (SPRY_CONF* conf, char* url)
 {
-	g_print("Opening: %s\n", url);
     webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)url);
-    g_print("Opened\n");
 }
 
 /**
@@ -57,7 +55,6 @@ browser_home (SPRY_CONF* conf)
  **/
 void browser_back (SPRY_CONF* conf)
 {
-    g_print("Back\n");
     webkit_web_view_go_back (conf->gtk_objects->web_view);
 }
 
@@ -69,6 +66,5 @@ void browser_back (SPRY_CONF* conf)
  **/
 void browser_forward (SPRY_CONF* conf)
 {
-    g_print("Forward\n");
     webkit_web_view_go_forward (conf->gtk_objects->web_view);
 }

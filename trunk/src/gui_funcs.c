@@ -31,16 +31,13 @@
 void
 gui_fullscreen (SPRY_CONF* conf)
 {
-    g_print("Now toggling fullscreen: ");
     if (conf->mode & FULLSCREEN)
     {
-        g_print("Restoring\n");
         conf->mode = conf->mode & !FULLSCREEN;
         gtk_widget_show(conf->gtk_objects->toolbar);
         gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
         gtk_window_unfullscreen((GtkWindow*) conf->gtk_objects->main_window);
     } else {
-        g_print("Fullscreening\n");
         conf->mode = conf->mode | FULLSCREEN;
         gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
         gtk_widget_hide(conf->gtk_objects->toolbar);

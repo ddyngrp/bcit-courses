@@ -51,8 +51,8 @@
  */
 
 /* basic usage options */
-#define ENABLE(x,y)     x = x | y;
-#define DISABLE(x,y)    x = x & ~y;
+#define ENABLE(x,y)     x |= y;
+#define DISABLE(x,y)    x &= ~y;
 #define TOGGLE(x,y)     x = ((x & y) ? (x & ~y) : (x | y));
 
 /* browser statuses */

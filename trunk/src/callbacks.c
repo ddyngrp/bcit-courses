@@ -82,7 +82,7 @@ callback_back (GtkWidget* widget, gpointer data)
 void
 callback_forward (GtkWidget* widget, gpointer data)
 {
-    SPRY_CONF* conf = (SPRY_CONF*) data);
+    SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_forward(conf);
     if (conf->mode & CONTEXT)
     {

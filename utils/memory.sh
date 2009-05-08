@@ -1,6 +1,13 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo 1>&2 Usage: $0 [program name]
+	exit 127
+fi
+
 while true
 do    
-	memory=`ps -o vsz= -C spry`
+	memory=`ps -o vsz= -C $1`
 	if [ -n "$memory" ]
 	then
 		mem2="${memory} "

@@ -47,8 +47,10 @@ callback_destroy (GtkWidget* widget, gpointer data)
 void
 callback_minimize (GtkWidget* widget, gpointer data)
 {
-	gui_context ((SPRY_CONF*)data, TOGGLE);
-	/* TODO: replace: gui_minimize ((SPRY_CONF*)data); */
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    TOGGLE(conf->mode, MINIMIZE);
+    DISABLE(conf->mode, CONTEXT);
+    gui_apply_mode(conf);
 }
 
 /**
@@ -61,7 +63,13 @@ callback_minimize (GtkWidget* widget, gpointer data)
 void
 callback_back (GtkWidget* widget, gpointer data)
 {
-    browser_back((SPRY_CONF*) data);
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    browser_back(conf);
+    if (conf->mode & CONTEXT)
+    {
+        DISABLE(conf->mode, CONTEXT);
+        gui_apply_mode(conf);
+    }
 }
 
 /**
@@ -74,7 +82,13 @@ callback_back (GtkWidget* widget, gpointer data)
 void
 callback_forward (GtkWidget* widget, gpointer data)
 {
-    browser_forward((SPRY_CONF*) data);
+    SPRY_CONF* conf = (SPRY_CONF*) data);
+    browser_forward(conf);
+    if (conf->mode & CONTEXT)
+    {
+        DISABLE(conf->mode, CONTEXT);
+        gui_apply_mode(conf);
+    }
 }
 
 /**
@@ -87,7 +101,13 @@ callback_forward (GtkWidget* widget, gpointer data)
 void
 callback_home (GtkWidget* widget, gpointer data)
 {
-    browser_home((SPRY_CONF*) data);
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    browser_home(conf);
+    if (conf->mode & CONTEXT)
+    {
+        DISABLE(conf->mode, CONTEXT);
+        gui_apply_mode(conf);
+    }
 }
 
 /**
@@ -100,7 +120,10 @@ callback_home (GtkWidget* widget, gpointer data)
 void
 callback_fullscreen (GtkWidget* widget, gpointer data)
 {
-    gui_fullscreen((SPRY_CONF*) data);
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    TOGGLE(conf->mode, FULLSCREEN);
+    DISABLE(conf->mode, CONTEXT);
+    gui_apply_mode(conf);
 }
 
 /**
@@ -113,5 +136,23 @@ callback_fullscreen (GtkWidget* widget, gpointer data)
 void
 callback_context (GtkWidget* widget, gpointer data)
 {
-    gui_context((SPRY_CONF*) data, TOGGLE);
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    TOGGLE(conf->mode, CONTEXT);
+    gui_apply_mode(conf);
+}
+
+/**
+ * callback_toolbar:
+ * @widget: The widget that called the function
+ * @data: Spry Config Struct
+ *
+ * Called when the toolbar is toggled.
+ **/
+void
+callback_toolbar (GtkWidget* widget, gpointer data)
+{
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    TOGGLE(conf->mode, TOOLBAR);
+    DISABLE(conf->mode, CONTEXT);
+    gui_apply_mode(conf);
 }

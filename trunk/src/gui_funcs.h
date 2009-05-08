@@ -24,7 +24,6 @@
 
 #include "spry.h"
 
-void gui_fullscreen (SPRY_CONF* conf);
 void gui_minimize   (SPRY_CONF* conf);
 void gui_context    (SPRY_CONF* conf, int value);
 

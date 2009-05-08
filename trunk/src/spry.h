@@ -51,7 +51,9 @@
  */
 
 /* basic usage options */
-#define TOGGLE      -1
+#define ENABLE(x,y)     x = x | y;
+#define DISABLE(x,y)    x = x & ~y;
+#define TOGGLE(x,y)     x = ((x & y) ? (x & ~y) : (x | y));
 
 /* browser statuses */
 #define HAS_PAST    0x1
@@ -61,6 +63,7 @@
 #define FULLSCREEN  0x1
 #define TOOLBAR     0x2
 #define CONTEXT     0x4
+#define MINIMIZE    0x8
 
 /* features_enabled */
 #define FULLSCREEN_ENABLED      0x1
@@ -81,20 +84,6 @@ typedef struct _spry_gtk_objects {
 } SPRY_GTK_OBJECTS, *pSPRY_GTK_OBJECTS;
 
 /* Spry browser configuration */
-/*
-typedef struct _spry_conf {
-	char	*init_url;
-	int		fullscreen,
-			context_menu,
-			scrollbars,
-			resizable,
-			has_past,
-			has_future;
-	int		window_size[2];
-    SPRY_GTK_OBJECTS* gtk_objects;
-} SPRY_CONF, *pSPRY_CONF;
-*/
-
 typedef struct _spry_conf {
 	char	*init_url;
 	int		mode,

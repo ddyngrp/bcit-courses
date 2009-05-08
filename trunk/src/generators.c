@@ -94,23 +94,23 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
 {
     /* Declarations */
     GtkWidget*  toolbar_fullscreen;
-    GtkWidget*  fullscreen;
+    GtkWidget*  toolbar_button;
     
     /* Create buttons */
     toolbar_fullscreen  = gtk_hbox_new(TRUE, 0);
-    fullscreen          = gtk_button_new_with_label("[]");
+    toolbar_button      = gtk_button_new_with_label("[]");
     
     /* Add buttons to toolbar */
-    gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, fullscreen, TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, toolbar_button, TRUE, TRUE, 0);
     
     /* Configure objects */
-    gtk_widget_set_size_request (fullscreen, 10, 10);
+    gtk_widget_set_size_request (toolbar_button, 10, 10);
     
     /* Connect buttons to actions */
-	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (toolbar_button) , "clicked", G_CALLBACK (callback_toolbar)   , conf);
     
     /* show buttons */
-    gtk_widget_show(fullscreen);
+    gtk_widget_show(toolbar_button);
     
     /* Return toolbar */
     return toolbar_fullscreen;
@@ -129,53 +129,65 @@ generate_toolbar (SPRY_CONF* conf)
 {
     /* Declarations */
     GtkWidget*  toolbar;
-    GtkWidget*  back;
-    GtkWidget*  forward;
-    GtkWidget*  home;
-    GtkWidget*  fullscreen;
-    GtkWidget*  minimize;
-    GtkWidget*  close;
+    GtkWidget*  back_button;
+    GtkWidget*  forward_button;
+    GtkWidget*  home_button;
+    GtkWidget*  context_button;
+    GtkWidget*  toolbar_button;
+    GtkWidget*  fullscreen_button;
+    GtkWidget*  minimize_button;
+    GtkWidget*  close_button;
     
     /* Create buttons */
-    toolbar     = gtk_hbox_new(TRUE, 0);
-    back        = gtk_button_new();
-    forward     = gtk_button_new();
-    home        = gtk_button_new();
-    fullscreen  = gtk_button_new();
-    minimize    = gtk_button_new();
-    close       = gtk_button_new();
+    toolbar             = gtk_hbox_new(TRUE, 0);
+    back_button         = gtk_button_new();
+    forward_button      = gtk_button_new();
+    home_button         = gtk_button_new();
+    context_button      = gtk_button_new();
+    toolbar_button      = gtk_button_new();
+    fullscreen_button   = gtk_button_new();
+    minimize_button     = gtk_button_new();
+    close_button        = gtk_button_new();
     
     /* add images */
-    gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
-    gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
-    gtk_button_set_image((GtkButton*) home      , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
-    gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
-    gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
-    gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
+    gtk_button_set_image((GtkButton*) back_button       , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
+    gtk_button_set_image((GtkButton*) forward_button    , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) home_button       , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
+    gtk_button_set_image((GtkButton*) context_button    , (GtkWidget*) gtk_image_new_from_file("images/context.svg")    );
+    gtk_button_set_image((GtkButton*) fullscreen_button , (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
+    gtk_button_set_image((GtkButton*) toolbar_button    , (GtkWidget*) gtk_image_new_from_file("images/toolbar.svg")    );
+    gtk_button_set_image((GtkButton*) minimize_button   , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
+    gtk_button_set_image((GtkButton*) close_button      , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
     
     /* Add buttons to toolbar */
-    gtk_box_pack_start ((GtkBox*) toolbar, back         , TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, forward      , TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, home         , TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, fullscreen   , TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, minimize     , TRUE, TRUE, 0);
-    gtk_box_pack_start ((GtkBox*) toolbar, close        , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, back_button          , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, forward_button       , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, home_button          , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, context_button       , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, toolbar_button       , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, fullscreen_button    , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, minimize_button      , TRUE, TRUE, 0);
+    gtk_box_pack_start ((GtkBox*) toolbar, close_button         , TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
-	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
-	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
-	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)      , conf);
-	g_signal_connect (G_OBJECT (home)       , "clicked", G_CALLBACK (callback_home)         , conf);
-	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
-	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
+	g_signal_connect (G_OBJECT (fullscreen_button)  , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (back_button)        , "clicked", G_CALLBACK (callback_back)         , conf);
+	g_signal_connect (G_OBJECT (forward_button)     , "clicked", G_CALLBACK (callback_forward)      , conf);
+	g_signal_connect (G_OBJECT (context_button)     , "clicked", G_CALLBACK (callback_context)      , conf);
+	g_signal_connect (G_OBJECT (toolbar_button)     , "clicked", G_CALLBACK (callback_toolbar)      , conf);
+	g_signal_connect (G_OBJECT (home_button)        , "clicked", G_CALLBACK (callback_home)         , conf);
+	g_signal_connect (G_OBJECT (minimize_button)    , "clicked", G_CALLBACK (callback_minimize)     , conf);
+	g_signal_connect (G_OBJECT (close_button)       , "clicked", G_CALLBACK (callback_destroy)      , NULL);
     
     /* Show buttons */
-    gtk_widget_show(fullscreen);
-    gtk_widget_show(back);
-    gtk_widget_show(forward);
-    gtk_widget_show(home);
-    gtk_widget_show(minimize);
-    gtk_widget_show(close);
+    gtk_widget_show(fullscreen_button);
+    gtk_widget_show(back_button);
+    gtk_widget_show(forward_button);
+    gtk_widget_show(toolbar_button);
+    gtk_widget_show(context_button);
+    gtk_widget_show(home_button);
+    gtk_widget_show(minimize_button);
+    gtk_widget_show(close_button);
         
     /* Return toolbar */
     return toolbar;
@@ -194,53 +206,65 @@ generate_context_menu (SPRY_CONF* conf)
 {
     /* Declarations */
     GtkWidget*  menu;
-    GtkWidget*  back;
-    GtkWidget*  forward;
-    GtkWidget*  home;
-    GtkWidget*  fullscreen;
     GtkWidget*  minimize;
+    GtkWidget*  fullscreen;
     GtkWidget*  close;
+    GtkWidget*  back;
+    GtkWidget*  home;
+    GtkWidget*  forward;
+    GtkWidget*  toolbar;
+    GtkWidget*  context;
     
     /* Create buttons */
-    menu        = gtk_table_new(2, 3, TRUE);
-    back        = gtk_button_new();
-    forward     = gtk_button_new();
-    home        = gtk_button_new();
-    fullscreen  = gtk_button_new();
+    menu        = gtk_table_new(3, 3, TRUE);
     minimize    = gtk_button_new();
+    fullscreen  = gtk_button_new();
     close       = gtk_button_new();
+    back        = gtk_button_new();
+    home        = gtk_button_new();
+    forward     = gtk_button_new();
+    toolbar     = gtk_button_new();
+    context     = gtk_button_new();
     
     /* add images */
-    gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
-    gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
-    gtk_button_set_image((GtkButton*) home      , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
-    gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
     gtk_button_set_image((GtkButton*) minimize  , (GtkWidget*) gtk_image_new_from_file("images/minimize.svg")   );
+    gtk_button_set_image((GtkButton*) fullscreen, (GtkWidget*) gtk_image_new_from_file("images/fullscreen.svg") );
     gtk_button_set_image((GtkButton*) close     , (GtkWidget*) gtk_image_new_from_file("images/close.svg")      );
+    gtk_button_set_image((GtkButton*) back      , (GtkWidget*) gtk_image_new_from_file("images/back.svg")       );
+    gtk_button_set_image((GtkButton*) home      , (GtkWidget*) gtk_image_new_from_file("images/home.svg")       );
+    gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
+    gtk_button_set_image((GtkButton*) toolbar   , (GtkWidget*) gtk_image_new_from_file("images/toolbar.svg")    );
+    gtk_button_set_image((GtkButton*) context   , (GtkWidget*) gtk_image_new_from_file("images/context.svg")    );
     
     /* Add buttons to toolbar */
-    gtk_table_attach(GTK_TABLE (menu), back         , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), home         , 1, 2, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), forward      , 2, 3, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), minimize     , 0, 1, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), fullscreen   , 1, 2, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), close        , 2, 3, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), minimize     , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), fullscreen   , 1, 2, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), close        , 2, 3, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), back         , 0, 1, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), home         , 1, 2, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), forward      , 2, 3, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), toolbar      , 1, 2, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
+    gtk_table_attach(GTK_TABLE (menu), context      , 2, 3, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
     
     /* Connect buttons to actions */
+	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
 	g_signal_connect (G_OBJECT (fullscreen) , "clicked", G_CALLBACK (callback_fullscreen)   , conf);
+	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
 	g_signal_connect (G_OBJECT (back)       , "clicked", G_CALLBACK (callback_back)         , conf);
 	g_signal_connect (G_OBJECT (home)       , "clicked", G_CALLBACK (callback_home)         , conf);
-	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)     , conf);
-	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
-	g_signal_connect (G_OBJECT (close)      , "clicked", G_CALLBACK (callback_destroy)      , NULL);
+	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)      , conf);
+	g_signal_connect (G_OBJECT (toolbar)    , "clicked", G_CALLBACK (callback_toolbar)      , conf);
+	g_signal_connect (G_OBJECT (context)    , "clicked", G_CALLBACK (callback_context)      , conf);
     
     /* Show buttons */
+    gtk_widget_show(minimize);
     gtk_widget_show(fullscreen);
+    gtk_widget_show(close);
     gtk_widget_show(back);
     gtk_widget_show(home);
     gtk_widget_show(forward);
-    gtk_widget_show(minimize);
-    gtk_widget_show(close);
+    gtk_widget_show(fullscreen);
+    gtk_widget_show(context);
         
     /* Return toolbar */
     return menu;

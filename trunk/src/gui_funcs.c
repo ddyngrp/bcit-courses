@@ -23,62 +23,6 @@
 #include "gui_funcs.h"
 
 /**
- * gui_fullscreen:
- * @conf: Spry configuration struct
- *
- * Toggles fullscreen
- **/
-void
-gui_fullscreen (SPRY_CONF* conf)
-{
-    if (conf->mode & FULLSCREEN)
-    {
-        conf->mode = conf->mode & !FULLSCREEN;
-        gtk_widget_show(conf->gtk_objects->toolbar);
-        gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
-        gtk_window_unfullscreen((GtkWindow*) conf->gtk_objects->main_window);
-    } else {
-        conf->mode = conf->mode | FULLSCREEN;
-        gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
-        gtk_widget_hide(conf->gtk_objects->toolbar);
-        gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
-    }
-}
-
-/**
- * gui_minimize:
- * @conf: Spry configuration struct
- *
- * Toggles window minimize status
- **/
-void
-gui_minimize (SPRY_CONF* conf)
-{
-    g_print("Minimize\n");
-}
-
-/**
- * gui_context:
- * @conf: Spry configuration struct
- *
- * Toggles the context menu
- **/
-void
-gui_context (SPRY_CONF* conf, int value)
-{
-    if (conf->mode & CONTEXT)
-    {
-        gtk_widget_hide(conf->gtk_objects->context_menu);
-        gtk_widget_show(conf->gtk_objects->scrolled_window);
-        conf->mode = conf->mode & !CONTEXT;
-    } else {
-        gtk_widget_hide(conf->gtk_objects->scrolled_window);
-        gtk_widget_show(conf->gtk_objects->context_menu);
-        conf->mode = conf->mode | CONTEXT;
-    }
-}
-
-/**
  * gui_apply_mode:
  * @conf: Spry configuration struct
  * 
@@ -86,5 +30,39 @@ gui_context (SPRY_CONF* conf, int value)
  **/
 void
 gui_apply_mode (SPRY_CONF* conf) {
+    /* fullscreen */
+    if (conf->mode & FULLSCREEN)
+    {
+        gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
+    } else {
+        gtk_window_unfullscreen((GtkWindow*) conf->gtk_objects->main_window);
+    }
     
+    /* context menu */
+    if (conf->mode & CONTEXT)
+    {
+        gtk_widget_show(conf->gtk_objects->context_menu);
+        gtk_widget_hide(conf->gtk_objects->scrolled_window);
+    } else {
+        gtk_widget_show(conf->gtk_objects->scrolled_window);
+        gtk_widget_hide(conf->gtk_objects->context_menu);
+    }
+    
+    /* toolbar */
+    if (conf->mode & TOOLBAR)
+    {
+        gtk_widget_show(conf->gtk_objects->toolbar);
+        gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
+    } else {
+        gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
+        gtk_widget_hide(conf->gtk_objects->toolbar);
+    }
+    
+    /* minimize */
+    if (conf->mode & MINIMIZE)
+    {
+        g_print("minimized");
+    } else {
+        g_print("open");
+    }
 }

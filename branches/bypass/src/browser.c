@@ -22,6 +22,7 @@
 
 #include "spry.h"
 #include "browser.h"
+#include "webkit.h"
 
 /**
  * browser_open:
@@ -34,6 +35,7 @@ browser_open (SPRY_CONF* conf, char* url)
 {
 	g_print("Opening: %s\n", url);
     webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)url);
+	
     g_print("Opened\n");
 }
 

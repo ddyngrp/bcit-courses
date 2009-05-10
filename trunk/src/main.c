@@ -33,6 +33,7 @@
  *
  * Returns: %0 if the operation succeeded, else %1.
  **/
+
 int
 main (int argc, char *argv[])
 {

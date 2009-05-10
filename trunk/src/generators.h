@@ -30,4 +30,8 @@ GtkWidget*          generate_context_menu(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar_fullscreen(SPRY_CONF* conf);
 
+/* TODO: integrate the following functions into existing code. */
+static gboolean cb_expose( GtkWidget *draw, GdkEventExpose *event, gpointer data );
+void button_test();
+
 #endif

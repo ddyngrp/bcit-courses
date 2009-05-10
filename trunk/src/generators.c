@@ -235,6 +235,7 @@ generate_context_menu (SPRY_CONF* conf)
     gtk_button_set_image((GtkButton*) forward   , (GtkWidget*) gtk_image_new_from_file("images/forward.svg")    );
     gtk_button_set_image((GtkButton*) toolbar   , (GtkWidget*) gtk_image_new_from_file("images/toolbar.svg")    );
     gtk_button_set_image((GtkButton*) context   , (GtkWidget*) gtk_image_new_from_file("images/context.svg")    );
+    /* gtk_button_set_image((GtkButton*) app       , (GtkWidget*) gtk_image_new_from_file("images/app.svg")        ); */
     
     /* Add buttons to toolbar */
     gtk_table_attach(GTK_TABLE (menu), minimize     , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
@@ -295,4 +296,106 @@ generate_main_window (SPRY_CONF* conf)
     
     /* Return window */
     return main_window;
+}
+
+
+
+/**
+ * cb_expose:
+ * @draw: unused
+ * @event: event containing the window
+ * @data: filenumber
+ *
+ * Creates a resizable button.
+ * TODO: customize and make it our own
+ *
+ * Returns: FALSE.
+ **/
+static gboolean
+cb_expose( GtkWidget      *draw,
+		   GdkEventExpose *event,
+		   gpointer        data )
+{
+	gchar     *filename;
+	GdkPixbuf *pixbuf;
+	gint       pw, ph, dw, dh, x, y;
+	GError    *error = NULL;
+
+	/* Create filename from data */
+	filename = g_strdup_printf("images/icon%d.png", GPOINTER_TO_INT( data ));
+
+	/* Get drawing area dimensions */
+	gdk_drawable_get_size( GDK_DRAWABLE( event->window ), &dw, &dh );
+
+	/* Load pixbuf from file */
+	pixbuf = gdk_pixbuf_new_from_file_at_size( filename, dw, dh, &error );
+	g_free( filename );
+	if( error )
+	{
+		g_print( "Error: %s\n", error->message );
+		return( FALSE );
+	}
+
+	/* Calculate x and y position to center the image */
+	pw = gdk_pixbuf_get_width( pixbuf );
+	ph = gdk_pixbuf_get_height( pixbuf );
+	x = ( dw - pw ) / 2;
+	y = ( dh - ph ) / 2;
+
+	/* Draw pixbuf */
+	gdk_draw_pixbuf( GDK_DRAWABLE( event->window ), NULL, pixbuf, 0, 0,
+					 x, y, -1, -1, GDK_RGB_DITHER_NONE, 0, 0 );
+	g_object_unref( G_OBJECT( pixbuf ) );
+
+	return( FALSE );
+}
+
+
+/**
+ * button_test:
+ *
+ * Tests cb_expose.
+ * TODO: Integrate into toolbar and context generators.
+ **/
+void
+button_test()
+{
+	GtkWidget *window;
+	GtkWidget *table;
+	gint       i;
+
+	window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+	gtk_window_set_default_size( GTK_WINDOW( window ), 300, 300 );
+	g_signal_connect( G_OBJECT( window ), "destroy",
+					  G_CALLBACK( gtk_main_quit ), NULL );
+
+	table = gtk_table_new( 3, 3, TRUE );
+	gtk_container_add( GTK_CONTAINER( window ), table );
+
+	/* Create buttons */
+	for( i = 0; i < 3; i++ )
+	{
+		gint j;
+
+		for( j = 0; j < 3; j++ )
+		{
+			GtkWidget *button;
+			GtkWidget *draw;
+
+			button = gtk_button_new();
+			gtk_table_attach( GTK_TABLE( table ), button, j, j + 1, i, i + 1,
+				   			  GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND,
+							  0, 0 );
+
+			draw = gtk_drawing_area_new();
+			g_signal_connect( G_OBJECT( draw ), "expose-event",
+							  G_CALLBACK( cb_expose ),
+							  GINT_TO_POINTER( i * 3 + j ) );
+			gtk_container_add( GTK_CONTAINER( button ), draw );
+		}
+	}
+
+	/* Show everything */
+	gtk_widget_show_all( window );
+	gtk_main();
 }

@@ -8,13 +8,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="40"
+   height="57"
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="context.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
   <defs
      id="defs2385">
     <inkscape:perspective
@@ -41,8 +42,8 @@
      inkscape:grid-bbox="true"
      inkscape:window-width="1366"
      inkscape:window-height="724"
-     inkscape:window-x="0"
-     inkscape:window-y="25" />
+     inkscape:window-x="224"
+     inkscape:window-y="141" />
   <metadata
      id="metadata2388">
     <rdf:RDF>
@@ -59,30 +60,30 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
     <rect
-       style="fill:#000080;stroke:#000000;stroke-width:0.81876844000000004;stroke-opacity:1"
+       style="fill:#000080;stroke:#000000;stroke-width:0.81876844;stroke-opacity:1"
        id="rect3265"
        width="38.86425"
        height="7.569737"
-       x="12.401166"
-       y="4.9016428" />
+       x="0.40116596"
+       y="0.9016428" />
     <rect
        style="fill:#ffffff;stroke:#000000;stroke-width:0.98138434;stroke-opacity:1"
        id="rect3267"
        width="38.720654"
        height="47.206448"
-       x="12.473157"
-       y="13.150951" />
+       x="0.47315693"
+       y="9.1509514" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.95017135px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 12.061556,23.907042 L 51.52326,23.907042"
+       d="M 0.061556,19.907042 L 39.52326,19.907042"
        id="path3271" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94639212px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 12.077491,36.657901 L 51.225912,36.657901"
+       d="M 0.077491,32.657901 L 39.225912,32.657901"
        id="path3255" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94821197px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 12.097623,49.221245 L 51.396746,49.221245"
+       d="M 0.097623,45.221245 L 39.396746,45.221245"
        id="path3274" />
   </g>
 </svg>

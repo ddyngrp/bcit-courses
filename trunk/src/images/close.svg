@@ -8,13 +8,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="50"
+   height="48"
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
-   sodipodi:docname="home.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   sodipodi:docname="close.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
   <defs
      id="defs2385">
     <inkscape:perspective
@@ -34,15 +35,15 @@
      inkscape:pageshadow="2"
      inkscape:zoom="7.7781746"
      inkscape:cx="18.849346"
-     inkscape:cy="32.479973"
+     inkscape:cy="32.939623"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1600"
+     inkscape:window-width="1590"
      inkscape:window-height="825"
      inkscape:window-x="0"
-     inkscape:window-y="25" />
+     inkscape:window-y="40" />
   <metadata
      id="metadata2388">
     <rdf:RDF>
@@ -63,24 +64,24 @@
        id="rect3233"
        width="55.276196"
        height="11.564138"
-       x="14.860951"
-       y="-9.1987095"
+       x="7.8057332"
+       y="-7.7074375"
        transform="matrix(0.6993505,0.7147789,-0.7147789,0.6993505,0,0)" />
     <rect
        style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.99760526;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3235"
        width="12.858697"
        height="52.970936"
-       x="35.169746"
-       y="-29.330811"
+       x="28.114529"
+       y="-27.839539"
        transform="matrix(0.6993505,0.7147789,-0.7147789,0.6993505,0,0)" />
     <rect
        style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:1.02699995;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4821"
        width="30.212744"
        height="10.542316"
-       x="25.014227"
-       y="-8.6307621"
+       x="17.959009"
+       y="-7.1394901"
        transform="matrix(0.6993505,0.7147789,-0.7147789,0.6993505,0,0)" />
   </g>
 </svg>

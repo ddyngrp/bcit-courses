@@ -8,13 +8,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="62"
+   height="14"
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="toolbar.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
   <defs
      id="defs2385">
     <inkscape:perspective
@@ -32,17 +33,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="-1.5719592"
-     inkscape:cy="51.62002"
+     inkscape:zoom="11.313708"
+     inkscape:cx="39.387541"
+     inkscape:cy="18.224935"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="724"
+     inkscape:window-width="1600"
+     inkscape:window-height="845"
      inkscape:window-x="0"
-     inkscape:window-y="25" />
+     inkscape:window-y="24" />
   <metadata
      id="metadata2388">
     <rdf:RDF>
@@ -60,7 +61,7 @@
      inkscape:groupmode="layer">
     <g
        id="g3247"
-       transform="translate(-0.2071068,-0.381728)">
+       transform="translate(-1.4445437,-24.204951)">
       <rect
          y="25.225819"
          x="3.3950949"
@@ -91,7 +92,7 @@
     </g>
     <g
        id="g3255"
-       transform="translate(0.21875,-11.505204)">
+       transform="translate(-1.0186869,-35.328427)">
       <path
          id="path2469"
          d="M 6.3447573,40.88742 L 4.6458676,42.586309"
@@ -107,7 +108,7 @@
     </g>
     <g
        id="g3260"
-       transform="matrix(-1,0,0,1,24.086884,-11.5041)">
+       transform="matrix(-1,0,0,1,22.849447,-35.327323)">
       <path
          id="path3262"
          d="M 6.3447573,40.88742 L 4.6458676,42.586309"
@@ -123,7 +124,7 @@
     </g>
     <g
        id="g4641"
-       transform="matrix(1.3872643,0,0,1.3872643,-8.3898608,-35.601832)">
+       transform="matrix(1.3872643,0,0,1.3872643,-9.6272977,-59.425055)">
       <rect
          transform="matrix(0.7071068,0.7071068,-0.7071068,0.7071068,0,0)"
          y="14.516691"
@@ -150,7 +151,7 @@
     </g>
     <g
        id="g4649"
-       transform="translate(17.942835,-22.185475)">
+       transform="translate(16.705398,-46.008698)">
       <rect
          y="50.919392"
          x="25.364304"
@@ -168,7 +169,7 @@
     </g>
     <g
        id="g3302"
-       transform="translate(0.4116117,7.9267767)">
+       transform="translate(-0.8258252,-15.896447)">
       <g
          id="g3299">
         <path
@@ -183,7 +184,7 @@
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 33.4375,31.3125 L 39.0625,31.3125"
+       d="M 32.200063,7.489277 L 37.825063,7.489277"
        id="path3307" />
   </g>
 </svg>

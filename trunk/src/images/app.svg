@@ -8,13 +8,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="47"
+   height="57"
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="app.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
   <defs
      id="defs2385">
     <inkscape:perspective
@@ -34,7 +35,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="5.5"
      inkscape:cx="32"
-     inkscape:cy="24.727273"
+     inkscape:cy="18.954412"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -60,14 +61,14 @@
      inkscape:groupmode="layer">
     <text
        xml:space="preserve"
-       style="font-size:106.96593475000000240px;font-style:normal;font-weight:normal;fill:#800080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-       x="3.4411573"
-       y="63.72514"
+       style="font-size:106.96593475px;font-style:normal;font-weight:normal;fill:#800080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="-5.9818487"
+       y="59.480213"
        id="text2393"
        transform="scale(1.0612325,0.9423006)"><tspan
          sodipodi:role="line"
          id="tspan2395"
-         x="3.4411573"
-         y="63.72514">s</tspan></text>
+         x="-5.9818487"
+         y="59.480213">s</tspan></text>
   </g>
 </svg>

@@ -8,13 +8,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="62"
+   height="31"
    id="svg2383"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="minimize.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
   <defs
      id="defs2385">
     <inkscape:perspective
@@ -41,8 +42,8 @@
      inkscape:grid-bbox="true"
      inkscape:window-width="1366"
      inkscape:window-height="724"
-     inkscape:window-x="0"
-     inkscape:window-y="21" />
+     inkscape:window-x="188"
+     inkscape:window-y="104" />
   <metadata
      id="metadata2388">
     <rdf:RDF>
@@ -59,11 +60,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
     <rect
-       style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.84768629px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.54635406px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="rect2393"
-       width="57.749374"
-       height="12.623105"
-       x="3.3950949"
-       y="25.225819" />
+       width="48.536907"
+       height="6.2390642"
+       x="2.2159097"
+       y="21.589411" />
   </g>
 </svg>

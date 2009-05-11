@@ -205,7 +205,6 @@ generate_context_menu (SPRY_CONF* conf)
     GtkWidget*  forward;
     GtkWidget*  toolbar;
     GtkWidget*  context;
-    GtkWidget*  app;
     
     /* Create buttons */
     menu        = gtk_table_new(3, 3, TRUE);
@@ -217,7 +216,6 @@ generate_context_menu (SPRY_CONF* conf)
     forward     = generate_button("forward");
     toolbar     = generate_button("toolbar");
     context     = generate_button("context");
-    app         = generate_button("app");
     
     /* Add buttons to toolbar */
     gtk_table_attach(GTK_TABLE (menu), minimize     , 0, 1, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
@@ -228,7 +226,6 @@ generate_context_menu (SPRY_CONF* conf)
     gtk_table_attach(GTK_TABLE (menu), forward      , 2, 3, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
     gtk_table_attach(GTK_TABLE (menu), toolbar      , 1, 2, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
     gtk_table_attach(GTK_TABLE (menu), context      , 2, 3, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
-    gtk_table_attach(GTK_TABLE (menu), app          , 0, 1, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
     
     /* Connect buttons to actions */
 	g_signal_connect (G_OBJECT (minimize)   , "clicked", G_CALLBACK (callback_minimize)     , conf);
@@ -239,7 +236,6 @@ generate_context_menu (SPRY_CONF* conf)
 	g_signal_connect (G_OBJECT (forward)    , "clicked", G_CALLBACK (callback_forward)      , conf);
 	g_signal_connect (G_OBJECT (toolbar)    , "clicked", G_CALLBACK (callback_toolbar)      , conf);
 	g_signal_connect (G_OBJECT (context)    , "clicked", G_CALLBACK (callback_context)      , conf);
-	g_signal_connect (G_OBJECT (app)        , "clicked", G_CALLBACK (callback_destroy)      , conf);
     
     /* Show buttons */
     gtk_widget_show(minimize);
@@ -250,7 +246,6 @@ generate_context_menu (SPRY_CONF* conf)
     gtk_widget_show(forward);
     gtk_widget_show(fullscreen);
     gtk_widget_show(context);
-    gtk_widget_show(app);
         
     /* Return toolbar */
     return menu;

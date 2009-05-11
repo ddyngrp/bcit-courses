@@ -89,7 +89,9 @@ typedef struct _spry_conf {
 	int		mode,
             features,
             browser_status;
-	int		window_size[2];
+	int		window_size[2],
+			toolbar_height,
+			toolbar_fullscreen_height;
     SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
 

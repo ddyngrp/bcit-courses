@@ -47,8 +47,8 @@ generate_gui (SPRY_CONF* conf)
 	gtk_objects->web_view           = WEBKIT_WEB_VIEW (webkit_web_view_new ());
     
     /* resize elements */
-    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 10, 10);
-    gtk_widget_set_size_request (gtk_objects->toolbar, 30, 30);
+    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 0, conf->toolbar_fullscreen_height);
+    gtk_widget_set_size_request (gtk_objects->toolbar, 0, conf->toolbar_height);
     
     /* Configure scrolled window */
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -102,7 +102,7 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     
     /* Create buttons */
     toolbar_fullscreen  = gtk_hbox_new(TRUE, 0);
-    toolbar_button      = gtk_button_new_with_label("[]");
+    toolbar_button      = generate_button("toolbar");
     
     /* Add buttons to toolbar */
     gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, toolbar_button, TRUE, TRUE, 0);

@@ -22,6 +22,7 @@
 #include "spry.h"
 #include "cliopts.h"
 #include "generators.h"
+#include "callbacks.h"
 
 /**
  * main:
@@ -57,6 +58,7 @@ main (int argc, char *argv[])
     
     /* Create the GUI (main window) */
     conf->gtk_objects = generate_gui(conf);
+    gui_apply_mode(conf);
 	
 	/* load the web page */
     browser_open(conf, (gchar*)conf->init_url);

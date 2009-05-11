@@ -47,8 +47,8 @@ generate_gui (SPRY_CONF* conf)
 	gtk_objects->web_view           = WEBKIT_WEB_VIEW (webkit_web_view_new ());
     
     /* resize elements */
-    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 0, conf->toolbar_fullscreen_height);
-    gtk_widget_set_size_request (gtk_objects->toolbar, 0, conf->toolbar_height);
+    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 10, conf->toolbar_fullscreen_height);
+    gtk_widget_set_size_request (gtk_objects->toolbar, 10, conf->toolbar_height);
     
     /* Configure scrolled window */
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -64,22 +64,6 @@ generate_gui (SPRY_CONF* conf)
     /* show objects */
 	gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
 	gtk_widget_show_all (gtk_objects->main_window);
-    
-    /* detect fullscreen mode */
-    if (conf->mode & FULLSCREEN)
-    {
-        gtk_widget_hide (gtk_objects->toolbar);
-    } else {
-        gtk_widget_hide (gtk_objects->toolbar_fullscreen);
-    }
-    
-    /* detect context_menu mode */
-    if (conf->mode & CONTEXT)
-    {
-        gtk_widget_hide (gtk_objects->scrolled_window);
-    } else {
-        gtk_widget_hide (gtk_objects->context_menu);
-    }
     
     /* return gtk_objects */
     return gtk_objects;
@@ -108,7 +92,7 @@ generate_toolbar_fullscreen (SPRY_CONF* conf)
     gtk_box_pack_start ((GtkBox*) toolbar_fullscreen, toolbar_button, TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
-	g_signal_connect (G_OBJECT (toolbar_button) , "clicked", G_CALLBACK (callback_toolbar)   , conf);
+	g_signal_connect (G_OBJECT (toolbar_button)     , "clicked"     , G_CALLBACK (callback_toolbar)   , conf);
     
     /* show buttons */
     gtk_widget_show(toolbar_button);

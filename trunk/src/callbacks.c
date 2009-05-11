@@ -156,3 +156,16 @@ callback_toolbar (GtkWidget* widget, gpointer data)
     DISABLE(conf->mode, CONTEXT);
     gui_apply_mode(conf);
 }
+
+/**
+ * callback_ignores:
+ * @widget: The widget that called the function
+ * @data: Spry Config Struct
+ *
+ * Ignores a signal (basically mutes it).
+ **/
+void
+callback_ignore (GtkWidget* widget, gpointer data)
+{
+    g_print("signal ignored\n");
+}

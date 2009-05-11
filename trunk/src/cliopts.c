@@ -145,13 +145,14 @@ parse_args (int argc, char *argv[])
 void
 init_spry_conf (SPRY_CONF* conf)
 {
-	conf->init_url          = "http://www.google.ca";
-    conf->features          = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED;
-    conf->mode              = TOOLBAR;
-    conf->browser_status    = 0;
-	conf->window_size[0]    = 320;
-	conf->window_size[1]    = 240;
-    conf->toolbar_height    = 30;
+	conf->init_url                  = "http://www.google.ca";
+    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED;
+    conf->mode                      = TOOLBAR;
+    conf->browser_status            = 0;
+	conf->window_size[0]            = 320;
+	conf->window_size[1]            = 240;
+    conf->toolbar_height            = 30;
+    conf->toolbar_fullscreen_height = 10;
 }
 
 /**
@@ -170,17 +171,17 @@ spry_usage (char* command, int err)
 		g_print ("Spry - Gtk+ WebKit Browser Version %s\n\n", VERSION);
 		g_print ("usage: spry [arguments]\n\n");
 		g_print ("Arguments:\n");
-		g_print ("  -u  or  --url\t\t\t\tThe URL of the website to load\n");
-		g_print ("  -f  or  --fullscreen\t\t\tEnable fullscreen mode\n");
-		g_print ("  -c  or  --no-context-menu\t\tDisable context menu\n");
-		g_print ("  -s  or  --no-scrollbars\t\tDisable scrollbars\n");
-		g_print ("  -t  [size] or  --toolbar-height [size]\t\tSet the height of the toolbar\n");
-		g_print ("  -T  [size] or  --toolbar-fullscreen-height [size]\t\tSet the height of the fullscreen toolbar\n");
-		g_print ("  -z  or  --fixed-size\t\t\tDisable resizing\n");
-		g_print ("  -x [size]  or  --width [size]\t\tSet the width of the window\n");
-		g_print ("  -y [size]  or  --height [size]\tSet the height of the window\n");
-		g_print ("  -h  or  --help\t\t\tPrints out this screen\n");
-		g_print ("  -v  or  --version\t\t\tPrints out version information\n");
+		g_print ("  -u\t\tor\t--url\t\t\t\t\tThe URL of the website to load\n");
+		g_print ("  -f\t\tor\t--fullscreen\t\t\t\tEnable fullscreen mode\n");
+		g_print ("  -c\t\tor\t--no-context-menu\t\t\tDisable context menu\n");
+		g_print ("  -s\t\tor\t--no-scrollbars\t\t\t\tDisable scrollbars\n");
+		g_print ("  -t [size]\tor\t--toolbar-height [size]\t\t\tSet the height of the toolbar\n");
+		g_print ("  -T [size]\tor\t--toolbar-fullscreen-height [size]\tSet the height of the fullscreen toolbar\n");
+		g_print ("  -z\t\tor\t--fixed-size\t\t\t\tDisable resizing\n");
+		g_print ("  -x [size]\tor\t--width [size]\t\t\t\tSet the width of the window\n");
+		g_print ("  -y [size]\tor\t--height [size]\t\t\t\tSet the height of the window\n");
+		g_print ("  -h\t\tor\t--help\t\t\t\t\tPrints out this screen\n");
+		g_print ("  -v\t\tor\t--version\t\t\t\tPrints out version information\n");
 	}
 	else if (err == OPTS_ERROR)
 	{

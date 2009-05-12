@@ -61,8 +61,7 @@ gui_apply_mode (SPRY_CONF* conf) {
     /* minimize */
     if (conf->mode & MINIMIZE)
     {
-        g_print("minimized\n");
-    } else {
-        g_print("open\n");
+        gtk_window_iconify((GtkWindow*) conf->gtk_objects->main_window);
+        DISABLE(conf->mode, MINIMIZE);
     }
 }

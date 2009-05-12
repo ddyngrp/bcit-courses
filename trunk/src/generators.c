@@ -46,6 +46,9 @@ generate_gui (SPRY_CONF* conf)
     gtk_objects->scrolled_window    = gtk_scrolled_window_new (NULL, NULL);
 	gtk_objects->web_view           = WEBKIT_WEB_VIEW (webkit_web_view_new ());
     
+    /* configure window */
+    gtk_window_set_icon_from_file((GtkWindow*) gtk_objects->main_window, "images/app.svg", NULL);
+    
     /* resize elements */
     gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 10, conf->toolbar_fullscreen_height);
     gtk_widget_set_size_request (gtk_objects->toolbar, 10, conf->toolbar_height);

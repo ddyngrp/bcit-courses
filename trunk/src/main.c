@@ -58,13 +58,15 @@ main (int argc, char *argv[])
     
     /* Create the GUI (main window) */
     conf->gtk_objects = generate_gui(conf);
+    
+    /* apply gui settings */
     gui_apply_mode(conf);
 	
 	/* load the web page */
     browser_open(conf, (gchar*)conf->init_url);
 
 	/* Start GTK */
-	gtk_main ();
+	gtk_main();
 
 	/* done */
 	return 0;

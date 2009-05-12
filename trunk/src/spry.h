@@ -50,6 +50,12 @@
  * This holds all command-line option settings as well as general configuration
  */
 
+/* defaults */
+#define DEFAULT_TOOLBAR_HEIGHT 30;
+#define DEFAULT_TOOLBAR_FULLSCREEN_HEIGHT 10;
+#define DEFAULT_WIDTH 320;
+#define DEFAULT_HEIGHT 240;
+
 /* basic usage options */
 #define ENABLE(x,y)     x |= y;
 #define DISABLE(x,y)    x &= ~y;

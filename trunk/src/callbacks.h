@@ -22,6 +22,8 @@
 #ifndef _CALLBACKS_H
 #define _CALLBACKS_H
 
+#include "spry.h"
+
 void callback_destroy       (GtkWidget* widget, gpointer data);
 void callback_minimize      (GtkWidget* widget, gpointer data);
 void callback_back          (GtkWidget* widget, gpointer data);
@@ -32,5 +34,6 @@ void callback_forward       (GtkWidget* widget, gpointer data);
 void callback_context       (GtkWidget* widget, gpointer data);
 void callback_toolbar       (GtkWidget* widget, gpointer data);
 void callback_ignore        (GtkWidget* widget, gpointer data);
+gboolean cb_expose( GtkWidget *draw, GdkEventExpose *event, char* icon_name );
 
 #endif

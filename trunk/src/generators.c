@@ -265,59 +265,6 @@ generate_main_window (SPRY_CONF* conf)
     return main_window;
 }
 
-
-
-/**
- * cb_expose:
- * @draw: unused
- * @event: event containing the window
- * @icon_name: icon filename.
- *
- * Creates a resizable button.
- * TODO: customize and make it our own
- *
- * Returns: FALSE.
- **/
-static gboolean
-cb_expose( GtkWidget*      draw,
-		   GdkEventExpose*  event,
-		   char*            icon_name )
-{
-    /* declarations */
-	gchar     *filename;
-	GdkPixbuf *pixbuf;
-	gint       pw, ph, dw, dh, x, y;
-	GError    *error = NULL;
-
-	/* Create filename from data */
-	filename = g_strdup_printf("images/%s.svg", icon_name);
-
-	/* Get drawing area dimensions */
-	gdk_drawable_get_size( GDK_DRAWABLE( event->window ), &dw, &dh );
-
-	/* Load pixbuf from file */
-	pixbuf = gdk_pixbuf_new_from_file_at_size( filename, dw, dh, &error );
-	g_free( filename );
-	if( error )
-	{
-		g_print( "Error: %s\n", error->message );
-		return( FALSE );
-	}
-
-	/* Calculate x and y position to center the image */
-	pw = gdk_pixbuf_get_width( pixbuf );
-	ph = gdk_pixbuf_get_height( pixbuf );
-	x = ( dw - pw ) / 2;
-	y = ( dh - ph ) / 2;
-
-	/* Draw pixbuf */
-	gdk_draw_pixbuf( GDK_DRAWABLE( event->window ), NULL, pixbuf, 0, 0,
-					 x, y, -1, -1, GDK_RGB_DITHER_NONE, 0, 0 );
-	g_object_unref( G_OBJECT( pixbuf ) );
-
-	return( FALSE );
-}
-
 /**
  * generate_button:
  * @icon_name: icon filename

@@ -31,7 +31,4 @@ GtkWidget*          generate_toolbar(SPRY_CONF* conf);
 GtkWidget*          generate_toolbar_fullscreen(SPRY_CONF* conf);
 GtkWidget*          generate_button(char* icon_name);
 
-/* TODO: integrate the following functions into existing code. */
-void button_test();
-
 #endif

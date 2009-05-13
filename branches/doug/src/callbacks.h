@@ -22,6 +22,8 @@
 #ifndef _CALLBACKS_H
 #define _CALLBACKS_H
 
+#include "spry.h"
+
 void callback_destroy       (GtkWidget* widget  , gpointer data);
 void callback_minimize      (GtkWidget* widget  , gpointer data);
 void callback_back          (GtkWidget* widget  , gpointer data);

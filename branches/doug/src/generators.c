@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "generators.h"
 #include "callbacks.h"
+#include "generators.h"
 #include "spry.h"
 
 /**

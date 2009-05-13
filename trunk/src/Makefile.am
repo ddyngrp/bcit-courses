@@ -28,9 +28,6 @@ spry_SOURCES = \
 	gui_funcs.c \
 	gui_funcs.h
 
-spry_CFLAGS = \
-	-static
-
 spry_LDFLAGS = \
 	-Wl,--export-dynamic
 

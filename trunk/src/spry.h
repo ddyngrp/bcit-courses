@@ -60,6 +60,8 @@
 #define ENABLE(x,y)     x |= y;
 #define DISABLE(x,y)    x &= ~y;
 #define TOGGLE(x,y)     x = ((x & y) ? (x & ~y) : (x | y));
+#define ENABLED(x, y)   (x & y)   
+#define DISABLED(x,y)   (!(x & y))
 
 /* browser statuses */
 #define HAS_PAST    0x1

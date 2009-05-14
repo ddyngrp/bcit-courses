@@ -31,7 +31,7 @@
 void
 gui_apply_mode (SPRY_CONF* conf) {
     /* fullscreen */
-    if (conf->mode & FULLSCREEN)
+    if (ENABLED(conf->mode, FULLSCREEN))
     {
         gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
     } else {
@@ -39,7 +39,7 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* context menu */
-    if (conf->mode & CONTEXT)
+    if (ENABLED(conf->mode, CONTEXT))
     {
         gtk_widget_show(conf->gtk_objects->context_menu);
         gtk_widget_hide(conf->gtk_objects->scrolled_window);
@@ -49,7 +49,7 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* toolbar */
-    if (conf->mode & TOOLBAR)
+    if (ENABLED(conf->mode, TOOLBAR) && DISABLED(conf->mode, CONTEXT))
     {
         gtk_widget_show(conf->gtk_objects->toolbar);
         gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
@@ -59,7 +59,7 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* minimize */
-    if (conf->mode & MINIMIZE)
+    if (ENABLED(conf->mode, MINIMIZE))
     {
         gtk_window_iconify((GtkWindow*) conf->gtk_objects->main_window);
         DISABLE(conf->mode, MINIMIZE);

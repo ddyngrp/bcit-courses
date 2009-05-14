@@ -23,6 +23,8 @@
 #include "cliopts.h"
 #include "generators.h"
 #include "callbacks.h"
+#include "gui_funcs.h"
+#include "browser.h"
 
 /**
  * main:

@@ -172,7 +172,7 @@ callback_ignore (GtkWidget* widget, gpointer data)
 
 
 /**
- * cb_expose:
+ * event_button_expose:
  * @draw: unused
  * @event: event containing the window
  * @icon_name: icon filename.
@@ -183,7 +183,7 @@ callback_ignore (GtkWidget* widget, gpointer data)
  * Returns: FALSE.
  **/
 gboolean
-cb_expose( GtkWidget*      draw,
+event_button_expose( GtkWidget*      draw,
 		   GdkEventExpose*  event,
 		   char*            icon_name )
 {

@@ -271,7 +271,7 @@ generate_main_window (SPRY_CONF* conf)
  *
  * Creates a resizable button.
  *
- * Returns: FALSE.
+ * Returns: The button.
  */
 GtkWidget*
 generate_button(char* icon_name)
@@ -287,7 +287,7 @@ generate_button(char* icon_name)
     draw = gtk_drawing_area_new();
     
     /* tell gtk to re-draw the icon when the button changes */
-    g_signal_connect(G_OBJECT(draw), "expose-event", G_CALLBACK(cb_expose), icon_name);
+    g_signal_connect(G_OBJECT(draw), "expose-event", G_CALLBACK(event_button_expose), icon_name);
     
     /* add the drawing area to the button */
     gtk_container_add(GTK_CONTAINER(button), draw);

@@ -14,6 +14,7 @@
 
 @SET_MAKE@
 
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
@@ -42,7 +43,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = "$(DESTDIR)$(bindir)"
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(imagesdir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_spry_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT) cliopts.$(OBJEXT) \
@@ -67,6 +68,14 @@ LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(spry_SOURCES)
 DIST_SOURCES = $(spry_SOURCES)
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
+imagesDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(images_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -213,7 +222,25 @@ spry_LDFLAGS = \
 	-Wl,--export-dynamic
 
 spry_LDADD = $(SPRY_LIBS)
-EXTRA_DIST = $(glade_DATA)
+EXTRA_DIST = $(glade_DATA) \
+	$(images_DATA)
+
+images_DATA = \
+	images/toolbar.svg\
+	images/app.svg \
+	images/back.svg \
+	images/back_disable.svg \
+	images/close.svg \
+	images/context.svg \
+	images/forward.svg \
+	images/forward_disable.svg \
+	images/fullscreen.svg \
+	images/home.svg \
+	images/minimize.svg
+
+imagesdir = \
+	$(pkgdatadir)
+
 all: all-am
 
 .SUFFIXES:
@@ -318,6 +345,23 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+install-imagesDATA: $(images_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(imagesdir)" || $(MKDIR_P) "$(DESTDIR)$(imagesdir)"
+	@list='$(images_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(imagesDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(imagesdir)/$$f'"; \
+	  $(imagesDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(imagesdir)/$$f"; \
+	done
+
+uninstall-imagesDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(images_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(imagesdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(imagesdir)/$$f"; \
+	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -394,9 +438,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS)
+all-am: Makefile $(PROGRAMS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(imagesdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -443,7 +487,7 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-imagesDATA
 
 install-dvi: install-dvi-am
 
@@ -479,7 +523,8 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-local
+uninstall-am: uninstall-binPROGRAMS uninstall-imagesDATA \
+	uninstall-local
 
 .MAKE: install-am install-strip
 
@@ -489,13 +534,14 @@ uninstall-am: uninstall-binPROGRAMS uninstall-local
 	dvi-am html html-am info info-am install install-am \
 	install-binPROGRAMS install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
-	pdf pdf-am ps ps-am tags uninstall uninstall-am \
-	uninstall-binPROGRAMS uninstall-local
+	install-html-am install-imagesDATA install-info \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-binPROGRAMS \
+	uninstall-imagesDATA uninstall-local
 
 
 # Remove glade directory on uninstall

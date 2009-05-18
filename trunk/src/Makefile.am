@@ -33,7 +33,24 @@ spry_LDFLAGS = \
 
 spry_LDADD = $(SPRY_LIBS)
 
-EXTRA_DIST = $(glade_DATA)
+EXTRA_DIST = $(glade_DATA) \
+	$(images_DATA)
+
+images_DATA = \
+	images/toolbar.svg\
+	images/app.svg \
+	images/back.svg \
+	images/back_disable.svg \
+	images/close.svg \
+	images/context.svg \
+	images/forward.svg \
+	images/forward_disable.svg \
+	images/fullscreen.svg \
+	images/home.svg \
+	images/minimize.svg
+
+imagesdir = \
+	$(pkgdatadir)
 
 # Remove glade directory on uninstall
 uninstall-local:

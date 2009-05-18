@@ -60,17 +60,15 @@ generate_gui (SPRY_CONF* conf)
 	
 	/* web view */
     gtk_objects->web_view = WEBKIT_WEB_VIEW (webkit_web_view_new());
+		gtk_objects->web_view_container = gtk_scrolled_window_new (NULL, NULL);
 	if (ENABLED(conf->features, SCROLLBARS_ENABLED))
 	{
-		gtk_objects->web_view_container = gtk_scrolled_window_new (NULL, NULL);
 		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-		gtk_container_add (GTK_CONTAINER (gtk_objects->web_view_container) , GTK_WIDGET (gtk_objects->web_view));
-		gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);
-		
 	} else {
-		gtk_objects->web_view_container = (GtkWidget*) gtk_objects->web_view;
-		gtk_box_pack_start((GtkBox*) gtk_objects->v_box, (GtkWidget*) gtk_objects->web_view, TRUE , TRUE , 0);
+		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 	}
+	gtk_container_add (GTK_CONTAINER (gtk_objects->web_view_container) , GTK_WIDGET (gtk_objects->web_view));
+	gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);
     /* show objects */
     gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
     gtk_widget_show_all (gtk_objects->main_window);
@@ -260,7 +258,7 @@ generate_main_window (SPRY_CONF* conf)
     GtkWidget* main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     
     /* Resize the window */
-    gtk_window_resize(GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
+    gtk_window_set_default_size(GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
 	if (DISABLED(conf->features, RESIZE_ENABLED))
 		gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
     

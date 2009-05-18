@@ -207,7 +207,7 @@ event_button_expose(GtkWidget*  draw,
     GError*    error = NULL;
 
     /* Create filename from data */
-    filename = g_strdup_printf("images/%s.svg", icon_name);
+    filename = g_strdup_printf("spry/%s.svg", icon_name);
 
     /* Get drawing area dimensions */
     gdk_drawable_get_size(GDK_DRAWABLE( event->window ), &dw, &dh);

@@ -22,8 +22,10 @@
 #ifndef _GUI_FUNCS_H
 #define _GUI_FUNCS_H
 
+#include "config.h"
+
 #include "spry.h"
 
-void gui_apply_mode (SPRY_CONF* conf);
+void gui_apply_mode (SPRY_CONF*);
 
 #endif

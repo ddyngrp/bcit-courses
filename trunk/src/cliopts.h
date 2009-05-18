@@ -22,12 +22,13 @@
 #ifndef _CLIOPTS_H_
 #define _CLIOPTS_H_
 
+#include "spry.h"
 #include <getopt.h>
 
-#define OPTS_HELP		0
-#define OPTS_ERROR		1
+#define OPTS_HELP   0
+#define OPTS_ERROR  1
 
-SPRY_CONF* parse_args (int argc, char *argv[]);
+SPRY_CONF* parse_args (int argc, char*[]);
 void init_spry_conf (SPRY_CONF* conf);
 void spry_usage (char* command, int err);
 

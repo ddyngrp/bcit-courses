@@ -22,21 +22,23 @@
 #ifndef _CALLBACKS_H
 #define _CALLBACKS_H
 
+#include "config.h"
+
 #include "spry.h"
 
 /* signal callbacks */
-void callback_destroy       (GtkWidget* widget, gpointer data);
-void callback_minimize      (GtkWidget* widget, gpointer data);
-void callback_back          (GtkWidget* widget, gpointer data);
-void callback_home          (GtkWidget* widget, gpointer data);
-void callback_forward       (GtkWidget* widget, gpointer data);
-void callback_fullscreen    (GtkWidget* widget, gpointer data);
-void callback_forward       (GtkWidget* widget, gpointer data);
-void callback_context       (GtkWidget* widget, gpointer data);
-void callback_toolbar       (GtkWidget* widget, gpointer data);
-void callback_ignore        (GtkWidget* widget, gpointer data);
+void callback_destroy       (GtkWidget*, gpointer);
+void callback_minimize      (GtkWidget*, gpointer);
+void callback_back          (GtkWidget*, gpointer);
+void callback_home          (GtkWidget*, gpointer);
+void callback_forward       (GtkWidget*, gpointer);
+void callback_fullscreen    (GtkWidget*, gpointer);
+void callback_forward       (GtkWidget*, gpointer);
+void callback_context       (GtkWidget*, gpointer);
+void callback_toolbar       (GtkWidget*, gpointer);
+void callback_ignore        (GtkWidget*, gpointer);
 
 /* event callbacks */
-gboolean event_button_expose(GtkWidget *draw, GdkEventExpose *event, char* icon_name );
+gboolean event_button_expose(GtkWidget*, GdkEventExpose*, char*);
 
 #endif

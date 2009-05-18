@@ -19,12 +19,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "spry.h"
+#include "config.h"
+
+#include "browser.h"
+#include "callbacks.h"
 #include "cliopts.h"
 #include "generators.h"
-#include "callbacks.h"
 #include "gui_funcs.h"
-#include "browser.h"
+#include "spry.h"
 
 /**
  * main:
@@ -38,38 +40,38 @@
  **/
 
 int
-main (int argc, char *argv[])
+main(int argc, char *argv[])
 {
     /* Declare conf struct */
-	SPRY_CONF*		conf;
+    SPRY_CONF* conf;
 
-	/* sets the gtk locale for the current system */
-	gtk_set_locale ();
+    /* sets the gtk locale for the current system */
+    gtk_set_locale();
 
-	/* grap gtk-specific arguments and apply accordingly */
-	gtk_init (&argc, &argv);
+    /* grap gtk-specific arguments and apply accordingly */
+    gtk_init(&argc, &argv);
 
-	/* check for g_thread support */
-	if (!g_thread_supported ())
+    /* check for g_thread support */
+    if (!g_thread_supported ())
     {
-		g_thread_init (NULL);
-	}
-	
-	/* parse command line arguments and return the initial struct */
-	conf = parse_args(argc, argv);
+        g_thread_init(NULL);
+    }
+    
+    /* parse command line arguments and return the initial struct */
+    conf = parse_args(argc, argv);
     
     /* Create the GUI (main window) */
     conf->gtk_objects = generate_gui(conf);
     
     /* apply gui settings */
     gui_apply_mode(conf);
-	
-	/* load the web page */
+    
+    /* load the web page */
     browser_open(conf, (gchar*)conf->init_url);
 
-	/* Start GTK */
-	gtk_main();
+    /* Start GTK */
+    gtk_main();
 
-	/* done */
-	return 0;
+    /* done */
+    return 0;
 }

@@ -22,6 +22,8 @@
 #ifndef _SPRY_H_
 #define _SPRY_H_
 
+#include "config.h"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -93,13 +95,13 @@ typedef struct _spry_gtk_objects {
 
 /* Spry browser configuration */
 typedef struct _spry_conf {
-	char	*init_url;
-	int		mode,
+    char    *init_url;
+    int     mode,
             features,
             browser_status;
-	int		window_size[2],
-			toolbar_height,
-			toolbar_fullscreen_height;
+    int     window_size[2],
+            toolbar_height,
+            toolbar_fullscreen_height;
     SPRY_GTK_OBJECTS* gtk_objects;
 } SPRY_CONF, *pSPRY_CONF;
 

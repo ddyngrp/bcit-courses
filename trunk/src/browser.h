@@ -22,6 +22,7 @@
 #ifndef _BROWSER_H
 #define _BROWSER_H
 
+#include "config.h"
 #include "spry.h"
 
 void browser_open (SPRY_CONF* conf, gchar* url);

@@ -139,8 +139,11 @@ void
 callback_context (GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-    TOGGLE(conf->mode, CONTEXT);
-    gui_apply_mode(conf);
+	if (ENABLED(conf->features, CONTEXT))
+	{
+		TOGGLE(conf->mode, CONTEXT);
+		gui_apply_mode(conf);
+	}
 }
 
 /**
@@ -154,9 +157,17 @@ void
 callback_toolbar (GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-    TOGGLE(conf->mode, TOOLBAR);
-    DISABLE(conf->mode, CONTEXT);
-    gui_apply_mode(conf);
+	if (ENABLED(conf->features, TOOLBAR_ENABLED))
+	{
+		TOGGLE(conf->mode, TOOLBAR);
+		DISABLE(conf->mode, CONTEXT);
+		gui_apply_mode(conf);
+		return;
+	}
+	if (DISABLED(conf->features, TOOLBAR_ENABLED) && ENABLED(conf->features, CONTEXT_MENU_ENABLED))
+	{
+		callback_context(widget, data);
+	}
 }
 
 /**

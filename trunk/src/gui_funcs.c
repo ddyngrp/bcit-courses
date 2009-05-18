@@ -42,9 +42,9 @@ gui_apply_mode (SPRY_CONF* conf) {
     if (ENABLED(conf->mode, CONTEXT) && ENABLED(conf->features, CONTEXT_MENU_ENABLED))
     {
         gtk_widget_show(conf->gtk_objects->context_menu);
-        gtk_widget_hide(conf->gtk_objects->scrolled_window);
+        gtk_widget_hide(conf->gtk_objects->web_view_container);
     } else {
-        gtk_widget_show(conf->gtk_objects->scrolled_window);
+        gtk_widget_show(conf->gtk_objects->web_view_container);
         gtk_widget_hide(conf->gtk_objects->context_menu);
     }
     

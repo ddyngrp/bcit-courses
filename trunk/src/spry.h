@@ -90,7 +90,7 @@ typedef struct _spry_gtk_objects {
     GtkWidget*      toolbar;
     GtkWidget*      toolbar_fullscreen;
     GtkWidget*      context_menu;
-    GtkWidget*      scrolled_window;
+    GtkWidget*      web_view_container;
     WebKitWebView*  web_view;
     
 } SPRY_GTK_OBJECTS, *pSPRY_GTK_OBJECTS;

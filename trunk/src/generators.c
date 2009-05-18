@@ -65,7 +65,7 @@ generate_gui (SPRY_CONF* conf)
 	{
 		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 	} else {
-		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
 	}
 	gtk_container_add (GTK_CONTAINER (gtk_objects->web_view_container) , GTK_WIDGET (gtk_objects->web_view));
 	gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);

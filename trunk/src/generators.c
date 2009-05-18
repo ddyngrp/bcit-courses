@@ -264,7 +264,7 @@ generate_main_window (SPRY_CONF* conf)
     
     /* Set window name (taskbar / titlebar) and icon */
     gtk_widget_set_name(main_window, "Spry");
-    gtk_window_set_icon_from_file((GtkWindow*) main_window, "../share/spry/app.svg", NULL);
+    gtk_window_set_icon_from_file((GtkWindow*) main_window, "/usr/local/share/spry/app.svg", NULL);
     
     /* Connect close signal to quit */
     g_signal_connect(G_OBJECT (main_window), "destroy", G_CALLBACK (callback_destroy), NULL);

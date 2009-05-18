@@ -39,7 +39,7 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* context menu */
-    if (ENABLED(conf->mode, CONTEXT))
+    if (ENABLED(conf->mode, CONTEXT) && ENABLED(conf->features, CONTEXT_MENU_ENABLED))
     {
         gtk_widget_show(conf->gtk_objects->context_menu);
         gtk_widget_hide(conf->gtk_objects->scrolled_window);
@@ -49,14 +49,20 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* toolbar */
-    if (ENABLED(conf->mode, TOOLBAR) && DISABLED(conf->mode, CONTEXT))
+    if (ENABLED(conf->mode, TOOLBAR) && DISABLED(conf->mode, CONTEXT) && ENABLED(conf->features, TOOLBAR_ENABLED))
     {
         gtk_widget_show(conf->gtk_objects->toolbar);
-        gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
-    } else {
-        gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
+	} else {
         gtk_widget_hide(conf->gtk_objects->toolbar);
     }
+	
+	/* toolbar_fullscreen */
+	if (DISABLED(conf->mode, TOOLBAR) && DISABLED(conf->mode, CONTEXT) && ENABLED(conf->features, TOOLBAR_FULLSCREEN_ENABLED))
+	{
+        gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
+    } else {
+		gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
+	}
     
     /* minimize */
     if (ENABLED(conf->mode, MINIMIZE))

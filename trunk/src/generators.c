@@ -39,33 +39,38 @@ generate_gui (SPRY_CONF* conf)
     
     SPRY_GTK_OBJECTS* gtk_objects = malloc (sizeof (SPRY_GTK_OBJECTS));
     
-    /* Create GTK Objects */
-    gtk_objects->main_window        = generate_main_window(conf);       /* Main Window */
-    gtk_objects->v_box              = gtk_vbox_new(FALSE, 0);           /* holds all the toolbars */
-    gtk_objects->toolbar            = generate_toolbar(conf);
-    gtk_objects->toolbar_fullscreen = generate_toolbar_fullscreen(conf);
-    gtk_objects->context_menu       = generate_context_menu (conf);
-    gtk_objects->scrolled_window    = gtk_scrolled_window_new (NULL, NULL);
-    gtk_objects->web_view           = WEBKIT_WEB_VIEW (webkit_web_view_new ());
-    
-    /* configure window */
-    gtk_window_set_icon_from_file((GtkWindow*) gtk_objects->main_window, "images/app.svg", NULL);
-    
-    /* resize elements */
-    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 10, conf->toolbar_fullscreen_height);
+	/* main window */
+    gtk_objects->main_window = generate_main_window(conf);
+    gtk_objects->v_box = gtk_vbox_new(FALSE, 0);
+    gtk_container_add(GTK_CONTAINER (gtk_objects->main_window), gtk_objects->v_box);
+	
+	/* toolbar */
+    gtk_objects->toolbar = generate_toolbar(conf);
     gtk_widget_set_size_request (gtk_objects->toolbar, 10, conf->toolbar_height);
-    
-    /* Configure scrolled window */
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-    
-    /* Put GTK Objects inside each-other and make them visible */
-    gtk_container_add   (GTK_CONTAINER (gtk_objects->main_window)       , gtk_objects->v_box                );
-    gtk_container_add   (GTK_CONTAINER (gtk_objects->scrolled_window)   , GTK_WIDGET (gtk_objects->web_view));
-    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar              , FALSE, FALSE, 0);
-    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->toolbar_fullscreen   , FALSE, FALSE, 0);
-    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->context_menu         , TRUE , TRUE , 0);
-    gtk_box_pack_start    ((GtkBox*)      gtk_objects->v_box              , gtk_objects->scrolled_window      , TRUE , TRUE , 0);
-    
+    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->toolbar, FALSE, FALSE, 0);
+	
+	/* toolbar_fullscreen */
+    gtk_objects->toolbar_fullscreen = generate_toolbar_fullscreen(conf);
+    gtk_widget_set_size_request (gtk_objects->toolbar_fullscreen, 10, conf->toolbar_fullscreen_height);
+    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->toolbar_fullscreen, FALSE, FALSE, 0);
+	
+	/* context menu */
+    gtk_objects->context_menu = generate_context_menu(conf);
+    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->context_menu         , TRUE , TRUE , 0);
+	
+	/* web view */
+    gtk_objects->web_view = WEBKIT_WEB_VIEW (webkit_web_view_new());
+	if (ENABLED(conf->features, SCROLLBARS_ENABLED))
+	{
+		gtk_objects->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+		gtk_container_add (GTK_CONTAINER (gtk_objects->scrolled_window) , GTK_WIDGET (gtk_objects->web_view));
+		gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->scrolled_window, TRUE , TRUE , 0);
+		
+	} else {
+		gtk_objects->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+		gtk_box_pack_start((GtkBox*) gtk_objects->v_box, (GtkWidget*) gtk_objects->web_view, TRUE , TRUE , 0);
+	}
     /* show objects */
     gtk_widget_grab_focus (GTK_WIDGET (gtk_objects->web_view));
     gtk_widget_show_all (gtk_objects->main_window);
@@ -255,10 +260,13 @@ generate_main_window (SPRY_CONF* conf)
     GtkWidget* main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     
     /* Resize the window */
-    gtk_window_set_default_size(GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
+    gtk_window_resize(GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
+	if (DISABLED(conf->features, RESIZE_ENABLED))
+		gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
     
-    /* Set window name (taskbar / titlebar) */
+    /* Set window name (taskbar / titlebar) and icon */
     gtk_widget_set_name(main_window, "Spry");
+    gtk_window_set_icon_from_file((GtkWindow*) main_window, "images/app.svg", NULL);
     
     /* Connect close signal to quit */
     g_signal_connect(G_OBJECT (main_window), "destroy", G_CALLBACK (callback_destroy), NULL);

@@ -113,10 +113,18 @@ parse_args(int argc, char *argv[])
             break;
 
         case 't':
+			if (atoi(optarg) <= 0)
+			{
+				conf->features &= !TOOLBAR_ENABLED;
+			}
             conf->toolbar_height = atoi(optarg);
             break;
 
         case 'T':
+			if (atoi(optarg) <= 0)
+			{
+				conf->features &= !TOOLBAR_FULLSCREEN_ENABLED;
+			}
             conf->toolbar_fullscreen_height = atoi(optarg);
             break;
 
@@ -148,7 +156,7 @@ void
 init_spry_conf(SPRY_CONF* conf)
 {
     conf->init_url                  = "http://www.google.ca";
-    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED;
+    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | TOOLBAR_FULLSCREEN_ENABLED;
     conf->mode                      = TOOLBAR;
     conf->browser_status            = 0;
     conf->window_size[0]            = DEFAULT_WIDTH;

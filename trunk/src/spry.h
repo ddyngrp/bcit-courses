@@ -76,10 +76,12 @@
 #define MINIMIZE    0x8
 
 /* features_enabled */
-#define FULLSCREEN_ENABLED      0x1
-#define SCROLLBARS_ENABLED      0x2
-#define CONTEXT_MENU_ENABLED    0x4
-#define RESIZE_ENABLED          0x8
+#define FULLSCREEN_ENABLED          0x1
+#define SCROLLBARS_ENABLED          0x2
+#define CONTEXT_MENU_ENABLED        0x4
+#define RESIZE_ENABLED              0x8
+#define TOOLBAR_ENABLED         	0x10
+#define TOOLBAR_FULLSCREEN_ENABLED  0x20
 
 /* Holds main gtk objects used in the window */
 typedef struct _spry_gtk_objects {

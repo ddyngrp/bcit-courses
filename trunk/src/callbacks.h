@@ -39,6 +39,6 @@ void callback_toolbar       (GtkWidget* widget, gpointer data);
 void callback_highlight     (GtkWidget* widget, gpointer data);
 
 /* event callbacks */
-gboolean event_button_expose(GtkWidget*, GdkEventExpose*, char*);
+gboolean event_button_expose(GtkWidget* draw, GdkEventExpose* event, char* icon_name);
 
 #endif

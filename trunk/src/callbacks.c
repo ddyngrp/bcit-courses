@@ -171,24 +171,6 @@ callback_toolbar (GtkWidget* widget, gpointer data)
 }
 
 /**
- * callback_ignores:
- * @widget: The widget that called the function
- * @data: Spry Config Struct
- *
- * Ignores a signal (basically mutes it).
- **/
-void
-callback_ignore (GtkWidget* widget, gpointer data)
-{
-	SPRY_CONF* conf = (SPRY_CONF*) data;
-	const char script[] = "document.selection.clear();";
-	
-    g_print("signal ignored %s\n", script);
-	webkit_web_view_execute_script (conf->gtk_objects->web_view, script);
-}
-
-
-/**
  * event_button_expose:
  * @draw: unused
  * @event: event containing the window

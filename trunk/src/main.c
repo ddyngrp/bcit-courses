@@ -69,9 +69,6 @@ main(int argc, char *argv[])
     /* load the web page */
     browser_open(conf, (gchar*)conf->init_url);
 
-	/* Connect mouse events - button_press_event */
-	g_signal_connect(G_OBJECT ((GtkWindow*) conf->gtk_objects->web_view), "button_press_event", G_CALLBACK (callback_ignore), conf);
-
     /* Start GTK */
     gtk_main();
 

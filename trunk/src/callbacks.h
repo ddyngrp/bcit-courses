@@ -36,6 +36,7 @@ void callback_fullscreen    (GtkWidget*, gpointer);
 void callback_forward       (GtkWidget*, gpointer);
 void callback_context       (GtkWidget*, gpointer);
 void callback_toolbar       (GtkWidget*, gpointer);
+void callback_highlight     (GtkWidget*, gpointer);
 
 /* event callbacks */
 gboolean event_button_expose(GtkWidget*, GdkEventExpose*, char*);

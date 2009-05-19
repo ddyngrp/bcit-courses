@@ -41,17 +41,18 @@ parse_args(int argc, char *argv[])
     int c, option_index = 0;
     static struct option long_options[] =
     {
-        {"url"                          , required_argument , 0, 'u'},
-        {"fullscreen"                   , no_argument       , 0, 'f'},
-        {"no-context-menu"              , no_argument       , 0, 'c'},
-        {"no-scrollbars"                , no_argument       , 0, 's'},
-        {"fixed-size"                   , no_argument       , 0, 'z'},
-        {"toolbar-height"               , required_argument , 0, 't'},
-        {"toolbar-hidden-height"        , required_argument , 0, 'T'},
-        {"width"                        , required_argument , 0, 'x'},
-        {"height"                       , required_argument , 0, 'y'},
-        {"help"                         , no_argument       , 0, 'h'},
-        {"version"                      , no_argument       , 0, 'v'},
+        {"url"                 , required_argument , 0, 'u'},
+        {"fullscreen"          , no_argument       , 0, 'f'},
+        {"no-context-menu"     , no_argument       , 0, 'c'},
+        {"no-scrollbars"       , no_argument       , 0, 's'},
+        {"fixed-size"          , no_argument       , 0, 'z'},
+        {"toolbar-height"      , required_argument , 0, 't'},
+        {"toolbar-fs-height"   , required_argument , 0, 'T'},
+        {"width"               , required_argument , 0, 'x'},
+        {"enable-highlighting" , no_argument       , 0, 'H'},
+        {"height"              , required_argument , 0, 'y'},
+        {"help"                , no_argument       , 0, 'h'},
+        {"version"             , no_argument       , 0, 'v'},
         {0, 0, 0, 0}
     };
 
@@ -60,7 +61,7 @@ parse_args(int argc, char *argv[])
 
     while (1)
     {
-        c = getopt_long(argc, argv, "u:fcszt:T:x:y:hv", long_options, &option_index);
+        c = getopt_long(argc, argv, "u:fcszt:T:x:y:hHv", long_options, &option_index);
 
         if (c == -1)
             break;
@@ -128,6 +129,10 @@ parse_args(int argc, char *argv[])
             conf->toolbar_fullscreen_height = atoi(optarg);
             break;
 
+        case 'H':
+            ENABLE(conf, HIGHLIGHTING_ENABLED);
+            break;
+
         case 'h':
             spry_usage(argv[0], OPTS_HELP);
             break;
@@ -181,17 +186,18 @@ spry_usage(char* command, int err)
         g_print("Spry - Gtk+ WebKit Browser Version %s\n\n", VERSION);
         g_print("usage: spry [arguments]\n\n");
         g_print("Arguments:\n");
-        g_print("  -u         or  --url                               The URL of the website to load\n");
-        g_print("  -f         or  --fullscreen                        Enable fullscreen mode\n");
-        g_print("  -c         or  --no-context-menu                   Disable context menu\n");
-        g_print("  -s         or  --no-scrollbars                     Disable scrollbars\n");
-        g_print("  -t [size]  or  --toolbar-height [size]             Set the height of the toolbar\n");
-        g_print("  -T [size]  or  --toolbar-fullscreen-height [size]  Set the height of the fullscreen toolbar\n");
-        g_print("  -z         or  --fixed-size                        Disable resizing\n");
-        g_print("  -x [size]  or  --width [size]                      Set the width of the window\n");
-        g_print("  -y [size]  or  --height [size]                     Set the height of the window\n");
-        g_print("  -h         or  --help                              Prints out this screen\n");
-        g_print("  -v         or  --version                           Prints out version information\n");
+        g_print("  -u         or  --url                       The URL of the website to load\n");
+        g_print("  -f         or  --fullscreen                Enable fullscreen mode\n");
+        g_print("  -c         or  --no-context-menu           Disable context menu\n");
+        g_print("  -s         or  --no-scrollbars             Disable scrollbars\n");
+        g_print("  -H         or  --enable-highlighting       Enables text highlighting\n");
+        g_print("  -t [size]  or  --toolbar-height [size]     Set the height of the toolbar\n");
+        g_print("  -T [size]  or  --toolbar-fs-height [size]  Set the height of the fullscreen toolbar\n");
+        g_print("  -z         or  --fixed-size                Disable resizing\n");
+        g_print("  -x [size]  or  --width [size]              Set the width of the window\n");
+        g_print("  -y [size]  or  --height [size]             Set the height of the window\n");
+        g_print("  -h         or  --help                      Prints out this screen\n");
+        g_print("  -v         or  --version                   Prints out version information\n");
     }
     else if (err == OPTS_ERROR)
     {

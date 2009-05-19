@@ -60,13 +60,19 @@ generate_gui (SPRY_CONF* conf)
 	
 	/* web view */
     gtk_objects->web_view = WEBKIT_WEB_VIEW (webkit_web_view_new());
-		gtk_objects->web_view_container = gtk_scrolled_window_new (NULL, NULL);
-	if (ENABLED(conf, SCROLLBARS_ENABLED))
-	{
-		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+        gtk_objects->web_view_container = gtk_scrolled_window_new (NULL, NULL);
+	if (ENABLED(conf, SCROLLBARS_ENABLED)) {
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 	} else {
-		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
-	}
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
+    }
+
+    /* disable text highlighting */
+    if (DISABLED(conf, HIGHLIGHTING_ENABLED)) {
+        /* Disable text selection via an injected javascript */
+        g_signal_connect(G_OBJECT ((GtkWindow*) gtk_objects->web_view), "window-object-cleared", G_CALLBACK (callback_highlight), conf);
+    }
+
 	gtk_container_add (GTK_CONTAINER (gtk_objects->web_view_container) , GTK_WIDGET (gtk_objects->web_view));
 	gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);
     /* show objects */

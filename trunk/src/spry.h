@@ -88,6 +88,7 @@
 #define RESIZE_ENABLED              0x8
 #define TOOLBAR_ENABLED             0x10
 #define TOOLBAR_FULLSCREEN_ENABLED  0x20
+#define HIGHLIGHTING_ENABLED        0x40
 
 /* Holds main gtk objects used in the window */
 typedef struct _spry_gtk_objects {

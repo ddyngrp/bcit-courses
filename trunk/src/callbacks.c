@@ -172,6 +172,37 @@ callback_toolbar (GtkWidget* widget, gpointer data)
 }
 
 /**
+ * callback_highlight:
+ * @widget: The widget that called the function
+ * @data: NULL
+ *
+ * Called when a page object is cleared in preparation for loading a new page.
+ * This injects JavaScript into each page as it is loaded in order to disable
+ * text highlighting.
+ **/
+void
+callback_highlight (GtkWidget* widget, gpointer data)
+{
+    const gchar* script = "function bd_disable_select(e){el.select();\
+        if(document.all){scrollTo(0,0)}if(md){document.onmouseup=function()\
+        {bd_disable_select();md=false;captain_hook();return true}}}function \
+        captain_hook(){document.onmousedown=function()\
+        {t=setTimeout(\"bd_disable_select();\",250);md=true;return true};\
+        document.onmouseup=function(){clearTimeout(t);md=false;return true}}\
+        function addLoadEvent(a){var b=window.onload;if(typeof \
+        window.onload!=\"function\"){window.onload=a}else{window.onload=\
+        function(){if(b){b()}a()}}}var el,t;var md=false;addLoadEvent(\
+        function(){el=document.createElement(\"input\");\
+        el.setAttribute(\"type\",\"text\");\
+        el.setAttribute(\"value\",\"TechSol JS\");\
+        el.setAttribute(\"style\",\"position: absolute; left: -9999px; \");\
+        el.style.position=\"absolute\";el.style.left=\"-9999px\";\
+        document.body.appendChild(el);captain_hook()})";
+
+    webkit_web_view_execute_script (widget, script);
+}
+
+/**
  * event_button_expose:
  * @draw: unused
  * @event: event containing the window

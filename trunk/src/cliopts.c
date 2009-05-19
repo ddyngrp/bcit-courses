@@ -56,7 +56,7 @@ parse_args(int argc, char *argv[])
         {0, 0, 0, 0}
     };
 
-    conf = malloc(sizeof (SPRY_CONF));
+    conf = malloc(sizeof(SPRY_CONF));
     init_spry_conf(conf);
 
     while (1) {
@@ -80,7 +80,7 @@ parse_args(int argc, char *argv[])
             else
             {
                 conf->init_url = malloc((strlen("http://") + strlen(optarg)) * sizeof(char) + 1);
-                memset(conf->init_url, '\0', sizeof (conf->init_url));
+                memset(conf->init_url, '\0', sizeof(conf->init_url));
                                                   
                 strcat(conf->init_url, "http://");
                 strcat(conf->init_url, optarg);
@@ -199,10 +199,10 @@ spry_usage(char* command, int err)
     }
     else if (err == OPTS_ERROR)
     {
-        g_print ("Try `spry --help` for more information.\n");
+        g_print("Try `spry --help` for more information.\n");
     } else {
-        g_print ("%s: unknown error\n", command);
-        g_print ("Try `spry --help` for more information.\n");
+        g_print("%s: unknown error\n", command);
+        g_print("Try `spry --help` for more information.\n");
     }
     
     exit(err);

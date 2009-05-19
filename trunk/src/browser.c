@@ -30,9 +30,9 @@
  * Opens a page.
  **/
 void
-browser_open (SPRY_CONF* conf, char* url)
+browser_open(SPRY_CONF* conf, char* url)
 {
-    webkit_web_view_open (conf->gtk_objects->web_view, (gchar*)url);
+    webkit_web_view_open(conf->gtk_objects->web_view, (gchar*)url);
 }
 
 /**
@@ -42,7 +42,7 @@ browser_open (SPRY_CONF* conf, char* url)
  * Goes to homepage (specified at application launch).
  **/
 void
-browser_home (SPRY_CONF* conf)
+browser_home(SPRY_CONF* conf)
 {
     browser_open(conf, conf->init_url);
 }
@@ -53,9 +53,9 @@ browser_home (SPRY_CONF* conf)
  *
  * Goes back in history.
  **/
-void browser_back (SPRY_CONF* conf)
+void browser_back(SPRY_CONF* conf)
 {
-    webkit_web_view_go_back (conf->gtk_objects->web_view);
+    webkit_web_view_go_back(conf->gtk_objects->web_view);
 }
 
 /**
@@ -64,7 +64,7 @@ void browser_back (SPRY_CONF* conf)
  *
  * Goes forward in history.
  **/
-void browser_forward (SPRY_CONF* conf)
+void browser_forward(SPRY_CONF* conf)
 {
-    webkit_web_view_go_forward (conf->gtk_objects->web_view);
+    webkit_web_view_go_forward(conf->gtk_objects->web_view);
 }

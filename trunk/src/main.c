@@ -52,7 +52,7 @@ main(int argc, char *argv[])
     gtk_init(&argc, &argv);
 
     /* check for g_thread support */
-    if (!g_thread_supported ()) {
+    if (!g_thread_supported()) {
         g_thread_init(NULL);
     }
     

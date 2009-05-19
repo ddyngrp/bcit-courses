@@ -34,9 +34,9 @@
  * Closes the program when the window is closed.
  **/
 void
-callback_destroy (GtkWidget* widget, gpointer data)
+callback_destroy(GtkWidget* widget, gpointer data)
 {
-    gtk_main_quit ();
+    gtk_main_quit();
 }
 
 /**
@@ -47,7 +47,7 @@ callback_destroy (GtkWidget* widget, gpointer data)
  * Minimizes the window.
  **/
 void
-callback_minimize (GtkWidget* widget, gpointer data)
+callback_minimize(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     TOGGLE(conf->mode, MINIMIZE);
@@ -63,7 +63,7 @@ callback_minimize (GtkWidget* widget, gpointer data)
  * Goes back in history
  **/
 void
-callback_back (GtkWidget* widget, gpointer data)
+callback_back(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_back(conf);
@@ -82,7 +82,7 @@ callback_back (GtkWidget* widget, gpointer data)
  * Goes forward in history
  **/
 void
-callback_forward (GtkWidget* widget, gpointer data)
+callback_forward(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_forward(conf);
@@ -101,7 +101,7 @@ callback_forward (GtkWidget* widget, gpointer data)
  * Goes to the home page.
  **/
 void
-callback_home (GtkWidget* widget, gpointer data)
+callback_home(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_home(conf);
@@ -120,7 +120,7 @@ callback_home (GtkWidget* widget, gpointer data)
  * Does nothing on an event (for capturing events)
  **/
 void
-callback_fullscreen (GtkWidget* widget, gpointer data)
+callback_fullscreen(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     TOGGLE(conf->mode, FULLSCREEN);
@@ -136,7 +136,7 @@ callback_fullscreen (GtkWidget* widget, gpointer data)
  * Called when the context menu is requested.
  **/
 void
-callback_context (GtkWidget* widget, gpointer data)
+callback_context(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
 	if (ENABLED(conf, CONTEXT))
@@ -154,7 +154,7 @@ callback_context (GtkWidget* widget, gpointer data)
  * Called when the toolbar is toggled.
  **/
 void
-callback_toolbar (GtkWidget* widget, gpointer data)
+callback_toolbar(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
 	if (ENABLED(conf, TOOLBAR_ENABLED)) {
@@ -177,7 +177,7 @@ callback_toolbar (GtkWidget* widget, gpointer data)
  * text highlighting.
  **/
 void
-callback_highlight (GtkWidget* widget, gpointer data)
+callback_highlight(GtkWidget* widget, gpointer data)
 {
     const gchar* script = "function bd_disable_select(e){el.select();\
         if(document.all){scrollTo(0,0)}if(md){document.onmouseup=function()\
@@ -195,7 +195,7 @@ callback_highlight (GtkWidget* widget, gpointer data)
         el.style.position=\"absolute\";el.style.left=\"-9999px\";\
         document.body.appendChild(el);captain_hook()})";
 
-    webkit_web_view_execute_script ((WebKitWebView*) widget, script);
+    webkit_web_view_execute_script((WebKitWebView*) widget, script);
 }
 
 /**

@@ -29,7 +29,7 @@
  * Applies settings defined in the configuration struct
  **/
 void
-gui_apply_mode (SPRY_CONF* conf) {
+gui_apply_mode(SPRY_CONF* conf) {
     /* fullscreen */
     if (VISIBLE(conf, FULLSCREEN)) {
         gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);

@@ -25,9 +25,9 @@
 #include "config.h"
 #include "spry.h"
 
-void browser_open (SPRY_CONF* conf, gchar* url);
-void browser_home (SPRY_CONF* conf);
-void browser_back (SPRY_CONF* conf);
-void browser_forward (SPRY_CONF* conf);
+void browser_open(SPRY_CONF* conf, gchar* url);
+void browser_home(SPRY_CONF* conf);
+void browser_back(SPRY_CONF* conf);
+void browser_forward(SPRY_CONF* conf);
 
 #endif

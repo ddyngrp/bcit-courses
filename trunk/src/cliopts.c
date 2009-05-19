@@ -59,15 +59,13 @@ parse_args(int argc, char *argv[])
     conf = malloc(sizeof (SPRY_CONF));
     init_spry_conf(conf);
 
-    while (1)
-    {
+    while (1) {
         c = getopt_long(argc, argv, "u:fcszt:T:x:y:hHv", long_options, &option_index);
 
         if (c == -1)
             break;
 
-        switch (c)
-        {
+        switch (c) {
         case 0:
             /* If the option set a flag, do nothing */
             if (long_options[option_index].flag != 0)

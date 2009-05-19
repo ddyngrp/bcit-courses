@@ -157,15 +157,13 @@ void
 callback_toolbar (GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-	if (ENABLED(conf, TOOLBAR_ENABLED))
-	{
+	if (ENABLED(conf, TOOLBAR_ENABLED)) {
 		TOGGLE(conf->mode, TOOLBAR);
 		HIDE(conf, CONTEXT);
 		gui_apply_mode(conf);
 		return;
 	}
-	if (ENABLED(conf, CONTEXT_MENU_ENABLED))
-	{
+	if (ENABLED(conf, CONTEXT_MENU_ENABLED)) {
 		callback_context(widget, data);
 		return;
 	}
@@ -199,7 +197,7 @@ callback_highlight (GtkWidget* widget, gpointer data)
         el.style.position=\"absolute\";el.style.left=\"-9999px\";\
         document.body.appendChild(el);captain_hook()})";
 
-    webkit_web_view_execute_script (widget, script);
+    webkit_web_view_execute_script ((WebKitWebView*) widget, script);
 }
 
 /**
@@ -233,8 +231,7 @@ event_button_expose(GtkWidget*  draw,
     /* Load pixbuf from file */
     pixbuf = gdk_pixbuf_new_from_file_at_size(filename, dw, dh, &error);
     g_free(filename);
-    if(error)
-    {
+    if(error) {
         g_print("Error: %s\n", error->message);
         return(FALSE);
     }

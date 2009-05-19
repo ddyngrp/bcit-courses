@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _BROWSER_H
-#define _BROWSER_H
+#ifndef browser_h
+#define browser_h
 
 #include "config.h"
 #include "spry.h"

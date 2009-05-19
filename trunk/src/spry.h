@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SPRY_H_
-#define _SPRY_H_
+#ifndef spry_h
+#define spry_h
 
 #include "config.h"
 

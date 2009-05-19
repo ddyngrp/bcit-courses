@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GENERATORS_H
-#define _GENERATORS_H
+#ifndef generators_h
+#define generators_h
 
 #include "config.h"
 

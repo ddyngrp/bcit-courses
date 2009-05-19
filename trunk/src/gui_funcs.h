@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GUI_FUNCS_H
-#define _GUI_FUNCS_H
+#ifndef gui_funcs_h
+#define gui_funcs_h
 
 #include "config.h"
 

@@ -19,8 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CALLBACKS_H
-#define _CALLBACKS_H
+#ifndef callbacks_h
+#define callbacks_h
 
 #include "config.h"
 

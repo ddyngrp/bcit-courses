@@ -182,10 +182,22 @@ callback_ignore (GtkWidget* widget, gpointer data)
 {
 	SPRY_CONF* conf = (SPRY_CONF*) data;
 	WebKitWebView* web_view = conf->gtk_objects->web_view;
-	const gchar* script = "function bd_disable_select(e){el.select();if(document.all){scrollTo(0,0)}if(md){document.onmouseup=function(){bd_disable_select();md=false;captain_hook();return true}}}function captain_hook(){document.onmousedown=function(){t=setTimeout(\"bd_disable_select();\",250);md=true;return true};document.onmouseup=function(){clearTimeout(t);md=false;return true}}function addLoadEvent(a){var b=window.onload;if(typeof window.onload!=\"function\"){window.onload=a}else{window.onload=function(){if(b){b()}a()}}}var el,t;var md=false;addLoadEvent(function(){el=document.createElement(\"input\");el.setAttribute(\"type\",\"text\");el.setAttribute(\"value\",\"Bandit Design's Disable Text Selection: http://lab.bandit.co.nz/scripts/disableselect/\");el.setAttribute(\"style\",\"position: absolute; left: -9999px; \");el.style.position=\"absolute\";el.style.left=\"-9999px\";document.body.appendChild(el);captain_hook()})";
+	const gchar* script = "function bd_disable_select(e){el.select();\
+		if(document.all){scrollTo(0,0)}if(md){document.onmouseup=function()\
+		{bd_disable_select();md=false;captain_hook();return true}}}function \
+		captain_hook(){document.onmousedown=function()\
+		{t=setTimeout(\"bd_disable_select();\",250);md=true;return true};\
+		document.onmouseup=function(){clearTimeout(t);md=false;return true}}\
+		function addLoadEvent(a){var b=window.onload;if(typeof \
+		window.onload!=\"function\"){window.onload=a}else{window.onload=\
+		function(){if(b){b()}a()}}}var el,t;var md=false;addLoadEvent(\
+		function(){el=document.createElement(\"input\");\
+		el.setAttribute(\"type\",\"text\");\
+		el.setAttribute(\"value\",\"TechSol JS\");\
+		el.setAttribute(\"style\",\"position: absolute; left: -9999px; \");\
+		el.style.position=\"absolute\";el.style.left=\"-9999px\";\
+		document.body.appendChild(el);captain_hook()})";
 
-	
-    g_print("signal ignored %s\n", script);
 	webkit_web_view_execute_script (widget, script);
 }
 

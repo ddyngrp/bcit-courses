@@ -163,10 +163,8 @@ callback_toolbar (GtkWidget* widget, gpointer data)
 		gui_apply_mode(conf);
 		return;
 	}
-	if (ENABLED(conf, CONTEXT_MENU_ENABLED)) {
+	if (ENABLED(conf, CONTEXT_MENU_ENABLED))
 		callback_context(widget, data);
-		return;
-	}
 }
 
 /**

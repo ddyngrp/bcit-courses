@@ -26,6 +26,6 @@
 
 #include "spry.h"
 
-void gui_apply_mode (SPRY_CONF*);
+void gui_apply_mode (SPRY_CONF* conf);
 
 #endif

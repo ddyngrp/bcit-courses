@@ -28,7 +28,7 @@
 #define OPTS_HELP   0
 #define OPTS_ERROR  1
 
-SPRY_CONF* parse_args(int argc, char*[]);
+SPRY_CONF* parse_args(int argc, char* argv[]);
 void init_spry_conf(SPRY_CONF* conf);
 void spry_usage(char* command, int err);
 

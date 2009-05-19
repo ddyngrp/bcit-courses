@@ -58,8 +58,17 @@ gui_apply_mode(SPRY_CONF* conf) {
 	
 	/* toolbar_fullscreen */
 	if (ENABLED(conf, TOOLBAR_FULLSCREEN_ENABLED)
-		&& ((ENABLED(conf, TOOLBAR_ENABLED) && HIDDEN(conf, TOOLBAR))
-			|| (ENABLED(conf, CONTEXT_MENU_ENABLED) && HIDDEN(conf, CONTEXT)))) {
+		&& (
+				(ENABLED(conf, TOOLBAR_ENABLED)
+				&& HIDDEN(conf, TOOLBAR)
+				&& ENABLED(conf, CONTEXT_MENU_ENABLED)
+				&& HIDDEN(conf, CONTEXT))
+			|| (ENABLED(conf, TOOLBAR_ENABLED)
+				&& HIDDEN(conf, TOOLBAR)
+				&& DISABLED(conf, CONTEXT_MENU_ENABLED))
+			|| (ENABLED(conf, CONTEXT_MENU_ENABLED)
+				&& HIDDEN(conf, CONTEXT)
+				&& DISABLED(conf, TOOLBAR_ENABLED)))) {
         gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
     } else {
 		gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);

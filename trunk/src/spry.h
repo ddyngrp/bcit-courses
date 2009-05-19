@@ -69,7 +69,7 @@
 #define SHOW(x,y)       x->mode |= y;
 #define HIDE(x,y)       x->mode &= ~y;
 #define VISIBLE(x, y)   (x->mode & y)
-#define INVISIBLE(x,y)  (!(x->mode & y))
+#define HIDDEN(x,y)  	(!(x->mode & y))
 
 /* browser statuses */
 #define HAS_PAST    0x1

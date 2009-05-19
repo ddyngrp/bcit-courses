@@ -61,7 +61,7 @@ generate_gui (SPRY_CONF* conf)
 	/* web view */
     gtk_objects->web_view = WEBKIT_WEB_VIEW (webkit_web_view_new());
 		gtk_objects->web_view_container = gtk_scrolled_window_new (NULL, NULL);
-	if (ENABLED(conf->features, SCROLLBARS_ENABLED))
+	if (ENABLED(conf, SCROLLBARS_ENABLED))
 	{
 		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 	} else {
@@ -259,7 +259,7 @@ generate_main_window (SPRY_CONF* conf)
     
     /* Resize the window */
     gtk_window_set_default_size(GTK_WINDOW (main_window), conf->window_size[0], conf->window_size[1]);
-	if (DISABLED(conf->features, RESIZE_ENABLED))
+	if (DISABLED(conf, RESIZE_ENABLED))
 		gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
     
     /* Set window name (taskbar / titlebar) and icon */

@@ -89,19 +89,19 @@ parse_args(int argc, char *argv[])
             break;
 
         case 'f':
-			ENABLE(conf->mode = conf->mode, FULLSCREEN);
+			SHOW(conf, FULLSCREEN);
             break;
 
         case 'c':
-            DISABLE(conf->features, CONTEXT_MENU_ENABLED);
+            DISABLE(conf, CONTEXT_MENU_ENABLED);
             break;
 
         case 's':
-			DISABLE(conf->features, SCROLLBARS_ENABLED);
+			DISABLE(conf, SCROLLBARS_ENABLED);
             break;
 
         case 'z':
-			DISABLE(conf->features, RESIZE_ENABLED);
+			DISABLE(conf, RESIZE_ENABLED);
             break;
 
         case 'x':
@@ -115,7 +115,7 @@ parse_args(int argc, char *argv[])
         case 't':
 			if (atoi(optarg) <= 0)
 			{
-				DISABLE(conf->features, TOOLBAR_ENABLED);
+				DISABLE(conf, TOOLBAR_ENABLED);
 			}
             conf->toolbar_height = atoi(optarg);
             break;
@@ -123,7 +123,7 @@ parse_args(int argc, char *argv[])
         case 'T':
 			if (atoi(optarg) <= 0)
 			{
-				DISABLE(conf->features, TOOLBAR_FULLSCREEN_ENABLED);
+				DISABLE(conf, TOOLBAR_FULLSCREEN_ENABLED);
 			}
             conf->toolbar_fullscreen_height = atoi(optarg);
             break;

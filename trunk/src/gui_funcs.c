@@ -31,7 +31,7 @@
 void
 gui_apply_mode (SPRY_CONF* conf) {
     /* fullscreen */
-    if (ENABLED(conf->mode, FULLSCREEN))
+    if (VISIBLE(conf, FULLSCREEN))
     {
         gtk_window_fullscreen((GtkWindow*) conf->gtk_objects->main_window);
     } else {
@@ -39,8 +39,8 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* context menu */
-    if (ENABLED(conf->features, CONTEXT_MENU_ENABLED)
-		&& ENABLED(conf->mode, CONTEXT))
+    if (ENABLED(conf, CONTEXT_MENU_ENABLED)
+		&& VISIBLE(conf, CONTEXT))
     {
         gtk_widget_show(conf->gtk_objects->context_menu);
         gtk_widget_hide(conf->gtk_objects->web_view_container);
@@ -50,9 +50,9 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
     
     /* toolbar */
-    if (ENABLED(conf->features, TOOLBAR_ENABLED)
-		&& ENABLED(conf->mode, TOOLBAR)
-		&& DISABLED(conf->mode, CONTEXT))
+    if (ENABLED(conf, TOOLBAR_ENABLED)
+		&& VISIBLE(conf, TOOLBAR)
+		&& INVISIBLE(conf, CONTEXT))
     {
         gtk_widget_show(conf->gtk_objects->toolbar);
 	} else {
@@ -60,11 +60,11 @@ gui_apply_mode (SPRY_CONF* conf) {
     }
 	
 	/* toolbar_fullscreen */
-	if (ENABLED(conf->features, TOOLBAR_FULLSCREEN_ENABLED)
-		&& (ENABLED(conf->features, TOOLBAR_ENABLED)
-			|| ENABLED(conf->features, CONTEXT_MENU_ENABLED))
-		&& DISABLED(conf->mode, CONTEXT)
-		&& DISABLED(conf->mode, TOOLBAR))
+	if (ENABLED(conf, TOOLBAR_FULLSCREEN_ENABLED)
+		&& (ENABLED(conf, TOOLBAR_ENABLED)
+			|| ENABLED(conf, CONTEXT_MENU_ENABLED))
+		&& INVISIBLE(conf, CONTEXT)
+		&& INVISIBLE(conf, TOOLBAR))
 	{
         gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
     } else {
@@ -72,9 +72,9 @@ gui_apply_mode (SPRY_CONF* conf) {
 	}
     
     /* minimize */
-    if (ENABLED(conf->mode, MINIMIZE))
+    if (VISIBLE(conf, MINIMIZE))
     {
         gtk_window_iconify((GtkWindow*) conf->gtk_objects->main_window);
-        DISABLE(conf->mode, MINIMIZE);
+        HIDE(conf, MINIMIZE);
     }
 }

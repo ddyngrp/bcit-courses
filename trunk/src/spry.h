@@ -59,11 +59,17 @@
 #define DEFAULT_HEIGHT 240;
 
 /* basic usage options */
-#define ENABLE(x,y)     x |= y;
-#define DISABLE(x,y)    x &= ~y;
 #define TOGGLE(x,y)     x = ((x & y) ? (x & ~y) : (x | y));
-#define ENABLED(x, y)   (x & y)   
-#define DISABLED(x,y)   (!(x & y))
+
+#define ENABLE(x,y)     x->features |= y;
+#define DISABLE(x,y)    x->features &= ~y;
+#define ENABLED(x, y)   (x->features & y)   
+#define DISABLED(x,y)   (!(x->features & y))
+
+#define SHOW(x,y)       x->mode |= y;
+#define HIDE(x,y)       x->mode &= ~y;
+#define VISIBLE(x, y)   (x->mode & y)
+#define INVISIBLE(x,y)  (!(x->mode & y))
 
 /* browser statuses */
 #define HAS_PAST    0x1
@@ -80,7 +86,7 @@
 #define SCROLLBARS_ENABLED          0x2
 #define CONTEXT_MENU_ENABLED        0x4
 #define RESIZE_ENABLED              0x8
-#define TOOLBAR_ENABLED         	0x10
+#define TOOLBAR_ENABLED             0x10
 #define TOOLBAR_FULLSCREEN_ENABLED  0x20
 
 /* Holds main gtk objects used in the window */

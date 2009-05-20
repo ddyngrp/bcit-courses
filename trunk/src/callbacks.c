@@ -1,9 +1,9 @@
 /*
  * callbacks.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
- *                    Brendan Neva <bneva1@my.bcit.ca>
- *                    Steffen L. Norgren <ironix@trollop.org>
- *                    Eddie Zhang <edisonhammer@gmail.com>
+ * Copyright (C) 2009 Brendan Neva <bneva1@my.bcit.ca>
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * Copyright (C) 2009 Eddie Zhang <edisonhammer@gmail.com>
  * 
  * callbacks.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,6 +25,16 @@
 #include "browser.h"
 #include "gui_funcs.h"
 #include "spry.h"
+
+/**
+ * SECTION:callbacks
+ * @short_description: the event callback module
+ * @see_also: #generators, #gui_funcs, #browser
+ * @stability: Stable
+ * @include: callbacks.h
+ *
+ * This module handles all the application's callback events.
+ */
 
 /**
  * callback_destroy:

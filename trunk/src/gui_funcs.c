@@ -1,9 +1,9 @@
 /*
  * gui_funcs.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
- *                    Brendan Neva <bneva1@my.bcit.ca>
- *                    Steffen L. Norgren <ironix@trollop.org>
- *                    Eddie Zhang <edisonhammer@gmail.com>
+ * Copyright (C) 2009 Brendan Neva <bneva1@my.bcit.ca>
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * Copyright (C) 2009 Eddie Zhang <edisonhammer@gmail.com>
  * 
  * gui_funcs.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,6 +21,16 @@
 
 #include "spry.h"
 #include "gui_funcs.h"
+
+/**
+ * SECTION:gui_funcs
+ * @short_description: the GUI functions module
+ * @stability: Stable
+ * @include: gui_funcs.h
+ *
+ * This module handles all the GUI settings that can be changed via the
+ * command line or via GUI interaction.
+ */
 
 /**
  * gui_apply_mode:

@@ -25,8 +25,8 @@
 #include "spry.h"
 #include <getopt.h>
 
-#define OPTS_HELP   0
-#define OPTS_ERROR  1
+#define _OPTS_HELP   0
+#define _OPTS_ERROR  1
 
 SPRY_CONF* parse_args(int argc, char* argv[]);
 void init_spry_conf(SPRY_CONF* conf);

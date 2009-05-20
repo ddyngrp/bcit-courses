@@ -1,9 +1,9 @@
 /*
  * main.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
- *                    Brendan Neva <bneva1@my.bcit.ca>
- *                    Steffen L. Norgren <ironix@trollop.org>
- *                    Eddie Zhang <edisonhammer@gmail.com>
+ * Copyright (C) 2009 Brendan Neva <bneva1@my.bcit.ca>
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * Copyright (C) 2009 Eddie Zhang <edisonhammer@gmail.com>
  * 
  * main.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,6 +27,15 @@
 #include "generators.h"
 #include "gui_funcs.h"
 #include "spry.h"
+
+/**
+ * SECTION:main
+ * @short_description: the application's main entry point
+ * @stability: Stable
+ *
+ * This is the application's main entey point. It initializes the GTK+
+ * environment and passes all command line options to #cliopts
+ */
 
 /**
  * main:

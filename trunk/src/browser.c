@@ -1,9 +1,9 @@
 /*
  * browser.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
- *                    Brendan Neva <bneva1@my.bcit.ca>
- *                    Steffen L. Norgren <ironix@trollop.org>
- *                    Eddie Zhang <edisonhammer@gmail.com>
+ * Copyright (C) 2009 Brendan Neva <bneva1@my.bcit.ca>
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * Copyright (C) 2009 Eddie Zhang <edisonhammer@gmail.com>
  * 
  * browser.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,6 +21,15 @@
 
 #include "spry.h"
 #include "browser.h"
+
+/**
+ * SECTION:browser
+ * @short_description: the browser module
+ * @stability: Stable
+ * @include: browser.h
+ *
+ * This module handles all WebKitGtk browser navigation functions.
+ */
 
 /**
  * browser_open:

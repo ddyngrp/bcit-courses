@@ -1,9 +1,9 @@
 /*
  * cliopts.c
  * Copyright (C) 2009 Doug Penner <darwinsurvivor@gmail.com>
- *                    Brendan Neva <bneva1@my.bcit.ca>
- *                    Steffen L. Norgren <ironix@trollop.org>
- *                    Eddie Zhang <edisonhammer@gmail.com>
+ * Copyright (C) 2009 Brendan Neva <bneva1@my.bcit.ca>
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * Copyright (C) 2009 Eddie Zhang <edisonhammer@gmail.com>
  * 
  * cliopts.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -23,6 +23,16 @@
 #include "cliopts.h"
 
 #include "spry.h"
+
+/**
+ * SECTION:cliopts
+ * @short_description: the command line option interpreter module
+ * @stability: Stable
+ * @include: cliopts.h
+ *
+ * This module handles the interpretaion of all command line options that
+ * are passed into the program at run time.
+ */
 
 /**
  * parse_args:
@@ -132,7 +142,7 @@ parse_args(int argc, char *argv[])
             break;
 
         case 'h':
-            spry_usage(argv[0], OPTS_HELP);
+            spry_usage(argv[0], _OPTS_HELP);
             break;
             
         case 'v':
@@ -141,7 +151,7 @@ parse_args(int argc, char *argv[])
             break;
             
         default:
-            spry_usage(argv[0], OPTS_ERROR);
+            spry_usage(argv[0], _OPTS_ERROR);
             break;
         }
     }
@@ -161,7 +171,6 @@ init_spry_conf(SPRY_CONF* conf)
     conf->init_url                  = "http://www.google.ca";
     conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | TOOLBAR_FULLSCREEN_ENABLED;
     conf->mode                      = TOOLBAR;
-    conf->browser_status            = 0;
     conf->window_size[0]            = DEFAULT_WIDTH;
     conf->window_size[1]            = DEFAULT_HEIGHT;
     conf->toolbar_height            = DEFAULT_TOOLBAR_HEIGHT;
@@ -179,7 +188,7 @@ init_spry_conf(SPRY_CONF* conf)
 void
 spry_usage(char* command, int err)
 {
-    if (err == OPTS_HELP)
+    if (err == _OPTS_HELP)
     {
         g_print("Spry - Gtk+ WebKit Browser Version %s\n\n", VERSION);
         g_print("usage: spry [arguments]\n\n");
@@ -197,7 +206,7 @@ spry_usage(char* command, int err)
         g_print("  -h         or  --help                      Prints out this screen\n");
         g_print("  -v         or  --version                   Prints out version information\n");
     }
-    else if (err == OPTS_ERROR)
+    else if (err == _OPTS_ERROR)
     {
         g_print("Try `spry --help` for more information.\n");
     } else {

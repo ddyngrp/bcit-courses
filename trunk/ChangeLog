@@ -1,3 +1,13 @@
+2009-05-19  Steffen L. Norgren  <ironix@trollop.org> and Doug Penner <darwinsurvivor@gmail.com>
+		
+		Completed the initail release version of the Spry Browser. Bumped the
+		version nunber up to 20090519.
+
+		* browser.c: Handles all WebKitGtk browser functions.
+		* callbacks.c: Handles all events and GUI callbacks.
+		* generators.c: Manages the creation of all GtkWidget objects.
+		* gui_funcs.c: Manages all the GUI modes and options.
+
 2009-05-05  Steffen L. Norgren  <ironix@trollop.org>
 
 		Created a command-line option parser using getopt_long.

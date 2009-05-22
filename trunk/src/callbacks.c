@@ -157,6 +157,28 @@ callback_context(GtkWidget* widget, gpointer data)
 }
 
 /**
+ * callback_thinbar:
+ * @widget: The widget that called the function
+ * @data: Spry Config Struct
+ *
+ * Called when the toolbar is toggled.
+ **/
+void
+callback_thinbar(GtkWidget* widget, gpointer data)
+{
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+	if (ENABLED(conf, TOOLBAR_ENABLED)) {
+		callback_toolbar(widget, data);
+		return;
+	}
+	if (ENABLED(conf, CONTEXT_MENU_ENABLED)) {
+		callback_context(widget, data);
+		return;
+	}
+	callback_fullscreen(widget, data);
+}
+
+/**
  * callback_toolbar:
  * @widget: The widget that called the function
  * @data: Spry Config Struct
@@ -166,15 +188,11 @@ callback_context(GtkWidget* widget, gpointer data)
 void
 callback_toolbar(GtkWidget* widget, gpointer data)
 {
-    SPRY_CONF* conf = (SPRY_CONF*) data;
-	if (ENABLED(conf, TOOLBAR_ENABLED)) {
-		TOGGLE(conf->mode, TOOLBAR);
-		HIDE(conf, CONTEXT);
-		gui_apply_mode(conf);
-		return;
-	}
-	if (ENABLED(conf, CONTEXT_MENU_ENABLED))
-		callback_context(widget, data);
+	SPRY_CONF* conf = (SPRY_CONF*) data;
+	TOGGLE(conf->mode, TOOLBAR);
+	HIDE(conf, CONTEXT);
+	gui_apply_mode(conf);
+	return;
 }
 
 /**

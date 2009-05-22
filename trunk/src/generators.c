@@ -104,24 +104,24 @@ GtkWidget*
 generate_toolbar_fullscreen(SPRY_CONF* conf)
 {
     /* Declarations */
-    GtkWidget*  toolbar_fullscreen;
-    GtkWidget*  toolbar_button;
+    GtkWidget*  thinbar;
+    GtkWidget*  thinbar_button;
     
     /* Create buttons */
-    toolbar_fullscreen  = gtk_hbox_new(TRUE, 0);
-    toolbar_button      = generate_button("toolbar");
+    thinbar  = gtk_hbox_new(TRUE, 0);
+    thinbar_button      = generate_button("toolbar");
     
     /* Add buttons to toolbar */
-    gtk_box_pack_start((GtkBox*) toolbar_fullscreen, toolbar_button, TRUE, TRUE, 0);
+    gtk_box_pack_start((GtkBox*) thinbar, thinbar_button, TRUE, TRUE, 0);
     
     /* Connect buttons to actions */
-    g_signal_connect(G_OBJECT(toolbar_button)     , "clicked"     , G_CALLBACK(callback_toolbar)   , conf);
+    g_signal_connect(G_OBJECT(thinbar_button)     , "clicked"     , G_CALLBACK(callback_thinbar)   , conf);
     
     /* show buttons */
-    gtk_widget_show(toolbar_button);
+    gtk_widget_show(thinbar_button);
     
     /* Return toolbar */
-    return toolbar_fullscreen;
+    return thinbar;
 }
 
 /**

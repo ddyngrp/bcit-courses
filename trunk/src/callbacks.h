@@ -36,6 +36,7 @@ void callback_fullscreen    (GtkWidget* widget, gpointer data);
 void callback_forward       (GtkWidget* widget, gpointer data);
 void callback_context       (GtkWidget* widget, gpointer data);
 void callback_toolbar       (GtkWidget* widget, gpointer data);
+void callback_thinbar       (GtkWidget* widget, gpointer data);
 void callback_highlight     (GtkWidget* widget, gpointer data);
 
 /* event callbacks */

@@ -149,11 +149,11 @@ void
 callback_context(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-	if (ENABLED(conf, CONTEXT))
-	{
-		TOGGLE(conf->mode, CONTEXT);
-		gui_apply_mode(conf);
-	}
+    if (ENABLED(conf, CONTEXT))
+    {
+        TOGGLE(conf->mode, CONTEXT);
+        gui_apply_mode(conf);
+    }
 }
 
 /**
@@ -167,17 +167,17 @@ void
 callback_thinbar(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-	if (ENABLED(conf, TOOLBAR_FULLSCREEN_ENABLED)) {
-		if (ENABLED(conf, TOOLBAR_ENABLED)) {
-			callback_toolbar(widget, data);
-			return;
-		}
-		if (ENABLED(conf, CONTEXT_MENU_ENABLED)) {
-			callback_context(widget, data);
-			return;
-		}
-		callback_fullscreen(widget, data);
-	}
+    if (ENABLED(conf, THINBAR_ENABLED)) {
+        if (ENABLED(conf, TOOLBAR_ENABLED)) {
+            callback_toolbar(widget, data);
+            return;
+        }
+        if (ENABLED(conf, CONTEXT_MENU_ENABLED)) {
+            callback_context(widget, data);
+            return;
+        }
+        callback_fullscreen(widget, data);
+    }
 }
 
 /**
@@ -190,12 +190,12 @@ callback_thinbar(GtkWidget* widget, gpointer data)
 void
 callback_toolbar(GtkWidget* widget, gpointer data)
 {
-	SPRY_CONF* conf = (SPRY_CONF*) data;
-	if ENABLED(TOOLBAR_ENABLED) {
-		TOGGLE(conf->mode, TOOLBAR);
-		HIDE(conf, CONTEXT);
-		gui_apply_mode(conf);
-	}
+    SPRY_CONF* conf = (SPRY_CONF*) data;
+    if ENABLED(conf, TOOLBAR_ENABLED) {
+        TOGGLE(conf->mode, TOOLBAR);
+        HIDE(conf, CONTEXT);
+        gui_apply_mode(conf);
+    }
 }
 
 /**

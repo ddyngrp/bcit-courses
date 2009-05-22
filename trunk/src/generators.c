@@ -48,31 +48,31 @@ generate_gui(SPRY_CONF* conf)
     
     SPRY_GTK_OBJECTS* gtk_objects = malloc(sizeof(SPRY_GTK_OBJECTS));
     
-	/* main window */
+    /* main window */
     gtk_objects->main_window = generate_main_window(conf);
     gtk_objects->v_box = gtk_vbox_new(FALSE, 0);
     gtk_container_add(GTK_CONTAINER(gtk_objects->main_window), gtk_objects->v_box);
-	
-	/* toolbar */
+    
+    /* toolbar */
     gtk_objects->toolbar = generate_toolbar(conf);
     gtk_widget_set_size_request(gtk_objects->toolbar, 10, conf->toolbar_height);
     gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->toolbar, FALSE, FALSE, 0);
-	
-	/* toolbar_fullscreen */
-    gtk_objects->toolbar_fullscreen = generate_toolbar_fullscreen(conf);
-    gtk_widget_set_size_request(gtk_objects->toolbar_fullscreen, 10, conf->toolbar_fullscreen_height);
-    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->toolbar_fullscreen, FALSE, FALSE, 0);
-	
-	/* context menu */
+    
+    /* thinbar */
+    gtk_objects->thinbar = generate_thinbar(conf);
+    gtk_widget_set_size_request(gtk_objects->thinbar, 10, conf->thinbar_height);
+    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->thinbar, FALSE, FALSE, 0);
+    
+    /* context menu */
     gtk_objects->context_menu = generate_context_menu(conf);
     gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->context_menu         , TRUE , TRUE , 0);
-	
-	/* web view */
+    
+    /* web view */
     gtk_objects->web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
         gtk_objects->web_view_container = gtk_scrolled_window_new(NULL, NULL);
-	if (ENABLED(conf, SCROLLBARS_ENABLED)) {
+    if (ENABLED(conf, SCROLLBARS_ENABLED)) {
         gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(gtk_objects->web_view_container), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-	} else {
+    } else {
         gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(gtk_objects->web_view_container), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
     }
 
@@ -82,8 +82,8 @@ generate_gui(SPRY_CONF* conf)
         g_signal_connect(G_OBJECT((GtkWindow*) gtk_objects->web_view), "window-object-cleared", G_CALLBACK(callback_highlight), conf);
     }
 
-	gtk_container_add(GTK_CONTAINER(gtk_objects->web_view_container) , GTK_WIDGET(gtk_objects->web_view));
-	gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);
+    gtk_container_add(GTK_CONTAINER(gtk_objects->web_view_container) , GTK_WIDGET(gtk_objects->web_view));
+    gtk_box_pack_start((GtkBox*) gtk_objects->v_box, gtk_objects->web_view_container, TRUE , TRUE , 0);
     /* show objects */
     gtk_widget_grab_focus(GTK_WIDGET(gtk_objects->web_view));
     gtk_widget_show_all(gtk_objects->main_window);
@@ -93,15 +93,15 @@ generate_gui(SPRY_CONF* conf)
 }
 
 /**
- * generate_toolbar_fullscreen:
+ * generate_thinbar:
  * @conf: pointer to a struct of config settings
  *
- * Creates the fullscreen toolbar for the top (fullscreen mode)
+ * Creates the thinbar for the top of the window.
  *
- * Returns: A pointer to the toolbar.
+ * Returns: A pointer to the thinbar.
  **/
 GtkWidget*
-generate_toolbar_fullscreen(SPRY_CONF* conf)
+generate_thinbar(SPRY_CONF* conf)
 {
     /* Declarations */
     GtkWidget*  thinbar;
@@ -274,8 +274,8 @@ generate_main_window(SPRY_CONF* conf)
     
     /* Resize the window */
     gtk_window_set_default_size(GTK_WINDOW(main_window), conf->window_size[0], conf->window_size[1]);
-	if (DISABLED(conf, RESIZE_ENABLED))
-		gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
+    if (DISABLED(conf, RESIZE_ENABLED))
+        gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
     
     /* Set window name (taskbar / titlebar) and icon */
     gtk_widget_set_name(main_window, "Spry");

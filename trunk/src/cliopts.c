@@ -57,7 +57,7 @@ parse_args(int argc, char *argv[])
         {"no-scrollbars"       , no_argument       , 0, 's'},
         {"fixed-size"          , no_argument       , 0, 'z'},
         {"toolbar-height"      , required_argument , 0, 't'},
-        {"toolbar-fs-height"   , required_argument , 0, 'T'},
+        {"thinbar-height"      , required_argument , 0, 'T'},
         {"width"               , required_argument , 0, 'x'},
         {"enable-highlighting" , no_argument       , 0, 'H'},
         {"height"              , required_argument , 0, 'y'},
@@ -98,7 +98,7 @@ parse_args(int argc, char *argv[])
             break;
 
         case 'f':
-			SHOW(conf, FULLSCREEN);
+            SHOW(conf, FULLSCREEN);
             break;
 
         case 'c':
@@ -107,11 +107,11 @@ parse_args(int argc, char *argv[])
             break;
 
         case 's':
-			DISABLE(conf, SCROLLBARS_ENABLED);
+            DISABLE(conf, SCROLLBARS_ENABLED);
             break;
 
         case 'z':
-			DISABLE(conf, RESIZE_ENABLED);
+            DISABLE(conf, RESIZE_ENABLED);
             break;
 
         case 'x':
@@ -123,21 +123,20 @@ parse_args(int argc, char *argv[])
             break;
 
         case 't':
-			if (atoi(optarg) <= 0)
-			{
-				DISABLE(conf, TOOLBAR_ENABLED);
-				HIDE(conf, TOOLBAR);
-			}
+            if (atoi(optarg) <= 0)
+            {
+                DISABLE(conf, TOOLBAR_ENABLED);
+                HIDE(conf, TOOLBAR);
+            }
             conf->toolbar_height = atoi(optarg);
             break;
 
         case 'T':
-			if (atoi(optarg) <= 0)
-			{
-				DISABLE(conf, TOOLBAR_FULLSCREEN_ENABLED);
-				HIDE(conf, TOOLBAR_FULLSCREEN);
-			}
-            conf->toolbar_fullscreen_height = atoi(optarg);
+            if (atoi(optarg) <= 0)
+            {
+                DISABLE(conf, THINBAR_ENABLED);
+            }
+            conf->thinbar_height = atoi(optarg);
             break;
 
         case 'H':
@@ -172,12 +171,12 @@ void
 init_spry_conf(SPRY_CONF* conf)
 {
     conf->init_url                  = "http://localhost";
-    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | TOOLBAR_FULLSCREEN_ENABLED;
+    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | THINBAR_ENABLED;
     conf->mode                      = TOOLBAR;
     conf->window_size[0]            = DEFAULT_WIDTH;
     conf->window_size[1]            = DEFAULT_HEIGHT;
     conf->toolbar_height            = DEFAULT_TOOLBAR_HEIGHT;
-    conf->toolbar_fullscreen_height = DEFAULT_TOOLBAR_FULLSCREEN_HEIGHT;
+    conf->thinbar_height            = DEFAULT_THINBAR_HEIGHT;
 }
 
 /**
@@ -196,18 +195,18 @@ spry_usage(char* command, int err)
         g_print("Spry - Gtk+ WebKit Browser Version %s\n\n", VERSION);
         g_print("usage: spry [arguments]\n\n");
         g_print("Arguments:\n");
-        g_print("  -u         or  --url                       The URL of the website to load\n");
-        g_print("  -f         or  --fullscreen                Enable fullscreen mode\n");
-        g_print("  -c         or  --no-context-menu           Disable context menu\n");
-        g_print("  -s         or  --no-scrollbars             Disable scrollbars\n");
-        g_print("  -H         or  --enable-highlighting       Enables text highlighting\n");
-        g_print("  -t [size]  or  --toolbar-height [size]     Set the height of the toolbar\n");
-        g_print("  -T [size]  or  --toolbar-fs-height [size]  Set the height of the fullscreen toolbar\n");
-        g_print("  -z         or  --fixed-size                Disable resizing\n");
-        g_print("  -x [size]  or  --width [size]              Set the width of the window\n");
-        g_print("  -y [size]  or  --height [size]             Set the height of the window\n");
-        g_print("  -h         or  --help                      Prints out this screen\n");
-        g_print("  -v         or  --version                   Prints out version information\n");
+        g_print("  -u         or  --url                    The URL of the website to load\n");
+        g_print("  -f         or  --fullscreen             Enable fullscreen mode\n");
+        g_print("  -c         or  --no-context-menu        Disable context menu\n");
+        g_print("  -s         or  --no-scrollbars          Disable scrollbars\n");
+        g_print("  -H         or  --enable-highlighting    Enables text highlighting\n");
+        g_print("  -t [size]  or  --toolbar-height [size]  Set the height of the toolbar\n");
+        g_print("  -T [size]  or  --thinbar-height [size]  Set the height of the thinbar\n");
+        g_print("  -z         or  --fixed-size             Disable resizing\n");
+        g_print("  -x [size]  or  --width [size]           Set the width of the window\n");
+        g_print("  -y [size]  or  --height [size]          Set the height of the window\n");
+        g_print("  -h         or  --help                   Prints out this screen\n");
+        g_print("  -v         or  --version                Prints out version information\n");
     }
     else if (err == _OPTS_ERROR)
     {

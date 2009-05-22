@@ -49,7 +49,7 @@ gui_apply_mode(SPRY_CONF* conf) {
     
     /* context menu */
     if (ENABLED(conf, CONTEXT_MENU_ENABLED)
-		&& VISIBLE(conf, CONTEXT)) {
+        && VISIBLE(conf, CONTEXT)) {
         gtk_widget_show(conf->gtk_objects->context_menu);
         gtk_widget_hide(conf->gtk_objects->web_view_container);
     } else {
@@ -59,23 +59,23 @@ gui_apply_mode(SPRY_CONF* conf) {
     
     /* toolbar */
     if (ENABLED(conf, TOOLBAR_ENABLED)
-		&& VISIBLE(conf, TOOLBAR)
-		&& HIDDEN(conf, CONTEXT)) {
+        && VISIBLE(conf, TOOLBAR)
+        && HIDDEN(conf, CONTEXT)) {
         gtk_widget_show(conf->gtk_objects->toolbar);
-	} else {
+    } else {
         gtk_widget_hide(conf->gtk_objects->toolbar);
     }
-	
-	/* toolbar_fullscreen */
-	if (ENABLED(conf, TOOLBAR_FULLSCREEN_ENABLED)
-		&& !((ENABLED(conf, TOOLBAR_ENABLED)
-				&& VISIBLE(conf, TOOLBAR))
-			||	(ENABLED(conf, CONTEXT_MENU_ENABLED)
-				&& VISIBLE(conf, CONTEXT)))) {
-        gtk_widget_show(conf->gtk_objects->toolbar_fullscreen);
+    
+    /* thinbar */
+    if (ENABLED(conf, THINBAR_ENABLED)
+        && !((ENABLED(conf, TOOLBAR_ENABLED)
+                && VISIBLE(conf, TOOLBAR))
+            ||  (ENABLED(conf, CONTEXT_MENU_ENABLED)
+                && VISIBLE(conf, CONTEXT)))) {
+        gtk_widget_show(conf->gtk_objects->thinbar);
     } else {
-		gtk_widget_hide(conf->gtk_objects->toolbar_fullscreen);
-	}
+        gtk_widget_hide(conf->gtk_objects->thinbar);
+    }
     
     /* minimize */
     if (VISIBLE(conf, MINIMIZE)) {

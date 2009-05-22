@@ -161,7 +161,7 @@ callback_context(GtkWidget* widget, gpointer data)
  * @widget: The widget that called the function
  * @data: Spry Config Struct
  *
- * Called when the toolbar is toggled.
+ * Called when the thinbar is clicked.
  **/
 void
 callback_thinbar(GtkWidget* widget, gpointer data)

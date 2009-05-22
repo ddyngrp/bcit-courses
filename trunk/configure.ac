@@ -11,19 +11,9 @@ AC_ISC_POSIX
 AC_PROG_CC
 AM_PROG_CC_STDC
 AC_HEADER_STDC
-
-
-
-
-
-
 AM_PROG_LIBTOOL
 
-
-
-PKG_CHECK_MODULES(SPRY, [gtk+-2.0 >= 2.14.2 webkit-1.0 >= 0~svn40814])
-
-
+PKG_CHECK_MODULES(SPRY, [gtk+-2.0 >= 2.12.9 webkit-1.0 >= 0~svn40814])
 
 ##################################################
 # Check for gtk-doc.

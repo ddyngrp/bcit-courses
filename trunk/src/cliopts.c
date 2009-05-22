@@ -103,6 +103,7 @@ parse_args(int argc, char *argv[])
 
         case 'c':
             DISABLE(conf, CONTEXT_MENU_ENABLED);
+            HIDE(conf, CONTEXT);
             break;
 
         case 's':
@@ -125,6 +126,7 @@ parse_args(int argc, char *argv[])
 			if (atoi(optarg) <= 0)
 			{
 				DISABLE(conf, TOOLBAR_ENABLED);
+				HIDE(conf, TOOLBAR);
 			}
             conf->toolbar_height = atoi(optarg);
             break;
@@ -133,6 +135,7 @@ parse_args(int argc, char *argv[])
 			if (atoi(optarg) <= 0)
 			{
 				DISABLE(conf, TOOLBAR_FULLSCREEN_ENABLED);
+				HIDE(conf, TOOLBAR_FULLSCREEN);
 			}
             conf->toolbar_fullscreen_height = atoi(optarg);
             break;

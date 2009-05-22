@@ -171,7 +171,7 @@ parse_args(int argc, char *argv[])
 void
 init_spry_conf(SPRY_CONF* conf)
 {
-    conf->init_url                  = "http://www.google.ca";
+    conf->init_url                  = "http://localhost";
     conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | TOOLBAR_FULLSCREEN_ENABLED;
     conf->mode                      = TOOLBAR;
     conf->window_size[0]            = DEFAULT_WIDTH;

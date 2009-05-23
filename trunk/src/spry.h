@@ -200,24 +200,24 @@ typedef struct _spry_conf {
 #define HIDDEN(x, y)    (!(x->mode & y))
 
 /* defaults */
-#define DEFAULT_TOOLBAR_HEIGHT            30;
-#define DEFAULT_THINBAR_HEIGHT 10;
-#define DEFAULT_WIDTH                     320;
-#define DEFAULT_HEIGHT                    240;
+#define DEFAULT_TOOLBAR_HEIGHT    30;
+#define DEFAULT_THINBAR_HEIGHT    10;
+#define DEFAULT_WIDTH             320;
+#define DEFAULT_HEIGHT            240;
 
 /* modes */
-#define FULLSCREEN  0x1
-#define TOOLBAR     0x2
-#define CONTEXT     0x4
-#define MINIMIZE    0x8
+#define FULLSCREEN    0x1
+#define TOOLBAR       0x2
+#define CONTEXT       0x4
+#define MINIMIZE      0x8
 
 /* features_enabled */
-#define FULLSCREEN_ENABLED          0x1
-#define SCROLLBARS_ENABLED          0x2
-#define CONTEXT_MENU_ENABLED        0x4
-#define RESIZE_ENABLED              0x8
-#define TOOLBAR_ENABLED             0x10
-#define THINBAR_ENABLED  0x20
-#define HIGHLIGHTING_ENABLED        0x40
+#define FULLSCREEN_ENABLED      0x1
+#define SCROLLBARS_ENABLED      0x2
+#define CONTEXT_MENU_ENABLED    0x4
+#define RESIZE_ENABLED          0x8
+#define TOOLBAR_ENABLED         0x10
+#define THINBAR_ENABLED         0x20
+#define HIGHLIGHTING_ENABLED    0x40
 
 #endif

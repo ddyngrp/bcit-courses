@@ -83,12 +83,9 @@ parse_args(int argc, char *argv[])
             break;
 
         case 'u':
-            if (strstr(optarg, "http://"))
-            {
+            if (strstr(optarg, "http://")) {
                 conf->init_url = optarg;
-            }
-            else
-            {
+            } else {
                 conf->init_url = malloc((strlen("http://") + strlen(optarg)) * sizeof(char) + 1);
                 memset(conf->init_url, '\0', sizeof(conf->init_url));
                                                   
@@ -123,8 +120,7 @@ parse_args(int argc, char *argv[])
             break;
 
         case 't':
-            if (atoi(optarg) <= 0)
-            {
+            if (atoi(optarg) <= 0) {
                 DISABLE(conf, TOOLBAR_ENABLED);
                 HIDE(conf, TOOLBAR);
             }
@@ -132,8 +128,7 @@ parse_args(int argc, char *argv[])
             break;
 
         case 'T':
-            if (atoi(optarg) <= 0)
-            {
+            if (atoi(optarg) <= 0) {
                 DISABLE(conf, THINBAR_ENABLED);
             }
             conf->thinbar_height = atoi(optarg);
@@ -190,8 +185,7 @@ init_spry_conf(SPRY_CONF* conf)
 void
 spry_usage(char* command, int err)
 {
-    if (err == _OPTS_HELP)
-    {
+    if (err == _OPTS_HELP) {
         g_print("Spry - Gtk+ WebKit Browser Version %s\n\n", VERSION);
         g_print("usage: spry [arguments]\n\n");
         g_print("Arguments:\n");
@@ -207,9 +201,7 @@ spry_usage(char* command, int err)
         g_print("  -y [size]  or  --height [size]          Set the height of the window\n");
         g_print("  -h         or  --help                   Prints out this screen\n");
         g_print("  -v         or  --version                Prints out version information\n");
-    }
-    else if (err == _OPTS_ERROR)
-    {
+    } else if (err == _OPTS_ERROR) {
         g_print("Try `spry --help` for more information.\n");
     } else {
         g_print("%s: unknown error\n", command);

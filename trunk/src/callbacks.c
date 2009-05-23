@@ -77,8 +77,7 @@ callback_back(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_back(conf);
-    if (conf->mode & CONTEXT)
-    {
+    if (conf->mode & CONTEXT) {
         HIDE(conf, CONTEXT);
         gui_apply_mode(conf);
     }
@@ -96,8 +95,7 @@ callback_forward(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_forward(conf);
-    if (conf->mode & CONTEXT)
-    {
+    if (conf->mode & CONTEXT) {
         HIDE(conf, CONTEXT);
         gui_apply_mode(conf);
     }
@@ -115,8 +113,7 @@ callback_home(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
     browser_home(conf);
-    if (conf->mode & CONTEXT)
-    {
+    if (conf->mode & CONTEXT) {
         HIDE(conf, CONTEXT);
         gui_apply_mode(conf);
     }
@@ -149,8 +146,7 @@ void
 callback_context(GtkWidget* widget, gpointer data)
 {
     SPRY_CONF* conf = (SPRY_CONF*) data;
-    if (ENABLED(conf, CONTEXT))
-    {
+    if (ENABLED(conf, CONTEXT)) {
         TOGGLE(conf->mode, CONTEXT);
         gui_apply_mode(conf);
     }

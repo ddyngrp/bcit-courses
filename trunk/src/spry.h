@@ -101,8 +101,7 @@ typedef struct _spry_conf {
  *
  * Enables one of the following #SPRY_CONF %features
  * #FULLSCREEN_ENABLED, #SCROLLBARS_ENABLED, #CONTEXT_MENU_ENABLED,
- * #RESIZE_ENABLED, #TOOLBAR_ENABLED, #THINBAR_ENABLED,
- * #HIGHLIGHTING_ENABLED
+ * #TOOLBAR_ENABLED, #THINBAR_ENABLED, #HIGHLIGHTING_ENABLED
  */
 #define ENABLE(x, y)    x->features |= y;
 
@@ -113,8 +112,7 @@ typedef struct _spry_conf {
  *
  * Disables one of the following #SPRY_CONF %features
  * #FULLSCREEN_ENABLED, #SCROLLBARS_ENABLED, #CONTEXT_MENU_ENABLED,
- * #RESIZE_ENABLED, #TOOLBAR_ENABLED, #THINBAR_ENABLED,
- * #HIGHLIGHTING_ENABLED
+ * #TOOLBAR_ENABLED, #THINBAR_ENABLED, #HIGHLIGHTING_ENABLED
  */
 #define DISABLE(x, y)   x->features &= ~y;
 
@@ -125,8 +123,7 @@ typedef struct _spry_conf {
  *
  * Checks to see if one of the following #SPRY_CONF %features is enabled
  * #FULLSCREEN_ENABLED, #SCROLLBARS_ENABLED, #CONTEXT_MENU_ENABLED,
- * #RESIZE_ENABLED, #TOOLBAR_ENABLED, #THINBAR_ENABLED,
- * #HIGHLIGHTING_ENABLED
+ * #TOOLBAR_ENABLED, #THINBAR_ENABLED, #HIGHLIGHTING_ENABLED
  *
  * Returns: a boolean value
  */
@@ -139,8 +136,7 @@ typedef struct _spry_conf {
  *
  * Checks to see if one of the following #SPRY_CONF %features is disabled
  * #FULLSCREEN_ENABLED, #SCROLLBARS_ENABLED, #CONTEXT_MENU_ENABLED,
- * #RESIZE_ENABLED, #TOOLBAR_ENABLED, #THINBAR_ENABLED,
- * #HIGHLIGHTING_ENABLED
+ * #TOOLBAR_ENABLED, #THINBAR_ENABLED, #HIGHLIGHTING_ENABLED
  *
  * Returns: a boolean value
  */
@@ -215,9 +211,8 @@ typedef struct _spry_conf {
 #define FULLSCREEN_ENABLED      0x1
 #define SCROLLBARS_ENABLED      0x2
 #define CONTEXT_MENU_ENABLED    0x4
-#define RESIZE_ENABLED          0x8
-#define TOOLBAR_ENABLED         0x10
-#define THINBAR_ENABLED         0x20
-#define HIGHLIGHTING_ENABLED    0x40
+#define TOOLBAR_ENABLED         0x8
+#define THINBAR_ENABLED         0x10
+#define HIGHLIGHTING_ENABLED    0x20
 
 #endif

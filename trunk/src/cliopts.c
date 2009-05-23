@@ -55,7 +55,6 @@ parse_args(int argc, char *argv[])
         {"fullscreen"          , no_argument       , 0, 'f'},
         {"no-context-menu"     , no_argument       , 0, 'c'},
         {"no-scrollbars"       , no_argument       , 0, 's'},
-        {"fixed-size"          , no_argument       , 0, 'z'},
         {"toolbar-height"      , required_argument , 0, 't'},
         {"thinbar-height"      , required_argument , 0, 'T'},
         {"width"               , required_argument , 0, 'x'},
@@ -70,7 +69,7 @@ parse_args(int argc, char *argv[])
     init_spry_conf(conf);
 
     while (1) {
-        c = getopt_long(argc, argv, "u:fcszt:T:x:y:hHv", long_options, &option_index);
+        c = getopt_long(argc, argv, "u:fcst:T:x:y:hHv", long_options, &option_index);
 
         if (c == -1)
             break;
@@ -105,10 +104,6 @@ parse_args(int argc, char *argv[])
 
         case 's':
             DISABLE(conf, SCROLLBARS_ENABLED);
-            break;
-
-        case 'z':
-            DISABLE(conf, RESIZE_ENABLED);
             break;
 
         case 'x':
@@ -166,7 +161,7 @@ void
 init_spry_conf(SPRY_CONF* conf)
 {
     conf->init_url                  = "http://localhost";
-    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | RESIZE_ENABLED | TOOLBAR_ENABLED | THINBAR_ENABLED;
+    conf->features                  = SCROLLBARS_ENABLED | CONTEXT_MENU_ENABLED | TOOLBAR_ENABLED | THINBAR_ENABLED;
     conf->mode                      = TOOLBAR;
     conf->window_size[0]            = DEFAULT_WIDTH;
     conf->window_size[1]            = DEFAULT_HEIGHT;
@@ -196,7 +191,6 @@ spry_usage(char* command, int err)
         g_print("  -H         or  --enable-highlighting    Enables text highlighting\n");
         g_print("  -t [size]  or  --toolbar-height [size]  Set the height of the toolbar\n");
         g_print("  -T [size]  or  --thinbar-height [size]  Set the height of the thinbar\n");
-        g_print("  -z         or  --fixed-size             Disable resizing\n");
         g_print("  -x [size]  or  --width [size]           Set the width of the window\n");
         g_print("  -y [size]  or  --height [size]          Set the height of the window\n");
         g_print("  -h         or  --help                   Prints out this screen\n");

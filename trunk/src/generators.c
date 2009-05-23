@@ -274,8 +274,6 @@ generate_main_window(SPRY_CONF* conf)
     
     /* Resize the window */
     gtk_window_set_default_size(GTK_WINDOW(main_window), conf->window_size[0], conf->window_size[1]);
-    if (DISABLED(conf, RESIZE_ENABLED))
-        gtk_window_set_resizable((GtkWindow*) main_window, FALSE);
     
     /* Set window name (taskbar / titlebar) and icon */
     gtk_widget_set_name(main_window, "Spry");

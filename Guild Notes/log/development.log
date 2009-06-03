@@ -1,0 +1,3874 @@
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:42:50) [GET]
+Rendering home/index
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:43:38) [GET]
+Rendering home/index
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 04:43:40) [GET]
+  [4;36;1mPerson Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: people: SELECT * FROM "people" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: people: SELECT * FROM "people" ):
+  app/controllers/people_controller.rb:5:in `index'
+
+Rendered rescues/_trace (88.0ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 04:43:41) [GET]
+  [4;35;1mPerson Load (0.0ms)[0m   [0mSQLite3::SQLException: no such table: people: SELECT * FROM "people" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: people: SELECT * FROM "people" ):
+  app/controllers/people_controller.rb:5:in `index'
+
+Rendered rescues/_trace (42.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20090603114112)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "time_zone" integer, "guild" varchar(255), "notes" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090603114112')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("people")[0m
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 04:44:04) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:44:07) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 66ms (View: 61, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:46:48) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 04:46:51) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 5, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:46:55) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:47:57) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:48:50) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:48:54) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:48:55) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:48:56) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 04:49:28) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:52:42) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:52:44) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:52:45) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:55:01) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 04:55:01) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:55:03) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 58ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:55:05) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"-1"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:55:16) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"-1"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:55:22) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"0"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 04:55:41) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"0"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:01:56) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:01:57) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:01:59) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+
+NoMethodError (undefined method `allow_nil' for #<Person:0x1a660e8>):
+  app/controllers/people_controller.rb:46:in `create'
+  app/controllers/people_controller.rb:45:in `create'
+
+Rendered rescues/_trace (50.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:03:09) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:03:12) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+
+NoMethodError (undefined method `allow_nil' for #<Person:0x336a08>):
+  app/controllers/people_controller.rb:46:in `create'
+  app/controllers/people_controller.rb:45:in `create'
+
+Rendered rescues/_trace (50.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:03:14) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:03:15) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:03:17) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+
+NoMethodError (undefined method `allow_nil' for #<Person:0x578424>):
+  app/controllers/people_controller.rb:46:in `create'
+  app/controllers/people_controller.rb:45:in `create'
+
+Rendered rescues/_trace (49.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:03:19) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+
+NoMethodError (undefined method `allow_nil' for #<Person:0x185bc1c>):
+  app/controllers/people_controller.rb:46:in `create'
+  app/controllers/people_controller.rb:45:in `create'
+
+Rendered rescues/_trace (106.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:03:29) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 15ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:03:35) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"a"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:04:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"a"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 16ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:04:36) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"a"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 15ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:04:39) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"a"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 16ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:04:52) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>"a"}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 15ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:06:30) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:06:31) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:06:33) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:06:34) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:06:34) [GET]
+Rendering home/index
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:06:36) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:06:38) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:06:39) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:06:45) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 15ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:07:47) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"", "guild"=>"", "notes"=>"This is a test", "time_zone"=>""}}
+Rendering template within layouts/people
+Rendering people/new
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:08:01) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:04) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:05) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 50ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:05) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:06) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:06) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:07) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:08) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:08:08) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:13:41) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:15:16) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:15:17) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:23:55) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:23:56) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:23:57) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (3.9ms)
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:23:58) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:23:59) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.6ms)
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:24:25) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 05:24:36) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"Steffen L. Norgren", "guild"=>"The Departed", "notes"=>"Testing", "time_zone"=>"-8"}}
+  [4;36;1mPerson Create (0.6ms)[0m   [0;1mINSERT INTO "people" ("name", "guild", "updated_at", "notes", "time_zone", "created_at") VALUES('Steffen L. Norgren', 'The Departed', '2009-06-03 12:24:36', 'Testing', -8, '2009-06-03 12:24:36')[0m
+Redirected to http://localhost:3000/people/1
+Completed in 218ms (DB: 1) | 302 Found [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 05:24:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:24:39) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 05:24:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+Rendered people/_form (2.9ms)
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/people/1/edit]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:28:11) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:28:13) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:28:15) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20090603114112)
+Migrating to CreateCharacters (20090603124233)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "characters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "class" varchar(255), "notes" text, "person_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603124233')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("characters")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("people")[0m
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:53:11) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 45ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:53:12) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 05:53:16) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:53:17) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 05:53:20) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.8ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 05:53:24) [GET]
+
+ActionController::RoutingError (No route matches "/characters" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 05:53:27) [GET]
+
+ActionController::RoutingError (No route matches "/character" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:54:01) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:54:02) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:56:08) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 05:56:08) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20090603114112)
+Migrating to CreateCharacters (20090603124233)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("characters")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("people")[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 06:19:50) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:19:51) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 06:19:52) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:19:56) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:19:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:20:00) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#destroy (for 127.0.0.1 at 2009-06-03 06:20:02) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.destroy):
+  app/controllers/people_controller.rb:74:in `destroy'
+
+Rendered rescues/_trace (38.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:20:05) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:20:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/people/_form.html.erb:
+1: <% form_for(@person) do |f| %>
+2:   <%= f.error_messages %>
+3: 
+4:   <p>
+
+    app/views/people/_form.html.erb:1
+    app/views/people/edit.html.erb:3
+
+Rendered rescues/_trace (53.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#destroy (for 127.0.0.1 at 2009-06-03 06:20:14) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.destroy):
+  app/controllers/people_controller.rb:74:in `destroy'
+
+Rendered rescues/_trace (33.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:20:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/people/_form.html.erb:
+1: <% form_for(@person) do |f| %>
+2:   <%= f.error_messages %>
+3: 
+4:   <p>
+
+    app/views/people/_form.html.erb:1
+    app/views/people/edit.html.erb:3
+
+Rendered rescues/_trace (53.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 06:20:38) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 06:20:48) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"Testing", "guild"=>"The Departed", "notes"=>"Testing", "time_zone"=>"-1"}}
+  [4;36;1mPerson Create (0.6ms)[0m   [0;1mINSERT INTO "people" ("name", "guild", "updated_at", "notes", "time_zone", "created_at") VALUES('Testing', 'The Departed', '2009-06-03 13:20:48', 'Testing', -1, '2009-06-03 13:20:48')[0m
+Redirected to http://localhost:3000/people/2
+Completed in 11ms (DB: 1) | 302 Found [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:20:48) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 2) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (116.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:22:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:22:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (116.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:22:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (49.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:22:57) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:22:58) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:22:59) [GET]
+  [4;35;1mPerson Load (1.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 85ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:00) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:00) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:00) [GET]
+  [4;36;1mPerson Load (1.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 11ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:00) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:01) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:23:01) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:23:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (111.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 06:25:52) [GET]
+
+ActionController::RoutingError (No route matches "/comments" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 06:25:54) [GET]
+
+ActionController::RoutingError (No route matches "/comments" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 06:25:55) [GET]
+
+ActionController::RoutingError (No route matches "/comments" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-03 06:25:55) [GET]
+
+ActionController::RoutingError (No route matches "/comments" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:26:03) [GET]
+  Parameters: {"id"=>"comments"}
+  [4;35;1mPerson Load (0.1ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Person with ID=comments):
+  app/controllers/people_controller.rb:84:in `find_post'
+
+Rendered rescues/_trace (37.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 06:26:12) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:26:14) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:26:15) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 77ms (View: 5, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:26:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:29:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (115.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:29:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:29:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (116.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 06:29:13) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:29:16) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/people/_form.html.erb:
+1: <% form_for(@person) do |f| %>
+2:   <%= f.error_messages %>
+3: 
+4:   <p>
+
+    app/views/people/_form.html.erb:1
+    app/views/people/edit.html.erb:3
+
+Rendered rescues/_trace (53.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:29:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (114.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#destroy (for 127.0.0.1 at 2009-06-03 06:29:23) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.destroy):
+  app/controllers/people_controller.rb:74:in `destroy'
+
+Rendered rescues/_trace (33.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:29:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/people/_form.html.erb:
+1: <% form_for(@person) do |f| %>
+2:   <%= f.error_messages %>
+3: 
+4:   <p>
+
+    app/views/people/_form.html.erb:1
+    app/views/people/edit.html.erb:3
+
+Rendered rescues/_trace (124.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:29:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (115.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (129.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (50.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:30:42) [GET]
+  [4;35;1mPerson Load (0.6ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:30:43) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 13ms (View: 6, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (45.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:30:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (45.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:31:42) [GET]
+  Parameters: {"id"=>"1"}
+
+ActiveRecord::StatementInvalid (Could not find table 'people'):
+  app/controllers/people_controller.rb:84:in `find_post'
+
+Rendered rescues/_trace (93.1ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:31:46) [GET]
+  [4;36;1mPerson Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: people: SELECT * FROM "people" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: people: SELECT * FROM "people" ):
+  app/controllers/people_controller.rb:7:in `index'
+
+Rendered rescues/_trace (41.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 06:31:49) [GET]
+Rendering home/index
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 06:31:50) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:31:51) [GET]
+  [4;35;1mPerson Load (0.0ms)[0m   [0mSQLite3::SQLException: no such table: people: SELECT * FROM "people" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: people: SELECT * FROM "people" ):
+  app/controllers/people_controller.rb:7:in `index'
+
+Rendered rescues/_trace (117.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20090603114112)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "time_zone" integer, "guild" varchar(255), "notes" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090603114112')[0m
+Migrating to CreateCharacters (20090603124233)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "characters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "class" varchar(255), "notes" text, "person_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090603124233')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("characters")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:32:30) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 23ms (View: 10, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 06:32:32) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (5.1ms)
+Completed in 17ms (View: 11, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 06:32:38) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"Steffen L. Norgren", "guild"=>"The Departed", "notes"=>"Test", "time_zone"=>"-1"}}
+  [4;35;1mPerson Create (0.6ms)[0m   [0mINSERT INTO "people" ("name", "guild", "updated_at", "notes", "time_zone", "created_at") VALUES('Steffen L. Norgren', 'The Departed', '2009-06-03 13:32:38', 'Test', -1, '2009-06-03 13:32:38')[0m
+Redirected to http://localhost:3000/people/1
+Completed in 62ms (DB: 1) | 302 Found [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:32:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (107.7ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:36:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:41:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (120.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:41:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:41:24) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:41:26) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:41:27) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:41:27) [GET]
+  [4;35;1mPerson Load (2.0ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 15ms (View: 5, DB: 2) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:41:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:41:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (45.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:41:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (45.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:42:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (45.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:42:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (50.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:42:15) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (115.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (115.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (50.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (1.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (123.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (49.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:43:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (119.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:45:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.time_zone) on line #7 of app/views/people/show.html.erb:
+4: 
+5: <p>
+6:   <b>Time zone:</b>
+7:   <%=h @person.time_zone %>
+8: </p>
+9: 
+10: <p>
+
+    app/views/people/show.html.erb:7
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (46.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:45:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.name) on line #3 of app/views/people/show.html.erb:
+1: <p>
+2:   <b>Name:</b>
+3:   <%=h @person.name %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/people/show.html.erb:3
+    app/controllers/people_controller.rb:18:in `show'
+
+Rendered rescues/_trace (116.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:47:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 44ms (View: 37, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:47:15) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 17ms (View: 8, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:47:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:47:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:47:28) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 79ms (View: 70, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:47:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:47:33) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:47:44) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:47:45) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:47:51) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (105.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:50:26) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:50:27) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:50:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:50:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+Rendered people/_form (3.0ms)
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://localhost/people/1/edit]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:50:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 06:50:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+Rendered people/_form (3.0ms)
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1/edit]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 06:51:07) [GET]
+Rendering home/index
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 06:51:10) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:53:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:53:05) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:53:26) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:06) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:07) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (106.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:09) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:11) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:12) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 80ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:24) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:25) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:26) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:28) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (105.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:32) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:32) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:45) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 34ms (View: 9, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:54:45) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:54:47) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (38.4ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:58:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 21ms (View: 15, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 06:58:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 06:59:24) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 06:59:29) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (107.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-06-03 06:59:52) [GET]
+  Parameters: {"person_id"=>"1"}
+
+SyntaxError (/Users/ironix/Personal/Guild Notes/app/controllers/characters_controller.rb:13: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+    @person = Person.find(params[:1])
+                                   ^):
+  
+
+Rendered rescues/_trace (32.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:00:05) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (34.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:00:42) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:00:47) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.1ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Character with ID=1 AND ("characters".person_id = 1)):
+  app/controllers/characters_controller.rb:9:in `show'
+
+Rendered rescues/_trace (106.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:00:52) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:00:52) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:04:14) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of app/views/characters/new.html.erb:
+1: <h1>New Character</h1>
+2: 
+3: <% form_for([@person, @character]) do |f| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (113.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:11:02) [GET]
+  Parameters: {"id"=>"create", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.1ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 0 AND ("characters".person_id = 1)) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Character with ID=create AND ("characters".person_id = 1)):
+  app/controllers/characters_controller.rb:9:in `show'
+
+Rendered rescues/_trace (36.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:11:17) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:12:18) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:12:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:12:20) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (106.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:12:37) [GET]
+  Parameters: {"person_id"=>"1"}
+Rendering characters/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of app/views/characters/new.html.erb:
+1: <h1>New Character</h1>
+2: 
+3: <% form_for([@person, @character]) do |f| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (43.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:19:17) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:19:22) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:04) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:05) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (70.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:06) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:11) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (37.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:12) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (107.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:21:25) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:21:26) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:21:26) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:28) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (36.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:21:28) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (106.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:23) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (34.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:24) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (35.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:25) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (108.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:25) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (39.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:25) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (35.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:25) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (105.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:22:25) [GET]
+  Parameters: {"person_id"=>"1"}
+
+ActiveRecord::RecordNotFound (Couldn't find Person without an ID):
+  app/controllers/characters_controller.rb:13:in `new'
+
+Rendered rescues/_trace (35.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:25:07) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (undefined method `character' for #<Person:0x23ff384>):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (34.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:25:12) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.generated_methods):
+  app/controllers/characters_controller.rb:14:in `new'
+
+Rendered rescues/_trace (106.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20090603114112)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "time_zone" integer, "guild" varchar(255), "notes" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090603114112')[0m
+Migrating to CreateCharacters (20090603124233)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "characters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "char_class" varchar(255), "notes" text, "person_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090603124233')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("characters")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.1ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Person with ID=1):
+  app/controllers/people_controller.rb:84:in `find_person'
+
+Rendered rescues/_trace (90.8ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 07:28:12) [GET]
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 16ms (View: 11, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 07:28:13) [GET]
+Rendering home/index
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 07:28:14) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 07:28:15) [GET]
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 07:28:17) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (5.0ms)
+Completed in 18ms (View: 12, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing PeopleController#create (for 127.0.0.1 at 2009-06-03 07:28:21) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person"=>{"name"=>"Steffen L. Norgren", "guild"=>"The Departed", "notes"=>"Test", "time_zone"=>"-1"}}
+  [4;35;1mPerson Create (0.6ms)[0m   [0mINSERT INTO "people" ("name", "guild", "updated_at", "notes", "time_zone", "created_at") VALUES('Steffen L. Norgren', 'The Departed', '2009-06-03 14:28:21', 'Test', -1, '2009-06-03 14:28:21')[0m
+Redirected to http://localhost:3000/people/1
+Completed in 20ms (DB: 1) | 302 Found [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:21) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 19ms (View: 13, DB: 0) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:28:24) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 19ms (View: 10, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:28:25) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 82ms (View: 6, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#create (for 127.0.0.1 at 2009-06-03 07:28:33) [POST]
+  Parameters: {"commit"=>"Create", "character"=>{"name"=>"Locutis", "notes"=>"Testing", "char_class"=>"Paladin"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Create (0.5ms)[0m   [0;1mINSERT INTO "characters" ("name", "updated_at", "notes", "char_class", "person_id", "created_at") VALUES(NULL, '2009-06-03 14:28:33', NULL, NULL, 1, '2009-06-03 14:28:33')[0m
+Redirected to http://localhost:3000/people/1/characters/1
+Completed in 15ms (DB: 1) | 302 Found [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:28:33) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 18ms (View: 7, DB: 0) | 200 OK [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:28:39) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:28:40) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:28:42) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 22ms (View: 11, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 81ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 9, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:28:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:30:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:30:25) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:30:28) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:30:31) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 17ms (View: 7, DB: 0) | 200 OK [http://localhost/people/1/characters/1/edit]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:30:47) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"Locutis", "notes"=>"Testing", "char_class"=>"Paladin"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1) [0m
+Redirected to http://localhost:3000/people/1/characters/1
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:30:47) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:40:40) [GET]
+  Parameters: {"id"=>"1", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 1 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 14ms (View: 4, DB: 1) | 200 OK [http://localhost/people/1/characters/1/edit]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:40:41) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 16ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:40:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:40:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:40:44) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:40:46) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#create (for 127.0.0.1 at 2009-06-03 07:41:06) [POST]
+  Parameters: {"commit"=>"Create", "character"=>{"name"=>"Name 2", "notes"=>"Notes 2", "char_class"=>"Class 2"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Create (0.5ms)[0m   [0mINSERT INTO "characters" ("name", "updated_at", "notes", "char_class", "person_id", "created_at") VALUES(NULL, '2009-06-03 14:41:06', NULL, NULL, 1, '2009-06-03 14:41:06')[0m
+Redirected to http://localhost:3000/people/1/characters/2
+Completed in 14ms (DB: 1) | 302 Found [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:41:06) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:42:04) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 16ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#destroy (for 127.0.0.1 at 2009-06-03 07:42:11) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"1", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 1) [0m
+  [4;36;1mCharacter Destroy (0.5ms)[0m   [0;1mDELETE FROM "characters" WHERE "id" = 1[0m
+Redirected to http://localhost:3000/people/1/characters
+Completed in 80ms (DB: 1) | 302 Found [http://localhost/people/1/characters/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:42:11) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:42:13) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:42:14) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:42:15) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:42:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 13ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:42:22) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 14ms (View: 4, DB: 1) | 200 OK [http://localhost/people/1/characters/2/edit]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:42:27) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"dasd", "notes"=>"", "char_class"=>""}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Redirected to http://localhost:3000/people/1/characters/2
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:42:27) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:42:51) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/people/1/characters/2/edit]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:42:52) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 82ms (View: 4, DB: 1) | 200 OK [http://localhost/people/1/characters/2/edit]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:42:53) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"", "notes"=>"", "char_class"=>""}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Rendering characters/edit
+Completed in 18ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:42:59) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"asdsd", "notes"=>"", "char_class"=>""}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Rendering characters/edit
+Completed in 18ms (View: 4, DB: 0) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:43:04) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"sadsad", "notes"=>"", "char_class"=>""}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Rendering characters/edit
+Completed in 17ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#edit (for 127.0.0.1 at 2009-06-03 07:45:40) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/edit
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/people/1/characters/2/edit]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:48:24) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"sdsad", "notes"=>"asdasd", "char_class"=>"asdad"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Rendering characters/edit
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#update (for 127.0.0.1 at 2009-06-03 07:48:39) [PUT]
+  Parameters: {"commit"=>"Update", "character"=>{"name"=>"asdsd", "notes"=>"sdasds", "char_class"=>"asdsad"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.2ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+Redirected to http://localhost:3000/people/1/characters/2
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:48:39) [GET]
+  Parameters: {"id"=>"2", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 2 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:49:01) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#create (for 127.0.0.1 at 2009-06-03 07:49:04) [POST]
+  Parameters: {"commit"=>"Create", "character"=>{"name"=>"asdsad", "notes"=>"asdsad", "char_class"=>"sadasd"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Create (0.5ms)[0m   [0mINSERT INTO "characters" ("name", "updated_at", "notes", "char_class", "person_id", "created_at") VALUES(NULL, '2009-06-03 14:49:04', NULL, NULL, 1, '2009-06-03 14:49:04')[0m
+Redirected to http://localhost:3000/people/1/characters/3
+Completed in 15ms (DB: 1) | 302 Found [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:49:04) [GET]
+  Parameters: {"id"=>"3", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 3 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/3]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:51:03) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (undefined method `name' for :character:Symbol) on line #7 of app/views/characters/new.html.erb:
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :character.name %><br />
+8:     <%= f.text_field :name %>
+9:   </p>
+10:   <p>
+
+    app/views/characters/new.html.erb:7
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (42.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:51:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:51:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:51:09) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:51:10) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (undefined method `name' for :character:Symbol) on line #7 of app/views/characters/new.html.erb:
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :character.name %><br />
+8:     <%= f.text_field :name %>
+9:   </p>
+10:   <p>
+
+    app/views/characters/new.html.erb:7
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (42.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:51:11) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (undefined method `name' for :character:Symbol) on line #7 of app/views/characters/new.html.erb:
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :character.name %><br />
+8:     <%= f.text_field :name %>
+9:   </p>
+10:   <p>
+
+    app/views/characters/new.html.erb:7
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (44.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:52:28) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (undefined method `name' for :characters:Symbol) on line #7 of app/views/characters/new.html.erb:
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :characters.name %><br />
+8:     <%= f.text_field :name %>
+9:   </p>
+10:   <p>
+
+    app/views/characters/new.html.erb:7
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (42.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:52:33) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+ERROR: compiling _run_erb_app47views47characters47new46html46erb RAISED compile error
+/Users/ironix/Personal/Guild Notes/app/views/characters/new.html.erb:7: syntax error, unexpected ':', expecting ')'
+....concat(( f.label :characters:name ).to_s); @output_buffer.c...
+                              ^
+Function body:           def _run_erb_app47views47characters47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>New Character</h1>\n"
+@output_buffer.concat "\n"
+ form_for([@person, @character]) do |f| ; @output_buffer.concat "\n"
+@output_buffer.concat "  "; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :characters:name ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_field :name ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :char_class ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_field :char_class ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :notes ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :notes ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.submit "Create" ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat(( link_to 'Back', person_characters_path(@person) ).to_s); @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/ironix/Personal/Guild Notes/app/views/characters/new.html.erb:26:in `compile!'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:61:in `compile'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/renderable.rb:28:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/template.rb:194:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_view/base.rb:260:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1241:in `render_for_file'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:937:in `render_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1317:in `default_render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:1323:in `perform_action_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:617:in `call_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.2/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/flash.rb:141:in `perform_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:523:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:523:in `process_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/filters.rb:606:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:391:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:386:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:433:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:88:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:111:in `_call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:82:in `initialize'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:9:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:28:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/head.rb:9:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/methodoverride.rb:24:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/params_parser.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rewindable_input.rb:25:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/reloader.rb:9:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/failsafe.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:106:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/static.rb:31:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/rails/rack/log_tailer.rb:17:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.2/lib/commands/server.rb:111
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/ironix/Personal/Guild Notes/app/views/characters/new.html.erb:7: syntax error, unexpected ':', expecting ')'
+....concat(( f.label :characters:name ).to_s); @output_buffer.c...
+                              ^) on line #7 of app/views/characters/new.html.erb:
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :characters:name %><br />
+8:     <%= f.text_field :name %>
+9:   </p>
+10:   <p>
+
+    app/views/characters/new.html.erb:26:in `compile!'
+
+Rendered rescues/_trace (39.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:52:44) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 86ms (View: 75, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:53:22) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+
+ActionView::TemplateError (undefined method `character_name' for #<Character:0x252bbe0>) on line #8 of app/views/characters/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :name %><br />
+8:     <%= f.text_field :character_name %>
+9:   </p>
+10:   <p>
+11:     <%= f.label :char_class %><br />
+
+    app/views/characters/new.html.erb:8
+    app/views/characters/new.html.erb:3
+
+Rendered rescues/_trace (46.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:53:27) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 16ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:54:47) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#destroy (for 127.0.0.1 at 2009-06-03 07:54:49) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"2", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 2) [0m
+  [4;36;1mCharacter Destroy (0.4ms)[0m   [0;1mDELETE FROM "characters" WHERE "id" = 2[0m
+Redirected to http://localhost:3000/people/1/characters
+Completed in 13ms (DB: 1) | 302 Found [http://localhost/people/1/characters/2]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:54:49) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 87ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#destroy (for 127.0.0.1 at 2009-06-03 07:54:51) [DELETE]
+  Parameters: {"authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "id"=>"3", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 3) [0m
+  [4;35;1mCharacter Destroy (0.4ms)[0m   [0mDELETE FROM "characters" WHERE "id" = 3[0m
+Redirected to http://localhost:3000/people/1/characters
+Completed in 14ms (DB: 1) | 302 Found [http://localhost/people/1/characters/3]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:54:51) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.2ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:54:52) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#create (for 127.0.0.1 at 2009-06-03 07:54:59) [POST]
+  Parameters: {"commit"=>"Create", "character"=>{"name"=>"Locutis", "notes"=>"Test", "char_class"=>"Paladin"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Create (0.5ms)[0m   [0;1mINSERT INTO "characters" ("name", "updated_at", "notes", "char_class", "person_id", "created_at") VALUES('Locutis', '2009-06-03 14:54:59', 'Test', 'Paladin', 1, '2009-06-03 14:54:59')[0m
+Redirected to http://localhost:3000/people/1/characters/4
+Completed in 15ms (DB: 1) | 302 Found [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:54:59) [GET]
+  Parameters: {"id"=>"4", "person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters"."id" = 4 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/people/1/characters/4]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:55:02) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:55:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:55:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:55:13) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.3ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 5, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:55:14) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 80ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#create (for 127.0.0.1 at 2009-06-03 07:55:23) [POST]
+  Parameters: {"commit"=>"Create", "character"=>{"name"=>"Majikthise", "notes"=>"something", "char_class"=>"Warlock"}, "authenticity_token"=>"9qA02SoDuHDG731Q1SkZiJmSUptna0PzieTbCp/9MK4=", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Create (0.5ms)[0m   [0mINSERT INTO "characters" ("name", "updated_at", "notes", "char_class", "person_id", "created_at") VALUES('Majikthise', '2009-06-03 14:55:23', 'something', 'Warlock', 1, '2009-06-03 14:55:23')[0m
+Redirected to http://localhost:3000/people/1/characters/5
+Completed in 14ms (DB: 1) | 302 Found [http://localhost/people/1/characters]
+
+
+Processing CharactersController#show (for 127.0.0.1 at 2009-06-03 07:55:23) [GET]
+  Parameters: {"id"=>"5", "person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mCharacter Load (0.3ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters"."id" = 5 AND ("characters".person_id = 1)) [0m
+Rendering characters/show
+Completed in 13ms (View: 3, DB: 1) | 200 OK [http://localhost/people/1/characters/5]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:55:25) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:55:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:55:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:55:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:59:19) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing CharactersController#new (for 127.0.0.1 at 2009-06-03 07:59:20) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/new
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/people/1/characters/new]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:59:22) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:59:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#new (for 127.0.0.1 at 2009-06-03 07:59:24) [GET]
+Rendering template within layouts/people
+Rendering people/new
+Rendered people/_form (2.7ms)
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/people/new]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 07:59:29) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-06-03 07:59:29) [GET]
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 07:59:31) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 07:59:36) [GET]
+  [4;36;1mPerson Load (0.5ms)[0m   [0;1mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-06-03 07:59:38) [GET]
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" [0m
+Rendering template within layouts/people
+Rendering people/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/people]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:59:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 7, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 07:59:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+Rendered people/_form (3.0ms)
+Completed in 14ms (View: 7, DB: 0) | 200 OK [http://localhost/people/1/edit]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:59:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;36;1mCharacter Load (0.4ms)[0m   [0;1mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#edit (for 127.0.0.1 at 2009-06-03 07:59:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPerson Load (0.2ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/edit
+Rendered people/_form (3.0ms)
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/people/1/edit]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:59:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 16ms (View: 9, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing PeopleController#show (for 127.0.0.1 at 2009-06-03 07:59:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering template within layouts/people
+Rendering people/show
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/people/1]
+
+
+Processing CharactersController#index (for 127.0.0.1 at 2009-06-03 07:59:54) [GET]
+  Parameters: {"person_id"=>"1"}
+  [4;36;1mPerson Load (0.2ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+Rendering characters/index
+  [4;35;1mCharacter Load (0.4ms)[0m   [0mSELECT * FROM "characters" WHERE ("characters".person_id = 1) [0m
+Completed in 15ms (View: 6, DB: 1) | 200 OK [http://localhost/people/1/characters]

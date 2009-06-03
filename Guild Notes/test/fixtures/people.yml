@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  time_zone: 1
+  guild: MyString
+  notes: MyText
+
+two:
+  name: MyString
+  time_zone: 1
+  guild: MyString
+  notes: MyText

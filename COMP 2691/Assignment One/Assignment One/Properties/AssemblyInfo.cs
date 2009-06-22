@@ -1,4 +1,26 @@
-﻿using System.Reflection;
+﻿/*
+ * AssemblyInfo.cs - Assignment One
+ * 
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ *               A00683006
+ *               
+ * Created: 2009-06-22
+ * 
+ * AssemblyInfo.cs is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AssemblyInfo.cs is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,11 +28,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Assignment One")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("COMP 2691 - Intermediate Windows Application Development")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Esurient Systems Inc.")]
 [assembly: AssemblyProduct("Assignment One")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyCopyright("Copyright © 2009 Steffen L. Norgren")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

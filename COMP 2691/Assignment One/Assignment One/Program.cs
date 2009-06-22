@@ -15,7 +15,18 @@ namespace Assignment_One
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // If the directory doesn't exist, exit the application
+            try
+            {
+                Application.Run(new FileWatcher());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString() + "\nPlease make sure the directory exists.", "Invalid Directory", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

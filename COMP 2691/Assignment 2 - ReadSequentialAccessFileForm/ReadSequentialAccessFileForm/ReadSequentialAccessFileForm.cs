@@ -24,7 +24,6 @@ namespace ReadSequentialAccessFileForm
         private void openButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog(); // Displays an OpenFileDialog
-            string fileName;
 
             ofd.Filter = "Data Files|*.dat";  // Hide all non .dat files
             ofd.Title = "Select a Data File"; // Sets the dialogue title
@@ -32,10 +31,8 @@ namespace ReadSequentialAccessFileForm
             // Creates a dialog box enabling user to open file
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                fileName = ofd.FileName; // Get specified file name
-
                 // Show error if user specified invalid file
-                if (!fileName.EndsWith(".dat"))
+                if (!ofd.FileName.EndsWith(".dat"))
                 {
                     MessageBox.Show("Invalid file type.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -48,8 +45,24 @@ namespace ReadSequentialAccessFileForm
                 return;
             }
 
-            // TODO: create FileStream to obtain read access to file
-            // TODO: set file from where data is read
+            // Try and create FileStream to obtain read access to file
+            try
+            {
+                input = File.Open(ofd.FileName, FileMode.Open);
+            }
+            catch (IOException err)
+            {
+                MessageBox.Show(err.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            // Set file from where data is read
+            fileReader = new StreamReader(input);
+
+            // Enable the next record button
+            nextButton.Enabled = true;
             
             // Release resources
             ofd.Dispose();
@@ -65,7 +78,8 @@ namespace ReadSequentialAccessFileForm
 
                 if (inputRecord != null)
                 {
-                    inputFields = null; // TODO???
+                    // Split the string into records
+                    inputFields = inputRecord.Split(',');
 
                     Record record = new Record(
                         Convert.ToInt32(inputFields[0]),
@@ -78,17 +92,29 @@ namespace ReadSequentialAccessFileForm
                 }
                 else
                 {
-                    // TODO: close StreamReader
-                    // TODO: close FileStream if no Records in file
-                    // TODO: enable Open File button
-                    // TODO: disable Next Record button
-                    // TODO: Clear All TextBox Controls
-                    // TODO: notify user if no Records in file
+                    // Close StreamReader
+                    fileReader.Close();
+
+                    // Close FileStream if no Records in file
+                    input.Close();
+
+                    // Enable Open File button
+                    openButton.Enabled = true;
+
+                    // Disable Next Record button
+                    nextButton.Enabled = false;
+
+                    // Clear All TextBox Controls
+                    this.ClearTextBoxes();
+
+                    // Notify user if no Records in file
+                    MessageBox.Show("There are no more records left in the file.", "End of Records",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (IOException)
+            catch (IOException err)
             {
-                MessageBox.Show("Error Reading from File", "Error",
+                MessageBox.Show("Error Reading from File: " + err.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

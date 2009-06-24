@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+ * ReadSequentialAccessFileForm.cs - Assignment Two - Sequential File Reader
+ * 
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ *               A00683006
+ *               
+ * Created: 2009-06-24
+ * 
+ * ReadSequentialAccessFileForm.cs is free software: you can redistribute it
+ * and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ * 
+ * ReadSequentialAccessFileForm.cs is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,11 +38,20 @@ namespace ReadSequentialAccessFileForm
         private StreamReader fileReader; // reads data from a text file
         private FileStream input;        // maintains connection to a file  
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ReadSequentialAccessFileForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Displays the open file dialog box, allowing the user to select a
+        /// .dat file for the application to use for reading records.
+        /// </summary>
+        /// <param name="sender">The object sending the event</param>
+        /// <param name="e">The arguments being sent by the event</param>
         private void openButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog(); // Displays an OpenFileDialog
@@ -68,6 +99,12 @@ namespace ReadSequentialAccessFileForm
             ofd.Dispose();
         }
 
+        /// <summary>
+        /// Cycles through all the records in the file and closes all open file
+        /// handles once the end has been reached.
+        /// </summary>
+        /// <param name="sender">The object sending the event</param>
+        /// <param name="e">The arguments being sent by the event</param>
         private void nextButton_Click(object sender, EventArgs e)
         {
             try
@@ -119,6 +156,11 @@ namespace ReadSequentialAccessFileForm
             }
         }
 
+        /// <summary>
+        /// Close all open resources and release all associated resources.
+        /// </summary>
+        /// <param name="sender">The object sending the event</param>
+        /// <param name="e">The arguments being sent by the event</param>
         private void ReadSequentialAccessFileForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (fileReader != null)

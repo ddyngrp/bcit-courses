@@ -94,6 +94,9 @@ namespace ReadSequentialAccessFileForm
 
             // Enable the next record button
             nextButton.Enabled = true;
+
+            // Disable the open file button
+            openButton.Enabled = false;
             
             // Release resources
             ofd.Dispose();
@@ -153,6 +156,12 @@ namespace ReadSequentialAccessFileForm
             {
                 MessageBox.Show("Error Reading from File: " + err.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Enable Open File button
+                openButton.Enabled = true;
+
+                // Disable Next Record button
+                nextButton.Enabled = false;
             }
         }
 

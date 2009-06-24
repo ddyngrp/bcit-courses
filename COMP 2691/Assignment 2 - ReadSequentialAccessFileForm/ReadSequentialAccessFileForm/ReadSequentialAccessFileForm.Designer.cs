@@ -98,7 +98,7 @@ namespace ReadSequentialAccessFileForm
             // openButton
             // 
             this.openButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.openButton.Location = new System.Drawing.Point(84, 184);
+            this.openButton.Location = new System.Drawing.Point(94, 194);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(75, 23);
             this.openButton.TabIndex = 0;
@@ -110,7 +110,7 @@ namespace ReadSequentialAccessFileForm
             // 
             this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nextButton.Enabled = false;
-            this.nextButton.Location = new System.Drawing.Point(165, 184);
+            this.nextButton.Location = new System.Drawing.Point(175, 194);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 1;
@@ -122,9 +122,12 @@ namespace ReadSequentialAccessFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 219);
+            this.ClientSize = new System.Drawing.Size(275, 229);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.openButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(281, 257);
             this.Name = "ReadSequentialAccessFileForm";
             this.Text = "Reading A Sequential File";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReadSequentialAccessFileForm_FormClosed);

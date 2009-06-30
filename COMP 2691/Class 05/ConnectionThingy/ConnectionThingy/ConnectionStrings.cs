@@ -44,5 +44,29 @@ namespace ConnectionThingy
 
             conn.Open();
         }
+
+        private void btnRunQuery_Click(object sender, EventArgs e)
+        {
+            String connString = ConfigurationManager.ConnectionStrings["XenoConnect"].ConnectionString;
+
+            // For SQL Provider
+            SqlConnection conn = new SqlConnection(connString);
+
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(txtQuery.Text, conn);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+
+            adapter.Fill(ds, "Customers");
+
+            dataGridView.DataSource = ds.Tables["Customers"];
+
+            conn.Close();
+
+            //SqlConnectionStringBuilder myBuilder = new SqlConnectionStringBuilder();
+        }
     }
 }

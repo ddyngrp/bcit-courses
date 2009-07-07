@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+ * Explorer.cs - Assignment Two - Explorer Style Interface
+ * 
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ *               A00683006
+ *               
+ * Created: 2009-07-06
+ * 
+ * Explorer.cs is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * Explorer.cs is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,32 +35,49 @@ namespace Explorer_Style_Interface
 {
     public partial class Explorer : Form
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Explorer()
         {
             InitializeComponent();
-            InitDirectoryTree(@"C:\");
+            InitDirectoryTree();
         }
 
-        private void InitDirectoryTree(String rootPath)
+        /// <summary>
+        /// Populate the TreeView with drives that are in a "ready" state
+        /// </summary>
+        private void InitDirectoryTree()
         {
             // Don't draw the TreeView until finished
             treeView1.BeginUpdate();
 
-            // Create and add the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
+            // Create and add the root nodes
+            DriveInfo[] drives = DriveInfo.GetDrives();
+            foreach (DriveInfo drive in drives)
+            {
+                if (drive.IsReady)
+                {
+                    TreeNode rootNode = new TreeNode(drive.Name);
+                    treeView1.Nodes.Add(rootNode);
+                    PopulateNode(rootNode);
+                }
+            }
 
-            // Populate the root node's folders
-            PopulateNode(rootNode);
+            // Expand the first root node
             treeView1.Nodes[0].Expand();
 
             // Populate the ListView with the root node's files
-            PopulateList(rootNode);
+            PopulateList(treeView1.Nodes[0]);
 
             // Update the TreeView
             treeView1.EndUpdate();
         }
 
+        /// <summary>
+        /// Populate a node with subnodes, i.e. subfolders
+        /// </summary>
+        /// <param name="dirNode">The node to be populated</param>
         private void PopulateNode(TreeNode dirNode)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(dirNode.FullPath);
@@ -68,6 +107,10 @@ namespace Explorer_Style_Interface
             }
         }
 
+        /// <summary>
+        /// Populate the ListView with the contents of a directory
+        /// </summary>
+        /// <param name="node">The node directory to lookup</param>
         private void PopulateList(TreeNode node)
         {
             // Don't draw the listView until finished
@@ -135,6 +178,12 @@ namespace Explorer_Style_Interface
             listView1.EndUpdate();
         }
 
+        /// <summary>
+        /// Queries the system registry for a file extension and then
+        /// retrieves the associated file type information.
+        /// </summary>
+        /// <param name="extension">The file extention to lookup</param>
+        /// <returns>File type info</returns>
         private String GetFileType(String extension)
         {
             // Create a registry key object to represent the HKEY_CLASSES_ROOT registry section
@@ -167,19 +216,45 @@ namespace Explorer_Style_Interface
             }
         }
 
+        /// <summary>
+        /// Populates all subnodes with nodes before expanding the current node
+        /// in order to accurately show which subnodes can be expanded.
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
         private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             // Populate the subfolder nodes to a depth of 1
             foreach (TreeNode node in e.Node.Nodes)
             {
-                node.Nodes.Clear();
-                PopulateNode(node);
+                // Only populate if empty
+                if (node.Nodes.Count == 0)
+                {
+                    PopulateNode(node);
+                }
             }
         }
 
+        /// <summary>
+        /// Event that is fired when a node is clicked. Due to some bugs with populating
+        /// the ListView, this event is ignored.
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            // Populate the ListView with files
+            // Using this event sometimes causes the listView to change when we
+            // don't want it to. Using "BeforeSelect" instead.
+        }
+
+        /// <summary>
+        /// Populates the ListView when a node selection has changed.
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
+        private void treeView1_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            // Only populate if empty
             PopulateList(e.Node);
         }
     }

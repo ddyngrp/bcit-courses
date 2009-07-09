@@ -11,12 +11,18 @@ namespace Lab_1___Multhithreading
         static void Main(string[] args)
         {
             ThreadStart starter = new ThreadStart(Counting);
+            Thread[] threads = new Thread[10];
 
-            for (int i = 1; i <= 10; ++i)
+            for (int i = 0; i < 10; ++i)
             {
-                Thread threads = new Thread(starter);
-                threads.Start();
-                //threads.Join();
+                threads[i] = new Thread(starter);
+                threads[i].Start();
+            }
+
+            foreach (Thread thread in threads)
+            {
+                //thread.Start();
+                thread.Join();
             }
 
             Console.Read();
@@ -24,7 +30,7 @@ namespace Lab_1___Multhithreading
 
         static void Counting()
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 20; i++)
             {
                 Console.WriteLine("Count: {0} - Thread: {1}", i, Thread.CurrentThread.ManagedThreadId);
                 Thread.Sleep(10);

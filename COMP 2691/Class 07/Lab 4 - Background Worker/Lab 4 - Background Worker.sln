@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 4 - Background Worker", "Lab 4 - Background Worker\Lab 4 - Background Worker.csproj", "{F7A9E4BC-F81A-45A5-AAA9-3FDA6B933D6F}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7A9E4BC-F81A-45A5-AAA9-3FDA6B933D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A9E4BC-F81A-45A5-AAA9-3FDA6B933D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A9E4BC-F81A-45A5-AAA9-3FDA6B933D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A9E4BC-F81A-45A5-AAA9-3FDA6B933D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

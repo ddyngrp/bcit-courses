@@ -11,12 +11,14 @@ namespace Lab_1___Multhithreading
         static void Main(string[] args)
         {
             ThreadStart starter = new ThreadStart(Counting);
-            Thread first = new Thread(starter);
-            Thread second = new Thread(starter);
-            first.Start();
-            second.Start();
-            first.Join();
-            second.Join();
+
+            for (int i = 1; i <= 10; ++i)
+            {
+                Thread threads = new Thread(starter);
+                threads.Start();
+                //threads.Join();
+            }
+
             Console.Read();
         }
 

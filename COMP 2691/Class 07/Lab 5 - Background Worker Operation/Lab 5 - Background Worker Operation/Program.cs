@@ -15,7 +15,7 @@ namespace Lab_5___Background_Worker_Operation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmBackgroundWrkr());
         }
     }
 }

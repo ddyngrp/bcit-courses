@@ -5,20 +5,28 @@ public class BubbleSort {
 		
 	}
 	
+	/**
+	 * This is the improved version of Bubble Sort
+	 * @param input
+	 * @return
+	 */
 	public long sort(int[] input) {
 		int[] output = input.clone();
 		long basicOps = 0;
+		boolean swapped;
 		
-		for (int i = 0; i <= output.length - 2; ++i) {
-			for (int j = 0; j <= output.length - 2 - i; ++j) {
-				if (output[j + 1] < output[j]) {
-					int tmpSwap = output[j];
-					output[j] = output[j + 1];
-					output[j + 1] = tmpSwap;
+		do {
+			swapped = false;
+			for (int i = 0; i < output.length - 1; ++i) {
+				if (output[i + 1] < output[i]) {
+					int tmpSwap = output[i];
+					output[i] = output[i + 1];
+					output[i + 1] = tmpSwap;
+					swapped = true;
 					basicOps++;
 				}
-			}
-		}
+			}			
+		} while (swapped);
 		
 		return basicOps;
 	}

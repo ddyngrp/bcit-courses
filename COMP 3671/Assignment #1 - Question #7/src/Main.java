@@ -15,7 +15,7 @@ public class Main {
 		SelectionSort ss = new SelectionSort();
 		BubbleSort bs = new BubbleSort();
 		
-		int runs = 100;
+		int runs = 25;
 		int[] magnitudes = {10, 100, 500, 1000, 5000, 10000, 25000, 50000};
 		
 		System.out.println("--- Initiating Selection Sort with " + runs + " repetitions ---\n");

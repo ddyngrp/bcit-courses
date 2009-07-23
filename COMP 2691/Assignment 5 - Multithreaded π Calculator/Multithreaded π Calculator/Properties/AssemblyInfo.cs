@@ -1,16 +1,38 @@
-﻿using System.Reflection;
+﻿/*
+ * AssemblyInfo.cs - Assignment Five - Multithreaded π Calculator
+ * 
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ *               A00683006
+ *               
+ * Created: 2009-07-22
+ * 
+ * AssemblyInfo.cs is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * AssemblyInfo.cs is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Multithreaded π Calculator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Assignment #5 - Multithreaded π Calculator")]
+[assembly: AssemblyDescription("COMP 2691 - Intermediate Windows Application Development")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Multithreaded π Calculator")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyCompany("Esurient Systems Inc.")]
+[assembly: AssemblyProduct("Assignment #5 - Multithreaded π Calculator")]
+[assembly: AssemblyCopyright("Copyright © 2009 Steffen L. Norgren")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

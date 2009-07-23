@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+ * PiCalculator.cs - Assignment Five - Multithreaded π Calculator
+ * 
+ * Copyright (C) Steffen L. Norgren 2009 <ironix@trollop.org>
+ *               A00683006
+ *               
+ * Created: 2009-07-22
+ * 
+ * PiCalculator.cs is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * PiCalculator.cs is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,21 +35,26 @@ namespace Multithreaded_π_Calculator
     {
         PiObject pi;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public PiCalculator()
         {
             InitializeComponent();
         }
 
-        private void CalcPi(BackgroundWorker bw, int digits)
-        {
-        }
-
+        /// <summary>
+        /// The calculate/cancel button event
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
         private void _calcButton_Click(object sender, EventArgs e)
         {
             if (this._calcButton.Text == "Calculate")
             {
                 timer1.Start();
 
+                // Just a simple object to hold some values to be accessed globally
                 pi = new PiObject
                 {
                     calcValue = "",
@@ -47,6 +74,11 @@ namespace Multithreaded_π_Calculator
             }
         }
 
+        /// <summary>
+        /// Our main worker thread. This is the main loop that calculates Pi
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             PiObject piObj = e.Argument as PiObject;
@@ -82,6 +114,11 @@ namespace Multithreaded_π_Calculator
             progressBar1.Value = pi.progress;
         }
 
+        /// <summary>
+        /// Background worker completion event
+        /// </summary>
+        /// <param name="sender">Reference to the object that raised the event</param>
+        /// <param name="e">Provides data for a cancelable event</param>
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this._calcButton.Text = "Calculate";
@@ -93,6 +130,9 @@ namespace Multithreaded_π_Calculator
         }
     }
 
+    /// <summary>
+    /// Simple object to hold Pi values
+    /// </summary>
     class PiObject
     {
         public String calcValue { get; set; }

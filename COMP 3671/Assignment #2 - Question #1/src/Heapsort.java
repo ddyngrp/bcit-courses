@@ -12,12 +12,12 @@ public class Heapsort {
 	}
 	
 	public void sort(int[] input) {
-		for (int i = (int)Math.floor(input.length / 2); i >= 1; i--) {
+		for (int i = input.length / 2; i >= 0 ; i--) {
 			int k = i;
 			int v = input[k];
 			boolean heap = false;
 			
-			while (!heap && (2 * k) <= input.length - 1) {
+			while (!heap && (2 * k) < input.length) {
 				int j = 2 * k;
 				
 				if (j < input.length) { // there are two children

@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Encrypted Chat' target in the 'Encrypted Chat' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

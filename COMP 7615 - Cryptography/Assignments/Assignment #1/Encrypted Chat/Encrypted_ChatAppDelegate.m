@@ -37,6 +37,16 @@
 
 - (void)initPreferences
 {
+	// Connection Preferences
+	[modeClient setState:true];
+	[modeServer setState:false];
+	[remoteIP setStringValue:@"127.0.0.1"];
+	[displayName setStringValue:@"Client"];
+	
+	// Encryption Preferences
+	[cipherVigenere setState:true];
+	[cipherAffine setState:false];
+	
 	[vigenereMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
 													   @"1",@"3",@"5",@"7",@"9",@"11",@"15",
 													   @"17",@"19",@"21",@"23",@"25",nil]];
@@ -46,8 +56,12 @@
 		[vigenereAdd addItemWithObjectValue:(NSString *)[NSString stringWithFormat:@"%d", i]];
 	}
 	
+	// Set the Vigenère cipher key
 	[vigenereMult selectItemAtIndex:1];
 	[vigenereAdd selectItemAtIndex:7];
+	
+	// Set the Affine cipher key
+	[affineKey setStringValue:@"computer"];
 }
 
 - (void)dealloc
@@ -70,6 +84,22 @@
 	
 	// Clear the input window
 	[inputView setString:@""];
+}
+
+- (IBAction)setModeClient:(id)sender
+{
+	if ([[displayName stringValue] compare:@"Server"] == NSOrderedSame)
+	{
+		[displayName setStringValue:@"Client"];
+	}
+}
+
+- (IBAction)setModeServer:(id)sender
+{
+	if ([[displayName stringValue] compare:@"Client"] == NSOrderedSame)
+	{
+		[displayName setStringValue:@"Server"];
+	}
 }
 
 #pragma mark GUI Modifiers

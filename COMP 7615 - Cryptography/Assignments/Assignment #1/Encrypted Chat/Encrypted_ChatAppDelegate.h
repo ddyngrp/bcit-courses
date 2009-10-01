@@ -22,8 +22,8 @@
 	// Preferences Window: Connection
 	IBOutlet id remoteIP;
 	IBOutlet id displayName;
-	IBOutlet id clientMode;
-	IBOutlet id serverMode;
+	IBOutlet id modeClient;
+	IBOutlet id modeServer;
 
 	// Preferences Window: Encryption
 	IBOutlet id cipherVigenere;
@@ -35,12 +35,19 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+// Program Initialization & Deinitialization
 - (void)initWindow;
 - (void)initPreferences;
 - (void)dealloc;
 
+// Main Window Events
 - (IBAction)send:(id)sender;
 
+// Preferences Events
+- (IBAction)setModeClient:(id)sender;
+- (IBAction)setModeServer:(id)sender;
+
+// View Formatting
 - (void)logMessage:(NSString *)msg logType:(NSString *)type;
 
 @end

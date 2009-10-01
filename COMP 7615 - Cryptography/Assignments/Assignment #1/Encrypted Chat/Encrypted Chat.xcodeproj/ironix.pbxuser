@@ -10,15 +10,15 @@
 	256AC3D80F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
-			sepNavSelRange = "{720, 0}";
-			sepNavVisRange = "{0, 801}";
+			sepNavSelRange = "{668, 0}";
+			sepNavVisRange = "{0, 956}";
 		};
 	};
 	256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 1118}}";
-			sepNavSelRange = "{652, 0}";
-			sepNavVisRange = "{0, 1128}";
+			sepNavIntBoundsRect = "{{0, 0}, {822, 1482}}";
+			sepNavSelRange = "{2579, 0}";
+			sepNavVisRange = "{1224, 480}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
@@ -86,19 +86,14 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 275990854;
-			PBXWorkspaceStateSaveDate = 275990854;
+			PBXPerProjectTemplateStateSaveDate = 276041624;
+			PBXWorkspaceStateSaveDate = 276041624;
 		};
 		perUserProjectItems = {
-			3A14596010734925000F82F6 /* PBXTextBookmark */ = 3A14596010734925000F82F6 /* PBXTextBookmark */;
-			3A14596210734925000F82F6 /* PBXTextBookmark */ = 3A14596210734925000F82F6 /* PBXTextBookmark */;
-			3A6596471072DF35001D304E /* PBXTextBookmark */ = 3A6596471072DF35001D304E /* PBXTextBookmark */;
-			3A6596481072DF35001D304E /* PlistBookmark */ = 3A6596481072DF35001D304E /* PlistBookmark */;
-			3AAA383E107310D3008323C8 /* PBXTextBookmark */ = 3AAA383E107310D3008323C8 /* PBXTextBookmark */;
-			3AAA383F107310D3008323C8 /* PBXTextBookmark */ = 3AAA383F107310D3008323C8 /* PBXTextBookmark */;
-			3AD970D91073495000D71E58 /* PBXTextBookmark */ = 3AD970D91073495000D71E58 /* PBXTextBookmark */;
-			3AE752611073333300275767 /* PBXTextBookmark */ = 3AE752611073333300275767 /* PBXTextBookmark */;
-			3AE75281107334A500275767 /* PBXTextBookmark */ = 3AE75281107334A500275767 /* PBXTextBookmark */;
+			3A4E911A107418F1004D8DC2 /* PBXTextBookmark */ = 3A4E911A107418F1004D8DC2 /* PBXTextBookmark */;
+			3A4E91CD10742690004D8DC2 /* PBXTextBookmark */ = 3A4E91CD10742690004D8DC2 /* PBXTextBookmark */;
+			3A4E923F10742C2F004D8DC2 /* PBXTextBookmark */ = 3A4E923F10742C2F004D8DC2 /* PBXTextBookmark */;
+			3A4E925210742DF9004D8DC2 /* PBXTextBookmark */ = 3A4E925210742DF9004D8DC2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3A6596191072CFDC001D304E /* Source Control */;
 		userBuildSettings = {
@@ -106,30 +101,50 @@
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 448}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 271}";
 		};
 	};
-	3A14596010734925000F82F6 /* PBXTextBookmark */ = {
+	3A4E911A107418F1004D8DC2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 256AC3D80F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.h */;
-		name = "Encrypted_ChatAppDelegate.h: 32";
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
 		rLen = 0;
-		rLoc = 720;
+		rLoc = 0;
 		rType = 0;
-		vrLen = 801;
+		vrLen = 271;
 		vrLoc = 0;
 	};
-	3A14596210734925000F82F6 /* PBXTextBookmark */ = {
+	3A4E91CD10742690004D8DC2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.h */;
+		name = "Encrypted_ChatAppDelegate.h: 30";
+		rLen = 0;
+		rLoc = 668;
+		rType = 0;
+		vrLen = 956;
+		vrLoc = 0;
+	};
+	3A4E923F10742C2F004D8DC2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */;
-		name = "Encrypted_ChatAppDelegate.m: 33";
+		name = "Encrypted_ChatAppDelegate.m: 64";
 		rLen = 0;
-		rLoc = 652;
+		rLoc = 1152;
 		rType = 0;
-		vrLen = 1128;
-		vrLoc = 0;
+		vrLen = 1198;
+		vrLoc = 804;
+	};
+	3A4E925210742DF9004D8DC2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */;
+		name = "Encrypted_ChatAppDelegate.m: 50";
+		rLen = 0;
+		rLoc = 973;
+		rType = 0;
+		vrLen = 1487;
+		vrLoc = 1013;
 	};
 	3A6596071072CFC8001D304E /* Encrypted Chat */ = {
 		isa = PBXExecutable;
@@ -176,84 +191,6 @@
 	3A65961A1072CFDC001D304E /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	3A6596471072DF35001D304E /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 089C165DFE840E0CC02AAC07 /* English */;
-		name = "InfoPlist.strings: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 45;
-		vrLoc = 0;
-	};
-	3A6596481072DF35001D304E /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Encrypted_Chat-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #1/Encrypted Chat/Encrypted_Chat-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775808;
-	};
-	3AAA383E107310D3008323C8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1DDD58150DA1D0A300B32029 /* English */;
-		name = "English: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1529;
-		vrLoc = 74656;
-	};
-	3AAA383F107310D3008323C8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3F00F4B6AF500CF3369 /* Encrypted_Chat_Prefix.pch */;
-		name = "Encrypted_Chat_Prefix.pch: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 159;
-		vrLoc = 0;
-	};
-	3AAA3846107310D3008323C8 /* CGAffineTransform.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = CGAffineTransform.h;
-		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGAffineTransform.h;
-		sourceTree = "<absolute>";
-	};
-	3AD970D91073495000D71E58 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */;
-		name = "Encrypted_ChatAppDelegate.m: 33";
-		rLen = 0;
-		rLoc = 652;
-		rType = 0;
-		vrLen = 1128;
-		vrLoc = 0;
-	};
-	3AE752611073333300275767 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3AAA3846107310D3008323C8 /* CGAffineTransform.h */;
-		name = "CGAffineTransform.h: 1";
-		rLen = 6;
-		rLoc = 20;
-		rType = 0;
-		vrLen = 1060;
-		vrLoc = 3945;
-	};
-	3AE75281107334A500275767 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
-		name = "main.m: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 271;
-		vrLoc = 0;
 	};
 	8D1107260486CEB800E47090 /* Encrypted Chat */ = {
 		activeExec = 0;

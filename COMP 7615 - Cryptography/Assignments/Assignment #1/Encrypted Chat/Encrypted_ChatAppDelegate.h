@@ -35,4 +35,12 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (void)initWindow;
+- (void)initPreferences;
+- (void)dealloc;
+
+- (IBAction)send:(id)sender;
+
+- (void)logMessage:(NSString *)msg logType:(NSString *)type;
+
 @end

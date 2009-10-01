@@ -12,6 +12,8 @@
 
 @synthesize window;
 
+#pragma mark GUI Initialization
+
 - (id)init
 {
 	if(self = [super init])
@@ -21,9 +23,20 @@
 }
 
 - (void)awakeFromNib
-{	
+{
+	[self initWindow];
+	[self initPreferences];
+}
+
+- (void)initWindow
+{
 	[logView setString:@""];
 	[inputView setString:@""];
+	[encryptCheck setState:true];
+}
+
+- (void)initPreferences
+{
 	[vigenereMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
 													   @"1",@"3",@"5",@"7",@"9",@"11",@"15",
 													   @"17",@"19",@"21",@"23",@"25",nil]];
@@ -37,9 +50,29 @@
 	[vigenereAdd selectItemAtIndex:7];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)dealloc
 {
+	[super dealloc];
 }
+
+#pragma mark GUI Controls
+
+- (IBAction)send:(id)sender
+{
+	if ([[inputView textStorage] length] > 0)
+	{
+		// Locally display chat output
+		[self logMessage:[displayName stringValue] logType:@"info"];
+		[self logMessage:@" > " logType:@"info"];
+		[self logMessage:[[inputView textStorage] string] logType:@""];
+		[self logMessage:@"\n" logType:@""];
+	}
+	
+	// Clear the input window
+	[inputView setString:@""];
+}
+
+#pragma mark GUI Modifiers
 
 - (void)scrollToBottom
 {
@@ -56,7 +89,7 @@
 
 - (void)logMessage:(NSString *)msg logType:(NSString *)type
 {
-	NSString *paragraph = [NSString stringWithFormat:@"%@\n", msg];
+	NSString *paragraph = [NSString stringWithFormat:@"%@", msg];
 	
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithCapacity:1];
 	

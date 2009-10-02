@@ -8,8 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate> {
+@class AsyncSocket;
+
+@interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
+{
     NSWindow *window;
+
+	// Sockets
+	AsyncSocket *inSocket;
+	AsyncSocket *outSocket;
+	NSMutableArray *connectedSockets;
 
 	BOOL isRunning;
 	
@@ -22,8 +30,7 @@
 	// Preferences Window: Connection
 	IBOutlet id remoteIP;
 	IBOutlet id displayName;
-	IBOutlet id modeClient;
-	IBOutlet id modeServer;
+	IBOutlet id modeSetting;
 
 	// Preferences Window: Encryption
 	IBOutlet id cipherVigenere;
@@ -42,12 +49,12 @@
 
 // Main Window Events
 - (IBAction)send:(id)sender;
+- (IBAction)connectListen:(id)sender;
 
 // Preferences Events
-- (IBAction)setModeClient:(id)sender;
-- (IBAction)setModeServer:(id)sender;
+- (IBAction)modeChanged:(id)sender;
 
 // View Formatting
-- (void)logMessage:(NSString *)msg logType:(NSString *)type;
+- (void)logMessage:(NSString *)msg logType:(NSString *)type newLine:(Boolean)newLine;
 
 @end

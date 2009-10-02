@@ -9,17 +9,17 @@
 	};
 	256AC3D80F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 702}}";
-			sepNavSelRange = "{576, 0}";
-			sepNavVisRange = "{0, 1074}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 793}}";
+			sepNavSelRange = "{367, 0}";
+			sepNavVisRange = "{171, 1081}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
 	256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 1833}}";
-			sepNavSelRange = "{2316, 0}";
-			sepNavVisRange = "{1904, 1367}";
+			sepNavIntBoundsRect = "{{0, 0}, {853, 4342}}";
+			sepNavSelRange = "{3040, 0}";
+			sepNavVisRange = "{6675, 425}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
@@ -34,6 +34,9 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 3A6596071072CFC8001D304E /* Encrypted Chat */;
 		activeTarget = 8D1107260486CEB800E47090 /* Encrypted Chat */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Encrypted Chat */,
+		);
 		breakpoints = (
 		);
 		codeSenseManager = 3A65961A1072CFDC001D304E /* Code sense */;
@@ -87,13 +90,15 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 276056688;
-			PBXWorkspaceStateSaveDate = 276056688;
+			PBXPerProjectTemplateStateSaveDate = 276150696;
+			PBXWorkspaceStateSaveDate = 276150696;
 		};
 		perUserProjectItems = {
-			3A213EE6107465B700E23EEF /* PBXTextBookmark */ = 3A213EE6107465B700E23EEF /* PBXTextBookmark */;
-			3A213EE7107465B700E23EEF /* PBXTextBookmark */ = 3A213EE7107465B700E23EEF /* PBXTextBookmark */;
-			3A213EE8107465B700E23EEF /* PBXTextBookmark */ = 3A213EE8107465B700E23EEF /* PBXTextBookmark */;
+			3A187B241076134500E92856 /* PBXTextBookmark */ = 3A187B241076134500E92856 /* PBXTextBookmark */;
+			3A187B37107614F900E92856 /* PBXTextBookmark */ = 3A187B37107614F900E92856 /* PBXTextBookmark */;
+			3A187B38107614F900E92856 /* PBXTextBookmark */ = 3A187B38107614F900E92856 /* PBXTextBookmark */;
+			3A187B441076165C00E92856 /* PBXTextBookmark */ = 3A187B441076165C00E92856 /* PBXTextBookmark */;
+			3A187B471076169100E92856 /* PBXTextBookmark */ = 3A187B471076169100E92856 /* PBXTextBookmark */;
 			3A4E911A107418F1004D8DC2 /* PBXTextBookmark */ = 3A4E911A107418F1004D8DC2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3A6596191072CFDC001D304E /* Source Control */;
@@ -107,35 +112,70 @@
 			sepNavVisRange = "{0, 271}";
 		};
 	};
-	3A213EE6107465B700E23EEF /* PBXTextBookmark */ = {
+	3A1877FB1075C73400E92856 /* AsyncSocket.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 6058}}";
+			sepNavSelRange = "{20352, 8}";
+			sepNavVisRange = "{18310, 2068}";
+		};
+	};
+	3A1877FC1075C73400E92856 /* AsyncSocket.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 39156}}";
+			sepNavSelRange = "{30205, 0}";
+			sepNavVisRange = "{29222, 1901}";
+			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
+		};
+	};
+	3A187B241076134500E92856 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A1877FC1075C73400E92856 /* AsyncSocket.m */;
+		name = "AsyncSocket.m: 973";
+		rLen = 0;
+		rLoc = 30205;
+		rType = 0;
+		vrLen = 1901;
+		vrLoc = 29222;
+	};
+	3A187B37107614F900E92856 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D80F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.h */;
-		name = "Encrypted_ChatAppDelegate.h: 26";
+		name = "Encrypted_ChatAppDelegate.h: 19";
 		rLen = 0;
-		rLoc = 576;
+		rLoc = 367;
 		rType = 0;
-		vrLen = 1074;
-		vrLoc = 0;
+		vrLen = 1081;
+		vrLoc = 171;
 	};
-	3A213EE7107465B700E23EEF /* PBXTextBookmark */ = {
+	3A187B38107614F900E92856 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A1877FB1075C73400E92856 /* AsyncSocket.h */;
+		name = "AsyncSocket.h: 471";
+		rLen = 8;
+		rLoc = 20352;
+		rType = 0;
+		vrLen = 2068;
+		vrLoc = 18310;
+	};
+	3A187B441076165C00E92856 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */;
-		name = "Encrypted_ChatAppDelegate.m: 76";
+		name = "Encrypted_ChatAppDelegate.m: 288";
 		rLen = 0;
-		rLoc = 1473;
+		rLoc = 7390;
 		rType = 0;
-		vrLen = 1002;
-		vrLoc = 1165;
+		vrLen = 1377;
+		vrLoc = 6430;
 	};
-	3A213EE8107465B700E23EEF /* PBXTextBookmark */ = {
+	3A187B471076169100E92856 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* Encrypted_ChatAppDelegate.m */;
-		name = "Encrypted_ChatAppDelegate.m: 113";
+		name = "Encrypted_ChatAppDelegate.m: 288";
 		rLen = 0;
-		rLoc = 2316;
+		rLoc = 7390;
 		rType = 0;
-		vrLen = 1367;
-		vrLoc = 1904;
+		vrLen = 1295;
+		vrLoc = 7257;
 	};
 	3A4E911A107418F1004D8DC2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -154,7 +194,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -177,6 +217,30 @@
 		sourceDirectories = (
 		);
 		variableFormatDictionary = {
+			$cs = 1;
+			$ds = 1;
+			$eflags = 1;
+			$es = 1;
+			$fs = 1;
+			$gs = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r13 = 1;
+			$r14 = 1;
+			$r15 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$rax = 1;
+			$rbp = 1;
+			$rbx = 1;
+			$rcx = 1;
+			$rdi = 1;
+			$rdx = 1;
+			$rip = 1;
+			$rsi = 1;
+			$rsp = 1;
+			$ss = 1;
 		};
 	};
 	3A6596191072CFDC001D304E /* Source Control */ = {

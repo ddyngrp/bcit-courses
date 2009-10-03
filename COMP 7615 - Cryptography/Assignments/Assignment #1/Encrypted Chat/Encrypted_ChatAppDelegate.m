@@ -7,14 +7,6 @@
 //
 
 #import "Encrypted_ChatAppDelegate.h"
-#import "AsyncSocket.h"
-
-#define TEXT_MSG	0
-#define PORT		3141
-
-#define READ_TIMEOUT	-1 // No timeout
-#define WRITE_TIMEOUT	-1 // No timeout
-#define READ_TIMEOUT_EXTENSION 10.0
 
 #define FORMAT(format, ...) [NSString stringWithFormat:(format), ##__VA_ARGS__]
 
@@ -27,13 +19,7 @@
 - (id)init
 {
 	if(self = [super init])
-	{
-		inSocket = [[AsyncSocket alloc] initWithDelegate:self];
-		outSocket = [[AsyncSocket alloc] initWithDelegate:self];
-		connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
-				
 		isRunning = NO;
-	}
 
 	return self;
 }
@@ -81,9 +67,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	NSLog(@"Ready");
-	
-	// Advanced options - enable the socket to contine operations even during modal dialogs, and menu browsing
-	[outSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
 }
 
 - (void)dealloc
@@ -107,18 +90,11 @@
 		{
 			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
 					dataUsingEncoding:NSUTF8StringEncoding];
-			
-			[outSocket writeData:data withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
 		}
 		else if ([modeSetting selectedColumn] == 1)
 		{
 			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
 					dataUsingEncoding:NSUTF8StringEncoding];
-			
-			// Send to all connected clients
-			for (int i = 0; i < [connectedSockets count]; i++)
-				[[connectedSockets objectAtIndex:i] writeData:data
-												  withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
 		}
 	}
 	
@@ -149,65 +125,10 @@
 	switch ([modeSetting selectedColumn])
 	{
 		case 0:
-			if (!isRunning)
-			{
-				NSError *err;
-				
-				if(![outSocket connectToHost:[remoteIP stringValue] onPort:3141 error:&err])
-				{
-					NSLog(@"Error: %@", err);
-				}
-				
-				isRunning = YES;
-				[connectListenButton setTitle:@"Disconnect"];
-			}
-			else
-			{
-				[outSocket disconnect];
-				[self logMessage:@"Disconnected\n" logType:@"info"];
-				isRunning = NO;
-				[connectListenButton setTitle:@"Connect"];
-			}
+			isRunning = YES;
 			break;
 		case 1:
-			if (!isRunning)
-			{
-				int port = PORT;
-				
-				NSError *error = nil;
-				if(![inSocket acceptOnPort:port error:&error])
-				{
-					[self logMessage:FORMAT(@"Error starting server: %@\n", error)
-							 logType:@"error"];
-					return;
-				}
-				
-				[self logMessage:FORMAT(@"Echo server started on port %hu\n", [inSocket localPort])
-						 logType:@"info"];
-				isRunning = YES;
-				
-				[connectListenButton setTitle:@"Disconnect"];
-			}
-			else
-			{
-				// Stop accepting connections
-				[inSocket disconnect];
-				
-				// Stop any client connections
-				int i;
-				for(i = 0; i < [connectedSockets count]; i++)
-				{
-					// Call disconnect on the socket,
-					// which will invoke the onSocketDidDisconnect: method,
-					// which will remove the socket from the list.
-					[[connectedSockets objectAtIndex:i] disconnect];
-				}
-				
-				[self logMessage:@"Stopped Echo server\n" logType:@"info"];
-				isRunning = NO;
-				
-				[connectListenButton setTitle:@"Listen"];
-			}
+			isRunning = YES;
 			break;
 		default:
 			break;
@@ -247,74 +168,6 @@
 	
 	[[logView textStorage] appendAttributedString:as];
 	[self scrollToBottom];
-}
-
-#pragma mark Sockets
-
-- (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket
-{
-	[connectedSockets addObject:newSocket];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
-{
-	if ([modeSetting selectedColumn] == 0)
-		[self logMessage:FORMAT(@"Connected to %@:%hu\n", host, port)
-				 logType:@"info"];
-	else
-		[self logMessage:FORMAT(@"Accepted client %@:%hu\n", host, port)
-				 logType:@"info"];
-	
-	[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:TEXT_MSG];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
-{
-	if (tag == TEXT_MSG)
-		[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:TEXT_MSG];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
-	NSData *strData = [data subdataWithRange:NSMakeRange(0, [data length] - 2)];
-	NSString *msg = [[[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding] autorelease];
-	
-	if (msg)
-		[self logMessage:FORMAT(@"%@\n", msg) logType:@""];
-	else
-		[self logMessage:@"Error converting received data into UTF-8 String\n"
-			   logType:@"error"];
-
-	// Even if we were unable to write the incoming data to the log,
-	// we're still going to echo it back to the client.
-	[sock writeData:data withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
-}
-
-/**
- * This method is called if a read has timed out.
- * It allows us to optionally extend the timeout.
- * We use this method to issue a warning to the user prior to disconnecting them.
- **/
-- (NSTimeInterval)onSocket:(AsyncSocket *)sock
-  shouldTimeoutReadWithTag:(long)tag
-				   elapsed:(NSTimeInterval)elapsed
-				 bytesDone:(CFIndex)length
-{
-	if (elapsed <= READ_TIMEOUT)
-		return READ_TIMEOUT_EXTENSION;
-	
-	return 0.0;
-}
-
-- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err
-{
-	[self logMessage:FORMAT(@"Client Disconnected: %@:%hu\n", [sock connectedHost], [sock connectedPort])
-			 logType:@"info"];
-}
-
-- (void)onSocketDidDisconnect:(AsyncSocket *)sock
-{
-	[connectedSockets removeObject:sock];
 }
 
 @end

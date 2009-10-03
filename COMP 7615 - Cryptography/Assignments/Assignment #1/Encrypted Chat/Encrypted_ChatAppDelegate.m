@@ -12,7 +12,8 @@
 #define TEXT_MSG	0
 #define PORT		3141
 
-#define READ_TIMEOUT -1 // No timeout
+#define READ_TIMEOUT	-1 // No timeout
+#define WRITE_TIMEOUT	-1 // No timeout
 #define READ_TIMEOUT_EXTENSION 10.0
 
 #define FORMAT(format, ...) [NSString stringWithFormat:(format), ##__VA_ARGS__]
@@ -47,29 +48,27 @@
 {
 	[logView setString:@""];
 	[inputView setString:@""];
-	[encryptCheck setState:true];
+	[encryptCheck setState:YES];
 }
 
 - (void)initPreferences
 {
 	// Connection Preferences
-	[[[modeSetting cells] objectAtIndex:0] setState:true];
-	[[[modeSetting cells] objectAtIndex:1] setState:false];
+	[[[modeSetting cells] objectAtIndex:0] setState:YES];
+	[[[modeSetting cells] objectAtIndex:1] setState:NO];
 	[remoteIP setStringValue:@"127.0.0.1"];
 	[displayName setStringValue:@"Client"];
 	
 	// Encryption Preferences
-	[cipherVigenere setState:true];
-	[cipherAffine setState:false];
+	[cipherVigenere setState:YES];
+	[cipherAffine setState:NO];
 	
 	[vigenereMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
 													   @"1",@"3",@"5",@"7",@"9",@"11",@"15",
 													   @"17",@"19",@"21",@"23",@"25",nil]];
 	
 	for (int i = 0; i < 26; i++)
-	{
 		[vigenereAdd addItemWithObjectValue:(NSString *)[NSString stringWithFormat:@"%d", i]];
-	}
 	
 	// Set the Vigenère cipher key
 	[vigenereMult selectItemAtIndex:1];
@@ -84,7 +83,7 @@
 	NSLog(@"Ready");
 	
 	// Advanced options - enable the socket to contine operations even during modal dialogs, and menu browsing
-	[inSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+	[outSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
 }
 
 - (void)dealloc
@@ -101,25 +100,25 @@
 	if ([[inputView textStorage] length] > 0 && isRunning)
 	{
 		// Locally display chat output
-		[self logMessage:[displayName stringValue] logType:@"info" newLine:false];
-		[self logMessage:@" > " logType:@"info"  newLine:false];
-		[self logMessage:[[inputView textStorage] string] logType:@"" newLine:true];
+		[self logMessage:FORMAT(@"%@ > ", [displayName stringValue]) logType:@"info"];
+		[self logMessage:FORMAT(@"%@\n", [[inputView textStorage] string]) logType:@""];
 				
 		if ([modeSetting selectedColumn] == 0)
 		{
-			data = [[[inputView textStorage] string] dataUsingEncoding:NSUTF8StringEncoding];
+			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
+					dataUsingEncoding:NSUTF8StringEncoding];
 			
-			[outSocket writeData:data withTimeout:-1 tag:TEXT_MSG];
+			[outSocket writeData:data withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
 		}
 		else if ([modeSetting selectedColumn] == 1)
 		{
+			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
+					dataUsingEncoding:NSUTF8StringEncoding];
+			
 			// Send to all connected clients
 			for (int i = 0; i < [connectedSockets count]; i++)
-			{
-				data = [[[inputView textStorage] string] dataUsingEncoding:NSUTF8StringEncoding];
-				
-				[[connectedSockets objectAtIndex:i] writeData:data withTimeout:-1 tag:TEXT_MSG];
-			}			
+				[[connectedSockets objectAtIndex:i] writeData:data
+												  withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
 		}
 	}
 	
@@ -159,33 +158,33 @@
 					NSLog(@"Error: %@", err);
 				}
 				
-				isRunning = true;
+				isRunning = YES;
 				[connectListenButton setTitle:@"Disconnect"];
 			}
 			else
 			{
 				[outSocket disconnect];
-				[self logMessage:@"Disconnected" logType:@"info" newLine:true];
-				isRunning = false;
+				[self logMessage:@"Disconnected\n" logType:@"info"];
+				isRunning = NO;
 				[connectListenButton setTitle:@"Connect"];
 			}
 			break;
 		case 1:
-			if(!isRunning)
+			if (!isRunning)
 			{
 				int port = PORT;
 				
 				NSError *error = nil;
 				if(![inSocket acceptOnPort:port error:&error])
 				{
-					[self logMessage:FORMAT(@"Error starting server: %@", error)
-							 logType:@"error" newLine:true];
+					[self logMessage:FORMAT(@"Error starting server: %@\n", error)
+							 logType:@"error"];
 					return;
 				}
 				
-				[self logMessage:FORMAT(@"Echo server started on port %hu", [inSocket localPort])
-						 logType:@"info" newLine:true];
-				isRunning = true;
+				[self logMessage:FORMAT(@"Echo server started on port %hu\n", [inSocket localPort])
+						 logType:@"info"];
+				isRunning = YES;
 				
 				[connectListenButton setTitle:@"Disconnect"];
 			}
@@ -204,8 +203,8 @@
 					[[connectedSockets objectAtIndex:i] disconnect];
 				}
 				
-				[self logMessage:@"Stopped Echo server" logType:@"info" newLine:true];
-				isRunning = false;
+				[self logMessage:@"Stopped Echo server\n" logType:@"info"];
+				isRunning = NO;
 				
 				[connectListenButton setTitle:@"Listen"];
 			}
@@ -230,14 +229,9 @@
 	[[scrollView documentView] scrollPoint:newScrollOrigin];
 }
 
-- (void)logMessage:(NSString *)msg logType:(NSString *)type newLine:(Boolean)newLine
+- (void)logMessage:(NSString *)msg logType:(NSString *)type
 {
-	NSString *paragraph;
-	
-	if (newLine)
-		paragraph = [NSString stringWithFormat:@"%@\n", msg];
-	else
-		paragraph = [NSString stringWithFormat:@"%@", msg];
+	NSString *paragraph = [NSString stringWithFormat:@"%@", msg];
 	
 	NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithCapacity:1];
 	
@@ -255,7 +249,7 @@
 	[self scrollToBottom];
 }
 
-#pragma mark Sockts
+#pragma mark Sockets
 
 - (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket
 {
@@ -265,21 +259,19 @@
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
 	if ([modeSetting selectedColumn] == 0)
-		[self logMessage:FORMAT(@"Connected to %@:%hu", host, port)
-				 logType:@"info" newLine:true];
+		[self logMessage:FORMAT(@"Connected to %@:%hu\n", host, port)
+				 logType:@"info"];
 	else
-		[self logMessage:FORMAT(@"Accepted client %@:%hu", host, port)
-				 logType:@"info" newLine:true];
+		[self logMessage:FORMAT(@"Accepted client %@:%hu\n", host, port)
+				 logType:@"info"];
 	
-	[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:0];
+	[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:TEXT_MSG];
 }
 
 - (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-	if(tag == TEXT_MSG)
-	{
-		[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:0];
-	}
+	if (tag == TEXT_MSG)
+		[sock readDataToData:[AsyncSocket CRLFData] withTimeout:READ_TIMEOUT tag:TEXT_MSG];
 }
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
@@ -287,19 +279,15 @@
 	NSData *strData = [data subdataWithRange:NSMakeRange(0, [data length] - 2)];
 	NSString *msg = [[[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding] autorelease];
 	
-	if(msg)
-	{
-		[self logMessage:msg logType:@"" newLine:true];
-	}
+	if (msg)
+		[self logMessage:FORMAT(@"%@\n", msg) logType:@""];
 	else
-	{
-		[self logMessage:@"Error converting received data into UTF-8 String"
-			   logType:@"error" newLine:true];
-	}
-	
+		[self logMessage:@"Error converting received data into UTF-8 String\n"
+			   logType:@"error"];
+
 	// Even if we were unable to write the incoming data to the log,
 	// we're still going to echo it back to the client.
-	[sock writeData:data withTimeout:-1 tag:TEXT_MSG];
+	[sock writeData:data withTimeout:WRITE_TIMEOUT tag:TEXT_MSG];
 }
 
 /**
@@ -312,18 +300,16 @@
 				   elapsed:(NSTimeInterval)elapsed
 				 bytesDone:(CFIndex)length
 {
-	if(elapsed <= READ_TIMEOUT)
-	{
+	if (elapsed <= READ_TIMEOUT)
 		return READ_TIMEOUT_EXTENSION;
-	}
 	
 	return 0.0;
 }
 
 - (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err
 {
-	[self logMessage:FORMAT(@"Client Disconnected: %@:%hu", [sock connectedHost], [sock connectedPort])
-			 logType:@"info" newLine:true];
+	[self logMessage:FORMAT(@"Client Disconnected: %@:%hu\n", [sock connectedHost], [sock connectedPort])
+			 logType:@"info"];
 }
 
 - (void)onSocketDidDisconnect:(AsyncSocket *)sock

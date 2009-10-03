@@ -55,6 +55,6 @@
 - (IBAction)modeChanged:(id)sender;
 
 // View Formatting
-- (void)logMessage:(NSString *)msg logType:(NSString *)type newLine:(Boolean)newLine;
+- (void)logMessage:(NSString *)msg logType:(NSString *)type;
 
 @end

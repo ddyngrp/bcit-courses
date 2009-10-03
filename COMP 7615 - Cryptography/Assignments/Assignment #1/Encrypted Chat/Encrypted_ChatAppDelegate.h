@@ -8,16 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class AsyncSocket;
-
 @interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow *window;
-
-	// Sockets
-	AsyncSocket *inSocket;
-	AsyncSocket *outSocket;
-	NSMutableArray *connectedSockets;
 
 	BOOL isRunning;
 	

@@ -272,7 +272,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>3</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -327,14 +327,13 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3ABD2D7310773A7A00748DD2</string>
+										<string>3A78F1D210775E95005B5DCC</string>
 										<key>history</key>
 										<array>
 											<string>3A4E911A107418F1004D8DC2</string>
-											<string>3A01F5911076CC8F004FF8AA</string>
-											<string>3ABD2D2E10772D5600748DD2</string>
-											<string>3ABD2D3410772E7C00748DD2</string>
-											<string>3ABD2D6F1077391A00748DD2</string>
+											<string>3A78F1BD10775E4D005B5DCC</string>
+											<string>3A78F1BF10775E4D005B5DCC</string>
+											<string>3A78F1C010775E4D005B5DCC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -392,9 +391,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3ABD2C63107717BF00748DD2</string>
+				<string>3A78F19610775CF7005B5DCC</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3ABD2C64107717BF00748DD2</string>
+				<string>3A78F19710775CF7005B5DCC</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -532,13 +531,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>3ABD2C6E107717BF00748DD2</string>
-		<string>3ABD2C6F107717BF00748DD2</string>
+		<string>3A78F1D310775E95005B5DCC</string>
+		<string>3A78F1CA10775E4D005B5DCC</string>
+		<string>3A78F1CB10775E4D005B5DCC</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A6596171072CFDC001D304E</string>
-		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #1/Encrypted Chat/Encrypted Chat.xcodeproj</string>
+		<string>/Users/ironix/Desktop/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -618,7 +617,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A6596171072CFDC001D304E</string>
-				<string>3ABD2C65107717BF00748DD2</string>
+				<string>3A78F19810775CF7005B5DCC</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -740,13 +739,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3ABD2C66107717BF00748DD2</string>
+				<string>3A78F1C210775E4D005B5DCC</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3ABD2C67107717BF00748DD2</string>
-				<string>3ABD2C68107717BF00748DD2</string>
-				<string>3ABD2C69107717BF00748DD2</string>
-				<string>3ABD2C6A107717BF00748DD2</string>
-				<string>3ABD2C6B107717BF00748DD2</string>
+				<string>3A78F1C310775E4D005B5DCC</string>
+				<string>3A78F1C410775E4D005B5DCC</string>
+				<string>3A78F1C510775E4D005B5DCC</string>
+				<string>3A78F1C610775E4D005B5DCC</string>
+				<string>3A78F1C710775E4D005B5DCC</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -900,7 +899,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3ABD2C6C107717BF00748DD2</string>
+				<string>3A78F1C810775E4D005B5DCC</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

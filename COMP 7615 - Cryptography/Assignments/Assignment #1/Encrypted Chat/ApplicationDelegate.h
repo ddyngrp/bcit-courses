@@ -1,13 +1,23 @@
-//
-//  Encrypted_ChatAppDelegate.h
-//  Encrypted Chat
-//
-//  Created by Steffen L. Norgren on 09-09-29.
-//  Copyright 2009 Esurient Systems Inc.. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	ApplicationDelegate.h
+ * 
+ * PROGRAM:     Encrypted Chat
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: This is the header file for the application's main delegate.
+ *
+ *---------------------------------------------------------------------------*/
 
 #import <Cocoa/Cocoa.h>
 
+// Interface for the main application window
 @interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow *window;

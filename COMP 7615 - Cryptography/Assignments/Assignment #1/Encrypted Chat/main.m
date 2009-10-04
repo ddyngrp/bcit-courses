@@ -1,10 +1,20 @@
-//
-//  main.m
-//  Encrypted Chat
-//
-//  Created by Steffen L. Norgren on 09-09-29.
-//  Copyright 2009 Esurient Systems Inc.. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	main.m - Application's main entry point
+ * 
+ * PROGRAM:     Encrypted Chat
+ * 
+ * FUNCTIONS:   
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * NOTES: Main entry point for the application.
+ *---------------------------------------------------------------------------*/
 
 #import <Cocoa/Cocoa.h>
 

@@ -123,7 +123,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    client
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -148,7 +148,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    clientWithHost
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -176,7 +176,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    clientConnectedTo
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -215,7 +215,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    init
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -245,7 +245,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    initWithHost
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -283,7 +283,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    dealloc
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -315,7 +315,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    connect
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -390,7 +390,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    disconnect
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -419,7 +419,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    closeConnection
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -446,7 +446,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    sendData
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -458,7 +458,7 @@
  * INTERFACE:   (BOOL)sendData:(NSData *)data
  *                    data: the data to be sent
  * 
- * RETURNS: True if data was sent, false on an error.
+ * RETURNS: YES if data was sent, NO on an error.
  * 
  * NOTES: Attempts to send data through the current connection.
  *
@@ -477,7 +477,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    sendString
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -489,7 +489,7 @@
  * INTERFACE:   (BOOL)sendString:(NSString *)string
  *                    string: the string to be sent
  * 
- * RETURNS: True if string was sent, false on an error.
+ * RETURNS: YES if string was sent, NO on an error.
  * 
  * NOTES: Attempts to send a string through the current connection.
  *
@@ -502,7 +502,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    sendString
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -516,7 +516,7 @@
  *                    string: the string to be sent
  *                    encoding: the type of text encoding used
  * 
- * RETURNS: True if string was sent, false on an error.
+ * RETURNS: YES if string was sent, NO on an error.
  * 
  * NOTES: Attempts to send a string with a specific encoding through the
  *        current connection.
@@ -530,7 +530,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    processMessage
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -562,7 +562,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    delegate
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -586,7 +586,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setDelegate
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -617,7 +617,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    c
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -641,7 +641,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setC
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -670,7 +670,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setNewHost
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -702,7 +702,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    remoteHost
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -726,7 +726,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    remoteHostName
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -754,7 +754,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setRemoteHost
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -804,7 +804,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    remotePort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -828,7 +828,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setRemotePort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -840,7 +840,7 @@
  * INTERFACE:   (BOOL)setRemotePort:(int)newPort
  *                    newPort: the new remote port
  * 
- * RETURNS: True on success, false if currently connected.
+ * RETURNS: YES on success, NO if currently connected.
  * 
  * NOTES: Sets a new remote port only if not currently connected.
  *
@@ -858,7 +858,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    isConnected
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -869,7 +869,7 @@
  * 
  * INTERFACE:   (BOOL)isConnected
  * 
- * RETURNS: True if connected
+ * RETURNS: YES if connected
  * 
  * NOTES: Returns the current state of the connection.
  *
@@ -882,7 +882,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setIsConnected
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -908,7 +908,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    connectionTimeout
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -934,7 +934,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setConnectionTimeout
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -961,7 +961,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    defaultStringEncoding
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -985,7 +985,7 @@
 /*-----------------------------------------------------------------------------
  * FUNCTION:    setDefaultStringEncoding
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1018,9 +1018,9 @@
 #pragma mark Class Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    server
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1029,11 +1029,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (id)server
  * 
- * RETURNS: 
+ * RETURNS: Server object with standard setup.
  * 
- * NOTES: 
+ * NOTES: A Server object with no port and delegate set.
+ *        Listens on all addresses.
  *
  *----------------------------------------------------------------------------*/
 + (id)server
@@ -1043,9 +1044,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    serverWithPort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1054,11 +1055,13 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (id)serverWithPort:(int)initPort delegate:(id)initDelegate
+ *                  initPort: port which the server is supposed to listen on.
+ *                  delegate: delegate will be sent the processing messages.
  * 
- * RETURNS: 
+ * RETURNS: Returns a Server object with a given port and delegate
  * 
- * NOTES: 
+ * NOTES: A Server object, fully initialized, listening on all addresses.
  *
  *----------------------------------------------------------------------------*/
 + (id)serverWithPort:(int)initPort delegate:(id)initDelegate
@@ -1070,9 +1073,9 @@
 #pragma mark Instance Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    init
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1081,11 +1084,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (id)init
  * 
- * RETURNS: 
+ * RETURNS: Returns a Server object with standard setup.
  * 
- * NOTES: 
+ * NOTES: Creates a Server object with no port and delegate set.
+ *        Set to listen on all addresses.
  *
  *----------------------------------------------------------------------------*/
 - (id)init
@@ -1102,9 +1106,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    initWithPort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1113,11 +1117,14 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (id)initWithPort:(int)initPort delegate:(id)initDelegate
+ *                  initPort: port which the server is supposed to listen on.
+ *                  delegate: delegate will be sent the processing messages.
  * 
- * RETURNS: 
+ * RETURNS: Returns a Server object with a given port and delegate.
  * 
- * NOTES: 
+ * NOTES: Creates a Server object with a port and delegate set.
+ *        Set to listen on all addresses.
  *
  *----------------------------------------------------------------------------*/
 - (id)initWithPort:(int)initPort delegate:(id)initDelegate
@@ -1134,9 +1141,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    dealloc
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1145,11 +1152,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)dealloc
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Closes all current connections and performs garbage collection.
  *
  *----------------------------------------------------------------------------*/
 - (void)dealloc
@@ -1166,9 +1173,9 @@
 #pragma mark Listening Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    startListening
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1177,11 +1184,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (ClientServerInit)startListening
  * 
- * RETURNS: 
+ * RETURNS: Returns an Init value, see constants for details.
  * 
- * NOTES: 
+ * NOTES: Starts the Server, if it was initialized correctly,
+ *        and returns the status as a Init value.
  *
  *----------------------------------------------------------------------------*/
 - (ClientServerInit)startListening
@@ -1243,9 +1251,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    stopListening
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1254,11 +1262,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)stopListening
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Closes all connections and stops listening for new connections.
  *
  *----------------------------------------------------------------------------*/
 - (void)stopListening
@@ -1284,9 +1292,9 @@
 #pragma mark Accessor Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    isListening
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1295,11 +1303,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)isListening
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the server is listening. Otherwise returns NO.
  * 
- * NOTES: 
+ * NOTES: Changes to the servers listening port, address as well as delegate
+ *        may be only made when it is not listening.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)isListening
@@ -1308,9 +1317,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setServerPort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1319,11 +1328,13 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)setServerPort:(int)newPort
+ *                    newPort: port which the server is supposed to listen on
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the port could be changed, otherwise NO
  * 
- * NOTES: 
+ * NOTES: Sets the port of the server, and returns a BOOL value indicating
+ *        success or failure.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)setServerPort:(int)newPort
@@ -1336,9 +1347,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    serverPort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1347,11 +1358,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (int)serverPort
  * 
- * RETURNS: 
+ * RETURNS: Returns an int value representing the port number.
  * 
- * NOTES: 
+ * NOTES: Returns the port on which the server is set up to listen.
  *
  *----------------------------------------------------------------------------*/
 - (int)serverPort
@@ -1360,9 +1371,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setServerDelegate
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1371,11 +1382,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)setServerDelegate:(id)newDelegate
+ *                    newDelegate: the new delegate to listen for messages
  * 
- * RETURNS: 
+ * RETURNS: YES if the delegate could be set, NO if the server is listening.
  * 
- * NOTES: 
+ * NOTES: Sets a new delegate to listen to incoming events.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)setServerDelegate:(id)newDelegate
@@ -1390,9 +1402,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    listenAddress
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1401,11 +1413,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (ServerListenAddress)listenAddress
  * 
- * RETURNS: 
+ * RETURNS: Returns the listen address represented by a ListenAddress value.
  * 
- * NOTES: 
+ * NOTES: Returns a ListenAddress value representing the general listen
+ *        address. See constants for details.
  *
  *----------------------------------------------------------------------------*/
 - (ServerListenAddress)listenAddress
@@ -1414,9 +1427,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    listenAddressAsString
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1425,11 +1438,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (NSString *)listenAddressAsString
  * 
- * RETURNS: 
+ * RETURNS: Returns the listen address represented by a NSString object.
  * 
- * NOTES: 
+ * NOTES: Returns the IP Address the Server is listening on as a NSString object.
  *
  *----------------------------------------------------------------------------*/
 - (NSString *)listenAddressAsString
@@ -1438,9 +1451,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setListenAddress
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1449,11 +1462,13 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)setListenAddress:(ServerListenAddress)newLAddr
+ *                    newLAddr: new address to listen on
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the address could be changed, otherwise NO
  * 
- * NOTES: 
+ * NOTES: Sets the address of the server with one of the preset ListenAddress
+ *        values. Returns BOOL value indicating success or failure.
  *
  *----------------------------------------------------------------------------*/
 - (void)setListenAddress:(ServerListenAddress)newLAddr
@@ -1471,9 +1486,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setListenAddressByString
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1482,11 +1497,13 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)setListenAddressByString:(NSString *)newStrAddr
+ *                    newStrAddr: address to listen on
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the address could be changed, otherwise NO
  * 
- * NOTES: 
+ * NOTES: Sets the listen address of the server to be the specified.
+ *        Returns BOOL value indicating success or failure.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)setListenAddressByString:(NSString *)newStrAddr
@@ -1503,9 +1520,9 @@
 #pragma mark Delegate Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    processMessage
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1514,23 +1531,28 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)processMessage:(NSString *)message orData:(NSData *)data
+ *                                fromConnection:(ClientServerConnection *)con
+ *                    message: string that has been received
+ *                    data: raw data as an NSData object
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Sent to the delegate after data has been received by one of the
+ *        servers connections.
  *
  *----------------------------------------------------------------------------*/
-- (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con;
+- (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
 {
 	if([serverDelegate respondsToSelector:@selector(processMessage:orData:fromConnection:)])
 		[serverDelegate processMessage:message orData:data fromConnection:con];
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    processNewConnection
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1539,11 +1561,13 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)processNewConnection:(ClientServerConnection *)con
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Will be sent the delegate after a new connection has been
+ *        successfully established
  *
  *----------------------------------------------------------------------------*/
 - (void)processNewConnection:(ClientServerConnection *)con
@@ -1553,9 +1577,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    processClosingConnection
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1564,11 +1588,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)processClosingConnection:(ClientServerConnection *)con
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Will be sent the delegate just before the connection will be closed.
  *
  *----------------------------------------------------------------------------*/
 - (void)processClosingConnection:(ClientServerConnection *)con
@@ -1580,9 +1605,9 @@
 #pragma mark Connections
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    connections
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1591,11 +1616,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (NSArray *)connections
  * 
- * RETURNS: 
+ * RETURNS: Returns an NSArray object containing all connections
  * 
- * NOTES: 
+ * NOTES: Returns an Array containing all connections.
  *
  *----------------------------------------------------------------------------*/
 - (NSArray *)connections
@@ -1604,9 +1629,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    newConnection
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1615,11 +1640,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)newConnection:(NSNotification *)notification
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Called upon new incomming connections.
  *
  *----------------------------------------------------------------------------*/
 - (void)newConnection:(NSNotification *)notification
@@ -1635,7 +1660,9 @@
 	[fileHandle acceptConnectionInBackgroundAndNotify];
 	
 	if(remoteFileHandle) {
-		ClientServerConnection *connection = [[ClientServerConnection alloc] initWithFileHandle:remoteFileHandle delegate:self];
+		ClientServerConnection *connection = [[ClientServerConnection alloc]
+											  initWithFileHandle:remoteFileHandle delegate:self];
+
 		if(connection) {
 			NSIndexSet *insertedIndexes = [NSIndexSet indexSetWithIndex:[connections count]];
             [self willChange:NSKeyValueChangeInsertion
@@ -1650,9 +1677,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    closeConnection
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1661,11 +1688,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)closeConnection:(ClientServerConnection *)con
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Closes the given connection.
  *
  *----------------------------------------------------------------------------*/
 - (void)closeConnection:(ClientServerConnection *)con
@@ -1687,9 +1715,9 @@
 #pragma mark Sending Data
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    sendData
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1698,11 +1726,15 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)sendData:(NSData *)data
+ *                             toConnection:(ClientServerConnection *)con
+ (                    data: data to be sent
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the data was sent, otherwise NO
  * 
- * NOTES: 
+ * NOTES: Sends data in form of an NSData object to the given connection.
+ *        Returns BOOL value indicating success or failure.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)sendData:(NSData *)data toConnection:(ClientServerConnection *)con
@@ -1718,9 +1750,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    sendString
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1729,11 +1761,15 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (BOOL)sendString:(NSString *)string
+ *                               toConnection:(ClientServerConnection *)con
+ *                    string: the string to be sent.
+ *                    con: connection the message was received from
  * 
- * RETURNS: 
+ * RETURNS: Returns YES if the string could be sent, otherwise NO
  * 
- * NOTES: 
+ * NOTES: Sends a String of an NSData object to the given connection.
+ *        Returns BOOL value indicating success or failure.
  *
  *----------------------------------------------------------------------------*/
 - (BOOL)sendString:(NSString *)string toConnection:(ClientServerConnection *)con
@@ -1742,9 +1778,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    sendDataToAll
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1753,11 +1789,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)sendDataToAll:(NSData *)data
+ *                    data: data to be sent
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Sends the given data to all connected clients.
  *
  *----------------------------------------------------------------------------*/
 - (void)sendDataToAll:(NSData *)data
@@ -1770,9 +1807,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    sendStringToAll
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1781,11 +1818,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)sendStringToAll:(NSString *)string
+ *                    string: string to be sent
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Sends the given string to all connected clients.
  *
  *----------------------------------------------------------------------------*/
 - (void)sendStringToAll:(NSString *)string
@@ -1807,9 +1845,9 @@
 @implementation ClientServerConnection
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    initWithFileHandle
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1818,11 +1856,14 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (id)initWithFileHandle:(NSFileHandle *)fh delegate:(id)initDelegate
+ *                  fh: file handle used by the connection
+ *                  initDelegate: delegate that listens for events
  * 
- * RETURNS: 
+ * RETURNS: ClientServerConnection object already connected.
  * 
- * NOTES: 
+ * NOTES: Returns a ClientServerConnection connected by the given file handle,
+ *        waiting for data, sending it to the delegate.
  *
  *----------------------------------------------------------------------------*/
 - (id)initWithFileHandle:(NSFileHandle *)fh delegate:(id)initDelegate
@@ -1832,7 +1873,9 @@
 		connectionDelegate = [initDelegate retain];
 		
 		// Get IP address of remote client
-		CFSocketRef socket = CFSocketCreateWithNative(kCFAllocatorDefault, [fileHandle fileDescriptor], kCFSocketNoCallBack, NULL, NULL);
+		CFSocketRef socket = CFSocketCreateWithNative(kCFAllocatorDefault,
+													  [fileHandle fileDescriptor],
+													  kCFSocketNoCallBack, NULL, NULL);
 		CFDataRef addrData = CFSocketCopyPeerAddress(socket);
 		CFRelease(socket);
 		
@@ -1858,9 +1901,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    dealloc
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1869,11 +1912,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)dealloc
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Closes all open file handles and connections.
  *
  *----------------------------------------------------------------------------*/
 - (void)dealloc
@@ -1887,9 +1930,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    description
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1898,11 +1941,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (NSString *)description
  * 
- * RETURNS: 
+ * RETURNS: A string description of the remote connection
  * 
- * NOTES: 
+ * NOTES: Returns a formatted string containing the remote connection info.
  *
  *----------------------------------------------------------------------------*/
 - (NSString *)description
@@ -1913,9 +1956,9 @@
 #pragma mark Accessor Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    fileHandle
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1924,11 +1967,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (NSFileHandle *)fileHandle 
  * 
- * RETURNS: 
+ * RETURNS: The socket's file handle
  * 
- * NOTES: 
+ * NOTES: Returns the file handle for the current socket
  *
  *----------------------------------------------------------------------------*/
 - (NSFileHandle *)fileHandle 
@@ -1937,9 +1980,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setRemoteAddress
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1948,11 +1991,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)setRemoteAddress:(NSString *)newAddress
+ *                    newAddress: new remote address
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Sets a new remote address by first releasing the current address.
  *
  *----------------------------------------------------------------------------*/
 - (void)setRemoteAddress:(NSString *)newAddress
@@ -1962,9 +2006,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    remoteAddress
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1973,11 +2017,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (NSString *)remoteAddress
  * 
- * RETURNS: 
+ * RETURNS: The current remote address
  * 
- * NOTES: 
+ * NOTES: Returns the remote address for the current connection.
  *
  *----------------------------------------------------------------------------*/
 - (NSString *)remoteAddress
@@ -1986,9 +2030,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    setRemotePort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -1997,11 +2041,12 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)setRemotePort:(int)newPort
+ *                    newPort: the new remote port
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Sets a new remote port for the current connection.
  *
  *----------------------------------------------------------------------------*/
 - (void)setRemotePort:(int)newPort
@@ -2010,9 +2055,9 @@
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    remotePort
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -2021,11 +2066,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (int)remotePort
  * 
- * RETURNS: 
+ * RETURNS: The current port for the remote connection.
  * 
- * NOTES: 
+ * NOTES: Returns the current remote port used in the current connection.
  *
  *----------------------------------------------------------------------------*/
 - (int)remotePort
@@ -2036,9 +2081,9 @@
 #pragma mark Notification Methods
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    dataReceivedNotification
  * 
- * DATE:        October 4, 2009
+ * DATE:        August 27, 2009
  * 
  * REVISIONS:   
  * 
@@ -2047,11 +2092,11 @@
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   (void)dataReceivedNotification:(NSNotification *)notification
  * 
- * RETURNS: 
+ * RETURNS: void
  * 
- * NOTES: 
+ * NOTES: Determines when data has been received and notifies the delegate.
  *
  *----------------------------------------------------------------------------*/
 - (void)dataReceivedNotification:(NSNotification *)notification

@@ -316,6 +316,12 @@
  *----------------------------------------------------------------------------*/
 - (IBAction)connectListen:(id)sender
 {
+	Server *server = [[Server alloc] initWithPort:3141 delegate:self];
+	
+	[server setListenAddress:ListenLoopback];
+	
+	[server startListening];
+	
 	switch ([modeSetting selectedColumn])
 	{
 		case 0:

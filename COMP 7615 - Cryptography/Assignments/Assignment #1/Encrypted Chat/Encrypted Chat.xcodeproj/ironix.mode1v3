@@ -327,7 +327,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3AD4FCB01078AFDE00E5F9A1</string>
+										<string>3AD4FCDD1078BAB100E5F9A1</string>
 										<key>history</key>
 										<array>
 											<string>3A96A085107889FA000D3C43</string>
@@ -337,10 +337,10 @@
 											<string>3AD4FC721078970F00E5F9A1</string>
 											<string>3AD4FC8210789CCE00E5F9A1</string>
 											<string>3AD4FCA41078A61A00E5F9A1</string>
-											<string>3AD4FCA51078A61A00E5F9A1</string>
-											<string>3AD4FCA61078A61A00E5F9A1</string>
-											<string>3AD4FCA71078A61A00E5F9A1</string>
-											<string>3AD4FCA81078A61A00E5F9A1</string>
+											<string>3AD4FCC81078B1F300E5F9A1</string>
+											<string>3AD4FCD01078B4A300E5F9A1</string>
+											<string>3AD4FCDB1078BAB100E5F9A1</string>
+											<string>3AD4FCDC1078BAB100E5F9A1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -538,6 +538,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>3AD4FCCE1078B1F300E5F9A1</string>
+		<string>3AD4FCCF1078B1F300E5F9A1</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C0AD2AF069F1E9B00FABCE6</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -566,7 +569,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ApplicationDelegate.m</string>
+								<string>ClientServer.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -906,7 +909,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3A7DABC51078903D009AF0B2</string>
+				<string>3AD4FCCC1078B1F300E5F9A1</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

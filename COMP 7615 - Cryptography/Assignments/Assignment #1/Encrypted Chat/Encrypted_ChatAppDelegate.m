@@ -7,8 +7,11 @@
 //
 
 #import "Encrypted_ChatAppDelegate.h"
+#import "ClientServer.h"
 
 #define FORMAT(format, ...) [NSString stringWithFormat:(format), ##__VA_ARGS__]
+
+@class SimpleCocoaServer;
 
 @implementation Encrypted_ChatAppDelegate
 

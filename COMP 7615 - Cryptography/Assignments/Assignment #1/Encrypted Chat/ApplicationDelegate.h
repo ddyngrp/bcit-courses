@@ -16,11 +16,15 @@
  *---------------------------------------------------------------------------*/
 
 #import <Cocoa/Cocoa.h>
+#import "ClientServer.h"
 
 // Interface for the main application window
 @interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow *window;
+	
+	Server *server;
+	Client *client;
 
 	BOOL isRunning;
 	

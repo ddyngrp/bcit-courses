@@ -30,8 +30,8 @@
  *---------------------------------------------------------------------------*/
 
 #import "ApplicationDelegate.h"
-#import "ClientServer.h"
 
+#define PORT 3141
 #define FORMAT(format, ...) [NSString stringWithFormat:(format), ##__VA_ARGS__]
 
 @implementation Encrypted_ChatAppDelegate
@@ -232,8 +232,6 @@
  *----------------------------------------------------------------------------*/
 - (IBAction)send:(id)sender
 {
-	NSData *data;
-
 	if ([[inputView textStorage] length] > 0 && isRunning)
 	{
 		// Locally display chat output
@@ -242,13 +240,13 @@
 				
 		if ([modeSetting selectedColumn] == 0)
 		{
-			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
-					dataUsingEncoding:NSUTF8StringEncoding];
+			[client sendString:FORMAT(@"%@ > %@\n", [displayName stringValue],
+									  [[inputView textStorage] string])];
 		}
 		else if ([modeSetting selectedColumn] == 1)
 		{
-			data = [FORMAT(@"%@ > %@\n", [displayName stringValue], [[inputView textStorage] string])
-					dataUsingEncoding:NSUTF8StringEncoding];
+			[server sendStringToAll:FORMAT(@"%@ > %@\n", [displayName stringValue],
+										   [[inputView textStorage] string])];
 		}
 	}
 	
@@ -315,20 +313,82 @@
  *
  *----------------------------------------------------------------------------*/
 - (IBAction)connectListen:(id)sender
-{
-	Server *server = [[Server alloc] initWithPort:3141 delegate:self];
-	
-	[server setListenAddress:ListenLoopback];
-	
-	[server startListening];
-	
+{	
 	switch ([modeSetting selectedColumn])
 	{
 		case 0:
-			isRunning = YES;
+			if (!isRunning) {
+				client = [[Client alloc] initWithHost:[remoteIP stringValue]
+												 port:PORT
+											 delegate:self];
+				
+				unsigned int error = [client connect];
+				
+				if (error == InitOK) {
+					[self logMessage:FORMAT(@"Connected to %@:%d\n", [client remoteHost], PORT)
+							 logType:@"info"];
+					
+					[connectListenButton setTitle:@"Disconnect"];
+					[modeSetting setEnabled:NO];
+					[remoteIP setEnabled:NO];
+					[displayName setEnabled:NO];
+					isRunning = YES;					
+				}
+				else {
+					[self logMessage:FORMAT(@"Error (%hu): Unable to connect to %@:%d\n",
+											error, [client remoteHost], [client remotePort])
+											logType:@"error"];
+					[client release];
+				}
+			}
+			else {
+				[self logMessage:FORMAT(@"Disconnected from %@:%d\n", [client remoteHost], PORT)
+						 logType:@"info"];
+				
+				[client disconnect];
+				[client release];
+				
+				[connectListenButton setTitle:@"Connect"];
+				[modeSetting setEnabled:YES];
+				[remoteIP setEnabled:YES];
+				[displayName setEnabled:YES];
+				isRunning = NO;
+			}
+
 			break;
 		case 1:
-			isRunning = YES;
+			if (!isRunning) {
+				server = [[Server alloc] initWithPort:3141 delegate:self];
+				[server setListenAddress:ListenAll];
+				
+				unsigned int error = [server startListening];
+				
+				if (error == InitOK) {				
+					[connectListenButton setTitle:@"Disconnect"];
+					[modeSetting setEnabled:NO];
+					[remoteIP setEnabled:NO];
+					[displayName setEnabled:NO];
+					isRunning = YES;
+					
+					[self logMessage:@"Listening for connections.\n" logType:@"info"];
+				}
+				else {
+					[self logMessage:FORMAT(@"Error (%hu): unable to start listening.\n", error) logType:@"error"];
+					[server release];
+				}
+			}
+			else {
+				[server	stopListening];
+				[server release];
+				
+				[connectListenButton setTitle:@"Listen"];
+				[modeSetting setEnabled:YES];
+				[remoteIP setEnabled:YES];
+				[displayName setEnabled:YES];
+				isRunning = NO;
+
+				[self logMessage:@"Stopped listening for connections.\n" logType:@"info"];
+			}
 			break;
 		default:
 			break;
@@ -408,6 +468,116 @@
 	[self scrollToBottom];
 }
 
-#pragma mark Client & Server
+#pragma mark Client & Server Common Methods
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    processMessage
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)processMessage:(NSString *)message orData:(NSData *)data
+ *                                   fromConnection:(ClientServerConnection *)con
+ *                    message: string that has been received
+ *                    data: raw data as an NSData object
+ *                    con: connection the message was received from
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Sent to the delegate after data has been received by one of the
+ *        connections.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
+{
+	[self logMessage:FORMAT(@"%@", message) logType:@""];
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    processNewConnection
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)processNewConnection:(ClientServerConnection *)con
+ *                    con: connection the message was received from
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Will be sent the delegate after a new connection has been
+ *        successfully established.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)processNewConnection:(ClientServerConnection *)con
+{
+	[self logMessage:FORMAT(@"Client %@ connected.\n", con) logType:@"info"];
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    processClosingConnection
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)processClosingConnection:(ClientServerConnection *)con
+ *                    con: connection the message was received from
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Will be sent the delegate just before the connection will be closed.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)processClosingConnection:(ClientServerConnection *)con
+{
+	[self logMessage:FORMAT(@"Client %@ disconnected.\n", con) logType:@"info"];
+}
+
+#pragma mark Client Methods
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    connectionDidClose
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)connectionDidClose:(ClientServerConnection *)con
+ *                    con: connection the message was received from
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Will be sent the delegate after the connection closed.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)connectionDidClose:(ClientServerConnection *)con
+{
+	[self logMessage:FORMAT(@"%@:%d closed connection.\n", [client remoteHost], PORT)
+			 logType:@"error"];
+	
+	[connectListenButton setTitle:@"Connect"];
+	[modeSetting setEnabled:YES];
+	[remoteIP setEnabled:YES];
+	[displayName setEnabled:YES];
+	isRunning = NO;
+}
 
 @end

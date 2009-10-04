@@ -12,6 +12,7 @@
  * DESIGNER:    David J. Koster <code@david-koster.de>
  * 
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
+ *                              http://www.1-more-thing.de/code/simpleserver
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
  * NOTES: Header file for the ClientServerConnection class and Client/Server
@@ -27,24 +28,24 @@
 // Return values of connect & listen messages
 enum ClientServerInit {
     InitOK					= 1,
-    InitError_Connected		= 1 << 1,
-    InitError_Listening		= 1 << 2,
-	InitError_Host			= 1 << 3,
-	InitError_Port			= 1 << 4,
-	InitError_Bind			= 1 << 5,
-	InitError_Delegate		= 1 << 6,
-	InitError_NoConnection	= 1 << 7,
-	InitError_Timeout		= 1 << 8,
-	InitError_NoSocket		= 1 << 9,
-	InitError_Unknown		= 1 << 10
+    InitError_Connected		= 2,
+    InitError_Listening		= 4,
+	InitError_Host			= 8,
+	InitError_Port			= 16,
+	InitError_Bind			= 32,
+	InitError_Delegate		= 64,
+	InitError_NoConnection	= 128,
+	InitError_Timeout		= 256,
+	InitError_NoSocket		= 512,
+	InitError_Unknown		= 1024
 };
 typedef enum ClientServerInit ClientServerInit;
 
 enum ServerListenAddress {
 	ListenOther		= 0,		// Same as ListenAll
 	ListenAll		= 1,
-	ListenLoopback	= 1 << 1,
-	ListenLocal		= 1 << 2	// Same as ListenLoopback
+	ListenLoopback	= 2,
+	ListenLocal		= 4	// Same as ListenLoopback
 };
 typedef enum ServerListenAddress ServerListenAddress;
 

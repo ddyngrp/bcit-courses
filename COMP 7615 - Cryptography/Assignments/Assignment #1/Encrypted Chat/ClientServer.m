@@ -648,6 +648,7 @@
  * DESIGNER:    David J. Koster <code@david-koster.de>
  * 
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
+ *                              http://www.1-more-thing.de/code/simpleserver
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
  * INTERFACE:   (void)setC:(ClientServerConnection *)con
@@ -1255,7 +1256,8 @@
  * 
  * DATE:        August 27, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   October 4, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                Released fileHandle twice due to a bug.
  * 
  * DESIGNER:    David J. Koster <code@david-koster.de>
  * 
@@ -1283,8 +1285,10 @@
 	CFSocketRef socket = CFSocketCreateWithNative(kCFAllocatorDefault,[fileHandle fileDescriptor],1,NULL,NULL);
 	CFSocketInvalidate(socket);
 	CFRelease(socket);
+
 	[fileHandle release];
-	
+	[fileHandle release]; // Silly stop listening bug
+
 	//server is not running anymore
 	isListening = NO;
 }
@@ -1799,10 +1803,9 @@
  *----------------------------------------------------------------------------*/
 - (void)sendDataToAll:(NSData *)data
 {
-	NSEnumerator *en = [connections objectEnumerator];
 	ClientServerConnection *con;
 	
-	while(con = [en nextObject])
+	for(con in connections)
 		[self sendData:data toConnection:con];
 }
 

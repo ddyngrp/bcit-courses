@@ -90,8 +90,10 @@
  *                                all warnings and deprecated calls.
  * 
  * DESIGNER:    David J. Koster <code@david-koster.de>
+ *                              http://www.1-more-thing.de/code/simpleserver
  * 
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
+ *                              http://www.1-more-thing.de/code/simpleserver
  *              Steffen L. Norgren <ironix@trollop.org>
  * 
  * NOTES: Handles all client and server related functions and callbacks.

@@ -10,6 +10,7 @@
  *                                SimpleCocoaServer.h and cleand it up.
  * 
  * DESIGNER:    David J. Koster <code@david-koster.de>
+ *                              http://www.1-more-thing.de/code/simpleserver
  * 
  * PROGRAMMER:  David J. Koster <code@david-koster.de>
  *                              http://www.1-more-thing.de/code/simpleserver

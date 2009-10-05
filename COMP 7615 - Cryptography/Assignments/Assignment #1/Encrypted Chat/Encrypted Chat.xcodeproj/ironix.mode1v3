@@ -317,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ApplicationDelegate.m</string>
+								<string>ClientServer.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,23 +325,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ApplicationDelegate.m</string>
+										<string>ClientServer.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3AFF826A1079D22F00DC3CE3</string>
+										<string>3A8571CA1079DFA700A64564</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
 											<string>3AD4FC711078970F00E5F9A1</string>
 											<string>3AD4FC721078970F00E5F9A1</string>
 											<string>3AD4FCA41078A61A00E5F9A1</string>
-											<string>3A9CB60F1079BDFB00D0B9A3</string>
 											<string>3A9CB6121079BDFB00D0B9A3</string>
 											<string>3A9CB61C1079BE5000D0B9A3</string>
-											<string>3AFF81F31079CA5E00DC3CE3</string>
 											<string>3AFF81F41079CA5E00DC3CE3</string>
-											<string>3AFF82081079CA7300DC3CE3</string>
+											<string>3A8571C71079DFA700A64564</string>
+											<string>3A8571C81079DFA700A64564</string>
+											<string>3A8571C91079DFA700A64564</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -399,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3AFF826B1079D22F00DC3CE3</string>
+				<string>3A8571CB1079DFA700A64564</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3AFF826C1079D22F00DC3CE3</string>
+				<string>3A8571CC1079DFA700A64564</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -539,6 +539,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A6596171072CFDC001D304E</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #1/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
@@ -620,7 +621,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A6596171072CFDC001D304E</string>
-				<string>3AFF826D1079D22F00DC3CE3</string>
+				<string>3A8571CD1079DFA700A64564</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -742,13 +743,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3AFF81FA1079CA5E00DC3CE3</string>
+				<string>3A8571CE1079DFA700A64564</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3AFF81FB1079CA5E00DC3CE3</string>
-				<string>3AFF81FC1079CA5E00DC3CE3</string>
-				<string>3AFF81FD1079CA5E00DC3CE3</string>
-				<string>3AFF81FE1079CA5E00DC3CE3</string>
-				<string>3AFF81FF1079CA5E00DC3CE3</string>
+				<string>3A8571CF1079DFA700A64564</string>
+				<string>3A8571D01079DFA700A64564</string>
+				<string>3A8571D11079DFA700A64564</string>
+				<string>3A8571D21079DFA700A64564</string>
+				<string>3A8571D31079DFA700A64564</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -902,7 +903,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3AFF82001079CA5E00DC3CE3</string>
+				<string>3AFF827A1079D25C00DC3CE3</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

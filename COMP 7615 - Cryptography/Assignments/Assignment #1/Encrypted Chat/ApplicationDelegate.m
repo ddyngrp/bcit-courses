@@ -15,6 +15,11 @@
  *              - (IBAction)connectListen:(id)sender
  *              - (void)scrollToBottom
  *              - (void)logMessage:(NSString *)msg logType:(NSString *)type
+ *              - (void)processMessage:(NSString *)message orData:(NSData *)data
+ *                      fromConnection:(ClientServerConnection *)con
+ *              - (void)processNewConnection:(ClientServerConnection *)con
+ *              - (void)processClosingConnection:(ClientServerConnection *)con
+ *              - (void)connectionDidClose:(ClientServerConnection *)con
  * 
  * DATE:        October 4, 2009
  * 

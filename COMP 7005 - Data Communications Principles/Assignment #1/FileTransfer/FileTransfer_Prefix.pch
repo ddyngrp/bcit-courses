@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'FileTransfer' target in the 'FileTransfer' project.
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif

@@ -6,9 +6,9 @@
 //  Copyright 2009 Esurient Systems Inc.. All rights reserved.
 //
 
-#import "File_TransferAppDelegate.h"
+#import "ApplicationDelegate.h"
 
-@implementation File_TransferAppDelegate
+@implementation ApplicationDelegate
 
 @synthesize window;
 

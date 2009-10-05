@@ -1,9 +1,26 @@
 // !$*UTF8*$!
 {
+	256AC3D80F4B6AC300CF3369 /* ApplicationDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {967, 641}}";
+			sepNavSelRange = "{132, 0}";
+			sepNavVisRange = "{0, 344}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {967, 641}}";
+			sepNavSelRange = "{403, 0}";
+			sepNavVisRange = "{0, 403}";
+		};
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 3AA5DB7A1079C53F00C0A9DE /* File Transfer */;
 		activeTarget = 8D1107260486CEB800E47090 /* File Transfer */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* File Transfer */,
+		);
 		codeSenseManager = 3AA5DB921079C57500C0A9DE /* Code sense */;
 		executables = (
 			3AA5DB7A1079C53F00C0A9DE /* File Transfer */,
@@ -78,6 +95,20 @@
 	3AA5DB921079C57500C0A9DE /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	3AFF81BF1079C6D400DC3CE3 /* ClientServer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {967, 2028}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1545, 1348}";
+		};
+	};
+	3AFF81C01079C6D400DC3CE3 /* ClientServer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {967, 27430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2414}";
+		};
 	};
 	8D1107260486CEB800E47090 /* File Transfer */ = {
 		activeExec = 0;

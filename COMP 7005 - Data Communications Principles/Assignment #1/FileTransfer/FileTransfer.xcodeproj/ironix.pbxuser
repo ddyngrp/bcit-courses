@@ -16,7 +16,7 @@
 					20,
 					341,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -31,8 +31,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 276455051;
-			PBXWorkspaceStateSaveDate = 276455051;
+			PBXPerProjectTemplateStateSaveDate = 276455105;
+			PBXWorkspaceStateSaveDate = 276455105;
 		};
 		sourceControlManager = 3A527114107A5E8D00071F61 /* Source Control */;
 		userBuildSettings = {
@@ -71,7 +71,7 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = "";
+				"" = "Steffen's personal projects";
 			};
 		};
 	};

@@ -329,14 +329,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {580, 277}}</string>
+								<string>{{0, 0}, {580, 269}}</string>
 								<key>RubberWindowFrame</key>
 								<string>246 220 788 504 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>277pt</string>
+							<string>269pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -349,14 +349,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 282}, {580, 181}}</string>
+								<string>{{0, 274}, {580, 189}}</string>
 								<key>RubberWindowFrame</key>
 								<string>246 220 788 504 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>181pt</string>
+							<string>189pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -375,9 +375,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A52710F107A5E8D00071F61</string>
+				<string>3A8B4FA0107A5ED80048DD22</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3A527110107A5E8D00071F61</string>
+				<string>3A8B4FA1107A5ED80048DD22</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -516,7 +516,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>3A527112107A5E8D00071F61</string>
-		<string>/Users/ironix/Desktop/FileTransfer/FileTransfer.xcodeproj</string>
+		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7005 - Data Communications Principles/Assignment #1/FileTransfer/FileTransfer.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>246 220 788 504 0 0 1280 778 </string>
@@ -596,7 +596,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A527112107A5E8D00071F61</string>
-				<string>3A527113107A5E8D00071F61</string>
+				<string>3A8B4FA2107A5ED80048DD22</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

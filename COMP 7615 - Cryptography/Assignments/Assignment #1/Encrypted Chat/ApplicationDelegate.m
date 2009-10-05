@@ -264,9 +264,9 @@
 		
 		// Send the string
 		if ([modeSetting selectedColumn] == 0)
-			[client sendString:FORMAT(@"%@\n", message)];
+			[client sendString:FORMAT(@"%@", message)];
 		else if ([modeSetting selectedColumn] == 1)
-			[server sendStringToAll:FORMAT(@"%@\n", message)];
+			[server sendStringToAll:FORMAT(@"%@", message)];
 	}
 	
 	// Clear the input window

@@ -1,10 +1,19 @@
-//
-//  Encryption.m
-//  Encrypted Chat
-//
-//  Created by Steffen L. Norgren on 09-10-04.
-//  Copyright 2009 Esurient Systems Inc.. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	Encryption.m
+ * 
+ * PROGRAM:     Encrypted Chat
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: This class manages encryption and decryption of strings.
+ *
+ *---------------------------------------------------------------------------*/
 
 #import "Encryption.h"
 
@@ -13,10 +22,28 @@
 
 @implementation Encryption
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    init
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (id)init
+ * 
+ * RETURNS: The delegate id for this class.
+ * 
+ * NOTES: Initializes the class and allocates space for the input and output
+ *        strings.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)init
 {
 	if (self = [super init]) {
-		alpha = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz"];
 		input = [NSString alloc];
 		output = [NSMutableString alloc];
 	}
@@ -24,14 +51,53 @@
 	return self;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    dealloc
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)dealloc
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Handles garbage collection.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)dealloc
 {
-	[alpha release];
 	[input release];
 	[output release];
 	[super dealloc];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (NSString *)encryptAffine:(NSString *)message multNum:(int)mult
+ *                                        addNum:(int)add;
+ *                          message: the string to be encrypted
+ *                          mult: the affine multiplier
+ *                          add: addition to the shift
+ * 
+ * RETURNS: Encrypted string
+ * 
+ * NOTES: Encrypts a string using the Affine cipher.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)encryptAffine:(NSString *)message multNum:(int)mult addNum:(int)add;
 {
 	// Remove all non alphabetic characters from the string
@@ -55,6 +121,28 @@
 	return [output lowercaseString];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decryptAffine
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (NSString *)decryptAffine:(NSString *)message multNum:(int)mult
+ *                                        addNum:(int)add;
+ *                          message: the string to be decrypted
+ *                          mult: the affine multiplier
+ *                          add: addition to the shift
+ * 
+ * RETURNS: Decrypted string
+ * 
+ * NOTES: Decrypts a string encrypted using the Affine cipher.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)decryptAffine:(NSString *)message multNum:(int)mult addNum:(int)add;
 {
 	// Remove all non alphabetic characters from the string
@@ -86,6 +174,27 @@
 	return [output lowercaseString];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    encryptVigenere
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (NSString *)encryptVigenere:(NSString *)message
+ *                                          cipherKey:(NSString *)key;
+ *                         message: message to be encrypted
+ *                         key: the encrypton key
+ * 
+ * RETURNS: Encrypted string
+ * 
+ * NOTES: Encrypts a string using the Vigenère cipher.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)encryptVigenere:(NSString *)message cipherKey:(NSString *)key;
 {
 	// Remove all non alphabetic characters from the string
@@ -116,6 +225,27 @@
 	return [output lowercaseString];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decryptVigenere
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (NSString *)decryptVigenere:(NSString *)message
+ *                                          cipherKey:(NSString *)key;
+ *                         message: message to be decrypted
+ *                         key: the encrypton key
+ * 
+ * RETURNS: Decrypted string
+ * 
+ * NOTES: Decrypts a string encrypted with the Vigenère cipher.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)decryptVigenere:(NSString *)message cipherKey:(NSString *)key;
 {
 	// Remove all non alphabetic characters from the string

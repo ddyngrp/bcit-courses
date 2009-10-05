@@ -9,17 +9,17 @@
 	};
 	256AC3D80F4B6AC300CF3369 /* ApplicationDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 949}}";
-			sepNavSelRange = "{1153, 0}";
-			sepNavVisRange = "{513, 1024}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 923}}";
+			sepNavSelRange = "{0, 487}";
+			sepNavVisRange = "{0, 1180}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
 	256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 7735}}";
-			sepNavSelRange = "{15345, 0}";
-			sepNavVisRange = "{14139, 1725}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 7956}}";
+			sepNavSelRange = "{1405, 506}";
+			sepNavVisRange = "{1042, 1191}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
@@ -240,6 +240,20 @@
 			3A9CB5D11079B4A200D0B9A3 /* PBXTextBookmark */ = 3A9CB5D11079B4A200D0B9A3 /* PBXTextBookmark */;
 			3A9CB5D21079B4A200D0B9A3 /* PBXTextBookmark */ = 3A9CB5D21079B4A200D0B9A3 /* PBXTextBookmark */;
 			3A9CB5DA1079B4D100D0B9A3 /* PBXTextBookmark */ = 3A9CB5DA1079B4D100D0B9A3 /* PBXTextBookmark */;
+			3A9CB5ED1079B64300D0B9A3 /* PBXTextBookmark */ = 3A9CB5ED1079B64300D0B9A3 /* PBXTextBookmark */;
+			3A9CB5EE1079B64300D0B9A3 /* PBXTextBookmark */ = 3A9CB5EE1079B64300D0B9A3 /* PBXTextBookmark */;
+			3A9CB5EF1079B64300D0B9A3 /* PBXTextBookmark */ = 3A9CB5EF1079B64300D0B9A3 /* PBXTextBookmark */;
+			3A9CB5F01079B64300D0B9A3 /* PBXTextBookmark */ = 3A9CB5F01079B64300D0B9A3 /* PBXTextBookmark */;
+			3A9CB5F11079B64300D0B9A3 /* PBXTextBookmark */ = 3A9CB5F11079B64300D0B9A3 /* PBXTextBookmark */;
+			3A9CB5F41079B6FB00D0B9A3 /* PBXTextBookmark */ = 3A9CB5F41079B6FB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB5F51079B6FB00D0B9A3 /* PBXTextBookmark */ = 3A9CB5F51079B6FB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB5F61079B6FB00D0B9A3 /* PBXTextBookmark */ = 3A9CB5F61079B6FB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB60F1079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB60F1079BDFB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB6101079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB6101079BDFB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB6111079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB6111079BDFB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB6121079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB6121079BDFB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB6131079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB6131079BDFB00D0B9A3 /* PBXTextBookmark */;
+			3A9CB6141079BDFB00D0B9A3 /* PBXTextBookmark */ = 3A9CB6141079BDFB00D0B9A3 /* PBXTextBookmark */;
 			3AD4FC701078970F00E5F9A1 = 3AD4FC701078970F00E5F9A1 /* PBXTextBookmark */;
 			3AD4FC711078970F00E5F9A1 = 3AD4FC711078970F00E5F9A1 /* PlistBookmark */;
 			3AD4FC721078970F00E5F9A1 = 3AD4FC721078970F00E5F9A1 /* PBXTextBookmark */;
@@ -306,15 +320,15 @@
 	3A4E62FD10796E8400B8B392 /* Encryption.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
-			sepNavSelRange = "{548, 0}";
-			sepNavVisRange = "{0, 615}";
+			sepNavSelRange = "{0, 467}";
+			sepNavVisRange = "{0, 904}";
 		};
 	};
 	3A4E62FE10796E8400B8B392 /* Encryption.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 1950}}";
-			sepNavSelRange = "{3997, 0}";
-			sepNavVisRange = "{2923, 1332}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 3640}}";
+			sepNavSelRange = "{4777, 0}";
+			sepNavVisRange = "{0, 1216}";
 		};
 	};
 	3A4E63E11079880800B8B392 /* PBXTextBookmark */ = {
@@ -332,7 +346,7 @@
 		fRef = 3A4E62FD10796E8400B8B392 /* Encryption.h */;
 		name = "Encryption.h: 21";
 		rLen = 0;
-		rLoc = 548;
+		rLoc = 837;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 0;
@@ -371,7 +385,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		rLen = 0;
-		rLoc = 37;
+		rLoc = 103;
 		rType = 1;
 	};
 	3A4E65AF10799EFA00B8B392 /* PBXTextBookmark */ = {
@@ -379,7 +393,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 38";
 		rLen = 0;
-		rLoc = 745;
+		rLoc = 2595;
 		rType = 0;
 		vrLen = 1592;
 		vrLoc = 563;
@@ -456,16 +470,16 @@
 	};
 	3A96A02710787F0B000D3C43 /* ClientServer.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 2054}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2080}}";
 			sepNavSelRange = "{2056, 11}";
-			sepNavVisRange = "{1338, 1412}";
+			sepNavVisRange = "{0, 1545}";
 		};
 	};
 	3A96A02810787F0B000D3C43 /* ClientServer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 27183}}";
-			sepNavSelRange = "{35839, 0}";
-			sepNavVisRange = "{35141, 1528}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 27066}}";
+			sepNavSelRange = "{663, 0}";
+			sepNavVisRange = "{0, 2414}";
 			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
 		};
 	};
@@ -495,7 +509,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 38";
 		rLen = 0;
-		rLoc = 745;
+		rLoc = 2595;
 		rType = 0;
 		vrLen = 1592;
 		vrLoc = 563;
@@ -505,7 +519,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 38";
 		rLen = 0;
-		rLoc = 745;
+		rLoc = 2595;
 		rType = 0;
 		vrLen = 1584;
 		vrLoc = 527;
@@ -515,7 +529,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 527;
@@ -525,7 +539,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 527;
@@ -535,7 +549,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 527;
@@ -555,7 +569,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1538;
 		vrLoc = 1179;
@@ -565,7 +579,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1490;
 		vrLoc = 1179;
@@ -575,7 +589,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1473;
 		vrLoc = 331;
@@ -585,7 +599,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 49";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 3229;
 		rType = 0;
 		vrLen = 1424;
 		vrLoc = 331;
@@ -595,7 +609,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 47";
 		rLen = 0;
-		rLoc = 1290;
+		rLoc = 3140;
 		rType = 0;
 		vrLen = 1424;
 		vrLoc = 331;
@@ -605,7 +619,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 47";
 		rLen = 0;
-		rLoc = 1290;
+		rLoc = 3140;
 		rType = 0;
 		vrLen = 1424;
 		vrLoc = 331;
@@ -615,7 +629,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 47";
 		rLen = 0;
-		rLoc = 1290;
+		rLoc = 3140;
 		rType = 0;
 		vrLen = 1424;
 		vrLoc = 331;
@@ -625,7 +639,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 51";
 		rLen = 0;
-		rLoc = 1330;
+		rLoc = 3180;
 		rType = 0;
 		vrLen = 1588;
 		vrLoc = 506;
@@ -635,7 +649,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 73";
 		rLen = 0;
-		rLoc = 1962;
+		rLoc = 4559;
 		rType = 0;
 		vrLen = 1722;
 		vrLoc = 1425;
@@ -645,7 +659,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2292;
+		rLoc = 4889;
 		rType = 0;
 		vrLen = 1646;
 		vrLoc = 1424;
@@ -655,7 +669,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2292;
+		rLoc = 4889;
 		rType = 0;
 		vrLen = 1731;
 		vrLoc = 1424;
@@ -695,7 +709,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2292;
+		rLoc = 4889;
 		rType = 0;
 		vrLen = 1731;
 		vrLoc = 1424;
@@ -705,7 +719,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2272;
+		rLoc = 4869;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 1424;
@@ -715,7 +729,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2272;
+		rLoc = 4869;
 		rType = 0;
 		vrLen = 1731;
 		vrLoc = 1424;
@@ -725,7 +739,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 70";
 		rLen = 0;
-		rLoc = 1908;
+		rLoc = 4505;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 1424;
@@ -735,7 +749,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2272;
+		rLoc = 4869;
 		rType = 0;
 		vrLen = 1652;
 		vrLoc = 1424;
@@ -745,7 +759,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 0;
-		rLoc = 2272;
+		rLoc = 4869;
 		rType = 0;
 		vrLen = 1647;
 		vrLoc = 1424;
@@ -755,7 +769,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1652;
 		vrLoc = 1424;
@@ -765,7 +779,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1737;
 		vrLoc = 1424;
@@ -865,7 +879,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 438";
 		rLen = 0;
-		rLoc = 12049;
+		rLoc = 12045;
 		rType = 0;
 		vrLen = 1839;
 		vrLoc = 14060;
@@ -875,7 +889,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 438";
 		rLen = 0;
-		rLoc = 12049;
+		rLoc = 12045;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 14060;
@@ -885,7 +899,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 438";
 		rLen = 0;
-		rLoc = 12049;
+		rLoc = 12045;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 14060;
@@ -922,7 +936,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1836;
 		vrLoc = 14060;
@@ -932,7 +946,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1273;
 		vrLoc = 2984;
@@ -942,7 +956,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 2923;
@@ -952,7 +966,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 2923;
@@ -962,7 +976,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 2923;
@@ -972,7 +986,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1836;
 		vrLoc = 14060;
@@ -982,7 +996,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1836;
 		vrLoc = 14060;
@@ -992,7 +1006,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 14060;
@@ -1002,7 +1016,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 14060;
@@ -1012,7 +1026,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 3043;
@@ -1022,7 +1036,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1270;
 		vrLoc = 2987;
@@ -1032,7 +1046,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1270;
 		vrLoc = 2987;
@@ -1042,7 +1056,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 80";
 		rLen = 5;
-		rLoc = 2267;
+		rLoc = 4864;
 		rType = 0;
 		vrLen = 1270;
 		vrLoc = 2987;
@@ -1052,7 +1066,7 @@
 		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
 		name = "Encryption.m: 135";
 		rLen = 0;
-		rLoc = 3997;
+		rLoc = 7947;
 		rType = 0;
 		vrLen = 1332;
 		vrLoc = 2923;
@@ -1062,7 +1076,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 517";
 		rLen = 0;
-		rLoc = 14725;
+		rLoc = 14721;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 14021;
@@ -1072,10 +1086,150 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 532";
 		rLen = 0;
-		rLoc = 15345;
+		rLoc = 15341;
 		rType = 0;
 		vrLen = 1725;
 		vrLoc = 14139;
+	};
+	3A9CB5ED1079B64300D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 524";
+		rLen = 0;
+		rLoc = 15004;
+		rType = 0;
+		vrLen = 1602;
+		vrLoc = 0;
+	};
+	3A9CB5EE1079B64300D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FD10796E8400B8B392 /* Encryption.h */;
+		name = "Encryption.h: 13";
+		rLen = 0;
+		rLoc = 530;
+		rType = 0;
+		vrLen = 591;
+		vrLoc = 0;
+	};
+	3A9CB5EF1079B64300D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
+		name = "Encryption.m: 28";
+		rLen = 0;
+		rLoc = 1671;
+		rType = 0;
+		vrLen = 1584;
+		vrLoc = 867;
+	};
+	3A9CB5F01079B64300D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
+		name = "ClientServer.m: 1198";
+		rLen = 0;
+		rLoc = 35839;
+		rType = 0;
+		vrLen = 1580;
+		vrLoc = 35140;
+	};
+	3A9CB5F11079B64300D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
+		name = "ClientServer.m: 2104";
+		rLen = 0;
+		rLoc = 63515;
+		rType = 0;
+		vrLen = 2414;
+		vrLoc = 0;
+	};
+	3A9CB5F41079B6FB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
+		name = "ClientServer.m: 15";
+		rLen = 0;
+		rLoc = 663;
+		rType = 0;
+		vrLen = 2414;
+		vrLoc = 0;
+	};
+	3A9CB5F51079B6FB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 524";
+		rLen = 0;
+		rLoc = 15004;
+		rType = 0;
+		vrLen = 1602;
+		vrLoc = 0;
+	};
+	3A9CB5F61079B6FB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 267";
+		rLen = 0;
+		rLoc = 7520;
+		rType = 0;
+		vrLen = 1840;
+		vrLoc = 14056;
+	};
+	3A9CB60F1079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02710787F0B000D3C43 /* ClientServer.h */;
+		name = "ClientServer.h: 71";
+		rLen = 11;
+		rLoc = 2056;
+		rType = 0;
+		vrLen = 1545;
+		vrLoc = 0;
+	};
+	3A9CB6101079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 43";
+		rLen = 506;
+		rLoc = 1405;
+		rType = 0;
+		vrLen = 1191;
+		vrLoc = 1042;
+	};
+	3A9CB6111079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* ApplicationDelegate.h */;
+		name = "ApplicationDelegate.h: 1";
+		rLen = 487;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1180;
+		vrLoc = 0;
+	};
+	3A9CB6121079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FD10796E8400B8B392 /* Encryption.h */;
+		name = "Encryption.h: 1";
+		rLen = 467;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 904;
+		vrLoc = 0;
+	};
+	3A9CB6131079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
+		name = "Encryption.m: 2";
+		rLen = 0;
+		rLoc = 108;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 0;
+	};
+	3A9CB6141079BDFB00D0B9A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
+		name = "Encryption.m: 167";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1216;
+		vrLoc = 0;
 	};
 	3AD4FC701078970F00E5F9A1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

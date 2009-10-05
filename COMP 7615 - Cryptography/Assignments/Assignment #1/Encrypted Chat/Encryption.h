@@ -1,16 +1,24 @@
-//
-//  Encryption.h
-//  Encrypted Chat
-//
-//  Created by Steffen L. Norgren on 09-10-04.
-//  Copyright 2009 Esurient Systems Inc.. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	Encryption.h
+ * 
+ * PROGRAM:     Encrypted Chat
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: This is the header file for the encryption class.
+ *
+ *---------------------------------------------------------------------------*/
 
 #import <Cocoa/Cocoa.h>
 
 
 @interface Encryption : NSObject {
-	NSCharacterSet	*alpha;
 	NSString		*input;
 	NSMutableString	*output;
 }

@@ -17,20 +17,26 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ClientServer.h"
+#import "Encryption.h"
 
 // Interface for the main application window
 @interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow *window;
 	
+	// Client & Server Classes
 	Server *server;
 	Client *client;
+	
+	// Encryption Class
+	Encryption *crypt;
 
 	BOOL isRunning;
 	
 	// Main Window
     IBOutlet id logView;
 	IBOutlet id encryptCheck;
+	IBOutlet id decryptCheck;
     IBOutlet id connectListenButton;
 	IBOutlet id inputView;
 	
@@ -40,11 +46,10 @@
 	IBOutlet id modeSetting;
 
 	// Preferences Window: Encryption
-	IBOutlet id cipherVigenere;
-	IBOutlet id cipherAffine;
-	IBOutlet id vigenereMult;
-	IBOutlet id vigenereAdd;
-	IBOutlet id affineKey;
+	IBOutlet id cipher;
+	IBOutlet id affineMult;
+	IBOutlet id affineAdd;
+	IBOutlet id vigenereKey;
 }
 
 @property (assign) IBOutlet NSWindow *window;

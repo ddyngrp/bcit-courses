@@ -61,8 +61,10 @@
  *----------------------------------------------------------------------------*/
 - (id)init
 {
-	if(self = [super init])
+	if(self = [super init]) {
+		crypt = [[Encryption alloc] init];
 		isRunning = NO;
+	}
 
 	return self;
 }
@@ -144,22 +146,22 @@
 	[displayName setStringValue:@"Client"];
 	
 	// Encryption Preferences
-	[cipherVigenere setState:YES];
-	[cipherAffine setState:NO];
+	[[[cipher cells] objectAtIndex:0] setState:YES]; // Vigenère cipher
+	[[[cipher cells] objectAtIndex:1] setState:NO]; // Affine cipher
 	
-	[vigenereMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
+	[affineMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
 													   @"1",@"3",@"5",@"7",@"9",@"11",@"15",
 													   @"17",@"19",@"21",@"23",@"25",nil]];
 	
 	for (int i = 0; i < 26; i++)
-		[vigenereAdd addItemWithObjectValue:(NSString *)[NSString stringWithFormat:@"%d", i]];
+		[affineAdd addItemWithObjectValue:(NSString *)[NSString stringWithFormat:@"%d", i]];
 	
 	// Set the Vigenère cipher key
-	[vigenereMult selectItemAtIndex:1];
-	[vigenereAdd selectItemAtIndex:7];
+	[affineMult selectItemAtIndex:1];
+	[affineAdd selectItemAtIndex:7];
 	
 	// Set the Affine cipher key
-	[affineKey setStringValue:@"computer"];
+	[vigenereKey setStringValue:@"computer"];
 }
 
 /*-----------------------------------------------------------------------------
@@ -206,6 +208,9 @@
  *----------------------------------------------------------------------------*/
 - (void)dealloc
 {
+	[client release];
+	[server release];
+	[crypt release];
 	[super dealloc];
 }
 
@@ -228,26 +233,40 @@
  * RETURNS: void
  * 
  * NOTES: Event handler for the send button. Manages posting and sending text.
+ *        Additionally encrypts outbound text.
  *
  *----------------------------------------------------------------------------*/
 - (IBAction)send:(id)sender
 {
 	if ([[inputView textStorage] length] > 0 && isRunning)
 	{
+		NSString *encrypt = [[NSString alloc] autorelease];
+		NSString *message = [[NSString alloc] autorelease];
+
+		// Encrypt & decrypt the string using selected method
+		if ([cipher selectedRow] == 0)
+			encrypt = [crypt encryptVigenere:[[inputView textStorage] string]
+								   cipherKey:[vigenereKey stringValue]];
+		else if ([cipher selectedRow] == 1)
+			encrypt = [crypt encryptAffine:[[inputView textStorage] string]
+								   multNum:[[affineMult objectValueOfSelectedItem] intValue]
+									addNum:[[affineAdd objectValueOfSelectedItem] intValue]];
+		
+		// Set whether the outbound message is encrypted or not.
+		if ([encryptCheck state] == NO)
+			message = [[inputView textStorage] string];
+		else if ([encryptCheck state] == YES)
+			message = encrypt;
+		
 		// Locally display chat output
 		[self logMessage:FORMAT(@"%@ > ", [displayName stringValue]) logType:@"info"];
-		[self logMessage:FORMAT(@"%@\n", [[inputView textStorage] string]) logType:@""];
-				
+		[self logMessage:FORMAT(@"%@\n", [[inputView textStorage] string]) logType:@""];			
+		
+		// Send the string
 		if ([modeSetting selectedColumn] == 0)
-		{
-			[client sendString:FORMAT(@"%@ > %@\n", [displayName stringValue],
-									  [[inputView textStorage] string])];
-		}
+			[client sendString:FORMAT(@"%@\n", message)];
 		else if ([modeSetting selectedColumn] == 1)
-		{
-			[server sendStringToAll:FORMAT(@"%@ > %@\n", [displayName stringValue],
-										   [[inputView textStorage] string])];
-		}
+			[server sendStringToAll:FORMAT(@"%@\n", message)];
 	}
 	
 	// Clear the input window
@@ -495,7 +514,22 @@
  *----------------------------------------------------------------------------*/
 - (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
 {
-	[self logMessage:FORMAT(@"%@", message) logType:@""];
+	NSString *decrypt = [[NSString alloc] autorelease];
+	
+	// Decrypt the string using selected method
+	if ([cipher selectedRow] == 0)
+		decrypt = [crypt decryptVigenere:message
+							   cipherKey:[vigenereKey stringValue]];
+	else if ([cipher selectedRow] == 1)
+		decrypt = [crypt decryptAffine:message
+							   multNum:[[affineMult objectValueOfSelectedItem] intValue]
+								addNum:[[affineAdd objectValueOfSelectedItem] intValue]];
+
+	// Output the string
+	if ([decryptCheck state] == YES)
+		[self logMessage:FORMAT(@"%@\n", decrypt) logType:@""];
+	else if ([decryptCheck state] == NO)
+		[self logMessage:FORMAT(@"%@\n", message) logType:@""];
 }
 
 /*-----------------------------------------------------------------------------

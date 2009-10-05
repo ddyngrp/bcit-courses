@@ -329,21 +329,19 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A4E62FB10796E0200B8B392</string>
+										<string>3A9CB5DA1079B4D100D0B9A3</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
 											<string>3AD4FC711078970F00E5F9A1</string>
 											<string>3AD4FC721078970F00E5F9A1</string>
 											<string>3AD4FCA41078A61A00E5F9A1</string>
-											<string>3A4E61A21079592E00B8B392</string>
-											<string>3A4E6210107960B300B8B392</string>
-											<string>3A4E6211107960B300B8B392</string>
-											<string>3A4E6212107960B300B8B392</string>
-											<string>3A4E625B1079654E00B8B392</string>
-											<string>3A4E628E1079681B00B8B392</string>
-											<string>3A4E62F910796E0200B8B392</string>
-											<string>3A4E62FA10796E0200B8B392</string>
+											<string>3A4E63E11079880800B8B392</string>
+											<string>3A4E6522107995D300B8B392</string>
+											<string>3A9CB55F1079A86200D0B9A3</string>
+											<string>3A9CB5AF1079B2F500D0B9A3</string>
+											<string>3A9CB5D11079B4A200D0B9A3</string>
+											<string>3A9CB5C41079B42F00D0B9A3</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -401,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A4E61441079510B00B8B392</string>
+				<string>3A9CB4ED10799F1B00D0B9A3</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3A4E61451079510B00B8B392</string>
+				<string>3A9CB4EE10799F1B00D0B9A3</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -541,11 +539,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3A4E614F1079510B00B8B392</string>
-		<string>3A4E61501079510B00B8B392</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>3A6596171072CFDC001D304E</string>
+		<string>3A9CB5DB1079B4D100D0B9A3</string>
+		<string>3A9CB4F110799F1B00D0B9A3</string>
+		<string>3A9CB4F210799F1B00D0B9A3</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>3A6596171072CFDC001D304E</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #1/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -626,7 +625,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A6596171072CFDC001D304E</string>
-				<string>3A4E61461079510B00B8B392</string>
+				<string>3A9CB4DD10799F0100D0B9A3</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -748,13 +747,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3A4E61471079510B00B8B392</string>
+				<string>3A9CB4DE10799F0100D0B9A3</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3A4E61481079510B00B8B392</string>
-				<string>3A4E61491079510B00B8B392</string>
-				<string>3A4E614A1079510B00B8B392</string>
-				<string>3A4E614B1079510B00B8B392</string>
-				<string>3A4E614C1079510B00B8B392</string>
+				<string>3A9CB4DF10799F0100D0B9A3</string>
+				<string>3A9CB4E010799F0100D0B9A3</string>
+				<string>3A9CB4E110799F0100D0B9A3</string>
+				<string>3A9CB4E210799F0100D0B9A3</string>
+				<string>3A9CB4E310799F0100D0B9A3</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -873,8 +872,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -910,7 +907,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3A4E614D1079510B00B8B392</string>
+				<string>3A9CB4EF10799F1B00D0B9A3</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -920,7 +917,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

@@ -275,6 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -317,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Encryption.m</string>
+								<string>ApplicationDelegate.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Encryption.m</string>
+										<string>ApplicationDelegate.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A9CB6141079BDFB00D0B9A3</string>
+										<string>3A8462771079C0F0006259CA</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
@@ -339,9 +340,9 @@
 											<string>3A9CB5F41079B6FB00D0B9A3</string>
 											<string>3A9CB60F1079BDFB00D0B9A3</string>
 											<string>3A9CB6101079BDFB00D0B9A3</string>
-											<string>3A9CB6111079BDFB00D0B9A3</string>
 											<string>3A9CB6121079BDFB00D0B9A3</string>
-											<string>3A9CB6131079BDFB00D0B9A3</string>
+											<string>3A9CB61C1079BE5000D0B9A3</string>
+											<string>3A84626B1079BE5D006259CA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -399,9 +400,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A9CB4ED10799F1B00D0B9A3</string>
+				<string>3A8462781079C0F0006259CA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3A9CB4EE10799F1B00D0B9A3</string>
+				<string>3A8462791079C0F0006259CA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -539,11 +540,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3A9CB4F110799F1B00D0B9A3</string>
-		<string>3A9CB4F210799F1B00D0B9A3</string>
+		<string>3A8462821079C0F0006259CA</string>
+		<string>3A8462831079C0F0006259CA</string>
+		<string>3A8462841079C0F0006259CA</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>3A6596171072CFDC001D304E</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>3A6596171072CFDC001D304E</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #1/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -624,7 +626,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A6596171072CFDC001D304E</string>
-				<string>3A9CB4DD10799F0100D0B9A3</string>
+				<string>3A84627A1079C0F0006259CA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -746,13 +748,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3A9CB4DE10799F0100D0B9A3</string>
+				<string>3A84627B1079C0F0006259CA</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3A9CB4DF10799F0100D0B9A3</string>
-				<string>3A9CB4E010799F0100D0B9A3</string>
-				<string>3A9CB4E110799F0100D0B9A3</string>
-				<string>3A9CB4E210799F0100D0B9A3</string>
-				<string>3A9CB4E310799F0100D0B9A3</string>
+				<string>3A84627C1079C0F0006259CA</string>
+				<string>3A84627D1079C0F0006259CA</string>
+				<string>3A84627E1079C0F0006259CA</string>
+				<string>3A84627F1079C0F0006259CA</string>
+				<string>3A8462801079C0F0006259CA</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -906,7 +908,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3A9CB4EF10799F1B00D0B9A3</string>
+				<string>3A8462811079C0F0006259CA</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

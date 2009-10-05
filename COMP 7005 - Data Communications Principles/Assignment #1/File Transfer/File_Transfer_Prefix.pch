@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'File Transfer' target in the 'File Transfer' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

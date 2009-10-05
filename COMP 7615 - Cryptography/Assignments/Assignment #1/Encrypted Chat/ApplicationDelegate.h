@@ -20,7 +20,7 @@
 #import "Encryption.h"
 
 // Interface for the main application window
-@interface Encrypted_ChatAppDelegate : NSObject <NSApplicationDelegate>
+@interface ApplicationDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow *window;
 	

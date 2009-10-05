@@ -34,7 +34,7 @@
 #define PORT 3141
 #define FORMAT(format, ...) [NSString stringWithFormat:(format), ##__VA_ARGS__]
 
-@implementation Encrypted_ChatAppDelegate
+@implementation ApplicationDelegate
 
 @synthesize window; // Generates accessor methods and garbage collection
 

@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------
  * SOURCE FILE:	ClientServer.h
  * 
- * PROGRAM:     Encrypted Chat
+ * PROGRAM:     Encrypted Chat <Server>
  * 
  * DATE:        August 27, 2009
  * 

@@ -9,9 +9,9 @@
 	};
 	256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {977, 6916}}";
-			sepNavSelRange = "{11951, 0}";
-			sepNavVisRange = "{10888, 1939}";
+			sepNavIntBoundsRect = "{{0, 0}, {977, 7072}}";
+			sepNavSelRange = "{0, 1425}";
+			sepNavVisRange = "{0, 1793}";
 			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
 		};
 	};
@@ -51,74 +51,27 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 276546241;
-			PBXWorkspaceStateSaveDate = 276546241;
+			PBXPerProjectTemplateStateSaveDate = 276563919;
+			PBXWorkspaceStateSaveDate = 276563919;
 		};
 		perUserProjectItems = {
-			3A790DDF107BC2F7002A6866 /* PBXTextBookmark */ = 3A790DDF107BC2F7002A6866 /* PBXTextBookmark */;
-			3A790DE6107BC348002A6866 /* PBXTextBookmark */ = 3A790DE6107BC348002A6866 /* PBXTextBookmark */;
-			3A790DEE107BC45E002A6866 /* PBXTextBookmark */ = 3A790DEE107BC45E002A6866 /* PBXTextBookmark */;
-			3A790DF2107BC643002A6866 /* PBXTextBookmark */ = 3A790DF2107BC643002A6866 /* PBXTextBookmark */;
-			3A790DF7107BC686002A6866 /* PBXTextBookmark */ = 3A790DF7107BC686002A6866 /* PBXTextBookmark */;
-			3AA8FBBA107B4D1F00FB0CA8 = 3AA8FBBA107B4D1F00FB0CA8 /* PBXTextBookmark */;
+			3A9861AA107C07C900DD4986 = 3A9861AA107C07C900DD4986 /* PBXTextBookmark */;
+			3A9861AB107C07C900DD4986 = 3A9861AB107C07C900DD4986 /* PBXTextBookmark */;
+			3A9861AC107C07C900DD4986 = 3A9861AC107C07C900DD4986 /* PBXTextBookmark */;
+			3A9861AD107C07C900DD4986 = 3A9861AD107C07C900DD4986 /* PBXTextBookmark */;
 			3AA8FBBB107B4D1F00FB0CA8 = 3AA8FBBB107B4D1F00FB0CA8 /* PBXTextBookmark */;
 			3ADE28F8107BABF200EDC1A2 = 3ADE28F8107BABF200EDC1A2 /* PBXTextBookmark */;
-			3ADE29ED107BC08E00EDC1A2 = 3ADE29ED107BC08E00EDC1A2 /* PBXTextBookmark */;
-			3ADE29EF107BC0F100EDC1A2 = 3ADE29EF107BC0F100EDC1A2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3A79791C107A851A007BEE74 /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	3A790DDF107BC2F7002A6866 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 401";
-		rLen = 0;
-		rLoc = 11923;
-		rType = 0;
-		vrLen = 1880;
-		vrLoc = 10888;
-	};
-	3A790DE6107BC348002A6866 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 401";
-		rLen = 0;
-		rLoc = 11923;
-		rType = 0;
-		vrLen = 1824;
-		vrLoc = 10888;
-	};
-	3A790DEE107BC45E002A6866 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 401";
-		rLen = 0;
-		rLoc = 11923;
-		rType = 0;
-		vrLen = 1824;
-		vrLoc = 10888;
-	};
-	3A790DF2107BC643002A6866 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 401";
-		rLen = 0;
-		rLoc = 11951;
-		rType = 0;
-		vrLen = 1939;
-		vrLoc = 10888;
-	};
-	3A790DF7107BC686002A6866 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 401";
-		rLen = 0;
-		rLoc = 11951;
-		rType = 0;
-		vrLen = 1939;
-		vrLoc = 10888;
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {977, 641}}";
+			sepNavSelRange = "{146, 0}";
+			sepNavVisRange = "{0, 570}";
+		};
 	};
 	3A797904107A8510007BEE74 /* FileServer */ = {
 		isa = PBXExecutable;
@@ -166,22 +119,52 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	3AA8FBBA107B4D1F00FB0CA8 /* PBXTextBookmark */ = {
+	3A9861AA107C07C900DD4986 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 3AC62509107A8610005E2D1A /* ClientServer.m */;
-		name = "ClientServer.m: 1103";
-		rLen = 44;
-		rLoc = 33301;
+		name = "ClientServer.m: 1095";
+		rLen = 0;
+		rLoc = 33106;
 		rType = 0;
-		vrLen = 1383;
-		vrLoc = 32599;
+		vrLen = 2414;
+		vrLoc = 0;
+	};
+	3A9861AB107C07C900DD4986 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
+		name = "FileServerAppDelegate.m: 1";
+		rLen = 1434;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1793;
+		vrLoc = 0;
+	};
+	3A9861AC107C07C900DD4986 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 267;
+		vrLoc = 0;
+	};
+	3A9861AD107C07C900DD4986 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 4";
+		rLen = 0;
+		rLoc = 146;
+		rType = 0;
+		vrLen = 570;
+		vrLoc = 0;
 	};
 	3AA8FBBB107B4D1F00FB0CA8 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 3AC62508107A860F005E2D1A /* ClientServer.h */;
 		name = "ClientServer.h: 60";
 		rLen = 0;
-		rLoc = 1792;
+		rLoc = 1801;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 1199;
@@ -195,9 +178,9 @@
 	};
 	3AC62509107A8610005E2D1A /* ClientServer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {977, 27365}}";
-			sepNavSelRange = "{33301, 44}";
-			sepNavVisRange = "{32599, 1383}";
+			sepNavIntBoundsRect = "{{0, 0}, {977, 27781}}";
+			sepNavSelRange = "{33097, 0}";
+			sepNavVisRange = "{0, 2414}";
 		};
 	};
 	3ADE28F8107BABF200EDC1A2 /* PBXTextBookmark */ = {
@@ -209,26 +192,6 @@
 		rType = 0;
 		vrLen = 1163;
 		vrLoc = 0;
-	};
-	3ADE29ED107BC08E00EDC1A2 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 403";
-		rLen = 0;
-		rLoc = 12102;
-		rType = 0;
-		vrLen = 1839;
-		vrLoc = 10886;
-	};
-	3ADE29EF107BC0F100EDC1A2 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* FileServerAppDelegate.m */;
-		name = "FileServerAppDelegate.m: 402";
-		rLen = 148;
-		rLoc = 11955;
-		rType = 0;
-		vrLen = 2134;
-		vrLoc = 10445;
 	};
 	8D1107260486CEB800E47090 /* FileServer */ = {
 		activeExec = 0;

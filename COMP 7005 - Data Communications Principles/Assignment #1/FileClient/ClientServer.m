@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------
  * SOURCE FILE:	ClientServer.m
  * 
- * PROGRAM:     Encrypted Chat
+ * PROGRAM:     Encrypted Chat <Client>
  * 
  * FUNCTIONS:   Client Interface Methods
  *              + (id)client

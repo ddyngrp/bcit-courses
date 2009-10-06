@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------
  * SOURCE FILE:	FileServerAppDelegate.m
  * 
- * PROGRAM:     Encrypted Chat
+ * PROGRAM:     Encrypted Chat <Client>
  * 
  * FUNCTIONS:   - (id)init
  *              - (void)awakeFromNib

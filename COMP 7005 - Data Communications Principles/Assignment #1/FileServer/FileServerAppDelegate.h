@@ -23,8 +23,9 @@
     NSWindow *window;
 	
 	Server *server;
-//	Client *client;
 	BOOL isRunning;
+	
+	NSString *saveFile;
 	
 	NSMutableArray *dataConn;	// Contains all data connections
 	

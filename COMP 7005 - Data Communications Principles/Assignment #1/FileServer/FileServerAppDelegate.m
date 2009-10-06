@@ -164,6 +164,7 @@
 - (void)dealloc
 {
 	[dataConn release];
+	[saveFile release];
 	[server release];
 	[super dealloc];
 }
@@ -380,7 +381,7 @@
 		}
 		else if ([[message uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
 			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
-			fileName = [message substringFromIndex:5];
+			saveFile = [[NSString alloc] initWithString:[message substringFromIndex:5]];
 			
 			getFileFromClient = YES;
 		}
@@ -399,7 +400,11 @@
 			// Search for existing data connection
 			for (int i = 0; i < [dataConn count]; i++) {
 				if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
-					newConnection = NO;
+					// Remove the connection if it exists and is inactive
+					if (![(Client*)[dataConn objectAtIndex:i] isConnected])
+						[dataConn removeObjectAtIndex:i];
+					else
+						newConnection = NO;
 				}
 			}
 			
@@ -438,7 +443,16 @@
 		}
 	}
 	else if (data) {
-		// Process incomming data
+		// Create the file if necessary
+		if ([NSFileHandle fileHandleForReadingAtPath:saveFile] == nil) {
+			[[NSFileManager defaultManager] createFileAtPath:saveFile contents:nil attributes:nil];
+		}
+		
+		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		
+		[writeFile seekToEndOfFile];
+		[writeFile writeData:data];
+		[writeFile closeFile];
 	}
 }
 

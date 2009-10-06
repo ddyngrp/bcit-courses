@@ -64,6 +64,14 @@
 - (id)init
 {
 	if(self = [super init]) {
+		basePath = [[NSString alloc] initWithString:[[@"~/Desktop/ClientFiles"
+													  stringByStandardizingPath]
+													 stringByAppendingString:@"/"]];
+		
+		// Create server file directory if needed
+		NSFileManager *manager = [NSFileManager alloc];
+		[manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:nil];
+		
 		isRunning = NO;
 	}
 	
@@ -168,6 +176,7 @@
 - (void)dealloc
 {
 	[saveFile release];
+	[basePath release];
 	[client release];
 	[server release];
 	[super dealloc];
@@ -275,17 +284,18 @@
 - (IBAction)sendCommand:(id)sender
 {
 	if ([[[commandText stringValue] uppercaseString] rangeOfString:@"GET "].location != NSNotFound) {
-		saveFile = [[NSString alloc] initWithString:FORMAT(@"/Users/ironix/Desktop%@",
-														   [[commandText stringValue] substringFromIndex:4])];
+		saveFile = [[NSString alloc] initWithString:[[commandText stringValue] substringFromIndex:4]];
 		[client sendString:[commandText stringValue]];
 	}
 	else if ([[[commandText stringValue] uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
 		// Grab the data send send to the server
-		NSData *sendData = [NSData dataWithContentsOfFile:[[commandText stringValue] substringFromIndex:5]];
+		NSData *sendData = [NSData dataWithContentsOfFile:[basePath stringByAppendingString:
+														   [[commandText stringValue] substringFromIndex:5]]];
 		if ([sendData bytes] == 0)
 			[self logMessage:@"Client: Error, file does not exist.\n" logType:@"error"];
 		else {
 			[client sendString:[commandText stringValue]];
+			sleep(1); // Data gets sent too fast, triggering events
 			[client sendData:sendData];
 		}
 	}
@@ -441,15 +451,22 @@
  *----------------------------------------------------------------------------*/
 - (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
 {
-	if (message)
-		[self logMessage:message logType:@""];
-	if (data) {
-		// Create the file if necessary
-		if ([NSFileHandle fileHandleForReadingAtPath:saveFile] == nil) {
-			[[NSFileManager defaultManager] createFileAtPath:saveFile contents:nil attributes:nil];
+	if (message) {
+		if ([[message uppercaseString] rangeOfString:@"SERVER"].location == NSNotFound) {
+			[message writeToFile:[basePath stringByAppendingString:saveFile] atomically:NO
+						encoding:NSStringEncodingConversionAllowLossy error:nil];
 		}
+		else {
+			[self logMessage:message logType:@""];
+		}
+	}
+	else if (data) {
+		// Create the file if necessary
+		if ([NSFileHandle fileHandleForReadingAtPath:[basePath stringByAppendingString:saveFile]] == nil)
+			[[NSFileManager defaultManager] createFileAtPath:[basePath stringByAppendingString:saveFile]
+													contents:nil attributes:nil];
 		
-		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:[basePath stringByAppendingString:saveFile]];
 		
 		[writeFile seekToEndOfFile];
 		[writeFile writeData:data];

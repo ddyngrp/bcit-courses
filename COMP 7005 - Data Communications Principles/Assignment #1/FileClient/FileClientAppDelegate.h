@@ -25,6 +25,7 @@
 	Client *client;
 	BOOL isRunning;
 	
+	NSString *basePath;	
 	NSString *saveFile;
 	
 	// Main Window

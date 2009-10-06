@@ -63,8 +63,9 @@
  *----------------------------------------------------------------------------*/
 - (id)init
 {
-	if(self = [super init])
+	if(self = [super init]) {
 		isRunning = NO;
+	}
 	
 	return self;
 }
@@ -166,6 +167,7 @@
  *----------------------------------------------------------------------------*/
 - (void)dealloc
 {
+	[saveFile release];
 	[client release];
 	[server release];
 	[super dealloc];
@@ -272,7 +274,22 @@
  *----------------------------------------------------------------------------*/
 - (IBAction)sendCommand:(id)sender
 {
-	[client sendString:[commandText stringValue]];
+	if ([[[commandText stringValue] uppercaseString] rangeOfString:@"GET "].location != NSNotFound) {
+		saveFile = [[NSString alloc] initWithString:FORMAT(@"/Users/ironix/Desktop%@",
+														   [[commandText stringValue] substringFromIndex:4])];
+		[client sendString:[commandText stringValue]];
+	}
+	else if ([[[commandText stringValue] uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
+		[client sendString:[commandText stringValue]];
+		// Grab the data send send to the server
+		NSData *sendData = [NSData dataWithContentsOfFile:[[commandText stringValue] substringFromIndex:5]];
+		[client sendData:sendData];
+	}
+	else {
+		[client sendString:[commandText stringValue]];
+	}
+
+	
 	[commandText setStringValue:@""];
 }
 
@@ -420,18 +437,17 @@
  *
  *----------------------------------------------------------------------------*/
 - (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
-{		
+{
 	if (message)
 		[self logMessage:message logType:@""];
 	
 	if (data) {
 		// Create the file if necessary
-		if ([NSFileHandle fileHandleForWritingAtPath:@"/Users/ironix/Desktop/music.mp3"] == nil) {
-			[[NSFileManager defaultManager] createFileAtPath:@"/Users/ironix/Desktop/music.mp3"
-													contents:nil attributes:nil];
+		if ([NSFileHandle fileHandleForReadingAtPath:saveFile] == nil) {
+			[[NSFileManager defaultManager] createFileAtPath:saveFile contents:nil attributes:nil];
 		}
 		
-		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:@"/Users/ironix/Desktop/music.mp3"];
+		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
 		
 		[writeFile seekToEndOfFile];
 		[writeFile writeData:data];
@@ -444,7 +460,7 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:		
  * 
  * DESIGNER:    Steffen L. Norgren
  * 

@@ -25,6 +25,8 @@
 	Client *client;
 	BOOL isRunning;
 	
+	NSString *saveFile;
+	
 	// Main Window
     IBOutlet id logView;
 	IBOutlet id commandText;

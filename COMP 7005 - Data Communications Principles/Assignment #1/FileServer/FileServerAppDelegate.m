@@ -65,7 +65,16 @@
 - (id)init
 {
 	if(self = [super init]) {
+		// Client data connection pool
 		dataConn = [[NSMutableArray alloc] init];
+		basePath = [[NSString alloc] initWithString:[[@"~/Desktop/ServerFiles"
+													  stringByStandardizingPath]
+													 stringByAppendingString:@"/"]];
+		
+		// Create server file directory if needed
+		NSFileManager *manager = [NSFileManager alloc];
+		[manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:nil];
+		
 		isRunning = NO;
 	}
 	
@@ -371,72 +380,60 @@
 	if (message) {
 		NSString *fileName;
 		BOOL sendFileToClient = NO;
-		BOOL getFileFromClient = NO;
+		BOOL newConnection = YES;
 		
-		if ([[message uppercaseString] rangeOfString:@"GET "].location != NSNotFound) {
+		if ([[message uppercaseString] rangeOfString:@"GET "].location != NSNotFound && [message length] < 30) {
 			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
 			fileName = [message substringFromIndex:4];
 			
 			sendFileToClient = YES;
 		}
-		else if ([[message uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
+		else if ([[message uppercaseString] rangeOfString:@"SEND "].location != NSNotFound && [message length] < 30) {
 			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
 			saveFile = [[NSString alloc] initWithString:[message substringFromIndex:5]];
-			
-			getFileFromClient = YES;
 		}
-		else if ([[message uppercaseString] rangeOfString:@"HELP"].location != NSNotFound) {
+		else if ([[message uppercaseString] rangeOfString:@"HELP"].location != NSNotFound && [message length] < 30) {
 			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
-			[server sendString:@"Server: Available commands: GET [path/file], SEND [path/file], HELP.\n" toConnection:con];
+			[server sendString:@"Server: Available commands: GET [file], SEND [file], HELP.\n" toConnection:con];
+			newConnection = NO;
 		}
 		else {
-			[server sendString:@"Server: Invalid Command. For a lost of available commands, enter HELP.\n"
-				  toConnection:con];
-		}
-		
-		if (sendFileToClient || getFileFromClient) {
-			BOOL newConnection = YES;
-			
-			// Search for existing data connection
-			for (int i = 0; i < [dataConn count]; i++) {
-				if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
-					// Remove the connection if it exists and is inactive
-					if (![(Client*)[dataConn objectAtIndex:i] isConnected])
-						[dataConn removeObjectAtIndex:i];
-					else
-						newConnection = NO;
-				}
+			if ([message length] > 30) {
+				[message writeToFile:[basePath stringByAppendingString:saveFile] atomically:NO
+							encoding:NSStringEncodingConversionAllowLossy error:nil];
+				[saveFile release];
 			}
-			
-			// Connect and add to the connection pool
-			if (newConnection) {
-				Client *client = [[Client alloc] initWithHost:[con remoteAddress] port:PORT_DATA delegate:self];
-				
-				unsigned int error = [client connect];
-				
-				if (error == InitOK) {
-					[self logMessage:FORMAT(@"Connected to data channel on %@:%d\n", [client remoteHost], PORT_DATA)
-							 logType:@"info"];
-					
-					// Add connection to the pool
-					[dataConn addObject:client];
-					getFileFromClient = NO;
-				}
-				else {
-					[self logMessage:FORMAT(@"Error (%hu): Unable to connect to %@:%d\n",
-											error, [client remoteHost], [client remotePort])
-							 logType:@"error"];
-					[client release];
-				}
+			else {
+				[server sendString:@"Server: Invalid Command. For a lost of available commands, enter HELP.\n"
+					  toConnection:con];
+				newConnection = NO;
 			}
 		}
 		
+		// Search for existing data connection
+		for (int i = 0; i < [dataConn count]; i++) {
+			if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
+				// Remove the connection if it exists and is inactive
+				if (![(Client*)[dataConn objectAtIndex:i] isConnected])
+					[dataConn removeObjectAtIndex:i];
+				else
+					newConnection = NO;
+			}
+		}
+		
+		// Connect and add to the connection pool
+		if (newConnection) {
+			[self newDataConnection:con];
+			newConnection = NO;
+		}
+
 		if (sendFileToClient) {
 			// Search for existing data connection
 			for (int i = 0; i < [dataConn count]; i++) {
 				if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
 					// Connection found send file
-					[self sendFile:fileName toConnection:(Client*)[dataConn objectAtIndex:i]];
+					[self sendFile:[basePath stringByAppendingString:fileName]
+					  toConnection:(Client*)[dataConn objectAtIndex:i]];
 					sendFileToClient = NO;
 				}
 			}
@@ -444,16 +441,56 @@
 	}
 	else if (data) {
 		// Create the file if necessary
-		if ([NSFileHandle fileHandleForReadingAtPath:saveFile] == nil) {
-			[[NSFileManager defaultManager] createFileAtPath:saveFile contents:nil attributes:nil];
-		}
+		if ([NSFileHandle fileHandleForReadingAtPath:[basePath stringByAppendingString:saveFile]] == nil)
+			[[NSFileManager defaultManager] createFileAtPath:[basePath stringByAppendingString:saveFile]
+													contents:nil attributes:nil];
 		
-		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:[basePath stringByAppendingString:saveFile]];
 		
 		[writeFile seekToEndOfFile];
 		[writeFile writeData:data];
 		[writeFile closeFile];
 	}
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    newDataConnection
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)newDataConnection:(ClientServerConnection *)con
+ *                    con: connection to send the file to
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Connects to the client and adds the connection to the connection pool.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)newDataConnection:(ClientServerConnection *)con
+{
+	Client *client = [[Client alloc] initWithHost:[con remoteAddress] port:PORT_DATA delegate:self];
+	
+	unsigned int error = [client connect];
+	
+	if (error == InitOK) {
+		[self logMessage:FORMAT(@"Connected to data channel on %@:%d\n", [client remoteHost], PORT_DATA)
+				 logType:@"info"];
+		
+		// Add connection to the pool
+		[dataConn addObject:client];
+	}
+	else {
+		[self logMessage:FORMAT(@"Error (%hu): Unable to connect to %@:%d\n",
+								error, [client remoteHost], [client remotePort])
+				 logType:@"error"];
+		[client release];
+	}	
 }
 
 /*-----------------------------------------------------------------------------

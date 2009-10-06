@@ -22,6 +22,8 @@
 {
     NSWindow *window;
 	
+	NSString *basePath;
+	
 	Server *server;
 	BOOL isRunning;
 	
@@ -42,5 +44,6 @@
 - (IBAction)listenForConnect:(id)sender;
 - (void)logMessage:(NSString *)msg logType:(NSString *)type;
 - (void)sendFile:(NSString *)fileName toConnection:(Client *)con;
+- (void)newDataConnection:(ClientServerConnection *)con;
 
 @end

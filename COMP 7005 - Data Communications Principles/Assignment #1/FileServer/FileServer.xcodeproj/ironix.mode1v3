@@ -327,7 +327,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A6C07BA107B733500F3A336</string>
+										<string>3A6C07DD107B7E1400F3A336</string>
 										<key>history</key>
 										<array>
 											<string>3AA8FBBA107B4D1F00FB0CA8</string>
@@ -531,6 +531,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A79791A107A851A007BEE74</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7005 - Data Communications Principles/Assignment #1/FileServer/FileServer.xcodeproj</string>
 	</array>
@@ -656,8 +657,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {450, 313}}</string>
-											<string>{{450, 0}, {536, 313}}</string>
+											<string>{{0, 0}, {450, 317}}</string>
+											<string>{{450, 0}, {536, 317}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -672,8 +673,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {986, 313}}</string>
-											<string>{{0, 313}, {986, 289}}</string>
+											<string>{{0, 0}, {986, 317}}</string>
+											<string>{{0, 317}, {986, 285}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -706,7 +707,7 @@
 										<real>306</real>
 									</array>
 									<key>Frame</key>
-									<string>{{450, 0}, {536, 313}}</string>
+									<string>{{450, 0}, {536, 317}}</string>
 									<key>RubberWindowFrame</key>
 									<string>21 112 986 643 0 0 1280 778 </string>
 								</dict>
@@ -734,13 +735,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3ABDB15C107B67DE000F9A7E</string>
+				<string>3A6C07DE107B7E1400F3A336</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3ABDB15D107B67DE000F9A7E</string>
-				<string>3ABDB15E107B67DE000F9A7E</string>
-				<string>3ABDB15F107B67DE000F9A7E</string>
-				<string>3ABDB160107B67DE000F9A7E</string>
-				<string>3ABDB161107B67DE000F9A7E</string>
+				<string>3A6C07DF107B7E1400F3A336</string>
+				<string>3A6C07E0107B7E1400F3A336</string>
+				<string>3A6C07E1107B7E1400F3A336</string>
+				<string>3A6C07E2107B7E1400F3A336</string>
+				<string>3A6C07E3107B7E1400F3A336</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

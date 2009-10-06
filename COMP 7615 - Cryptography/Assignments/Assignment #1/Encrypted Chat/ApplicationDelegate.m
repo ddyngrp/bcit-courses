@@ -394,10 +394,12 @@
 					[displayName setEnabled:NO];
 					isRunning = YES;
 					
-					[self logMessage:@"Listening for connections.\n" logType:@"info"];
+					[self logMessage:FORMAT(@"Listening for connections on port %d.\n", [server serverPort])
+							 logType:@"info"];
 				}
 				else {
-					[self logMessage:FORMAT(@"Error (%hu): unable to start listening.\n", error) logType:@"error"];
+					[self logMessage:FORMAT(@"Error (%hu): unable to start listening.\n", error)
+							 logType:@"error"];
 					[server release];
 				}
 			}
@@ -436,7 +438,7 @@
  * 
  * RETURNS: void
  * 
- * NOTES: Scrolls the chat window to the bottom.
+ * NOTES: Scrolls the log window to the bottom.
  *
  *----------------------------------------------------------------------------*/
 - (void)scrollToBottom
@@ -464,7 +466,7 @@
  * PROGRAMMER:  Steffen L. Norgren
  * 
  * INTERFACE:   (void)logMessage:(NSString *)msg logType:(NSString *)type
- *                    msg: The message to be posted to the chat window
+ *                    msg: The message to be posted
  *                    logType: The type of message {error, info}
  * 
  * RETURNS: void

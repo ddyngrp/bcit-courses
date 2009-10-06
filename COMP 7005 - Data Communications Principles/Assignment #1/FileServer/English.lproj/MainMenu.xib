@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
+			<integer value="371"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -590,7 +590,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{399, 318}, {423, 249}}</string>
+				<string key="NSWindowRect">{{136, 412}, {423, 249}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">FileServer</string>
 				<string key="NSWindowClass">NSWindow</string>

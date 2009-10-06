@@ -23,7 +23,10 @@
     NSWindow *window;
 	
 	Server *server;
+//	Client *client;
 	BOOL isRunning;
+	
+	NSMutableArray *dataConn;	// Contains all data connections
 	
 	// Main Window
     IBOutlet id logView;
@@ -37,5 +40,6 @@
 
 - (IBAction)listenForConnect:(id)sender;
 - (void)logMessage:(NSString *)msg logType:(NSString *)type;
+- (void)sendFile:(NSString *)fileName toConnection:(Client *)con;
 
 @end

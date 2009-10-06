@@ -7,15 +7,18 @@
  *              - (void)awakeFromNib
  *              - (void)initWindow
  *              - (void)applicationDidFinishLaunching:
- *                                 (NSNotification *)aNotification
+ *                      (NSNotification *)aNotification
  *              - (void)dealloc
- *              - (IBAction)listen:(id)sender
+ *              - (IBAction)listenForConnect:(id)sender
  *              - (void)scrollToBottom
  *              - (void)logMessage:(NSString *)msg logType:(NSString *)type
  *              - (void)processNewConnection:(ClientServerConnection *)con
  *              - (void)processClosingConnection:(ClientServerConnection *)con
  *              - (void)processMessage:(NSString *)message orData:(NSData *)data
  *                      fromConnection:(ClientServerConnection *)con
+ *              - (void)sendFile:(NSString *)fileName
+ *                      toConnection:(Client *)con
+ *              - (void)connectionDidClose:(ClientServerConnection *)con
  * 
  * DATE:        October 4, 2009
  * 
@@ -61,8 +64,10 @@
  *----------------------------------------------------------------------------*/
 - (id)init
 {
-	if(self = [super init])
+	if(self = [super init]) {
+		dataConn = [[NSMutableArray alloc] init];
 		isRunning = NO;
+	}
 	
 	return self;
 }
@@ -158,12 +163,13 @@
  *----------------------------------------------------------------------------*/
 - (void)dealloc
 {
+	[dataConn release];
 	[server release];
 	[super dealloc];
 }
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    listen
+ * FUNCTION:    listenForConnect
  * 
  * DATE:        October 4, 2009
  * 
@@ -173,7 +179,7 @@
  * 
  * PROGRAMMER:  Steffen L. Norgren
  * 
- * INTERFACE:   (IBAction)listen:(id)sender
+ * INTERFACE:   (IBAction)listenForConnect:(id)sender
  *                        sender: the delegate ID of the sender
  * 
  * RETURNS: void
@@ -360,26 +366,133 @@
  *----------------------------------------------------------------------------*/
 - (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con
 {
-	// Remove all non alphabetic characters from the string
-	NSString *input = [[message stringByReplacingOccurrencesOfString:@"\r\n" withString:@""] autorelease];
-	
-	if ([input compare:@"GET"] == NSOrderedSame) {
-		[self logMessage:FORMAT(@"Client %@ command: GET\n, Waiting for file name...\n", con) logType:@""];
+	// Only process messages on the control channel
+	if (message) {
+		NSString *fileName;
+		BOOL sendFileToClient = NO;
+		BOOL getFileFromClient = NO;
+		
+		if ([[message uppercaseString] rangeOfString:@"GET "].location != NSNotFound) {
+			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
+			fileName = [message substringFromIndex:4];
+			
+			sendFileToClient = YES;
+		}
+		else if ([[message uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
+			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
+			fileName = [message substringFromIndex:5];
+			
+			getFileFromClient = YES;
+		}
+		else if ([[message uppercaseString] rangeOfString:@"HELP"].location != NSNotFound) {
+			[self logMessage:FORMAT(@"Client %@ command: %@\n", con, message) logType:@""];
+			[server sendString:@"Server: Available commands: GET [path/file], SEND [path/file], HELP.\n" toConnection:con];
+		}
+		else {
+			[server sendString:@"Server: Invalid Command. For a lost of available commands, enter HELP.\n"
+				  toConnection:con];
+		}
+		
+		if (sendFileToClient || getFileFromClient) {
+			BOOL newConnection = YES;
+			
+			// Search for existing data connection
+			for (int i = 0; i < [dataConn count]; i++) {
+				if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
+					newConnection = NO;
+				}
+			}
+			
+			// Connect and add to the connection pool
+			if (newConnection) {
+				Client *client = [[Client alloc] initWithHost:[con remoteAddress] port:PORT_DATA delegate:self];
+				
+				unsigned int error = [client connect];
+				
+				if (error == InitOK) {
+					[self logMessage:FORMAT(@"Connected to data channel on %@:%d\n", [client remoteHost], PORT_DATA)
+							 logType:@"info"];
+					
+					// Add connection to the pool
+					[dataConn addObject:client];
+					getFileFromClient = NO;
+				}
+				else {
+					[self logMessage:FORMAT(@"Error (%hu): Unable to connect to %@:%d\n",
+											error, [client remoteHost], [client remotePort])
+							 logType:@"error"];
+					[client release];
+				}
+			}
+		}
+		
+		if (sendFileToClient) {
+			// Search for existing data connection
+			for (int i = 0; i < [dataConn count]; i++) {
+				if ([[(Client*)[dataConn objectAtIndex:i] remoteHost] compare:[con remoteAddress]] == NSOrderedSame) {
+					// Connection found send file
+					[self sendFile:fileName toConnection:(Client*)[dataConn objectAtIndex:i]];
+					sendFileToClient = NO;
+				}
+			}
+		}
 	}
-	else if ([input compare:@"SEND"] == NSOrderedSame) {
-		[self logMessage:FORMAT(@"Client %@ command: SEND\n, Waiting for data...", con) logType:@""];
+	else if (data) {
+		// Process incomming data
 	}
-	
-	// This might have something to do with receiving, not sending.
-	//		
-	//		NSFileHandle *outfile = [NSFileHandle fileHandleForReadingAtPath: @"/Users/ironix/Desktop/test.txt"];
-	//		
-	//		if (outfile == nil)
-	//			[self logMessage:@"File not found.\n" logType:@""];
-	//		else
-	//			[con initWithFileHandle:outfile delegate:self];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    sendFile
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)sendFile:(NSString *)fileName toConnection:(Client *)con
+ *                    fileName: file to send
+ *                    con: connection to send the file to
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Sends a file to a connected client.
+ *
+ *----------------------------------------------------------------------------*/
 
+- (void)sendFile:(NSString *)fileName toConnection:(Client *)con
+{
+	NSData *sendData = [NSData dataWithContentsOfFile:fileName];
+	
+	[con sendData:sendData];
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    connectionDidClose
+ * 
+ * DATE:        October 4, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (void)connectionDidClose:(ClientServerConnection *)con
+ *                    con: connection the message was received from
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Will be sent the delegate after the connection closed.
+ *
+ *----------------------------------------------------------------------------*/
+- (void)connectionDidClose:(ClientServerConnection *)con
+{
+	[self logMessage:FORMAT(@"%@:%d closed connection.\n", [con remoteAddress], [con remotePort])
+			 logType:@"error"];
+}
 
 @end

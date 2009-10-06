@@ -481,7 +481,10 @@
 {
 	NSData *sendData = [NSData dataWithContentsOfFile:fileName];
 	
-	[con sendData:sendData];
+	if ([sendData bytes] == 0)
+		[con sendString:@"Server: Error, file does not exist.\n"];
+	else
+		[con sendData:sendData];
 }
 
 /*-----------------------------------------------------------------------------

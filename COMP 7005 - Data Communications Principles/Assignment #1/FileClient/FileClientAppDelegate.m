@@ -280,14 +280,17 @@
 		[client sendString:[commandText stringValue]];
 	}
 	else if ([[[commandText stringValue] uppercaseString] rangeOfString:@"SEND "].location != NSNotFound) {
-		[client sendString:[commandText stringValue]];
 		// Grab the data send send to the server
 		NSData *sendData = [NSData dataWithContentsOfFile:[[commandText stringValue] substringFromIndex:5]];
-		[client sendData:sendData];
+		if ([sendData bytes] == 0)
+			[self logMessage:@"Client: Error, file does not exist.\n" logType:@"error"];
+		else {
+			[client sendString:[commandText stringValue]];
+			[client sendData:sendData];
+		}
 	}
-	else {
+	else
 		[client sendString:[commandText stringValue]];
-	}
 
 	
 	[commandText setStringValue:@""];
@@ -440,7 +443,6 @@
 {
 	if (message)
 		[self logMessage:message logType:@""];
-	
 	if (data) {
 		// Create the file if necessary
 		if ([NSFileHandle fileHandleForReadingAtPath:saveFile] == nil) {

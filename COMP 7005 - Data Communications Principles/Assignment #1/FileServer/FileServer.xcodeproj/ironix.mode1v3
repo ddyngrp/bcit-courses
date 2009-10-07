@@ -268,11 +268,11 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
+								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
 									<integer>6</integer>
 									<integer>0</integer>
 								</array>
@@ -327,14 +327,14 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A9861AD107C07C900DD4986</string>
+										<string>3A4A1330107C13CB00778466</string>
 										<key>history</key>
 										<array>
 											<string>3AA8FBBB107B4D1F00FB0CA8</string>
 											<string>3ADE28F8107BABF200EDC1A2</string>
 											<string>3A9861AA107C07C900DD4986</string>
 											<string>3A9861AB107C07C900DD4986</string>
-											<string>3A9861AC107C07C900DD4986</string>
+											<string>3AF3F2B0107C085800C27B5F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -392,9 +392,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A986199107C070900DD4986</string>
+				<string>3A4A1326107C129D00778466</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3A98619A107C070900DD4986</string>
+				<string>3A4A1327107C129D00778466</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -532,7 +532,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A79791A107A851A007BEE74</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7005 - Data Communications Principles/Assignment #1/FileServer/FileServer.xcodeproj</string>
 	</array>
@@ -614,7 +614,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A79791A107A851A007BEE74</string>
-				<string>3A98619B107C070900DD4986</string>
+				<string>3A4A1328107C129D00778466</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -736,13 +736,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3A790DD7107BC2C3002A6866</string>
+				<string>3A4A1329107C129D00778466</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3A790DD8107BC2C3002A6866</string>
-				<string>3A790DD9107BC2C3002A6866</string>
-				<string>3A790DDA107BC2C3002A6866</string>
-				<string>3A790DDB107BC2C3002A6866</string>
-				<string>3A790DDC107BC2C3002A6866</string>
+				<string>3A4A132A107C129D00778466</string>
+				<string>3A4A132B107C129D00778466</string>
+				<string>3A4A132C107C129D00778466</string>
+				<string>3A4A132D107C129D00778466</string>
+				<string>3A4A132E107C129D00778466</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

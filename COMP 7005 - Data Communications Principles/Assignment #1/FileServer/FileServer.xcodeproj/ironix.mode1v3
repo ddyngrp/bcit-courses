@@ -268,7 +268,6 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
-								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
@@ -327,14 +326,14 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A4A1330107C13CB00778466</string>
+										<string>3A6408A8107F060800A05FE4</string>
 										<key>history</key>
 										<array>
 											<string>3AA8FBBB107B4D1F00FB0CA8</string>
 											<string>3ADE28F8107BABF200EDC1A2</string>
 											<string>3A9861AA107C07C900DD4986</string>
 											<string>3A9861AB107C07C900DD4986</string>
-											<string>3AF3F2B0107C085800C27B5F</string>
+											<string>3A4A1330107C13CB00778466</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -392,9 +391,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A4A1326107C129D00778466</string>
+				<string>3A6408A5107F060800A05FE4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3A4A1327107C129D00778466</string>
+				<string>3A6408A6107F060800A05FE4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -532,7 +531,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A79791A107A851A007BEE74</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7005 - Data Communications Principles/Assignment #1/FileServer/FileServer.xcodeproj</string>
 	</array>
@@ -614,7 +612,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A79791A107A851A007BEE74</string>
-				<string>3A4A1328107C129D00778466</string>
+				<string>3A6408A7107F060800A05FE4</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

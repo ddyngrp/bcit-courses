@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = GPGDummyPanelOwner; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancel = id; ok = id; }; 
+            CLASS = GPGPassphrasePanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                okButton = NSButtonCell; 
+                passphraseTextField = NSSecureTextField; 
+                promptTextField = NSTextField; 
+                titleTextField = NSTextField; 
+            }; 
+            SUPERCLASS = NSWindow; 
+        }
+    ); 
+    IBVersion = 1; 
+}

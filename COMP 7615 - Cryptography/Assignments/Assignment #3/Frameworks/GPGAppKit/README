@@ -1,0 +1,9 @@
+GPGAppKit
+
+A framework that provides GPG-type panels for key selection (single or multiple) and passphrase entry.
+
+All panels can be used as modal windows, relative windows (pseudo-sheets), or sheets.
+
+Version Numbers:
+
+The version numbers take the form {Letter}{Number}, where the letter is the API version and the number is the release.  For example, C12 would be the 12th release of GPGAppKit and use the third GPGAppKit API.

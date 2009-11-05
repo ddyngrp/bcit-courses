@@ -1,0 +1,302 @@
+// !$*UTF8*$!
+{
+	0867D690FE84028FC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Default;
+		activeTarget = 3AD4904810A36FF000174A2C /* GPGAppKit */;
+		addToTargets = (
+			3AD4904810A36FF000174A2C /* GPGAppKit */,
+		);
+		codeSenseManager = 3A44911110A3429B00E4AFFD /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					798,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					758,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279147898;
+			PBXWorkspaceStateSaveDate = 279147898;
+		};
+		perUserProjectItems = {
+			3A57190210A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190210A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190310A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190310A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190410A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190410A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190510A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190510A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190710A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190710A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190810A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190810A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190910A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190910A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190A10A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190A10A3733B000D0CB5 /* PBXTextBookmark */;
+			3A57190B10A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190B10A3733B000D0CB5 /* PBXTextBookmark */;
+			3A5CB9A110A37246007E469B /* PlistBookmark */ = 3A5CB9A110A37246007E469B /* PlistBookmark */;
+			3A6596ED10A3757700315937 /* PBXTextBookmark */ = 3A6596ED10A3757700315937 /* PBXTextBookmark */;
+			3ACAE90A10A3749E00F6385F /* PBXTextBookmark */ = 3ACAE90A10A3749E00F6385F /* PBXTextBookmark */;
+			3AD2331210A3757C00546FE4 /* PBXTextBookmark */ = 3AD2331210A3757C00546FE4 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 3A44911010A3429B00E4AFFD /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	089C1667FE841158C02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 421}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 281}";
+		};
+	};
+	3A44911010A3429B00E4AFFD /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	3A44911110A3429B00E4AFFD /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	3A57190210A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C1667FE841158C02AAC07 /* English */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 281;
+		vrLoc = 0;
+	};
+	3A57190310A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F53FB35B021F1D9B01174191 /* English */;
+		name = "Localizable.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 385;
+		vrLoc = 0;
+	};
+	3A57190410A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F55462570221CA4901219801 /* GPGAppKit.h */;
+		name = "GPGAppKit.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 0;
+	};
+	3A57190510A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F53FB352021F044C01174191 /* GPGPassphrasePanelController.h */;
+		name = "GPGPassphrasePanelController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1180;
+		vrLoc = 0;
+	};
+	3A57190710A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F52A647702255A3B015CF1E3 /* GPGKeySelectionPanelController.h */;
+		name = "GPGKeySelectionPanelController.h: 8";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 1099;
+		vrLoc = 0;
+	};
+	3A57190810A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F52A647802255A3B015CF1E3 /* GPGKeySelectionPanelController.m */;
+		name = "GPGKeySelectionPanelController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1026;
+		vrLoc = 0;
+	};
+	3A57190910A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F55462530221B6FA01219801 /* GPGSingleKeySelectionPanelController.h */;
+		name = "GPGSingleKeySelectionPanelController.h: 24";
+		rLen = 0;
+		rLoc = 913;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 190;
+	};
+	3A57190A10A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F55462540221B6FA01219801 /* GPGSingleKeySelectionPanelController.m */;
+		name = "GPGSingleKeySelectionPanelController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1162;
+		vrLoc = 0;
+	};
+	3A57190B10A3733B000D0CB5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F52A64730225542F015CF1E3 /* GPGMultiKeySelectionPanelController.h */;
+		name = "GPGMultiKeySelectionPanelController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1169;
+		vrLoc = 0;
+	};
+	3A5CB9A110A37246007E469B /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 3AD4906910A36FF000174A2C /* Info-GPGAppKit__Upgraded_.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/Info-GPGAppKit__Upgraded_.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	3A6596ED10A3757700315937 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F53FB353021F044C01174191 /* GPGPassphrasePanelController.m */;
+		name = "GPGPassphrasePanelController.m: 170";
+		rLen = 0;
+		rLoc = 4901;
+		rType = 0;
+		vrLen = 646;
+		vrLoc = 4329;
+	};
+	3ACAE90A10A3749E00F6385F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F52A64740225542F015CF1E3 /* GPGMultiKeySelectionPanelController.m */;
+		name = "GPGMultiKeySelectionPanelController.m: 17";
+		rLen = 0;
+		rLoc = 702;
+		rType = 0;
+		vrLen = 1152;
+		vrLoc = 0;
+	};
+	3AD2331210A3757C00546FE4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F53FB353021F044C01174191 /* GPGPassphrasePanelController.m */;
+		name = "GPGPassphrasePanelController.m: 170";
+		rLen = 0;
+		rLoc = 4901;
+		rType = 0;
+		vrLen = 637;
+		vrLoc = 4338;
+	};
+	3AD4904810A36FF000174A2C /* GPGAppKit */ = {
+		activeExec = 0;
+	};
+	F52A64730225542F015CF1E3 /* GPGMultiKeySelectionPanelController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 572}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1169}";
+		};
+	};
+	F52A64740225542F015CF1E3 /* GPGMultiKeySelectionPanelController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1768}}";
+			sepNavSelRange = "{702, 0}";
+			sepNavVisRange = "{0, 1152}";
+		};
+	};
+	F52A647702255A3B015CF1E3 /* GPGKeySelectionPanelController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 988}}";
+			sepNavSelRange = "{219, 0}";
+			sepNavVisRange = "{0, 1099}";
+		};
+	};
+	F52A647802255A3B015CF1E3 /* GPGKeySelectionPanelController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 2522}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1026}";
+		};
+	};
+	F53FB352021F044C01174191 /* GPGPassphrasePanelController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 780}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1180}";
+		};
+	};
+	F53FB353021F044C01174191 /* GPGPassphrasePanelController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 2613}}";
+			sepNavSelRange = "{4901, 0}";
+			sepNavVisRange = "{4338, 637}";
+		};
+	};
+	F53FB35B021F1D9B01174191 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 421}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 385}";
+		};
+	};
+	F55462530221B6FA01219801 /* GPGSingleKeySelectionPanelController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 611}}";
+			sepNavSelRange = "{913, 0}";
+			sepNavVisRange = "{190, 1107}";
+		};
+	};
+	F55462540221B6FA01219801 /* GPGSingleKeySelectionPanelController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1677}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1162}";
+		};
+	};
+	F55462570221CA4901219801 /* GPGAppKit.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 421}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 975}";
+		};
+	};
+}

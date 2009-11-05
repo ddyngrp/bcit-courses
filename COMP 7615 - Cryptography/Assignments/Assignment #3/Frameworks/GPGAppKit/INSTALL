@@ -1,0 +1,13 @@
+INSTALL GPGAppKit
+
+You must have GPGME.framework on your computer first.  You can get it from <http://macgpg.mac.com/>.  You'll also need OmniAppKit, which requires OmniFoundation and OmniBase.  You can get them from <http://www.omnigroup.com/developer/sourcecode/>.
+
+If necessary, fix the link in "External Frameworks and Libraries/Linked Frameworks" in the Files tab for GPGME.framework and any possibly broken links to GPGME (for example, you may need to fix the Frameworks search paths).  Same for OmniAppKit.
+
+You have several build choices.  For most cases, use the EmbDeployment build style.  This is where you will build the library for inclusion in another application by adding a copy phase to that application.  By copying the framework inside your application you will eliminate the need for your users to install an extra framework and ensure that your user always has the correct version of the library.
+
+Once it is built, you can use it in your applications by linking against it and adding a copy phase to your build process to copy GPGAppKit.framework into the Frameworks directory inside your application.
+
+Because you will be using GPGAppKit with GPGME, and GPGAppKit also depends on GPGME, you will need to manually set where GPGAppKit's symbols reside in memory to prevent collisions when prebinding.  To do this add the linker flag -seg1addr with an appropriate memory location.  By default it is set I have set it to 0x112000, but if that is used in your application then set it to another free memory area.
+
+Note that GPGAppKit will not work unless you also link GPGME in your application.  GPGAppKit depends on GPGME but does not copy GPGME into itself to save space because GPGAppKit is of little or no use without GPGME.  You must also link against OmniAppKit, OmniFoundation, and OmniBase.  Copy them into your product so that users don't have to install them.

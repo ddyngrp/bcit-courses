@@ -1,0 +1,11 @@
+GPGAppKitOKButtonText = "OK";
+GPGAppKitCancelButtonText = "Cancel";
+
+GPGAppKitPassphrasePanelTitle = "Passphrase";
+GPGAppKitPassphrasePromptPrefix = "Enter passphrase for key:";
+
+GPGAppKitSingleKeySelectionPanelTitle = "Key";
+GPGAppKitSingleKeySelectionPanelPrompt = "Select a key";
+
+GPGAppKitMultiKeySelectionPanelTitle = "Keys";
+GPGAppKitMultiKeySelectionPanelPrompt = "Select keys";

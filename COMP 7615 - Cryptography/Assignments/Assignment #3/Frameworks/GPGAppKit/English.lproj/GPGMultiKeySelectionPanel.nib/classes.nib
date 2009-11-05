@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = GPGDummyPanelOwner; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancel = id; ok = id; }; 
+            CLASS = GPGKeySelectionPanel; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSWindow; 
+        }, 
+        {
+            CLASS = GPGMultiKeySelectionPanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {keySelector = NSTableView; }; 
+            SUPERCLASS = GPGKeySelectionPanel; 
+        }
+    ); 
+    IBVersion = 1; 
+}

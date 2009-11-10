@@ -52,8 +52,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 279496998;
-			PBXWorkspaceStateSaveDate = 279496998;
+			PBXPerProjectTemplateStateSaveDate = 279571134;
+			PBXWorkspaceStateSaveDate = 279571134;
 		};
 		perUserProjectItems = {
 			3A477A7510A8C96A004F265D /* PBXTextBookmark */ = 3A477A7510A8C96A004F265D /* PBXTextBookmark */;
@@ -67,9 +67,9 @@
 			3A477A7D10A8C96A004F265D /* PBXTextBookmark */ = 3A477A7D10A8C96A004F265D /* PBXTextBookmark */;
 			3A477A7E10A8C96A004F265D /* PBXTextBookmark */ = 3A477A7E10A8C96A004F265D /* PBXTextBookmark */;
 			3A477A7F10A8C96A004F265D /* PBXTextBookmark */ = 3A477A7F10A8C96A004F265D /* PBXTextBookmark */;
+			3A4BA2D510A9EABF00696745 /* PBXTextBookmark */ = 3A4BA2D510A9EABF00696745 /* PBXTextBookmark */;
 			3A57190210A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190210A3733B000D0CB5 /* PBXTextBookmark */;
 			3A57190310A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190310A3733B000D0CB5 /* PBXTextBookmark */;
-			3A57190A10A3733B000D0CB5 /* PBXTextBookmark */ = 3A57190A10A3733B000D0CB5 /* PBXTextBookmark */;
 			3A5CB9A110A37246007E469B /* PlistBookmark */ = 3A5CB9A110A37246007E469B /* PlistBookmark */;
 		};
 		sourceControlManager = 3A44911010A3429B00E4AFFD /* Source Control */;
@@ -207,6 +207,16 @@
 		vrLen = 497;
 		vrLoc = 3585;
 	};
+	3A4BA2D510A9EABF00696745 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F55462540221B6FA01219801 /* GPGSingleKeySelectionPanelController.m */;
+		name = "GPGSingleKeySelectionPanelController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 511;
+		vrLoc = 3571;
+	};
 	3A57190210A3733B000D0CB5 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 089C1667FE841158C02AAC07 /* English */;
@@ -225,16 +235,6 @@
 		rLoc = 0;
 		rType = 0;
 		vrLen = 385;
-		vrLoc = 0;
-	};
-	3A57190A10A3733B000D0CB5 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = F55462540221B6FA01219801 /* GPGSingleKeySelectionPanelController.m */;
-		name = "GPGSingleKeySelectionPanelController.m: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1162;
 		vrLoc = 0;
 	};
 	3A5CB9A110A37246007E469B /* PlistBookmark */ = {
@@ -323,9 +323,9 @@
 	};
 	F55462540221B6FA01219801 /* GPGSingleKeySelectionPanelController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 1794}}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1820}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{3585, 497}";
+			sepNavVisRange = "{3571, 511}";
 		};
 	};
 	F55462570221CA4901219801 /* GPGAppKit.h */ = {

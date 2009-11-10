@@ -49,8 +49,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 279567801;
-			PBXWorkspaceStateSaveDate = 279567801;
+			PBXPerProjectTemplateStateSaveDate = 279571121;
+			PBXWorkspaceStateSaveDate = 279571121;
 		};
 		perUserProjectItems = {
 			3A15876310A9DDC2002245B1 /* PBXTextBookmark */ = 3A15876310A9DDC2002245B1 /* PBXTextBookmark */;
@@ -60,9 +60,9 @@
 			3A477A5310A8C8B4004F265D /* PBXTextBookmark */ = 3A477A5310A8C8B4004F265D /* PBXTextBookmark */;
 			3A477A5410A8C8B4004F265D /* PBXTextBookmark */ = 3A477A5410A8C8B4004F265D /* PBXTextBookmark */;
 			3A477A5510A8C8B4004F265D /* PBXTextBookmark */ = 3A477A5510A8C8B4004F265D /* PBXTextBookmark */;
+			3A4BA2E410A9EAD200696745 /* PBXTextBookmark */ = 3A4BA2E410A9EAD200696745 /* PBXTextBookmark */;
 			3A6596C610A3752B00315937 /* PBXTextBookmark */ = 3A6596C610A3752B00315937 /* PBXTextBookmark */;
 			3A96474710A9DD2000497608 /* PBXTextBookmark */ = 3A96474710A9DD2000497608 /* PBXTextBookmark */;
-			3A96474810A9DD2000497608 /* PBXTextBookmark */ = 3A96474810A9DD2000497608 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3AD48FBB10A36EF700174A2C /* Source Control */;
 		userBuildSettings = {
@@ -84,9 +84,9 @@
 	};
 	0BD178D101298E177F000001 /* GPGContext.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2350, 34580}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 35126}}";
 			sepNavSelRange = "{10048, 0}";
-			sepNavVisRange = "{9861, 1041}";
+			sepNavVisRange = "{9861, 1040}";
 			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
 		};
 	};
@@ -174,6 +174,16 @@
 		vrLen = 898;
 		vrLoc = 1045;
 	};
+	3A4BA2E410A9EAD200696745 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0BD178D101298E177F000001 /* GPGContext.m */;
+		name = "GPGContext.m: 313";
+		rLen = 0;
+		rLoc = 10048;
+		rType = 0;
+		vrLen = 1040;
+		vrLoc = 9861;
+	};
 	3A6596C610A3752B00315937 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 089C1667FE841158C02AAC07 /* English */;
@@ -193,16 +203,6 @@
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 398;
-	};
-	3A96474810A9DD2000497608 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 0BD178D101298E177F000001 /* GPGContext.m */;
-		name = "GPGContext.m: 471";
-		rLen = 10;
-		rLoc = 15786;
-		rType = 0;
-		vrLen = 1114;
-		vrLoc = 15118;
 	};
 	3AD48FBB10A36EF700174A2C /* Source Control */ = {
 		isa = PBXSourceControlManager;

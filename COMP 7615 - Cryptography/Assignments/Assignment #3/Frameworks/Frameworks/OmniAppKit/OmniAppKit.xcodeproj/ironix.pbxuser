@@ -83,13 +83,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 279147785;
-			PBXWorkspaceStateSaveDate = 279147785;
+			PBXPerProjectTemplateStateSaveDate = 279495874;
+			PBXWorkspaceStateSaveDate = 279495874;
 		};
 		perUserProjectItems = {
 			3A507E9B10A3630600AECDB7 /* PBXTextBookmark */ = 3A507E9B10A3630600AECDB7 /* PBXTextBookmark */;
-			3A6596D410A3753E00315937 /* PBXTextBookmark */ = 3A6596D410A3753E00315937 /* PBXTextBookmark */;
-			3ACAEA2E10A3750200F6385F /* PBXTextBookmark */ = 3ACAEA2E10A3750200F6385F /* PBXTextBookmark */;
+			3AC9774D10A8C3AF005121F9 /* PBXTextBookmark */ = 3AC9774D10A8C3AF005121F9 /* PBXTextBookmark */;
+			3AC97CD710A8C4E6005121F9 /* PBXTextBookmark */ = 3AC97CD710A8C4E6005121F9 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3A507D7510A360C700AECDB7 /* Source Control */;
 		userBuildSettings = {
@@ -97,9 +97,9 @@
 	};
 	00E51F6BFE8AB2E911C9CC38 /* OAPreferenceController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2553, 14846}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1202, 14963}}";
 			sepNavSelRange = "{23767, 0}";
-			sepNavVisRange = "{23392, 1274}";
+			sepNavVisRange = "{23392, 1214}";
 			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
 		};
 	};
@@ -116,7 +116,7 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = "";
+				"" = "Steffen's personal projects";
 			};
 		};
 	};
@@ -134,24 +134,24 @@
 		vrLen = 576;
 		vrLoc = 0;
 	};
-	3A6596D410A3753E00315937 /* PBXTextBookmark */ = {
+	3AC9774D10A8C3AF005121F9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 00E51F6BFE8AB2E911C9CC38 /* OAPreferenceController.m */;
 		name = "OAPreferenceController.m: 592";
 		rLen = 0;
 		rLoc = 23767;
 		rType = 0;
-		vrLen = 1274;
+		vrLen = 1227;
 		vrLoc = 23392;
 	};
-	3ACAEA2E10A3750200F6385F /* PBXTextBookmark */ = {
+	3AC97CD710A8C4E6005121F9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 00E51F6BFE8AB2E911C9CC38 /* OAPreferenceController.m */;
 		name = "OAPreferenceController.m: 592";
 		rLen = 0;
 		rLoc = 23767;
 		rType = 0;
-		vrLen = 1274;
+		vrLen = 1214;
 		vrLoc = 23392;
 	};
 	4AA1E67A08AA764600E2FF6B /* OmniAppKit (Framework) */ = {

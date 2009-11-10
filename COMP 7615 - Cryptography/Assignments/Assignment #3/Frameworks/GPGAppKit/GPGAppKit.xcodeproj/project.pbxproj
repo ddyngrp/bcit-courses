@@ -30,6 +30,16 @@
 		3AD4905D10A36FF000174A2C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3AB255CD10A3783600FB7B42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AB255C910A3783600FB7B42 /* MacGPGME.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 554B55C0069F0111005E1C92;
+			remoteInfo = MacGPGME;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3AD4925110A3714000174A2C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -50,6 +60,7 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		3A5CB97110A371D4007E469B /* MacGPGME.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacGPGME.framework; path = ../GPGME/build/Release/MacGPGME.framework; sourceTree = SOURCE_ROOT; };
+		3AB255C910A3783600FB7B42 /* MacGPGME.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MacGPGME.xcodeproj; path = ../GPGME/MacGPGME.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3ACAE85B10A3745A00F6385F /* OmniAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OmniAppKit.framework; path = ../Frameworks/OmniAppKit/build/Release/OmniAppKit.framework; sourceTree = SOURCE_ROOT; };
 		3AD4906910A36FF000174A2C /* Info-GPGAppKit__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-GPGAppKit__Upgraded_.plist"; sourceTree = "<group>"; };
 		3AD4906A10A36FF000174A2C /* GPGAppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GPGAppKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +108,7 @@
 		0867D691FE84028FC02AAC07 /* GPGAppKit */ = {
 			isa = PBXGroup;
 			children = (
+				3AB255C910A3783600FB7B42 /* MacGPGME.xcodeproj */,
 				F52A646F02254834015CF1E3 /* README */,
 				7F3521C4049520B8003B311D /* INSTALL */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -166,6 +178,14 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		3AB255CA10A3783600FB7B42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AB255CE10A3783600FB7B42 /* MacGPGME.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -226,12 +246,28 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* GPGAppKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3AB255CA10A3783600FB7B42 /* Products */;
+					ProjectRef = 3AB255C910A3783600FB7B42 /* MacGPGME.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3AD4904810A36FF000174A2C /* GPGAppKit */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3AB255CE10A3783600FB7B42 /* MacGPGME.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MacGPGME.framework;
+			remoteRef = 3AB255CD10A3783600FB7B42 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3AD4905010A36FF000174A2C /* Resources */ = {

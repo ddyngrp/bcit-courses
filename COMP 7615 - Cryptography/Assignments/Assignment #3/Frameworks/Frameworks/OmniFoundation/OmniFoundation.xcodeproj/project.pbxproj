@@ -84,7 +84,6 @@
 		34E7BCC209A4FE9300BB8A5D /* NSScriptClassDescription-OFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E7BCC009A4FE9300BB8A5D /* NSScriptClassDescription-OFExtensions.m */; };
 		34F7C0B90D82354A007E383C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F7C0B80D82354A007E383C /* libxml2.dylib */; };
 		3A507D2910A35FBE00AECDB7 /* OmniBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A507D2810A35FBE00AECDB7 /* OmniBase.framework */; };
-		3A507D4510A3604700AECDB7 /* OmniBase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A507D2810A35FBE00AECDB7 /* OmniBase.framework */; };
 		4A45FF630CA489E600752880 /* NSConditionLock-OFFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A45FF610CA489E600752880 /* NSConditionLock-OFFixes.m */; };
 		4A4E060008AA72B10098FF0F /* OFAddScriptCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A71C400663D4F40097A113 /* OFAddScriptCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A4E060108AA72B10098FF0F /* OFRemoveScriptCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A71C420663D4F40097A113 /* OFRemoveScriptCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -399,19 +398,6 @@
 		A2DF1E3B0F782CAA0093FEFA /* OFXMLMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = A2DF1E390F782CAA0093FEFA /* OFXMLMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2DF1E3C0F782CAA0093FEFA /* OFXMLMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF1E3A0F782CAA0093FEFA /* OFXMLMaker.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3A507D4E10A3608100AECDB7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3A507D4510A3604700AECDB7 /* OmniBase.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E51C5EFE8AAEA611C9CC38 /* OFAutoreleasedMemory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OFAutoreleasedMemory.m; sourceTree = "<group>"; };
@@ -1857,7 +1843,6 @@
 				4A4E06A708AA72B10098FF0F /* Resources */,
 				4A4E06AD08AA72B10098FF0F /* Sources */,
 				4A4E074508AA72B10098FF0F /* Frameworks */,
-				3A507D4E10A3608100AECDB7 /* CopyFiles */,
 			);
 			buildRules = (
 			);

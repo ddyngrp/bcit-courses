@@ -1,0 +1,67 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                confirmSettings = id; 
+                expertSettings = id; 
+                generateKey = id; 
+                introduceAssistant = id; 
+                quitAssistant = id; 
+                selectKeySize = id; 
+                selectKeyType = id; 
+                setExpirationDate = id; 
+                setIdentity = id; 
+                useAddressBook = id; 
+                useAssistant = id; 
+            }; 
+            CLASS = GenerateKeyController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                backUpButton = NSButton; 
+                comment = NSTextField; 
+                confirmPassPhrase = NSSecureTextField; 
+                confirmationComment = NSTextField; 
+                confirmationEmailAddress = NSTextField; 
+                confirmationExpirationDate = NSTextField; 
+                confirmationFullName = NSTextField; 
+                confirmationKeySize = NSComboBox; 
+                confirmationKeyType = NSPopUpButton; 
+                confirmationView = NSView; 
+                continueButton = NSButton; 
+                emailAddress = NSComboBox; 
+                expertComment = NSTextField; 
+                expertConfirmPassPhrase = NSSecureTextField; 
+                expertEmailAddress = NSTextField; 
+                expertExpirationDate = NSTextField; 
+                expertFullName = NSTextField; 
+                expertIntegrateWithiCal = NSButton; 
+                expertKeySize = NSComboBox; 
+                expertKeyType = NSPopUpButton; 
+                expertPassPhrase = NSSecureTextField; 
+                expertUseAssistant = NSButton; 
+                expertView = NSView; 
+                expirationDate = NSTextField; 
+                expirationView = NSView; 
+                fullName = NSTextField; 
+                generateView = NSView; 
+                generationProgress = NSProgressIndicator; 
+                identityView = NSView; 
+                integrateWithiCal = NSButton; 
+                introductionView = NSView; 
+                keySize = NSComboBox; 
+                keySizeView = NSView; 
+                keySizesList = NSMenu; 
+                keyType = NSPopUpButton; 
+                keyTypeView = NSView; 
+                passPhrase = NSSecureTextField; 
+                useAddressBook = NSButton; 
+                useAssistant = NSButton; 
+                windowTitle = NSTextField; 
+                windowView = NSView; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

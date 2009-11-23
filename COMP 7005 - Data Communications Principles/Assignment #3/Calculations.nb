@@ -1,0 +1,567 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     17356,        558]
+NotebookOptionsPosition[     15977,        508]
+NotebookOutlinePosition[     16317,        523]
+CellTagsIndexPosition[     16274,        520]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Chapter", " ", "5", " ", "\[Dash]", " ", "Question", " ", "P17"}],
+    ";"}], "Subtitle"]], "Input",
+ CellChangeTimes->{{3.467474309153058*^9, 3.4674743447754507`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"K", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"size", "=", "512"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["link", 
+    RowBox[{"10", "Mbps"}]], "=", 
+   FractionBox[
+    RowBox[{"1.0", "\[Times]", 
+     SuperscriptBox["10", "7"], "bit"}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["link", 
+    RowBox[{"100", "Mbps"}]], "=", 
+   FractionBox[
+    RowBox[{"1.0", "\[Times]", 
+     SuperscriptBox["10", "8"], "bit"}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["bitTime", 
+    RowBox[{"10", "Mbps"}]], "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1", "bit"}], 
+     SubscriptBox["link", 
+      RowBox[{"10", "Mbps"}]]], "\[Times]", 
+    FractionBox[
+     RowBox[{"1000", "ms"}], "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["bitTime", 
+    RowBox[{"100", "Mbps"}]], "=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1", "bit"}], 
+     SubscriptBox["link", 
+      RowBox[{"100", "Mbps"}]]], "\[Times]", 
+    FractionBox[
+     RowBox[{"1000", "ms"}], "s"]}]}], ";"}], "\[IndentingNewLine]"}], "Input",\
+
+ CellChangeTimes->{{3.4674737158262568`*^9, 3.467473725200672*^9}, {
+  3.4674737635357122`*^9, 3.4674737974995203`*^9}, {3.467473855823517*^9, 
+  3.4674739046205*^9}, {3.4674740022957706`*^9, 3.4674740026701717`*^9}, {
+  3.467474052076304*^9, 3.467474127781958*^9}, {3.4674741588696127`*^9, 
+  3.467474183746113*^9}, {3.467474218696455*^9, 3.467474301555987*^9}, {
+  3.4674743973976307`*^9, 3.467474412962772*^9}, {3.4674744644241333`*^9, 
+  3.467474574378854*^9}, {3.4674748266816998`*^9, 3.467474842047874*^9}, {
+  3.46747495416875*^9, 3.4674749755494957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"K", "\[Times]", "size", "\[Times]", 
+   SubscriptBox["bitTime", 
+    RowBox[{"10", "Mbps"}]]}], "\[Equal]", 
+  RowBox[{"5.12", "ms"}]}]], "Input",
+ CellChangeTimes->{{3.467475030514271*^9, 3.467475030672014*^9}, {
+  3.467475203439612*^9, 3.467475245969675*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.467474984782461*^9, 3.467475031124298*^9, 3.467475137849524*^9, {
+   3.467475206098165*^9, 3.467475218657888*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"K", "\[Times]", "size", "\[Times]", 
+   SubscriptBox["bitTime", 
+    RowBox[{"100", "Mbps"}]]}], "\[Equal]", 
+  RowBox[{"0.512", "ms"}]}]], "Input",
+ CellChangeTimes->{{3.467475227988348*^9, 3.4674752442815523`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.4674752310176373`*^9, 3.4674752360902987`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Question", " ", "#1"}], ";"}], "Subtitle"]], "Input",
+ CellChangeTimes->{
+  3.467475403382901*^9, {3.4674805668997593`*^9, 3.467480569185094*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   FractionBox[
+    RowBox[{"2.45", "\[Times]", 
+     SuperscriptBox["10", "9"]}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"power", "=", 
+   RowBox[{"15", "dB"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"299792458", " ", 
+    FractionBox["m", "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"1", "\[Times]", 
+    SuperscriptBox["10", "3"], "m"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", 
+   FractionBox["c", "f"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "t"], "=", " ", "power"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "t"], "=", 
+   RowBox[{"9", "dB"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["L", "p"], "=", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"4", "\[Pi]", "\[Times]", "d"}], "\[Lambda]"], ")"}], "2"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "r"], "=", 
+   RowBox[{"9", "dB"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["L", "ct"], "=", 
+   RowBox[{"3", "dB"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["L", "cr"], "=", 
+   RowBox[{"3", " ", "dB"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["RSL", "min"], "=", 
+  RowBox[{
+   SubscriptBox["P", "t"], "+", 
+   SubscriptBox["G", "t"], "-", 
+   RowBox[{"10", 
+    RowBox[{"Log", "[", 
+     RowBox[{"10", ",", 
+      SubscriptBox["L", "p"]}], "]"}], "dB"}], "+", 
+   SubscriptBox["G", "r"], "-", 
+   SubscriptBox["L", "ct"], "-", 
+   SubscriptBox["L", "cr"]}]}]}], "Input",
+ CellChangeTimes->{{3.4674805745433273`*^9, 3.4674806139108353`*^9}, {
+   3.4674806536295652`*^9, 3.4674806718340263`*^9}, {3.4674807507096643`*^9, 
+   3.4674808111271*^9}, {3.467481445563837*^9, 3.4674815099977503`*^9}, {
+   3.46748155287778*^9, 3.4674816856506042`*^9}, {3.467481722128064*^9, 
+   3.467481734891169*^9}, {3.467481779365676*^9, 3.4674818249277687`*^9}, 
+   3.467481866726282*^9, {3.467481937978828*^9, 3.4674819431839447`*^9}, {
+   3.467481976143518*^9, 3.467482017451329*^9}, {3.467484759207403*^9, 
+   3.467484789073992*^9}, {3.467484825217799*^9, 3.4674848631005163`*^9}, {
+   3.467487132330748*^9, 3.467487150224283*^9}, {3.46748722653796*^9, 
+   3.467487230048409*^9}, {3.467487333771159*^9, 3.467487340586472*^9}, 
+   3.467487436891704*^9, {3.46748752756584*^9, 3.4674876336432962`*^9}, {
+   3.467487725840788*^9, 3.467487738710637*^9}, {3.467487985076243*^9, 
+   3.46748809356929*^9}, {3.467488156728348*^9, 3.467488226007916*^9}, {
+   3.467488318939988*^9, 3.467488333826521*^9}, {3.467489513324894*^9, 
+   3.46748954426482*^9}, {3.467489603824243*^9, 3.467489739511714*^9}, {
+   3.467489790755599*^9, 3.467489808205132*^9}, {3.467489910498266*^9, 
+   3.467489912664502*^9}, {3.467490336698615*^9, 3.4674903374531803`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "73.23110490917402`"}], " ", "dB"}]], "Output",
+ CellChangeTimes->{{3.467487582126219*^9, 3.467487634049859*^9}, {
+   3.4674877332060623`*^9, 3.46748773946004*^9}, 3.467487990651359*^9, {
+   3.4674880623282003`*^9, 3.467488094697803*^9}, {3.467488162498152*^9, 
+   3.467488182841627*^9}, 3.467488226573082*^9, {3.467488320687809*^9, 
+   3.4674883344783773`*^9}, {3.467489515281171*^9, 3.467489527173863*^9}, {
+   3.467489596871283*^9, 3.467489662608931*^9}, {3.467489702214066*^9, 
+   3.467489740157246*^9}, {3.4674897992404823`*^9, 3.46748980887261*^9}, 
+   3.4674899141766376`*^9, 3.467491753894527*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Question", " ", "#2"}], "-", "a"}], ";"}], "Subtitle"]], "Input",\
+
+ CellChangeTimes->{
+  3.467475403382901*^9, {3.4674805668997593`*^9, 3.467480569185094*^9}, {
+   3.467488571949939*^9, 3.467488575109898*^9}, {3.46749202713968*^9, 
+   3.467492029603908*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"200", "m"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   FractionBox[
+    RowBox[{"2.40", "\[Times]", 
+     SuperscriptBox["10", "9"]}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"299792458", " ", 
+    FractionBox["m", "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", 
+   FractionBox["c", "f"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "t"], "=", 
+   RowBox[{"10", 
+    RowBox[{"Log", "[", 
+     RowBox[{"10", ",", 
+      RowBox[{"2.0", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "3"}]]}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "t"], "=", "1.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "r"], "=", 
+   RowBox[{"-", "1.5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "n"], "=", 
+   RowBox[{
+    SubscriptBox["P", "t"], 
+    SubscriptBox["G", "t"], 
+    SubscriptBox["G", "r"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["\[Lambda]", 
+       RowBox[{"4", "\[Pi]"}]], ")"}], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["P", "r"], "=", 
+  RowBox[{"10", 
+   RowBox[{"Log", "[", 
+    RowBox[{"10", ",", 
+     FractionBox[
+      SubscriptBox["P", "n"], 
+      SuperscriptBox["d", "2"]]}], "]"}], "dB"}]}]}], "Input",
+ CellChangeTimes->{{3.467492030580474*^9, 3.467492144763995*^9}, {
+   3.467492222776964*^9, 3.467492286066868*^9}, {3.4674923199859962`*^9, 
+   3.4674924307266273`*^9}, {3.467492470519153*^9, 3.46749274750591*^9}, 
+   3.4674928015523853`*^9, 3.467493034431819*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "68.23880220882872`"}], " ", "dB"}]], "Output",
+ CellChangeTimes->{{3.467492675620233*^9, 3.467492748028523*^9}, 
+   3.467492802388885*^9, 3.46749303496588*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Question", " ", "#2"}], "-", "b"}], ";"}], "Subtitle"]], "Input",\
+
+ CellChangeTimes->{
+  3.467475403382901*^9, {3.4674805668997593`*^9, 3.467480569185094*^9}, {
+   3.467488571949939*^9, 3.467488585517576*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"2000", "m"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   FractionBox[
+    RowBox[{"2.40", "\[Times]", 
+     SuperscriptBox["10", "9"]}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"299792458", " ", 
+    FractionBox["m", "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", 
+   FractionBox["c", "f"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "t"], "=", 
+   RowBox[{"10", 
+    RowBox[{"Log", "[", 
+     RowBox[{"10", ",", 
+      RowBox[{"2.0", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "3"}]]}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "t"], "=", "1.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "r"], "=", 
+   RowBox[{"-", "1.5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "n"], "=", 
+   RowBox[{
+    SubscriptBox["P", "t"], 
+    SubscriptBox["G", "t"], 
+    SubscriptBox["G", "r"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["\[Lambda]", 
+       RowBox[{"4", "\[Pi]"}]], ")"}], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["P", "r"], "=", 
+  RowBox[{"10", 
+   RowBox[{"Log", "[", 
+    RowBox[{"10", ",", 
+     FractionBox[
+      SubscriptBox["P", "n"], 
+      SuperscriptBox["d", "2"]]}], "]"}], "dB"}]}]}], "Input",
+ CellChangeTimes->{{3.467492030580474*^9, 3.467492144763995*^9}, {
+   3.467492222776964*^9, 3.467492286066868*^9}, {3.4674923199859962`*^9, 
+   3.4674924307266273`*^9}, {3.467492470519153*^9, 3.46749274750591*^9}, 
+   3.4674928015523853`*^9, {3.467493034431819*^9, 3.467493041710696*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "88.23880220882872`"}], " ", "dB"}]], "Output",
+ CellChangeTimes->{3.467493042235319*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.467489063745388*^9, 3.467489064506146*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Question", " ", "#2"}], "-", "d"}], ";"}], "Subtitle"]], "Input",\
+
+ CellChangeTimes->{
+  3.467475403382901*^9, {3.4674805668997593`*^9, 3.467480569185094*^9}, {
+   3.467488571949939*^9, 3.467488590892501*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"200", "m"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   FractionBox[
+    RowBox[{"2.40", "\[Times]", 
+     SuperscriptBox["10", "9"]}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"299792458", " ", 
+    FractionBox["m", "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", 
+   FractionBox["c", "f"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "t"], "=", 
+   RowBox[{"10", 
+    RowBox[{"Log", "[", 
+     RowBox[{"10", ",", 
+      RowBox[{"2.0", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "3"}]]}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "t"], "=", "15"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "r"], "=", 
+   RowBox[{"-", "1.5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "n"], "=", 
+   RowBox[{
+    SubscriptBox["P", "t"], 
+    SubscriptBox["G", "t"], 
+    SubscriptBox["G", "r"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["\[Lambda]", 
+       RowBox[{"4", "\[Pi]"}]], ")"}], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["P", "r"], "=", 
+  RowBox[{"10", 
+   RowBox[{"Log", "[", 
+    RowBox[{"10", ",", 
+     FractionBox[
+      SubscriptBox["P", "n"], 
+      SuperscriptBox["d", "2"]]}], "]"}], "dB"}]}]}], "Input",
+ CellChangeTimes->{{3.467489068802042*^9, 3.467489069199389*^9}, {
+  3.467493050718203*^9, 3.4674930773402147`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "58.238802208828716`"}], " ", "dB"}]], "Output",
+ CellChangeTimes->{{3.467493052947393*^9, 3.467493099373332*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"2000", "m"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   FractionBox[
+    RowBox[{"2.40", "\[Times]", 
+     SuperscriptBox["10", "9"]}], "s"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"299792458", " ", 
+    FractionBox["m", "s"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", 
+   FractionBox["c", "f"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "t"], "=", 
+   RowBox[{"10", 
+    RowBox[{"Log", "[", 
+     RowBox[{"10", ",", 
+      RowBox[{"2.0", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "3"}]]}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "t"], "=", "15"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "r"], "=", 
+   RowBox[{"-", "1.5"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "n"], "=", 
+   RowBox[{
+    SubscriptBox["P", "t"], 
+    SubscriptBox["G", "t"], 
+    SubscriptBox["G", "r"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["\[Lambda]", 
+       RowBox[{"4", "\[Pi]"}]], ")"}], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["P", "r"], "=", 
+  RowBox[{"10", 
+   RowBox[{"Log", "[", 
+    RowBox[{"10", ",", 
+     FractionBox[
+      SubscriptBox["P", "n"], 
+      SuperscriptBox["d", "2"]]}], "]"}], "dB"}]}]}], "Input",
+ CellChangeTimes->{{3.467489068802042*^9, 3.467489069199389*^9}, {
+  3.467493050718203*^9, 3.467493096410228*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "78.23880220882873`"}], " ", "dB"}]], "Output",
+ CellChangeTimes->{{3.467493052947393*^9, 3.46749310080267*^9}}]
+}, Open  ]]
+},
+WindowSize->{640, 652},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 216, 5, 39, "Input"],
+Cell[764, 27, 1754, 49, 227, "Input"],
+Cell[CellGroupData[{
+Cell[2543, 80, 296, 7, 30, "Input"],
+Cell[2842, 89, 170, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3049, 97, 251, 6, 30, "Input"],
+Cell[3303, 105, 101, 1, 27, "Output"]
+}, Open  ]],
+Cell[3419, 109, 194, 5, 39, "Input"],
+Cell[CellGroupData[{
+Cell[3638, 118, 2988, 76, 295, "Input"],
+Cell[6629, 196, 644, 10, 27, "Output"]
+}, Open  ]],
+Cell[7288, 209, 320, 9, 39, "Input"],
+Cell[7611, 220, 92, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[7728, 226, 1730, 54, 265, "Input"],
+Cell[9461, 282, 199, 4, 27, "Output"]
+}, Open  ]],
+Cell[9675, 289, 271, 8, 39, "Input"],
+Cell[9949, 299, 92, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[10066, 305, 1755, 54, 265, "Input"],
+Cell[11824, 361, 128, 3, 27, "Output"]
+}, Open  ]],
+Cell[11967, 367, 92, 1, 27, "Input"],
+Cell[12062, 370, 271, 8, 39, "Input"],
+Cell[12336, 380, 92, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[12453, 386, 1581, 52, 265, "Input"],
+Cell[14037, 440, 153, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14227, 448, 1580, 52, 265, "Input"],
+Cell[15810, 502, 151, 3, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

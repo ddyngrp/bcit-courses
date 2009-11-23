@@ -1,0 +1,41 @@
+/* validateIdentity: blank passphrase error statement */
+"A key with a blank passphrase may be used by anyone. Setting a blank passphrase is not recommended. Please provide a passphrase." = "A key with a blank passphrase may be used by anyone. Setting a blank passphrase is not recommended. Please provide a passphrase.";
+
+/* validateIdentity: blank passphrase error button \"More info\" */
+"More info" = "More info";
+
+/* validateKeySize: invalid size error statement */
+"The key size has been corrected to a valid size." = "The key size has been corrected to a valid size.";
+
+/* validateKeySize: non-numeric input error statement */
+"The key size must be a number." = "The key size must be a number.";
+
+/* validateIdentity: passphrases do not matech error statement */
+"The passphrase and the confirmation must be the same." = "The passphrase and the confirmation must be the same.";
+
+/* validateIdentity: blank passphrase error title */
+"The passphrase is blank." = "The passphrase is blank.";
+
+/* validateIdentity: short passphrase error title */
+"The passphrase is too short." = "The passphrase is too short.";
+
+/* validateIdentity: short passphrase error statement */
+"The passphrase must be six (6) or more characters in length." = "The passphrase must be six (6) or more characters in length.";
+
+/* validateIdentity: passphrases do not matech error title */
+"The passphrases are not the same." = "The passphrases are not the same.";
+
+/* validateKeySize: non-numeric input error title */
+"The selected key size is not a number." = "The selected key size is not a number.";
+
+/* validateKeySize: invalid size error title */
+"The selected key size was invalid." = "The selected key size was invalid.";
+
+/* validateIdentity: blank passphrase error button \"Continue\" */
+"Use blank passphrase" = "Use blank passphrase";
+
+/* validateExpirationDate: date is invalid */
+"The expiration date is invalid." = "The expiration date is invalid.";
+
+/* validateExpirationDate: expiration date must be in the future */
+"The key can not be set to expire prior to its date of creation." = "The key can not be set to expire prior to its date of creation.";

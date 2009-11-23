@@ -1,0 +1,50 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[       981,         40]
+NotebookOptionsPosition[       736,         27]
+NotebookOutlinePosition[      1074,         42]
+CellTagsIndexPosition[      1031,         39]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Chapter 1: P5, P16, P24
+Chapter 2: P3, P9
+Chapter 3: P2, P3, P7, P9, P13, P14, P23, P24, P33, P41\
+\>", "Text",
+ CellChangeTimes->{{3.465046681481223*^9, 3.465046689244732*^9}}]
+},
+WindowSize->{640, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 187, 5, 56, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

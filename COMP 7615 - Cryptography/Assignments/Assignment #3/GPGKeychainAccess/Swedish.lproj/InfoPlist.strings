@@ -1,0 +1,7 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "GPG Nyckelhanterare";
+CFBundleDisplayName = "GPG Nyckelhanterare";
+CFBundleShortVersionString = "GPG Nyckelhanterare version 0.8.0DP2";
+CFBundleGetInfoString = "GPG Nyckelhanterare version 0.8.0DP2, Copyright (C) 2001-2005 Mac GPG Project.";
+NSHumanReadableCopyright = "Copyright (C) 2001-2005 Mac GPG Project.";

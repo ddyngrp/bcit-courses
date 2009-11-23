@@ -1,0 +1,621 @@
+TGPGFileTool
+v7
+r1
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004A769DAB00000000000000EE
+t1249287595
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+c000000004A67D2A800000000000017ED
+t1248318120
+s6125
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004A600B8400000000000013E6
+t1247808388
+s5094
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSDebug.h
+c000000004A600B84000000000000254B
+t1247808388
+s9547
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/unistd.h
+c000000004A5C14A7000000000000563E
+t1247548583
+s22078
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGAppKit.h
+c000000004AF88C3A00000000000003CF
+t1257802810
+s975
+i"GPGPassphrasePanelController.h"
+i"GPGSingleKeySelectionPanelController.h"
+i"GPGMultiKeySelectionPanelController.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGAppKitDefines.h
+c000000004AF88C3A0000000000000549
+t1257802810
+s1353
+i<Foundation/Foundation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGKeySelectionPanelController.h
+c000000004AF88C3A000000000000090D
+t1257802810
+s2317
+i<AppKit/AppKit.h>
+i<MacGPGME/MacGPGME.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGMultiKeySelectionPanelController.h
+c000000004AF88C3A00000000000005AB
+t1257802810
+s1451
+i<AppKit/AppKit.h>
+i"GPGKeySelectionPanelController.h"
+i"GPGAppKitDefines.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGPassphrasePanelController.h
+c000000004AF88C3A0000000000000793
+t1257802810
+s1939
+i<AppKit/AppKit.h>
+i"GPGAppKitDefines.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/Headers/GPGSingleKeySelectionPanelController.h
+c000000004AF88C3A00000000000005B6
+t1257802810
+s1462
+i<AppKit/AppKit.h>
+i<MacGPGME/MacGPGME.h>
+i"GPGKeySelectionPanelController.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGContext.h
+c000000004AF88C480000000000016E56
+t1257802824
+s93782
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGEngine.h>
+i<MacGPGME/GPGSignatureNotation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGData.h
+c000000004AF88C4800000000000057A4
+t1257802824
+s22436
+i<MacGPGME/GPGObject.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGDefines.h
+c000000004AF88C480000000000000707
+t1257802824
+s1799
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGEngine.h
+c000000004AF88C480000000000003317
+t1257802824
+s13079
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGExceptions.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGExceptions.h
+c000000004AF88C48000000000000A0C6
+t1257802824
+s41158
+i<Foundation/Foundation.h>
+i<MacGPGME/GPGDefines.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGKey.h
+c000000004AF88C48000000000000428C
+t1257802824
+s17036
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGEngine.h>
+i<MacGPGME/GPGContext.h>
+i<MacGPGME/GPGKeyDefines.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGKeyDefines.h
+c000000004AF88C480000000000002219
+t1257802824
+s8729
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGKeyGroup.h
+c000000004AF88C480000000000000E28
+t1257802824
+s3624
+i<Foundation/Foundation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGKeySignature.h
+c000000004AF88C480000000000002075
+t1257802824
+s8309
+i<MacGPGME/GPGSignature.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGObject.h
+c000000004AF88C480000000000000B98
+t1257802824
+s2968
+i<Foundation/Foundation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGOptions.h
+c000000004AF88C48000000000000321F
+t1257802824
+s12831
+i<Foundation/Foundation.h>
+i<MacGPGME/GPGDefines.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGPrettyInfo.h
+c000000004AF88C480000000000001374
+t1257802824
+s4980
+i<Foundation/Foundation.h>
+i<MacGPGME/GPGDefines.h>
+i<MacGPGME/GPGKey.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGRemoteKey.h
+c000000004AF88C480000000000001AAB
+t1257802824
+s6827
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGEngine.h>
+i<MacGPGME/GPGContext.h>
+i<MacGPGME/GPGKeyDefines.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGRemoteUserID.h
+c000000004AF88C480000000000000A29
+t1257802824
+s2601
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGSignature.h
+c000000004AF88C480000000000003C77
+t1257802824
+s15479
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGKey.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGSignatureNotation.h
+c000000004AF88C48000000000000158F
+t1257802824
+s5519
+i<MacGPGME/GPGObject.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGSubkey.h
+c000000004AF88C480000000000001983
+t1257802824
+s6531
+i<MacGPGME/GPGKey.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGTrustItem.h
+c000000004AF88C480000000000000BDA
+t1257802824
+s3034
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGKey.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/GPGUserID.h
+c000000004AF88C480000000000001642
+t1257802824
+s5698
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGKey.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Frameworks/GPGME/build/Release/MacGPGME.framework/Headers/MacGPGME.h
+c000000004AF88C4800000000000006FA
+t1257802824
+s1786
+i<Foundation/Foundation.h>
+i<MacGPGME/GPGDefines.h>
+i<MacGPGME/GPGContext.h>
+i<MacGPGME/GPGData.h>
+i<MacGPGME/GPGEngine.h>
+i<MacGPGME/GPGExceptions.h>
+i<MacGPGME/GPGKeyDefines.h>
+i<MacGPGME/GPGKey.h>
+i<MacGPGME/GPGKeyGroup.h>
+i<MacGPGME/GPGKeySignature.h>
+i<MacGPGME/GPGObject.h>
+i<MacGPGME/GPGOptions.h>
+i<MacGPGME/GPGPrettyInfo.h>
+i<MacGPGME/GPGRemoteKey.h>
+i<MacGPGME/GPGRemoteUserID.h>
+i<MacGPGME/GPGSignature.h>
+i<MacGPGME/GPGSignatureNotation.h>
+i<MacGPGME/GPGSubkey.h>
+i<MacGPGME/GPGTrustItem.h>
+i<MacGPGME/GPGUserID.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/../Frameworks/Frameworks/OmniAppKit/build/Release/OmniAppKit.framework/OmniAppKit
+c000000004AF88BE0000000000012ED50
+t1257802720
+s1240400
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/../Frameworks/Frameworks/OmniBase/build/Release/OmniBase.framework/OmniBase
+c000000004AF88B8F000000000000AF70
+t1257802639
+s44912
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/../Frameworks/Frameworks/OmniFoundation/build/Release/OmniFoundation.framework/OmniFoundation
+c000000004AF88BB70000000000177B38
+t1257802679
+s1538872
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/../Frameworks/GPGAppKit/build/Default/GPGAppKit.framework/GPGAppKit
+c000000004AF88C78000000000000AD78
+t1257802872
+s44408
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/../Frameworks/GPGME/build/Release/MacGPGME.framework/MacGPGME
+c000000004AF88C4F0000000000099F10
+t1257802831
+s630544
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/DocumentClearsigned.icns
+c000000004AEFF3890000000000009FD2
+t1257239433
+s40914
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/DocumentDetachedSignature.icns
+c000000004AEFF389000000000000628B
+t1257239433
+s25227
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/DocumentEncrypted.icns
+c000000004AEFF3890000000000008F33
+t1257239433
+s36659
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/DocumentEncryptedAndSigned.icns
+c000000004AEFF389000000000000970B
+t1257239433
+s38667
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/DocumentSigned.icns
+c000000004AEFF38900000000000091CA
+t1257239433
+s37322
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/Documentation/English/Change Log.rtf
+c000000004AEFF389000000000000075D
+t1257239433
+s1885
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/Documentation/English/Read Me.rtf
+c000000004AEFF38900000000000007E2
+t1257239433
+s2018
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/Credits.html
+c000000004AEFF3890000000000000240
+t1257239433
+s576
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/GPGDocument.nib
+c000000004AF88AF700000000000000AA
+t1257802487
+s170
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/InfoPlist.strings
+c000000004AEFF3890000000000000240
+t1257239433
+s576
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/Localizable.strings
+c000000004AEFF389000000000000079A
+t1257239433
+s1946
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/MainMenu.nib
+c000000004AF88AF700000000000000AA
+t1257802487
+s170
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/Preferences.nib
+c000000004AF88AF700000000000000AA
+t1257802487
+s170
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument.h
+c000000004AF88F540000000000000A8C
+t1257803604
+s2700
+i<Cocoa/Cocoa.h>
+i<MacGPGME/MacGPGME.h>
+i<GPGAppKit/GPGAppKit.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument.m
+c000000004AEFF3890000000000001BCC
+t1257239433
+s7116
+i"GPGDocument.h"
+i"LocalizableStrings.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_GnuPGActions.m
+c000000004AEFF38900000000000044DE
+t1257239433
+s17630
+i"GPGDocument.h"
+i"LocalizableStrings.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_IBActions.m
+c000000004AEFF38900000000000019C1
+t1257239433
+s6593
+i"GPGDocument.h"
+i"LocalizableStrings.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_Utility.m
+c000000004AEFF3890000000000000FCE
+t1257239433
+s4046
+i"GPGDocument.h"
+i"LocalizableStrings.h"
+i"NSString_GPGFTExtensions.h"
+i<unistd.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGFTController.h
+c000000004AEFF3890000000000000887
+t1257239433
+s2183
+i<Cocoa/Cocoa.h>
+i"GPGPrefController.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGFTController.m
+c000000004AEFF3890000000000000A41
+t1257239433
+s2625
+i"GPGFTController.h"
+i"GPGDocument.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGFileTool.icns
+c000000004AEFF3890000000000009458
+t1257239433
+s37976
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGPrefController.h
+c000000004AEFF389000000000000064C
+t1257239433
+s1612
+i<Cocoa/Cocoa.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGPrefController.m
+c000000004AEFF38900000000000013B5
+t1257239433
+s5045
+i"GPGPrefController.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/LocalizableStrings.h
+c000000004AEFF3890000000000000840
+t1257239433
+s2112
+i<Foundation/Foundation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/LocalizableStrings.m
+c000000004AEFF3890000000000000A61
+t1257239433
+s2657
+i"LocalizableStrings.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/NSString_GPGFTExtensions.h
+c000000004AEFF38900000000000003F3
+t1257239433
+s1011
+i<Foundation/Foundation.h>
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/NSString_GPGFTExtensions.m
+c000000004AEFF38900000000000004C6
+t1257239433
+s1222
+i"NSString_GPGFTExtensions.h"
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Info.plist
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/MacOS/GPGFileTool
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/Change Log.rtf
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/DocumentClearsigned.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/DocumentDetachedSignature.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/DocumentEncrypted.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/DocumentEncryptedAndSigned.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/DocumentSigned.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/Credits.html
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/GPGDocument.nib
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/Localizable.strings
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/MainMenu.nib
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/Preferences.nib
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/GPGFileTool.icns
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/Read Me.rtf
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_GnuPGActions.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_IBActions.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_Utility.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGFTController.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGFileTool.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGPrefController.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/LocalizableStrings.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/NSString_GPGFTExtensions.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/main.m
+c000000004AEFF3890000000000000404
+t1257239433
+s1028
+i<Cocoa/Cocoa.h>
+i<Foundation/NSDebug.h>
+
+NInfo-GPGFileTool__Upgraded_.plist
+c000000004AF88C8B0000000000001098
+t1257802891
+s4248
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_GnuPGActions.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_GnuPGActions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_IBActions.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_IBActions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGDocument_Utility.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGDocument_Utility.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGFTController.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGFTController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/GPGPrefController.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/GPGPrefController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/LocalizableStrings.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/LocalizableStrings.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/NSString_GPGFTExtensions.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/NSString_GPGFTExtensions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/GPGFileTool.build/Deployment/GPGFileTool.build/Objects-normal/x86_64/main.o "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCopyStringsFile "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+r0
+
+CCopyStringsFile "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/Localizable.strings" English.lproj/Localizable.strings
+r0
+
+CCpResource "build/Deployment/GPGFileTool.app/Contents/Resources/Change Log.rtf" "Documentation/English/Change Log.rtf"
+r0
+
+CCpResource "build/Deployment/GPGFileTool.app/Contents/Resources/Read Me.rtf" "Documentation/English/Read Me.rtf"
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/DocumentClearsigned.icns DocumentClearsigned.icns
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/DocumentDetachedSignature.icns DocumentDetachedSignature.icns
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/DocumentEncrypted.icns DocumentEncrypted.icns
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/DocumentEncryptedAndSigned.icns DocumentEncryptedAndSigned.icns
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/DocumentSigned.icns DocumentSigned.icns
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/English.lproj/Credits.html English.lproj/Credits.html
+r0
+
+CCpResource build/Deployment/GPGFileTool.app/Contents/Resources/GPGFileTool.icns GPGFileTool.icns
+r0
+
+CLd "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/MacOS/GPGFileTool" normal x86_64
+r0
+
+CProcessInfoPlistFile "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app/Contents/Info.plist" Info-GPGFileTool__Upgraded_.plist
+r0
+
+CStripNIB "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/GPGDocument.nib"
+r0
+
+CStripNIB "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/MainMenu.nib"
+r0
+
+CStripNIB "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/English.lproj/Preferences.nib"
+r0
+
+CTouch "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/GPGFileTool/build/Deployment/GPGFileTool.app"
+r0
+

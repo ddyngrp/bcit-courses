@@ -1,0 +1,117 @@
+/* CSS style sheet for GPG Keychain Access Help */
+
+body {
+	margin: 0;
+	padding: 10px;
+	background-color: white;
+	color: black;
+	font-family: "Lucida Grande", Helvetica, Arial;
+	font-size: 10pt;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+td {
+	font-family: "Lucida Grande", Helvetica, Arial;
+	font-size: 10pt;
+}
+
+h1 {
+	font-family: "Lucida Grande", Helvetica, Arial;
+	font-size: 14pt;
+}
+
+h2 {
+	font-family: "Lucida Grande", Helvetica, Arial;
+	font-size: 12pt;
+}
+
+.task {
+	background-color: #FFF8DC;
+	padding: 5px;
+}
+
+#intro {
+	width: 100%;
+	padding: -10px;
+	margin: 20px 0px 0px 0px;
+	vertical-align: center;
+	color: gray;
+}
+
+#intro h2 {
+	padding: 0px 0px 24px 0px;
+}	
+
+#intro a {
+	color: gray;
+}
+
+#intro a:active {
+	color: gray;
+}
+
+#intro a:visited {
+	color: gray;
+}
+
+#intro a:hover {
+	color: gray;
+}
+
+#left {
+	width: 50%;
+	height: 75%;
+	float: left;
+	text-align: center;
+	left: 0px;
+	position: absolute;
+	padding: 30px 10px 0px 0px;
+	vertical-align: center;
+}
+
+#right {
+	width: 50%;
+	height: 75%;
+	float: right;
+	border-left: 1px solid gray;
+	right: 0px;
+	position: absolute;
+	padding: 30px 0px 0px 20px;
+	vertical-align: center;
+}
+
+#toc {
+	margin: 0;
+	font-size: 8pt;
+}
+
+#toc h2 {
+	color: gray;
+	padding: 0 0 6px 0;
+	font-size: 12pt;
+}
+
+#toc ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#toc li {
+	padding-bottom: 6pt;
+}

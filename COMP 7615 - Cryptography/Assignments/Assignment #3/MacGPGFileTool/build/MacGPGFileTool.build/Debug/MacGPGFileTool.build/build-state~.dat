@@ -1,0 +1,196 @@
+TMacGPGFileTool
+v7
+r0
+t279577052.488739
+cCheck dependencies
+cProcessInfoPlistFile /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Info.plist MacGPGFileTool-Info.plist
+cCopyStringsFile /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cCompileXIB /Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib
+cProcessPCH /var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch.gch MacGPGFileTool_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/main.o /Users/ironix/Desktop/MacGPGFileTool/main.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileToolAppDelegate.o /Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool normal x86_64
+cTouch /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004A769DAB00000000000000EE
+t1249287595
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/Users/ironix/Desktop/MacGPGFileTool/English.lproj/InfoPlist.strings
+c000000004AF9CA1B000000000000002D
+t1257884187
+s45
+
+N/Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib
+c000000004AF9CA1B000000000002BBB8
+t1257884187
+s179128
+
+N/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.h
+c000000004AF9CA1B000000000000015B
+t1257884187
+s347
+i<Cocoa/Cocoa.h>
+
+N/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m
+c000000004AF9CA1B0000000000000197
+t1257884187
+s407
+i"MacGPGFileToolAppDelegate.h"
+
+N/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileTool_Prefix.pch
+c000000004AF9CA1B000000000000009F
+t1257884187
+s159
+i<Cocoa/Cocoa.h>
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app
+t1257884252
+s102
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Info.plist
+t1257884248
+s907
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool
+t1257884252
+s14648
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/PkgInfo
+t1257884248
+s8
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1257884248
+s92
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/MainMenu.nib
+t1257884248
+s34491
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileTool.LinkFileList
+c000000004AF9CA580000000000000105
+t1257884248
+s261
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileToolAppDelegate.o
+t1257884252
+s21272
+
+N/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/main.o
+t1257884252
+s4984
+
+N/Users/ironix/Desktop/MacGPGFileTool/main.m
+c000000004AF9CA1B000000000000010F
+t1257884187
+s271
+i<Cocoa/Cocoa.h>
+
+N/var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch.gch
+t1257884252
+s54212368
+
+NMacGPGFileTool-Info.plist
+c000000004AF9CA1B00000000000003EA
+t1257884187
+s1002
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies279577048#279577048#0(0"0(0#1#0"4300882208#0"0#
+
+CCompileC build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileToolAppDelegate.o /Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s279577052.252940
+e279577052.443791
+r1
+xCompileC
+xbuild/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileToolAppDelegate.o
+x/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m279577052#279577052#0(0"0(0#0#64"/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m4300882208#1610"    cd /Users/ironix/Desktop/MacGPGFileTool    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-generated-files.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-own-target-headers.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-all-target-headers.hmap -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-project-headers.hmap -F/Users/ironix/Desktop/MacGPGFileTool/build/Debug -I/Users/ironix/Desktop/MacGPGFileTool/build/Debug/include -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources/x86_64 -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources -include /var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch -c /Users/ironix/Desktop/MacGPGFileTool/MacGPGFileToolAppDelegate.m -o /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileToolAppDelegate.o0#
+
+CCompileC build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/main.o /Users/ironix/Desktop/MacGPGFileTool/main.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s279577052.251896
+e279577052.426969
+r1
+xCompileC
+xbuild/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/main.o
+x/Users/ironix/Desktop/MacGPGFileTool/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@51"Compile /Users/ironix/Desktop/MacGPGFileTool/main.m279577052#279577052#0(0"0(0#0#43"/Users/ironix/Desktop/MacGPGFileTool/main.m4300882208#1568"    cd /Users/ironix/Desktop/MacGPGFileTool    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-generated-files.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-own-target-headers.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-all-target-headers.hmap -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-project-headers.hmap -F/Users/ironix/Desktop/MacGPGFileTool/build/Debug -I/Users/ironix/Desktop/MacGPGFileTool/build/Debug/include -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources/x86_64 -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources -include /var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch -c /Users/ironix/Desktop/MacGPGFileTool/main.m -o /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/main.o0#
+
+CCompileXIB /Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib
+s279577048.408808
+e279577048.904435
+r1
+xCompileXIB
+x/Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib279577048#279577048#0(0"0(0#0#63"/Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib4300882208#328"    cd /Users/ironix/Desktop/MacGPGFileTool    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/MainMenu.nib /Users/ironix/Desktop/MacGPGFileTool/English.lproj/MainMenu.xib0#
+
+CCopyStringsFile /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s279577048.402673
+e279577048.443342
+r1
+xCopyStringsFile
+x/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings279577048#279577048#0(0"0(0#0#68"/Users/ironix/Desktop/MacGPGFileTool/English.lproj/InfoPlist.strings4300882208#368"    cd /Users/ironix/Desktop/MacGPGFileTool    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Resources/English.lproj0#
+
+CLd /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool normal x86_64
+s279577052.443897
+e279577052.485423
+r1
+xLd
+x/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool
+xnormal
+xx86_64
+lSLF07#2@102"Link /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool279577052#279577052#0(0"0(0#0#0"4300882208#567"    cd /Users/ironix/Desktop/MacGPGFileTool    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/ironix/Desktop/MacGPGFileTool/build/Debug -F/Users/ironix/Desktop/MacGPGFileTool/build/Debug -filelist /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/Objects-normal/x86_64/MacGPGFileTool.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -o /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/MacOS/MacGPGFileTool0#
+
+CProcessInfoPlistFile /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Info.plist MacGPGFileTool-Info.plist
+s279577048.399014
+e279577048.402572
+r1
+xProcessInfoPlistFile
+x/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Info.plist
+xMacGPGFileTool-Info.plist
+lSLF07#2@33"Process MacGPGFileTool-Info.plist279577048#279577048#0(0"0(0#0#62"/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileTool-Info.plist4300882208#325"    cd /Users/ironix/Desktop/MacGPGFileTool    builtin-infoPlistUtility MacGPGFileTool-Info.plist -genpkginfo /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch.gch MacGPGFileTool_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s279577048.904571
+e279577052.251726
+r1
+xProcessPCH
+x/var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch.gch
+xMacGPGFileTool_Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@36"Precompile MacGPGFileTool_Prefix.pch279577048#279577052#0(0"0(0#0#62"/Users/ironix/Desktop/MacGPGFileTool/MacGPGFileTool_Prefix.pch4300882208#1469"    cd /Users/ironix/Desktop/MacGPGFileTool    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-generated-files.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-own-target-headers.hmap -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-all-target-headers.hmap -iquote /Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/MacGPGFileTool-project-headers.hmap -F/Users/ironix/Desktop/MacGPGFileTool/build/Debug -I/Users/ironix/Desktop/MacGPGFileTool/build/Debug/include -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources/x86_64 -I/Users/ironix/Desktop/MacGPGFileTool/build/MacGPGFileTool.build/Debug/MacGPGFileTool.build/DerivedSources -c /Users/ironix/Desktop/MacGPGFileTool/MacGPGFileTool_Prefix.pch -o /var/folders/H-/H-UB79ASFM4AfXG18bsUKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/MacGPGFileTool_Prefix-emsxwbbafhhmwvfxdngsfhyhozxf/MacGPGFileTool_Prefix.pch.gch0#
+
+CTouch /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app
+s279577052.485527
+e279577052.488693
+r1
+xTouch
+x/Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app
+lSLF07#2@73"Touch /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app279577052#279577052#0(0"0(0#0#0"4300882208#134"    cd /Users/ironix/Desktop/MacGPGFileTool    /usr/bin/touch -c /Users/ironix/Desktop/MacGPGFileTool/build/Debug/MacGPGFileTool.app0#
+

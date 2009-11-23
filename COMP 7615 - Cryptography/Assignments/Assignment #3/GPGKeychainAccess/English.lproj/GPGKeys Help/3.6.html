@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Signing a Key</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+<h2><img src="GPGKeys.png" width="32" height="32" /><a name="PKSigningAKey" id="PKSigningAKey">Signing a Key</a></h2>
+<p>The one major weakness to the OpenPGP security structure is the
+	authenticity of public keys. If you have an incorrect or falsified
+	public key your encryption is suspect and worthless. It is possible
+	to protect yourself from such risks by signing keys.</p>
+<p>When you sign a key you add your signature to the key, ensuring
+	that you can be absolutly positive that the key is valid. Only when
+	you know that your key is valid can you trust that your encryption
+	works.</p>
+<!--<p><strong>Task heading (omit if same as topic name)</strong></p>-->
+<div class="task">Select the key you wish to sign, then click the Sign
+	button or select Sign from the Key menu.</div>
+<p>You should only sign a key when you are <strong>absolutely
+	sure</strong> that the key really is authentic. Unless you are
+	positive that you aquired the key yourself (for example, at a key
+	signing party) or you aquired the key through other means and
+	verified it (for example, by telephone) using the
+	fingerprint-mechanism, you should not sign the key. Never sign a
+	key based on any assumptions.</p>
+<p>GnuPG uses available signatures and the "owner trust" mechanism
+	to determine the validity of keys.</p>
+<p>See Also:</p>
+<ul>
+<!--                    <li><a href="Ownertrust.html">About Owner Trust</a></li> -->
+<li><a href="1.3.html">About the Web of Trust</a></li>
+<li><a href="KeySigningParty.html">What is a Key Signing
+Party?</a></li></ul>
+<!-- ORIGINAL TEXT BEGINS -->
+<!--
+                <p>As mentioned before in the introduction there is one major Achilles' heel in the system. This is the authenticity of public keys. If one has a wrong public key you can say bye bye to the value of your encryption. To overcome such risks there is a possiblity of signing keys. In that case you place your signature over key key, so that you are absolutely positive that this key is valid. This leads to the situation where the  signature acknowledges that the user ID mentioned in the key is actually the owner of that key. With that reassurance one can start encrypting.</p>
+                <p>Using the <kbd>gpg ==edit-key UID</kbd> command for the key that needs to be signed you can sing it with the sign command.</p>
+                <p>You should only sign a key as being authentic when you are ABSOLUTELY SURE that the key is really authentic!!!. So if you are positive you got the key yourself (like on a keysigning party) or you got the key through other means and checked it (for instance by phone) using the fingerprint-mechanism. You should never sign a key based on any assumption.</p>
+                <p>Based on the available signatures and "ownertrusts" GnuPG determines the validity of keys. Ownertrust is a value that the owner of a key uses to determine the level of trust for a certain key. The values are:</p>
+                <ol>
+                        <li>Don't know</li>
+                        <li>I do NOT trust</li>
+                        <li>I trust marginally</li>
+                        <li>I trust fully</li>
+                </ol>
+                <p>If the user does not trust a signature it can say so and thus disregard the signature. Trust information is not stored in the same file as the keys, but in a seperate file.</p>
+                -->
+</body>
+</html>

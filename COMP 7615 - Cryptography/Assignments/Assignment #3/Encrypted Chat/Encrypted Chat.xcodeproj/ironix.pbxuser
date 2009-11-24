@@ -170,6 +170,9 @@
 			PBXWorkspaceStateSaveDate = 280752229;
 		};
 		perUserProjectItems = {
+			3A68612D10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612D10BBF0F400D89246 /* PBXTextBookmark */;
+			3A68612E10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612E10BBF0F400D89246 /* PBXTextBookmark */;
+			3A68612F10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612F10BBF0F400D89246 /* PBXTextBookmark */;
 			3A95E4A810BBD9170002BFBC = 3A95E4A810BBD9170002BFBC /* PBXTextBookmark */;
 			3A95E4E610BBDCD30002BFBC = 3A95E4E610BBDCD30002BFBC /* PBXTextBookmark */;
 			3A95E56F10BBE7850002BFBC = 3A95E56F10BBE7850002BFBC /* PBXTextBookmark */;
@@ -281,6 +284,36 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	3A68612D10BBF0F400D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95E5A510BBE9D40002BFBC /* HexDump.m */;
+		name = "HexDump.m: 6";
+		rLen = 0;
+		rLoc = 114;
+		rType = 0;
+		vrLen = 1228;
+		vrLoc = 522;
+	};
+	3A68612E10BBF0F400D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95E5A410BBE9D40002BFBC /* HexDump.h */;
+		name = "HexDump.h: 11";
+		rLen = 0;
+		rLoc = 201;
+		rType = 0;
+		vrLen = 462;
+		vrLoc = 0;
+	};
+	3A68612F10BBF0F400D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95E5A410BBE9D40002BFBC /* HexDump.h */;
+		name = "HexDump.h: 11";
+		rLen = 0;
+		rLoc = 201;
+		rType = 0;
+		vrLen = 462;
+		vrLoc = 0;
+	};
 	3A95E46D10BBD4A20002BFBC /* AES.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
@@ -337,7 +370,7 @@
 	};
 	3A95E5A410BBE9D40002BFBC /* HexDump.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 439}}";
 			sepNavSelRange = "{201, 0}";
 			sepNavVisRange = "{0, 462}";
 		};
@@ -345,8 +378,8 @@
 	3A95E5A510BBE9D40002BFBC /* HexDump.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 2171}}";
-			sepNavSelRange = "{399, 0}";
-			sepNavVisRange = "{3007, 1684}";
+			sepNavSelRange = "{114, 0}";
+			sepNavVisRange = "{522, 1228}";
 		};
 	};
 	3A95E5D110BBEBA70002BFBC /* PBXTextBookmark */ = {

@@ -331,7 +331,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A68618210BBF3C900D89246</string>
+										<string>3A68619C10BBF64000D89246</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
@@ -343,11 +343,11 @@
 											<string>3A95E56F10BBE7850002BFBC</string>
 											<string>3A95E58E10BBE8F50002BFBC</string>
 											<string>3A95E5D210BBEBA70002BFBC</string>
-											<string>3A68617E10BBF3C900D89246</string>
 											<string>3A68617F10BBF3C900D89246</string>
 											<string>3A68618010BBF3C900D89246</string>
-											<string>3A68618110BBF3C900D89246</string>
-											<string>3A68617B10BBF36A00D89246</string>
+											<string>3A68618710BBF43C00D89246</string>
+											<string>3A68619510BBF58E00D89246</string>
+											<string>3A68619610BBF58E00D89246</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -545,6 +545,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>3A68619910BBF58E00D89246</string>
+		<string>3A68619A10BBF58E00D89246</string>
+		<string>3A68619B10BBF58E00D89246</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A6596171072CFDC001D304E</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/Encrypted Chat.xcodeproj</string>
@@ -911,7 +915,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3A95E52B10BBE4900002BFBC</string>
+				<string>3A68619810BBF58E00D89246</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

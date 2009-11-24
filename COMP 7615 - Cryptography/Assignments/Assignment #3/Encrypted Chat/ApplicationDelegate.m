@@ -35,6 +35,7 @@
  *---------------------------------------------------------------------------*/
 
 #import "ApplicationDelegate.h"
+#import "SSCrypto.h"
 
 
 #define PORT 3141
@@ -289,7 +290,27 @@
 //	[self logMessage:FORMAT(@"%@\n", [aesData hexdump]) logType:@""];
 //	[logView setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
 	
+	SSCrypto *crypto;
+	NSData *seedData1 = [SSCrypto getKeyDataWithLength:32];
+	crypto = [[SSCrypto alloc] initWithSymmetricKey:seedData1];
 	
+	NSArray *ciphers = [NSArray arrayWithObjects:@"aes256", @"aes128", @"blowfish", @"aes192",
+						@"RC4", @"blowfish", @"RC5", @"des3", @"des", nil];
+	
+	NSString *password = @"it doesn't matter how long this is";
+	[crypto setClearTextWithString:@"text to encrypt"];
+	
+	for(int n = 0; n < [ciphers count]; n++)
+	{
+		NSData *cipherText = [crypto encrypt:[ciphers objectAtIndex:n]];
+		NSData *clearText = [crypto decrypt:[ciphers objectAtIndex:n]];
+		
+		NSLog(@"Original password: %@", password);
+		NSLog(@"Cipher text: '%@' using %@", [cipherText encodeBase64WithNewlines:NO], [ciphers objectAtIndex:n]);
+		NSLog(@"Clear text: '%s' using %@", [clearText bytes], [ciphers objectAtIndex:n]);
+		
+		NSLog(@" ");
+	}	
 }
 
 /*-----------------------------------------------------------------------------

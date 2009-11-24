@@ -1,62 +1,65 @@
-/*
- Copyright (c) 2003-2006, Septicus Software All rights reserved.
- 
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are
- met:
- 
- * Redistributions of source code must retain the above copyright
- notice, this list of conditions and the following disclaimer. 
- * Redistributions in binary form must reproduce the above copyright
- notice, this list of conditions and the following disclaimer in the
- documentation and/or other materials provided with the distribution. 
- * Neither the name of Septicus Software nor the names of its contributors
- may be used to endorse or promote products derived from this software
- without specific prior written permission.
- 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
- PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
- OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-//
-//  SSCrypto.m
-//  SimpleWebCam
-//
-//  Created by Ed Silva on Sat May 31 2003.
-//  Copyright (c) 2003-2006 Septicus Software. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	SSCrypto.m
+ * 
+ * PROGRAM:     Encrypted Chat
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Created proper headers & comments.
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ *              Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: This is an Objective-C wrapper for the OpenSSL library.
+ *
+ *---------------------------------------------------------------------------*/
 
 #import "SSCrypto.h"
 
 @implementation NSData (HexDump)
 
-/**
- * Encodes the current data in base64, and creates and returns an NSString from the result.
- * This is the same as piping data through "... | openssl enc -base64" on the command line.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    encodeBase64
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Dave Dribin
+ * 
+ * PROGRAMMER:  Dave Dribin
+ * 
+ * RETURNS: NSString base64 encoded string
+ * 
+ * NOTES: Encodes the current data in base64, and creates and returns an
+ *        NSString from the result.
  *
- * Code courtesy of DaveDribin (http://www.dribin.org/dave/)
- * Taken from http://www.cocoadev.com/index.pl?BaseSixtyFour
-**/
+ *----------------------------------------------------------------------------*/
 - (NSString *)encodeBase64
 {
     return [self encodeBase64WithNewlines: YES];
 }
 
-/**
- * Encodes the current data in base64, and creates and returns an NSString from the result.
- * This is the same as piping data through "... | openssl enc -base64" on the command line.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    encodeBase64WithNewlines
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Dave Dribin
+ * 
+ * PROGRAMMER:  Dave Dribin
+ * 
+ * RETURNS: NSString base64 encoded string
+ * 
+ * NOTES: Encodes the current data in base64 with new lines, and creates and
+ *        returns an NSString from the result.
  *
- * Code courtesy of DaveDribin (http://www.dribin.org/dave/)
- * Taken from http://www.cocoadev.com/index.pl?BaseSixtyFour
-**/
+ *----------------------------------------------------------------------------*/
 - (NSString *)encodeBase64WithNewlines:(BOOL)encodeWithNewlines
 {
     // Create a memory buffer which will contain the Base64 encoded string
@@ -86,11 +89,44 @@
 	return [base64String autorelease];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decodeBase64
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: NSData base64 decoded data
+ * 
+ * NOTES: Returns decoded base64 NSData
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)decodeBase64
 {
     return [self decodeBase64WithNewLines:YES];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decodeBase64WithNewLines
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: NSData base64 decoded data
+ * 
+ * NOTES: Returns decoded base64 NSData with the option to specifiy whether
+ *        new lines are encoded in the data.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)decodeBase64WithNewLines:(BOOL)encodedWithNewlines
 {
     // Create a memory buffer containing Base64 encoded string data
@@ -114,6 +150,22 @@
     return data;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    hexval
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: NSString hex representation
+ * 
+ * NOTES: Converts the value of the data into string of hex values.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)hexval
 {
     NSMutableString *hex = [NSMutableString string];
@@ -130,6 +182,22 @@
     return hex;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    hexdump
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: NSString hex representation
+ * 
+ * NOTES: Same as hexvalue except with formatting.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)hexdump
 {
     NSMutableString *ret=[NSMutableString stringWithCapacity:[self length]*2];
@@ -200,10 +268,20 @@
 // SSCrypto object
 @implementation SSCrypto
 
-/**
- * Generic constructor.
- * Simply configures internal OpenSSL setup.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    init
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Generic constructor. Simply configures internal OpenSSL setup.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)init
 {
     if((self = [super init]))
@@ -214,10 +292,21 @@
     return self;
 }
 
-/**
- * Symmetric key constructor.
- * Configures the instance to use symmetric encryption/decryption using the given symmetric key.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    initWithSymmetricKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Symmetric key constructor. Configures the instance to use symmetric
+ *        encryption/decryption using the given symmetric key.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)initWithSymmetricKey:(NSData *)k
 {
     if((self = [super init]))
@@ -231,28 +320,62 @@
     return self;
 }
 
-/**
- * Public key only constructor.
- * Configures the instance to use non-symmetric encryption/decryption, and to use the given public key.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    initWithPublicKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Public key only constructor. Configures the instance to use
+ *        non-symmetric encryption/decryption, and to use the given public key.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)initWithPublicKey:(NSData *)pub
 {
     return [self initWithPublicKey:pub privateKey:nil];
 }
 
-/**
- * Private key only constructor.
- * Configures the instance to use non-symmetric encryption/decryption, and to use the given private key.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    initWithPrivateKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Private key only constructor. Configures the instance to use
+ *        non-symmetric encryption/decryption, and to use the given private key.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)initWithPrivateKey:(NSData *)priv
 {
     return [self initWithPublicKey:nil privateKey:priv];
 }
 
-/**
- * Public and Private key constructor.
- * Configures the instance to use non-symmetric encryption/decryption, and to use the given public and private keys.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    initWithPublicKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Public and Private key constructor. Configures the instance to use
+ *        non-symmetric encryption/decryption, and to use the given public
+ *        and private keys.
+ *
+ *----------------------------------------------------------------------------*/
 - (id)initWithPublicKey:(NSData *)pub privateKey:(NSData *)priv;
 {
     if((self = [super init]))
@@ -274,10 +397,21 @@
     return self;
 }
 
-/**
- * This method sets up everything needed to use the OpenSSL libraries later within the code.
- * This method should be called by every constructor.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setupOpenSSL
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: This method sets up everything needed to use the OpenSSL libraries
+ *        later within the code. This method should be called by every constructor.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setupOpenSSL
 {
 	// OpenSSL keeps an internal table of digest algorithms and ciphers.
@@ -304,6 +438,20 @@
 /**
  * Standard deallocation method.
 **/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    dealloc
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Standard deallocation method.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)dealloc
 {
     // Cleanup all OpenSSL stuff
@@ -320,6 +468,20 @@
     [super dealloc];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cleanupOpenSSL
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Removes all ciphers, digests and previously loaded error strings.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)cleanupOpenSSL
 {
 	// EVP_cleanup() removes all ciphers and digests from the table.
@@ -333,26 +495,83 @@
 #pragma mark Getter, Setter Methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Returns whether or not symmetric encryption is to be used.
- * If symmetric encryption is in use, then calls to encrypt or decrypt operate using symmetric encryption/decryption.
- * Otherwise, it is assumed that asymmetric encryption/decryption is to be used.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    isSymmetric
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns whether or not symmetric encryption is to be used.
+ * 
+ * NOTES: If symmetric encryption is in use, then calls to encrypt or decrypt 
+ *        operate using symmetric encryption/decryption. Otherwise, it is
+ *        assumed that asymmetric encryption/decryption is to be used.
+ *
+ *----------------------------------------------------------------------------*/
 - (BOOL)isSymmetric
 {
     return isSymmetric;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setIsSymmetric
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets whether to use symmetric encryption/decryption or not.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setIsSymmetric:(BOOL)flag
 {
     isSymmetric = flag;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    symmetricKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: The symmetric key used
+ * 
+ * NOTES: Simply returns the current symmetic key
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)symmetricKey
 {
     return symmetricKey;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setSymmetricKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets the symmetric key to be used.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setSymmetricKey:(NSData *)k
 {
     [k retain];
@@ -360,18 +579,43 @@
     symmetricKey = k;
 }
 
-/**
- * Returns the public key currently in use.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    publicKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Public key currently in use.
+ * 
+ * NOTES: Returns the public key currently in use.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)publicKey
 {
     return publicKey;
 }
 
-/**
- * Sets the public key to use.
- * Public keys are used to verify signed data, or to encrypt data. (ToDo)
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setPublicKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Sets the public key to use.
+ * 
+ * NOTES: Public keys are used to verify signed data, or to encrypt data. (ToDo)
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setPublicKey:(NSData *)k
 {
     [k retain];
@@ -379,20 +623,43 @@
     publicKey = k;
 }
 
-/**
- * Returns the private key currently in use.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    privateKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Private key currently in use.
+ * 
+ * NOTES: Returns the private key currently in use.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)privateKey
 {
     return privateKey;
 }
 
-/**
- * Sets the private key to use.
- * Private keys are used to sign data, or to decrypt data. (ToDo)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setPrivateKey
  * 
- * The data that is provided should from a file (such as private.pem) that was generated by openssl.
-**/
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets the private key to use. Private keys are used to sign data,
+ *        or to decrypt data. The data that is provided should from a file
+ *        (such as private.pem) that was generated by openssl.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setPrivateKey:(NSData *)k
 {
     [k retain];
@@ -400,32 +667,66 @@
     privateKey = k;
 }
 
-/**
- * Returns the clear text as plain NSData.
- * The plain text contains the text that was previously set.
- * It's the known text, which is to be encrypted, decrypted, etc.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    clearTextAsData
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the clear text as plain NSData.
+ * 
+ * NOTES: The plain text contains the text that was previously set.
+ *        It's the known text, which is to be encrypted, decrypted, etc.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)clearTextAsData
 {
     return clearText;
 }
 
-/**
- * Returns the clear text formatted as an NSString.
- * The plain text contains the text that was previously set.
- * It's the known text, which is to be encrypted, decrypted, etc.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    clearTextAsString
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the clear text formatted as an NSString.
+ * 
+ * NOTES: The plain text contains the text that was previously set.
+ *        It's the known text, which is to be encrypted, decrypted, etc.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)clearTextAsString
 {
     return [[[NSString alloc] initWithData:[self clearTextAsData] encoding:NSUTF8StringEncoding] autorelease];
 }
 
-/**
- * Sets the clear text using the given data.
- * The clear text will be used for encryption, decryption, etc.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setClearTextWithData
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets the clear text using the given data. The clear text will be used
+ *        for encryption, decryption, etc. Note that the given data reference is
+ *        retained and later used, so it shouldn't be externally modified.
  *
- * Note that the given data reference is retained and later used, so it shouldn't be externally modified.
-**/
+ *----------------------------------------------------------------------------*/
 - (void)setClearTextWithData:(NSData *)c
 {
     [c retain];
@@ -433,10 +734,21 @@
     clearText = c;
 }
 
-/**
- * Sets the clear text using the given string.
- * The clear text will be used for encryption, signing, and digests.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setClearTextWithString
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets the clear text using the given string. The clear text will be
+ *        used for encryption, signing, and digests.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setClearTextWithString:(NSString *)c
 {
 	[clearText release];
@@ -455,28 +767,65 @@
 	clearText = [[NSData alloc] initWithBytes:[c UTF8String] length:length];
 }
 
-/**
- * Returns the cipher text as plain NSData.
- * The cipher text contains the most recent encrypted data.  (Result of call to encrypt)
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cipherTextAsData
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the cipher text as plain NSData.
+ * 
+ * NOTES: The cipher text contains the most recent encrypted data. 
+ *        (Result of call to encrypt)
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)cipherTextAsData
 {
     return cipherText;
 }
 
-/**
- * Returns the ciper text formatted as an NSString.
- * The ciper text contains the most recent encrypted data.  (Result of call to encrypt)
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cipherTextAsString
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the ciper text formatted as an NSString.
+ * 
+ * NOTES: The ciper text contains the most recent encrypted data.
+ *        (Result of call to encrypt)
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)cipherTextAsString
 {
     return [[[NSString alloc] initWithData:[self cipherTextAsData] encoding:NSUTF8StringEncoding] autorelease];
 }
 
-/**
- * Sets the cipher text using the given data.
- * The cipher text will be used for decryption and verifying.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setCipherText
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * NOTES: Sets the cipher text using the given data. The cipher text will be
+ *        used for decryption and verifying.
+ *
+ *----------------------------------------------------------------------------*/
 - (void)setCipherText:(NSData *)c
 {
     [c retain];
@@ -488,11 +837,24 @@
 #pragma mark Decryption methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Peforms decryption, and returns resulting clear text data.
- * If symmetric decryption is being used, performs symmetric decryption using aes128.
- * Otherwise, performs decryption using the private key.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decrypt
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the clear text data that is the result of the decryption.
+ * 
+ * NOTES: Peforms decryption, and returns resulting clear text data. If
+ *        symmetric decryption is being used, performs symmetric decryption
+ *        using aes128. Otherwise, performs decryption using the private key.
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)decrypt
 {
     if([self isSymmetric] && [self symmetricKey])
@@ -510,14 +872,26 @@
     }
 }
 
-/**
- * Decrypts the cipher text data.
- * If symmetric decryption is being used, then the decryption is done using the given cipher.
- * Otherwise, asymmetric decryptions is used, and the data is encrypted using the private key.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    decrypt
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Returns the clear text data that is the result of the decryption.
+ * 
+ * NOTES: Decrypts the cipher text data. If symmetric decryption is being used,
+ *        then the decryption is done using the given cipher. Otherwise,
+ *        asymmetric decryptions is used, and the data is encrypted using the
+ *        private key. The resulting clear text data may also be later retrieved
+ *        with the clearTextAsData or clearTextAsString methods.
  *
- * Returns the clear text data that is the result of the decryption.
- * The resulting clear text data may also be later retrieved with the clearTextAsData or clearTextAsString methods.
-**/
+ *----------------------------------------------------------------------------*/
 - (NSData *)decrypt:(NSString *)cipherName
 {
 	// If there is no cipher text set, or the cipher text is an empty string (zero length data)
@@ -684,12 +1058,22 @@
     return [self clearTextAsData];
 }
 
-/**
- * Verifies (decrypts) the cipher text data using the public key.
- * The resulting clear text data is returned.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    verify
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: The resulting clear text data is returned.
+ * 
+ * NOTES: Verifies (decrypts) the cipher text data using the public key.
  *
- * The resulting clear text data may also be later retrieved with the clearTextAsData or clearTextAsString methods.
- **/
+ *----------------------------------------------------------------------------*/
 - (NSData *)verify
 {
 	// If there is no cipher text set, or the cipher text is an empty string (zero length data)
@@ -762,11 +1146,26 @@
 #pragma mark Encryption methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Peforms encryption, and returns resulting ciper text data.
- * If symmetric encryption is being used, performs symmetric encryption using aes128.
- * Otherwise, performs encryption using the public key.
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    encrypt
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * INTERFACE:   (id)client
+ * 
+ * RETURNS: resulting ciper text data.
+ * 
+ * NOTES: Peforms encryption, and returns resulting ciper text data. If
+ *        symmetric encryption is being used, performs symmetric encryption
+ *        using aes128. Otherwise, performs encryption using the public key. 
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)encrypt
 {
     if([self isSymmetric] && [self symmetricKey])
@@ -784,14 +1183,25 @@
     }
 }
 
-/**
- * Encrypts the clear text data.
- * If symmetric encryption is being used, then the encryption is done using the given cipher.
- * Otherwise, asymmetric encryption is used, and the data is encrypted using the public key.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    encrypt
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: cipher text data that is the result of the encryption.
+ * 
+ * NOTES: Encrypts the clear text data. If symmetric encryption is being used,
+ *        then the encryption is done using the given cipher. Otherwise,
+ *        asymmetric encryption is used, and the data is encrypted using the
+ *        public key.
  *
- * Returns the cipher text data that is the result of the encryption.
- * The resulting cipher text data may also be later retrieved with the cipherTextAsData or cipherTextAsString methods.
-**/
+ *----------------------------------------------------------------------------*/
 - (NSData *)encrypt:(NSString *)cipherName
 {
 	// If there is no clear text set, or the clear text is an empty string (zero length data)
@@ -920,12 +1330,24 @@
     return [self cipherTextAsData];
 }
 
-/**
- * Signs (encrypts) the clear text data using the private key.
- * The resulting cipher text data is returned, and may later be verified (decrypted) using the public key.
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    sign
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: cipher text data is returned
+ * 
+ * NOTES: Signs (encrypts) the clear text data using the private key. The
+ *        resulting cipher text data is returned, and may later be verified
+ *        (decrypted) using the public key.
  *
- * The resulting cipher text data may also be later retrieved with the cipherTextAsData or cipherTextAsString methods.
-**/
+ *----------------------------------------------------------------------------*/
 - (NSData *)sign
 {
 	// If there is no clear text set, or the clear text is an empty string (zero length data)
@@ -1007,9 +1429,22 @@
 #pragma mark Other methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Description forthcoming...
-**/
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    digest
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Digest verification data
+ * 
+ * NOTES: Digest verification
+ *
+ *----------------------------------------------------------------------------*/
 - (NSData *)digest:(NSString *)digestName
 {
     if(clearText == nil) {
@@ -1057,6 +1492,23 @@
     return [NSData dataWithBytes:outbuf length:templen];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    description
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: String of description
+ * 
+ * NOTES: Produces a descruption of the encrypted/decrypted data, including the
+ *        keys uses, cipher and clear text etc...
+ *
+ *----------------------------------------------------------------------------*/
 - (NSString *)description
 {
     NSString *format = @"clearText: %@, cipherText: %@, symmetricKey: %@, publicKey: %@, privateKey: %@";
@@ -1069,6 +1521,22 @@
 #pragma mark Class methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    generateRSAPrivateKeyWithLength
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: RSA private key
+ * 
+ * NOTES: Generates an RSA private key with a specific length
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)generateRSAPrivateKeyWithLength:(int)length
 {
     RSA *key = NULL;
@@ -1095,6 +1563,22 @@
     return result;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    generateRSAPublicKeyFromPrivateKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: RSA Public key
+ * 
+ * NOTES: Generates an RSA public key from a private key
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)generateRSAPublicKeyFromPrivateKey:(NSData *)privateKey
 {
     BIO *privateBIO = NULL;
@@ -1140,6 +1624,22 @@
     return result;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    getKeyDataWithLength
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: Key data of a specific length
+ * 
+ * NOTES: Generates a random key with a specific length
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)getKeyDataWithLength:(int)length
 {
     NSData *randData = nil;
@@ -1158,13 +1658,43 @@
     return randData;
 }
 
-// PBKDF2 support functions
-// Thanks to Chris Benedict (chrisbdaemon@gmail.com) for the code
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    getKeyDataWithLength
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Chris Benedict
+ * 
+ * PROGRAMMER:  Chris Benedict
+ * 
+ * RETURNS: Key from a salted password
+ * 
+ * NOTES: Creates a key from a slated password
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)getKeyDataWithLength:(int)length fromPassword:(NSString *)pass withSalt:(NSString *)salt
 {
 	return [SSCrypto getKeyDataWithLength:length fromPassword:pass withSalt:salt withIterations:1000];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    getKeyDataWithLength
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Chris Benedict
+ * 
+ * PROGRAMMER:  Chris Benedict
+ * 
+ * RETURNS: Key from a salted password
+ * 
+ * NOTES: Creates a key from a slated password
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)getKeyDataWithLength:(int)length fromPassword:(NSString *)pass withSalt:(NSString *)salt withIterations:(int)count
 {
 	NSData *key = nil;
@@ -1183,6 +1713,22 @@
 	return key;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    getSHA1ForData
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: SHA1 hash of data
+ * 
+ * NOTES: Creates an SHA1 hash for some data. Used in key creation.
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)getSHA1ForData:(NSData *)d
 {
     unsigned length = [d length];
@@ -1195,6 +1741,22 @@
     return [NSData dataWithBytesNoCopy:md length:SHA_DIGEST_LENGTH freeWhenDone:YES];
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    getMD5ForData
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Ed Silva
+ * 
+ * PROGRAMMER:  Ed Silva
+ * 
+ * RETURNS: MD5 hash of data
+ * 
+ * NOTES: Creates an MD5 has for some data.
+ *
+ *----------------------------------------------------------------------------*/
 + (NSData *)getMD5ForData:(NSData *)d
 {
 	unsigned length = [d length];

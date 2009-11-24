@@ -11,7 +11,9 @@
  *                                 (NSNotification *)aNotification
  *              - (void)dealloc
  *              - (IBAction)send:(id)sender
+ *              - (IBAction)displayKey:(id)sender
  *              - (IBAction)modeChanged:(id)sender
+ *              - (IBAction)cipherChanged:(id)sender
  *              - (IBAction)connectListen:(id)sender
  *              - (void)scrollToBottom
  *              - (void)logMessage:(NSString *)msg logType:(NSString *)type
@@ -23,7 +25,10 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Added the ability to display the key being
+ *                                  used to encrypt data as well as DES & AES
+ *                                  encryption.
  * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -35,7 +40,6 @@
  *---------------------------------------------------------------------------*/
 
 #import "ApplicationDelegate.h"
-#import "SSCrypto.h"
 
 
 #define PORT 3141
@@ -52,7 +56,8 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Added an init for cryptData
  * 
  * DESIGNER:    Steffen L. Norgren
  * 
@@ -70,6 +75,7 @@
 {
 	if(self = [super init]) {
 		crypt = [[Encryption alloc] init];
+		cryptData = [[NSData alloc] init];
 		isRunning = NO;
 	}
 
@@ -131,8 +137,10 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
- * 
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Initializing new preferences for AES & DES
+ *                                  encryption settings.
+ *
  * DESIGNER:    Steffen L. Norgren
  * 
  * PROGRAMMER:  Steffen L. Norgren
@@ -155,11 +163,15 @@
 	// Encryption Preferences
 	[[[cipher cells] objectAtIndex:0] setState:YES]; // Vigenère cipher
 	[[[cipher cells] objectAtIndex:1] setState:NO]; // Affine cipher
+	[[[cipher cells] objectAtIndex:2] setState:NO]; // Rijndael/AES cipher
+	[[[cipher cells] objectAtIndex:3] setState:NO]; // DES cipher
 	
+	// Fill the multiplier values
 	[affineMult addItemsWithObjectValues:(NSArray *)[NSArray arrayWithObjects:
 													   @"1",@"3",@"5",@"7",@"9",@"11",@"15",
 													   @"17",@"19",@"21",@"23",@"25",nil]];
 	
+	// Fill the additive values
 	for (int i = 0; i < 26; i++)
 		[affineAdd addItemWithObjectValue:(NSString *)[NSString stringWithFormat:@"%d", i]];
 	
@@ -169,6 +181,9 @@
 	
 	// Set the Affine cipher key
 	[vigenereKey setStringValue:@"computer"];
+	
+	// Set the AES & DES Default Keys
+	[cryptoKey setStringValue:@"Key is SHA1 hash of this!"];
 }
 
 /*-----------------------------------------------------------------------------
@@ -200,7 +215,8 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Deallocating crypto and cryptoData
  * 
  * DESIGNER:    Steffen L. Norgren
  * 
@@ -218,6 +234,8 @@
 	[client release];
 	[server release];
 	[crypt release];
+	[crypto release];
+	[cryptData release];
 	[super dealloc];
 }
 
@@ -228,7 +246,8 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Added AES & DES encryption upon sending.
  * 
  * DESIGNER:    Steffen L. Norgren
  * 
@@ -245,19 +264,56 @@
  *----------------------------------------------------------------------------*/
 - (IBAction)send:(id)sender
 {
+
 	if ([[inputView textStorage] length] > 0 && isRunning)
 	{
 		NSString *encrypt = [[NSString alloc] autorelease];
 		NSString *message = [[NSString alloc] autorelease];
-
+		
 		// Encrypt & decrypt the string using selected method
-		if ([cipher selectedRow] == 0)
+		if ([cipher selectedRow] == 0) // Vigenère cipher
 			encrypt = [crypt encryptVigenere:[[inputView textStorage] string]
 								   cipherKey:[vigenereKey stringValue]];
-		else if ([cipher selectedRow] == 1)
+		else if ([cipher selectedRow] == 1) // Affine cipher
 			encrypt = [crypt encryptAffine:[[inputView textStorage] string]
 								   multNum:[[affineMult objectValueOfSelectedItem] intValue]
 									addNum:[[affineAdd objectValueOfSelectedItem] intValue]];
+		else if ([cipher selectedRow] == 2) { // Rijndael/AES cipher
+			
+			// Create the key we're going to use
+			NSData *seedKey = [SSCrypto getKeyDataWithLength:32
+												fromPassword:[cryptoKey stringValue]
+													withSalt:@"Salted!"];
+			
+			// Initialize the class with our new key.
+			crypto = [[SSCrypto alloc] initWithSymmetricKey:seedKey];
+			
+			// Set the plaintext to be encrypted
+			[crypto setClearTextWithString:[[inputView textStorage] string]];
+			
+			// Encrypt the text
+			cryptData = [crypto encrypt:@"aes128"];
+			
+			[crypto release];
+		}
+		else if ([cipher selectedRow] == 3) { // DES cipher
+			
+			// Create the key we're going to use
+			NSData *seedKey = [SSCrypto getKeyDataWithLength:32
+												fromPassword:[cryptoKey stringValue]
+													withSalt:@"Salted!"];
+			
+			// Initialize the class with our new key.
+			crypto = [[SSCrypto alloc] initWithSymmetricKey:seedKey];
+			
+			// Set the plaintext to be encrypted
+			[crypto setClearTextWithString:[[inputView textStorage] string]];
+			
+			// Encrypt the text
+			cryptData = [crypto encrypt:@"des"];
+			
+			[crypto release];
+		}
 		
 		// Set whether the outbound message is encrypted or not.
 		if ([encryptCheck state] == NO)
@@ -269,48 +325,77 @@
 		[self logMessage:FORMAT(@"%@ > ", [displayName stringValue]) logType:@"info"];
 		[self logMessage:FORMAT(@"%@\n", [[inputView textStorage] string]) logType:@""];			
 		
-		// Send the string
+		// Send the data or string
 		if ([modeSetting selectedColumn] == 0)
-			[client sendString:FORMAT(@"%@", message)];
+			if ([cipher selectedRow] < 2)
+				[client sendString:FORMAT(@"%@", message)];
+			else
+				[client sendData:cryptData];
 		else if ([modeSetting selectedColumn] == 1)
-			[server sendStringToAll:FORMAT(@"%@", message)];
+			if ([cipher selectedRow] < 2)
+				[server sendStringToAll:FORMAT(@"%@", message)];
+			else
+				[server sendDataToAll:cryptData];
 	}
 	
 	// Clear the input window
 	[inputView setString:@""];
 }
 
-// Testing
-- (IBAction)encryptInput:(id)sender
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    displayKey
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (IBAction)displayKey:(id)sender
+ *                        sender: the delegate ID of the sender
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Outputs the current key being used.
+ *
+ *----------------------------------------------------------------------------*/
+- (IBAction)displayKey:(id)sender
 {
-//	NSData *aesData = [[[[inputView textStorage] string]
-//						dataUsingEncoding:NSUTF8StringEncoding]
-//					    aesEncryptWithKey:@"This is some key of some sort"];
-//	
-//	[self logMessage:FORMAT(@"%@\n", [aesData hexdump]) logType:@""];
-//	[logView setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
-	
-	SSCrypto *crypto;
-	NSData *seedData1 = [SSCrypto getKeyDataWithLength:32];
-	crypto = [[SSCrypto alloc] initWithSymmetricKey:seedData1];
-	
-	NSArray *ciphers = [NSArray arrayWithObjects:@"aes256", @"aes128", @"blowfish", @"aes192",
-						@"RC4", @"blowfish", @"RC5", @"des3", @"des", nil];
-	
-	NSString *password = @"it doesn't matter how long this is";
-	[crypto setClearTextWithString:@"text to encrypt"];
-	
-	for(int n = 0; n < [ciphers count]; n++)
-	{
-		NSData *cipherText = [crypto encrypt:[ciphers objectAtIndex:n]];
-		NSData *clearText = [crypto decrypt:[ciphers objectAtIndex:n]];
-		
-		NSLog(@"Original password: %@", password);
-		NSLog(@"Cipher text: '%@' using %@", [cipherText encodeBase64WithNewlines:NO], [ciphers objectAtIndex:n]);
-		NSLog(@"Clear text: '%s' using %@", [clearText bytes], [ciphers objectAtIndex:n]);
-		
-		NSLog(@" ");
-	}	
+	switch ([cipher selectedRow]) {
+		case 0:
+			[self logMessage:FORMAT(@"Vigenère Cipher Key: %@\n",
+									[vigenereKey stringValue]) logType:@"info"];
+			break;
+		case 1:
+			[self logMessage:FORMAT(@"Affine Cipher Key: %@,%@\n",
+									[affineMult objectValueOfSelectedItem],
+									[affineAdd objectValueOfSelectedItem]) logType:@"info"];
+			break;
+		case 2: {
+			// Properly generate the key
+			NSData *seedKey = [SSCrypto getKeyDataWithLength:32
+												fromPassword:[cryptoKey stringValue]
+													withSalt:@"Salted!"];
+			
+			[self logMessage:FORMAT(@"Rijndael/AES Key: %@\n", [[seedKey hexval] substringToIndex:32]) logType:@"info"];
+			
+			break;
+		}
+		case 3: {
+			// Properly generate the key
+			NSData *seedKey = [SSCrypto getKeyDataWithLength:32
+												fromPassword:[cryptoKey stringValue]
+													withSalt:@"Salted!"];
+			
+			[self logMessage:FORMAT(@"DES Key: %@\n", [[seedKey hexval] substringToIndex:14]) logType:@"info"];
+			
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 /*-----------------------------------------------------------------------------
@@ -348,6 +433,38 @@
 			[displayName setStringValue:@"Server"];
 
 		[connectListenButton setTitle:@"Listen"];
+	}
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cipherChanged
+ * 
+ * DATE:        November 24, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren
+ * 
+ * PROGRAMMER:  Steffen L. Norgren
+ * 
+ * INTERFACE:   (IBAction)cipherChanged:(id)sender
+ *                        sender: the delegate ID of the sender
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Event handler for when the cipher is changed. We want to disable
+ *        sending unencrypted data when using AES/DES modes.
+ *
+ *----------------------------------------------------------------------------*/
+- (IBAction)cipherChanged:(id)sender
+{
+	if ([cipher selectedRow] > 1) {
+		[encryptCheck setState:YES];
+		[encryptCheck setEnabled:NO];
+	}
+	else {
+		[encryptCheck setState:YES];
+		[encryptCheck setEnabled:YES];
 	}
 }
 
@@ -536,7 +653,10 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Detecting whether it NSData or NSString
+ *                                  is being received. If NSData, it is either
+ *                                  AES or DES encryption.
  * 
  * DESIGNER:    Steffen L. Norgren
  * 
@@ -558,20 +678,53 @@
 {
 	NSString *decrypt = [[NSString alloc] autorelease];
 	
-	// Decrypt the string using selected method
-	if ([cipher selectedRow] == 0)
-		decrypt = [crypt decryptVigenere:message
-							   cipherKey:[vigenereKey stringValue]];
-	else if ([cipher selectedRow] == 1)
-		decrypt = [crypt decryptAffine:message
-							   multNum:[[affineMult objectValueOfSelectedItem] intValue]
-								addNum:[[affineAdd objectValueOfSelectedItem] intValue]];
+	// Decrypt the message
+	if (message) {
+		// Decrypt the string using selected method
+		if ([cipher selectedRow] == 0)
+			decrypt = [crypt decryptVigenere:message
+								   cipherKey:[vigenereKey stringValue]];
+		else if ([cipher selectedRow] == 1)
+			decrypt = [crypt decryptAffine:message
+								   multNum:[[affineMult objectValueOfSelectedItem] intValue]
+									addNum:[[affineAdd objectValueOfSelectedItem] intValue]];
+	}
+	else {
+		NSString *sslCipher = [[NSString alloc] autorelease];
+
+		if ([cipher selectedRow] == 2) // AES
+			sslCipher = @"aes128";
+		else if ([cipher selectedRow] == 3) // DES
+			sslCipher = @"des";
+		
+		NSData *seedKey = [SSCrypto getKeyDataWithLength:32
+											fromPassword:[cryptoKey stringValue]
+												withSalt:@"Salted!"];
+		
+		crypto = [[SSCrypto alloc] initWithSymmetricKey:seedKey];
+		[crypto setCipherText:data];
+		
+		// Check to see if we want to decrypt or not
+		if ([decryptCheck state] == YES) {
+			cryptData = [crypto decrypt:sslCipher];
+			decrypt = [crypto clearTextAsString];
+		}
+		else {
+			message = [data hexdump];
+		}
+		
+		[crypto release];		
+	}
 
 	// Output the string
 	if ([decryptCheck state] == YES)
 		[self logMessage:FORMAT(@"%@\n", decrypt) logType:@""];
-	else if ([decryptCheck state] == NO)
-		[self logMessage:FORMAT(@"%@\n", message) logType:@""];
+	else {
+		if ([cipher selectedRow] < 2)
+			[self logMessage:FORMAT(@"%@\n", message) logType:@""];
+		else
+			[self logMessage:FORMAT(@"%@", message) logType:@""];
+	}
 }
 
 /*-----------------------------------------------------------------------------

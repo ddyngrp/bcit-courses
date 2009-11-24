@@ -5,7 +5,10 @@
  * 
  * DATE:        October 4, 2009
  * 
- * REVISIONS:   
+ * REVISIONS:   November 24, 2009 - Steffen L. Norgren <ironix@trollop.org>
+ *                                  Added the ability to display the key being
+ *                                  used to encrypt data as well as DES & AES
+ *                                  encryption.
  * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -18,6 +21,8 @@
 #import <Cocoa/Cocoa.h>
 #import "ClientServer.h"
 #import "Encryption.h"
+#import "SSCrypto.h"
+
 
 // Interface for the main application window
 @interface ApplicationDelegate : NSObject <NSApplicationDelegate>
@@ -28,9 +33,11 @@
 	Server *server;
 	Client *client;
 	
-	// Encryption Class
+	// Encryption Classes
 	Encryption *crypt;
-
+	SSCrypto *crypto;
+	NSData *cryptData;
+	
 	BOOL isRunning;
 	
 	// Main Window
@@ -39,6 +46,7 @@
 	IBOutlet id decryptCheck;
     IBOutlet id connectListenButton;
 	IBOutlet id inputView;
+	IBOutlet id displayKeyButton;
 	
 	// Preferences Window: Connection
 	IBOutlet id remoteIP;
@@ -50,9 +58,7 @@
 	IBOutlet id affineMult;
 	IBOutlet id affineAdd;
 	IBOutlet id vigenereKey;
-	
-	// Testing
-	IBOutlet id encryptButton;
+	IBOutlet id cryptoKey;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -68,9 +74,11 @@
 // Main Window Events
 - (IBAction)send:(id)sender;
 - (IBAction)connectListen:(id)sender;
+- (IBAction)displayKey:(id)sender;
 
 // Preferences Events
 - (IBAction)modeChanged:(id)sender;
+- (IBAction)cipherChanged:(id)sender;
 
 // View Formatting
 - (void)scrollToBottom;
@@ -81,8 +89,5 @@
 - (void)processNewConnection:(ClientServerConnection *)con;
 - (void)processClosingConnection:(ClientServerConnection *)con;
 - (void)connectionDidClose:(ClientServerConnection *)con;
-
-// Testing
-- (IBAction)encryptInput:(id)sender;
 
 @end

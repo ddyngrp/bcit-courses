@@ -50,13 +50,19 @@
 	IBOutlet id affineMult;
 	IBOutlet id affineAdd;
 	IBOutlet id vigenereKey;
+	
+	// Testing
+	IBOutlet id encryptButton;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
 // Program Initialization & Deinitialization
+- (id)init;
+- (void)awakeFromNib;
 - (void)initWindow;
 - (void)initPreferences;
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)dealloc;
 
 // Main Window Events
@@ -67,6 +73,16 @@
 - (IBAction)modeChanged:(id)sender;
 
 // View Formatting
+- (void)scrollToBottom;
 - (void)logMessage:(NSString *)msg logType:(NSString *)type;
+
+// Connections
+- (void)processMessage:(NSString *)message orData:(NSData *)data fromConnection:(ClientServerConnection *)con;
+- (void)processNewConnection:(ClientServerConnection *)con;
+- (void)processClosingConnection:(ClientServerConnection *)con;
+- (void)connectionDidClose:(ClientServerConnection *)con;
+
+// Testing
+- (IBAction)encryptInput:(id)sender;
 
 @end

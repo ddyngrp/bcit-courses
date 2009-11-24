@@ -332,7 +332,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3AAF67A710BC565900519847</string>
+										<string>3AAF67B010BC594200519847</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
@@ -544,6 +544,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A6596171072CFDC001D304E</string>
 		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
@@ -749,13 +750,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>3A31ED2110BC542E00E5D86A</string>
+				<string>3AAF67B110BC594200519847</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>3A31ED2210BC542E00E5D86A</string>
-				<string>3A31ED2310BC542E00E5D86A</string>
-				<string>3A31ED2410BC542E00E5D86A</string>
-				<string>3A31ED2510BC542E00E5D86A</string>
-				<string>3A31ED2610BC542E00E5D86A</string>
+				<string>3AAF67B210BC594200519847</string>
+				<string>3AAF67B310BC594200519847</string>
+				<string>3AAF67B410BC594200519847</string>
+				<string>3AAF67B510BC594200519847</string>
+				<string>3AAF67B610BC594200519847</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -279,24 +277,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>34</integer>
-									<integer>33</integer>
-								</array>
-								<array>
-									<integer>35</integer>
-									<integer>33</integer>
-								</array>
-								<array>
-									<integer>36</integer>
-									<integer>33</integer>
-								</array>
-								<array>
-									<integer>37</integer>
-									<integer>33</integer>
+									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 71}, {274, 660}}</string>
+							<string>{{0, 0}, {274, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -326,12 +312,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>HexDump.h</string>
+								<string>ApplicationDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -339,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>HexDump.h</string>
+										<string>ApplicationDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A68612F10BBF0F400D89246</string>
+										<string>3A68618210BBF3C900D89246</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
@@ -351,15 +339,15 @@
 											<string>3AD4FC721078970F00E5F9A1</string>
 											<string>3AD4FCA41078A61A00E5F9A1</string>
 											<string>3AC62638107AC961005E2D1A</string>
-											<string>3A95E4A810BBD9170002BFBC</string>
 											<string>3A95E4E610BBDCD30002BFBC</string>
 											<string>3A95E56F10BBE7850002BFBC</string>
 											<string>3A95E58E10BBE8F50002BFBC</string>
-											<string>3A95E5D110BBEBA70002BFBC</string>
 											<string>3A95E5D210BBEBA70002BFBC</string>
-											<string>3A95E61110BBF02C0002BFBC</string>
-											<string>3A68612D10BBF0F400D89246</string>
-											<string>3A68612E10BBF0F400D89246</string>
+											<string>3A68617E10BBF3C900D89246</string>
+											<string>3A68617F10BBF3C900D89246</string>
+											<string>3A68618010BBF3C900D89246</string>
+											<string>3A68618110BBF3C900D89246</string>
+											<string>3A68617B10BBF36A00D89246</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -371,14 +359,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {984, 471}}</string>
+								<string>{{0, 0}, {984, 673}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>471pt</string>
+							<string>673pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -391,14 +379,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 476}, {984, 202}}</string>
+								<string>{{0, 678}, {984, 0}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>202pt</string>
+							<string>0pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>

@@ -17,9 +17,9 @@
 	};
 	256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1219, 8255}}";
-			sepNavSelRange = "{8316, 0}";
-			sepNavVisRange = "{7192, 667}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 8307}}";
+			sepNavSelRange = "{8423, 0}";
+			sepNavVisRange = "{7591, 1493}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
@@ -173,6 +173,14 @@
 			3A68612D10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612D10BBF0F400D89246 /* PBXTextBookmark */;
 			3A68612E10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612E10BBF0F400D89246 /* PBXTextBookmark */;
 			3A68612F10BBF0F400D89246 /* PBXTextBookmark */ = 3A68612F10BBF0F400D89246 /* PBXTextBookmark */;
+			3A68617B10BBF36A00D89246 /* PBXTextBookmark */ = 3A68617B10BBF36A00D89246 /* PBXTextBookmark */;
+			3A68617C10BBF36A00D89246 /* PBXTextBookmark */ = 3A68617C10BBF36A00D89246 /* PBXTextBookmark */;
+			3A68617D10BBF36A00D89246 /* PBXTextBookmark */ = 3A68617D10BBF36A00D89246 /* PBXTextBookmark */;
+			3A68617E10BBF3C900D89246 /* PBXTextBookmark */ = 3A68617E10BBF3C900D89246 /* PBXTextBookmark */;
+			3A68617F10BBF3C900D89246 /* PBXTextBookmark */ = 3A68617F10BBF3C900D89246 /* PBXTextBookmark */;
+			3A68618010BBF3C900D89246 /* PBXTextBookmark */ = 3A68618010BBF3C900D89246 /* PBXTextBookmark */;
+			3A68618110BBF3C900D89246 /* PBXTextBookmark */ = 3A68618110BBF3C900D89246 /* PBXTextBookmark */;
+			3A68618210BBF3C900D89246 /* PBXTextBookmark */ = 3A68618210BBF3C900D89246 /* PBXTextBookmark */;
 			3A95E4A810BBD9170002BFBC = 3A95E4A810BBD9170002BFBC /* PBXTextBookmark */;
 			3A95E4E610BBDCD30002BFBC = 3A95E4E610BBDCD30002BFBC /* PBXTextBookmark */;
 			3A95E56F10BBE7850002BFBC = 3A95E56F10BBE7850002BFBC /* PBXTextBookmark */;
@@ -209,9 +217,9 @@
 	};
 	3A4E62FE10796E8400B8B392 /* Encryption.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 3770}}";
-			sepNavSelRange = "{810, 0}";
-			sepNavVisRange = "{6721, 1484}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 3640}}";
+			sepNavSelRange = "{7397, 0}";
+			sepNavVisRange = "{0, 1216}";
 		};
 	};
 	3A6596071072CFC8001D304E /* Encrypted Chat */ = {
@@ -314,7 +322,107 @@
 		vrLen = 462;
 		vrLoc = 0;
 	};
+	3A68617010BBF30700D89246 /* SSCrypto.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 1521}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{2366, 1392}";
+		};
+	};
+	3A68617110BBF30700D89246 /* SSCrypto.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 15743}}";
+			sepNavSelRange = "{2935, 0}";
+			sepNavVisRange = "{2046, 1694}";
+		};
+	};
+	3A68617B10BBF36A00D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 46";
+		rLen = 0;
+		rLoc = 1743;
+		rType = 0;
+		vrLen = 1272;
+		vrLoc = 1237;
+	};
+	3A68617C10BBF36A00D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
+		name = "SSCrypto.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2124;
+		vrLoc = 0;
+	};
+	3A68617D10BBF36A00D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
+		name = "SSCrypto.m: 81";
+		rLen = 101;
+		rLoc = 3166;
+		rType = 0;
+		vrLen = 1694;
+		vrLoc = 2046;
+	};
+	3A68617E10BBF3C900D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
+		name = "SSCrypto.m: 72";
+		rLen = 0;
+		rLoc = 2935;
+		rType = 0;
+		vrLen = 1694;
+		vrLoc = 2046;
+	};
+	3A68617F10BBF3C900D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
+		name = "ClientServer.m: 121";
+		rLen = 23;
+		rLoc = 5443;
+		rType = 0;
+		vrLen = 1522;
+		vrLoc = 4137;
+	};
+	3A68618010BBF3C900D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A4E62FE10796E8400B8B392 /* Encryption.m */;
+		name = "Encryption.m: 251";
+		rLen = 0;
+		rLoc = 7397;
+		rType = 0;
+		vrLen = 1216;
+		vrLoc = 0;
+	};
+	3A68618110BBF3C900D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A68617010BBF30700D89246 /* SSCrypto.h */;
+		name = "SSCrypto.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1392;
+		vrLoc = 2366;
+	};
+	3A68618210BBF3C900D89246 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
+		name = "ApplicationDelegate.m: 292";
+		rLen = 0;
+		rLoc = 8423;
+		rType = 0;
+		vrLen = 1493;
+		vrLoc = 7591;
+	};
 	3A95E46D10BBD4A20002BFBC /* AES.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = AES.h;
+		path = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/AES.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
 			sepNavSelRange = "{484, 0}";
@@ -322,6 +430,12 @@
 		};
 	};
 	3A95E46E10BBD4A20002BFBC /* AES.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = AES.m;
+		path = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/AES.m";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {822, 2275}}";
 			sepNavSelRange = "{2150, 0}";
@@ -369,6 +483,12 @@
 		vrLoc = 470;
 	};
 	3A95E5A410BBE9D40002BFBC /* HexDump.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = HexDump.h;
+		path = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/HexDump.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 439}}";
 			sepNavSelRange = "{201, 0}";
@@ -376,10 +496,16 @@
 		};
 	};
 	3A95E5A510BBE9D40002BFBC /* HexDump.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = HexDump.m;
+		path = "/Users/ironix/Documents/Schoolwork/Assignments & Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/HexDump.m";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 2171}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2145}}";
 			sepNavSelRange = "{114, 0}";
-			sepNavVisRange = "{522, 1228}";
+			sepNavVisRange = "{522, 1125}";
 		};
 	};
 	3A95E5D110BBEBA70002BFBC /* PBXTextBookmark */ = {
@@ -406,8 +532,8 @@
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* ApplicationDelegate.m */;
 		name = "ApplicationDelegate.m: 291";
-		rLen = 7;
-		rLoc = 8359;
+		rLen = 0;
+		rLoc = 8116;
 		rType = 0;
 		vrLen = 1592;
 		vrLoc = 7219;

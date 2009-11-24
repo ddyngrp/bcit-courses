@@ -35,8 +35,6 @@
  *---------------------------------------------------------------------------*/
 
 #import "ApplicationDelegate.h"
-#import "AES.h"
-#import "HexDump.h"
 
 
 #define PORT 3141
@@ -284,12 +282,14 @@
 // Testing
 - (IBAction)encryptInput:(id)sender
 {
-	NSData *aesData = [[[[inputView textStorage] string]
-						dataUsingEncoding:NSUTF8StringEncoding]
-					    aesEncryptWithKey:@"This is some key of some sort"];
+//	NSData *aesData = [[[[inputView textStorage] string]
+//						dataUsingEncoding:NSUTF8StringEncoding]
+//					    aesEncryptWithKey:@"This is some key of some sort"];
+//	
+//	[self logMessage:FORMAT(@"%@\n", [aesData hexdump]) logType:@""];
+//	[logView setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
 	
-	[self logMessage:FORMAT(@"%@\n", [aesData hexdump]) logType:@""];
-	[logView setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
+	
 }
 
 /*-----------------------------------------------------------------------------

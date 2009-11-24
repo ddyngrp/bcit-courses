@@ -1,0 +1,81 @@
+/* Backup */
+"TBBackupLabel" = "Backup";
+
+/* Backup My Keys */
+"TBBackupPalette" = "Backup My Keys";
+
+/* Backup my keys to removable media. */
+"TBBackupToolTip" = "Backup my keys to removable media.";
+
+/* Delete */
+"TBDeleteLabel" = "Delete";
+
+/* Delete Key */
+"TBDeletePalette" = "Delete Key";
+
+/* Delete the selected key. */
+"TBDeleteToolTip" = "Delete the selected key.";
+
+/* Edit */
+"TBEditLabel" = "Edit";
+
+/* Edit Key */
+"TBEditPalette" = "Edit Key";
+
+/* Edit the selected key. */
+"TBEditToolTip" = "Edit the selected key.";
+
+/* Export */
+"TBExportLabel" = "Export";
+
+/* Export Key */
+"TBExportPalette" = "Export Key";
+
+/* Export the selected key. */
+"TBExportToolTip" = "Export the selected key.";
+
+/* New */
+"TBGenerateLabel" = "New";
+
+/* New Key */
+"TBGeneratePalette" = "New Key";
+
+/* Generate a new key pair. */
+"TBGenerateToolTip" = "Generate a new key pair.";
+
+/* Import */
+"TBImportLabel" = "Import";
+
+/* Import Keys */
+"TBImportPalette" = "Import Keys";
+
+/* Import keys from a file. */
+"TBImportToolTip" = "Import keys from a file.";
+
+/* Info */
+"TBInfoLabel" = "Info";
+
+/* Get Info */
+"TBInfoPalette" = "Get Info";
+
+/* Get info about the selected key. */
+"TBInfoToolTip" = " Get info about the selected key.";
+
+/* Search */
+"TBSearchLabel" = "Search";
+
+/* Search keys */
+"TBSearchPalette" = "Search keys";
+
+/* Search for a local public key. */
+"TBSearchToolTip" = "Search for a local public key.";
+
+/* Sign */
+"TBSignLabel" = "Sign";
+
+/* Sign Key */
+"TBSignPalette" = "Sign Key";
+
+/* Sign a public key. */
+"TBSignToolTip" = "Sign a public key.";
+

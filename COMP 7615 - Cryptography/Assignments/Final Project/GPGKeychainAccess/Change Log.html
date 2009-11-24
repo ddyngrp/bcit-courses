@@ -1,0 +1,181 @@
+<html>
+<head>
+	<title>GPG Keychain Access Change Log</title>
+</head>
+<body>
+<h1 style="font-size: 100%;">GPG Keychain Access</h1>
+<h1>Change Log</h1>
+<ul style="">
+<li><h2>0.8.0DP2</h2>
+	<ul>
+	<li>Make Key Assistant now runs in only one instance.</li>
+	<li>Make Key Assistant has more explicit closing (finished making key) statement.</li>
+	</ul>
+</li>
+<li><h2>0.8.0DP1</h2>
+	<ul>
+	<li>Change bundled GPGME.framework from version 0.3.14 to 1.0.1.</li>
+	<li>Key information can no longer be exported.</li>
+	<li>New search mechanism for both local keys and remote keys.</li>
+	<li>UI tweaked for Mac OS X 10.4 "Tiger".</li>
+	<li>All keys are in one listing, marked with icons to indicate status.</li>
+	</ul>
+<li><h2>0.7.0</h2>
+	<ul>
+	<li>Some error messages are now more meaningful.</li>
+	<li>Fix some German localization errors.</li>
+	</ul>
+<li><h2>0.7.0RC2</h2>
+	<ul>
+	<li>Installs GPG Preferences in /Library/PreferencePanes if it is not already installed on the system.</li>
+	</ul>
+</li>
+<li><h2>0.7.0RC1</h2>
+	<ul>
+	<li>Tweak UI for key generation.</li>
+	<li>Change menu item Key->Sychronize to Key->Update from keyserver.</li>
+	<li>Change text size in key list to small system text (like iTunes or Address Book).</li>
+	<li>Tweak Keychain window UI.</li>
+	<li>Closing Keychain window does not close application.</li>
+	<li>Menu item Windows->Keychain opens Keychain window if it is closed.</li>
+	</ul>
+</li>
+<li><h2>0.7.0PB4</h2>
+	<ul>
+	<li>Fix bug causing crashes after using inspector window.</li>
+	<li>Remove textures from main window to comply with HIG.</li>
+	<li>Tweak UI for inspector.</li>
+	<li>Key generator allows passphrase to be visible or hidden.</li>
+	</ul>
+</li>
+<li><h2>0.7.0PB3</h2>
+	<ul>
+	<li>This time the key generation UI really works.</li>
+	<li>Revert preferences to opening System Preferences for GPGPreferences.</li>
+	</ul>
+</li>
+<li><h2>0.7.0PB2</h2>
+	<ul>
+	<li>Change how expiration dates are handled during key generation.</li>
+	<li>Fix key generation bug preventing creation of encryption keys.</li>
+	</ul>
+</li>
+<li><h2>0.7.0PB1</h2>
+	<ul>
+	<li>Rewrite most documentation in English.</li>
+	<li>Remove out-of-date localizations.</li>
+	</ul>
+</li>
+<li><h2>0.7.0DP2</h2>
+	<ul>
+	<li>Change full name from GPG Keychain to GPG Keychain Access.</li>
+	<li>Key generation is smoother.</li>
+	<li>Gey generator now validates and responds to dates.</li>
+	<li>Fixed some memory leaks.</li>
+	<li>Other minor bug fixes.</li>
+	</ul>
+</li>
+<li><h2>0.7.0DP</h2>
+	<ul>
+	<li>Change name from GPGKeys to GPG Keychain.</li>
+	<li>Graphic interface to make new keys.</li>
+	<li>GPGME/OpenPGP information displayed in About box.</li>
+	<li>Add license, handbook, and acknowlegements items to Help menu.</li>
+	<li>Add toolbar for common tasks.</li>
+	</ul>
+</li>
+<li><h2>0.6.1</h2>
+	<ul>
+	<li>Fixed localization errors.</li>
+	</ul>
+</li>
+<li><h2>0.6</h2>
+	<ul>
+	<li>Now uses brushed metal appearance.</li>
+	<li>Allows key list sorting and choice of columns to view.</li>
+	<li>Double clicking in the key list now opens the key inspector.</li>
+	<li>Multithreaded code rewritten so that it should not longer cause weird crashes.</li>
+	<li>Photo display is currently unavailable due to changes in GnuPG; should reappear shortly.</li>
+	<li>Added pretty icons.</li>
+	<li>Terminal bug fixed by Apple. Added Spanish localization.</li>
+	<li>Added Italian localization by Alessandro Ranellucci.</li>
+	</ul>
+</li>
+<li><h2>0.5.2</h2>
+	<ul>
+	<li>This time Latin-1 really doesn't cause a crash.</li>
+	</ul>
+</li>
+<li><h2>0.5.1</h2>
+	<ul>
+	<li>Thanks to a fix in GPGME.framework, Latin-1 encoded names now display correctly and, more importantly, don't cause crashes.</li>
+	</ul>
+</li>
+<li><h2>0.5</h2>
+	<ul>
+	<li>Key inspector has human readable information.</li>
+	<li>Key list refreshes after key import (so you'll know right away whether the success message was telling the truth or lying).</li>
+	</ul>
+</li>
+<li><h2>0.5 BETA</h2>
+	<ul>
+	<li>Allows secret key import.</li>
+	<li>Added key inspector panel that shows all available information on a key (including subkeys, userids, and photo), but it is not yet nice (i.e. readable by anyone other than a GnuPG hacker ;-)).</li>
+	</ul>
+</li>
+<li><h2>0.4.5</h2>
+	<ul>
+	<li>Added two commands under the new GPG menu.</li>
+	<li>The first one allows you to update the trust database.</li>
+	<li>The second rebuilds the key cache which allows for keys to list quickly.</li>
+	<li>This needs to be done after the trust database is updated, for example.</li>
+	<li>Keys can now be searched for using key words.</li>
+	<li>Fixed a bug where trying to open the Receive Key or Search Key panels caused an error.</li>
+	<li>Consequently, Receive Key and Search Key panels are now run in a modal session.</li>
+	</ul>
+</li>
+<li><h2>0.4.4</h2>
+	<ul>
+	<li>Fixed memory leak when exporting keys.</li>
+	<li>You can no longer try to export secret keys, since that is currently impossible (sorry).</li>
+	<li>When exporting just one key, its ID is the filename.</li>
+	<li>When you preform an action that goes to the terminal, GPGKeys waits until that command has started in Terminal to return control (this way you know that GPGKeys is doing something).</li>
+	<li>Secret key delete works (before it would just try to delete the public key).</li>
+	<li>You can now choose whether to export keys in binary or armored format.</li>
+	<li>Short key IDs now used.</li>
+	</ul>
+</li>
+<li><h2>0.4</h2>
+	<ul>
+	<li>Key listing is now very fast.</li>
+	<li>Key list can be searched and it can list either public or secret keys.</li>
+	<li>Shows number of keys listed.</li>
+	<li>Key info can be exported as xml.</li>
+	<li>About box simplified.</li>
+	<li>Fixed OS Types.</li>
+	</ul>
+</li>
+<li><h2>0.2.5</h2>
+	<ul>
+	<li>Key list refreshing works properly.</li>
+	<li>Removed unused preferences.</li>
+	<li>Menu items inactive if you can't use them (e.g. no key selected).</li>
+	<li>Can drag and drop .gpgkey files onto icon (exported key file).</li>
+	<li>Key algorithms are listed by name rather than number.</li>
+	<li>Name changed from Mac GPG Keys to GPGKeys.</li>
+	</ul>
+</li>
+<li><h2>Beta 0.2.1</h2>
+	<ul>
+	<li>Speed boost.</li>
+	<li>Key listing about 10 times faster thanks to Stéphane's patch for GPGME 0.3.3.</li>
+	</ul>
+</li>
+<li><h2>Beta 0.2</h2>
+	<ul>
+	<li>First official release. Finally put together from CVS.</li>
+	</ul>
+</li>
+</ul>
+</body>
+</html>

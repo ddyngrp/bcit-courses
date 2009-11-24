@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="description" content="How to revoke, or remove from circulation and prevent the use of, a key." />
+	<title>Revoking a Key</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+<h2><img src="GPGKeys.png" width="32" height="32" /><a name="PKRevokingAKey">Revoking a Key</a></h2>
+<p>For several reasons one may want to revoke a existing key. For
+	instance: the secret key has been stolen or became available to the
+	wrong people, the UID has been changed, the key is not large enough
+	anymore, etc. In all these cases the command to revoke the key
+	is:</p>
+<kbd>gpg --gen-revoke</kbd> 
+<p>This creates a revocation certificate. To be able to do this,
+	you need a secret key, else anyone could revoke your certificate.
+	This has one disadvantage. If I do not know the passphrase the key
+	has become useless. But I cannot revoke the key! To overcome this
+	problem it is wise to create a revoke license when you create a key
+	pair. And if you do so. Keep it safe! This can be on disk, paper,
+	etc. Make sure that this certificat will not fall into wrong
+	hands!!!! If you don't someone else can issue the revoke
+	certificate for your key and make it useless.</p>
+</body>
+</html>

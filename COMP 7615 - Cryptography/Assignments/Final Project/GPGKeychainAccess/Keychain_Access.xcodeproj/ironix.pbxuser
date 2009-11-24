@@ -1,0 +1,122 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeExecutable = 3A0CEE2010A9FA80009A868D /* GPG Keychain Access */;
+		activeTarget = 29B97326FDCFA39411CA2CEA /* GPG Keychain Access */;
+		codeSenseManager = 3A0CEE5C10A9FA9F009A868D /* Code sense */;
+		executables = (
+			3A0CEE2010A9FA80009A868D /* GPG Keychain Access */,
+			3A0CEE2110A9FA80009A868D /* Notification Tool */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					833,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279575168;
+			PBXWorkspaceStateSaveDate = 279575168;
+		};
+		sourceControlManager = 3A0CEE5B10A9FA9F009A868D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97326FDCFA39411CA2CEA /* GPG Keychain Access */ = {
+		activeExec = 0;
+		executables = (
+			3A0CEE2010A9FA80009A868D /* GPG Keychain Access */,
+		);
+	};
+	3A0CEE2010A9FA80009A868D /* GPG Keychain Access */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "GPG Keychain Access";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	3A0CEE2110A9FA80009A868D /* Notification Tool */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Notification Tool";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	3A0CEE5B10A9FA9F009A868D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	3A0CEE5C10A9FA9F009A868D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	4811925B079A4994007F0B60 /* Notification Tool */ = {
+		activeExec = 0;
+		executables = (
+			3A0CEE2110A9FA80009A868D /* Notification Tool */,
+		);
+	};
+}

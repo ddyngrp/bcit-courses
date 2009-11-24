@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>GPG Keychain Access Read Me</title>
+</head>
+<body>
+<h1 style="font-size: 100%">GPG Keychain Access</h1>
+<h1>Read Me</h1>
+<p>for version 0.8.0DP2 (Developer's Preview number 1)</p>
+
+<h2>Notice</h2>
+<!--
+<p>This program is a release canidate. While we believe that this program is stable enough for everyday use, if you need to use the program in a mission-critical environment, use GPGKeys 0.6.1.</p>
+-->
+<p>This program is a developer's preview. <strong>This program is not stable enough for everyday use.</strong> If you need to use the program in a mission-critical environment, use GPG Keychain Access 0.7.x</p>
+
+<p>Note that only the English localization works correctly. If you are interested in translating this to other languages, please, visit our website.</p>
+
+<h2>Introduction</h2>
+
+<p>This is a simple key management program for GNU Privacy Guard.  It has a GUI and does some basic things.  You'll have to go to the command line for real power, though.</p>
+
+<p>You'll need GNU Privacy Guard for OS X installed.  You can get it from <a href="http://www.gnupg.org/">http://www.gnupg.org/</a>.</p>
+
+<h2>Instructions</h2>
+
+<p>Usage is simple.  GPG Keychain Access will list your keys and then you can do stuff with them.  You can also import and export keys.  Some actions, like importing and exporting, are nice and integrated.  Other features cannot be implemented fully, though, so Terminal will be started up and you'll be able to do what you want (the command you want will be run for you).  At most you might have an interactive interface.  At least, you'll be asked for your password.  When done, just close the Terminal window that was created.</p>
+
+<h2>Known Issues</h2>
+
+<p>This program is a release canidate. If you are not interested in using unstable software, use GPG Keychain Access 0.7.0.</p>
+
+<p>This program has only been tested on Mac OS X 10.3 ("Panther").</p>
+
+<p>The file system name for this program is "GPG Keychain Access.app" and the Finder should localize this (in English it should read "GPG Keychain Access") but may not.</p>
+
+<p>This program is incompletely translated. The English and German language versions should work and the other languages will probably appear in a combination of English or German with some text in the working language. This will be fixed before the 0.7.0 stable version.</p>
+
+<p>If you installed GnuPG with fink or, when you built it yourself, installed GnuPG in a directory other than /usr/local, you need to run GPGPreferences before using GPG Keychain Access.  GPGPreferences will fix your system to work with the entire suite of Mac GPG applications.  If it still doesn't work, create symlinks from your binaries of gpg and gpgv to /usr/local/bin.</p>
+
+<p>It is not possible to export a secret key.  This is because the current method of exporting secret keys is not secure, though you can do it at the command line if you really want to.  This will be fixed in future versions.  NOTE:  This is once again secure in 1.0.7, but still not possible via GPGME.</p>
+
+<p>There are conditions where GPG Keychain Access may crash after opening the key information dialog. These conditions remain ill-defined and are under investigation.</p>
+
+<h2>FAQ</h2>
+
+<p>Why does GPG Keychain seem to freeze for a few seconds when I try to use some commands under the Keys and GPG menus?</p>
+
+<p>GPG Keychain pauses while AppleScript talks to Terminal to start up GPG running an appropriate command.  This is intended as a feature, so that you know that GPG Keychain is working.  Most of the time you'll get a spinning cursor to illustrate this, but sometimes you don't.  Just wait for a few more seconds and it should be working.  If it has been a minute or more, something is probably the matter and you should go ahead and force quit GPG Keychain.</p>
+
+<h2>Contact</h2>
+
+<p>This application is the result of the combined efforts of the Mac GPG project, which can be found Online at <a href="http://macgpg.sourceforge.net">http://macgpg.sourceforge.net</a>.  Either visit the Web site for contact information or try <a href="mailto:rhwood@users.sourceforge.net">rhwood@users.sourceforge.net</a>.</p>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+"Yes" = "Ja";
+"No" = "Nej";
+PKDoesNotExpire = "Udløber ikke";
+
+PKImportSheetTitle = "Import";
+PKImportSuccessString = "Import gennemført uden problemer";
+PKErrorSheetTitle = "Fejl";
+PKKeyListingWarningTitle = "Nøgle Listning Advarsel";
+PKKeyListingKeyFailedString = "Hovsa, der var et problem med at læse denne nøgle:\n\n%@";
+"Warning" = "Advarsel";
+PKWarningSecretKeyExportString = "Du er ved at eksportere en sikker nøgle.  Hvis du giver denne sikre nøgle til nogen, vil de have adgang til din hemmelige nøgle!  For kun at eksportere den offentlige nøgle, skal du vælge den under Offentlig fane.";
+PKWarningSecretKeyDeleteString = "Du er ved at slette en hemmelig nøgle.  Når denne nøgle er væk er du ikke længere i stand til at dechifrere beskeder som er krypteret med denne nøgle! Er du sikker på at det er det som du vil!";
+PKWarningKeyDeleteString = "Er du sikker på at du vil slette denne nøgle?";

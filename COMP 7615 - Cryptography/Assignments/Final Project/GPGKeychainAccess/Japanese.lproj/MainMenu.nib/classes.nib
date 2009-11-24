@@ -1,0 +1,142 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                closeFrontAndKeyWindow = id; 
+                closeKeychains = id; 
+                fileExport = id; 
+                fileImport = id; 
+                keyBackup = id; 
+                keyDelete = id; 
+                keyEdit = id; 
+                keyGenerate = id; 
+                keyInformation = id; 
+                keyReceive = id; 
+                keySearch = id; 
+                keySend = id; 
+                keySign = id; 
+                keySignLocal = id; 
+                keySync = id; 
+                listFilter = id; 
+                listRefresh = id; 
+                rebuildKeyDBCaches = id; 
+                showAboutBox = id; 
+                showAcknowledgments = id; 
+                showGPL = id; 
+                showGnuPrivacyHandbook = id; 
+                showKeychains = id; 
+                showPreferences = id; 
+                toggleColumnDisplay = id; 
+                updateTrustDB = id; 
+            }; 
+            CLASS = PKController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                deleteKeyMenu = NSMenuItem; 
+                editKeyMenu = NSMenuItem; 
+                exportMenu = NSMenuItem; 
+                inspectorController = PKInspectorController; 
+                keyListStatus = NSTextField; 
+                keychainsWindowMenu = NSMenuItem; 
+                lsignKeyMenu = NSMenuItem; 
+                pkAllowSecretKeyImportCkBox = NSButton; 
+                pkArmoredCkBox = NSButton; 
+                pkExportKeyOptionsView = NSView; 
+                pkImportKeyOptionsView = NSView; 
+                pkOutline = NSOutlineView; 
+                pkOutlineDS = PKOutlineDataSource; 
+                pkOutlineHeaderMenu = NSMenu; 
+                pkProg = NSProgressIndicator; 
+                pkWindow = NSWindow; 
+                refreshMenu = NSMenuItem; 
+                sendKeyMenu = NSMenuItem; 
+                showInfoMenu = NSMenuItem; 
+                signKeyMenu = NSMenuItem; 
+                syncKeyMenu = NSMenuItem; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {changeSubKey = id; changeUserID = id; showWindow = id; }; 
+            CLASS = PKInspectorController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                keyPropertiesTabs = NSTabView; 
+                photo = NSImageView; 
+                pkOutline = NSOutlineView; 
+                "prim_algo" = NSTextField; 
+                "prim_cdate" = NSTextField; 
+                "prim_disabled" = NSTextField; 
+                "prim_edate" = NSTextField; 
+                "prim_expired" = NSTextField; 
+                "prim_finger" = NSTextField; 
+                "prim_invalid" = NSTextField; 
+                "prim_keyid" = NSTextField; 
+                "prim_len" = NSTextField; 
+                "prim_revoked" = NSTextField; 
+                "prim_userid" = NSTextField; 
+                "prim_validity" = NSTextField; 
+                "sub_algo" = NSTextField; 
+                "sub_cdate" = NSTextField; 
+                "sub_disabled" = NSTextField; 
+                "sub_edate" = NSTextField; 
+                "sub_expired" = NSTextField; 
+                "sub_invalid" = NSTextField; 
+                "sub_keyid" = NSTextField; 
+                "sub_len" = NSTextField; 
+                "sub_revoked" = NSTextField; 
+                "subkeys_menu" = NSPopUpButton; 
+                "user_comment" = NSTextField; 
+                "user_email" = NSTextField; 
+                "user_invalid" = NSTextField; 
+                "user_name" = NSTextField; 
+                "user_revoked" = NSTextField; 
+                "user_validity" = NSTextField; 
+                "userids_menu" = NSPopUpButton; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {refresh = id; }; 
+            CLASS = PKOutlineDataSource; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                ToolbarController = TBController; 
+                ToolbarSearchField = NSTextField; 
+                inspectorController = PKInspectorController; 
+                keyListStatus = NSTextField; 
+                pkController = PKController; 
+                pkNumberOfKeys = NSTextField; 
+                pkProg = NSProgressIndicator; 
+                pkWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = PKOutlineDelegate; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = PKWindowDelegate; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {stopSearch = id; }; 
+            CLASS = TBController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                TBSearchField = NSTextField; 
+                TBSearchStopButton = NSButton; 
+                TBSearchStopButtonImage = NSImageView; 
+                TBSearchView = NSView; 
+                inspectorController = PKInspectorController; 
+                keyController = PKController; 
+                keyOutline = NSOutlineView; 
+                pkWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {clearSearch = id; performSearch = id; }; 
+            CLASS = TBSearchTextField; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTextField; 
+        }
+    ); 
+    IBVersion = 1; 
+}

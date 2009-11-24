@@ -1,0 +1,12 @@
+{
+    IBClasses = (
+        {
+            CLASS = AboutBoxController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {display = id; versionField = NSTextField; whatToDisplay = id; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

@@ -1,0 +1,64 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                addSignature = id; 
+                addSubkey = id; 
+                addUserID = id; 
+                changePassphrase = id; 
+                changeSubkeyExpiryDate = id; 
+                disableKey = id; 
+                makePrimaryID = id; 
+                removeSignature = id; 
+                removeSubkey = id; 
+                removeUserID = id; 
+                revokeSignature = id; 
+                revokeSubkey = id; 
+                showWindow = id; 
+            }; 
+            CLASS = GKAKeyInformation; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                addSignature = NSButton; 
+                addSubkey = NSButton; 
+                addUserID = NSButton; 
+                changePassphrase = NSButton; 
+                changeSubkeyExpiryDate = NSButton; 
+                comment = NSTextField; 
+                created = NSTextField; 
+                disabled = NSButton; 
+                email = NSTextField; 
+                expiredIcon = NSImageView; 
+                expires = NSTextField; 
+                fingerprint = NSTextField; 
+                keyID = NSTextField; 
+                makePrimaryID = NSButton; 
+                name = NSTextField; 
+                photoIDfullsize = NSImageView; 
+                photoIDthumbnail = NSImageView; 
+                removeSignature = NSButton; 
+                removeSubkey = NSButton; 
+                removeUserID = NSButton; 
+                revokeSignature = NSButton; 
+                revokeSubkey = NSButton; 
+                signatures = NSTableView; 
+                strength = NSTextField; 
+                subkeyCreated = NSTextField; 
+                subkeyExpires = NSTextField; 
+                subkeyStatus = NSTextField; 
+                subkeyStrength = NSTextField; 
+                subkeyType = NSTextField; 
+                subkeys = NSTableView; 
+                tabs = NSTabView; 
+                trust = NSPopUpButton; 
+                type = NSTextField; 
+                userIDs = NSTableView; 
+                window = NSWindow; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}

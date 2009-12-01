@@ -1,0 +1,21 @@
+Signal Strength with Distance
+
+Bluetooth Device
+* Enabling
+* Disabling
+
+Connection Establishment
+* Scan for Devices
+* Pairing
+* Connecting
+* Un-pairing
+
+Data Transfer
+* Single Source - 30cm
+* Single Source - 350cm
+* Browsing - 30cm
+* Browsing - 350cm
+
+Connection Termination
+* Normal
+* Abnormal

@@ -1,11 +1,5 @@
 #include "AppDelegate.h"
 
-@interface AppDelegate(Private)
-+ (GPGContext *) keySignatureBrowserContext;
-+ (NSMutableDictionary *) signerPerUserIDCache;
-- (void) reloadSelectedKeyUserIDsWithSignaturesFromKey:(GPGKey *)key;
-@end
-
 @implementation AppDelegate
 
 - (id)init
@@ -354,7 +348,7 @@
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuItem
 {
-    if([menuItem action] == @selector(encrypt:) || [menuItem action] == @selector(sign:))
+    if([menuItem action] == @selector(sign:))
         return [keyTableView numberOfSelectedRows] > 0;
     else
         return YES;

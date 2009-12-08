@@ -63,16 +63,6 @@
     [keyTableView reloadData];
 }
 
-- (id) outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
-{
-	return [[item userIDs] objectAtIndex:index];
-}
-
-- (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-    return [item isKindOfClass:[GPGKey class]];
-}
-
 - (int) numberOfRowsInTableView:(NSTableView *)tableView
 {
     if(tableView == keyTableView)
@@ -83,10 +73,7 @@
         if(selectedRow >= 0){
             GPGKey	*selectedKey = [keys objectAtIndex:selectedRow];
 			
-            if(tableView == userIDTableView)
-                return [[selectedKey userIDs] count];
-            else /* subkeyTableView */
-                return [[selectedKey subkeys] count];
+			return [[selectedKey subkeys] count];
         }
         else
             return 0;
@@ -95,19 +82,7 @@
 
 - (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
 {
-    id	rowObject = nil;
-    
-    if(tableView == keyTableView)
-        rowObject = [keys objectAtIndex:row];
-    else{
-        GPGKey	*selectedKey = [keys objectAtIndex:[keyTableView selectedRow]];
-        
-        if(tableView == userIDTableView)
-            rowObject = [[selectedKey userIDs] objectAtIndex:row];
-        else
-            rowObject = [[selectedKey subkeys] objectAtIndex:row];
-    }
-    return [rowObject valueForKey:[tableColumn identifier]];
+	return [[keys objectAtIndex:row] valueForKey:[tableColumn identifier]];
 }
 
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
@@ -126,7 +101,6 @@
 			
             [algorithmTextField setStringValue:[selectedKey algorithmDescription]];
             [lengthTextField setIntValue:[selectedKey length]];
-            [validityTextField setIntValue:[selectedKey validity]];
 			
             [hasSecretSwitch setState:[selectedKey isSecret]];
             [canExcryptSwitch setState:[selectedKey canEncrypt]];
@@ -140,15 +114,12 @@
 			
             trustItem = [[[aContext trustItemEnumeratorForSearchPattern:[selectedKey fingerprint] maximumLevel:100] allObjects] lastObject];
             [aContext release];
-			
-            [self reloadSelectedKeyUserIDsWithSignaturesFromKey:selectedKey];
         }
         else{
             [xmlTextView setString:@""];
             [mainKeyBox setTitle:@""];
             [algorithmTextField setStringValue:@""];
             [lengthTextField setIntValue:0];
-            [validityTextField setIntValue:0];
 			
             [hasSecretSwitch setState:NO];
             [canExcryptSwitch setState:NO];
@@ -160,10 +131,6 @@
             [hasExpiredSwitch setState:NO];
             [isDisabledSwitch setState:NO];
         }
-        [subkeyTableView noteNumberOfRowsChanged];
-        [subkeyTableView reloadData];
-        [userIDTableView noteNumberOfRowsChanged];
-        [userIDTableView reloadData];
     }
 }
 
@@ -184,10 +151,6 @@
     }
 	
     return NO;
-}
-- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op
-{
-    return NSDragOperationNone;
 }
 
 - (IBAction) ok:(id)sender
@@ -423,11 +386,6 @@
     }
 }
 
-- (NSString *) stringFromSignatureStatus:(GPGError)status
-{
-    return GPGErrorDescription(status);
-}
-
 - (void) authenticateFile:(NSString *)inputFilename againstSignatureFile:(NSString *)signatureFilename
 {
     GPGContext			*aContext = [[GPGContext alloc] init];
@@ -521,76 +479,6 @@
         }
         [inputFilename release];
     }
-}
-
-- (void) keyringChanged:(NSNotification *)notif
-{
-    NSLog(@"keyringChanged: %@", [notif userInfo]);
-    [keyTableView noteNumberOfRowsChanged];
-    [keyTableView reloadData];
-}
-
-+ (GPGContext *) keySignatureBrowserContext
-{
-    static GPGContext   *keySignatureBrowserContext = nil;
-    
-    if(keySignatureBrowserContext == nil){
-        keySignatureBrowserContext = [[GPGContext alloc] init];
-        [keySignatureBrowserContext setKeyListMode:GPGKeyListModeSignatures | GPGKeyListModeLocal | GPGKeyListModeSignatureNotations];
-    }
-    
-    return keySignatureBrowserContext;
-}
-
-+ (NSMutableDictionary *) signerPerUserIDCache
-{
-    static NSMutableDictionary  *signerPerUserIDCache = nil;
-    
-    if(signerPerUserIDCache == nil){
-        signerPerUserIDCache = [[NSMutableDictionary alloc] init];
-    }
-    
-    return signerPerUserIDCache;
-}
-
-- (void) reloadSelectedKeyUserIDsWithSignaturesFromKey:(GPGKey *)key
-{
-    if(key != nil){
-        GPGContext  *aContext = [[self class] keySignatureBrowserContext];
-        
-        key = [aContext keyFromFingerprint:[key fingerprint] secretKey:NO];
-        [self willChangeValueForKey:@"selectedKeyUserIDsWithSignatures"];
-        [selectedKeyUserIDsWithSignatures autorelease];
-        if(key != nil)
-            selectedKeyUserIDsWithSignatures = [[key userIDs] retain];
-        else
-            selectedKeyUserIDsWithSignatures = nil;
-        [[[self class] signerPerUserIDCache] removeAllObjects];
-        [self didChangeValueForKey:@"selectedKeyUserIDsWithSignatures"];
-    }
-}
-
-- (NSArray *) selectedKeyUserIDsWithSignatures
-{
-    return selectedKeyUserIDsWithSignatures;
-}
-
-- (IBAction) testKeyFromFingerprintLeaks:(id)sender
-{
-    volatile int                i = 0;
-    volatile NSAutoreleasePool  *localAP = nil;
-    
-    NS_DURING
-	for(i = 0; i < 100; i++){
-		localAP = [[NSAutoreleasePool alloc] init];
-		
-		(void)[[[self class] keySignatureBrowserContext] keyFromFingerprint:@"0x992020D4" secretKey:NO];
-		[localAP release];
-	}
-    NS_HANDLER
-	[localAP release];
-	NSLog(@"Failed after %d attempts: %@", i, localException);
-    NS_ENDHANDLER
 }
 
 @end

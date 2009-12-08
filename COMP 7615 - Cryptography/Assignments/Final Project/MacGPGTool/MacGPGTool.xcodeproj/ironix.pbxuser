@@ -9,16 +9,16 @@
 	};
 	256AC3D80F4B6AC300CF3369 /* AppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {970, 949}}";
-			sepNavSelRange = "{205, 88}";
-			sepNavVisRange = "{56, 1640}";
+			sepNavIntBoundsRect = "{{0, 0}, {970, 897}}";
+			sepNavSelRange = "{887, 0}";
+			sepNavVisRange = "{0, 1585}";
 		};
 	};
 	256AC3D90F4B6AC300CF3369 /* AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1335, 8307}}";
-			sepNavSelRange = "{551, 0}";
-			sepNavVisRange = "{68, 1365}";
+			sepNavIntBoundsRect = "{{0, 0}, {3316, 6058}}";
+			sepNavSelRange = "{12552, 0}";
+			sepNavVisRange = "{5421, 1993}";
 		};
 	};
 	256AC3F00F4B6AF500CF3369 /* MacGPGTool_Prefix.pch */ = {
@@ -195,6 +195,33 @@
 			3A21E30010CE8CEE0073A237 /* PBXTextBookmark */ = 3A21E30010CE8CEE0073A237 /* PBXTextBookmark */;
 			3A21E30110CE8CEE0073A237 /* PBXTextBookmark */ = 3A21E30110CE8CEE0073A237 /* PBXTextBookmark */;
 			3A21E30210CE8CEE0073A237 /* PBXTextBookmark */ = 3A21E30210CE8CEE0073A237 /* PBXTextBookmark */;
+			3A21E30310CE8D190073A237 /* XCBuildMessageTextBookmark */ = 3A21E30310CE8D190073A237 /* XCBuildMessageTextBookmark */;
+			3A21E30410CE8D190073A237 /* PBXTextBookmark */ = 3A21E30410CE8D190073A237 /* PBXTextBookmark */;
+			3A21E30510CE8D1F0073A237 /* XCBuildMessageTextBookmark */ = 3A21E30510CE8D1F0073A237 /* XCBuildMessageTextBookmark */;
+			3A21E30610CE8D1F0073A237 /* PBXTextBookmark */ = 3A21E30610CE8D1F0073A237 /* PBXTextBookmark */;
+			3A21E30910CE8D310073A237 /* XCBuildMessageTextBookmark */ = 3A21E30910CE8D310073A237 /* XCBuildMessageTextBookmark */;
+			3A21E30A10CE8D310073A237 /* PBXTextBookmark */ = 3A21E30A10CE8D310073A237 /* PBXTextBookmark */;
+			3A21E30D10CE8DC90073A237 /* PBXTextBookmark */ = 3A21E30D10CE8DC90073A237 /* PBXTextBookmark */;
+			3A21E30E10CE8DC90073A237 /* PBXTextBookmark */ = 3A21E30E10CE8DC90073A237 /* PBXTextBookmark */;
+			3A21E30F10CE8DC90073A237 /* PBXTextBookmark */ = 3A21E30F10CE8DC90073A237 /* PBXTextBookmark */;
+			3A21E31110CE8DE40073A237 /* PBXTextBookmark */ = 3A21E31110CE8DE40073A237 /* PBXTextBookmark */;
+			3A21E31410CE8E650073A237 /* PBXTextBookmark */ = 3A21E31410CE8E650073A237 /* PBXTextBookmark */;
+			3A21E31710CE8E860073A237 /* XCBuildMessageTextBookmark */ = 3A21E31710CE8E860073A237 /* XCBuildMessageTextBookmark */;
+			3A21E31810CE8E860073A237 /* PBXTextBookmark */ = 3A21E31810CE8E860073A237 /* PBXTextBookmark */;
+			3A21E32510CE8FF20073A237 /* PBXTextBookmark */ = 3A21E32510CE8FF20073A237 /* PBXTextBookmark */;
+			3A21E32610CE8FF20073A237 /* XCBuildMessageTextBookmark */ = 3A21E32610CE8FF20073A237 /* XCBuildMessageTextBookmark */;
+			3A21E32710CE8FF20073A237 /* PBXTextBookmark */ = 3A21E32710CE8FF20073A237 /* PBXTextBookmark */;
+			3A21E32F10CE91150073A237 /* PBXTextBookmark */ = 3A21E32F10CE91150073A237 /* PBXTextBookmark */;
+			3A21E33510CE91C00073A237 /* PBXTextBookmark */ = 3A21E33510CE91C00073A237 /* PBXTextBookmark */;
+			3A21E33910CE91C90073A237 /* PBXTextBookmark */ = 3A21E33910CE91C90073A237 /* PBXTextBookmark */;
+			3A21E33D10CE91E10073A237 /* PBXTextBookmark */ = 3A21E33D10CE91E10073A237 /* PBXTextBookmark */;
+			3A21E34110CE92410073A237 /* PBXTextBookmark */ = 3A21E34110CE92410073A237 /* PBXTextBookmark */;
+			3A21E34510CE92590073A237 /* PBXTextBookmark */ = 3A21E34510CE92590073A237 /* PBXTextBookmark */;
+			3A21E34910CE92870073A237 /* PBXTextBookmark */ = 3A21E34910CE92870073A237 /* PBXTextBookmark */;
+			3A21E35010CE92BE0073A237 /* PBXTextBookmark */ = 3A21E35010CE92BE0073A237 /* PBXTextBookmark */;
+			3A21E35810CE93410073A237 /* PBXTextBookmark */ = 3A21E35810CE93410073A237 /* PBXTextBookmark */;
+			3A21E35910CE93410073A237 /* PBXTextBookmark */ = 3A21E35910CE93410073A237 /* PBXTextBookmark */;
+			3A21E35A10CE93410073A237 /* PBXTextBookmark */ = 3A21E35A10CE93410073A237 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3AEA6D0510CE71BB00FCCCF9 /* Source Control */;
 		userBuildSettings = {
@@ -242,7 +269,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 18";
 		rLen = 0;
-		rLoc = 2315;
+		rLoc = 2068;
 		rType = 0;
 		vrLen = 325;
 		vrLoc = 0;
@@ -262,7 +289,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 18";
 		rLen = 0;
-		rLoc = 2315;
+		rLoc = 2068;
 		rType = 0;
 		vrLen = 325;
 		vrLoc = 0;
@@ -293,7 +320,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 595;
+		rLoc = 483;
 		rType = 1;
 	};
 	3A21DFB310CE77CE0073A237 /* PBXTextBookmark */ = {
@@ -301,7 +328,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 952";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 801;
 		vrLoc = 35125;
@@ -311,7 +338,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 952";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 753;
 		vrLoc = 35125;
@@ -321,7 +348,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 92";
 		rLen = 0;
-		rLoc = 2315;
+		rLoc = 2068;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -332,7 +359,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 595;
+		rLoc = 483;
 		rType = 1;
 	};
 	3A21DFC310CE789E0073A237 /* PBXTextBookmark */ = {
@@ -380,7 +407,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 952";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 801;
 		vrLoc = 35125;
@@ -400,7 +427,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 708";
 		rLen = 0;
-		rLoc = 16078;
+		rLoc = 14606;
 		rType = 0;
 		vrLen = 1485;
 		vrLoc = 0;
@@ -420,7 +447,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 52";
 		rLen = 0;
-		rLoc = 1694;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1863;
 		vrLoc = 466;
@@ -430,7 +457,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 25";
 		rLen = 0;
-		rLoc = 771;
+		rLoc = 707;
 		rType = 0;
 		vrLen = 1760;
 		vrLoc = 0;
@@ -440,7 +467,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 708";
 		rLen = 0;
-		rLoc = 16078;
+		rLoc = 14606;
 		rType = 0;
 		vrLen = 1485;
 		vrLoc = 0;
@@ -450,7 +477,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 31";
 		rLen = 0;
-		rLoc = 956;
+		rLoc = 903;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 0;
@@ -460,7 +487,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 31";
 		rLen = 0;
-		rLoc = 956;
+		rLoc = 903;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 0;
@@ -470,7 +497,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 31";
 		rLen = 0;
-		rLoc = 956;
+		rLoc = 903;
 		rType = 0;
 		vrLen = 1669;
 		vrLoc = 954;
@@ -480,7 +507,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 708";
 		rLen = 0;
-		rLoc = 16078;
+		rLoc = 14606;
 		rType = 0;
 		vrLen = 1485;
 		vrLoc = 0;
@@ -490,7 +517,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 133";
 		rLen = 0;
-		rLoc = 2050;
+		rLoc = 2175;
 		rType = 0;
 		vrLen = 2318;
 		vrLoc = 3610;
@@ -500,7 +527,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 886";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 801;
 		vrLoc = 30957;
@@ -510,7 +537,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 133";
 		rLen = 0;
-		rLoc = 2050;
+		rLoc = 2175;
 		rType = 0;
 		vrLen = 2341;
 		vrLoc = 3610;
@@ -520,7 +547,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 31";
 		rLen = 0;
-		rLoc = 956;
+		rLoc = 903;
 		rType = 0;
 		vrLen = 1714;
 		vrLoc = 419;
@@ -559,7 +586,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 47";
 		rLen = 0;
-		rLoc = 1694;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1521;
 		vrLoc = 862;
@@ -569,7 +596,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 47";
 		rLen = 0;
-		rLoc = 1654;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1559;
 		vrLoc = 862;
@@ -589,7 +616,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 47";
 		rLen = 0;
-		rLoc = 1654;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1559;
 		vrLoc = 862;
@@ -599,7 +626,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 637";
 		rLen = 0;
-		rLoc = 19211;
+		rLoc = 17739;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 22083;
@@ -609,7 +636,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 637";
 		rLen = 0;
-		rLoc = 19211;
+		rLoc = 17739;
 		rType = 0;
 		vrLen = 1368;
 		vrLoc = 26706;
@@ -619,7 +646,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 47";
 		rLen = 0;
-		rLoc = 1654;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1559;
 		vrLoc = 862;
@@ -629,7 +656,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 11";
 		rLen = 0;
-		rLoc = 293;
+		rLoc = 219;
 		rType = 0;
 		vrLen = 1728;
 		vrLoc = 25;
@@ -640,7 +667,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 162;
+		rLoc = 133;
 		rType = 1;
 	};
 	3A21E27A10CE84DC0073A237 /* PBXTextBookmark */ = {
@@ -648,7 +675,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 198";
 		rLen = 0;
-		rLoc = 5325;
+		rLoc = 4327;
 		rType = 0;
 		vrLen = 716;
 		vrLoc = 6002;
@@ -658,7 +685,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 30";
 		rLen = 0;
-		rLoc = 955;
+		rLoc = 902;
 		rType = 0;
 		vrLen = 1750;
 		vrLoc = 0;
@@ -668,7 +695,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 637";
 		rLen = 0;
-		rLoc = 19211;
+		rLoc = 17739;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 21877;
@@ -677,8 +704,8 @@
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 644";
-		rLen = 405;
-		rLoc = 19391;
+		rLen = 0;
+		rLoc = 17739;
 		rType = 0;
 		vrLen = 1574;
 		vrLoc = 22283;
@@ -687,8 +714,8 @@
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 644";
-		rLen = 405;
-		rLoc = 19391;
+		rLen = 0;
+		rLoc = 17739;
 		rType = 0;
 		vrLen = 1551;
 		vrLoc = 22283;
@@ -698,7 +725,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 51";
 		rLen = 0;
-		rLoc = 1694;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1646;
 		vrLoc = 205;
@@ -718,7 +745,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 186";
 		rLen = 0;
-		rLoc = 5315;
+		rLoc = 4317;
 		rType = 0;
 		vrLen = 1649;
 		vrLoc = 5182;
@@ -728,7 +755,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 170";
 		rLen = 0;
-		rLoc = 4816;
+		rLoc = 3865;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 5182;
@@ -748,7 +775,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 782";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 25405;
@@ -758,7 +785,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 781";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 1539;
 		vrLoc = 25324;
@@ -768,7 +795,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 678";
 		rLen = 0;
-		rLoc = 21324;
+		rLoc = 17743;
 		rType = 0;
 		vrLen = 1309;
 		vrLoc = 22606;
@@ -778,7 +805,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 380";
 		rLen = 0;
-		rLoc = 12134;
+		rLoc = 10765;
 		rType = 0;
 		vrLen = 1613;
 		vrLoc = 12488;
@@ -788,7 +815,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 161";
 		rLen = 41;
-		rLoc = 5052;
+		rLoc = 4054;
 		rType = 0;
 		vrLen = 2000;
 		vrLoc = 4382;
@@ -798,7 +825,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 374";
 		rLen = 0;
-		rLoc = 12007;
+		rLoc = 10638;
 		rType = 0;
 		vrLen = 1380;
 		vrLoc = 12071;
@@ -808,7 +835,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 211";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 5306;
 		rType = 0;
 		vrLen = 1522;
 		vrLoc = 6589;
@@ -818,7 +845,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 211";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 5306;
 		rType = 0;
 		vrLen = 1663;
 		vrLoc = 6589;
@@ -828,7 +855,7 @@
 		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
 		name = "AppDelegate.m: 357";
 		rLen = 0;
-		rLoc = 12007;
+		rLoc = 10638;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 11464;
@@ -868,7 +895,7 @@
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 51";
 		rLen = 0;
-		rLoc = 1694;
+		rLoc = 1583;
 		rType = 0;
 		vrLen = 1646;
 		vrLoc = 205;
@@ -877,11 +904,276 @@
 		isa = PBXTextBookmark;
 		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
 		name = "AppDelegate.h: 10";
-		rLen = 88;
-		rLoc = 205;
+		rLen = 0;
+		rLoc = 219;
 		rType = 0;
 		vrLen = 1640;
 		vrLoc = 56;
+	};
+	3A21E30310CE8D190073A237 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Method definition for '-cancelSheet:' not found";
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 483;
+		rType = 1;
+	};
+	3A21E30410CE8D190073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 596";
+		rLen = 0;
+		rLoc = 17739;
+		rType = 0;
+		vrLen = 427;
+		vrLoc = 20897;
+	};
+	3A21E30510CE8D1F0073A237 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'selectedRowEnumerator' is deprecated (declared at /Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSTableView.h:663)";
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 39;
+		rType = 1;
+	};
+	3A21E30610CE8D1F0073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 40";
+		rLen = 0;
+		rLoc = 1029;
+		rType = 0;
+		vrLen = 510;
+		vrLoc = 823;
+	};
+	3A21E30910CE8D310073A237 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'selectedRowEnumerator' is deprecated (declared at /Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSTableView.h:663)";
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 39;
+		rType = 1;
+	};
+	3A21E30A10CE8D310073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 40";
+		rLen = 0;
+		rLoc = 1029;
+		rType = 0;
+		vrLen = 510;
+		vrLoc = 823;
+	};
+	3A21E30D10CE8DC90073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 40";
+		rLen = 0;
+		rLoc = 1029;
+		rType = 0;
+		vrLen = 1581;
+		vrLoc = 207;
+	};
+	3A21E30E10CE8DC90073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 73";
+		rLen = 0;
+		rLoc = 2064;
+		rType = 0;
+		vrLen = 1472;
+		vrLoc = 772;
+	};
+	3A21E30F10CE8DC90073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 10";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 1638;
+		vrLoc = 0;
+	};
+	3A21E31110CE8DE40073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 26";
+		rLen = 0;
+		rLoc = 749;
+		rType = 0;
+		vrLen = 1694;
+		vrLoc = 0;
+	};
+	3A21E31410CE8E650073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 41";
+		rLen = 0;
+		rLoc = 1278;
+		rType = 0;
+		vrLen = 1574;
+		vrLoc = 0;
+	};
+	3A21E31710CE8E860073A237 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'userIDTableView' undeclared (first use in this function)";
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 82;
+		rType = 1;
+	};
+	3A21E31810CE8E860073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 86";
+		rLen = 0;
+		rLoc = 2175;
+		rType = 0;
+		vrLen = 585;
+		vrLoc = 1999;
+	};
+	3A21E32510CE8FF20073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 13";
+		rLen = 34;
+		rLoc = 308;
+		rType = 0;
+		vrLen = 1609;
+		vrLoc = 93;
+	};
+	3A21E32610CE8FF20073A237 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'userIDTableView' undeclared (first use in this function)";
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 82;
+		rType = 1;
+	};
+	3A21E32710CE8FF20073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 133";
+		rLen = 0;
+		rLoc = 3963;
+		rType = 0;
+		vrLen = 1879;
+		vrLoc = 2143;
+	};
+	3A21E32F10CE91150073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 66";
+		rLen = 0;
+		rLoc = 2175;
+		rType = 0;
+		vrLen = 1335;
+		vrLoc = 1238;
+	};
+	3A21E33510CE91C00073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 66";
+		rLen = 0;
+		rLoc = 2175;
+		rType = 0;
+		vrLen = 1910;
+		vrLoc = 1292;
+	};
+	3A21E33910CE91C90073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 66";
+		rLen = 386;
+		rLoc = 1789;
+		rType = 0;
+		vrLen = 1455;
+		vrLoc = 1292;
+	};
+	3A21E33D10CE91E10073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 137";
+		rLen = 0;
+		rLoc = 5054;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 3918;
+	};
+	3A21E34110CE92410073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 389";
+		rLen = 0;
+		rLoc = 13526;
+		rType = 0;
+		vrLen = 2097;
+		vrLoc = 12589;
+	};
+	3A21E34510CE92590073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 389";
+		rLen = 0;
+		rLoc = 13526;
+		rType = 0;
+		vrLen = 2544;
+		vrLoc = 12589;
+	};
+	3A21E34910CE92870073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 484";
+		rLen = 0;
+		rLoc = 17739;
+		rType = 0;
+		vrLen = 1729;
+		vrLoc = 17364;
+	};
+	3A21E35010CE92BE0073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 484";
+		rLen = 0;
+		rLoc = 17739;
+		rType = 0;
+		vrLen = 1598;
+		vrLoc = 16141;
+	};
+	3A21E35810CE93410073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */;
+		name = "AppDelegate.m: 367";
+		rLen = 0;
+		rLoc = 12552;
+		rType = 0;
+		vrLen = 1993;
+		vrLoc = 5421;
+	};
+	3A21E35910CE93410073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 13";
+		rLen = 34;
+		rLoc = 308;
+		rType = 0;
+		vrLen = 1609;
+		vrLoc = 93;
+	};
+	3A21E35A10CE93410073A237 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* AppDelegate.h */;
+		name = "AppDelegate.h: 31";
+		rLen = 0;
+		rLoc = 887;
+		rType = 0;
+		vrLen = 1585;
+		vrLoc = 0;
 	};
 	3AEA6CF410CE71B800FCCCF9 /* MacGPGTool */ = {
 		isa = PBXExecutable;

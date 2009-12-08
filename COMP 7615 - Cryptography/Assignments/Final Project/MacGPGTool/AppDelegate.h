@@ -6,28 +6,30 @@
     NSArray	*keys;
     NSArray	*selectedKeyUserIDsWithSignatures;
     
-    IBOutlet NSTableView		*keyTableView;
-    IBOutlet NSTableView		*userIDTableView;
-    IBOutlet NSTableView		*subkeyTableView;
-    IBOutlet NSTextField		*searchPatternTextField;
-    IBOutlet NSTextView			*xmlTextView;
-    IBOutlet NSBox				*mainKeyBox;
-    IBOutlet NSTextField		*algorithmTextField;
-    IBOutlet NSTextField		*lengthTextField;
-    IBOutlet NSTextField		*validityTextField;
+	// Key Search
+    IBOutlet NSTableView	*keyTableView;
+    IBOutlet NSTextField	*searchPatternTextField;
+    IBOutlet NSTextView		*xmlTextView;
+    IBOutlet NSBox			*mainKeyBox;
+    IBOutlet NSButton		*secretKeySwitch;
+	
+	// Algorithm & Length
+    IBOutlet NSTextField	*algorithmTextField;
+    IBOutlet NSTextField	*lengthTextField;
 	
 	// Key Abilities
-    IBOutlet NSButtonCell		*hasSecretSwitch;
-    IBOutlet NSButtonCell		*canExcryptSwitch;
-    IBOutlet NSButtonCell		*canSignSwitch;
-    IBOutlet NSButtonCell		*canCertifySwitch;
+    IBOutlet NSButtonCell	*hasSecretSwitch;
+    IBOutlet NSButtonCell	*canExcryptSwitch;
+    IBOutlet NSButtonCell	*canSignSwitch;
+    IBOutlet NSButtonCell	*canCertifySwitch;
 	
-	// Key Owner
-    IBOutlet NSButtonCell		*isRevokedSwitch;
-    IBOutlet NSButtonCell		*isInvalidSwitch;
-    IBOutlet NSButtonCell		*hasExpiredSwitch;
-    IBOutlet NSButtonCell		*isDisabledSwitch;
+	// Key Info
+    IBOutlet NSButtonCell	*isRevokedSwitch;
+    IBOutlet NSButtonCell	*isInvalidSwitch;
+    IBOutlet NSButtonCell	*hasExpiredSwitch;
+    IBOutlet NSButtonCell	*isDisabledSwitch;
 	
+	// Passphrase
     IBOutlet NSTextField	*passphraseDescriptionTextField;
     IBOutlet NSTextField	*passphraseTextField;
     IBOutlet NSPanel		*passphrasePanel;
@@ -45,9 +47,6 @@
     IBOutlet NSButtonCell	*signingDetachedSwitch;
     IBOutlet NSTextField	*signingOutputFilenameTextField;
     IBOutlet NSPanel		*signingPanel;
-	
-	// Search Type
-    IBOutlet NSButton	*secretKeySwitch;
 }
 
 - (IBAction) searchKeys:(id)sender;
@@ -64,13 +63,7 @@
 - (IBAction) verify:(id)sender;
 - (IBAction) verifyDetachedSignature:(id)sender;
 
-- (IBAction) export:(id)sender;
-- (IBAction) import:(id)sender;
-
 - (IBAction) ok:(id)sender;
 - (IBAction) cancel:(id)sender;
-
-- (IBAction) okSheet:(id)sender;
-- (IBAction) cancelSheet:(id)sender;
 
 @end

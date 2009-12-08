@@ -49,7 +49,7 @@
  * NOTES: This is the main delegate for the application. It handles all GUI
  *        and client/server functions. The application itself enables a user
  *        to search for GnuPG keys in their keyring as well as encrypt,
- *        decrypt, and sign files.
+ *        and decrypt files.
  *
  *---------------------------------------------------------------------------*/
 
@@ -851,10 +851,6 @@
 			while(aRow = [anEnum nextObject])
 				[aContext addSignerKey:[keys objectAtIndex:[aRow intValue]]];
 			
-			[aContext addSignatureNotationWithName:@"me@TEST_HUMAN_READABLE_NOTATION"
-											 value:@"My human-readable notation"
-											 flags:GPGSignatureNotationCriticalMask];
-			[aContext addSignatureNotationWithName:nil value:@"http://macgpg.sf.net/" flags:0];
 			outputData = [aContext signedData:inputData signatureMode:[signingDetachedSwitch state]];
 		NS_HANDLER
 			outputData = nil;
@@ -910,7 +906,8 @@
 										   againstData:(GPGData *)inputData];
 		else
 			signatures = [aContext verifySignedData:(GPGData *)inputData];
-		statusString = @"Signatures";
+	
+		statusString = @"Signature:";
 		NSLog(@"operation results = %@", [aContext operationResults]);
 		
 		NSEnumerator	*anEnum = [[aContext signatures] objectEnumerator];
@@ -919,20 +916,24 @@
 		while(aSig = [anEnum nextObject]) {
 			GPGKey	*signerKey = [aContext keyFromFingerprint:[aSig fingerprint] secretKey:NO];
 			
-			statusString = [statusString stringByAppendingFormat:@"\nStatus: %@,  \
-							Summary: 0x%04x, Signer: %@, Signature Date: %@, \
-							Expiration Date: %@, Validity: %@, Validity Error: %@, \
-							Notations/Policy URLs: %@", GPGErrorDescription([aSig status]),
-							[aSig summary], (signerKey ? [signerKey userID]:[aSig fingerprint]),
+			statusString = [statusString stringByAppendingFormat:
+							@"\tStatus: %@\n"
+							"\tSigner: %@\n"
+							"\tSignature Date: %@\n"
+							"\tExpiration Date: %@\n"
+							"\tValidity: %@\n"
+							"\tValidity Error: %@\n",
+							GPGErrorDescription([aSig status]),
+							(signerKey ? [signerKey userID]:[aSig fingerprint]),
 							[aSig creationDate], [aSig expirationDate], [aSig validityDescription],
-							GPGErrorDescription([aSig validityError]), [aSig signatureNotations]];
+							GPGErrorDescription([aSig validityError])];
 		}
 		
 		NSLog(@"Signature notations/policies = %@", [aContext signatureNotations]);
 		NSRunInformationalAlertPanel(@"Authentication result", statusString, nil, nil, nil);
 		
 	NS_HANDLER
-		NSString		*statusString = @"Signatures";
+		NSString		*statusString = @"Signature:";
 		BOOL			hasSigs = NO;
 		NSEnumerator	*anEnum = [[aContext signatures] objectEnumerator];
 		GPGSignature	*aSig;
@@ -943,13 +944,17 @@
 			GPGKey	*signerKey = [aContext keyFromFingerprint:[aSig fingerprint] secretKey:NO];
 			
 			hasSigs = YES;
-			statusString = [statusString stringByAppendingFormat:@"\nStatus: %@,  \
-							Summary: 0x%04x, Signer: %@, Signature Date: %@, \
-							Expiration Date: %@, Validity: %@, Validity Error: %@, \
-							Notations: %@, Policy URLs: %@", GPGErrorDescription([aSig status]),
-							[aSig summary], (signerKey ? [signerKey userID]:[aSig fingerprint]),
+			statusString = [statusString stringByAppendingFormat:
+							@"\tStatus: %@\n"
+							"\tSigner: %@\n"
+							"\tSignature Date: %@\n"
+							"\tExpiration Date: %@\n"
+							"\tValidity: %@\n"
+							"\tValidity Error: %@\n",
+							GPGErrorDescription([aSig status]),
+							(signerKey ? [signerKey userID]:[aSig fingerprint]),
 							[aSig creationDate], [aSig expirationDate], [aSig validityDescription],
-							GPGErrorDescription([aSig validityError]), [aSig notations], [aSig policyURLs]];
+							GPGErrorDescription([aSig validityError])];
 		}
 		
 		if(hasSigs)

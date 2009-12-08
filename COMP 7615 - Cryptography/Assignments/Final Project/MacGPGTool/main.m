@@ -1,10 +1,19 @@
-//
-//  main.m
-//  MacGPGTool
-//
-//  Created by Steffen L. Norgren on 09-12-08.
-//  Copyright 2009 Esurient Systems Inc.. All rights reserved.
-//
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	main.m - application entry point
+ * 
+ * PROGRAM:     MacGPGTool
+ * 
+ * DATE:        December 7, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: Main entry point for the application.
+ *
+ *---------------------------------------------------------------------------*/
 
 #import <Cocoa/Cocoa.h>
 

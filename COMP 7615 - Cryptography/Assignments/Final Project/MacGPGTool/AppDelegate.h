@@ -1,3 +1,22 @@
+/*-----------------------------------------------------------------------------
+ * SOURCE FILE:	AppDelegate.h - Header for the application delegate
+ * 
+ * PROGRAM:     MacGPGTool
+ * 
+ * DATE:        December 7, 2009
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * NOTES: Handles all GUI and client/server functions. The application itself
+ *        enables a user to search for GnuPG keys in their keyring as well
+ *        as encrypt, decrypt, and sign files.
+ *
+ *---------------------------------------------------------------------------*/
+
 #include <Cocoa/Cocoa.h>
 #include <MacGPGME/MacGPGME.h>
 

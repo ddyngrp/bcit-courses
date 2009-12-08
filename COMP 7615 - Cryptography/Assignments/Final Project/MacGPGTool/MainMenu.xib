@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="159"/>
+			<integer value="2"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -275,6 +275,7 @@
 									</object>
 									<string key="NSFrame">{{1, 17}, {583, 80}}</string>
 									<reference key="NSSuperview" ref="436386609"/>
+									<reference key="NSNextKeyView" ref="927821614"/>
 									<reference key="NSDocView" ref="927821614"/>
 									<reference key="NSBGColor" ref="957382187"/>
 									<int key="NScvFlags">4</int>
@@ -308,6 +309,7 @@
 									</object>
 									<string key="NSFrame">{{1, 0}, {583, 17}}</string>
 									<reference key="NSSuperview" ref="436386609"/>
+									<reference key="NSNextKeyView" ref="505296586"/>
 									<reference key="NSDocView" ref="505296586"/>
 									<reference key="NSBGColor" ref="957382187"/>
 									<int key="NScvFlags">4</int>
@@ -316,6 +318,7 @@
 							</object>
 							<string key="NSFrame">{{20, 194}, {600, 113}}</string>
 							<reference key="NSSuperview" ref="521643030"/>
+							<reference key="NSNextKeyView" ref="488173816"/>
 							<int key="NSsFlags">50</int>
 							<reference key="NSVScroller" ref="950890568"/>
 							<reference key="NSHScroller" ref="514060288"/>
@@ -425,6 +428,7 @@
 											</object>
 											<string key="NSFrame">{{1, 1}, {367, 164}}</string>
 											<reference key="NSSuperview" ref="778053574"/>
+											<reference key="NSNextKeyView" ref="186251450"/>
 											<reference key="NSDocView" ref="186251450"/>
 											<reference key="NSBGColor" ref="481941699"/>
 											<object class="NSCursor" key="NSCursor">
@@ -456,6 +460,7 @@
 									</object>
 									<string key="NSFrameSize">{384, 166}</string>
 									<reference key="NSSuperview" ref="484644975"/>
+									<reference key="NSNextKeyView" ref="830964142"/>
 									<int key="NSsFlags">18</int>
 									<reference key="NSVScroller" ref="894379807"/>
 									<reference key="NSHScroller" ref="69891812"/>
@@ -601,7 +606,7 @@
 													<object class="NSTextFieldCell" key="NSTitleCell">
 														<int key="NSCellFlags">67239424</int>
 														<int key="NSCellFlags2">0</int>
-														<string key="NSContents">Key Owner</string>
+														<string key="NSContents">Key Info</string>
 														<object class="NSFont" key="NSSupport" id="222437162">
 															<string key="NSName">Helvetica</string>
 															<double key="NSSize">10</double>
@@ -4788,13 +4793,9 @@ AAEAAQABA</bytes>
 							<string>askOutputFileForEncryption:</string>
 							<string>askOutputFileForSigning:</string>
 							<string>cancel:</string>
-							<string>cancelSheet:</string>
 							<string>decrypt:</string>
 							<string>encrypt:</string>
-							<string>export:</string>
-							<string>import:</string>
 							<string>ok:</string>
-							<string>okSheet:</string>
 							<string>searchKeys:</string>
 							<string>sign:</string>
 							<string>verify:</string>
@@ -4802,10 +4803,6 @@ AAEAAQABA</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4850,10 +4847,7 @@ AAEAAQABA</bytes>
 							<string>signingInputFilenameTextField</string>
 							<string>signingOutputFilenameTextField</string>
 							<string>signingPanel</string>
-							<string>subkeyTableView</string>
 							<string>trustSwitch</string>
-							<string>userIDTableView</string>
-							<string>validityTextField</string>
 							<string>xmlTextView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -4884,10 +4878,7 @@ AAEAAQABA</bytes>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
 							<string>NSPanel</string>
-							<string>NSTableView</string>
 							<string>NSButtonCell</string>
-							<string>NSTableView</string>
-							<string>NSTextField</string>
 							<string>NSTextView</string>
 						</object>
 					</object>

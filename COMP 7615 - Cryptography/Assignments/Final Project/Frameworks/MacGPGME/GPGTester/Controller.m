@@ -123,14 +123,11 @@
     if([aString length] == 0)
         return;
 
-//    [[aContext engine] setExecutablePath:[NSString stringWithFormat:@"/tmp/g%Cp%Cg%C", 0x00e9, 0x00e9, 0x00e9]];
-//    [[aContext engine] setExecutablePath:@"/sw/bin/gpg"];
     [progressIndicator startAnimation:nil];
     if([aKeyserver length] > 0)
         options = [NSDictionary dictionaryWithObject:aKeyserver forKey:@"keyserver"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundKeys:) name:GPGAsynchronousOperationDidTerminateNotification object:aContext];
     NS_DURING
-//      [aContext asyncSearchForKeysMatchingPatterns:[NSArray arrayWithObject:aString] serverOptions:options];
         [aContext asyncSearchForKeysMatchingPatterns:[aString componentsSeparatedByString:@","] serverOptions:options];
     NS_HANDLER
         [progressIndicator stopAnimation:nil];
@@ -205,12 +202,6 @@
     [progressIndicator stopAnimation:nil];
     [keys release];
     keys = [[[[[notification object] operationResults] objectForKey:GPGChangesKey] allKeys] retain];
-/*    if([keys count] > 0){ // only for tests
-        GPGContext  *aContext = [[GPGContext alloc] init];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadedKeys:) name:GPGAsynchronousOperationDidTerminateNotification object:aContext];
-        [aContext asyncUploadKeys:keys serverOptions:nil];
-    }*/
     [keyTableView noteNumberOfRowsChanged];
     [keyTableView reloadData];
     [self showImportResults:[[notification object] operationResults]];
@@ -390,14 +381,10 @@
         GPGData		*exportedKeyData;
 
         [pboard declareTypes:[NSArray arrayWithObjects:/*@"application/pgp-keys",*/ NSStringPboardType/*, NSFileContentsPboardType*/, nil] owner:nil];
-        //    	[pboard addTypes:[NSArray arrayWithObject:@"application/pgp-keys"] owner:nil];
 
         [aContext setUsesArmor:YES];
         exportedKeyData = [aContext exportedKeys:[NSArray arrayWithObject:[keys objectAtIndex:[[rows lastObject] intValue]]]];
-//        [pboard setData:[exportedKeyData data] forType:@"application/pgp-keys"];
         [pboard setString:[exportedKeyData string] forType:NSStringPboardType];
-//        [pboard setData:[exportedKeyData data] forType:NSFileContentsPboardType];
-//        NSLog(@"[%@]", [exportedKeyData data]);
         [aContext release];
 
         return YES;
@@ -702,14 +689,7 @@
                 [aContext addSignerKey:[keys objectAtIndex:[aRow intValue]]];
 
             [aContext addSignatureNotationWithName:@"me@TEST_HUMAN_READABLE_NOTATION" value:@"My human-readable notation" flags:GPGSignatureNotationCriticalMask];
-//            [aContext addSignatureNotationWithName:@"TEST_HUMAN_READABLE_NOTATION" value:@"My human-readable notation" flags:GPGSignatureNotationCriticalMask];
-//            [aContext addSignatureNotationWithName:@"@@" value:@"My human-readable notation" flags:GPGSignatureNotationCriticalMask];
-//            [aContext addSignatureNotationWithName:@"" value:@"My human-readable notation" flags:GPGSignatureNotationCriticalMask];
-//            [aContext addSignatureNotationWithName:[NSString stringWithFormat:@"%C", 0x00e9] value:@"My human-readable notation" flags:GPGSignatureNotationCriticalMask];
-//            [aContext addSignatureNotationWithName:@"TEST_DATA_NOTATION" value:[NSData dataWithBytes:&deadBeef length:sizeof(deadBeef)] flags:GPGSignatureNotationCriticalMask]; // Not yet implemented
             [aContext addSignatureNotationWithName:nil value:@"http://macgpg.sf.net/" flags:0];
-//            [aContext addSignatureNotationWithName:nil value:[NSString stringWithFormat:@"%C", 0x00e9] flags:0];
-//            [aContext addSignatureNotationWithName:nil value:@"http://macgpg.sf.net/" flags:GPGSignatureNotationCriticalMask];
             outputData = [aContext signedData:inputData signatureMode:[signingDetachedSwitch state]];
         NS_HANDLER
             outputData = nil;
@@ -744,7 +724,6 @@
         inputData = [[GPGData alloc] initWithContentsOfFile:inputFilename];
         if(signatureFilename != nil)
             signatureData = [[GPGData alloc] initWithContentsOfFile:signatureFilename];
-//[[aContext engine] setExecutablePath:@"/Users/dave/Developer/gpgkeys_wrapper.sh"];
         if(signatureData != nil)
             signatures = [aContext verifySignatureData:(GPGData *)signatureData againstData:(GPGData *)inputData];
         else
@@ -1037,186 +1016,3 @@ static NSComparisonResult userIDsOrSignerKeysCompare(id firstObject, id secondOb
 }
 
 @end
-
-#if 0
-// NOTE that works :-)
-#include <gpg-error.h>
-#include "/tmp/gpgme-C.h"
-
-@class GPGAsyncHelper;
-
-@implementation Controller(Async)
-
-struct ioContext{
-    gpgme_io_cb_t	fnc;
-    void			*fnc_data;
-    NSFileHandle	*fileHandle;
-};
-
-static struct {
-    Controller			*controller;
-    gpgme_ctx_t			context;
-    struct ioContext	ioContexts[10];
-} theContextParams; // Should be replaced by GPGContext; we need additional ivar, NSMapTable _ioContexts, keyed by fd, and value is dict containing gpgme_io_cb_t fnc as NSValue, void* fnc_data as NSValue, NSFileHandle *fileHandle
-
-static gpgme_error_t addCallback(void *data, int fd, int dir, gpgme_io_cb_t fnc, void *fnc_data, void **tag)
-{
-    int	i;
-
-    NSCParameterAssert(data == &theContextParams);
-    NSLog(@"addCallback fd=%d, dir=%d", fd, dir);
-
-    for(i = 0; i < 10; i++){
-        if(theContextParams.ioContexts[i].fnc == NULL){
-            theContextParams.ioContexts[i].fnc = fnc;
-            theContextParams.ioContexts[i].fnc_data = fnc_data;
-            theContextParams.ioContexts[i].fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd];
-            if(dir == 1)
-                // TODO: move this call in eventCallback:START
-                [[NSNotificationCenter defaultCenter] addObserver:theContextParams.controller selector:@selector(fileHandleDataAvailable:) name:NSFileHandleDataAvailableNotification object:theContextParams.ioContexts[i].fileHandle]; // observer should be theContextParams.ioContexts[i]
-            else{
-                NSLog(@"WARNING: no way with NSFileHandle to write async!");
-                // We should use low-level functions for fd:
-                // We should create one (shared) thread responsible of calling select(),
-                // to get informed when fd is writable. Thread exits when no more fd to check.
-                // (we could also use that mechanism for both read and write)
-                return gpg_err_make(GPG_ERR_SOURCE_USER_2, GPG_ERR_GENERAL);
-            }
-            *tag = (void *)i;
-            // TODO: move this call in eventCallback:START
-            [theContextParams.ioContexts[i].fileHandle waitForDataInBackgroundAndNotify];
-            return GPG_ERR_NO_ERROR;
-        }
-    }
-    return gpg_err_make(GPG_ERR_SOURCE_USER_2, GPG_ERR_GENERAL);
-}
-
-- (void) fileHandleDataAvailable:(NSNotification *)notification
-{
-    NSLog(@"fileHandleDataAvailable: fd=%d", [[notification object] fileDescriptor]);
-    int	i;
-    for(i = 0; i < 10; i++){
-        if(theContextParams.ioContexts[i].fileHandle == [notification object]){
-            NSLog(@"Will do I/O op");
-            (void)(*(theContextParams.ioContexts[i].fnc))(theContextParams.ioContexts[i].fnc_data, [[notification object] fileDescriptor]); // We don't care (yet) about the result; it should always be 0
-            NSLog(@"Did");
-            [theContextParams.ioContexts[i].fileHandle waitForDataInBackgroundAndNotify];
-            return;
-        }
-    }
-    NSLog(@"Unknown fd!");
-}
-
-static void removeCallback(void *tag)
-{
-    NSFileHandle	*fileHandle = theContextParams.ioContexts[(int)tag].fileHandle;
-
-    NSLog(@"removeCallback fd=%d", [fileHandle fileDescriptor]);
-    theContextParams.ioContexts[(int)tag].fnc = NULL;
-    theContextParams.ioContexts[(int)tag].fnc_data = NULL;
-    [[NSNotificationCenter defaultCenter] removeObserver:nil name:NSFileHandleDataAvailableNotification object:fileHandle];
-    [fileHandle closeFile];
-    [fileHandle release];
-    theContextParams.ioContexts[(int)tag].fileHandle = nil;
-}
-
-static void eventCallback(void *data, gpgme_event_io_t type, void *type_data)
-{
-    NSCParameterAssert(data == &theContextParams);
-
-    switch(type){
-        case GPGME_EVENT_START:
-            NSLog(@"eventCallback: GPGME_EVENT_START");
-            break;
-        case GPGME_EVENT_DONE:
-            NSLog(@"eventCallback: GPGME_EVENT_DONE");
-            NSLog(@"Termination status: %@ (%d = 0x%0.8x)", GPGErrorDescription(*((GPGError *)type_data)), *((GPGError *)type_data), *((GPGError *)type_data));
-            break;
-        case GPGME_EVENT_NEXT_KEY:
-            NSLog(@"eventCallback: GPGME_EVENT_NEXT_KEY");
-            NSLog(@"Next key: %@", [[[[GPGKey alloc] initWithInternalRepresentation:((gpgme_key_t)type_data)] autorelease] userID]);
-            break;
-        case GPGME_EVENT_NEXT_TRUSTITEM:
-            NSLog(@"eventCallback: GPGME_EVENT_NEXT_TRUSTITEM");
-            NSLog(@"Next trustItem: %@", [[[GPGTrustItem alloc] initWithInternalRepresentation:((gpgme_trust_item_t)type_data)] autorelease]);
-            break;
-        default:
-            NSLog(@"eventCallback: unknown event %d", type);
-    }
-}
-
-- (IBAction) searchKeys:(id)sender
-{
-    GPGContext	*aContext = [[GPGContext alloc] init];
-    gpgme_error_t	anError;
-
-    [[GPGAsyncHelper sharedInstance] prepareAsyncOperationInContext:aContext];
-    anError = gpgme_op_keylist_start([aContext gpgmeContext], "", 0);
-}
-
-- (IBAction) searchKeys2:(id)sender
-{
-    gpgme_error_t	anError;
-    gpgme_io_cbs_t	callbacks;
-
-    [keys release];
-    keys = nil;
-
-    theContextParams.controller = self;
-
-    callbacks = (gpgme_io_cbs_t)malloc(sizeof(struct gpgme_io_cbs));
-    callbacks->add = addCallback;
-    callbacks->add_priv = &theContextParams; // self
-    callbacks->remove = removeCallback;
-    callbacks->event = eventCallback;
-    callbacks->event_priv = &theContextParams; // self
-
-    anError = gpgme_new(&(theContextParams.context));
-    gpgme_set_io_cbs((theContextParams.context), callbacks);
-    anError = gpgme_op_keylist_start((theContextParams.context), "", 0);
-
-    /*
-     keys = [[[aContext keyEnumeratorForSearchPattern:[searchPatternTextField stringValue] secretKeysOnly:[deleteSwitch state]] allObjects] retain];
-     [aContext release];
-     [keyTableView noteNumberOfRowsChanged];
-     [keyTableView reloadData];*/
-}
-/*
- struct my_gpgme_io_cb
- {
-     GpgmeIOCb fnc;
-     void *fnc_data;
-     guint input_handler_id
- };
-
- void
- my_gpgme_io_cb (gpointer data, gint source, GdkInputCondition condition)
- {
-     struct my_gpgme_io_cb *iocb = data;
-     (*(iocb->fnc)) (iocb->data, source);
- }
-
- void
- my_gpgme_remove_io_cb (void *data)
- {
-     struct my_gpgme_io_cb *iocb = data;
-     gtk_input_remove (data->input_handler_id);
- }
-
- void
- my_gpgme_register_io_callback (void *data, int fd, int dir, GpgmeIOCb fnc,
-                                void *fnc_data, void **tag)
- {
-     struct my_gpgme_io_cb *iocb = g_malloc (sizeof (struct my_gpgme_io_cb));
-     iocb->fnc = fnc;
-     iocb->data = fnc_data;
-     iocb->input_handler_id = gtk_input_add_full (fd, dir
-                                                  ? GDK_INPUT_READ
-                                                  : GDK_INPUT_WRITE,
-                                                  my_gpgme_io_callback,
-                                                  0, iocb, NULL);
-     *tag = iocb;
-     return 0;
- }*/
-@end
-#endif

@@ -56,26 +56,17 @@
     }
 }
 
-- (void) searchKeysLocally
+- (IBAction) searchKeys:(id)sender
 {
     GPGContext	*aContext = [[GPGContext alloc] init];
     
     [keys release];
     keys = nil;
-#if 0
-    keys = [[[aContext keyEnumeratorForSearchPattern:[searchPatternTextField stringValue] secretKeysOnly:[secretKeySwitch state]] allObjects] retain];
-#else
     keys = [[[aContext keyEnumeratorForSearchPatterns:[NSArray arrayWithObject:[searchPatternTextField stringValue]] secretKeysOnly:[secretKeySwitch state]] allObjects] retain];
-#endif
     [aContext stopKeyEnumeration];
     [aContext release];
     [keyTableView noteNumberOfRowsChanged];
     [keyTableView reloadData];
-}
-
-- (IBAction) searchKeys:(id)sender
-{
-	[self searchKeysLocally];
 }
 
 - (id) outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
@@ -134,17 +125,12 @@
             GPGKey			*selectedKey = [keys objectAtIndex:selectedRow];
             GPGContext		*aContext = [[GPGContext alloc] init];
             GPGTrustItem	*trustItem;
-            NSData			*imageData;
 			
             [xmlTextView setString:[[selectedKey dictionaryRepresentation] description]];
 			
             [mainKeyBox setTitle:[selectedKey userID]];
 			
-#if 0
-            [algorithmTextField setIntValue:[selectedKey algorithm]];
-#else
             [algorithmTextField setStringValue:[selectedKey algorithmDescription]];
-#endif
             [lengthTextField setIntValue:[selectedKey length]];
             [validityTextField setIntValue:[selectedKey validity]];
 			
@@ -166,11 +152,7 @@
         else{
             [xmlTextView setString:@""];
             [mainKeyBox setTitle:@""];
-#if 0
-            [algorithmTextField setIntValue:0];
-#else
             [algorithmTextField setStringValue:@""];
-#endif
             [lengthTextField setIntValue:0];
             [validityTextField setIntValue:0];
 			
@@ -214,11 +196,6 @@
     return NSDragOperationNone;
 }
 
-- (BOOL)tableView:(NSTableView*)tv acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)op
-{
-    return NO;
-}
-
 - (IBAction) ok:(id)sender
 {
     [[sender window] orderOut:sender];
@@ -229,18 +206,6 @@
 {
     [[sender window] orderOut:sender];
     [NSApp stopModalWithCode:NSAlertAlternateReturn];
-}
-
-- (IBAction) okSheet:(id)sender
-{
-    [[sender window] orderOut:sender];
-    [NSApp endSheet:[sender window] returnCode:NSOKButton];
-}
-
-- (IBAction) cancelSheet:(id)sender
-{
-    [[sender window] orderOut:sender];
-    [NSApp endSheet:[sender window] returnCode:NSCancelButton];
 }
 
 - (NSString *) context:(GPGContext *)context passphraseForKey:(GPGKey *)key again:(BOOL)again
@@ -389,68 +354,10 @@
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuItem
 {
-    if([menuItem action] == @selector(export:) || /*[menuItem action] == @selector(encrypt:) ||*/ [menuItem action] == @selector(sign:))
+    if([menuItem action] == @selector(encrypt:) || [menuItem action] == @selector(sign:))
         return [keyTableView numberOfSelectedRows] > 0;
     else
         return YES;
-}
-
-- (IBAction) export:(id)sender
-{
-    volatile GPGContext	*aContext = nil;
-	
-    NS_DURING
-	NSSavePanel	*savePanel;
-	GPGData		*exportedData;
-	
-	aContext = [[GPGContext alloc] init];
-	[(GPGContext *)aContext setUsesArmor:YES];
-	exportedData = [(GPGContext *)aContext exportedKeys:[self selectedRecipients]];
-	
-	savePanel = [NSSavePanel savePanel];
-	
-	[savePanel setTreatsFilePackagesAsDirectories:YES];
-	
-	if([savePanel runModal] == NSOKButton){
-		[[exportedData data] writeToFile:[savePanel filename] atomically:NO];
-	}
-    NS_HANDLER
-	NSLog(@"Exception userInfo: %@", [localException userInfo]);
-	NSRunAlertPanel(@"Error", @"%@", nil, nil, nil, [localException reason]);
-    NS_ENDHANDLER
-    [(GPGContext *)aContext release];
-}
-
-- (IBAction) import:(id)sender
-{
-    NSOpenPanel	*openPanel = [NSOpenPanel openPanel];
-	
-    [openPanel setAllowsMultipleSelection:NO];
-    [openPanel setCanChooseDirectories:NO];
-    [openPanel setCanChooseFiles:YES];
-    [openPanel setAllowsMultipleSelection:NO];
-    [openPanel setTreatsFilePackagesAsDirectories:YES];
-	
-    if([openPanel runModalForTypes:nil] == NSOKButton){
-        volatile GPGContext	*aContext = nil;
-        volatile GPGData	*importedData = nil;
-		
-        NS_DURING
-		NSDictionary	*importResults;
-		
-		aContext = [[GPGContext alloc] init];
-		importedData = [[GPGData alloc] initWithContentsOfFile:[openPanel filename]];
-		importResults = [(GPGContext *)aContext importKeyData:(GPGData *)importedData];
-		[(GPGContext *)aContext release];
-		aContext = nil;
-		[(GPGData *)importedData release];
-		[self showImportResults:importResults];
-        NS_HANDLER
-		[(GPGContext *)aContext release];
-		NSLog(@"Exception userInfo: %@", [localException userInfo]);
-		NSRunAlertPanel(@"Error", @"%@", nil, nil, nil, [localException reason]);
-        NS_ENDHANDLER
-    }
 }
 
 - (IBAction) askInputFileForSigning:(id)sender
@@ -500,7 +407,6 @@
         NS_DURING
 		NSEnumerator	*anEnum = [keyTableView selectedRowEnumerator];
 		NSNumber		*aRow;
-		//            unsigned        deadBeef = 0xdeadbeef;
 		
 		while(aRow = [anEnum nextObject])
 			[aContext addSignerKey:[keys objectAtIndex:[aRow intValue]]];
@@ -691,128 +597,6 @@
 	[localAP release];
 	NSLog(@"Failed after %d attempts: %@", i, localException);
     NS_ENDHANDLER
-}
-
-@end
-
-@implementation GPGKey(KeySignatureBrowser)
-
-- (NSArray *) userIDsOrSignerKeys
-{
-    return [self userIDs];
-}
-
-- (unsigned) userIDsOrSignerKeysCount
-{
-    return [[self userIDs] count];
-}
-
-- (NSString *) keyIDOrUserID
-{
-    return [@"0x" stringByAppendingString:[self shortKeyID]];
-}
-
-- (BOOL) isNotInKeyring
-{
-    return NO;
-}
-
-@end
-
-@implementation GPGUserID(KeySignatureBrowser)
-
-- (BOOL) isNotInKeyring
-{
-    return NO;
-}
-
-- (NSArray *) uniqueSignerKeyIDs
-{
-    NSArray *signerKeyIDs = [self valueForKeyPath:@"signatures.signerKeyID"];
-    
-    return [[NSSet setWithArray:signerKeyIDs] allObjects];
-}
-
-static NSComparisonResult userIDsOrSignerKeysCompare(id firstObject, id secondObject, void *signedKey){
-    if(firstObject == secondObject)
-        return NSOrderedSame;
-	
-    if([firstObject isKindOfClass:[NSDictionary class]]){
-        if([secondObject isKindOfClass:[NSDictionary class]])
-            return NSOrderedSame;
-        else
-            return NSOrderedDescending;
-    }
-    else{
-        if([secondObject isKindOfClass:[NSDictionary class]])
-            return NSOrderedAscending;
-        else{
-            if([[(GPGKey *)signedKey shortKeyID] compare:[firstObject shortKeyID]] == NSOrderedSame)
-                return NSOrderedAscending;
-            if([[(GPGKey *)signedKey shortKeyID] compare:[secondObject shortKeyID]] == NSOrderedSame)
-                return NSOrderedDescending;
-            return [[firstObject shortKeyID] compare:[secondObject shortKeyID]];
-        }
-    }
-}
-
-- (NSArray *) userIDsOrSignerKeys
-{
-    NSArray *signerKeys = [[AppDelegate signerPerUserIDCache] objectForKey:self];
-    
-    if(signerKeys == nil){
-        NSArray         *signerKeyIDs = [self uniqueSignerKeyIDs];
-        NSMutableArray  *userIDsOrSignerKeys = [[NSMutableArray alloc] init];
-        NSEnumerator    *anEnum = [signerKeyIDs objectEnumerator];
-        NSString        *aKeyID;
-        GPGContext      *aContext = [AppDelegate keySignatureBrowserContext];
-        
-        while(aKeyID = [anEnum nextObject]){
-            NSLog(@"Looking for %@", aKeyID);
-            GPGKey  *aKey = [aContext keyFromFingerprint:aKeyID secretKey:NO];
-            
-            if(aKey == nil){
-                [userIDsOrSignerKeys addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"(0x%@)", aKeyID], @"keyIDOrUserID", [NSNumber numberWithBool:YES], @"isNotInKeyring", nil]];
-            }
-            else{
-                [userIDsOrSignerKeys addObject:aKey];
-            }
-        }
-        signerKeys = [userIDsOrSignerKeys sortedArrayUsingFunction:userIDsOrSignerKeysCompare context:[self key]];
-        [[AppDelegate signerPerUserIDCache] setObject:signerKeys forKey:self];
-        [userIDsOrSignerKeys release];
-    }
-    
-    return signerKeys;
-}
-
-- (unsigned) userIDsOrSignerKeysCount
-{
-    return [[self uniqueSignerKeyIDs] count];
-}
-
-- (NSString *) keyIDOrUserID
-{
-    return [self userID];
-}
-
-@end
-
-@interface KeyTableView : NSTableView
-{
-}
-@end
-
-@implementation KeyTableView
-
-- (unsigned int) draggingSourceOperationMaskForLocal:(BOOL)isLocal
-{
-    return NSDragOperationEvery;
-}
-
-- (NSImage*)dragImageForRows:(NSArray*)dragRows event:(NSEvent*)dragEvent dragImageOffset:(NSPointPointer)dragImageOffset
-{
-    return [super dragImageForRows:dragRows event:dragEvent dragImageOffset:dragImageOffset];
 }
 
 @end

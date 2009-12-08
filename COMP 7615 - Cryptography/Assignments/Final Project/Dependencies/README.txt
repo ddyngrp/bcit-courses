@@ -1,31 +1,8 @@
-autoconf
---------
-curl -O http://ftp.gnu.org/gnu/autoconf/autoconf-2.65.tar.bz2
-tar xvjf autoconf-2.65.tar.bz2
-cd autoconf-2.65
-CFLAGS="-isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" ./configure 
-make
-sudo make install
-cd ..
-
-
 libiconv
 --------
 curl -O http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz
 tar xvzf libiconv-1.13.1.tar.gz
 cd libiconv-1.13.1
-CFLAGS="-isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" \
-     ./configure --disable-shared --disable-dependency-tracking
-make
-sudo make install
-cd ..
-
-
-libtool
--------
-curl -O http://ftp.gnu.org/gnu/libtool/libtool-2.2.6b.tar.gz
-tar xvzf libtool-2.2.6b.tar.gz
-cd libtool-2.2.6
 CFLAGS="-isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" \
      ./configure --disable-shared --disable-dependency-tracking
 make
@@ -53,7 +30,7 @@ CFLAGS="-isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" \
      ./configure --disable-shared --disable-dependency-tracking \
      --disable-java --disable-native-java --disable-csharp \
      --with-included-gettext --with-included-glib \
-     --with-included-libcroco --with-included-libxml --disable-libasprintf --with-libiconv-prefix=/usr/local 
+     --with-included-libcroco --with-included-libxml --disable-libasprintf --with-libiconv-prefix=shared,/usr/local 
 make
 sudo make install
 cd ..

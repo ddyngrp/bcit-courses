@@ -165,7 +165,6 @@ static void eventCallback(void *data, gpgme_event_io_t type, void *type_data);
                         NSDictionary	*aDict = (NSDictionary *)aValue;
 
                         if(aFd <= nfds){
-#warning Should we unlock _dataLock during function evaluation?
                             if(FD_ISSET(aFd, &aReadFdSet)){
                                 NSLog(@"Reading %d", aFd);
                                 (void)(*((gpgme_io_cb_t)[[aDict objectForKey:@"fnc"] pointerValue]))([[aDict objectForKey:@"fnc_data"] pointerValue], aFd); // We don't care (yet) about the result; it should always be 0
@@ -258,7 +257,6 @@ static void eventCallback(void *data, gpgme_event_io_t type, void *type_data)
 {
     switch(type){
         case GPGME_EVENT_START:
-#warning Add context fds to select FD_SET
             NSLog(@"eventCallback: GPGME_EVENT_START");
             break;
         case GPGME_EVENT_DONE:{

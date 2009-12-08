@@ -83,7 +83,6 @@
 
 - (GPGValidity) validity
 {
-#warning Ask Werner whether it is not _yet_ available
     [NSException raise:NSInternalInconsistencyException format:@"GPGKeySignature instances don't have validity."];
     
     return 0;

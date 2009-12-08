@@ -518,7 +518,8 @@ NSString *GPGStringFromChars(const char * chars)
             [aTask launch];
             [aTask waitUntilExit];
             _photoData = [[NSData alloc] initWithContentsOfFile:aPath];
-            (void)[[NSFileManager defaultManager] removeFileAtPath:aPath handler:nil];
+			(void)[[NSFileManager defaultManager] removeItemAtPath:aPath error:nil];
+            //(void)[[NSFileManager defaultManager] removeFileAtPath:aPath handler:nil]; // Removed depreciated method
         NS_HANDLER
             NSLog(@"Something happened with the photo: %@", localException);
         NS_ENDHANDLER

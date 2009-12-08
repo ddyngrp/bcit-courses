@@ -145,7 +145,11 @@ static NSLock   *_waitOperationLock = nil;
     // Agent saves info in file ~/.gpg-agent-info.
     // If agent is restarted, then our environment is no longer up-to-date.
     // We need to re-read that file and update our environment.
-    NSString    *agentEnvironment = [NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@".gpg-agent-info"]]; // WARNING: we hardcode that path
+	
+	// Replace depreciated method
+	//    NSString    *agentEnvironment = [NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@".gpg-agent-info"]]; // WARNING: we hardcode that path
+
+	NSString	*agentEnvironment = [NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@".gpg-agent-info"] encoding:NSUTF8StringEncoding error:nil];
     BOOL        resetEnvironment = YES;
     
     if([agentEnvironment length] > 0){
@@ -1073,9 +1077,6 @@ static void progressCallback(void *object, const char *description, int type, in
         if([[aKey fingerprint] isEqualToString:aFingerprint] || [[aKey keyID] isEqualToString:aFingerprint])
             return aKey;
 
-#warning FIXME: Workaround for bug in gpgme
-//    [NSException raise:NSInternalInconsistencyException format:@"### Unable to find key matching %s among %@", fpr, keys];
-
     return nil;
 }
 
@@ -1089,7 +1090,6 @@ static void progressCallback(void *object, const char *description, int type, in
         while(invalidKeys != NULL){
             GPGKey	*aKey = [self _keyWithFpr:invalidKeys->fpr fromKeys:keys]; // fpr or keyID!
 
-#warning FIXME: Workaround for bug in <= gpgme 1.1.4 - invalidKeys might contains recipient keys, not signer keys => invalidKeys not in keys
             if(aKey != nil){
                 if([keyErrors objectForKey:aKey] != nil)
                     NSLog(@"### Does not support having more than one error per key. Ignoring error %u (%@) for key %@", invalidKeys->reason, GPGErrorDescription(invalidKeys->reason), aKey);
@@ -2304,7 +2304,6 @@ enum {
 
 - (void) asyncUploadKeys:(NSArray *)keys serverOptions:(NSDictionary *)options
 {
-#warning TEST!
     NSParameterAssert(keys != nil && [keys count] > 0);
 
     if([self protocol] != GPGOpenPGPProtocol)

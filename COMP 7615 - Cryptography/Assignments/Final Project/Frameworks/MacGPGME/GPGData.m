@@ -229,8 +229,6 @@ static void releaseCallback(void *object)
 }
 
 - (id) initWithContentsOfFileNoCopy:(NSString *)filename
-#warning Not yet supported as of 1.1.x
-// Can raise a GPGException; in this case, a release is sent to self
 {
     gpgme_data_t	aData;
     gpgme_error_t	anError = gpgme_data_new_from_file(&aData, [filename fileSystemRepresentation], 0);

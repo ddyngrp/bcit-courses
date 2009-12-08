@@ -102,8 +102,10 @@ NSString * const GPGDefaultsDidChangeNotification = @"GPGDefaultsDidChangeNotifi
 
         if([defaultManager fileExistsAtPath:aDirectory isDirectory:&isDirectory])
             NSAssert1(isDirectory, @"'%@' is not a directory.", aDirectory);
-        else
-            NSAssert1([defaultManager createDirectoryAtPath:aDirectory attributes:nil], @"Unable to create directory '%@'", aDirectory);
+        else {
+			//NSAssert1([defaultManager createDirectoryAtPath:aDirectory attributes:nil], @"Unable to create directory '%@'", aDirectory); // Removed depreciated method
+			NSAssert1([defaultManager createDirectoryAtPath:aDirectory withIntermediateDirectories:YES attributes:nil error:nil], @"Unable to create directory '%@'", aDirectory);
+		}
 
         NSAssert1([environment writeToFile:filename atomically:YES], @"Unable to write file '%@'", filename);
     }
@@ -111,13 +113,11 @@ NSString * const GPGDefaultsDidChangeNotification = @"GPGDefaultsDidChangeNotifi
 
 + (NSString *) defaultHomeDirectory
 {
-#warning Use +[GPGEngine defaultHomeDirectory]
     return [NSHomeDirectory() stringByAppendingPathComponent:@".gnupg"];
 }
 
 + (NSString *) activeHomeDirectory
 {
-#warning Use -[GPGEngine homeDirectory]
     NSString	*homeDirectory = [self activeEnvironmentVariableValueForName:@"GNUPGHOME"];
 
     if(homeDirectory == nil)
@@ -710,7 +710,7 @@ NSString * const GPGDefaultsDidChangeNotification = @"GPGDefaultsDidChangeNotifi
 {
     // Returns cached value, if any, else get version
     if(gnupgVersion == nil)
-        return [self gnupgVersion];
+        return [[GPGEngine engineForProtocol:GPGOpenPGPProtocol] version];
     else
         return gnupgVersion;
 }

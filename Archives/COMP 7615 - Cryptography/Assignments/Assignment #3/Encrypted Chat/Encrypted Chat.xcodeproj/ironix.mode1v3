@@ -272,13 +272,12 @@
 								<string>1058C7A0FEA54F0111CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
-								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>13</integer>
+									<integer>4</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -320,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SSCrypto.m</string>
+								<string>ApplicationDelegate.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SSCrypto.m</string>
+										<string>ApplicationDelegate.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3AAF67B010BC594200519847</string>
+										<string>3A4F16E710CE1C3900E4F858</string>
 										<key>history</key>
 										<array>
 											<string>3AD4FC701078970F00E5F9A1</string>
@@ -341,12 +340,12 @@
 											<string>3AD4FCA41078A61A00E5F9A1</string>
 											<string>3A68635F10BC22B400D89246</string>
 											<string>3A31ED1610BC542E00E5D86A</string>
-											<string>3A31ED1710BC542E00E5D86A</string>
 											<string>3A31ED1810BC542E00E5D86A</string>
 											<string>3A31ED1910BC542E00E5D86A</string>
-											<string>3A31ED1A10BC542E00E5D86A</string>
-											<string>3A31ED1B10BC542E00E5D86A</string>
-											<string>3A31ED1D10BC542E00E5D86A</string>
+											<string>3A4F16E410CE1C3900E4F858</string>
+											<string>3A4F16E510CE1C3900E4F858</string>
+											<string>3A4F16E610CE1C3900E4F858</string>
+											<string>3A31ED1710BC542E00E5D86A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -404,9 +403,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3AAF67A810BC565900519847</string>
+				<string>3A4F16E810CE1C3900E4F858</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3AAF67A910BC565900519847</string>
+				<string>3A4F16E910CE1C3900E4F858</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -544,9 +543,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>3A6596171072CFDC001D304E</string>
-		<string>/Users/ironix/Documents/Schoolwork/Assignments &amp; Labs/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/Encrypted Chat.xcodeproj</string>
+		<string>/Users/ironix/Documents/Schoolwork/SVN Repository/COMP 7615 - Cryptography/Assignments/Assignment #3/Encrypted Chat/Encrypted Chat.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -626,7 +624,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3A6596171072CFDC001D304E</string>
-				<string>3AAF67AA10BC565900519847</string>
+				<string>3A4F16EA10CE1C3900E4F858</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

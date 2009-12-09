@@ -9,9 +9,9 @@
 	};
 	256AC3D80F4B6AC300CF3369 /* ApplicationDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 1235}}";
-			sepNavSelRange = "{193, 281}";
-			sepNavVisRange = "{0, 1341}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 1222}}";
+			sepNavSelRange = "{846, 0}";
+			sepNavVisRange = "{1193, 1318}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
@@ -166,19 +166,19 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 280778328;
-			PBXWorkspaceStateSaveDate = 280778328;
+			PBXPerProjectTemplateStateSaveDate = 281943066;
+			PBXWorkspaceStateSaveDate = 281943066;
 		};
 		perUserProjectItems = {
 			3A31ED1610BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1610BC542E00E5D86A /* PBXTextBookmark */;
 			3A31ED1710BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1710BC542E00E5D86A /* PBXTextBookmark */;
 			3A31ED1810BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1810BC542E00E5D86A /* PBXTextBookmark */;
 			3A31ED1910BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1910BC542E00E5D86A /* PBXTextBookmark */;
-			3A31ED1A10BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1A10BC542E00E5D86A /* PBXTextBookmark */;
-			3A31ED1B10BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1B10BC542E00E5D86A /* PBXTextBookmark */;
-			3A31ED1D10BC542E00E5D86A /* PBXTextBookmark */ = 3A31ED1D10BC542E00E5D86A /* PBXTextBookmark */;
+			3A4F16E410CE1C3900E4F858 /* PBXTextBookmark */ = 3A4F16E410CE1C3900E4F858 /* PBXTextBookmark */;
+			3A4F16E510CE1C3900E4F858 /* PBXTextBookmark */ = 3A4F16E510CE1C3900E4F858 /* PBXTextBookmark */;
+			3A4F16E610CE1C3900E4F858 /* PBXTextBookmark */ = 3A4F16E610CE1C3900E4F858 /* PBXTextBookmark */;
+			3A4F16E710CE1C3900E4F858 /* PBXTextBookmark */ = 3A4F16E710CE1C3900E4F858 /* PBXTextBookmark */;
 			3A68635F10BC22B400D89246 /* PBXTextBookmark */ = 3A68635F10BC22B400D89246 /* PBXTextBookmark */;
-			3AAF67B010BC594200519847 /* PBXTextBookmark */ = 3AAF67B010BC594200519847 /* PBXTextBookmark */;
 			3AD4FC701078970F00E5F9A1 /* PBXTextBookmark */ = 3AD4FC701078970F00E5F9A1 /* PBXTextBookmark */;
 			3AD4FC711078970F00E5F9A1 /* PlistBookmark */ = 3AD4FC711078970F00E5F9A1 /* PlistBookmark */;
 			3AD4FC721078970F00E5F9A1 /* PBXTextBookmark */ = 3AD4FC721078970F00E5F9A1 /* PBXTextBookmark */;
@@ -235,36 +235,6 @@
 		vrLen = 1289;
 		vrLoc = 0;
 	};
-	3A31ED1A10BC542E00E5D86A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3A96A02710787F0B000D3C43 /* ClientServer.h */;
-		name = "ClientServer.h: 1";
-		rLen = 914;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1568;
-		vrLoc = 0;
-	};
-	3A31ED1B10BC542E00E5D86A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
-		name = "ClientServer.m: 49";
-		rLen = 571;
-		rLoc = 1445;
-		rType = 0;
-		vrLen = 1608;
-		vrLoc = 3225;
-	};
-	3A31ED1D10BC542E00E5D86A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
-		name = "SSCrypto.m: 350";
-		rLen = 0;
-		rLoc = 9923;
-		rType = 0;
-		vrLen = 1531;
-		vrLoc = 9458;
-	};
 	3A4E62FD10796E8400B8B392 /* Encryption.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 641}}";
@@ -278,6 +248,46 @@
 			sepNavSelRange = "{7397, 0}";
 			sepNavVisRange = "{3425, 1710}";
 		};
+	};
+	3A4F16E410CE1C3900E4F858 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
+		name = "SSCrypto.m: 347";
+		rLen = 0;
+		rLoc = 9877;
+		rType = 0;
+		vrLen = 1531;
+		vrLoc = 9458;
+	};
+	3A4F16E510CE1C3900E4F858 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02710787F0B000D3C43 /* ClientServer.h */;
+		name = "ClientServer.h: 1";
+		rLen = 914;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1568;
+		vrLoc = 0;
+	};
+	3A4F16E610CE1C3900E4F858 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A96A02810787F0B000D3C43 /* ClientServer.m */;
+		name = "ClientServer.m: 49";
+		rLen = 571;
+		rLoc = 1445;
+		rType = 0;
+		vrLen = 1527;
+		vrLoc = 3225;
+	};
+	3A4F16E710CE1C3900E4F858 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* ApplicationDelegate.h */;
+		name = "ApplicationDelegate.h: 25";
+		rLen = 0;
+		rLoc = 846;
+		rType = 0;
+		vrLen = 1318;
+		vrLoc = 1193;
 	};
 	3A6596071072CFC8001D304E /* Encrypted Chat */ = {
 		isa = PBXExecutable;
@@ -382,21 +392,11 @@
 	};
 	3A96A02810787F0B000D3C43 /* ClientServer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 26962}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 26988}}";
 			sepNavSelRange = "{1445, 571}";
-			sepNavVisRange = "{3225, 1608}";
+			sepNavVisRange = "{3225, 1527}";
 			sepNavWindowFrame = "{{15, 4}, {945, 774}}";
 		};
-	};
-	3AAF67B010BC594200519847 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3A68617110BBF30700D89246 /* SSCrypto.m */;
-		name = "SSCrypto.m: 347";
-		rLen = 0;
-		rLoc = 9877;
-		rType = 0;
-		vrLen = 1531;
-		vrLoc = 9458;
 	};
 	3AD4FC701078970F00E5F9A1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

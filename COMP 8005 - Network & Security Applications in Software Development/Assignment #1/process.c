@@ -200,8 +200,6 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	char *header = "getpid(), current_time, number, utime, stime, ru_maxrss, "
 	"ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
 	
-	mknod(_FIFO_NAME, S_IFIFO | 0666, 0);
-	
 	/* make sure we wait until something is written */
 	usleep(10000);
 	
@@ -248,6 +246,7 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	
 	fclose(pfile);
 	close(fd);
+	unlink(_FIFO_NAME);
 }
 
 void list_primes(unsigned long start, unsigned long stop) {

@@ -26,7 +26,6 @@ int main (int argc, char **argv) {
     {
         {"processes"			, required_argument	, 0, 'p'},
         {"output"				, required_argument	, 0, 'o'},
-        {"display"				, no_argument		, 0, 'd'},
         {"start"				, required_argument	, 0, 's'},
         {"block"				, required_argument	, 0, 'b'},
         {"help"					, no_argument		, 0, 'h'},
@@ -38,12 +37,11 @@ int main (int argc, char **argv) {
 	/* Set Defaults */
 	opts->output = _OPTS_OUTPUT;
 	opts->processes = _OPTS_PROCESSES;
-	opts->display = _FALSE;
 	opts->start = _OPTS_START;
 	opts->block = _OPTS_BLOCK;
 	
 	while (1) {
-		c = getopt_long(argc, argv, "p:o:ds:b:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "p:o:s:b:h", long_options, &option_index);
 		
 		if (c == -1)
 			break;
@@ -62,10 +60,6 @@ int main (int argc, char **argv) {
 			
 			case 'o':
 				opts->output = optarg;
-				break;
-				
-			case 'd':
-				opts->display = _TRUE;
 				break;
 				
 			case 's':
@@ -107,11 +101,10 @@ void print_usage(char *command, int err) {
     if (err == _OPTS_HELP) {
         printf("usage: process [arguments]\n\n");
         printf("Arguments:\n");
-        printf("  -p  or  --processes  The URL of the website to load\n");
-        printf("  -o  or  --output     Enable fullscreen mode\n");
-        printf("  -d  or  --display    Disable context menu\n");
-        printf("  -s  or  --start      Disable scrollbars\n");
-        printf("  -b  or  --block      Enables text highlighting\n");
+        printf("  -p  or  --processes  Number of processes to use\n");
+        printf("  -o  or  --output     Output to file name\n");
+        printf("  -s  or  --start      Start prime list from\n");
+        printf("  -b  or  --block      Size of block for each process\n");
         printf("  -h  or  --help       Prints out this screen\n");
     }
 	else if (err == _OPTS_ERROR)
@@ -133,12 +126,6 @@ void print_settings(int argc, PRIME_OPTIONS *opts) {
 	
 	printf("  Number of Child Processes:   %d\n", opts->processes);
 	printf("  Output to File:              %s\n", opts->output);
-	
-	if (opts->display)
-		printf("  Display Output:              YES\n");
-	else
-		printf("  Display Output:              NO\n");
-	
 	printf("  Start Listing Primes From:   %ld\n", opts->start);
 	printf("  Block Size for each Process: %ld\n\n", opts->block);
 }
@@ -164,12 +151,12 @@ void create_processes(PRIME_OPTIONS *opts) {
 				exit(_FORK_ERROR);
 				
 			case 0: /* child process */
-				printf("Child Pid %d Starting on range %ld - %ld\n",
+				printf("Child pid %d starting on range %ld - %ld\n",
 					   getpid(), prime_start, prime_stop);
 				
 				list_primes(prime_start,prime_stop);
 				
-				printf("Child Pid %d Finished on range %ld - %ld\n",
+				printf("Child pid %d finished range %ld - %ld\n",
 					   getpid(), prime_start, prime_stop);
 				
 				exit(_CHILD_EXIT);

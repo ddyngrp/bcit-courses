@@ -191,6 +191,7 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	/* make sure we wait until something is written */
 	usleep(10000);
 	
+	mknod(_FIFO_NAME, S_IFIFO | 0666, 0); /* Create the fifo */
 	fd = open(_FIFO_NAME, O_RDONLY);
 	
 	pfile = fopen(opts->output, "w");

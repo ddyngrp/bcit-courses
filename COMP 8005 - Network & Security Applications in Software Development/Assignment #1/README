@@ -1,0 +1,13 @@
+System Functionality:
+=====================
+
+Both the "process" and "thread" program work without issue on
+Mac OS X 10.6 and FreeBSD 8.0. After testing on Ubuntu 9.10, the
+programs will produce an error stating "Bad file descriptor" when
+trying to write to the FIFO.
+
+
+Compiling:
+==========
+1. Go to the "Source" directory.
+2. Type "make"

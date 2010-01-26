@@ -1,4 +1,4 @@
-/*
+/*-----------------------------------------------------------------------------
  * thread.h
  * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -14,7 +14,7 @@
  * 
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+ *----------------------------------------------------------------------------*/
 
 #ifndef PROCESS_H
 #define PROCESS_H

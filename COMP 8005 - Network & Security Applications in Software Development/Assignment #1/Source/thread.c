@@ -1,4 +1,4 @@
-/*
+/*-----------------------------------------------------------------------------
  * thread.c
  * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -14,11 +14,32 @@
  * 
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+ *----------------------------------------------------------------------------*/
 
 #include "thread.h"
 
-int main (int argc, char **argv) {
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    main
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int main(int argc, char **argv)
+ *                  argc - argument count
+ *                  argv - array of arguments
+ * 
+ * RETURNS: Result on success or failure.
+ * 
+ * NOTES: Main entry point into the application. Parses command line options
+ *        and sets up conditions to create new child threads.
+ *
+ *----------------------------------------------------------------------------*/
+int main(int argc, char **argv) {
 	PRIME_OPTIONS *opts;
 	int c, option_index = 0;
 	
@@ -97,6 +118,27 @@ int main (int argc, char **argv) {
 	exit(_PARENT_EXIT);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_usage
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_usage(char *command, int err)
+ *                   command - the command line option used
+ *                   err - error produced
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the program's useage information if the user incorrectly
+ *        entered an option or used the -h or --help option.
+ *
+ *----------------------------------------------------------------------------*/
 void print_usage(char *command, int err) {
     if (err == _OPTS_HELP) {
         printf("usage: thread [arguments]\n\n");
@@ -117,6 +159,27 @@ void print_usage(char *command, int err) {
     exit(err);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_settings
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_settings(int argc, PRIME_OPTIONS *opts)
+ *                   argc - argument count
+ *                   opts - structure that sores options
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the current settings that are being used in the current
+ *        run of the application.
+ *
+ *----------------------------------------------------------------------------*/
 void print_settings(int argc, PRIME_OPTIONS *opts) {
 	/* Display the current settings before running */
 	if (argc == 1)
@@ -130,6 +193,26 @@ void print_settings(int argc, PRIME_OPTIONS *opts) {
 	printf("  Block Size for each Thread:  %ld\n\n", opts->block);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    create_threads
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void create_threads(PRIME_OPTIONS *opts)
+ *                   opts - structure that sores options
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Creates a specified number of threads, which is defined by the
+ *        opts->threads variable.
+ *
+ *----------------------------------------------------------------------------*/
 void create_threads(PRIME_OPTIONS *opts) {
 	pthread_t *threads;
 	struct _thread_data *thread_data;
@@ -156,6 +239,27 @@ void create_threads(PRIME_OPTIONS *opts) {
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    write_from_pipe
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void write_from_pipe(PRIME_OPTIONS *opts)
+ *                   opts - structure that sores options
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Reads from the named pipe as long as data exists. Once data is read
+ *        from the named pipe, it is immediately written to disk along with
+ *        usage information for the parent thread.
+ *
+ *----------------------------------------------------------------------------*/
 void write_from_pipe(PRIME_OPTIONS *opts) {
 	struct rusage ru;
 	struct timeval time;
@@ -227,6 +331,28 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	unlink(_FIFO_NAME);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    list_primes
+ * 
+ * DATE:        January 25, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void *list_primes(void *ptr)
+ *                   ptr - pointer to the PRIME_OPTIONS structure
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Calculates prime numbers within a given range. Once a prime number is
+ *        found, the result is written to the named pipe for the parent thread
+ *        to read. Additional information regarding system time and memory usage
+ *        is also sent through the pile to enable further analysis.
+ *
+ *----------------------------------------------------------------------------*/
 void *list_primes(void *ptr) {
 	unsigned long number, divisor;
 	struct rusage ru;

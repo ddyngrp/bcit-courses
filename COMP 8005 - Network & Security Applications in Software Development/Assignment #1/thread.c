@@ -234,7 +234,6 @@ void *list_primes(void *ptr) {
 	double current_time, utime, stime;
 	int limit, test, num, fd;
 	char buff[300];
-	int count = 0;
 	
 	thread_data = (struct _thread_data *)ptr;
 	
@@ -255,7 +254,7 @@ void *list_primes(void *ptr) {
 			for (divisor = 3 ; divisor < limit && ! test; divisor += 2)
 				if (number % divisor == 0)
 					test = 1;
-		if (!test && count % 1000 == 0) { /* only output every 1000th prime */
+		if (!test) {
 			getrusage(RUSAGE_SELF, &ru);
 			gettimeofday(&time, NULL);
 			current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
@@ -282,7 +281,6 @@ void *list_primes(void *ptr) {
 			if ((num = write(fd, buff, sizeof(buff))) == -1)
 				perror("write");
 		}
-		count++;
 	}
 	
 	printf("Thread %d finished range %ld - %ld\n",

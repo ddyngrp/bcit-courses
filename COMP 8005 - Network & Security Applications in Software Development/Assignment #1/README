@@ -9,5 +9,6 @@ trying to write to the FIFO.
 
 Compiling:
 ==========
+
 1. Go to the "Source" directory.
 2. Type "make"

@@ -251,7 +251,7 @@ void list_primes(unsigned long start, unsigned long stop) {
 	struct rusage ru;
 	struct timeval time;
 	double current_time, utime, stime;
-	int limit, test, num, fd;
+	int limit, test, num, fd, count = 0;
 	char buff[300];
 	
 	mknod(_FIFO_NAME, S_IFIFO | 0666, 0); /* Create the fifo */
@@ -267,7 +267,7 @@ void list_primes(unsigned long start, unsigned long stop) {
 			for (divisor = 3 ; divisor < limit && ! test; divisor += 2)
 				if (number % divisor == 0)
 					test = 1;
-		if (!test) {
+		if (!test && count % 1000 == 0) { /* only report every 1000th prime */
 			getrusage(RUSAGE_SELF, &ru);
 			gettimeofday(&time, NULL);
 			current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
@@ -294,6 +294,7 @@ void list_primes(unsigned long start, unsigned long stop) {
 			if ((num = write(fd, buff, sizeof(buff))) == -1)
 				perror("write");
 		}
+		count++;
 	}
 	
 	close(fd);

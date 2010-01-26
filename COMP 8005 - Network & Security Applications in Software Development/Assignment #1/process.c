@@ -89,9 +89,9 @@ int main (int argc, char **argv) {
 	create_processes(opts);
 	
 	/* Start reading from the pipe and writing to the file */
-	printf("Parent Pid %d writing output to file %s\n", getpid(), opts->output);
+	printf("Parent pid %d writing output to file %s\n", getpid(), opts->output);
 	write_from_pipe(opts);
-	printf("Parent Pid %d finished writing to file %s\n", getpid(), opts->output);
+	printf("Parent pid %d finished writing to file %s\n", getpid(), opts->output);
 	
 	free(opts);
 	exit(_PARENT_EXIT);
@@ -185,7 +185,8 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	int num, fd;
 	char in_buff[300], out_buff[300];
 	char *header = "getpid(), current_time, number, utime, stime, ru_maxrss, "
-	"ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
+				   "ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
+	unsigned long count = 0;
 	
 	/* make sure we wait until something is written */
 	usleep(10000);
@@ -203,31 +204,40 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 		if ((num = read(fd, in_buff, 300)) == -1)
 			perror("read");
 		else if (num > 0) {
-			getrusage(RUSAGE_SELF, &ru);
-			gettimeofday(&time, NULL);
-			current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
-			utime = (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000.0;
-			stime = (double)ru.ru_stime.tv_sec + (double)ru.ru_stime.tv_usec / 1000000.0;
-			
-			/* Output Structure
-			 * Process ID:						getpid()
-			 * Time of Day:						current_time
-			 * Padding for Excel:				0
-			 * User Time Used:					utime
-			 * System Time Used:				stime
-			 * Max Resident Memory Size:		ru.ru_maxrss
-			 * Messages Sent:					ru.ru_msgsnd
-			 * Messages Received:				ru.ru_msgrcv
-			 * Voluntary Context Switches:		ru.ru_nvcsw
-			 * Involuntary Context Switches:	ru.ru_nivcsw
-			 */
-			sprintf(out_buff, "%s%d, %f, 0, %f, %f, %ld, %ld, "
-					"%ld, %ld, %ld\n", in_buff, getpid(),
-					current_time, utime, stime, ru.ru_maxrss,
-					ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
+			sprintf(out_buff, "%s", in_buff);
 			
 			len = strlen(out_buff);
 			fwrite(out_buff, len, 1, pfile);
+			count++;
+			
+			/* Add parent info after each process has reported */
+			if (count % opts->processes == 0) {
+				getrusage(RUSAGE_SELF, &ru);
+				gettimeofday(&time, NULL);
+				current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
+				utime = (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000.0;
+				stime = (double)ru.ru_stime.tv_sec + (double)ru.ru_stime.tv_usec / 1000000.0;
+				
+				/* Output Structure
+				 * Process ID:						getpid()
+				 * Time of Day:						current_time
+				 * Padding for Excel:				0
+				 * User Time Used:					utime
+				 * System Time Used:				stime
+				 * Max Resident Memory Size:		ru.ru_maxrss
+				 * Messages Sent:					ru.ru_msgsnd
+				 * Messages Received:				ru.ru_msgrcv
+				 * Voluntary Context Switches:		ru.ru_nvcsw
+				 * Involuntary Context Switches:	ru.ru_nivcsw
+				 */
+				sprintf(out_buff, "%d, %f, 0, %f, %f, %ld, %ld, "
+						"%ld, %ld, %ld\n", getpid(),
+						current_time, utime, stime, ru.ru_maxrss,
+						ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
+				
+				len = strlen(out_buff);
+				fwrite(out_buff, len, 1, pfile);
+			}
 		}
 	} while (num > 0);
 	
@@ -244,8 +254,7 @@ void list_primes(unsigned long start, unsigned long stop) {
 	int limit, test, num, fd;
 	char buff[300];
 	
-	mknod(_FIFO_NAME, S_IFIFO | 0666, 0);
-	
+	mknod(_FIFO_NAME, S_IFIFO | 0666, 0); /* Create the fifo */
     fd = open(_FIFO_NAME, O_WRONLY);
 	
 	for (number = start; number < stop; number++) {

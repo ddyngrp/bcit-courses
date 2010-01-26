@@ -166,6 +166,7 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	char in_buff[300], out_buff[300];
 	char *header = "getpid(), current_time, number, utime, stime, ru_maxrss, "
 				   "ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
+	unsigned long count = 0;
 	
 	/* make sure we wait until something is written */
 	usleep(10000);
@@ -180,35 +181,43 @@ void write_from_pipe(PRIME_OPTIONS *opts) {
 	fwrite(header, len, 1, pfile);
 	
 	do {
-		if ((num = read(fd, in_buff, 300)) == -1) {
+		if ((num = read(fd, in_buff, 300)) == -1)
 			perror("read");
-		}
 		else if (num > 0) {
-			getrusage(RUSAGE_SELF, &ru);
-			gettimeofday(&time, NULL);
-			current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
-			utime = (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000.0;
-			stime = (double)ru.ru_stime.tv_sec + (double)ru.ru_stime.tv_usec / 1000000.0;
-			
-			/* Output Structure
-			 * Process ID:						getpid()
-			 * Time of Day:						current_time
-			 * Padding for Excel:				0
-			 * User Time Used:					utime
-			 * System Time Used:				stime
-			 * Max Resident Memory Size:		ru.ru_maxrss
-			 * Messages Sent:					ru.ru_msgsnd
-			 * Messages Received:				ru.ru_msgrcv
-			 * Voluntary Context Switches:		ru.ru_nvcsw
-			 * Involuntary Context Switches:	ru.ru_nivcsw
-			 */
-			sprintf(out_buff, "%s%d, %f, 0, %f, %f, %ld, %ld, "
-					"%ld, %ld, %ld\n", in_buff, getpid(),
-					current_time, utime, stime, ru.ru_maxrss,
-					ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
+			sprintf(out_buff, "%s", in_buff);
 			
 			len = strlen(out_buff);
 			fwrite(out_buff, len, 1, pfile);
+			count++;
+			
+			/* Add parent info after each thread has reported */
+			if (count % opts->threads == 0) {
+				getrusage(RUSAGE_SELF, &ru);
+				gettimeofday(&time, NULL);
+				current_time = (double)(time.tv_sec * 1000000 + time.tv_usec)/1000000.0;
+				utime = (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000.0;
+				stime = (double)ru.ru_stime.tv_sec + (double)ru.ru_stime.tv_usec / 1000000.0;
+				
+				/* Output Structure
+				 * Process ID:						getpid()
+				 * Time of Day:						current_time
+				 * Padding for Excel:				0
+				 * User Time Used:					utime
+				 * System Time Used:				stime
+				 * Max Resident Memory Size:		ru.ru_maxrss
+				 * Messages Sent:					ru.ru_msgsnd
+				 * Messages Received:				ru.ru_msgrcv
+				 * Voluntary Context Switches:		ru.ru_nvcsw
+				 * Involuntary Context Switches:	ru.ru_nivcsw
+				 */
+				sprintf(out_buff, "%d, %f, 0, %f, %f, %ld, %ld, "
+						"%ld, %ld, %ld\n", getpid(),
+						current_time, utime, stime, ru.ru_maxrss,
+						ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
+				
+				len = strlen(out_buff);
+				fwrite(out_buff, len, 1, pfile);
+			}			
 		}
 	} while (num > 0);
 	
@@ -253,7 +262,7 @@ void *list_primes(void *ptr) {
 			stime = (double)ru.ru_stime.tv_sec + (double)ru.ru_stime.tv_usec / 1000000.0;
 			
 			/* Output Structure
-			 * Process ID:						getpid()
+			 * Thread ID:						thread_id
 			 * Time of Day:						current_time
 			 * Prime Number:					number
 			 * User Time Used:					utime
@@ -265,7 +274,7 @@ void *list_primes(void *ptr) {
 			 * Involuntary Context Switches:	ru.ru_nivcsw
 			 */
 			sprintf(buff, "%d, %f, %ld, %f, %f, %ld, %ld, "
-					"%ld, %ld, %ld\n", getpid(),
+					"%ld, %ld, %ld\n", thread_data->thread_id,
 					current_time, number, utime, stime, ru.ru_maxrss,
 					ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
 						

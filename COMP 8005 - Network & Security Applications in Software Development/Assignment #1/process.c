@@ -1,79 +1,215 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <math.h>
+/*
+ * process.c
+ * Copyright (C) 2009 Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * process.c is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * process.c is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#define PRIME_START	3
-#define PRIME_BLOCK 10000
+#include "process.h"
 
-#define PROCESSES	4
-#define FIFO_NAME	"primes"
-
-void list_primes(unsigned long long, unsigned long long);
-
-int main (int argc, const char * argv[]) {
-	unsigned long long prime_start, prime_stop;
-	struct rusage ru;
-	struct timeval time;
-	double current_time, utime, stime;	
-	pid_t pid = -2; /* force the switch into default */
-	pid_t child[PROCESSES];
-	int i;
-	int num, fd;
-	char in_buff[300], out_buff[300];
-	FILE *pfile = NULL;
-	char *file = "./output.csv";
-	char *header = "getpid(), current_time, number, utime, stime, ru_maxrss, ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
-	size_t len = 0;
+int main (int argc, char **argv) {
+	PRIME_OPTIONS *opts;
+	int c, option_index = 0;
 	
-	mknod(FIFO_NAME, S_IFIFO | 0666, 0);
+    static struct option long_options[] =
+    {
+        {"processes"			, required_argument	, 0, 'p'},
+        {"output"				, required_argument	, 0, 'o'},
+        {"display"				, no_argument		, 0, 'd'},
+        {"start"				, required_argument	, 0, 's'},
+        {"block"				, required_argument	, 0, 'b'},
+        {"help"					, no_argument		, 0, 'h'},
+        {0, 0, 0, 0}
+    };
+	
+	opts = malloc(sizeof(PRIME_OPTIONS));
+
+	/* Set Defaults */
+	opts->output = _OPTS_OUTPUT;
+	opts->processes = _OPTS_PROCESSES;
+	opts->display = _FALSE;
+	opts->start = _OPTS_START;
+	opts->block = _OPTS_BLOCK;
+	
+	while (1) {
+		c = getopt_long(argc, argv, "p:o:ds:b:h", long_options, &option_index);
 		
-	/* The first process's processing block. */
-	prime_start = PRIME_START;
-	prime_stop = prime_start + PRIME_BLOCK;
+		if (c == -1)
+			break;
+
+		switch (c) {
+			case 0:
+				/* If the option set a flag, do nothing */
+				if (long_options[option_index].flag != 0)
+					break;
+				break;
+				
+			case 'p':
+				if (atoi(optarg) > 0)
+					opts->processes = atoi(optarg);
+				break;
+			
+			case 'o':
+				opts->output = optarg;
+				break;
+				
+			case 'd':
+				opts->display = _TRUE;
+				break;
+				
+			case 's':
+				if (atoi(optarg) > 0)
+					opts->start = atoi(optarg);
+				break;
+				
+			case 'b':
+				if (atoi(optarg) > 0)
+					opts->block = atoi(optarg);
+				break;
+				
+			case 'h':
+				print_usage(argv[0], _OPTS_HELP);
+				break;
+				
+			default:
+				print_usage(argv[0], _OPTS_ERROR);
+				break;
+		}
+	}
 	
-	for (i = 0; i <= PROCESSES; i++)
+	/* Print current settings */
+	print_settings(argc, opts);
+	
+	/* Start the child processes */
+	create_processes(opts);
+	
+	/* Start reading from the pipe and writing to the file */
+	printf("Parent Pid %d writing output to file %s\n", getpid(), opts->output);
+	write_from_pipe(opts);
+	printf("Parent Pid %d finished writing to file %s\n", getpid(), opts->output);
+	
+	free(opts);
+	exit(_PARENT_EXIT);
+}
+
+void print_usage(char *command, int err) {
+    if (err == _OPTS_HELP) {
+        printf("usage: process [arguments]\n\n");
+        printf("Arguments:\n");
+        printf("  -p  or  --processes  The URL of the website to load\n");
+        printf("  -o  or  --output     Enable fullscreen mode\n");
+        printf("  -d  or  --display    Disable context menu\n");
+        printf("  -s  or  --start      Disable scrollbars\n");
+        printf("  -b  or  --block      Enables text highlighting\n");
+        printf("  -h  or  --help       Prints out this screen\n");
+    }
+	else if (err == _OPTS_ERROR)
+        printf("Try `process --help` for more information.\n");
+	else {
+        printf("%s: unknown error\n", command);
+        printf("Try `process --help` for more information.\n");
+    }
+    
+    exit(err);
+}
+
+void print_settings(int argc, PRIME_OPTIONS *opts) {
+	/* Display the current settings before running */
+	if (argc == 1)
+		printf("Using Default Options: (For help use \"process -h\")\n");
+	else
+		printf("Using the Following Options: (For help use \"process -h\")\n");
+	
+	printf("  Number of Child Processes:   %d\n", opts->processes);
+	printf("  Output to File:              %s\n", opts->output);
+	
+	if (opts->display)
+		printf("  Display Output:              YES\n");
+	else
+		printf("  Display Output:              NO\n");
+	
+	printf("  Start Listing Primes From:   %ld\n", opts->start);
+	printf("  Block Size for each Process: %ld\n\n", opts->block);
+}
+
+void create_processes(PRIME_OPTIONS *opts) {
+	unsigned long prime_start, prime_stop;
+	pid_t pid = -2; /* force the switch into default */
+	pid_t *child;
+	int i;
+	
+	child = malloc(opts->processes * sizeof(pid_t));
+
+	/* The first process's processing block. */
+	prime_start = opts->start;
+	prime_stop = opts->start + opts->block;
+	
+	for (i = 0; i <= opts->processes; i++)
 	{
 		switch (pid)
 		{
 			case -1: /* fork error */
 				perror("Error occoured with fork()\n");
-				exit(99);
+				exit(_FORK_ERROR);
 				
 			case 0: /* child process */
+				printf("Child Pid %d Starting on range %ld - %ld\n",
+					   getpid(), prime_start, prime_stop);
+				
 				list_primes(prime_start,prime_stop);
-				exit(1);
+				
+				printf("Child Pid %d Finished on range %ld - %ld\n",
+					   getpid(), prime_start, prime_stop);
+				
+				exit(_CHILD_EXIT);
 				
 			default: /* parent process*/
-				if (i != PROCESSES) {
+				if (i != opts->processes) {
 					pid = fork();
 					child[i] = pid;
 					
 					/* Subsequent process's processing blocks */
 					if (pid != 0) {
 						prime_start = prime_stop;
-						prime_stop = prime_stop + PRIME_BLOCK;
+						prime_stop = prime_stop + opts->block;
 					}
 				}
 		}
-	}
+	}	
+}
+
+void write_from_pipe(PRIME_OPTIONS *opts) {
+	struct rusage ru;
+	struct timeval time;
+	double current_time, utime, stime;	
+	FILE *pfile = NULL;
+	size_t len = 0;
+	int num, fd;
+	char in_buff[300], out_buff[300];
+	char *header = "getpid(), current_time, number, utime, stime, ru_maxrss, "
+	"ru_msgsnd, ru_msgrcv, ru_nvcsw, ru_nivcsw\n";
+	
+	mknod(_FIFO_NAME, S_IFIFO | 0666, 0);
 	
 	/* make sure we wait until something is written */
 	usleep(10000);
 	
-	fd = open(FIFO_NAME, O_RDONLY);
+	fd = open(_FIFO_NAME, O_RDONLY);
 	
-	pfile = fopen(file, "w");
-	if (pfile == NULL) {
+	pfile = fopen(opts->output, "w");
+	if (pfile == NULL)
 		perror("Error opening file...");
-	}
 	
 	len = strlen(header);
 	fwrite(header, len, 1, pfile);
@@ -114,33 +250,28 @@ int main (int argc, const char * argv[]) {
 	close(fd);
 }
 
-void list_primes(unsigned long long start, unsigned long long stop) {
-	unsigned long long number, divisor;
+void list_primes(unsigned long start, unsigned long stop) {
+	unsigned long number, divisor;
 	struct rusage ru;
 	struct timeval time;
 	double current_time, utime, stime;
-	int limit, test;
+	int limit, test, num, fd;
 	char buff[300];
-    int num, fd;
 	
-	mknod(FIFO_NAME, S_IFIFO | 0666, 0);
+	mknod(_FIFO_NAME, S_IFIFO | 0666, 0);
 	
-    fd = open(FIFO_NAME, O_WRONLY);
+    fd = open(_FIFO_NAME, O_WRONLY);
 	
 	for (number = start; number < stop; number++) {
 		test = 0;
 		limit = sqrt(number) + 1;
 		
-		if (number % 2 == 0) {
+		if (number % 2 == 0)
 			test = 1;
-		}
-		else {
-			for (divisor = 3 ; divisor < limit && ! test; divisor += 2) {
-				if (number % divisor == 0) {
+		else
+			for (divisor = 3 ; divisor < limit && ! test; divisor += 2)
+				if (number % divisor == 0)
 					test = 1;
-				}
-			}
-		}
 		if (!test) {
 			getrusage(RUSAGE_SELF, &ru);
 			gettimeofday(&time, NULL);
@@ -160,14 +291,13 @@ void list_primes(unsigned long long start, unsigned long long stop) {
 			 * Voluntary Context Switches:		ru.ru_nvcsw
 			 * Involuntary Context Switches:	ru.ru_nivcsw
 			 */
-			sprintf(buff, "%d, %f, %lld, %f, %f, %ld, %ld, "
+			sprintf(buff, "%d, %f, %ld, %f, %f, %ld, %ld, "
 					"%ld, %ld, %ld\n", getpid(),
 					current_time, number, utime, stime, ru.ru_maxrss,
 					ru.ru_msgsnd, ru.ru_msgrcv, ru.ru_nvcsw, ru.ru_nivcsw);
 			
-			if ((num = write(fd, buff, sizeof(buff))) == -1) {
+			if ((num = write(fd, buff, sizeof(buff))) == -1)
 				perror("write");
-			}
 		}
 	}
 	

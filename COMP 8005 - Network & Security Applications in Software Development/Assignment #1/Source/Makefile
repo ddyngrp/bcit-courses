@@ -25,4 +25,4 @@ thread.o: thread.c
 		  ${CC} ${CFLAGS} thread.c
 
 clean:
-		rm -rf *.o process thread
+		rm -rf *.o process thread *.csv

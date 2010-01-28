@@ -16,13 +16,13 @@
 # 
 # NOTES: This script uses iptables to perform the following rules:
 #        - Default policy set to DROP
-#        - ALLOW inbound/outbound SSH packets
-#        - ALLOW inbound/outbound WWW packets
-#        - ALLOW outbound DNS traffic
-#        - ALLOW outbound DHCP traffic
-#        - DROP all inbound traffic to port 80 from source port < 1024
-#        - DROP all inbound traffic to reserved port 0
-#        - DROP all inbound traffic from reserved port 0
+#        - ALLOW INPUT/OUTPUT SSH packets
+#        - ALLOW INPUT/OUTPUT WWW packets
+#        - ALLOW OUTPUT DNS traffic
+#        - ALLOW OUTPUT DHCP traffic
+#        - DROP all INPUT traffic to port 80 from source port < 1024
+#        - DROP all INPUT traffic to reserved port 0
+#        - DROP all INPUT traffic from reserved port 0
 #        - DROP all bad packets (SYN coming the wrong way, etc...)
 #
 #        Enable the following accounting rules:
@@ -43,7 +43,7 @@ IPTR="/sbin/iptables-restore"
 SYSCTL="/sbin/sysctl -w" 
 
 # Outside interface
-LOCAL_IFACE="eth0"
+INET_IFACE="eth0"
 
 # Localhost interface
 LO_IFACE="lo"
@@ -145,65 +145,9 @@ $IPT -P FORWARD DROP
 # User-defined chains
 echo "Create and populate custom rule chains ..."
 
-# Create a chain to filter INVALID packets
-$IPT -N bad_packets
-$IPT -N bad_tcp_packets
-
-# Inbound/outbound UDP packets
-$IPT -N udp_inbound
-$IPT -N udp_outbound
-
-# Inbound/outbound TCP packets
-$IPT -N tcp_inbound
-$IPT -N tcp_outbound
-
-
-### Populate user-defined chains ###
-
-# Drop INVALID packets immediately
-$IPT -A bad_packets -p ALL -m state --state INVALID -j LOG --log-prefix "Invalid packet: "
-$IPT -A bad_packets -p ALL -m state --state INVALID -j DROP
-
-# Then check the tcp packets for additional problems
-# return if ok.
-$IPT -A bad_packets -p tcp -j bad_tcp_packets
-$IPT -A bad_packets -p ALL -j RETURN
-
-# bad_tcp_packets chain
-$IPT -A bad_tcp_packets -p tcp -i $LOCAL_IFACE -j RETURN
-$IPT -A bad_tcp_packets -p tcp ! --syn -m state --state NEW -j LOG --log-prefix "New not syn: "
-$IPT -A bad_tcp_packets -p tcp ! --syn -m state --state NEW -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL NONE -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL NONE -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL ALL -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL ALL -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL FIN,URG,PSH -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL FIN,URG,PSH -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags SYN,RST SYN,RST -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
-$IPT -A bad_tcp_packets -p tcp --tcp-flags SYN,FIN SYN,FIN -j LOG --log-prefix "Stealth scan: "
-$IPT -A bad_tcp_packets -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
-$IPT -A bad_tcp_packets -p tcp -j RETURN
-
-
-### TCP & UDP ###
-
-# DHCP
-$IPT -A udp_inbound -p UDP -s 0/0 --source-port 67 --destination-port 68 -j ACCEPT
-
-# HTTP Server
-$IPT -A tcp_inbound -p TCP -s 0/0 --destination-port 80 --source-port 1024:65535 -j ACCEPT
-
-# SSH Server
-$IPT -A tcp_inbound -p TCP -s 0/0 --destination-port 22 -j ACCEPT
-
-# Not matched, so return for logging
-$IPT -A tcp_inbound -p TCP -j RETURN
-$IPT -A udp_inbound -p UDP -j RETURN
-$IPT -A tcp_outbound -p TCP -s 0/0 -j ACCEPT
-$IPT -A udp_outbound -p UDP -s 0/0 -j ACCEPT
+# inbound/outbound packets
+$IPT -N inbound-acct
+$IPT -N outbound-acct
 
 
 ###############################################################################
@@ -216,19 +160,58 @@ echo "Process INPUT chain ..."
 # Allow all on localhost interface
 $IPT -A INPUT -p ALL -i $LO_IFACE -j ACCEPT
 
+# Drop inbound to and from reserved port 0
+$IPT -A INPUT -j DROP -p tcp --sport 0
+$IPT -A INPUT -j DROP -p udp --sport 0
+$IPT -A INPUT -j DROP -p tcp --dport 0
+$IPT -A INPUT -j DROP -p udp --dport 0
+
 # Drop bad packets
-$IPT -A INPUT -p ALL -j bad_packets
+$IPT -A INPUT -p ALL -m state --state INVALID -j DROP
+$IPT -A INPUT -p tcp ! --syn -m state --state NEW -j DROP
+$IPT -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
+$IPT -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
+$IPT -A INPUT -p tcp --tcp-flags ALL FIN,URG,PSH -j DROP
+$IPT -A INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
+$IPT -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+$IPT -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
 
-# Accept established connections
-$IPT -A INPUT -p ALL -i $LOCAL_IFACE -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-# Route the rest to the appropriate user chain
-$IPT -A INPUT -p TCP -i $LOCAL_IFACE -j tcp_inbound
-$IPT -A INPUT -p UDP -i $LOCAL_IFACE -j udp_inbound
+# DHCP
+$IPT -A INPUT -p UDP -s 0/0 --sport 67 --dport 68 -j ACCEPT
 
 # Drop broadcasts that get this far
 $IPT -A INPUT -m pkttype --pkt-type broadcast -j DROP
 
+# Route the rest to the accounting rules
+$IPT -A INPUT -p TCP -i $INET_IFACE -j inbound-acct
+
+# HTTP
+$IPT -A inbound-acct -p TCP -s 0/0 --dport 80 --sport 1024:65535 -j ACCEPT
+
+# SSH
+$IPT -A inbound-acct -p TCP -s 0/0 --dport 22 -j ACCEPT
+
+# Allow established connections
+$IPT -A INPUT -p ALL -i $INET_IFACE -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+###############################################################################
+#
+# FORWARD Chain
+#
+
+echo "Process FORWARD chain ..."
+
+# Inbound accounting
+$IPT -A FORWARD -i $INET_IFACE -m tcp -p TCP --dport 22 -j inbound-acct
+$IPT -A FORWARD -i $INET_IFACE -m tcp -p TCP --dport 80 -j inbound-acct
+$IPT -A FORWARD -i $INET_IFACE -m tcp -p TCP --sport 22 -j inbound-acct
+$IPT -A FORWARD -i $INET_IFACE -m tcp -p TCP --sport 80 -j inbound-acct
+
+# Outbound accounting
+$IPT -A FORWARD -s 0/0 -m tcp -p TCP --dport 22 -j outbound-acct
+$IPT -A FORWARD -s 0/0 -m tcp -p TCP --dport 80 -j outbound-acct
+$IPT -A FORWARD -s 0/0 -m tcp -p TCP --sport 22 -j outbound-acct
+$IPT -A FORWARD -s 0/0 -m tcp -p TCP --sport 80 -j outbound-acct
 
 ###############################################################################
 #
@@ -241,20 +224,22 @@ echo "Process OUTPUT chain ..."
 $IPT -A OUTPUT -p ALL -s $LO_IP -j ACCEPT
 $IPT -A OUTPUT -p ALL -o $LO_IFACE -j ACCEPT
 
-# DNS
-$IPT -A OUTPUT -p UDP --dport 53 -m state --state NEW -j ACCEPT
-$IPT -A OUTPUT -p TCP --dport 53 -m state --state NEW -j ACCEPT
+# DHCP
+$IPT -A OUTPUT -p UDP --dport 68 -m state --state NEW -j ACCEPT
 
-# SSH
-$IPT -A OUTPUT -p TCP --dport 22 -m state --state NEW -j ACCEPT
+# DNS
+$IPT -A OUTPUT -p TCP --dport 53 -m state --state NEW -j ACCEPT
+$IPT -A OUTPUT -p UDP --dport 53 -m state --state NEW -j ACCEPT
+
+# Route the rest to the accounting rules
+$IPT -A OUTPUT -p TCP -s 0/0 -j outbound-acct
 
 # HTTP
-$IPT -A OUTPUT -p TCP --dport 80 -m state --state NEW -j ACCEPT
+$IPT -A outbound-acct -p TCP --sport 80 -j ACCEPT
+$IPT -A outbound-acct -p TCP --dport 80 -j ACCEPT
 
-# Accept established outbound connections
-$IPT -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-
-# Log packets that still don't match
-$IPT -A OUTPUT -m limit --limit 3/minute --limit-burst 3 -j LOG --log-prefix "OUTPUT packet died: "
+# SSH
+$IPT -A outbound-acct -p TCP --sport 22 -j ACCEPT
+$IPT -A outbound-acct -p TCP --dport 22 -j ACCEPT
 
 exit 0

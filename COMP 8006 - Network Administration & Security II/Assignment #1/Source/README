@@ -1,0 +1,8 @@
+USAGE:
+======
+
+To start the firewall:
+./firewall.sh
+
+To stop the firewall:
+./firewall.sh stop

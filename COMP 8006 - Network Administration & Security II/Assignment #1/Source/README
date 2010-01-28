@@ -6,3 +6,8 @@ To start the firewall:
 
 To stop the firewall:
 ./firewall.sh stop
+
+If you want the firewall to automatically start on boot, run the following command after starting the firewall:
+/etc/init.d/iptables save
+
+Make sure iptables is set to start on boot.

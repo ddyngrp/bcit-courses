@@ -99,3 +99,41 @@ for port in $TCP_BLOCKED
 do
 	printOutput `testTCP $SERVER $port`
 done
+
+echo "Testing inbound SYN to port 23812 on $SERVER"
+echo "################################################################" >> $OUTPUT
+echo "# Testing inbound SYN to port 23812 on $SERVER" >> $OUTPUT
+echo "################################################################" >> $OUTPUT
+port="23812"
+printOutput `hping3 $SERVER -p $port -S -c 1 --tcpexitcode &>> $OUTPUT; echo $?`
+
+echo "Testing if fragments are received from $SERVER"
+echo "################################################################" >> $OUTPUT
+echo "# Testing if fragments are received from $SERVER" >> $OUTPUT
+echo "################################################################" >> $OUTPUT
+for port in $TCP_ALLOWED
+do
+	printOutput `hping3 $SERVER -p $port -S -c 1 -f -d 1024 --tcpexitcode &>> $OUTPUT; echo $?`
+done
+
+echo "Testing $SERVER responds to SYN,FIN packets"
+echo "################################################################" >> $OUTPUT
+echo "# Testing $SERVER responds to SYN,FIN packets" >> $OUTPUT
+echo "################################################################" >> $OUTPUT
+for port in $TCP_ALLOWED
+do
+	printOutput `hping3 $SERVER -p $port -S -F -c 1 --tcpexitcode &>> $OUTPUT; echo $?`
+done
+
+echo "Testing if $SERVER responds to TELNET packets"
+echo "################################################################" >> $OUTPUT
+echo "# Testing if $SERVER responds to TELNET packets" >> $OUTPUT
+echo "################################################################" >> $OUTPUT
+port="23"
+printOutput `hping3 $SERVER -p $port -S -c 1 --tcpexitcode &>> $OUTPUT; echo $?`
+
+echo "Scanning first 1000 TCP & UDP ports on $SERVER"
+echo "################################################################" >> $OUTPUT
+echo "# Scanning first 1000 TCP & UDP ports on $SERVER" >> $OUTPUT
+echo "################################################################" >> $OUTPUT
+nmap -sS -sU -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 $SERVER &>> $OUTPUT

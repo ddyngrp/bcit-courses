@@ -1,0 +1,322 @@
+################################################################
+# Testing allowed TCP ports 20 21 22 53 80 on 142.232.141.47
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 20 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 21 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 1.7/1.7/1.7 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=46 sport=22 flags=SA seq=0 win=64240 rtt=1.7 ms
+
+** Port 22 is open and service is running on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 6.2/6.2/6.2 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=47 sport=53 flags=RA seq=0 win=64240 rtt=6.2 ms
+
+** Port 53 is open, but no service is responding on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 2.0/2.0/2.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=48 sport=80 flags=SA seq=0 win=64240 rtt=2.0 ms
+
+** Port 80 is open and service is running on 142.232.141.47.
+
+################################################################
+# Testing blocked TCP ports 32768 32769 32770 32771 32772 32773 32774 32775 137 138 139 111 515 on 142.232.141.47
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32768 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32769 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32770 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32771 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32772 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32773 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32774 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 32775 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 137 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 138 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 139 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 111 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 515 are DROPPED on 142.232.141.47.
+
+################################################################
+# Testing inbound SYN to port 23812 on 142.232.141.47
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 23812 are DROPPED on 142.232.141.47.
+
+################################################################
+# Testing if fragments are received from 142.232.141.47
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 1024 data bytes
+
+** Requests to port 20 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 1024 data bytes
+
+** Requests to port 21 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 7.5/7.5/7.5 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 1024 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=49 sport=22 flags=SA seq=0 win=64240 rtt=7.5 ms
+
+** Port 22 is open and service is running on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 4.7/4.7/4.7 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 1024 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=50 sport=53 flags=RA seq=0 win=64240 rtt=4.7 ms
+
+** Port 53 is open, but no service is responding on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 6.3/6.3/6.3 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 1024 data bytes
+len=46 ip=142.232.141.47 ttl=127 id=51 sport=80 flags=SA seq=0 win=64240 rtt=6.3 ms
+
+** Port 80 is open and service is running on 142.232.141.47.
+
+################################################################
+# Testing 142.232.141.47 responds to SYN,FIN packets
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): SF set, 40 headers + 0 data bytes
+
+** Requests to port 20 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): SF set, 40 headers + 0 data bytes
+
+** Requests to port 21 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): SF set, 40 headers + 0 data bytes
+
+** Requests to port 22 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): SF set, 40 headers + 0 data bytes
+
+** Requests to port 53 are DROPPED on 142.232.141.47.
+
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): SF set, 40 headers + 0 data bytes
+
+** Requests to port 80 are DROPPED on 142.232.141.47.
+
+################################################################
+# Testing if 142.232.141.47 responds to TELNET packets
+################################################################
+
+--- 142.232.141.47 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 142.232.141.47 (eth0 142.232.141.47): S set, 40 headers + 0 data bytes
+
+** Requests to port 23 are DROPPED on 142.232.141.47.
+
+################################################################
+# Scanning first 1000 TCP ports on 142.232.141.47
+################################################################
+
+Starting Nmap 5.00 ( http://nmap.org ) at 2010-02-04 10:12 PST
+NSE: Loaded 30 scripts for scanning.
+Initiating Ping Scan at 10:12
+Scanning 142.232.141.47 [8 ports]
+Completed Ping Scan at 10:12, 0.01s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:12
+Completed Parallel DNS resolution of 1 host. at 10:12, 0.01s elapsed
+Initiating SYN Stealth Scan at 10:12
+Scanning 142.232.141.47 [1000 ports]
+Discovered open port 22/tcp on 142.232.141.47
+Discovered open port 80/tcp on 142.232.141.47
+Completed SYN Stealth Scan at 10:12, 4.75s elapsed (1000 total ports)
+Initiating Service scan at 10:12
+Scanning 2 services on 142.232.141.47
+Completed Service scan at 10:12, 6.07s elapsed (2 services on 1 host)
+Initiating OS detection (try #1) against 142.232.141.47
+Retrying OS detection (try #2) against 142.232.141.47
+Initiating Traceroute at 10:12
+142.232.141.47: guessing hop distance at 1
+Completed Traceroute at 10:12, 0.00s elapsed
+Initiating Parallel DNS resolution of 4 hosts. at 10:12
+Completed Parallel DNS resolution of 4 hosts. at 10:12, 0.04s elapsed
+NSE: Script scanning 142.232.141.47.
+NSE: Starting runlevel 1 scan
+Initiating NSE at 10:12
+Completed NSE at 10:12, 0.34s elapsed
+NSE: Script Scanning completed.
+Host 142.232.141.47 is up (0.00100s latency).
+Interesting ports on 142.232.141.47:
+Not shown: 997 filtered ports
+PORT   STATE  SERVICE VERSION
+22/tcp open   ssh     OpenSSH 5.2 (protocol 2.0)
+|  ssh-hostkey: 1024 34:d4:05:eb:73:eb:51:7f:f8:ee:5d:8c:95:b3:5c:1a (DSA)
+|_ 2048 10:7d:d8:fc:69:0e:09:66:3c:ec:2e:6e:0e:ed:44:c7 (RSA)
+53/tcp closed domain
+80/tcp open   http    Apache httpd 2.2.13 ((Unix) mod_ssl/2.2.13 OpenSSL/0.9.8l DAV/2)
+|_ html-title: Site doesn't have a title (text/html).
+Device type: general purpose|switch|storage-misc
+Running (JUST GUESSING) : Apple Mac OS X 10.5.X (96%), Allied Telesyn embedded (88%), BlueArc embedded (88%)
+Aggressive OS guesses: Apple Mac OS X 10.5.5 (Leopard) (96%), Allied Telesyn AT-9448Ts/XP switch (88%), BlueArc Titan 2100 NAS device (88%)
+No exact OS matches for host (test conditions non-ideal).
+TCP Sequence Prediction: Difficulty=254 (Good luck!)
+IP ID Sequence Generation: Incremental
+
+TRACEROUTE (using port 53/tcp)
+HOP RTT  ADDRESS
+1   0.22 10.0.0.1
+2   0.50 192.168.227.2
+3   0.45 142.232.141.47
+
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 15.35 seconds
+           Raw packets sent: 2068 (94.380KB) | Rcvd: 40 (2228B)

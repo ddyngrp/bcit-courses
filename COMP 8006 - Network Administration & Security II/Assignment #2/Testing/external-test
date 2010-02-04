@@ -1,0 +1,287 @@
+################################################################
+# Testing allowed TCP ports 20 21 22 53 80 on 192.168.227.100
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 20 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 21 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 22 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 53 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 80 are DROPPED on 192.168.227.100.
+
+################################################################
+# Testing blocked TCP ports 32768 32769 32770 32771 32772 32773 32774 32775 137 138 139 111 515 on 192.168.227.100
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32768 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32769 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32770 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32771 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32772 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32773 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32774 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 32775 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 137 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 138 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 139 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 111 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 515 are DROPPED on 192.168.227.100.
+
+################################################################
+# Testing inbound SYN to port 23812 on 192.168.227.100
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 23812 are DROPPED on 192.168.227.100.
+
+################################################################
+# Testing if fragments are received from 192.168.227.100
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 1024 data bytes
+
+** Requests to port 20 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 1024 data bytes
+
+** Requests to port 21 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 1024 data bytes
+
+** Requests to port 22 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 1024 data bytes
+
+** Requests to port 53 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 1024 data bytes
+
+** Requests to port 80 are DROPPED on 192.168.227.100.
+
+################################################################
+# Testing 192.168.227.100 responds to SYN,FIN packets
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): SF set, 40 headers + 0 data bytes
+
+** Requests to port 20 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): SF set, 40 headers + 0 data bytes
+
+** Requests to port 21 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): SF set, 40 headers + 0 data bytes
+
+** Requests to port 22 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): SF set, 40 headers + 0 data bytes
+
+** Requests to port 53 are DROPPED on 192.168.227.100.
+
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): SF set, 40 headers + 0 data bytes
+
+** Requests to port 80 are DROPPED on 192.168.227.100.
+
+################################################################
+# Testing if 192.168.227.100 responds to TELNET packets
+################################################################
+
+--- 192.168.227.100 hping statistic ---
+1 packets transmitted, 0 packets received, 100% packet loss
+round-trip min/avg/max = 0.0/0.0/0.0 ms
+HPING 192.168.227.100 (eth0 192.168.227.100): S set, 40 headers + 0 data bytes
+
+** Requests to port 23 are DROPPED on 192.168.227.100.
+
+################################################################
+# Scanning first 1000 TCP ports on 192.168.227.100
+################################################################
+
+Starting Nmap 5.00 ( http://nmap.org ) at 2010-02-04 10:13 PST
+NSE: Loaded 30 scripts for scanning.
+Initiating ARP Ping Scan at 10:13
+Scanning 192.168.227.100 [1 port]
+Completed ARP Ping Scan at 10:13, 0.08s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:13
+Completed Parallel DNS resolution of 1 host. at 10:13, 0.02s elapsed
+Initiating SYN Stealth Scan at 10:13
+Scanning 192.168.227.100 [1000 ports]
+Completed SYN Stealth Scan at 10:14, 21.17s elapsed (1000 total ports)
+Initiating Service scan at 10:14
+Initiating OS detection (try #1) against 192.168.227.100
+Retrying OS detection (try #2) against 192.168.227.100
+NSE: Script scanning 192.168.227.100.
+NSE: Script Scanning completed.
+Host 192.168.227.100 is up (0.00035s latency).
+All 1000 scanned ports on 192.168.227.100 are filtered
+MAC Address: 00:0C:29:92:45:96 (VMware)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 25.57 seconds
+           Raw packets sent: 2049 (94.714KB) | Rcvd: 1 (42B)

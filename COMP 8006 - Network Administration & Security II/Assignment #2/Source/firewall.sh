@@ -53,7 +53,7 @@ TCP_ALLOWED="22 53 80"
 # Allowed UDP Ports
 UDP_ALLOWED="53"
 
-# Allowed ICMP Ports
+# Allowed ICMP types
 ICMP_ALLOWED="8 11"
 
 # Always Blocked
@@ -303,8 +303,8 @@ $IPT -A INPUT -p ALL -i $LO_IFACE -j ACCEPT
 $IPT -A INPUT -p ALL -j bad_packets
 
 # Rules for the private network (accessing gateway system itself)
-$IPT -A INPUT -p ALL -i $LOCAL_IFACE -s $LOCAL_NET -j ACCEPT
-$IPT -A INPUT -p ALL -i $LOCAL_IFACE -d $LOCAL_BCAST -j ACCEPT
+#$IPT -A INPUT -p ALL -i $LOCAL_IFACE -s $LOCAL_NET -j ACCEPT
+#$IPT -A INPUT -p ALL -i $LOCAL_IFACE -d $LOCAL_BCAST -j ACCEPT
 
 # Block specific ports in all cases
 for tcp_block in $TCP_BLOCKED
@@ -331,6 +331,9 @@ echo "Process FORWARD chain..."
 # Drop bad packets
 $IPT -A FORWARD -p ALL -j bad_packets
 
+# Accept fragments
+$IPT -A FORWARD -f -j ACCEPT
+
 # Accept TCP packets we want to forward from internal sources
 $IPT -A FORWARD -p tcp -i $LOCAL_IFACE -j tcp_outbound
 
@@ -354,6 +357,9 @@ $IPT -A FORWARD -i $INET_IFACE -m state --state ESTABLISHED,RELATED -j ACCEPT
 #
 
 echo "Process OUTPUT chain ..."
+
+# Drop bad packets
+$IPT -A OUTPUT -p ALL -j bad_packets
 
 # Localhost
 $IPT -A OUTPUT -p ALL -s $LO_IP -j ACCEPT

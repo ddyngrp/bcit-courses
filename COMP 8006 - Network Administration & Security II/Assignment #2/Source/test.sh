@@ -24,7 +24,7 @@
 ###############################################################################
 
 # Output File
-OUTPUT="./internal-test"
+OUTPUT="./external-test"
 
 # Allowed TCP Ports
 TCP_ALLOWED="20 21 22 53 80"
@@ -36,7 +36,7 @@ ICMP_ALLOWED="8 11"
 TCP_BLOCKED="32768 32769 32770 32771 32772 32773 32774 32775 137 138 139 111 515"
 
 # Server
-SERVER="trollop.org"
+SERVER="192.168.227.100"
 
 
 ###############################################################################
@@ -74,9 +74,9 @@ printOutput() {
 			echo >> $OUTPUT
 			;;
 		*)	
-			echo "Requests to port $port are DROPPED."
+			echo "Requests to port $port are DROPPED on $SERVER."
 			echo >> $OUTPUT
-			echo "** Requests to port $port are DROPPED." >> $OUTPUT
+			echo "** Requests to port $port are DROPPED on $SERVER." >> $OUTPUT
 			echo >> $OUTPUT
 			;;
 	esac
@@ -132,8 +132,8 @@ echo "################################################################" >> $OUTP
 port="23"
 printOutput `hping3 $SERVER -p $port -S -c 1 --tcpexitcode &>> $OUTPUT; echo $?`
 
-echo "Scanning first 1000 TCP & UDP ports on $SERVER"
+echo "Scanning first 1000 TCP ports on $SERVER"
 echo "################################################################" >> $OUTPUT
-echo "# Scanning first 1000 TCP & UDP ports on $SERVER" >> $OUTPUT
+echo "# Scanning first 1000 TCP ports on $SERVER" >> $OUTPUT
 echo "################################################################" >> $OUTPUT
-nmap -sS -sU -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 $SERVER &>> $OUTPUT
+nmap -sS -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 $SERVER &>> $OUTPUT

@@ -33,8 +33,8 @@ IPTR="/sbin/iptables-restore"
 
 # Internet Interface
 INET_IFACE="eth0"
-INET_IP="192.168.1.2"
-INET_NET="192.168.1.0/24"
+INET_IP="192.168.227.100"
+INET_NET="192.168.227.0/24"
 INET_BCAST="192.168.1.255"
 
 # Local Interface Information
@@ -223,7 +223,7 @@ $IPT -A bad_packets -p ALL -j RETURN
 ##
 
 # Trust the internal network
-$IPT -A bad_tcp_packets -p tcp -i $LOCAL_IFACE -j RETURN
+#$IPT -A bad_tcp_packets -p tcp -i $LOCAL_IFACE -j RETURN
 
 # Not a NEW SYN
 $IPT -A bad_tcp_packets -p tcp ! --syn -m state --state NEW -j DROP

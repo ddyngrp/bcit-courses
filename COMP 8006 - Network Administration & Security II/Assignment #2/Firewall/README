@@ -1,0 +1,29 @@
+INSTRUCTIONS:
+=============
+
+Make sure you edit "firewall.sh" to match your current network settings.
+The internal network interface should be on a different subnet than the external.
+
+
+USAGE:
+======
+
+./firewall.sh {start|stop|save|restore|client}
+  start   - starts the firewall and configures $LOCAL_IFACE with the following settings:
+            IP Address = $LOCAL_IP
+            Netmask    = $LOCAL_NETMASK
+            Broadcast  = $LOCAL_BCAST
+  stop    - stops the firewall
+  save    - saves current iptables rules to `pwd`/iptables-save
+  restore - restures saved iptables rules from `pwd`/iptables-save
+  client  - configures the client's $CLIENT_IFACE with the follwing settings:
+            IP Address = $CLIENT_IP
+            Netmask    = $CLIENT_NETMASK
+            Broadcast  = $CLIENT_BCAST
+            Gateway    = $CLIENT_GATEWAY"
+
+If you want the firewall to automatically start on boot, run the following command after starting the firewall:
+/etc/init.d/iptables save
+
+Make sure iptables is set to start on boot.
+

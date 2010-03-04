@@ -24,7 +24,7 @@
 ###############################################################################
 
 # Output File
-OUTPUT="./external-test"
+OUTPUT="./internal-test"
 
 # Allowed TCP Ports
 TCP_ALLOWED="20 21 22 53 80"

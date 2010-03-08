@@ -23,6 +23,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <sys/param.h>
+#include <netdb.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -31,12 +33,14 @@
 #include <unistd.h>
 #include <errno.h>
 #include <err.h>
+#include <time.h>
+#include <signal.h>
 
 #include <pthread.h>
 
 #define SERVER_PORT				9000	/* port number to listen on */
 #define MAX_THREADS				300
-#define MAX_CLIENTS_PER_THREAD	1
+#define MAX_CLIENTS_PER_THREAD	100
 
 typedef struct 
 {
@@ -44,16 +48,17 @@ typedef struct
 	int thread_num;
 	int client_count;
 	int clients[MAX_CLIENTS_PER_THREAD];
+	unsigned int unique_id[MAX_CLIENTS_PER_THREAD];
 } Thread;
 
-pthread_cond_t new_connection_cond = PTHREAD_COND_INITIALIZER;
-pthread_mutex_t new_connection_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 Thread threads[MAX_THREADS];
+
+pthread_mutex_t linked_list_mutex; 
 
 void *servlet(void *ptr);
 void on_accept(int fd);
 int first_free_thread(void);
 int first_free_client(int thread_num);
-
+unsigned int random_id(void);
+void terminate(int sig);
 #endif

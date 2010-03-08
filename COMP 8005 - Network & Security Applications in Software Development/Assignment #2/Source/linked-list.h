@@ -21,21 +21,23 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <err.h>
 
 typedef struct node {
-	int socket;
-	char *hostname;
+	unsigned int unique_id;
+	char hostname[255];
 	int srv_req;
 	int srv_data;
-	int cli_req;
-	int *cli_delay;
 	struct node *next; /* pointer to next element in list */
 } LLIST;
+
+LLIST *conn_track;
 
 LLIST *list_add(LLIST **p, int i);
 void list_remove(LLIST **p);
 void list_clear(LLIST **p);
-LLIST **list_search(LLIST **n, int i);
+LLIST **list_search(LLIST **n, unsigned int i);
 void list_print(LLIST *n);
+void list_write(LLIST *n, char *fileName);
 
 #endif

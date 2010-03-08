@@ -31,7 +31,7 @@ LLIST *list_add(LLIST **p, int i)
 	
 	n->next = *p; /* the previous element (*p) now becomes the "next" element */
 	*p = n;       /* add new empty element to the front (head) of the list */
-	n->socket = i;
+	n->unique_id = i;
 	
 	return *p;
 }
@@ -54,13 +54,13 @@ void list_clear(LLIST **p) /* remove all */
 	}
 }
 
-LLIST **list_search(LLIST **n, int i)
+LLIST **list_search(LLIST **n, unsigned int i)
 {
 	if (n == NULL)
 		return NULL;
 	
 	while (*n != NULL) {
-		if ((*n)->socket == i) {
+		if ((*n)->unique_id == i) {
 			return n;
 		}
 		n = &(*n)->next;
@@ -74,7 +74,26 @@ void list_print(LLIST *n)
 		printf("list is empty\n");
 	}
 	while (n != NULL) {
-		printf("print %d\n", n->socket);
+		printf("%u, %s, %d, %d\n",
+				n->unique_id, n->hostname, n->srv_req, n->srv_data);
+		n = n->next;
+	}
+}
+
+void list_write(LLIST *n, char *fileName)
+{
+	FILE *file;
+	
+	file = fopen(fileName, "w");
+	if (file == NULL)
+		err(1, "fopen failed");
+	
+	if (n == NULL) {
+		fprintf(file, "%s", "No data stored.");
+	}
+	while (n != NULL) {
+		fprintf(file, "%u, %s, %d, %d\n",
+				n->unique_id, n->hostname, n->srv_req, n->srv_data);
 		n = n->next;
 	}
 }

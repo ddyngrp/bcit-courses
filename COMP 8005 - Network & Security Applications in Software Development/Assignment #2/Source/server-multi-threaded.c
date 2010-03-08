@@ -28,6 +28,7 @@ void *servlet(void *ptr)
 	Thread *thread = (Thread *)ptr;
 	u_char buf[4096];
 	int fd, client = 0, len, wlen;
+	LLIST **tmp;
 	
 	while (1) {
 		fd = thread->clients[client];
@@ -42,8 +43,17 @@ void *servlet(void *ptr)
 				thread->clients[client] = 0;
 				close(fd);
 			}
-			else if (len > 0)
+			else if (len > 0) {
 				wlen = write(fd, buf, len);
+				
+				/* update the requests and data for the client & lock access */
+				pthread_mutex_lock(&linked_list_mutex);
+				tmp = list_search(&conn_track, thread->unique_id[client]);
+				(*tmp)->srv_req++;
+				(*tmp)->srv_data += wlen;
+				pthread_mutex_unlock(&linked_list_mutex);
+				list_print(conn_track);
+			}
 		}
 		
 		if (client == MAX_CLIENTS_PER_THREAD -1)
@@ -55,7 +65,7 @@ void *servlet(void *ptr)
 		if (thread->client_count == 0) {
 			break;
 		}
-		usleep(100);
+		usleep(1);
 	}
 	return NULL;
 }
@@ -68,6 +78,7 @@ void on_accept(int fd)
 {
 	int client_fd, thread_num, client_num;
 	struct sockaddr_in client_addr;
+	
 	socklen_t client_len = sizeof(client_addr);
 	
 	/* accept the new connection. */
@@ -90,6 +101,18 @@ void on_accept(int fd)
 	threads[thread_num].thread_num = thread_num;
 	threads[thread_num].clients[client_num] = client_fd;
 	
+	/* assign a unique ID for each new client & create list entry */
+	threads[thread_num].unique_id[client_num] = random_id();
+	
+	/* lock access to list */
+	pthread_mutex_lock(&linked_list_mutex);
+	list_add(&conn_track, threads[thread_num].unique_id[client_num]);
+	memcpy(conn_track->hostname, inet_ntoa(client_addr.sin_addr),
+		   strlen(inet_ntoa(client_addr.sin_addr)));
+	conn_track->srv_req = 0;
+	conn_track->srv_data = 0;
+	pthread_mutex_unlock(&linked_list_mutex);
+	
 	if (threads[thread_num].client_count == 0) {
 		printf("Creating thread %d\n", thread_num);
 		pthread_create(&threads[thread_num].thread_id,
@@ -100,6 +123,8 @@ void on_accept(int fd)
 	
 	printf("Accepted connection from %s on socket %d\n",
 		   inet_ntoa(client_addr.sin_addr), client_fd);
+
+	fflush(stdout);
 }
 
 int first_free_thread()
@@ -124,37 +149,83 @@ int first_free_client(int thread_num)
 	return -1;
 }
 
+unsigned int random_id()
+{
+	/* Simple "srand()" seed: just use "time()" */
+	unsigned int iseed = (unsigned int)time(NULL);
+	srand (iseed);
+	
+	return rand();
+}
+
+void terminate(int sig)
+{
+	int i, k;
+	char *fileName = "./server-data.csv";
+
+	/* kill all threads & terminate connections */
+	for (i = 0; i < MAX_THREADS; i++) {
+		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
+			if (threads[i].clients[k] != 0)
+				close(threads[i].clients[k]);
+		}
+		threads[i].client_count = 0;
+	}
+	
+	/* write collected data to file */
+	list_write(conn_track, fileName);
+	
+	printf("\nData written to %s, program terminated.\n", fileName);
+	
+	exit(0);
+}
+
 int main(int argc, char **argv)
 {
-	int listen_fd, i, k;
 	struct sockaddr_in listen_addr;
-	int reuseaddr_on = 1;
+	int listen_fd, i, k, reuseaddr_on = 1;
 	
-	/* Create our listening socket. This is largely boiler plate
-	 * code that I'll abstract away in the future. */
+	/* cleanup and write data CTRL+C is pressed */
+	(void)signal(SIGINT, terminate);
+	
+	/* set the initial list to empty */
+	conn_track = NULL;
+	
+	/* create listening socket */
 	listen_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_fd < 0)
 		err(1, "listen failed");
+	
+	/* reuse the socket address */
 	if (setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr_on, 
 				   sizeof(reuseaddr_on)) == -1)
 		err(1, "setsockopt failed");
+	
+	/* set to listen on all addresses */
 	memset(&listen_addr, 0, sizeof(listen_addr));
 	listen_addr.sin_family = AF_INET;
 	listen_addr.sin_addr.s_addr = INADDR_ANY;
 	listen_addr.sin_port = htons(SERVER_PORT);
+	
+	/* bind the socket */
 	if (bind(listen_fd, (struct sockaddr *)&listen_addr,
 			 sizeof(listen_addr)) < 0)
 		err(1, "bind failed");
+	
+	/* listen for new connections */
 	if (listen(listen_fd, 5) < 0)
 		err(1, "listen failed");
 	
 	/* initialize thread struct */
 	for (i = 0; i < MAX_THREADS; i++) {
 		threads[i].client_count = 0;
-		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++)
+		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
 			threads[i].clients[k] = 0;
+			threads[i].unique_id[k] = 0;
+		}
 	}
 	
+	/* accept is blocking, so we loop forever */
 	while (1)
 		on_accept(listen_fd);
 	

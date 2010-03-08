@@ -2,10 +2,10 @@
  * server-multi-threaded.h
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
- * server-multi-threaded.h is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * server-multi-threaded.h is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License as 
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
  * 
  * server-multi-threaded.h is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,6 +19,41 @@
 #ifndef SERVER_MULTI_THREADED_H
 #define SERVER_MULTI_THREADED_H
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include <err.h>
+
+#include <pthread.h>
+
+#define SERVER_PORT				9000	/* port number to listen on */
+#define MAX_THREADS				300
+#define MAX_CLIENTS_PER_THREAD	1
+
+typedef struct 
+{
+	pthread_t thread_id;
+	int thread_num;
+	int client_count;
+	int clients[MAX_CLIENTS_PER_THREAD];
+} Thread;
+
+pthread_cond_t new_connection_cond = PTHREAD_COND_INITIALIZER;
+pthread_mutex_t new_connection_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+Thread threads[MAX_THREADS];
+
+void *servlet(void *ptr);
+void on_accept(int fd);
+int first_free_thread(void);
+int first_free_client(int thread_num);
 
 #endif

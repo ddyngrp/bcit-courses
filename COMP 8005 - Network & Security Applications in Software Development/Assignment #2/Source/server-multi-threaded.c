@@ -38,13 +38,14 @@ void *servlet(void *ptr)
 			}
 			else if (rlen > 0) {
 				wlen = write(fd, buf, rlen);
+				if (wlen < 0)
+					err(1, "write");
 				
 				/* update client info */
-				cli_info[thread->cli_pos[client]].requests++;
+				cli_stats[thread->cli_pos[client]].requests++;
 
-				if (wlen > 0) {
-					cli_info[thread->cli_pos[client]].sent_data += wlen;
-				}
+				if (wlen > 0) 
+					cli_stats[thread->cli_pos[client]].sent_data += wlen;
 			}
 		}
 		
@@ -92,12 +93,12 @@ void on_accept(int fd)
 	threads[thread_num].cli_pos[client_num] = cli_pos;
 	
 	/* add client info */
-	memcpy(cli_info[cli_pos].address,
+	memcpy(cli_stats[cli_pos].address,
 		   inet_ntoa(client_addr.sin_addr),
 		   strlen(inet_ntoa(client_addr.sin_addr)));
-	cli_info[cli_pos].port = client_addr.sin_port;
-	cli_info[cli_pos].requests = 0;
-	cli_info[cli_pos].sent_data = 0;
+	cli_stats[cli_pos].port = client_addr.sin_port;
+	cli_stats[cli_pos].requests = 0;
+	cli_stats[cli_pos].sent_data = 0;
 	cli_pos++;
 	
 	/* create a new thread if needed */
@@ -161,11 +162,13 @@ void terminate(int sig)
 	}
 
 	for (i = 0; i < cli_pos; i++) {
-		/* printf("%s, %d, %d, %d\n", cli_info[i].address, cli_info[i].port, 
-			   cli_info[i].requests, cli_info[i].sent_data); */
-		fprintf(file, "%s, %d, %d, %d\n", cli_info[i].address, cli_info[i].port, 
-				cli_info[i].requests, cli_info[i].sent_data);
+		/* printf("%s, %d, %d, %d\n", cli_stats[i].address, cli_stats[i].port, 
+			   cli_stats[i].requests, cli_stats[i].sent_data); */
+		fprintf(file, "%s, %d, %lu, %lu\n", cli_stats[i].address, cli_stats[i].port, 
+				cli_stats[i].requests, cli_stats[i].sent_data);
 	}
+	
+	fclose(file);
 	
 	printf("\nData written to %s, program terminated.\n", STATS_FILE);
 	

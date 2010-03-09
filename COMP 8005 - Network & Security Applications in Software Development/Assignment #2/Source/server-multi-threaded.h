@@ -41,7 +41,7 @@
 #define SERVER_PORT				9000	/* port number to listen on */
 #define MAX_THREADS				300
 #define MAX_CLIENTS_PER_THREAD	200
-#define MAX_IOSIZE				81920
+#define MAX_IOSIZE				65536
 
 #define STATS_FILE	"./server-data.csv"
 
@@ -56,14 +56,14 @@ typedef struct
 
 typedef struct
 {
-	char address[17];	/* client's address */
-	int port;			/* remote port for client */
-	int requests;		/* total requests generated */
-	int sent_data;		/* total data sent to */
-} ClientInfo;
+	char address[17];			/* client's address */
+	int port;					/* remote port for client */
+	unsigned long requests;		/* total requests generated */
+	unsigned long sent_data;	/* total data sent to */
+} ClientStats;
 
 Thread threads[MAX_THREADS];
-ClientInfo cli_info[MAX_THREADS * MAX_CLIENTS_PER_THREAD];
+ClientStats cli_stats[MAX_THREADS * MAX_CLIENTS_PER_THREAD];
 
 static int cli_pos = 0;
 

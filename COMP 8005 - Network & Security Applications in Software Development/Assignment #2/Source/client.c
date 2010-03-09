@@ -17,7 +17,6 @@
  *----------------------------------------------------------------------------*/
 
 #include "client.h"
-#include "linked-list.h"
 
 int server_connect(struct in_addr const *paddr, int port)
 {
@@ -46,8 +45,14 @@ int init_test(void)
 {
 	struct hostent *he;
 	struct in_addr inadr;
-	int i, k, rlen, rtotal = 0, wlen, fd = 0, connections = 1, conn_errors = 0;
+	int i, k, rlen, rtotal, wlen;
+	int fd = 0, connections = 1, conn_errors = 0;
 	char buf[MAX_IOSIZE];
+	
+	/* for time in µsec */
+	struct timeval tv;
+	struct timezone tz;
+	unsigned long start, end;
 	
 	/* The number of connections is 1 unless we're testing */
 	if (test_vars.connect_test == TRUE)
@@ -71,13 +76,34 @@ int init_test(void)
 				conn_errors = 0;
 			}
 			else { /* run in string sending/receive mode */
+				/* init server stats */
+				srv_stats.requests = 0;
+				srv_stats.sent_data = 0;
+				srv_stats.delay = 0;
+
 				for (k = 0; k < test_vars.repeat; k++) {
-					wlen = write(fd, test_vars.string_test, test_vars.string_length);
+					rtotal = 0;
 					
+					gettimeofday(&tv, &tz);
+					start = tv.tv_usec;
+					
+					wlen = write(fd, test_vars.string_test, test_vars.string_length);
+
 					while (wlen != rtotal) {
 						rlen = read(fd, buf, sizeof(buf));
 						rtotal += rlen;
 					}
+					
+					gettimeofday(&tv, &tz);
+					end = tv.tv_usec;
+					
+					/* save stats */
+					srv_stats.requests += 1;
+					srv_stats.sent_data += wlen;
+					if (start > end)
+						srv_stats.delay += start - end;
+					else
+						srv_stats.delay += end - start;
 				}
 			}
 
@@ -90,17 +116,11 @@ int init_test(void)
 			i--;
 		}
 	}
-	
-	sleep(1); /* don't close the socket before server finishes */
-	
+
+	sleep(1);
 	close(fd);
 	 
 	return 0;
-}
-
-void terminate(int sig)
-{
-	
 }
 
 /*-----------------------------------------------------------------------------
@@ -190,6 +210,7 @@ void print_settings(int argc) {
 
 int main(int argc, char *argv[])
 {
+	FILE *file;
 	int i, c, retval, option_index = 0;
 	char t = MIN_CHAR;
 	
@@ -288,6 +309,24 @@ int main(int argc, char *argv[])
 		perror("fatal error");
 	else if (retval == ERROR_CONN_ERR)
 		perror("maximum connect errors exceeded");
+	else {
+		/* append stats to file */
+		file = fopen(test_vars.output_file, "a");
+		if (file == NULL)
+			err(1, "fopen failed");
+		
+		if (test_vars.repeat == 0) {
+			fprintf(file, "%s", "No data stored.");
+		}
+		
+		printf("%lu, %lu, %lu\n", srv_stats.requests, 
+		 srv_stats.sent_data, srv_stats.delay);
+		/* fprintf(file, "%lu, %lu, %lu\n", srv_stats[i].requests, 
+				srv_stats[i].sent_data, srv_stats[i].delay); */
+		
+		fclose(file);
+	}
+
 
 	return 0;
 }

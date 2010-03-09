@@ -37,6 +37,8 @@
 #include <signal.h>
 #include <getopt.h>
 
+#include <sys/time.h>
+
 #define MAX_CONNECT_ERRORS	10		/* times to retry connecting */
 #define USLEEP_TIME			100		/* backoff time in µseconds */
 
@@ -59,7 +61,7 @@
 #define TV_PORT		9000
 #define TV_FILE		"./client_stats.csv"
 
-#define MAX_IOSIZE	81920
+#define MAX_IOSIZE	65536
 
 /* ASCII options */
 #define MIN_CHAR	32
@@ -77,11 +79,18 @@ typedef struct
 	char *output_file;	/* where to save statistics */
 } TestVars;
 
+typedef struct
+{
+	unsigned long requests;
+	unsigned long sent_data;
+	unsigned long delay;
+} ServerStats;
+
 TestVars test_vars;
+ServerStats srv_stats;
 
 int server_connect(struct in_addr const *paddr, int port);
 int init_test(void);
-void terminate(int sig);
 void print_usage(char *command, int err);
 void print_settings(int argc);
 

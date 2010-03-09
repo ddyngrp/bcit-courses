@@ -17,39 +17,34 @@
  *----------------------------------------------------------------------------*/
 
 #include "server-multi-threaded.h"
-#include "linked-list.h"
 
 void *servlet(void *ptr)
 {
 	Thread *thread = (Thread *)ptr;
-	u_char buf[4096];
-	int fd, client = 0, len = 0, wlen, usleep_time = 1;
-	struct sockaddr_in client_addr;
-	socklen_t addr_len;
+	u_char buf[MAX_IOSIZE]; /* assign buffer for each client */
+	int fd, client = 0, rlen = 0, wlen;
 	
 	while (1) {
 		fd = thread->clients[client];
 		
 		if (fd != 0) {
-			len = read(fd, buf, sizeof(buf));
-			if (len == 0) {
+			rlen = read(fd, buf, sizeof(buf));
+			
+			if (rlen == 0) {
 				printf("Client disconnected from socket %d.\n", fd);
 				thread->client_count--;
 				thread->clients[client] = 0;
 				close(fd);
 			}
-			else if (len > 0) {
-				wlen = write(fd, buf, len);
+			else if (rlen > 0) {
+				wlen = write(fd, buf, rlen);
 				
-				/* grab client info */
-				getpeername(thread->clients[client],
-							(struct sockaddr*)&client_addr, &addr_len);
-				
-				/* add client data */
-				list_add(&conn_track, client_addr.sin_port);
-				memcpy(conn_track->cli_addr,inet_ntoa(client_addr.sin_addr),
-					   strlen(inet_ntoa(client_addr.sin_addr)));
-				conn_track->srv_data = wlen;
+				/* update client info */
+				cli_info[thread->cli_pos[client]].requests++;
+
+				if (wlen > 0) {
+					cli_info[thread->cli_pos[client]].sent_data += wlen;
+				}
 			}
 		}
 		
@@ -60,18 +55,10 @@ void *servlet(void *ptr)
 		
 		/* exit the thread if no clients */
 		if (thread->client_count == 0) {
+			thread->thread_id = 0;
 			printf("Terminating thread %d\n", thread->current_thread);
 			break;
 		}
-		
-		/* backoff on reading socket set up to 0.13 seconds if no data */
-		if (len == -1 && usleep_time < MAX_USLEEP)
-			usleep_time = usleep_time << 1;
-		else
-			usleep_time = 1;
-			
-		usleep(usleep_time); /* reduce CPU usage since we're not using libevent */
-
 	}
 	return NULL;
 }
@@ -102,13 +89,16 @@ void on_accept(int fd)
 	
 	threads[thread_num].current_thread = thread_num;
 	threads[thread_num].clients[client_num] = client_fd;
+	threads[thread_num].cli_pos[client_num] = cli_pos;
 	
-	/* add initial client data */
-	list_add(&conn_track, client_addr.sin_port);
-	memcpy(conn_track->cli_addr,inet_ntoa(client_addr.sin_addr),
+	/* add client info */
+	memcpy(cli_info[cli_pos].address,
+		   inet_ntoa(client_addr.sin_addr),
 		   strlen(inet_ntoa(client_addr.sin_addr)));
-	conn_track->srv_data = 0;
-	
+	cli_info[cli_pos].port = client_addr.sin_port;
+	cli_info[cli_pos].requests = 0;
+	cli_info[cli_pos].sent_data = 0;
+	cli_pos++;
 	
 	/* create a new thread if needed */
 	if (threads[thread_num].thread_id == 0) {
@@ -149,8 +139,8 @@ int first_free_client(int thread_num)
 
 void terminate(int sig)
 {
+	FILE *file;
 	int i, k;
-	char *fileName = "./server-data.csv";
 
 	/* kill all threads & terminate connections */
 	for (i = 0; i < MAX_THREADS; i++) {
@@ -160,25 +150,35 @@ void terminate(int sig)
 		}
 		threads[i].client_count = 0;
 	}
+
+	/* write data to file */
+	file = fopen(STATS_FILE, "w");
+	if (file == NULL)
+		err(1, "fopen failed");
 	
-	/* write collected data to file */
-	list_write(conn_track, fileName);
+	if (cli_pos == 0) {
+		fprintf(file, "%s", "No data stored.");
+	}
+
+	for (i = 0; i < cli_pos; i++) {
+		/* printf("%s, %d, %d, %d\n", cli_info[i].address, cli_info[i].port, 
+			   cli_info[i].requests, cli_info[i].sent_data); */
+		fprintf(file, "%s, %d, %d, %d\n", cli_info[i].address, cli_info[i].port, 
+				cli_info[i].requests, cli_info[i].sent_data);
+	}
 	
-	printf("\nData written to %s, program terminated.\n", fileName);
+	printf("\nData written to %s, program terminated.\n", STATS_FILE);
 	
 	exit(0);
 }
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	struct sockaddr_in listen_addr;
 	int listen_fd, i, k, reuseaddr_on = 1;
 	
 	/* cleanup and write data CTRL+C is pressed */
 	(void)signal(SIGINT, terminate);
-	
-	/* set the initial list to empty */
-	conn_track = NULL;
 	
 	/* create listening socket */
 	listen_fd = socket(AF_INET, SOCK_STREAM, 0);

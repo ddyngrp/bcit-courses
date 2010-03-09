@@ -6,7 +6,7 @@
 #
 
 CC=gcc
-CFLAGS=-Os -c -Wall -pedantic
+CFLAGS=-c -Wall -pedantic -ggdb
 LDFLAGS_EV_MT=-lpthread
 LDFLAGS_EV_EV=-levent
 

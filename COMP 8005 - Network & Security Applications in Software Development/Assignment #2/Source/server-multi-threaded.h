@@ -39,19 +39,33 @@
 #include <pthread.h>
 
 #define SERVER_PORT				9000	/* port number to listen on */
-#define MAX_USLEEP				131072	/* backoff up to 0.13 seconds */
 #define MAX_THREADS				300
 #define MAX_CLIENTS_PER_THREAD	200
+#define MAX_IOSIZE				81920
+
+#define STATS_FILE	"./server-data.csv"
 
 typedef struct 
 {
-	pthread_t thread_id;
-	int current_thread;
-	int client_count;
-	int clients[MAX_CLIENTS_PER_THREAD];
+	pthread_t thread_id;					/* the serving thread's id */
+	int current_thread;						/* current thread number */
+	int client_count;						/* number of clients being served */
+	int clients[MAX_CLIENTS_PER_THREAD];	/* socket descriptors for each client */
+	int cli_pos[MAX_CLIENTS_PER_THREAD];	/* where to locate the client info */
 } Thread;
 
+typedef struct
+{
+	char address[17];	/* client's address */
+	int port;			/* remote port for client */
+	int requests;		/* total requests generated */
+	int sent_data;		/* total data sent to */
+} ClientInfo;
+
 Thread threads[MAX_THREADS];
+ClientInfo cli_info[MAX_THREADS * MAX_CLIENTS_PER_THREAD];
+
+static int cli_pos = 0;
 
 pthread_mutex_t linked_list_mutex = PTHREAD_MUTEX_INITIALIZER;
 

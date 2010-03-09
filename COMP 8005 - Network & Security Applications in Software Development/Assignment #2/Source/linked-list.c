@@ -18,7 +18,7 @@
 
 #include "linked-list.h"
 
-LLIST *list_add(LLIST **p, int i)
+LLIST *list_add(LLIST **p, int cli_port)
 {
 	LLIST *n;
 	
@@ -31,7 +31,7 @@ LLIST *list_add(LLIST **p, int i)
 	
 	n->next = *p; /* the previous element (*p) now becomes the "next" element */
 	*p = n;       /* add new empty element to the front (head) of the list */
-	n->unique_id = i;
+	n->cli_port = cli_port;
 	
 	return *p;
 }
@@ -54,28 +54,14 @@ void list_clear(LLIST **p) /* remove all */
 	}
 }
 
-LLIST **list_search(LLIST **n, unsigned int i)
-{
-	if (n == NULL)
-		return NULL;
-	
-	while (*n != NULL) {
-		if ((*n)->unique_id == i) {
-			return n;
-		}
-		n = &(*n)->next;
-	}
-	return NULL;
-}
-
 void list_print(LLIST *n)
 {
 	if (n == NULL) {
 		printf("list is empty\n");
 	}
 	while (n != NULL) {
-		printf("%u, %s, %d, %d\n",
-				n->unique_id, n->hostname, n->srv_req, n->srv_data);
+		printf("%s, %d, %d, %d\n",
+				n->hostname, n->cli_port, n->srv_req, n->srv_data);
 		n = n->next;
 	}
 }
@@ -92,8 +78,7 @@ void list_write(LLIST *n, char *fileName)
 		fprintf(file, "%s", "No data stored.");
 	}
 	while (n != NULL) {
-		fprintf(file, "%u, %s, %d, %d\n",
-				n->unique_id, n->hostname, n->srv_req, n->srv_data);
+		fprintf(file, "%s, %d, %d, %d\n", n->hostname, n->cli_port, n->srv_req, n->srv_data);
 		n = n->next;
 	}
 }

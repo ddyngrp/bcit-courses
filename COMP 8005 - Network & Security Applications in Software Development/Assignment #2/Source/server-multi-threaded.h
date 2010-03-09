@@ -40,7 +40,8 @@
 
 #define SERVER_PORT				9000	/* port number to listen on */
 #define MAX_THREADS				300
-#define MAX_CLIENTS_PER_THREAD	100
+#define THREADS_PREFORK			50
+#define MAX_CLIENTS_PER_THREAD	200
 
 typedef struct 
 {
@@ -48,17 +49,16 @@ typedef struct
 	int thread_num;
 	int client_count;
 	int clients[MAX_CLIENTS_PER_THREAD];
-	unsigned int unique_id[MAX_CLIENTS_PER_THREAD];
+	int client_port[MAX_CLIENTS_PER_THREAD];
 } Thread;
 
 Thread threads[MAX_THREADS];
 
-pthread_mutex_t linked_list_mutex; 
+pthread_mutex_t linked_list_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *servlet(void *ptr);
 void on_accept(int fd);
 int first_free_thread(void);
 int first_free_client(int thread_num);
-unsigned int random_id(void);
 void terminate(int sig);
 #endif

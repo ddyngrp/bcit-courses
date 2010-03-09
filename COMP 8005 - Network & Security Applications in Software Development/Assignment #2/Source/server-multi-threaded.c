@@ -19,16 +19,11 @@
 #include "server-multi-threaded.h"
 #include "linked-list.h"
 
-/**
- * This function will be called by libevent when the client socket is
- * ready for reading.
- */
 void *servlet(void *ptr)
 {
 	Thread *thread = (Thread *)ptr;
 	u_char buf[4096];
 	int fd, client = 0, len, wlen;
-	LLIST **tmp;
 	
 	while (1) {
 		fd = thread->clients[client];
@@ -36,8 +31,6 @@ void *servlet(void *ptr)
 		if (fd != 0) {
 			len = read(fd, buf, sizeof(buf));
 			if (len == 0) {
-				/* Client disconnected, remove the read event and the
-				 * free the client structure. */
 				printf("Client disconnected from socket %d.\n", fd);
 				thread->client_count--;
 				thread->clients[client] = 0;
@@ -46,13 +39,7 @@ void *servlet(void *ptr)
 			else if (len > 0) {
 				wlen = write(fd, buf, len);
 				
-				/* update the requests and data for the client & lock access */
-				pthread_mutex_lock(&linked_list_mutex);
-				tmp = list_search(&conn_track, thread->unique_id[client]);
-				(*tmp)->srv_req++;
-				(*tmp)->srv_data += wlen;
-				pthread_mutex_unlock(&linked_list_mutex);
-				list_print(conn_track);
+				/* update statistics */
 			}
 		}
 		
@@ -70,13 +57,9 @@ void *servlet(void *ptr)
 	return NULL;
 }
 
-/**
- * This function will be called by libevent when there is a connection
- * ready to be accepted.
- */
 void on_accept(int fd)
 {
-	int client_fd, thread_num, client_num;
+	int client_fd, thread_num, client_num, i;
 	struct sockaddr_in client_addr;
 	
 	socklen_t client_len = sizeof(client_addr);
@@ -101,22 +84,15 @@ void on_accept(int fd)
 	threads[thread_num].thread_num = thread_num;
 	threads[thread_num].clients[client_num] = client_fd;
 	
-	/* assign a unique ID for each new client & create list entry */
-	threads[thread_num].unique_id[client_num] = random_id();
+	/* store initial client data */
 	
-	/* lock access to list */
-	pthread_mutex_lock(&linked_list_mutex);
-	list_add(&conn_track, threads[thread_num].unique_id[client_num]);
-	memcpy(conn_track->hostname, inet_ntoa(client_addr.sin_addr),
-		   strlen(inet_ntoa(client_addr.sin_addr)));
-	conn_track->srv_req = 0;
-	conn_track->srv_data = 0;
-	pthread_mutex_unlock(&linked_list_mutex);
-	
-	if (threads[thread_num].client_count == 0) {
-		printf("Creating thread %d\n", thread_num);
-		pthread_create(&threads[thread_num].thread_id,
-					   NULL, &servlet, (void *)&threads[thread_num]);
+	/* prefork THREADS_PREFORK threads at a time */
+	if (threads[thread_num].thread_id == 0) {
+		for (i = thread_num; i < thread_num + THREADS_PREFORK; i++) {
+			printf("Creating thread %d\n", i);
+			pthread_create(&threads[i].thread_id,
+						   NULL, &servlet, (void *)&threads[i]);
+		}
 	}
 	
 	threads[thread_num].client_count++;
@@ -147,15 +123,6 @@ int first_free_client(int thread_num)
 			return i;
 	
 	return -1;
-}
-
-unsigned int random_id()
-{
-	/* Simple "srand()" seed: just use "time()" */
-	unsigned int iseed = (unsigned int)time(NULL);
-	srand (iseed);
-	
-	return rand();
 }
 
 void terminate(int sig)
@@ -219,9 +186,10 @@ int main(int argc, char **argv)
 	/* initialize thread struct */
 	for (i = 0; i < MAX_THREADS; i++) {
 		threads[i].client_count = 0;
+		threads[i].thread_id = 0;
 		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
 			threads[i].clients[k] = 0;
-			threads[i].unique_id[k] = 0;
+			threads[i].client_port[k] = 0;
 		}
 	}
 	

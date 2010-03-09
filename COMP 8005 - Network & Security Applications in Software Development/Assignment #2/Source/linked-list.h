@@ -24,8 +24,8 @@
 #include <err.h>
 
 typedef struct node {
-	unsigned int unique_id;
-	char hostname[255];
+	char hostname[16];
+	int cli_port;
 	int srv_req;
 	int srv_data;
 	struct node *next; /* pointer to next element in list */
@@ -33,10 +33,9 @@ typedef struct node {
 
 LLIST *conn_track;
 
-LLIST *list_add(LLIST **p, int i);
+LLIST *list_add(LLIST **p, int cli_port);
 void list_remove(LLIST **p);
 void list_clear(LLIST **p);
-LLIST **list_search(LLIST **n, unsigned int i);
 void list_print(LLIST *n);
 void list_write(LLIST *n, char *fileName);
 

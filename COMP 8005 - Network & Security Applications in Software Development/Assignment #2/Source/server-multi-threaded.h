@@ -39,17 +39,16 @@
 #include <pthread.h>
 
 #define SERVER_PORT				9000	/* port number to listen on */
+#define MAX_USLEEP				131072	/* backoff up to 0.13 seconds */
 #define MAX_THREADS				300
-#define THREADS_PREFORK			50
 #define MAX_CLIENTS_PER_THREAD	200
 
 typedef struct 
 {
 	pthread_t thread_id;
-	int thread_num;
+	int current_thread;
 	int client_count;
 	int clients[MAX_CLIENTS_PER_THREAD];
-	int client_port[MAX_CLIENTS_PER_THREAD];
 } Thread;
 
 Thread threads[MAX_THREADS];

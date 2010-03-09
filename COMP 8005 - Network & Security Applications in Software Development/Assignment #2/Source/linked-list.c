@@ -60,8 +60,7 @@ void list_print(LLIST *n)
 		printf("list is empty\n");
 	}
 	while (n != NULL) {
-		printf("%s, %d, %d, %d\n",
-				n->hostname, n->cli_port, n->srv_req, n->srv_data);
+		printf("%s, %d, %d\n", n->cli_addr, n->cli_port, n->srv_data);
 		n = n->next;
 	}
 }
@@ -78,7 +77,7 @@ void list_write(LLIST *n, char *fileName)
 		fprintf(file, "%s", "No data stored.");
 	}
 	while (n != NULL) {
-		fprintf(file, "%s, %d, %d, %d\n", n->hostname, n->cli_port, n->srv_req, n->srv_data);
+		fprintf(file, "%s, %d, %d\n", n->cli_addr, n->cli_port, n->srv_data);
 		n = n->next;
 	}
 }

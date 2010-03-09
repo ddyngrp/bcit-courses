@@ -23,7 +23,9 @@ void *servlet(void *ptr)
 {
 	Thread *thread = (Thread *)ptr;
 	u_char buf[4096];
-	int fd, client = 0, len, wlen;
+	int fd, client = 0, len = 0, wlen, usleep_time = 1;
+	struct sockaddr_in client_addr;
+	socklen_t addr_len;
 	
 	while (1) {
 		fd = thread->clients[client];
@@ -39,7 +41,15 @@ void *servlet(void *ptr)
 			else if (len > 0) {
 				wlen = write(fd, buf, len);
 				
-				/* update statistics */
+				/* grab client info */
+				getpeername(thread->clients[client],
+							(struct sockaddr*)&client_addr, &addr_len);
+				
+				/* add client data */
+				list_add(&conn_track, client_addr.sin_port);
+				memcpy(conn_track->cli_addr,inet_ntoa(client_addr.sin_addr),
+					   strlen(inet_ntoa(client_addr.sin_addr)));
+				conn_track->srv_data = wlen;
 			}
 		}
 		
@@ -50,16 +60,25 @@ void *servlet(void *ptr)
 		
 		/* exit the thread if no clients */
 		if (thread->client_count == 0) {
+			printf("Terminating thread %d\n", thread->current_thread);
 			break;
 		}
-		usleep(1);
+		
+		/* backoff on reading socket set up to 0.13 seconds if no data */
+		if (len == -1 && usleep_time < MAX_USLEEP)
+			usleep_time = usleep_time << 1;
+		else
+			usleep_time = 1;
+			
+		usleep(usleep_time); /* reduce CPU usage since we're not using libevent */
+
 	}
 	return NULL;
 }
 
 void on_accept(int fd)
 {
-	int client_fd, thread_num, client_num, i;
+	int client_fd, thread_num, client_num;
 	struct sockaddr_in client_addr;
 	
 	socklen_t client_len = sizeof(client_addr);
@@ -81,18 +100,21 @@ void on_accept(int fd)
 	if ((client_num = first_free_client(thread_num)) == -1)
 		perror("Thread has no room for more clients.");
 	
-	threads[thread_num].thread_num = thread_num;
+	threads[thread_num].current_thread = thread_num;
 	threads[thread_num].clients[client_num] = client_fd;
 	
-	/* store initial client data */
+	/* add initial client data */
+	list_add(&conn_track, client_addr.sin_port);
+	memcpy(conn_track->cli_addr,inet_ntoa(client_addr.sin_addr),
+		   strlen(inet_ntoa(client_addr.sin_addr)));
+	conn_track->srv_data = 0;
 	
-	/* prefork THREADS_PREFORK threads at a time */
+	
+	/* create a new thread if needed */
 	if (threads[thread_num].thread_id == 0) {
-		for (i = thread_num; i < thread_num + THREADS_PREFORK; i++) {
-			printf("Creating thread %d\n", i);
-			pthread_create(&threads[i].thread_id,
-						   NULL, &servlet, (void *)&threads[i]);
-		}
+		printf("Creating thread %d\n", thread_num);
+		pthread_create(&threads[thread_num].thread_id,
+					   NULL, &servlet, (void *)&threads[thread_num]);
 	}
 	
 	threads[thread_num].client_count++;
@@ -185,11 +207,11 @@ int main(int argc, char **argv)
 	
 	/* initialize thread struct */
 	for (i = 0; i < MAX_THREADS; i++) {
-		threads[i].client_count = 0;
 		threads[i].thread_id = 0;
+		threads[i].current_thread = 0;
+		threads[i].client_count = 0;
 		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
 			threads[i].clients[k] = 0;
-			threads[i].client_port[k] = 0;
 		}
 	}
 	

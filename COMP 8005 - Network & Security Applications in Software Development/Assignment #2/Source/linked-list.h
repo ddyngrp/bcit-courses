@@ -24,9 +24,8 @@
 #include <err.h>
 
 typedef struct node {
-	char hostname[16];
+	char cli_addr[16];
 	int cli_port;
-	int srv_req;
 	int srv_data;
 	struct node *next; /* pointer to next element in list */
 } LLIST;

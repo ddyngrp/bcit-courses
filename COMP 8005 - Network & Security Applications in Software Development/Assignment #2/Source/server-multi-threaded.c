@@ -60,6 +60,7 @@ void *servlet(void *ptr)
 			printf("Terminating thread %d\n", thread->current_thread);
 			break;
 		}
+		usleep(100);
 	}
 	return NULL;
 }
@@ -79,7 +80,8 @@ void on_accept(int fd)
 	}
 	
 	/* set to non-blocking */
-	fcntl(client_fd, F_SETFL, O_NONBLOCK);
+	if (fcntl (client_fd, F_SETFL, O_NONBLOCK | fcntl (client_fd, F_GETFL, 0)) == -1)
+		err(1, "fnctl");
 	
 	/* setup thread conditions */
 	if ((thread_num = first_free_thread()) == -1)

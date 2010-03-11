@@ -43,7 +43,7 @@
 #define MAX_CLIENTS_PER_THREAD	200
 #define MAX_IOSIZE				65536
 
-#define STATS_FILE	"./server-data.csv"
+#define STATS_FILE	"./server_stats.csv"
 
 typedef struct 
 {

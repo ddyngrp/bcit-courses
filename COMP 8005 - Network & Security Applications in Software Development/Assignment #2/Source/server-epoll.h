@@ -19,6 +19,35 @@
 #ifndef SERVER_EPOLL_H
 #define SERVER_EPOLL_H
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/epoll.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include <err.h>
+
+#include <sys/time.h>
+
+#include <event2/bufferevent.h>
+#include <event2/buffer.h>
+#include <event2/listener.h>
+#include <event2/util.h>
+#include <event2/event.h>
+
+#define SERVER_PORT	9000 /* Port to listen on. */
+
+#define TRUE 		1
+#define FALSE 		0
+
+#define EPOLL_QUEUE_LEN	256
+
+int fd_server;
 
 #endif

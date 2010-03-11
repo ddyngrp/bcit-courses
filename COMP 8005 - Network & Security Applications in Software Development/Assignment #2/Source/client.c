@@ -92,6 +92,7 @@ int init_test(void)
 					while (wlen != rtotal) {
 						rlen = read(fd, buf, sizeof(buf));
 						rtotal += rlen;
+						usleep(100);
 					}
 					
 					gettimeofday(&tv, &tz);
@@ -319,10 +320,10 @@ int main(int argc, char *argv[])
 			fprintf(file, "%s", "No data stored.");
 		}
 		
-		printf("%lu, %lu, %lu\n", srv_stats.requests, 
-		 srv_stats.sent_data, srv_stats.delay);
-		/* fprintf(file, "%lu, %lu, %lu\n", srv_stats[i].requests, 
-				srv_stats[i].sent_data, srv_stats[i].delay); */
+		/* printf("%lu, %lu, %lu\n", srv_stats.requests, 
+			   srv_stats.sent_data, srv_stats.delay); */
+		fprintf(file, "%lu, %lu, %lu\n", srv_stats.requests, 
+				srv_stats.sent_data, srv_stats.delay);
 		
 		fclose(file);
 	}

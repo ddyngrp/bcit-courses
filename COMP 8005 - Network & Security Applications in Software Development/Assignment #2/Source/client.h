@@ -19,12 +19,16 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
-#include <sys/param.h>
+#include <netinet/in.h>
 #include <netdb.h>
+
+#include <sys/socket.h>
+#include <sys/param.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/epoll.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -37,7 +41,10 @@
 #include <signal.h>
 #include <getopt.h>
 
-#include <sys/time.h>
+#include <event.h>
+#include <evutil.h>
+
+#include <pthread.h>
 
 #define MAX_CONNECT_ERRORS	10		/* times to retry connecting */
 #define USLEEP_TIME			100		/* backoff time in µseconds */
@@ -47,21 +54,22 @@
 #define FALSE	0
 
 /* error codes */
-#define OPTS_HELP			0
-#define OPTS_ERROR			1
-#define ERROR_RESOLVE		2
-#define ERROR_CONN_ERR		3
-#define	ERROR_CONN_REFUSED	4
+#define	ERROR			-1
+#define ERROR_NONE		0
+#define ERROR_OPTS		1
 
 /* option defaults */
 #define TV_TEST		0
 #define TV_REPEAT	10
+#define TV_CONNS	10
 #define TV_LENGTH	32
 #define TV_SERVER	"localhost"
 #define TV_PORT		9000
 #define TV_FILE		"./client_stats.csv"
 
-#define MAX_IOSIZE	65536
+#define MAX_IOSIZE	65536	/* maximum packet size to send */
+#define MAX_CONNS	50000	/* maximum number of connections */
+#define EVENT_TIMER	10000	/* event timer in µseconds */
 
 /* ASCII options */
 #define MIN_CHAR	32
@@ -72,6 +80,7 @@ typedef struct
 	int connect_test;	/* enable connection testing mode */
 	int repeat;			/* number of times send test string
 						 * or run connection test */
+	int conns;			/* number of simultaneous connections */
 	int	string_length;	/* length of string to send */
 	char *server;		/* server host or address */
 	int port;			/* server port */
@@ -81,16 +90,25 @@ typedef struct
 
 typedef struct
 {
-	unsigned long requests;
-	unsigned long sent_data;
-	unsigned long delay;
+	int	fd_server;				/* socket descriptor for the server */
+	unsigned long time;			/* current system time in µsec */
+	int local_port;				/* local port used to connect to server */
+	int requests;				/* total number of requests sent */
+	unsigned long sent_data;	/* total amount of data sent */
+	int delay;					/* delay in server response */
 } ServerStats;
 
 TestVars test_vars;
-ServerStats srv_stats;
+ServerStats srv_stats[MAX_CONNS];
 
-int server_connect(struct in_addr const *paddr, int port);
-int init_test(void);
+void *ev_timer(void *ptr);
+static void timeout_cb(int fd, short event, void *arg);
+int client_init(void);
+int client_start(void);
+int get_socket(int connection);
+unsigned long time_usec(void);
+int set_nonblocking(int socket_fd);
+int write_stats(void);
 void print_usage(char *command, int err);
 void print_settings(int argc);
 

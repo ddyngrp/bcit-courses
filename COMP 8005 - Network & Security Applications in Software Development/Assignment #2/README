@@ -1,0 +1,7 @@
+# File limits
+cat /proc/sys/fs/file-max
+ulimit -n == 1024
+sysctl -w fs.file-max=100000
+/etc/security/limits.conf
+rlimit struct
+ps -eLf | grep server-multi-threaded | wc -l

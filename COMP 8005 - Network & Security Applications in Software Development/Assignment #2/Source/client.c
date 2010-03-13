@@ -18,110 +18,230 @@
 
 #include "client.h"
 
-int server_connect(struct in_addr const *paddr, int port)
+void *ev_timer(void *ptr)
 {
-	int fd;
-	struct sockaddr_in srv_addr;
+	struct event timeout;
+	struct timeval tv;
 	
-	if ((fd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-		perror("socket");
-		return ERROR_CONN_REFUSED;
-	}
+	/* Initalize the event library */
+	event_init();
 	
-	memset(&srv_addr, 0, sizeof(srv_addr));
-	memcpy(&srv_addr.sin_addr, &paddr->s_addr, 4);
-	srv_addr.sin_port = htons((short int) port);
-	srv_addr.sin_family = AF_INET;
+	/* Initalize one event */
+	evtimer_set(&timeout, timeout_cb, &timeout);
 	
-	if (connect(fd, (struct sockaddr *) &srv_addr, sizeof(srv_addr)) == 0)
-		return fd;
+	evutil_timerclear(&tv);
+	tv.tv_usec = EVENT_TIMER;
+	event_add(&timeout, &tv);
 	
-	perror("connect");
-	close(fd);
-	return ERROR_CONN_REFUSED;
+	event_dispatch();
+	
+	return NULL;
 }
 
-int init_test(void)
+
+static void timeout_cb(int fd, short event, void *arg)
 {
-	struct hostent *he;
-	struct in_addr inadr;
-	int i, k, rlen, rtotal, wlen;
-	int fd = 0, connections = 1, conn_errors = 0;
-	char buf[MAX_IOSIZE];
-	
-	/* for time in µsec */
 	struct timeval tv;
-	struct timezone tz;
-	unsigned long start, end;
+	struct event *timeout = arg;
 	
-	/* The number of connections is 1 unless we're testing */
-	if (test_vars.connect_test == TRUE)
-		connections = test_vars.repeat;
+	/* write the data */
+	write_stats();
 	
-	if (inet_aton(test_vars.server, &inadr) == 0) {
-		if ((he = gethostbyname(test_vars.server)) == NULL) {
-			fprintf(stderr, "unable to resolve: %s\n", test_vars.server);
-			return ERROR_RESOLVE;
-		}
-		memcpy(&inadr.s_addr, he->h_addr_list[0], he->h_length);
+	evutil_timerclear(&tv);
+	tv.tv_usec = EVENT_TIMER;
+	event_add(timeout, &tv);
+}
+
+
+int client_init(void)
+{
+	pthread_t ev_worker;
+	int i, socket_fd, retry = 0;
+	char c = MIN_CHAR;
+	
+	/* allocate space for the test string */
+	if ((test_vars.string_test = malloc(sizeof(char) * test_vars.string_length + 1)) == NULL)
+		err(1, "malloc");
+	
+	/* create test string */
+	for (i = 0; i < test_vars.string_length; i++) {
+		if (c > MAX_CHAR)
+			c = MIN_CHAR;
+		else
+			c++;
+		
+		test_vars.string_test[i] = c;
 	}
 	
-	/* begin connecting to the server */
-	for (i = 0; i < connections; i++) {
+	/* create as many sockets as needed */
+	for (i = 0; i < test_vars.conns; i++) {
+		socket_fd = get_socket(i);
 		
-		/* on successful connect */
-		if ((fd = server_connect(&inadr, test_vars.port)) != ERROR_CONN_REFUSED) {
-			if (test_vars.connect_test == TRUE) { /* run in connection test mode */
-				usleep(USLEEP_TIME);
-				conn_errors = 0;
+		if (socket_fd == ERROR) {
+			if (retry < MAX_CONNECT_ERRORS) {
+				retry++;
+				i--;
 			}
-			else { /* run in string sending/receive mode */
-				/* init server stats */
-				srv_stats.requests = 0;
-				srv_stats.sent_data = 0;
-				srv_stats.delay = 0;
+			else
+				err(1, "get_socket");
+		}
+		else
+			retry = 0;
 
-				for (k = 0; k < test_vars.repeat; k++) {
-					rtotal = 0;
-					
-					gettimeofday(&tv, &tz);
-					start = tv.tv_usec;
-					
-					wlen = write(fd, test_vars.string_test, test_vars.string_length);
+		usleep(USLEEP_TIME);
+	}
+			
+	/* start an event worker thread for writing event data */
+	if (pthread_create(&ev_worker, NULL, ev_timer, (void *)NULL) == ERROR)
+		err(1, "pthread_create");
+	
+	/* start sending & receiving data */
+	client_start();
+	
+	return ERROR_NONE;
+}
 
-					while (wlen != rtotal) {
-						rlen = read(fd, buf, sizeof(buf));
-						rtotal += rlen;
-						usleep(100);
-					}
-					
-					gettimeofday(&tv, &tz);
-					end = tv.tv_usec;
-					
-					/* save stats */
-					srv_stats.requests += 1;
-					srv_stats.sent_data += wlen;
-					if (start > end)
-						srv_stats.delay += start - end;
-					else
-						srv_stats.delay += end - start;
+int client_start(void)
+{
+	struct epoll_event ev;
+    struct epoll_event *events;
+	int i, epoll_fd, notify_fd, client, write_len, read_len;
+	char buffer[MAX_IOSIZE];
+	int write_count[MAX_IOSIZE], count;
+	
+	events = malloc(sizeof(struct epoll_event) * test_vars.conns);
+	
+	for (i = 0; i < test_vars.conns; i++)
+		write_count[i] = 0;
+	
+	/* create epoll's descriptors */
+	if ((epoll_fd = epoll_create(test_vars.conns)) < 0)
+        err(1, "epoll_create");
+	
+	/* add all the sockets into epoll */
+    for (i = 0; i < test_vars.conns; i++) {
+        memset(&ev, 0, sizeof ev);
+        ev.events = EPOLLIN | EPOLLOUT | EPOLLET;
+        ev.data.fd = srv_stats[i].fd_server;
+        if (epoll_ctl(epoll_fd, EPOLL_CTL_ADD, srv_stats[i].fd_server, &ev) < 0)
+			err(1, "epoll_ctl");
+    }
+	
+	/* wait for status on each descriptor */
+	while (TRUE) {
+		/* end the loop if we've sent all our data */
+		if (count == test_vars.repeat * test_vars.conns)
+			break;
+		
+        notify_fd = epoll_wait(epoll_fd, events, test_vars.conns, -1);
+		
+		for (i = 0; i < notify_fd; ++i) {
+			client = events[i].data.fd;
+			
+			/* close each connection as we've finished */
+			if (write_count[client] == test_vars.repeat) {
+				epoll_ctl(epoll_fd, EPOLL_CTL_DEL, client, &ev);
+				close(client);
+			}
+			else {				
+				if (events[i].events & EPOLLOUT) {
+					write_len = write(client, test_vars.string_test, strlen(test_vars.string_test));
+					write_count[client]++;
+					count++;
+				}
+				
+				if (events[i].events & EPOLLIN) {
+					memset(buffer, 0, sizeof buffer);
+					read_len = read(client, buffer, sizeof buffer);
 				}
 			}
-
 		}
-		else {
-			if (++conn_errors == MAX_CONNECT_ERRORS)
-				return ERROR_CONN_ERR;
+    }
+	
+	return ERROR_NONE;
+}
 
-			usleep(USLEEP_TIME);
-			i--;
-		}
+int get_socket(int connection)
+{
+	struct sockaddr_in addr;
+    struct hostent *he;
+	
+	/* create the socket */
+    if ((srv_stats[connection].fd_server = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+        err(1, "socket");
+	
+    bzero((char *)&addr, sizeof(addr));
+	
+	/* resolve the hostname */
+    if ((he = gethostbyname(test_vars.server)) == NULL)
+        err(1, "gethostbyname");
+
+    bcopy(he->h_addr, &addr.sin_addr, he->h_length);
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(test_vars.port);
+		
+	/* connect! */
+    if (connect(srv_stats[connection].fd_server,
+				(struct sockaddr *) &addr, sizeof(addr)) < 0) {
+		warn("connect");
+		return ERROR;
 	}
 
-	sleep(1);
-	close(fd);
-	 
-	return 0;
+	/* insert initial values for this connection */
+	srv_stats[connection].time = time_usec();
+	srv_stats[connection].local_port = addr.sin_port;
+	srv_stats[connection].requests = 0;
+	srv_stats[connection].sent_data = 0;
+	srv_stats[connection].delay = 0;
+	
+    return srv_stats[connection].fd_server;
+}
+
+
+unsigned long time_usec(void)
+{
+	/* for time in µsec */
+	struct timeval tv;
+	
+	if (gettimeofday(&tv, NULL) == ERROR)
+		err(1, "gettimeofday");
+	
+	return tv.tv_usec;
+}
+
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    set_nonblocking
+ * 
+ * DATE:        March 11, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int set_nonblocking(int fd)
+ *                  fd - the socket to set to non-blocking
+ * 
+ * RETURNS: error or success code
+ * 
+ * NOTES: Sets the socket to non-blocking mode.
+ *
+ *----------------------------------------------------------------------------*/
+int set_nonblocking(int socket_fd)
+{
+	int flags;
+	
+	flags = fcntl(socket_fd, F_GETFL);
+	if (flags < 0)
+		return flags;
+	
+	flags |= O_NONBLOCK;
+	if (fcntl(socket_fd, F_SETFL, flags) < 0)
+		return ERROR;
+	
+	return ERROR_NONE;
 }
 
 /*-----------------------------------------------------------------------------
@@ -145,8 +265,9 @@ int init_test(void)
  *        entered an option or used the -h or --help option.
  *
  *----------------------------------------------------------------------------*/
-void print_usage(char *command, int err) {
-    if (err == OPTS_HELP) {
+void print_usage(char *command, int err)
+{
+    if (err == ERROR_NONE) {
         printf("usage: client [arguments]\n\n");
         printf("Arguments:\n");
         printf("  -t  or  --test    Run in connection test mode\n");
@@ -157,7 +278,7 @@ void print_usage(char *command, int err) {
         printf("  -f  or  --file    Where to save statistics\n");
         printf("  -h  or  --help    Prints out this screen\n");
     }
-	else if (err == OPTS_ERROR)
+	else if (err == ERROR_OPTS)
         printf("Try `client --help` for more information.\n");
 	else {
         printf("%s: unknown error\n", command);
@@ -187,7 +308,8 @@ void print_usage(char *command, int err) {
  *        run of the application.
  *
  *----------------------------------------------------------------------------*/
-void print_settings(int argc) {
+void print_settings(int argc)
+{
 	char *boolean;
 
 	if (test_vars.connect_test == TRUE)
@@ -203,22 +325,94 @@ void print_settings(int argc) {
 	
 	printf("  Connection testing mode:     %s\n", boolean);
 	printf("  Number of times to repeat:   %d\n", test_vars.repeat);
+	printf("  Number of connections:       %d\n", test_vars.conns);
 	printf("  Lengh of string to send:     %d\n", test_vars.string_length);
 	printf("  Sever to connect with:       %s\n", test_vars.server);
 	printf("  Port to connect on:          %d\n", test_vars.port);
 	printf("  Where to save statistics:    %s\n\n", test_vars.output_file);
 }
 
-int main(int argc, char *argv[])
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    write_stats
+ * 
+ * DATE:        March 11, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void write_stats(void)
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Writes the contents of the ServerStats struct to a file.
+ *
+ *----------------------------------------------------------------------------*/
+int write_stats(void)
 {
 	FILE *file;
-	int i, c, retval, option_index = 0;
-	char t = MIN_CHAR;
+	int i, fdes;
+	struct stat fileStat;
+	
+	/* write data to file */
+	file = fopen(test_vars.output_file, "a+");
+	if (file == NULL)
+		err(1, "fopen");
+	
+	/* grab the size of the file we're writing to */
+	fdes = open(test_vars.output_file, O_RDONLY);
+	if(fstat(fdes, &fileStat) < 0)    
+        err(1, "fstat");
+	close(fdes);
+	
+	/* write a header to the file if it doesn't have one */
+	if (fileStat.st_size == 0)
+		fprintf(file, "time, local_port, requests, sent_data, delay\n");
+
+	
+	/* write statistics to the file */
+	for (i = 0; i < test_vars.conns; i++) {
+		fprintf(file, "%lu, %d, %d, %lu, %d\n", srv_stats[i].time, srv_stats[i].local_port,
+				srv_stats[i].requests, srv_stats[i].sent_data, srv_stats[i].delay);
+	}
+	
+	fclose(file);
+	
+	return ERROR_NONE;
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    main
+ * 
+ * DATE:        March 6, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int main(int argc, char **argv)
+ *                  argc - argument count
+ *                  argv - array of arguments
+ * 
+ * RETURNS: Result on success or failure.
+ * 
+ * NOTES: Main entry point into the application. Checks command-line options
+ *        and sets appropriate defaults.
+ *
+ *----------------------------------------------------------------------------*/
+int main(int argc, char *argv[])
+{
+	int c, option_index = 0;
 	
     static struct option long_options[] =
     {
         {"test"		, no_argument      , 0, 't'},
         {"repeat"	, required_argument, 0, 'r'},
+        {"conn"		, required_argument, 0, 'c'},
         {"length"	, required_argument, 0, 'l'},
         {"server"	, required_argument, 0, 's'},
         {"port"		, required_argument, 0, 'p'},
@@ -230,13 +424,14 @@ int main(int argc, char *argv[])
 	/* Set Defaults */
 	test_vars.connect_test	= TV_TEST;
 	test_vars.repeat		= TV_REPEAT;
+	test_vars.conns			= TV_CONNS;
 	test_vars.string_length	= TV_LENGTH;
 	test_vars.server		= TV_SERVER;
 	test_vars.port			= TV_PORT;
 	test_vars.output_file	= TV_FILE;
 	
 	while (1) {
-		c = getopt_long(argc, argv, "tr:l:s:p:f:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "tr:c:l:s:p:f:h", long_options, &option_index);
 		
 		if (c == -1)
 			break;
@@ -257,6 +452,13 @@ int main(int argc, char *argv[])
 					test_vars.repeat = atoi(optarg);
 				break;
 				
+			case 'c':
+				if (atoi(optarg) > MAX_CONNS)
+					test_vars.conns = MAX_CONNS;
+				else if (atoi(optarg) > 0)
+					test_vars.conns = atoi(optarg);
+				break;
+
 			case 'l':
 				if (atoi(optarg) > MAX_IOSIZE)
 					test_vars.string_length = MAX_IOSIZE;
@@ -278,11 +480,11 @@ int main(int argc, char *argv[])
 				break;
 				
 			case 'h':
-				print_usage(argv[0], OPTS_HELP);
+				print_usage(argv[0], ERROR_NONE);
 				break;
 
 			default:
-				print_usage(argv[0], OPTS_ERROR);
+				print_usage(argv[0], ERROR_OPTS);
 				break;
 		}
 	}
@@ -290,44 +492,8 @@ int main(int argc, char *argv[])
 	/* print current settings */
 	print_settings(argc);
 	
-	/* allocate space for the test string */
-	test_vars.string_test = malloc(sizeof(char) * test_vars.string_length + 1);
-
-	/* create test string */
-	for (i = 0; i < test_vars.string_length; i++) {
-		if (t > MAX_CHAR)
-			t = MIN_CHAR;
-		else
-			t++;
-
-		test_vars.string_test[i] = t;
-	}
+	/* initialise the client */
+	client_init();
 	
-	/* initiate test round */
-	retval = init_test();
-	
-	if (retval == ERROR_RESOLVE)
-		perror("fatal error");
-	else if (retval == ERROR_CONN_ERR)
-		perror("maximum connect errors exceeded");
-	else {
-		/* append stats to file */
-		file = fopen(test_vars.output_file, "a");
-		if (file == NULL)
-			err(1, "fopen failed");
-		
-		if (test_vars.repeat == 0) {
-			fprintf(file, "%s", "No data stored.");
-		}
-		
-		/* printf("%lu, %lu, %lu\n", srv_stats.requests, 
-			   srv_stats.sent_data, srv_stats.delay); */
-		fprintf(file, "%lu, %lu, %lu\n", srv_stats.requests, 
-				srv_stats.sent_data, srv_stats.delay);
-		
-		fclose(file);
-	}
-
-
-	return 0;
+	return ERROR_NONE;
 }

@@ -44,7 +44,7 @@ void *servlet(void *ptr)
 				/* update client info */
 				cli_stats[thread->cli_pos[client]].requests++;
 
-				if (wlen > 0) 
+				if (wlen > 0)
 					cli_stats[thread->cli_pos[client]].sent_data += wlen;
 			}
 		}
@@ -60,7 +60,7 @@ void *servlet(void *ptr)
 			printf("Terminating thread %d\n", thread->current_thread);
 			break;
 		}
-		usleep(100);
+		/* usleep(100); */
 	}
 	return NULL;
 }
@@ -172,7 +172,7 @@ void terminate(int sig)
 	
 	fclose(file);
 	
-	printf("\nData written to %s, program terminated.\n", STATS_FILE);
+	printf("\nStatistics written to %s, program terminated.\n", STATS_FILE);
 	
 	exit(0);
 }

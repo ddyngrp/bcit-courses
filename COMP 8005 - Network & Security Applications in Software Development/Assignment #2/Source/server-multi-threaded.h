@@ -42,6 +42,7 @@
 #define MAX_THREADS				300
 #define MAX_CLIENTS_PER_THREAD	200
 #define MAX_IOSIZE				65536
+#define USLEEP_TIME				1
 
 #define STATS_FILE	"./server_stats.csv"
 
@@ -50,8 +51,8 @@ typedef struct
 	pthread_t thread_id;					/* the serving thread's id */
 	int current_thread;						/* current thread number */
 	int client_count;						/* number of clients being served */
-	int clients[MAX_CLIENTS_PER_THREAD];	/* socket descriptors for each client */
-	int cli_pos[MAX_CLIENTS_PER_THREAD];	/* where to locate the client info */
+	int client_fd[MAX_CLIENTS_PER_THREAD];	/* socket descriptors for each client */
+	int stats_pos[MAX_CLIENTS_PER_THREAD];	/* where to locate the client info */
 } Thread;
 
 typedef struct
@@ -66,8 +67,6 @@ Thread threads[MAX_THREADS];
 ClientStats cli_stats[MAX_THREADS * MAX_CLIENTS_PER_THREAD];
 
 static int cli_pos = 0;
-
-pthread_mutex_t linked_list_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *servlet(void *ptr);
 void on_accept(int fd);

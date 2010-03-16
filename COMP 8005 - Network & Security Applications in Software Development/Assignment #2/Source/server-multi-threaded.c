@@ -21,11 +21,11 @@
 void *servlet(void *ptr)
 {
 	Thread *thread = (Thread *)ptr;
-	u_char buf[MAX_IOSIZE]; /* assign buffer for each client */
+	u_char buf[MAX_IOSIZE];
 	int fd, client = 0, rlen = 0, wlen;
 	
 	while (1) {
-		fd = thread->clients[client];
+		fd = thread->client_fd[client];
 		
 		if (fd != 0) {
 			rlen = read(fd, buf, sizeof(buf));
@@ -33,19 +33,18 @@ void *servlet(void *ptr)
 			if (rlen == 0) {
 				printf("Client disconnected from socket %d.\n", fd);
 				thread->client_count--;
-				thread->clients[client] = 0;
+				thread->client_fd[client] = 0;
 				close(fd);
 			}
 			else if (rlen > 0) {
-				wlen = write(fd, buf, rlen);
-				if (wlen < 0)
-					err(1, "write");
+				while ((wlen = write(fd, buf, rlen)) < 0)
+					warn("write");
 				
 				/* update client info */
-				cli_stats[thread->cli_pos[client]].requests++;
+				cli_stats[thread->stats_pos[client]].requests++;
 
 				if (wlen > 0)
-					cli_stats[thread->cli_pos[client]].sent_data += wlen;
+					cli_stats[thread->stats_pos[client]].sent_data += wlen;
 			}
 		}
 		
@@ -60,7 +59,6 @@ void *servlet(void *ptr)
 			printf("Terminating thread %d\n", thread->current_thread);
 			break;
 		}
-		/* usleep(100); */
 	}
 	return NULL;
 }
@@ -80,8 +78,8 @@ void on_accept(int fd)
 	}
 	
 	/* set to non-blocking */
-	if (fcntl (client_fd, F_SETFL, O_NONBLOCK | fcntl (client_fd, F_GETFL, 0)) == -1)
-		err(1, "fnctl");
+	/* if (fcntl (client_fd, F_SETFL, O_NONBLOCK | fcntl (client_fd, F_GETFL, 0)) == -1)
+		err(1, "fnctl"); */
 	
 	/* setup thread conditions */
 	if ((thread_num = first_free_thread()) == -1)
@@ -91,8 +89,8 @@ void on_accept(int fd)
 		perror("Thread has no room for more clients.");
 	
 	threads[thread_num].current_thread = thread_num;
-	threads[thread_num].clients[client_num] = client_fd;
-	threads[thread_num].cli_pos[client_num] = cli_pos;
+	threads[thread_num].client_fd[client_num] = client_fd;
+	threads[thread_num].stats_pos[client_num] = cli_pos;
 	
 	/* add client info */
 	memcpy(cli_stats[cli_pos].address,
@@ -134,7 +132,7 @@ int first_free_client(int thread_num)
 	int i;
 	
 	for (i = 0; i < MAX_CLIENTS_PER_THREAD; i++)
-		if (threads[thread_num].clients[i] == 0)
+		if (threads[thread_num].client_fd[i] == 0)
 			return i;
 	
 	return -1;
@@ -148,8 +146,8 @@ void terminate(int sig)
 	/* kill all threads & terminate connections */
 	for (i = 0; i < MAX_THREADS; i++) {
 		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
-			if (threads[i].clients[k] != 0)
-				close(threads[i].clients[k]);
+			if (threads[i].client_fd[k] != 0)
+				close(threads[i].client_fd[k]);
 		}
 		threads[i].client_count = 0;
 	}
@@ -160,12 +158,10 @@ void terminate(int sig)
 		err(1, "fopen failed");
 	
 	if (cli_pos == 0) {
-		fprintf(file, "%s", "No data stored.");
+		fprintf(file, "%s", "No data stored.\n");
 	}
 
 	for (i = 0; i < cli_pos; i++) {
-		/* printf("%s, %d, %d, %d\n", cli_stats[i].address, cli_stats[i].port, 
-			   cli_stats[i].requests, cli_stats[i].sent_data); */
 		fprintf(file, "%s, %d, %lu, %lu\n", cli_stats[i].address, cli_stats[i].port, 
 				cli_stats[i].requests, cli_stats[i].sent_data);
 	}
@@ -216,7 +212,7 @@ int main(int argc, char *argv[])
 		threads[i].current_thread = 0;
 		threads[i].client_count = 0;
 		for (k = 0; k < MAX_CLIENTS_PER_THREAD; k++) {
-			threads[i].clients[k] = 0;
+			threads[i].client_fd[k] = 0;
 		}
 	}
 	

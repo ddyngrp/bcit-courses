@@ -47,8 +47,8 @@
 #include <pthread.h>
 
 #define MAX_CONNECT_ERRORS	10		/* times to retry connecting */
-#define USLEEP_TIME			10000	/* backoff time in µseconds */
-#define EVENT_TIMER			1000	/* event timer in µseconds */
+#define USLEEP_TIME			10000	/* sleep time in µseconds */
+#define	EVENT_TIMER			50000	/* how often to write statistics */
 
 /* boolean values */
 #define TRUE	1
@@ -79,8 +79,9 @@ typedef struct
 {
 	int connect_test;	/* enable connection testing mode */
 	int repeat;			/* number of times send test string
-						 * or run connection test */
+						   or run connection test */
 	int conns;			/* number of simultaneous connections */
+	int open_conns;		/* number of currently open connections */
 	int	string_length;	/* length of string to send */
 	char *server;		/* server host or address */
 	int port;			/* server port */
@@ -95,20 +96,23 @@ typedef struct
 	int local_port;				/* local port used to connect to server */
 	int requests;				/* total number of requests sent */
 	unsigned long sent_data;	/* total amount of data sent */
+	unsigned long recv_data;	/* total amount of received sent */
 	int delay;					/* delay in server response */
+	struct event ev_write;		/* write event for the connection */
+	struct event ev_read;		/* read event for the connection */
 } ServerStats;
 
 TestVars test_vars;
 ServerStats srv_stats[MAX_CONNS];
 
-void *ev_timer(void *ptr);
-static void timeout_cb(int fd, short event, void *arg);
-int client_init(void);
-int client_start(void);
+void client_init(void);
 int get_socket(int connection);
 int get_local_Port(int socket_fd);
 unsigned long time_usec(void);
+void on_write(int fd, short ev, void *arg);
+void on_read(int fd, short ev, void *arg);
 int set_nonblocking(int socket_fd);
+static void event_timer(int fd, short event, void *arg);
 int write_stats(void);
 void print_usage(char *command, int err);
 void print_settings(int argc);

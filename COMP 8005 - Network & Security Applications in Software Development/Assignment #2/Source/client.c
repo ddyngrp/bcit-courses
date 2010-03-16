@@ -18,46 +18,17 @@
 
 #include "client.h"
 
-void *ev_timer(void *ptr)
+void client_init(void)
 {
+	struct epoll_event ev;
+    struct epoll_event *events;
 	struct event timeout;
 	struct timeval tv;
-	
-	/* Initalize the event library */
-	event_init();
-	
-	/* Initalize one event */
-	evtimer_set(&timeout, timeout_cb, &timeout);
-	
-	evutil_timerclear(&tv);
-	tv.tv_usec = EVENT_TIMER;
-	event_add(&timeout, &tv);
-	
-	event_dispatch();
-	
-	return NULL;
-}
-
-
-static void timeout_cb(int fd, short event, void *arg)
-{
-	struct timeval tv;
-	struct event *timeout = arg;
-	
-	/* write the data */
-	write_stats();
-	
-	evutil_timerclear(&tv);
-	tv.tv_usec = EVENT_TIMER;
-	event_add(timeout, &tv);
-}
-
-
-int client_init(void)
-{
-	pthread_t ev_worker;
-	int i, socket_fd, retry = 0;
+	int i, socket_fd, epoll_fd, retry = 0;
 	char c = MIN_CHAR;
+	
+	/* Initialize libevent. */
+	event_init();
 	
 	/* allocate space for the test string */
 	if ((test_vars.string_test = malloc(sizeof(char) * test_vars.string_length + 1)) == NULL)
@@ -73,6 +44,9 @@ int client_init(void)
 		test_vars.string_test[i] = c;
 	}
 	
+	/* set currently open connections to 0 */
+	test_vars.open_conns = 0;
+	
 	/* create as many sockets as needed */
 	for (i = 0; i < test_vars.conns; i++) {
 		socket_fd = get_socket(i);
@@ -85,34 +59,25 @@ int client_init(void)
 			else
 				err(1, "get_socket");
 		}
-		else
+		else {
+			/* setup write events */
+			event_set(&srv_stats[i].ev_write, srv_stats[i].fd_server,
+					  EV_WRITE|EV_PERSIST, on_write, &srv_stats[i]);
+			event_add(&srv_stats[i].ev_write, NULL);
+			
+			/* setup read events */
+			event_set(&srv_stats[i].ev_read, srv_stats[i].fd_server,
+					  EV_READ|EV_PERSIST, on_read, &srv_stats[i]);
+			event_add(&srv_stats[i].ev_read, NULL);
+			
+			test_vars.open_conns++;
 			retry = 0;
+		}
 
 		usleep(USLEEP_TIME);
 	}
 			
-	/* start an event worker thread for writing event data */
-	if (pthread_create(&ev_worker, NULL, ev_timer, (void *)NULL) == ERROR)
-		err(1, "pthread_create");
-	
-	/* start sending & receiving data */
-	client_start();
-	
-	return ERROR_NONE;
-}
-
-int client_start(void)
-{
-	struct epoll_event ev;
-    struct epoll_event *events;
-	int i, epoll_fd, notify_fd, client, write_len, read_len;
-	char buffer[MAX_IOSIZE];
-	int write_count[MAX_IOSIZE], count = 0;
-	
 	events = malloc(sizeof(struct epoll_event) * test_vars.conns);
-	
-	for (i = 0; i < test_vars.conns; i++)
-		write_count[i] = 0;
 	
 	/* create epoll's descriptors */
 	if ((epoll_fd = epoll_create(test_vars.conns)) < 0)
@@ -127,46 +92,18 @@ int client_start(void)
 			err(1, "epoll_ctl");
     }
 	
-	/* wait for status on each descriptor */
-	while (TRUE) {
-		/* end the loop if we've sent all our data */
-		if (count == test_vars.repeat * test_vars.conns)
-			break;
-		
-        notify_fd = epoll_wait(epoll_fd, events, test_vars.conns, -1);
-		
-		for (i = 0; i < notify_fd; ++i) {
-			client = events[i].data.fd;
-			
-			/* close each connection as we've finished */
-			if (write_count[client] == test_vars.repeat) {
-				epoll_ctl(epoll_fd, EPOLL_CTL_DEL, client, &ev);
-				close(client);
-			}
-			else {				
-				if (events[i].events & EPOLLOUT) {
-					write_len = write(client, test_vars.string_test, strlen(test_vars.string_test));
-					write_count[client]++;
-					count++;
-					
-					/* update statistics */
-					printf("client = %d\n", client);
-				}
-				
-				if (events[i].events & EPOLLIN) {
-					memset(buffer, 0, sizeof buffer);
-					read_len = read(client, buffer, sizeof buffer);
-				}
-			}
-		}
-    }
+	/* create a timer event for writing stats to disk */
+	evtimer_set(&timeout, event_timer, &timeout);
+	evutil_timerclear(&tv);
+	tv.tv_usec = EVENT_TIMER;
+	event_add(&timeout, &tv);
 	
-	/* write stats for the last time */
-	sleep(1);
+	/* Start the libevent event loop. */
+	event_dispatch();
+	
 	write_stats();
-	
-	return ERROR_NONE;
 }
+
 
 int get_socket(int connection)
 {
@@ -199,10 +136,12 @@ int get_socket(int connection)
 	srv_stats[connection].local_port = get_local_Port(srv_stats[connection].fd_server);
 	srv_stats[connection].requests = 0;
 	srv_stats[connection].sent_data = 0;
+	srv_stats[connection].recv_data = 0;
 	srv_stats[connection].delay = 0;
 	
     return srv_stats[connection].fd_server;
 }
+
 
 int get_local_Port(int socket_fd)
 {
@@ -216,6 +155,7 @@ int get_local_Port(int socket_fd)
 	return addr.sin_port;
 }
 
+
 unsigned long time_usec(void)
 {
 	/* for time in µsec */
@@ -227,6 +167,49 @@ unsigned long time_usec(void)
 	return tv.tv_usec + (tv.tv_sec * 1000000L);
 }
 
+void on_write(int fd, short ev, void *arg)
+{
+	ServerStats *server = (ServerStats *)arg;
+	int write_len;
+	
+	write_len = write(server->fd_server, test_vars.string_test,
+					  test_vars.string_length);
+	
+	/* update statistics */
+	server->time = time_usec();
+	server->requests++;
+	server->sent_data += write_len;
+
+	/* close the socket and delete the event once all data sent */
+	if (server->requests == test_vars.repeat) {
+		event_del(&server->ev_write);
+	}
+}
+
+void on_read(int fd, short ev, void *arg)
+{
+	ServerStats *server = (ServerStats *)arg;
+	u_char buffer[MAX_IOSIZE];
+	int read_len;
+	
+	read_len = read(server->fd_server, buffer, sizeof(buffer));
+	
+	/* update statistic */
+	server->delay += time_usec() - server->time;
+	server->recv_data += read_len;
+	
+	/* close the socket and delete the event once all data received */
+	if (server->recv_data == (test_vars.repeat * test_vars.string_length)) {
+		event_del(&server->ev_read);
+		close(fd);
+
+		/* exit the event loop when we have no more connections */
+		if (--test_vars.open_conns == 0)
+			event_loopexit(0);
+		
+		return;	
+	}
+}
 
 /*-----------------------------------------------------------------------------
  * FUNCTION:    set_nonblocking
@@ -288,7 +271,6 @@ void print_usage(char *command, int err)
     if (err == ERROR_NONE) {
         printf("usage: client [arguments]\n\n");
         printf("Arguments:\n");
-        printf("  -t  or  --test    Run in connection test mode\n");
         printf("  -r  or  --repeat  Number of times to repeat test\n");
         printf("  -l  or  --length  Lengh of string to send\n");
         printf("  -s  or  --server  Sever to connect with\n");
@@ -328,26 +310,25 @@ void print_usage(char *command, int err)
  *----------------------------------------------------------------------------*/
 void print_settings(int argc)
 {
-	char *boolean;
-
-	if (test_vars.connect_test == TRUE)
-		boolean = "TRUE";
-	else
-		boolean = "FALSE";
-	
-	/* Display the current settings before running */
-	if (argc == 1)
-		printf("Using Default Options: (For help use \"client -h\")\n");
-	else
-		printf("Using the Following Options: (For help use \"client -h\")\n");	
-	
-	printf("  Connection testing mode:     %s\n", boolean);
 	printf("  Number of times to repeat:   %d\n", test_vars.repeat);
 	printf("  Number of connections:       %d\n", test_vars.conns);
 	printf("  Lengh of string to send:     %d\n", test_vars.string_length);
 	printf("  Sever to connect with:       %s\n", test_vars.server);
 	printf("  Port to connect on:          %d\n", test_vars.port);
 	printf("  Where to save statistics:    %s\n\n", test_vars.output_file);
+}
+
+static void event_timer(int fd, short event, void *arg)
+{
+	struct timeval tv;
+	struct event *timeout = arg;
+	
+	/* write the data */
+	write_stats();
+	
+	evutil_timerclear(&tv);
+	tv.tv_usec = EVENT_TIMER;
+	event_add(timeout, &tv);
 }
 
 /*-----------------------------------------------------------------------------
@@ -427,7 +408,6 @@ int main(int argc, char *argv[])
 	
     static struct option long_options[] =
     {
-        {"test"		, no_argument      , 0, 't'},
         {"repeat"	, required_argument, 0, 'r'},
         {"conn"		, required_argument, 0, 'c'},
         {"length"	, required_argument, 0, 'l'},
@@ -439,7 +419,6 @@ int main(int argc, char *argv[])
     };
 	
 	/* Set Defaults */
-	test_vars.connect_test	= TV_TEST;
 	test_vars.repeat		= TV_REPEAT;
 	test_vars.conns			= TV_CONNS;
 	test_vars.string_length	= TV_LENGTH;
@@ -448,7 +427,7 @@ int main(int argc, char *argv[])
 	test_vars.output_file	= TV_FILE;
 	
 	while (1) {
-		c = getopt_long(argc, argv, "tr:c:l:s:p:f:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "r:c:l:s:p:f:h", long_options, &option_index);
 		
 		if (c == -1)
 			break;
@@ -458,10 +437,6 @@ int main(int argc, char *argv[])
 				/* If the option set a flag, do nothing */
 				if (long_options[option_index].flag != 0)
 					break;
-				break;
-				
-			case 't':
-				test_vars.connect_test = TRUE;
 				break;
 				
 			case 'r':

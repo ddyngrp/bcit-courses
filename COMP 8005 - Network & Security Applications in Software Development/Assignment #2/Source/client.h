@@ -47,7 +47,8 @@
 #include <pthread.h>
 
 #define MAX_CONNECT_ERRORS	10		/* times to retry connecting */
-#define USLEEP_TIME			100		/* backoff time in µseconds */
+#define USLEEP_TIME			10000	/* backoff time in µseconds */
+#define EVENT_TIMER			1000	/* event timer in µseconds */
 
 /* boolean values */
 #define TRUE	1
@@ -69,7 +70,6 @@
 
 #define MAX_IOSIZE	65536	/* maximum packet size to send */
 #define MAX_CONNS	50000	/* maximum number of connections */
-#define EVENT_TIMER	10000	/* event timer in µseconds */
 
 /* ASCII options */
 #define MIN_CHAR	32
@@ -106,6 +106,7 @@ static void timeout_cb(int fd, short event, void *arg);
 int client_init(void);
 int client_start(void);
 int get_socket(int connection);
+int get_local_Port(int socket_fd);
 unsigned long time_usec(void);
 int set_nonblocking(int socket_fd);
 int write_stats(void);

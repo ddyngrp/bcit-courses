@@ -107,7 +107,7 @@ int client_start(void)
     struct epoll_event *events;
 	int i, epoll_fd, notify_fd, client, write_len, read_len;
 	char buffer[MAX_IOSIZE];
-	int write_count[MAX_IOSIZE], count;
+	int write_count[MAX_IOSIZE], count = 0;
 	
 	events = malloc(sizeof(struct epoll_event) * test_vars.conns);
 	
@@ -148,6 +148,9 @@ int client_start(void)
 					write_len = write(client, test_vars.string_test, strlen(test_vars.string_test));
 					write_count[client]++;
 					count++;
+					
+					/* update statistics */
+					printf("client = %d\n", client);
 				}
 				
 				if (events[i].events & EPOLLIN) {
@@ -157,6 +160,10 @@ int client_start(void)
 			}
 		}
     }
+	
+	/* write stats for the last time */
+	sleep(1);
+	write_stats();
 	
 	return ERROR_NONE;
 }
@@ -189,7 +196,7 @@ int get_socket(int connection)
 
 	/* insert initial values for this connection */
 	srv_stats[connection].time = time_usec();
-	srv_stats[connection].local_port = addr.sin_port;
+	srv_stats[connection].local_port = get_local_Port(srv_stats[connection].fd_server);
 	srv_stats[connection].requests = 0;
 	srv_stats[connection].sent_data = 0;
 	srv_stats[connection].delay = 0;
@@ -197,6 +204,17 @@ int get_socket(int connection)
     return srv_stats[connection].fd_server;
 }
 
+int get_local_Port(int socket_fd)
+{
+	struct sockaddr_in addr;
+	socklen_t addr_len = sizeof(addr);
+	
+	/* get the local port */
+	if (getsockname(socket_fd, (struct sockaddr *)&addr, &addr_len) == ERROR)
+		err(1, "getsockname");
+	
+	return addr.sin_port;
+}
 
 unsigned long time_usec(void)
 {
@@ -206,7 +224,7 @@ unsigned long time_usec(void)
 	if (gettimeofday(&tv, NULL) == ERROR)
 		err(1, "gettimeofday");
 	
-	return tv.tv_usec;
+	return tv.tv_usec + (tv.tv_sec * 1000000L);
 }
 
 
@@ -373,10 +391,9 @@ int write_stats(void)
 
 	
 	/* write statistics to the file */
-	for (i = 0; i < test_vars.conns; i++) {
+	for (i = 0; i < test_vars.conns; i++)
 		fprintf(file, "%lu, %d, %d, %lu, %d\n", srv_stats[i].time, srv_stats[i].local_port,
 				srv_stats[i].requests, srv_stats[i].sent_data, srv_stats[i].delay);
-	}
 	
 	fclose(file);
 	

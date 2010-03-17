@@ -20,11 +20,9 @@
 
 void client_init(void)
 {
-	struct epoll_event ev;
-    struct epoll_event *events;
 	struct event timeout;
 	struct timeval tv;
-	int i, socket_fd, epoll_fd, retry = 0;
+	int i, socket_fd, retry = 0;
 	char c = MIN_CHAR;
 	
 	/* Initialize libevent. */
@@ -55,6 +53,7 @@ void client_init(void)
 			if (retry < MAX_CONNECT_ERRORS) {
 				retry++;
 				i--;
+				usleep(1000);
 			}
 			else
 				err(1, "get_socket");
@@ -74,28 +73,13 @@ void client_init(void)
 			retry = 0;
 		}
 
-		usleep(USLEEP_TIME);
+		usleep(1);
 	}
-			
-	events = malloc(sizeof(struct epoll_event) * test_vars.conns);
-	
-	/* create epoll's descriptors */
-	if ((epoll_fd = epoll_create(test_vars.conns)) < 0)
-        err(1, "epoll_create");
-	
-	/* add all the sockets into epoll */
-    for (i = 0; i < test_vars.conns; i++) {
-        memset(&ev, 0, sizeof ev);
-        ev.events = EPOLLIN | EPOLLOUT | EPOLLET;
-        ev.data.fd = srv_stats[i].fd_server;
-        if (epoll_ctl(epoll_fd, EPOLL_CTL_ADD, srv_stats[i].fd_server, &ev) < 0)
-			err(1, "epoll_ctl");
-    }
 	
 	/* create a timer event for writing stats to disk */
 	evtimer_set(&timeout, event_timer, &timeout);
 	evutil_timerclear(&tv);
-	tv.tv_usec = EVENT_TIMER;
+	tv.tv_usec = 0;
 	event_add(&timeout, &tv);
 	
 	/* Start the libevent event loop. */
@@ -109,6 +93,7 @@ int get_socket(int connection)
 {
 	struct sockaddr_in addr;
     struct hostent *he;
+	int sock_buf_size;
 	
 	/* create the socket */
     if ((srv_stats[connection].fd_server = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -139,6 +124,13 @@ int get_socket(int connection)
 	srv_stats[connection].recv_data = 0;
 	srv_stats[connection].delay = 0;
 	
+	/* increase the buffer size */
+	sock_buf_size = MAX_IOSIZE * 2;
+	setsockopt(srv_stats[connection].fd_server, SOL_SOCKET, SO_SNDBUF,
+			   &sock_buf_size, sizeof(sock_buf_size));
+	setsockopt(srv_stats[connection].fd_server, SOL_SOCKET, SO_RCVBUF,
+			   &sock_buf_size, sizeof(sock_buf_size));	
+
     return srv_stats[connection].fd_server;
 }
 

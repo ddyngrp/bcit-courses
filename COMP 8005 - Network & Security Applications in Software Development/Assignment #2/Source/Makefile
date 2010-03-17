@@ -6,7 +6,7 @@
 #
 
 CC=gcc
-CFLAGS=-Os -c -Wall -Werror -pedantic
+CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=-lpthread -levent
 
 # cc -I/usr/local/include -o event-test event-test.c -L/usr/local/lib -levent

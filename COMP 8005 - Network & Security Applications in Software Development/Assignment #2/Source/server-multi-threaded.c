@@ -65,9 +65,8 @@ void *servlet(void *ptr)
 
 void on_accept(int fd)
 {
-	int client_fd, thread_num, client_num;
+	int client_fd, thread_num, client_num, sock_buf_size;
 	struct sockaddr_in client_addr;
-	
 	socklen_t client_len = sizeof(client_addr);
 	
 	/* accept the new connection. */
@@ -80,6 +79,12 @@ void on_accept(int fd)
 	/* set to non-blocking */
 	/* if (fcntl (client_fd, F_SETFL, O_NONBLOCK | fcntl (client_fd, F_GETFL, 0)) == -1)
 		err(1, "fnctl"); */
+	
+	/* increase the buffer size */
+	sock_buf_size = MAX_IOSIZE * 2;
+	setsockopt(fd, SOL_SOCKET, SO_SNDBUF, &sock_buf_size, sizeof(sock_buf_size));
+	setsockopt(fd, SOL_SOCKET, SO_RCVBUF, &sock_buf_size, sizeof(sock_buf_size));
+	
 	
 	/* setup thread conditions */
 	if ((thread_num = first_free_thread()) == -1)

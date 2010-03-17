@@ -32,15 +32,15 @@ IFCONFIG="/sbin/ifconfig"
 ROUTE="/sbin/route"
 
 # Internet Interface
-INET_IFACE="eth0"
-INET_IP="192.168.227.100"
-INET_NET="192.168.227.0/24"
-INET_BCAST="192.168.1.255"
+INET_IFACE="eth1"
+INET_IP="192.168.0.13"
+INET_NET="192.168.0.0/24"
+INET_BCAST="192.168.0.255"
 
 # Local Interface Information
-LOCAL_IFACE="eth1"
+LOCAL_IFACE="eth0"
 LOCAL_IP="10.0.0.1"
-LOCAL_NET="10.0.0.0/8"
+LOCAL_NET="10.0.0.0/24"
 LOCAL_NETMASK="255.255.255.0"
 LOCAL_BCAST="10.0.0.255"
 
@@ -56,7 +56,7 @@ LO_IFACE="lo"
 LO_IP="127.0.0.1"
 
 # Allowed TCP Ports
-TCP_ALLOWED="22 53 80"
+TCP_ALLOWED="22"
 
 # Allowed UDP Ports
 UDP_ALLOWED="53"
@@ -134,8 +134,10 @@ function flush {
 	$IPT -P INPUT ACCEPT
 	$IPT -P FORWARD ACCEPT
 	$IPT -P OUTPUT ACCEPT
+	$IPT -t nat -P PREROUTING ACCEPT
 	$IPT -t nat -P POSTROUTING ACCEPT
 	$IPT -t nat -P OUTPUT ACCEPT
+	$IPT -t mangle -P PREROUTING ACCEPT
 	$IPT -t mangle -P OUTPUT ACCEPT
 
 	# Flush all rules
@@ -177,6 +179,7 @@ function user_chains {
 
 	# Outbound TCP, UDP & ICMP Rules
 	$IPT -N tcp_outbound
+	$IPT -N tcp_inbound
 	$IPT -N udp_outbound
 	$IPT -N icmp_outbound
 
@@ -202,7 +205,7 @@ function user_chains {
 	# All tcp packets will traverse this chain.
 	##
 
-	# Trust the internal network
+	# Trust the nternal network
 	#$IPT -A bad_tcp_packets -p tcp -i $LOCAL_IFACE -j RETURN
 
 	# Not a NEW SYN
@@ -232,9 +235,11 @@ function user_chains {
 		$IPT -A tcp_outbound -p tcp -s $INET_IP --dport $tcp_port -j ACCEPT
 	done
 
+
 	# No match, so DROP
-	$IPT -A tcp_outbound -p tcp -s $LOCAL_NET -j DROP
-	$IPT -A tcp_outbound -p tcp -s $INET_IP -j DROP
+	$IPT -A tcp_outbound -p tcp -s $LOCAL_NET -j ACCEPT
+	$IPT -A tcp_outbound -p tcp -s $INET_IP -j ACCEPT
+	$IPT -A tcp_inbound -p TCP -j RETURN
 
 
 	##
@@ -285,8 +290,8 @@ function input {
 	$IPT -A INPUT -p ALL -j bad_packets
 
 	# Rules for the private network (accessing gateway system itself)
-	#$IPT -A INPUT -p ALL -i $LOCAL_IFACE -s $LOCAL_NET -j ACCEPT
-	#$IPT -A INPUT -p ALL -i $LOCAL_IFACE -d $LOCAL_BCAST -j ACCEPT
+	$IPT -A INPUT -p ALL -i $LOCAL_IFACE -s $LOCAL_NET -j ACCEPT
+	$IPT -A INPUT -p ALL -i $LOCAL_IFACE -d $LOCAL_BCAST -j ACCEPT
 
 	# Block specific ports in all cases
 	for tcp_block in $TCP_BLOCKED
@@ -301,6 +306,8 @@ function input {
 
 	# Accept Established Connections
 	$IPT -A INPUT -p ALL -i $INET_IFACE -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+	$IPT -A INPUT -p TCP -i $INET_IFACE -j tcp_inbound
 }
 
 
@@ -331,6 +338,21 @@ function forward {
 
 	# Deal with responses from the internet
 	$IPT -A FORWARD -i $INET_IFACE -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+	# Forward all ports
+	for tcp_allow in $TCP_ALLOWED
+	do
+		$IPT -A FORWARD -p tcp -i $INET_IFACE --destination-port $tcp_allow --destination $CLIENT_IP -j ACCEPT
+	done
+	
+	for udp_allow in $UDP_ALLOWED
+	do
+		if [ $udp_allow = "53" ]
+		then
+			echo "Skipping DNS forwarding..."
+		fi
+		$IPT -A FORWARD -p udp -i $INET_IFACE --destination-port $udp_allow --destination $CLIENT_IP -j ACCEPT
+	done
 }
 
 
@@ -372,6 +394,19 @@ function output {
 	$IPT -A OUTPUT -p ALL -o $INET_IFACE -m state --state NEW,ESTABLISHED -j ACCEPT
 }
 
+
+###############################################################################
+#
+# PREROUTING chain
+#
+function prerouting {
+	echo "Load rules for prerouting..."
+
+	for tcp_allow in $TCP_ALLOWED
+	do
+		$IPT -t nat -A PREROUTING -p tcp -i $INET_IFACE --destination-port $tcp_allow -j DNAT --to-destination $CLIENT_IP:$tcp_allow
+	done
+}
 
 ###############################################################################
 #
@@ -459,7 +494,8 @@ then
 	input		# process the INPUT chain
 	forward		# process the FORWARD chain
 	output		# process the OUTPUT chain
-	postrouting	# process the POSTROUTING chain
+	prerouting	# process PREROUTING
+	postrouting	# process POSTROUTING
 	mangle		# mangle tables
 	exit 0
 elif [ "$1" = "stop" ]

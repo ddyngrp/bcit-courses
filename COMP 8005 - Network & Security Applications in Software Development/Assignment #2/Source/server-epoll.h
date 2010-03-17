@@ -32,22 +32,29 @@
 #include <unistd.h>
 #include <errno.h>
 #include <err.h>
+#include <signal.h>
 
 #include <sys/time.h>
+#include <event.h>
 
-#include <event2/bufferevent.h>
-#include <event2/buffer.h>
-#include <event2/listener.h>
-#include <event2/util.h>
-#include <event2/event.h>
-
-#define SERVER_PORT	9000 /* Port to listen on. */
+#include <assert.h>
 
 #define TRUE 		1
 #define FALSE 		0
-
 #define EPOLL_QUEUE_LEN	256
+#define BUFLEN		65536
 
+#define ERROR		-1
+#define ERROR_NONE	0
+
+#define SERVER_PORT	9000 /* Port to listen on. */
+
+//Globals
 int fd_server;
+
+// Function prototypes
+static void SystemFatal (const char* message);
+static int ClearSocket (int fd);
+void close_fd (int);
 
 #endif

@@ -21,6 +21,7 @@
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <netdb.h>
 
 #include <sys/socket.h>
@@ -47,7 +48,6 @@
 #include <pthread.h>
 
 #define MAX_CONNECT_ERRORS	10		/* times to retry connecting */
-#define USLEEP_TIME			10000	/* sleep time in µseconds */
 #define	EVENT_TIMER			50000	/* how often to write statistics */
 
 /* boolean values */

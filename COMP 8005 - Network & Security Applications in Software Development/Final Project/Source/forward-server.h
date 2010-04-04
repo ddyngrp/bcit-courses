@@ -44,9 +44,24 @@
 	#include <libev/ev.h>
 #endif
 
+#define SERVER_PORT 9000 /* delete this */
+#define IO_BUFFER	8192
+
+/* error codes */
+#define ERROR_NONE	0
+#define ERROR		-1
+
 int setnonblock(int);
 static void write_cb(struct ev_loop *, struct ev_io *, int);
 static void read_cb(struct ev_loop *, struct ev_io *, int);
 static void accept_cb(struct ev_loop *, struct ev_io *, int);
+
+struct client {
+	int fd;
+	ev_io ev_write;
+	ev_io ev_read;
+};
+
+ev_io ev_accept;
 
 #endif

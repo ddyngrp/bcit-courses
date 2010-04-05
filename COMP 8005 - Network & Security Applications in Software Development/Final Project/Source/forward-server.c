@@ -2,8 +2,8 @@
  * forward-server.c
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
- * forward-server.c is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published
+ * forward-server.c is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
@@ -33,57 +33,82 @@ int setnonblock(int fd)
 	return ERROR_NONE;
 }
 
-static void write_cb(struct ev_loop *loop, struct ev_io *w, int revents)
-{ 
-	char buffer[] = "Data sent back!";
-	struct client *client = ((struct client*) (((char*)w) -
-							offsetof(struct client, ev_write)));
-	
-	if (revents & EV_WRITE) {
-		write(client->fd, buffer, strlen(buffer));
-		ev_io_stop(EV_A_ w);
-	}
-	
-	close(client->fd);
-	free(client);
-}
-
 static void read_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
-	struct client *client = ((struct client*) (((char*)w) -
-							offsetof(struct client, ev_read)));
-	int r = 0;
-	char rbuff[IO_BUFFER];
+	int rlen = 0, wlen = 0;
+	char read_buff[IO_BUFFER];
 	
-	if (revents & EV_READ)
-		r = read(client->fd, &rbuff, IO_BUFFER);
-	
-	ev_io_stop(EV_A_ w);
-	ev_io_init(&client->ev_write, write_cb, client->fd, EV_WRITE);
-	ev_io_start(loop, &client->ev_write);
+	if (revents & EV_READ) {
+		/* if request is from client, sent to remote */
+		if (w->fd == client->fd_in) {
+			rlen = read(client->fd_in, &read_buff, IO_BUFFER);
+			
+			/* only send if we have data */
+			if (rlen > 0)
+				wlen = write(client->fd_out, read_buff, rlen);
+			else {
+				close(client->fd_in);
+				close(client->fd_out);
+				free(client);
+				return;
+			}
+
+		} /* otherwise send remote results back to client */
+		else if (w->fd == client->fd_out) {
+			rlen = read(client->fd_out, &read_buff, IO_BUFFER);
+			
+			/* only send if we have data */
+			if (rlen > 0)
+				wlen = write(client->fd_in, read_buff, rlen);
+		}
+	}
 }
 
 static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 {
-	int client_fd;
-	struct client *client;
-	struct sockaddr_in client_addr;
+	int fd_in, fd_out;
+	struct sockaddr_in in_addr, out_addr;
+	struct hostent *hent;
+	socklen_t in_len = sizeof(in_addr);
+	socklen_t out_len = sizeof(out_addr);
 	
-	socklen_t client_len = sizeof(client_addr);
+	/* create two linked objects: inbound & outboind client requests */
+	fd_in = accept(w->fd, (struct sockaddr *)&in_addr, &in_len);
 	
-	client_fd = accept(w->fd, (struct sockaddr *)&client_addr, &client_len);
-	
-	if (client_fd == ERROR)
+	if (fd_in == ERROR)
 		return;
 	
+	/* create the outbound socket */
+	if ((fd_out = socket(AF_INET, SOCK_STREAM, 0)) <= ERROR)
+		return;
+	
+	/* create the sockaddr_in structure for the outbound connection */
+	if (!(hent = gethostbyname(OUT_IP)))
+		return;
+	
+	memcpy(&out_addr.sin_addr, hent->h_addr, hent->h_length);
+	out_addr.sin_port = htons(OUT_PORT);
+	out_addr.sin_family = AF_INET;
+	
+	/* attempt to make the outbound connection */
+	if (connect(fd_out, (struct sockaddr *)&out_addr, out_len) <= ERROR)
+		if (errno != EINPROGRESS)
+			return;
+	
 	client = calloc(1, sizeof(*client));
-	client->fd = client_fd;
+	client->fd_in = fd_in;
+	client->fd_out = fd_out;
 	
-	if (setnonblock(client->fd) <= ERROR)
-		err(1, "failed to set client socket to non-blocking");
+	/* set inbound & outbound to non-blocking */
+	if (setnonblock(client->fd_in) <= ERROR ||
+		setnonblock(client->fd_out) <= ERROR)
+		err(1, "failed to set socket to non-blocking");
 	
-	ev_io_init(&client->ev_read, read_cb, client->fd, EV_READ);
+	ev_io_init(&client->ev_read, read_cb, client->fd_in, EV_READ);
 	ev_io_start(loop, &client->ev_read);
+
+	ev_io_init(&client->ev_read_out, read_cb, client->fd_out, EV_READ);
+	ev_io_start(loop, &client->ev_read_out);
 }
 
 int main()

@@ -2,8 +2,8 @@
  * forward-server.h
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
- * forward-server.h is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published
+ * forward-server.h is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
@@ -27,6 +27,7 @@
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <netdb.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -37,6 +38,11 @@
 #include <err.h>
 #include <stddef.h>
 
+/* for SSL support */
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+#include <openssl/rand.h>
+
 /* using libev instead of libevent */
 #ifdef OSX
 	#include <ev.h>
@@ -44,24 +50,30 @@
 	#include <libev/ev.h>
 #endif
 
-#define SERVER_PORT 9000 /* delete this */
+/* defaults */
+#define SERVER_PORT 9000 /* delete this later */
 #define IO_BUFFER	8192
 
 /* error codes */
 #define ERROR_NONE	0
 #define ERROR		-1
 
+/* testing */
+#define OUT_PORT	22
+#define OUT_IP		"192.168.1.1"
+
 int setnonblock(int);
-static void write_cb(struct ev_loop *, struct ev_io *, int);
 static void read_cb(struct ev_loop *, struct ev_io *, int);
 static void accept_cb(struct ev_loop *, struct ev_io *, int);
 
 struct client {
-	int fd;
-	ev_io ev_write;
+	int fd_in;		/* inbound socket */
+	int fd_out;		/* outbound socket */
 	ev_io ev_read;
+	ev_io ev_read_out;
 };
 
 ev_io ev_accept;
+struct client *client;
 
 #endif

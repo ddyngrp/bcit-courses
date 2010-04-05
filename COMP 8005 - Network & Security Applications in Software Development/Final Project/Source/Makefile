@@ -4,7 +4,7 @@
 #         A00683006
 #
 
-CC=gcc -D OSX
+CC=gcc -D LINUX
 CFLAGS=-c -Wall -pedantic
 LDFLAGS=-lev
 

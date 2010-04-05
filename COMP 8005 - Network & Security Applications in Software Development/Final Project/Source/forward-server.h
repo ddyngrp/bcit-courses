@@ -59,11 +59,12 @@
 #define ERROR		-1
 
 /* testing */
-#define OUT_PORT	22
-#define OUT_IP		"192.168.1.1"
+#define OUT_PORT	80
+#define OUT_IP		"google.ca"
 
 int setnonblock(int);
-static void read_cb(struct ev_loop *, struct ev_io *, int);
+static void read_client_cb(struct ev_loop *, struct ev_io *, int);
+static void read_remote_cb(struct ev_loop *, struct ev_io *, int);
 static void accept_cb(struct ev_loop *, struct ev_io *, int);
 
 struct client {
@@ -74,6 +75,6 @@ struct client {
 };
 
 ev_io ev_accept;
-struct client *client;
+/* struct client *client; */
 
 #endif

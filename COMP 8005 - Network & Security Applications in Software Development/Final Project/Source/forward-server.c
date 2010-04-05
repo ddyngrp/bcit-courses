@@ -33,34 +33,48 @@ int setnonblock(int fd)
 	return ERROR_NONE;
 }
 
-static void read_cb(struct ev_loop *loop, struct ev_io *w, int revents)
+static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
-	int rlen = 0, wlen = 0;
+	int rlen = 0;
 	char read_buff[IO_BUFFER];
+	struct client *client = ((struct client*) (((char*)w) -
+							offsetof(struct client, ev_read_out)));
 	
 	if (revents & EV_READ) {
-		/* if request is from client, sent to remote */
-		if (w->fd == client->fd_in) {
-			rlen = read(client->fd_in, &read_buff, IO_BUFFER);
-			
-			/* only send if we have data */
-			if (rlen > 0)
-				wlen = write(client->fd_out, read_buff, rlen);
-			else {
-				close(client->fd_in);
-				close(client->fd_out);
-				free(client);
-				return;
-			}
-
-		} /* otherwise send remote results back to client */
-		else if (w->fd == client->fd_out) {
-			rlen = read(client->fd_out, &read_buff, IO_BUFFER);
-			
-			/* only send if we have data */
-			if (rlen > 0)
-				wlen = write(client->fd_in, read_buff, rlen);
+		rlen = read(client->fd_out, &read_buff, IO_BUFFER);
+		
+		/* only send if we have data */
+		if (rlen > 0)
+			write(client->fd_in, read_buff, rlen);
+		else {
+			ev_io_stop(EV_A_ w);
+			close(client->fd_in);
+			close(client->fd_out);
+			free(client);
 		}
+	}
+}
+
+static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
+{ 
+	int rlen = 0;
+	char read_buff[IO_BUFFER];
+	struct client *client = ((struct client*) (((char*)w) -
+							offsetof(struct client, ev_read)));
+	
+	if (revents & EV_READ) {
+		rlen = read(client->fd_in, &read_buff, IO_BUFFER);
+		
+		/* only send if we have data */
+		if (rlen > 0)
+			write(client->fd_out, read_buff, rlen);
+		else {
+			ev_io_stop(EV_A_ w);
+			close(client->fd_in);
+			close(client->fd_out);
+			free(client);
+		}
+
 	}
 }
 
@@ -69,6 +83,7 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	int fd_in, fd_out;
 	struct sockaddr_in in_addr, out_addr;
 	struct hostent *hent;
+	struct client *client;
 	socklen_t in_len = sizeof(in_addr);
 	socklen_t out_len = sizeof(out_addr);
 	
@@ -104,10 +119,10 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 		setnonblock(client->fd_out) <= ERROR)
 		err(1, "failed to set socket to non-blocking");
 	
-	ev_io_init(&client->ev_read, read_cb, client->fd_in, EV_READ);
+	ev_io_init(&client->ev_read, read_client_cb, client->fd_in, EV_READ);
 	ev_io_start(loop, &client->ev_read);
 
-	ev_io_init(&client->ev_read_out, read_cb, client->fd_out, EV_READ);
+	ev_io_init(&client->ev_read_out, read_remote_cb, client->fd_out, EV_READ);
 	ev_io_start(loop, &client->ev_read_out);
 }
 

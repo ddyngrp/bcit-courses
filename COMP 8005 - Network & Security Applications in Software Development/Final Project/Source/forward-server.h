@@ -60,9 +60,6 @@
 #define ERROR		-1
 
 /* testing */
-#define SERVER_PORT 9000
-#define OUT_PORT	22
-#define OUT_IP		"192.168.1.1"
 #define FILENAME	"./forward.conf"
 
 struct client {
@@ -77,6 +74,7 @@ typedef struct {
 	int local_port;
 	char *remote_ip;
 	int remote_port;
+	ev_io ev_accept;
 } FORWARD;
 
 int setnonblock(int);
@@ -87,6 +85,7 @@ struct sockaddr_in peer_info(int);
 struct sockaddr_in local_info(int);
 void read_config(void);
 void forward_add(FORWARD);
+void print_forward_info(void);
 void terminate(int);
 
 FORWARD *forward_info = NULL;

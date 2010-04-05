@@ -96,15 +96,20 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 
 static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 {
-	int fd_in, fd_out;
+	int fd_in, fd_out, remote_port, local_port, i;
 	struct sockaddr_in in_addr, out_addr;
 	struct hostent *hent;
 	struct client *client;
 	socklen_t in_len = sizeof(in_addr);
 	socklen_t out_len = sizeof(out_addr);
+	char *remote_ip;
+	
+	/* allocate a new client object */
+	client = calloc(1, sizeof(*client));
 	
 	/* create two linked objects: inbound & outboind client requests */
 	fd_in = accept(w->fd, (struct sockaddr *)&in_addr, &in_len);
+	local_port = ntohs(local_info(fd_in).sin_port);
 	
 	if (fd_in == ERROR)
 		return;
@@ -113,38 +118,46 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	if ((fd_out = socket(AF_INET, SOCK_STREAM, 0)) <= ERROR)
 		return;
 	
+	/* connect to the appropriate ip:port for this connection */
+	for (i = 0; i < num_elements; i++) {
+		if (forward_info[i].local_port == local_port) {
+			remote_ip = forward_info[i].remote_ip;
+			remote_port = forward_info[i].remote_port;
+		}
+	}
+
 	/* create the sockaddr_in structure for the outbound connection */
-	if (!(hent = gethostbyname(OUT_IP)))
+	if (!(hent = gethostbyname(remote_ip)))
 		return;
 	
 	memcpy(&out_addr.sin_addr, hent->h_addr, hent->h_length);
-	out_addr.sin_port = htons(OUT_PORT);
 	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(remote_port);
 	
 	/* attempt to make the outbound connection */
 	if (connect(fd_out, (struct sockaddr *)&out_addr, out_len) <= ERROR)
 		if (errno != EINPROGRESS)
 			return;
 	
-	/* allocate a new client object */
-	client = calloc(1, sizeof(*client));
+	/* associate the socket descriptors for the client */
 	client->fd_in = fd_in;
 	client->fd_out = fd_out;
 	
 	/* print connection info */
 	printf("Forwarding client %s:%d to %s:%d\n",
 		   inet_ntoa(in_addr.sin_addr),
-		   ntohs(local_info(client->fd_in).sin_port),
-		   hent->h_name, ntohs(out_addr.sin_port));
+		   local_port, hent->h_name, ntohs(out_addr.sin_port));
 	
 	/* set inbound & outbound to non-blocking */
 	if (setnonblock(client->fd_in) <= ERROR ||
 		setnonblock(client->fd_out) <= ERROR)
 		err(1, "failed to set socket to non-blocking");
 	
+	/* add read events from the client to the loop */
 	ev_io_init(&client->ev_read, read_client_cb, client->fd_in, EV_READ);
 	ev_io_start(loop, &client->ev_read);
 
+	/* add read events from remote to the loop */
 	ev_io_init(&client->ev_read_out, read_remote_cb, client->fd_out, EV_READ);
 	ev_io_start(loop, &client->ev_read_out);
 }
@@ -227,6 +240,18 @@ void forward_add(FORWARD item)
 	num_elements++;
 }
 
+void print_forward_info(void)
+{
+	int i;
+	
+	for (i = 0; i < num_elements; i++) {
+		printf("Forwarding from port %d to %s:%d\n",
+			   forward_info[i].local_port,
+			   forward_info[i].remote_ip,
+			   forward_info[i].remote_port);
+	}
+}
+
 void terminate(int sig)
 {
 	printf("\nProgram termination...\n");
@@ -239,45 +264,51 @@ int main()
 {
 	struct ev_loop *loop = ev_default_loop (0);	/* Use the default event loop */
 	struct sockaddr_in listen_addr; 
-	int listen_fd, reuseaddr_on = 1;
+	int listen_fd, reuseaddr_on = 1, i;
 	
 	/* properly cleanup when exiting */
 	(void)signal(SIGINT, terminate);
 	
+	/* read config data into the array */
 	read_config();
+	
+	/* print the configuration */
+	print_forward_info();
 
-	/* create listening socket */
-	listen_fd = socket(AF_INET, SOCK_STREAM, 0); 
-	if (listen_fd <= ERROR)
-		err(1, "listen failed");
-	
-	/* reuse the socket address */
-	if (setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr_on,
-				   sizeof(reuseaddr_on)) == -1)
-		err(1, "setsockopt failed");
-	
-	/* set to listen on all addresses */
-	memset(&listen_addr, 0, sizeof(listen_addr));
-	listen_addr.sin_family = AF_INET;
-	listen_addr.sin_addr.s_addr = INADDR_ANY;
-	listen_addr.sin_port = htons(SERVER_PORT);
-	
-	/* bind the socket */
-	if (bind(listen_fd, (struct sockaddr *)&listen_addr,
-			 sizeof(listen_addr)) < 0)
-		err(1, "bind failed");
-	
-	/* listen for new connections */
-	if (listen(listen_fd, 5) <= ERROR)
-		err(1, "listen failed");
-	
-	/* set to non-blocking */
-	if (setnonblock(listen_fd) <= ERROR)
-		err(1, "failed to set server socket to non-blocking");
-	
-	/* initialise socket watcher, then start it */
-	ev_io_init(&ev_accept, accept_cb, listen_fd, EV_READ);
-	ev_io_start(loop, &ev_accept);
+	for (i = 0; i < num_elements; i++) {
+		/* create listening socket */
+		listen_fd = socket(AF_INET, SOCK_STREAM, 0); 
+		if (listen_fd <= ERROR)
+			err(1, "listen failed");
+		
+		/* reuse the socket address */
+		if (setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr_on,
+					   sizeof(reuseaddr_on)) == -1)
+			err(1, "setsockopt failed");
+		
+		/* set to listen on all addresses */
+		memset(&listen_addr, 0, sizeof(listen_addr));
+		listen_addr.sin_family = AF_INET;
+		listen_addr.sin_addr.s_addr = INADDR_ANY;
+		listen_addr.sin_port = htons(forward_info[i].local_port);
+		
+		/* bind the socket */
+		if (bind(listen_fd, (struct sockaddr *)&listen_addr,
+				 sizeof(listen_addr)) < 0)
+			err(1, "bind failed");
+		
+		/* listen for new connections */
+		if (listen(listen_fd, 5) <= ERROR)
+			err(1, "listen failed");
+		
+		/* set to non-blocking */
+		if (setnonblock(listen_fd) <= ERROR)
+			err(1, "failed to set server socket to non-blocking");
+		
+		/* initialise socket watcher, then start it */
+		ev_io_init(&forward_info[i].ev_accept, accept_cb, listen_fd, EV_READ);
+		ev_io_start(loop, &forward_info[i].ev_accept);
+	}
 	
 	/* wait for events to arrive */
 	ev_loop(loop, 0);

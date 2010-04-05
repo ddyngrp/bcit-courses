@@ -38,16 +38,11 @@
 #include <err.h>
 #include <stddef.h>
 
-/* for SSL support */
-#include <openssl/ssl.h>
-#include <openssl/err.h>
-#include <openssl/rand.h>
-
 /* using libev instead of libevent */
-#ifdef OSX
-	#include <ev.h>
-#elif LINUX
-	#include <libev/ev.h>
+#ifdef __linux__
+	#include <libev/ev.h> /* header location on linux */
+#elif __APPLE__
+	#include <ev.h> /* header location on OS X */
 #endif
 
 /* defaults */

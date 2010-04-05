@@ -66,6 +66,7 @@ int setnonblock(int);
 static void read_client_cb(struct ev_loop *, struct ev_io *, int);
 static void read_remote_cb(struct ev_loop *, struct ev_io *, int);
 static void accept_cb(struct ev_loop *, struct ev_io *, int);
+void read_config(void);
 
 struct client {
 	int fd_in;		/* inbound socket */

@@ -51,21 +51,23 @@
 #endif
 
 /* defaults */
-#define SERVER_PORT 9000 /* delete this later */
-#define IO_BUFFER	8192
+#define IO_BUFFER	65536
 
 /* error codes */
 #define ERROR_NONE	0
 #define ERROR		-1
 
 /* testing */
-#define OUT_PORT	80
-#define OUT_IP		"boingboing.net"
+#define SERVER_PORT 9000
+#define OUT_PORT	22
+#define OUT_IP		"192.168.1.1"
 
 int setnonblock(int);
 static void read_client_cb(struct ev_loop *, struct ev_io *, int);
 static void read_remote_cb(struct ev_loop *, struct ev_io *, int);
 static void accept_cb(struct ev_loop *, struct ev_io *, int);
+struct sockaddr_in peer_info(int);
+struct sockaddr_in local_info(int);
 void read_config(void);
 
 struct client {

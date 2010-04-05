@@ -55,6 +55,9 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
 	int rlen = 0;
 	char read_buff[IO_BUFFER];
+	char client_ip[INET_ADDRSTRLEN];
+	char remote_ip[INET_ADDRSTRLEN];
+	struct sockaddr_in client_addr, remote_addr;
 	
 	/* retrieve the desired client object */
 	struct client *client = ((struct client*) (((char*)w) -
@@ -68,6 +71,23 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 			write(client->fd_out, read_buff, rlen);
 		else { /* otherwise close the connection and event loop */
 			ev_io_stop(EV_A_ w);
+			
+			/* get the structs */
+			client_addr = peer_info(client->fd_in);			
+			remote_addr = peer_info(client->fd_out);
+			
+			/* get the IP addresses */
+			inet_ntop(AF_INET, &client_addr.sin_addr,
+					  client_ip, sizeof(client_ip));
+			inet_ntop(AF_INET, &remote_addr.sin_addr,
+					  remote_ip, sizeof(remote_ip));
+			
+			/* print disconnection info */
+			printf("Terminated client %s:%d connection to %s:%d\n",
+				   client_ip, ntohs(local_info(client->fd_in).sin_port),
+				   remote_ip, ntohs(remote_addr.sin_port));
+			
+			/* close the sockets */
 			close(client->fd_in);
 			close(client->fd_out);
 		}
@@ -112,7 +132,10 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	client->fd_out = fd_out;
 	
 	/* print connection info */
-	printf("Forwarding client [ip]:[port] on socket [socket] to [ip]:[port] on socket [socket]\n");
+	printf("Forwarding client %s:%d to %s:%d\n",
+		   inet_ntoa(in_addr.sin_addr),
+		   ntohs(local_info(client->fd_in).sin_port),
+		   hent->h_name, ntohs(out_addr.sin_port));
 	
 	/* set inbound & outbound to non-blocking */
 	if (setnonblock(client->fd_in) <= ERROR ||
@@ -124,6 +147,29 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 
 	ev_io_init(&client->ev_read_out, read_remote_cb, client->fd_out, EV_READ);
 	ev_io_start(loop, &client->ev_read_out);
+}
+
+struct sockaddr_in local_info(int socket_fd)
+{
+	struct sockaddr_in addr;
+	socklen_t addr_len = sizeof(addr);
+	
+	/* get the local port */
+	if (getsockname(socket_fd, (struct sockaddr *)&addr, &addr_len) == ERROR)
+		err(1, "getsockname");
+	
+	return addr;
+}
+
+struct sockaddr_in peer_info(int socket_fd)
+{
+	struct sockaddr_in addr;
+	socklen_t addr_len = sizeof(addr);
+	
+	if (getpeername(socket_fd, (struct sockaddr*)&addr, &addr_len) == ERROR)
+		err(1, "getpeername");
+	
+	return addr;
 }
 
 int main()

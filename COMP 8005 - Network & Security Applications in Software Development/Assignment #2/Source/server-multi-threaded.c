@@ -183,7 +183,7 @@ int main(int argc, char *argv[])
 	struct sockaddr_in listen_addr;
 	int listen_fd, i, k, reuseaddr_on = 1;
 	
-	/* cleanup and write data CTRL+C is pressed */
+	/* cleanup and write data when CTRL+C is pressed */
 	(void)signal(SIGINT, terminate);
 	
 	/* create listening socket */

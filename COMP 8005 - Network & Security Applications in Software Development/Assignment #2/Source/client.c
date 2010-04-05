@@ -264,6 +264,7 @@ void print_usage(char *command, int err)
         printf("usage: client [arguments]\n\n");
         printf("Arguments:\n");
         printf("  -r  or  --repeat  Number of times to repeat test\n");
+        printf("  -c  or  --conn    Number of simultaneous connections\n");
         printf("  -l  or  --length  Lengh of string to send\n");
         printf("  -s  or  --server  Sever to connect with\n");
         printf("  -p  or  --port    Port to connect on\n");

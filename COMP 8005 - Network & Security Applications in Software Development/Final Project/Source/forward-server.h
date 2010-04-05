@@ -60,7 +60,7 @@
 
 /* testing */
 #define OUT_PORT	80
-#define OUT_IP		"google.ca"
+#define OUT_IP		"boingboing.net"
 
 int setnonblock(int);
 static void read_client_cb(struct ev_loop *, struct ev_io *, int);

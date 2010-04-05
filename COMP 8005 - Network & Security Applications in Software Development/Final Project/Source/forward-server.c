@@ -37,6 +37,8 @@ static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
 	int rlen = 0;
 	char read_buff[IO_BUFFER];
+	
+	/* retrieve the desired client object */
 	struct client *client = ((struct client*) (((char*)w) -
 							offsetof(struct client, ev_read_out)));
 	
@@ -46,12 +48,6 @@ static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 		/* only send if we have data */
 		if (rlen > 0)
 			write(client->fd_in, read_buff, rlen);
-		else {
-			ev_io_stop(EV_A_ w);
-			close(client->fd_in);
-			close(client->fd_out);
-			free(client);
-		}
 	}
 }
 
@@ -59,6 +55,8 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
 	int rlen = 0;
 	char read_buff[IO_BUFFER];
+	
+	/* retrieve the desired client object */
 	struct client *client = ((struct client*) (((char*)w) -
 							offsetof(struct client, ev_read)));
 	
@@ -68,13 +66,11 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 		/* only send if we have data */
 		if (rlen > 0)
 			write(client->fd_out, read_buff, rlen);
-		else {
+		else { /* otherwise close the connection and event loop */
 			ev_io_stop(EV_A_ w);
 			close(client->fd_in);
 			close(client->fd_out);
-			free(client);
 		}
-
 	}
 }
 
@@ -110,9 +106,13 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 		if (errno != EINPROGRESS)
 			return;
 	
+	/* allocate a new client object */
 	client = calloc(1, sizeof(*client));
 	client->fd_in = fd_in;
 	client->fd_out = fd_out;
+	
+	/* print connection info */
+	printf("Forwarding client [ip]:[port] on socket [socket] to [ip]:[port] on socket [socket]\n");
 	
 	/* set inbound & outbound to non-blocking */
 	if (setnonblock(client->fd_in) <= ERROR ||

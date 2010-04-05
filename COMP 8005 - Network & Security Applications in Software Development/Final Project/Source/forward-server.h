@@ -52,6 +52,8 @@
 
 /* defaults */
 #define IO_BUFFER	65536
+#define TRUE		1
+#define FALSE		0
 
 /* error codes */
 #define ERROR_NONE	0
@@ -61,14 +63,7 @@
 #define SERVER_PORT 9000
 #define OUT_PORT	22
 #define OUT_IP		"192.168.1.1"
-
-int setnonblock(int);
-static void read_client_cb(struct ev_loop *, struct ev_io *, int);
-static void read_remote_cb(struct ev_loop *, struct ev_io *, int);
-static void accept_cb(struct ev_loop *, struct ev_io *, int);
-struct sockaddr_in peer_info(int);
-struct sockaddr_in local_info(int);
-void read_config(void);
+#define FILENAME	"./forward.conf"
 
 struct client {
 	int fd_in;		/* inbound socket */
@@ -77,7 +72,26 @@ struct client {
 	ev_io ev_read_out;
 };
 
+/* creating a dynamic array of sorts */
+typedef struct {
+	int local_port;
+	char *remote_ip;
+	int remote_port;
+} FORWARD;
+
+int setnonblock(int);
+static void read_client_cb(struct ev_loop *, struct ev_io *, int);
+static void read_remote_cb(struct ev_loop *, struct ev_io *, int);
+static void accept_cb(struct ev_loop *, struct ev_io *, int);
+struct sockaddr_in peer_info(int);
+struct sockaddr_in local_info(int);
+void read_config(void);
+void forward_add(FORWARD);
+void terminate(int);
+
+FORWARD *forward_info = NULL;
+int num_elements = 0;	/* elements in array */
+int num_allocated = 0;	/* size of array */
 ev_io ev_accept;
-/* struct client *client; */
 
 #endif

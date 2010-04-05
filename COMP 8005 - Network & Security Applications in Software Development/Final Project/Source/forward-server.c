@@ -172,11 +172,79 @@ struct sockaddr_in peer_info(int socket_fd)
 	return addr;
 }
 
+void read_config(void)
+{
+	FILE *file;
+	char entry[255];
+	char *token;
+	
+	if ((file = fopen(FILENAME, "r")) == NULL)
+		err(1, "fopen");
+	
+	while (fscanf(file, "%s", entry) != EOF) {
+		FORWARD item;
+
+		/* extract local port */
+		token = strtok(entry, ":");
+		item.local_port = atoi(token);
+		
+		/* extract remote ip */
+		token = strtok(NULL, ":");
+		item.remote_ip = malloc((strlen(token) + 1) * sizeof(char));
+		strncpy(item.remote_ip, token, strlen(token) + 1);
+		
+		/* extract remote port */
+		token = strtok(NULL, ":");
+		item.remote_port = atoi(token);
+		
+		forward_add(item);
+	}
+}
+
+void forward_add(FORWARD item)
+{
+	void *tmp;
+	
+	if(num_elements == num_allocated) /* is more space needed? */
+	{
+		if (num_allocated == 0)
+			num_allocated = 3; /* start off with 3 references */
+		else
+			num_allocated *= 2; /* double space each time */
+		
+		/* transactional relocation via temporary variable */
+		tmp = realloc(forward_info, (num_allocated * sizeof(FORWARD)));
+		
+		/* realloc error */
+		if (!tmp)
+			err(1, "realloc");
+		
+		/* allocation succeeded */
+		forward_info = (FORWARD *)tmp;
+	}
+	
+	forward_info[num_elements] = item;
+	num_elements++;
+}
+
+void terminate(int sig)
+{
+	printf("\nProgram termination...\n");
+	free(forward_info);
+	
+	exit(ERROR_NONE);
+}
+
 int main()
 {
 	struct ev_loop *loop = ev_default_loop (0);	/* Use the default event loop */
 	struct sockaddr_in listen_addr; 
 	int listen_fd, reuseaddr_on = 1;
+	
+	/* properly cleanup when exiting */
+	(void)signal(SIGINT, terminate);
+	
+	read_config();
 
 	/* create listening socket */
 	listen_fd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -212,7 +280,7 @@ int main()
 	ev_io_start(loop, &ev_accept);
 	
 	/* wait for events to arrive */
-	ev_loop (loop, 0);
+	ev_loop(loop, 0);
 	
 	/* loop exited, so end the program */
 	return ERROR_NONE;

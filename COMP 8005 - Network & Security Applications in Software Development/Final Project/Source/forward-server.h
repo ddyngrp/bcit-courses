@@ -50,6 +50,7 @@
 #define TRUE		1
 #define FALSE		0
 #define FILENAME	"./forward.conf"
+#define PID_FILE	"/tmp/forward.pid"
 
 /* error codes */
 #define ERROR_NONE	0
@@ -80,6 +81,7 @@ void read_config(void);
 void forward_add(FORWARD);
 void print_forward_info(void);
 void terminate(int);
+void pid_file(void);
 
 FORWARD *forward_info = NULL;
 int num_elements = 0;	/* elements in array */

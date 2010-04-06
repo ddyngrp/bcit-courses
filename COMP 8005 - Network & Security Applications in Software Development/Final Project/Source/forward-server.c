@@ -18,6 +18,25 @@
 
 #include "forward-server.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    setnonblock
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int setnonblock(int fd)
+ *                  fd – socket descriptor
+ * 
+ * RETURNS:     0 on success, -1 on error.
+ * 
+ * NOTES: Sets a socket to non-blocking.
+ *
+ *----------------------------------------------------------------------------*/
 int setnonblock(int fd)
 {
 	int flags;
@@ -33,6 +52,28 @@ int setnonblock(int fd)
 	return ERROR_NONE;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    read_remote_cb
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   static void read_remote_cb(struct ev_loop *loop,
+ *                                         struct ev_io *w, int revents)
+ *                  ev_loop - main event loop
+ *                  ev_io - the calling watcher
+ *                  revents - the type of event (EV_READ | EV_WRITE)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Called by the event loop when data comes in from the remote connection
+ *
+ *----------------------------------------------------------------------------*/
 static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
 	int rlen = 0, oob_len = 0;
@@ -58,6 +99,28 @@ static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    read_client_cb
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   static void read_client_cb(struct ev_loop *loop,
+ *                                         struct ev_io *w, int revents)
+ *                  ev_loop - main event loop
+ *                  ev_io - the calling watcher
+ *                  revents - the type of event (EV_READ | EV_WRITE)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Called by the event loop when data comes in from the client
+ *
+ *----------------------------------------------------------------------------*/
 static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
 	int rlen = 0, oob_len = 0;
@@ -108,6 +171,28 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    accept_cb
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   static void accept_cb(struct ev_loop *loop,
+ *                                    struct ev_io *w, int revents)
+ *                  ev_loop - main event loop
+ *                  ev_io - the calling watcher
+ *                  revents - the type of event (EV_READ | EV_WRITE)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Called by the event loop when a new connection is initiated.
+ *
+ *----------------------------------------------------------------------------*/
 static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 {
 	int fd_in, fd_out, remote_port, local_port, i, sock_buf_size;
@@ -183,29 +268,88 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	ev_io_start(loop, &client->ev_read_out);
 }
 
-struct sockaddr_in local_info(int socket_fd)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    local_info
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   local_info(int fd)
+ *                  fd - connected socket
+ * 
+ * RETURNS:     sockaddr_in struct
+ * 
+ * NOTES: Returns a struct containing port/address information for the local
+ *        connection.
+ *
+ *----------------------------------------------------------------------------*/
+struct sockaddr_in local_info(int fd)
 {
 	struct sockaddr_in addr;
 	socklen_t addr_len = sizeof(addr);
 	
 	/* get the local port */
-	if (getsockname(socket_fd, (struct sockaddr *)&addr, &addr_len) == ERROR)
+	if (getsockname(fd, (struct sockaddr *)&addr, &addr_len) == ERROR)
 		err(1, "getsockname");
 	
 	return addr;
 }
 
-struct sockaddr_in peer_info(int socket_fd)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    peer_info
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   peer_info(int fd)
+ *                  fd - connected socket
+ * 
+ * RETURNS:     sockaddr_in struct
+ * 
+ * NOTES: Returns a struct containing port/address information for the remote
+ *        connection.
+ *
+ *----------------------------------------------------------------------------*/
+struct sockaddr_in peer_info(int fd)
 {
 	struct sockaddr_in addr;
 	socklen_t addr_len = sizeof(addr);
 	
-	if (getpeername(socket_fd, (struct sockaddr*)&addr, &addr_len) == ERROR)
+	if (getpeername(fd, (struct sockaddr*)&addr, &addr_len) == ERROR)
 		err(1, "getpeername");
 	
 	return addr;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    read_config
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   read_config(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Reads the config file for Port:IP:Port pairs to setup connections.
+ *        The format is [local listening port]:[remote ip]:[remote port].
+ *
+ *----------------------------------------------------------------------------*/
 void read_config(void)
 {
 	FILE *file;
@@ -235,6 +379,26 @@ void read_config(void)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    forward_add
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void forward_add(FORWARD item)
+ *                   item - struct containing Port:IP:Port info
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Dynamically increases the size of an array to store port forward
+ *        connection information.
+ *
+ *----------------------------------------------------------------------------*/
 void forward_add(FORWARD item)
 {
 	void *tmp;
@@ -261,6 +425,25 @@ void forward_add(FORWARD item)
 	num_elements++;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_forward_info
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_forward_info(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Prints out what ports the server is listening on and where each port
+ *        forwards to.
+ *
+ *----------------------------------------------------------------------------*/
 void print_forward_info(void)
 {
 	int i;
@@ -273,19 +456,102 @@ void print_forward_info(void)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    terminate
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void terminate(int sig)
+ *                   sig - signal type
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Called when CTRL+C is used to terminate the program. Deletes the PID
+ *        file and frees the memory allocated to the dynamic array.
+ *
+ *----------------------------------------------------------------------------*/
 void terminate(int sig)
 {
 	printf("\nProgram termination...\n");
+	
+	/* delete the PID file */
+	if (remove(PID_FILE))
+		err(1, "remove");
+	
+	/* free the dynamic array */
 	free(forward_info);
 	
 	exit(ERROR_NONE);
 }
 
-int main()
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    pid_file
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void pid_file(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Checks if a PID file for the application exists. If so, the program
+ *        terminates, otherwise it creates the PID file.
+ *
+ *----------------------------------------------------------------------------*/
+void pid_file(void)
+{
+	FILE *file;
+	
+	if ((file = fopen(PID_FILE, "r")) == NULL) {
+		if ((file = fopen(PID_FILE, "w")) == NULL) {
+			err(1, "fopen");
+		}
+	}
+	else {
+		fprintf(stderr, "PID file %s exists, terminating program.\n", PID_FILE);
+		exit(ERROR);
+	}
+
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    main
+ * 
+ * DATE:        April 5, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int main(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Main entry point for the application. Sets up the main event loop for
+ *        accepting incomming connections.
+ *
+ *----------------------------------------------------------------------------*/
+int main(void)
 {
 	struct ev_loop *loop = ev_default_loop (0);	/* Use the default event loop */
 	struct sockaddr_in listen_addr; 
 	int listen_fd, reuseaddr_on = 1, i;
+	
+	/* check for an existing PID file or create one */
+	pid_file();
 	
 	/* properly cleanup when exiting */
 	(void)signal(SIGINT, terminate);

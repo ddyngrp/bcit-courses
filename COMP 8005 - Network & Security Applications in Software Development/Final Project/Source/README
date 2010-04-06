@@ -1,2 +1,17 @@
-Requirements:
-libev
+Dependencies:
+	libev - http://software.schmorp.de/pkg/libev.html
+
+To install libev do the following:
+	Gentoo: emerge libev
+	Fedora: yum install libev-devel
+	Ubuntu: apt-get install libev-devel
+
+Compilation:
+	Simply type "make" at the command line.
+
+Execution:
+	Type "./forward-server"
+
+Configuration:
+	Edit "forward.conf" to add additional Port:IP:Port fowarding pairs.
+	The format is as such [Port server listens on]:[Remote IP address]:[Remote Port]

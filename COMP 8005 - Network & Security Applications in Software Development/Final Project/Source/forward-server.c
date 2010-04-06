@@ -35,8 +35,9 @@ int setnonblock(int fd)
 
 static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
-	int rlen = 0;
+	int rlen = 0, oob_len = 0;
 	char read_buff[IO_BUFFER];
+	char oob_buff[IO_BUFFER];
 	
 	/* retrieve the desired client object */
 	struct client *client = ((struct client*) (((char*)w) -
@@ -44,7 +45,13 @@ static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	
 	if (revents & EV_READ) {
 		rlen = read(client->fd_out, &read_buff, IO_BUFFER);
+		oob_len = recv(client->fd_out, &oob_buff, IO_BUFFER, MSG_OOB);
 		
+		/* send OOB data received */
+		if (oob_len > 0) {
+			send(client->fd_in, oob_buff, oob_len, MSG_OOB);
+		}
+
 		/* only send if we have data */
 		if (rlen > 0)
 			write(client->fd_in, read_buff, rlen);
@@ -53,8 +60,9 @@ static void read_remote_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 
 static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 { 
-	int rlen = 0;
+	int rlen = 0, oob_len = 0;
 	char read_buff[IO_BUFFER];
+	char oob_buff[IO_BUFFER];
 	char client_ip[INET_ADDRSTRLEN];
 	char remote_ip[INET_ADDRSTRLEN];
 	struct sockaddr_in client_addr, remote_addr;
@@ -64,7 +72,13 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 							offsetof(struct client, ev_read)));
 	
 	if (revents & EV_READ) {
-		rlen = read(client->fd_in, &read_buff, IO_BUFFER);
+		rlen = read(client->fd_in, &read_buff, IO_BUFFER);		
+		oob_len = recv(client->fd_in, &oob_buff, IO_BUFFER, MSG_OOB);
+		
+		/* send OOB data received */
+		if (oob_len > 0) {
+			send(client->fd_out, oob_buff, oob_len, MSG_OOB);
+		}
 		
 		/* only send if we have data */
 		if (rlen > 0)
@@ -96,7 +110,7 @@ static void read_client_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 
 static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 {
-	int fd_in, fd_out, remote_port, local_port, i;
+	int fd_in, fd_out, remote_port, local_port, i, sock_buf_size;
 	struct sockaddr_in in_addr, out_addr;
 	struct hostent *hent;
 	struct client *client;
@@ -138,6 +152,13 @@ static void accept_cb(struct ev_loop *loop, struct ev_io *w, int revents)
 	if (connect(fd_out, (struct sockaddr *)&out_addr, out_len) <= ERROR)
 		if (errno != EINPROGRESS)
 			return;
+	
+	/* increase the buffer size */
+	sock_buf_size = IO_BUFFER;
+	setsockopt(fd_in, SOL_SOCKET, SO_SNDBUF, &sock_buf_size, sizeof(sock_buf_size));
+	setsockopt(fd_in, SOL_SOCKET, SO_RCVBUF, &sock_buf_size, sizeof(sock_buf_size));
+	setsockopt(fd_out, SOL_SOCKET, SO_SNDBUF, &sock_buf_size, sizeof(sock_buf_size));
+	setsockopt(fd_out, SOL_SOCKET, SO_RCVBUF, &sock_buf_size, sizeof(sock_buf_size));
 	
 	/* associate the socket descriptors for the client */
 	client->fd_in = fd_in;

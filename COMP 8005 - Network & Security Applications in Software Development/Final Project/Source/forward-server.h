@@ -49,13 +49,11 @@
 #define IO_BUFFER	65536
 #define TRUE		1
 #define FALSE		0
+#define FILENAME	"./forward.conf"
 
 /* error codes */
 #define ERROR_NONE	0
 #define ERROR		-1
-
-/* testing */
-#define FILENAME	"./forward.conf"
 
 struct client {
 	int fd_in;		/* inbound socket */

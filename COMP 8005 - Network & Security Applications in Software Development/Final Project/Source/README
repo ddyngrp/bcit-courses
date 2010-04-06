@@ -9,9 +9,9 @@ To install libev do the following:
 Compilation:
 	Simply type "make" at the command line.
 
-Execution:
-	Type "./forward-server"
-
 Configuration:
 	Edit "forward.conf" to add additional Port:IP:Port fowarding pairs.
 	The format is as such [Port server listens on]:[Remote IP address]:[Remote Port]
+
+Execution:
+	Type "./forward-server"

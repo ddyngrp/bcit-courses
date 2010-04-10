@@ -1,0 +1,1463 @@
+Trying 154.11.98.18...
+Connected to 154.11.98.18.
+Escape character is '^]'.
+c
+#################################################################
+
+route-views.ab.bb.telus.com   --   TELUS Alberta BGP Route Viewer
+
+  This device provides a regional view into AS852's BGP table
+  Please contact ipnoc@telus.com if you have any questions.
+
+  route-views.on.bb.telus.com (154.11.63.86) - Eastern Canada
+  route-views.ab.bb.telus.com (154.11.98.18)  - Western Canada
+
+  Please do not run automated scripts against this box without
+  permission.
+
+#################################################################
+
+route-views.ab>traceroute 203.202.125.6
+
+Type escape sequence to abort.
+Tracing the route to 203.202.125.6
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.12.201 [AS 852] 56 msec 52 msec 56 msec
+  3 203.208.154.45 [AS 7473] 56 msec 56 msec 56 msec
+  4 xe-0-0-0-0.plapx-cr3.ix.singtel.com (203.208.183.177) [AS 7473] 56 msec 56 msec 56 msec
+  5 203.208.148.90 [AS 7473] 212 msec 216 msec 212 msec
+  6  *  *  * 
+  7 203.202.125.6 [AS 7474] 216 msec *  216 msec
+route-views.ab>traceroute 216.113.10.50
+
+Type escape sequence to abort.
+Tracing the route to 216.113.10.50
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 MTLXPQVVGR00.bb.telus.com (154.11.11.246) [AS 852] 52 msec 48 msec 48 msec
+  3 216.113.37.9 [AS 5769] 48 msec 52 msec 48 msec
+  4 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) [AS 5769] 52 msec 48 msec 52 msec
+  5  *  *  * 
+  6  *  *  * 
+  7 
+route-views.ab>traceroute 154.11.98.18
+
+Type escape sequence to abort.
+Tracing the route to route-views.ab.bb.telus.com (154.11.98.18)
+
+  1 route-views.ab.bb.telus.com (154.11.98.18) [AS 852] 0 msec *  0 msec
+route-views.ab>traceroute 216.191.14.250
+
+Type escape sequence to abort.
+Tracing the route to route-server.east.bb.allstream.net (216.191.14.250)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 4 msec 0 msec 0 msec
+  2 216.191.190.21 [AS 15290] 0 msec 0 msec 4 msec
+  3  *  *  * 
+  4 199.212.161.30 48 msec 52 msec 48 msec
+  5 199.212.161.33 48 msec 48 msec 48 msec
+  6 199.212.161.42 52 msec 48 msec 48 msec
+  7 199.212.161.54 48 msec 48 msec 52 msec
+  8 199.212.161.66 48 msec 48 msec 48 msec
+  9 199.212.161.198 48 msec 48 msec 52 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12 
+route-views.ab>traceroute 216.18.63.214
+
+Type escape sequence to abort.
+Tracing the route to 216.18.63.214
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.10.190 [AS 852] 0 msec 0 msec 4 msec
+  3 154.11.2.218 [AS 852] 0 msec 0 msec 0 msec
+  4 core4-calgaryqa_POS3-1-0.net.bell.ca (64.230.176.201) 0 msec 0 msec 0 msec
+  5 core4-toronto12_POS2-2.net.bell.ca (64.230.176.177) 44 msec 40 msec 44 msec
+  6 bx4-toronto12_so-1-0-0.net.bell.ca (64.230.158.26) 44 msec 40 msec 40 msec
+  7 peer12012a.toroonxn_GE8-1.net.bell.ca (67.69.199.126) [AS 577] 44 msec 40 msec 44 msec
+  8 POS2-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.149) [AS 6539] 44 msec 44 msec 44 msec
+  9 GE9-2.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.38) [AS 6539] 40 msec 40 msec 44 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12  * 
+route-views.ab>traceroute 213.192.191.82
+
+Type escape sequence to abort.
+Tracing the route to route-server.as6667.net (213.192.191.82)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 ASBNVACYGR00.bb.telus.com (154.11.11.98) [AS 852] 44 msec 40 msec 40 msec
+  3 212.184.27.21 [AS 3320] 44 msec 44 msec 40 msec
+  4 217.239.37.42 [AS 3320] 172 msec 172 msec 168 msec
+  5 212.184.27.186 [AS 3320] 176 msec 172 msec 172 msec
+  6 ge0-2-0-0.bbr1.sto2.se.eunetip.net (213.192.191.202) [AS 790] 176 msec 176 msec 176 msec
+  7 as1-0.bbr1.hel2.fi.eunetip.net (213.192.191.133) [AS 790] 180 msec 180 msec 180 msec
+  8 route-server.as6667.net (213.192.191.82) [AS 790] 180 msec 180 msec 180 msec
+route-views.ab>traceroute 213.200.64.94
+
+Type escape sequence to abort.
+Tracing the route to route-server.ip4.tinet.net (213.200.64.94)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 chcgildtgr00.bb.telus.com (154.11.11.30) [AS 852] 32 msec 28 msec 32 msec
+  3 so-0-1-0.chi11.ip4.tinet.net (77.67.68.45) [AS 3257] 28 msec 32 msec 28 msec
+  4 xe-3-2-0.fra23.ip4.tinet.net (213.200.82.5) [AS 3257] 144 msec
+    xe-3-1-0.fra23.ip4.tinet.net (89.149.186.142) [AS 3257] 144 msec
+    xe-3-2-0.fra23.ip4.tinet.net (213.200.82.5) [AS 3257] 148 msec
+  5 route-server.ip4.tinet.net (213.200.64.94) [AS 3257] 144 msec 144 msec 144 msec
+route-views.ab>traceroute 62.48.45.129
+
+Type escape sequence to abort.
+Tracing the route to f0-1.route-server.playnet.it (62.48.45.129)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.10.150 [AS 852] 12 msec 12 msec 12 msec
+  3 if-0-0.core2.VCW-Vancouver.as6453.net (64.86.115.25) [AS 6453] 12 msec 12 msec 12 msec
+  4 if-11-0.mcore3.TTT-Scarborough.as6453.net (216.6.98.29) [AS 6453] 60 msec 60 msec 60 msec
+  5 if-4-0.mcore4.NJY-Newark.as6453.net (216.6.98.2) [AS 6453] 68 msec 68 msec 72 msec
+  6 if-1-0.mcore3.L78-London.as6453.net (195.219.144.9) [AS 6453] 140 msec 140 msec 140 msec
+  7 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) [AS 6453] 168 msec 168 msec 168 msec
+  8 195.219.159.26 [AS 6453] 164 msec 168 msec 164 msec
+  9 vl27.core2.net.playnet.it (62.48.45.250) [AS 13284] 184 msec 184 msec 180 msec
+ 10 f0-1.route-server.playnet.it (62.48.45.129) [AS 13284] 180 msec *  180 msec
+route-views.ab>traceroute 86.55.0.50
+
+Type escape sequence to abort.
+Tracing the route to rs.ipv4ilink.net (86.55.0.50)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.70 [AS 852] 32 msec 32 msec 28 msec
+  3 cr1-pos-0-7-3-1.Chicago.savvis.net (208.175.10.89) [AS 3561] 60 msec 60 msec 56 msec
+  4 ber1-tengig-9-0-0.Chicago.savvis.net (204.70.195.114) [AS 3561] 56 msec 56 msec 56 msec
+  5 savvis-peering.chicago.savvis.net (208.175.10.2) [AS 3561] 60 msec 56 msec 60 msec
+  6 ae-32-52.ebr2.Chicago1.Level3.net (4.68.101.62) [AS 3356] 68 msec 60 msec 56 msec
+  7 ae-5-5.ebr2.Chicago2.Level3.net (4.69.140.194) [AS 3356] 60 msec 56 msec 60 msec
+  8 ae-2-2.ebr2.Washington1.Level3.net (4.69.132.70) [AS 3356] 60 msec 60 msec 60 msec
+  9 ae-43-43.ebr2.Frankfurt1.Level3.net (4.69.137.57) [AS 3356] 232 msec 228 msec
+    ae-44-44.ebr2.Frankfurt1.Level3.net (4.69.137.61) [AS 3356] 232 msec
+ 10 ae-72-72.csw2.Frankfurt1.Level3.net (4.69.140.22) [AS 3356] 232 msec
+    ae-92-92.csw4.Frankfurt1.Level3.net (4.69.140.30) [AS 3356] 228 msec
+    ae-82-82.csw3.Frankfurt1.Level3.net (4.69.140.26) [AS 3356] 236 msec
+ 11 ae-2-79.edge6.Frankfurt1.Level3.net (4.68.23.78) [AS 3356] 236 msec
+    ae-3-89.edge6.Frankfurt1.Level3.net (4.68.23.142) [AS 3356] 240 msec
+    ae-2-79.edge6.Frankfurt1.Level3.net (4.68.23.78) [AS 3356] 240 msec
+ 12 wFrnk-ten83-level3.de.ipv4ilink.net (193.19.195.50) [AS 30890] 256 msec 168 msec 216 msec
+ 13 wNx-ten84-v17-wFrnk.b.ipv4ilink.net (193.19.195.33) [AS 30890] 348 msec 380 msec 176 msec
+ 14 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) [AS 30890] 180 msec 180 msec 180 msec
+ 15 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) [AS 30890] 268 msec 268 msec 272 msec
+ 16 bbUnr-ten22-v41-bbNx.b.ipv4ilink.net (193.19.195.9) [AS 30890] 272 msec 264 msec 264 msec
+ 17 aUnr-po12-v27-bbUnr.b.ipv4ilink.net (193.19.194.62) [AS 30890] 260 msec 264 msec 260 msec
+ 18 rs.ipv4ilink.net (86.55.0.50) [AS 30890] 260 msec 260 msec 264 msec
+route-views.ab>traceroute 196.25.9.46
+
+Type escape sequence to abort.
+Tracing the route to tpr-route-server.saix.net (196.25.9.46)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.10.230 [AS 852] 16 msec 16 msec 16 msec
+  3 154.11.2.102 [AS 852] 16 msec 16 msec 16 msec
+  4 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) [AS 3491] 72 msec 72 msec 68 msec
+  5 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) [AS 5713] 324 msec 324 msec 324 msec
+  6 tpr-route-server.saix.net (196.25.9.46) [AS 5713] 324 msec *  324 msec
+route-views.ab>traceroute 164.128.251.50
+
+Type escape sequence to abort.
+Tracing the route to routeserver.ip-plus.net (164.128.251.50)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 wnpgmb38br00.bb.telus.com (154.11.11.178) [AS 852] 64 msec 64 msec 68 msec
+  3 154.11.3.229 [AS 852] 64 msec 64 msec 68 msec
+  4 i68geb-005-pos6-0-0.bb.ip-plus.net (138.187.159.45) [AS 3303] 156 msec 160 msec 156 msec
+  5 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) [AS 3303] 160 msec 160 msec 160 msec
+  6 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) [AS 3303] 160 msec 160 msec 160 msec
+  7 routeserver.ip-plus.net (164.128.251.50) [AS 3303] 160 msec *  160 msec
+route-views.ab>traceroute 212.241.174.1
+
+Type escape sequence to abort.
+Tracing the route to lo1.route-server.as5413.net (212.241.174.1)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.142 [AS 852] 32 msec 44 msec 28 msec
+  3 markham.leaf.canada.psi.net (154.11.2.122) [AS 852] 68 msec 32 msec 28 msec
+  4 nyk-bb1-link.telia.net (80.91.248.193) [AS 1299] 56 msec
+    nyk-bb2-link.telia.net (80.91.246.19) [AS 1299] 60 msec
+    nyk-bb2-link.telia.net (80.91.248.197) [AS 1299] 56 msec
+  5 ldn-bb1-pos7-1-0.telia.net (213.248.65.89) [AS 1299] 132 msec 136 msec
+    ldn-bb2-pos7-1-0.telia.net (213.248.65.93) [AS 1299] 128 msec
+  6 ldn-b2-link.telia.net (80.91.250.226) [AS 1299] 128 msec 132 msec
+    ldn-b2-link.telia.net (80.91.250.230) [AS 1299] 128 msec
+  7 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) [AS 1299] 136 msec 132 msec 124 msec
+  8 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) [AS 5413] 132 msec 128 msec 128 msec
+  9  *  *  * 
+ 10  *  *  * 
+ 11 
+route-views.ab>traceroute 69.31.111.255
+
+Type escape sequence to abort.
+Tracing the route to route-server.ord1.nlayer.net (69.31.111.255)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.142 [AS 852] 28 msec 28 msec 28 msec
+  3 ge2-14.ar1.ord1.us.nlayer.net (69.31.111.49) [AS 4436] 32 msec 28 msec 32 msec
+  4 route-server.ord1.nlayer.net (69.31.111.255) [AS 4436] 28 msec 32 msec 28 msec
+route-views.ab>traceroute 66.162.47.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.twtelecom.net (66.162.47.58)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.142 [AS 852] 28 msec 28 msec 32 msec
+  3 peer-02-ge-3-0-2-41.chcg.twtelecom.net (66.192.252.101) [AS 4323] 28 msec 28 msec 32 msec
+  4 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) [AS 4323] 68 msec 68 msec 68 msec
+  5 route-server.twtelecom.net (66.162.47.58) [AS 4323] 68 msec *  68 msec
+route-views.ab>traceroute 64.135.5.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.host.net (64.135.5.58)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.142 [AS 852] 28 msec 32 msec 28 msec
+  3 chi-g2-14.wvfiber.net (64.127.129.113) [AS 19151] 32 msec 28 msec 32 msec
+  4 nsh-t4-3-2200-chi-vl2200.wvfiber.net (64.127.130.54) [AS 19151] 44 msec 44 msec 44 msec
+  5 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) [AS 19151] 68 msec 68 msec 72 msec
+  6 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) [AS 19151] 84 msec 84 msec 84 msec
+  7 host-wvfiber.wvfiber.net (66.216.1.94) [AS 19151] 84 msec 84 msec 84 msec
+  8 route-server.host.net (64.135.5.58) [AS 13645] 84 msec *  84 msec
+route-views.ab>traceroute 66.209.87.106
+
+Type escape sequence to abort.
+Tracing the route to priority.demarc.switchnap.com (66.209.87.106)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 154.11.11.142 [AS 852] 92 msec 28 msec 32 msec
+  3 chi-g2-14.wvfiber.net (64.127.129.113) [AS 19151] 28 msec 32 msec 28 msec
+  4 sjc-ten6-3-chi-ten3-1.wvfiber.net (64.127.129.62) [AS 19151] 84 msec 80 msec 80 msec
+  5 lv-ten1-2-sjc-ten1-3.wvfiber.net (66.186.192.197) [AS 19151] 100 msec 140 msec 100 msec
+  6 cust-lv-ten1-4.wvfiber.net (66.186.192.46) [AS 19151] 100 msec 100 msec 120 msec
+  7 te4-1.las-esw09.switchnap.com (66.209.64.194) [AS 23005] 100 msec 100 msec 100 msec
+  8 priority.demarc.switchnap.com (66.209.87.106) [AS 23005] 120 msec *  180 msec
+route-views.ab>traceroute 12.129.193.235
+
+Type escape sequence to abort.
+Tracing the route to route-server.cerf.net (12.129.193.235)
+
+  1 clgrab21gr01.bb.telus.com (154.11.98.17) [AS 852] 0 msec 0 msec 0 msec
+  2 chcgildtgr00.bb.telus.com (154.11.11.30) [AS 852] 32 msec 28 msec 32 msec
+  3 173.182.200.2 28 msec 32 msec 28 msec
+  4 vl3498.ccr02.ord01.atlas.cogentco.com (154.54.5.1) [AS 174] 32 msec
+    vl3491.ccr02.ord01.atlas.cogentco.com (154.54.6.209) [AS 174] 28 msec
+    te1-1.ccr02.ord01.atlas.cogentco.com (154.54.29.21) [AS 174] 28 msec
+  5 te0-4-0-0.ccr22.mci01.atlas.cogentco.com (66.28.4.33) [AS 174] 40 msec
+    te0-3-0-3.ccr22.mci01.atlas.cogentco.com (154.54.6.214) [AS 174] 44 msec 44 msec
+  6 te3-4.ccr02.dfw01.atlas.cogentco.com (154.54.2.229) [AS 174] 52 msec 52 msec
+    te2-7.ccr02.iah01.atlas.cogentco.com (154.54.0.205) [AS 174] 60 msec
+  7 te9-2.ccr02.lax01.atlas.cogentco.com (154.54.3.186) [AS 174] 80 msec 80 msec 84 msec
+  8 te8-2.ccr02.lax05.atlas.cogentco.com (130.117.50.90) [AS 174] 80 msec 80 msec
+    te9-2.ccr02.lax01.atlas.cogentco.com (154.54.3.186) [AS 174] 84 msec
+  9 192.205.35.5 [AS 7018] 80 msec
+    192.205.37.157 [AS 7018] 80 msec 84 msec
+ 10 192.205.37.157 [AS 7018] 80 msec
+    cr2.la2ca.ip.att.net (12.122.84.218) [AS 7018] 80 msec
+    192.205.37.157 [AS 7018] 84 msec
+ 11 cr1.la2ca.ip.att.net (12.122.84.202) [AS 7018] 80 msec
+    cr83.la2ca.ip.att.net (12.123.30.109) [AS 7018] 84 msec 80 msec
+ 12 cr83.la2ca.ip.att.net (12.123.30.109) [AS 7018] 80 msec 84 msec 80 msec
+ 13 gar5.la2ca.ip.att.net (12.122.129.25) [AS 7018] 80 msec
+    gar5.la2ca.ip.att.net (12.122.128.25) [AS 7018] 84 msec
+    12.122.255.74 [AS 7018] 80 msec
+ 14 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) [AS 17233] 84 msec
+    12.122.255.74 [AS 7018] 80 msec 84 msec
+ 15 route-server.cerf.net (12.129.193.235) [AS 17233] 84 msec *  80 msec
+route-views.ab>logout
+Connection closed by foreign host.
+Trying 216.191.14.250...
+Connected to 216.191.14.250.
+Escape character is '^]'.
+CCCCCC
+########## route-server.eastern.allstream.com ############
+####### MTS Allstream IP Backbone Route Monitor  #######
+
+This router maintains peering with the following
+key routers in the MTS Allstream IP Backbone:
+
+GATEWAY-1, Vancouver,   BC, Canada
+GATEWAY-1, Calgary,     AB, Canada
+GATEWAY-1, Toronto,     ON, Canada
+GATEWAY-1, Montreal,    QC, Canada
+GATEWAY-1, Chicago,     IL, USA
+GATEWAY-1, Seattle,     WA, USA
+GATEWAY-1, New York     NY, USA
+GATEWAY-1, ASHBURN	VA, USA
+
+This device should NOT be the only way to gauge performance on 
+the MTS-Allstream IP Backbone due to its potential high CPU utilization
+
+This route-server may NOT be used with ANY automated scripts
+unless proper authorization has been given to you by MTS Allstream
+
+This router supports the cisco "| [begin,exclude,include]" command format.
+
+MTS Allstream maintains the following router-servers:
+
+Route-server.western.allstream.com      Vancouver,      BC,     Canada
+Route-server.central.allstream.com      Toronto,        ON,     Canada
+Route-server.eastern.allstream.com      Montreal,       QC,     Canada
+
+For questions, send email to routing@allstream.com
+          
+
+route-server.east>traceroute 203.202.125.6
+
+Type escape sequence to abort.
+Tracing the route to 203.202.125.6
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 srp2-0.core2-van.bb.allstream.net (199.212.160.14) 64 msec 64 msec 64 msec
+  3 g5-0-0.plapx-dr1.ix.singtel.com (198.32.176.50) [AS 701] 84 msec 84 msec 80 msec
+  4 xe-0-0-0-0.plapx-cr3.ix.singtel.com (203.208.183.177) [AS 7473] 84 msec 84 msec 80 msec
+  5 203.208.148.90 [AS 7473] 240 msec 244 msec 244 msec
+  6  *  *  * 
+  7 203.202.125.6 [AS 7474] 244 msec *  240 msec
+route-server.east>traceroute 216.113.10.50
+
+Type escape sequence to abort.
+Tracing the route to 216.113.10.50
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 200 msec 200 msec 200 msec
+  2 216.191.190.30 [AS 15290] 200 msec 200 msec 200 msec
+  3 ia-piex-gw06-vl10.vtl.net (207.253.253.138) [AS 5769] 200 msec 200 msec 200 msec
+  4  *  *  * 
+  5  *  *  * 
+  6 
+route-server.east>traceroute 154.11.98.18
+
+Type escape sequence to abort.
+Tracing the route to route-views.ab.bb.telus.com (154.11.98.18)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 mtlxpqvvgr00.bb.telus.com (154.11.3.217) [AS 852] 0 msec 0 msec 0 msec
+  3 CLGRAB21GR01.bb.telus.com (154.11.10.217) [AS 852] 52 msec 88 msec 48 msec
+  4 route-views.ab.bb.telus.com (154.11.98.18) [AS 852] 48 msec *  48 msec
+route-server.east>traceroute 216.191.14.250
+
+Type escape sequence to abort.
+Tracing the route to route-server.east.bb.allstream.net (216.191.14.250)
+
+  1  *  *  * 
+  2  *  *  * 
+  3 
+route-server.east>traceroute 216.18.63.214
+
+Type escape sequence to abort.
+Tracing the route to 216.18.63.214
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 4 msec 0 msec 0 msec
+  2 FE6-0.PEERB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.133) [AS 6539] 0 msec 0 msec 0 msec
+  3 66.59.191.141 [AS 6539] 0 msec 0 msec 0 msec
+  4 POS13-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (216.18.63.197) [AS 6539] [MPLS: Label 247 Exp 0] 12 msec 8 msec 12 msec
+  5 GE9-2.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.38) [AS 6539] 8 msec 8 msec 12 msec
+  6  *  *  * 
+  7  *  *  * 
+  8 
+route-server.east>traceroute 213.192.191.82
+
+Type escape sequence to abort.
+Tracing the route to route-server.as6667.net (213.192.191.82)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 16 msec 16 msec 16 msec
+  3  *  *  * 
+  4 as1-0.bbr1.sto1.se.eunetip.net (213.192.191.225) [AS 790] 148 msec 152 msec 152 msec
+  5 ge0-2-0-0.bbr1.sto2.se.eunetip.net (213.192.191.202) [AS 790] 152 msec 152 msec 152 msec
+  6 as1-0.bbr1.hel2.fi.eunetip.net (213.192.191.133) [AS 790] 156 msec 156 msec 160 msec
+  7 route-server.as6667.net (213.192.191.82) [AS 790] 160 msec 160 msec 160 msec
+route-server.east>traceroute 213.200.64.94
+
+Type escape sequence to abort.
+Tracing the route to route-server.ip4.tinet.net (213.200.64.94)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 16 msec 16 msec 12 msec
+  3 12.118.100.21 [AS 7018] 16 msec 12 msec 16 msec
+  4 cr1.n54ny.ip.att.net (12.122.131.118) [AS 7018] [MPLS: Label 20581 Exp 0] 16 msec 16 msec 16 msec
+  5 n54ny03jt.ip.att.net (12.122.86.5) [AS 7018] 12 msec 16 msec 16 msec
+  6 192.205.36.114 [AS 7018] 16 msec 16 msec 16 msec
+  7 xe-11-3-0.fra23.ip4.tinet.net (89.149.183.25) [AS 3257] 128 msec 132 msec 128 msec
+  8 route-server.ip4.tinet.net (213.200.64.94) [AS 3257] 136 msec 132 msec 132 msec
+route-server.east>traceroute 62.48.45.129
+
+Type escape sequence to abort.
+Tracing the route to f0-1.route-server.playnet.it (62.48.45.129)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 12 msec 16 msec 12 msec
+  3 GigabitEthernet3-0.GW12.NYC1.ALTER.NET (157.130.91.249) [AS 701] 16 msec 16 msec 16 msec
+  4 0.so-1-3-0.XL2.NYC1.ALTER.NET (152.63.29.198) [AS 701] 12 msec 16 msec 12 msec
+  5 0.so-7-3-0.XL4.NYC4.ALTER.NET (152.63.17.2) [AS 701] 48 msec 16 msec 16 msec
+  6 0.xe-8-1-0.BR2.NYC4.ALTER.NET (152.63.3.134) [AS 701] 12 msec
+    0.xe-3-3-0.BR2.NYC4.ALTER.NET (152.63.3.122) [AS 701] 16 msec
+    0.xe-7-1-0.BR2.NYC4.ALTER.NET (152.63.3.170) [AS 701] 12 msec
+  7 Vlan549.icore1.NTO-NewYork.as6453.net (209.58.26.21) [AS 6453] 16 msec 20 msec 20 msec
+  8 if-13-0-0-475.core2.NTO-NewYork.as6453.net (216.6.97.89) [AS 6453] 16 msec
+    if-12-0-0-13.core2.NTO-NewYork.as6453.net (216.6.97.45) [AS 6453] 16 msec 16 msec
+  9 if-4-0-0-993.mcore3.L78-London.as6453.net (216.6.97.102) [AS 6453] [MPLS: Label 582 Exp 0] 88 msec 88 msec 88 msec
+ 10 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) [AS 6453] 112 msec 112 msec 112 msec
+ 11 195.219.159.26 [AS 6453] 112 msec 108 msec 112 msec
+ 12 vl27.core2.net.playnet.it (62.48.45.250) [AS 13284] 148 msec 148 msec 144 msec
+ 13 f0-1.route-server.playnet.it (62.48.45.129) [AS 13284] 132 msec *  144 msec
+route-server.east>traceroute 86.55.0.50
+
+Type escape sequence to abort.
+Tracing the route to rs.ipv4ilink.net (86.55.0.50)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 16 msec 12 msec 16 msec
+  3 wFrnk-ge416-linx.de.ipv4ilink.net (195.66.225.101) [AS 5459] 240 msec 144 msec 236 msec
+  4 wNx-ten81-v9-wFrnk.b.ipv4ilink.net (193.19.195.29) [AS 30890] 168 msec 132 msec 132 msec
+  5 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) [AS 30890] 128 msec 132 msec 132 msec
+  6 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) [AS 30890] 128 msec 128 msec 128 msec
+  7 bbUnr-ten22-v41-bbNx.b.ipv4ilink.net (193.19.195.9) [AS 30890] 132 msec 132 msec 132 msec
+  8 aUnr-po12-v27-bbUnr.b.ipv4ilink.net (193.19.194.62) [AS 30890] 128 msec 128 msec 128 msec
+  9 rs.ipv4ilink.net (86.55.0.50) [AS 30890] 132 msec 132 msec 128 msec
+route-server.east>traceroute 196.25.9.46
+
+Type escape sequence to abort.
+Tracing the route to tpr-route-server.saix.net (196.25.9.46)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 16 msec 12 msec 16 msec
+  3 199.212.160.122 20 msec 24 msec 20 msec
+  4  *  *  * 
+  5 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) [AS 3491] 200 msec 200 msec 236 msec
+  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) [AS 5713] 404 msec 400 msec 404 msec
+  7 tpr-route-server.saix.net (196.25.9.46) [AS 5713] 400 msec *  276 msec
+route-server.east>traceroute 164.128.251.50
+
+Type escape sequence to abort.
+Tracing the route to routeserver.ip-plus.net (164.128.251.50)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 4 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 12 msec 16 msec 12 msec
+  3 199.212.160.122 24 msec 24 msec 20 msec
+  4  *  *  * 
+  5 i68geb-005-pos6-0-0.bb.ip-plus.net (138.187.159.45) [AS 3303] 112 msec 116 msec 112 msec
+  6 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) [AS 3303] 120 msec 116 msec 116 msec
+  7 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) [AS 3303] 124 msec 124 msec 124 msec
+  8 routeserver.ip-plus.net (164.128.251.50) [AS 3303] 116 msec *  116 msec
+route-server.east>traceroute 212.241.174.1
+
+Type escape sequence to abort.
+Tracing the route to lo1.route-server.as5413.net (212.241.174.1)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 12 msec 16 msec 12 msec
+  3  *  *  * 
+  4 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) [AS 5413] 128 msec 128 msec 132 msec
+  5  *  *  * 
+  6  *  *  * 
+  7 
+route-server.east>traceroute 69.31.111.255
+
+Type escape sequence to abort.
+Tracing the route to route-server.ord1.nlayer.net (69.31.111.255)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 4 msec 0 msec 0 msec
+  2 199.212.161.202 16 msec 16 msec 20 msec
+  3  *  *  * 
+  4 po2-30g.ar1.ord1.us.nlayer.net (69.31.111.138) [AS 4436] 200 msec 200 msec 200 msec
+  5 route-server.ord1.nlayer.net (69.31.111.255) [AS 4436] 200 msec 200 msec 200 msec
+route-server.east>traceroute 66.162.47.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.twtelecom.net (66.162.47.58)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 199.212.161.202 20 msec 16 msec 16 msec
+  3  *  *  * 
+  4 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) [AS 4323] 40 msec 40 msec 44 msec
+  5 route-server.twtelecom.net (66.162.47.58) [AS 4323] 44 msec *  40 msec
+route-server.east>traceroute 64.135.5.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.host.net (64.135.5.58)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 16 msec 12 msec 16 msec
+  3 199.212.160.130 20 msec 20 msec 24 msec
+  4  *  *  * 
+  5 mia-ten3-2-ash-ten7-5.wvfiber.net (66.216.1.121) [AS 19151] 48 msec 48 msec 48 msec
+  6 host-wvfiber-miami.wvfiber.net (66.216.1.126) [AS 19151] 52 msec 48 msec 52 msec
+  7 te2-2.cr01.swd.mia.host.net (64.135.0.42) [AS 13645] 48 msec 52 msec 48 msec
+  8 te3-1.cr01.903.bct.host.net (64.135.0.5) [AS 13645] 52 msec 56 msec 48 msec
+  9 route-server.host.net (64.135.5.58) [AS 13645] 52 msec *  52 msec
+route-server.east>traceroute 66.209.87.106
+
+Type escape sequence to abort.
+Tracing the route to priority.demarc.switchnap.com (66.209.87.106)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 0 msec
+  2 199.212.161.154 16 msec 16 msec 16 msec
+  3  *  *  * 
+  4 hagg-02-xe-1-0-0-0.lsvk.twtelecom.net (66.192.250.254) [AS 4323] 80 msec 80 msec 84 msec
+  5 te2-2.las-core2-1.switchnap.com (66.209.64.161) [AS 23005] [MPLS: Label 35 Exp 0] 84 msec 84 msec 88 msec
+  6 te4-1.las-esw09.switchnap.com (66.209.64.194) [AS 23005] 84 msec 84 msec 84 msec
+  7 priority.demarc.switchnap.com (66.209.87.106) [AS 23005] 88 msec *  84 msec
+route-server.east>traceroute 12.129.193.235
+
+Type escape sequence to abort.
+Tracing the route to route-server.cerf.net (12.129.193.235)
+
+  1 gig10-0-16.gwy1-mtl.bb.allstream.net (216.191.14.249) 0 msec 0 msec 4 msec
+  2 pos2-0.core2-ott.bb.allstream.net (199.212.160.102) 12 msec 16 msec 16 msec
+  3 12.118.100.21 [AS 7018] 12 msec 16 msec 16 msec
+  4 cr1.n54ny.ip.att.net (12.122.131.118) [AS 7018] [MPLS: Label 16474 Exp 0] 92 msec 88 msec 92 msec
+  5 cr2.cgcil.ip.att.net (12.122.1.2) [AS 7018] [MPLS: Labels 21118/16008 Exp 0] 92 msec 92 msec 92 msec
+  6 cr1.cgcil.ip.att.net (12.122.2.53) [AS 7018] [MPLS: Labels 20910/16008 Exp 0] 92 msec 92 msec 92 msec
+  7 cr2.dvmco.ip.att.net (12.122.31.85) [AS 7018] [MPLS: Labels 20885/16008 Exp 0] 92 msec 92 msec 92 msec
+  8 cr1.slkut.ip.att.net (12.122.30.25) [AS 7018] [MPLS: Labels 20865/16008 Exp 0] 92 msec 92 msec 88 msec
+  9 cr2.la2ca.ip.att.net (12.122.30.30) [AS 7018] [MPLS: Labels 0/16008 Exp 0] 88 msec 92 msec 92 msec
+ 10 cr84.la2ca.ip.att.net (12.123.30.249) [AS 7018] [MPLS: Label 16008 Exp 0] 92 msec 92 msec 92 msec
+ 11 gar5.la2ca.ip.att.net (12.122.129.25) [AS 7018] 132 msec 108 msec 104 msec
+ 12 12.122.255.74 [AS 7018] 92 msec 92 msec 92 msec
+ 13 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) [AS 17233] 92 msec 92 msec
+    mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) [AS 17233] 88 msec
+ 14 route-server.cerf.net (12.129.193.235) [AS 17233] 92 msec *  92 msec
+route-server.east>logout
+Connection closed by foreign host.
+Trying 216.18.63.214...
+Connected to 216.18.63.214.
+Escape character is '^]'.
+C
+############## route-server-east.gt.ca ######################
+#########  Group Telecom Backbone Route Monitor ############
+            
+  This router maintains peerings with key infrastructure
+  routers in the Group Telecom backbone. 
+
+  This router should have the global routing view from each
+  of these key routers. This should provide the global routing 
+  tables  from the Group Telecom backbone perspective. 
+
+  For questions, send email to peering@gt.ca 
+
+############################################################
+
+route-server-east.gt.ca>traceroute 203.202.125.6
+
+Type escape sequence to abort.
+Tracing the route to 203.202.125.6
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 60 msec 60 msec 60 msec
+  3 POS6-0.WANB-VANCBC.IP.GROUPTELECOM.NET (66.59.190.62) 56 msec 56 msec 56 msec
+  4 POS3-0.PEERA-STTLWA.IP.GROUPTELECOM.NET (66.59.190.50) 56 msec 60 msec 60 msec
+  5 POS6-0.PEERA-PLALCA.IP.GROUPTELECOM.NET (66.59.190.154) 76 msec 76 msec 76 msec
+  6 g5-0-0.plapx-dr1.ix.singtel.com (198.32.176.50) 80 msec 80 msec 76 msec
+  7 xe-0-0-0-0.plapx-cr3.ix.singtel.com (203.208.183.177) [AS 7473] 88 msec 80 msec 88 msec
+  8 203.208.148.90 [AS 7473] 236 msec 240 msec 236 msec
+  9  *  *  * 
+ 10 203.202.125.6 [AS 7474] 236 msec 236 msec * 
+route-server-east.gt.ca>traceroute 216.113.10.50
+
+Type escape sequence to abort.
+Tracing the route to 216.113.10.50
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 200 msec 200 msec 200 msec
+  2 GE0-1.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.33) 204 msec 220 msec 204 msec
+  3 POS10-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.229) 212 msec 232 msec 224 msec
+  4 GE3-0.PEERB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.142) 208 msec 12 msec 12 msec
+  5 GT-VIDEOTRON.PEERB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.158) 12 msec 12 msec 12 msec
+  6 216.113.122.29 [AS 5769] 12 msec 16 msec 12 msec
+  7 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) [AS 5769] 12 msec 12 msec 12 msec
+  8  *  *  * 
+  9  *  *  * 
+ 10 
+route-server-east.gt.ca>traceroute 154.11.98.18
+
+Type escape sequence to abort.
+Tracing the route to route-views.ab.bb.telus.com (154.11.98.18)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-2.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.37) 0 msec 0 msec 0 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 0 msec 0 msec 0 msec
+  4 bx4-toronto12_GE3-0-1.net.bell.ca (67.69.199.121) [AS 577] 0 msec 0 msec 0 msec
+  5 Telus-Toronto.net.bell.ca (67.69.246.150) [AS 577] 0 msec 0 msec 0 msec
+  6 154.11.10.186 [AS 852] 44 msec 44 msec 44 msec
+  7 route-views.ab.bb.telus.com (154.11.98.18) [AS 852] 44 msec *  40 msec
+route-server-east.gt.ca>traceroute 216.191.14.250
+
+Type escape sequence to abort.
+Tracing the route to route-server.east.bb.allstream.net (216.191.14.250)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 0 msec 0 msec 0 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 0 msec 0 msec 0 msec
+  4 pos6-3.core2-van.bb.allstream.net (216.191.65.93) [AS 15290] 0 msec 0 msec 0 msec
+  5  *  *  * 
+  6 199.212.161.66 8 msec 12 msec 8 msec
+  7 pos8-1.core2-mtl.bb.allstream.net (199.212.160.114) 12 msec 12 msec 8 msec
+  8  *  *  * 
+  9  *  *  * 
+ 10 
+route-server-east.gt.ca>traceroute 216.18.63.214
+
+Type escape sequence to abort.
+Tracing the route to 216.18.63.214
+
+  1  *  *  * 
+  2  *  *  * 
+  3 
+route-server-east.gt.ca>traceroute 213.192.191.82
+
+Type escape sequence to abort.
+Tracing the route to route-server.as6667.net (213.192.191.82)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 20 msec 20 msec 20 msec
+  3 POS6-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (216.18.63.198) 12 msec 12 msec 12 msec
+  4 POS14-0.PEERA-NYCMNY.IP.GROUPTELECOM.NET (66.59.191.210) 20 msec 20 msec 20 msec
+  5 nyiix.eunetip.net (198.32.160.41) 20 msec 20 msec 20 msec
+  6 so2-0-0-0.bbr1.ldn1.uk.eunetip.net (213.192.191.173) [AS 790] 88 msec 88 msec 88 msec
+  7 so1-0-0-0.bbr1.ffm1.de.eunetip.net (213.192.191.142) [AS 790] 104 msec 108 msec 104 msec
+  8 as1-0.bbr1.sto2.se.eunetip.net (213.192.191.198) [AS 790] 124 msec 124 msec 124 msec
+  9 as1-0.bbr1.hel2.fi.eunetip.net (213.192.191.133) [AS 790] 132 msec 132 msec 180 msec
+ 10 route-server.as6667.net (213.192.191.82) [AS 790] 132 msec 132 msec 132 msec
+route-server-east.gt.ca>traceroute 213.200.64.94
+
+Type escape sequence to abort.
+Tracing the route to route-server.ip4.tinet.net (213.200.64.94)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-1.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.33) 4 msec 0 msec 0 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 0 msec 0 msec 0 msec
+  4 if-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.41) [AS 6453] 0 msec 0 msec 0 msec
+  5 209.58.94.2 [AS 6453] 16 msec 12 msec 0 msec
+  6 Vlan4.icore1.CT8-Chicago.as6453.net (206.82.141.1) [AS 6453] 24 msec 16 msec
+    Vlan428.icore1.CT8-Chicago.as6453.net (206.82.131.14) [AS 6453] 16 msec
+  7 Vlan550.icore1.CT8-Chicago.as6453.net (66.110.14.18) [AS 6453] 12 msec
+    Vlan551.icore1.CT8-Chicago.as6453.net (66.110.14.14) [AS 6453] 12 msec
+    Vlan550.icore1.CT8-Chicago.as6453.net (66.110.14.18) [AS 6453] 12 msec
+  8 xe-0-2-0.fra23.ip4.tinet.net (89.149.187.233) [AS 3257] 116 msec
+    xe-11-3-0.fra23.ip4.tinet.net (89.149.183.25) [AS 3257] 132 msec
+    xe-0-2-0.fra23.ip4.tinet.net (89.149.187.233) [AS 3257] 116 msec
+  9 route-server.ip4.tinet.net (213.200.64.94) [AS 3257] 204 msec 236 msec 236 msec
+route-server-east.gt.ca>traceroute 62.48.45.129
+
+Type escape sequence to abort.
+Tracing the route to f0-1.route-server.playnet.it (62.48.45.129)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 4 msec 0 msec 0 msec
+  2 GE0-2.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.37) 0 msec 0 msec 0 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 0 msec 4 msec 0 msec
+  4 if-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.41) [AS 6453] 0 msec 4 msec 0 msec
+  5 209.58.94.34 [AS 6453] 20 msec 20 msec 20 msec
+  6 if-1-0.mcore3.L78-London.as6453.net (195.219.144.9) [AS 6453] 92 msec 96 msec 92 msec
+  7 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) [AS 6453] 116 msec 120 msec 116 msec
+  8 195.219.159.26 [AS 6453] 116 msec 120 msec 116 msec
+  9 vl27.core2.net.playnet.it (62.48.45.250) [AS 13284] 132 msec 132 msec 132 msec
+ 10 f0-1.route-server.playnet.it (62.48.45.129) [AS 13284] 132 msec *  128 msec
+route-server-east.gt.ca>traceroute 86.55.0.50
+
+Type escape sequence to abort.
+Tracing the route to rs.ipv4ilink.net (86.55.0.50)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 200 msec 200 msec 200 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 200 msec 200 msec 204 msec
+  3 POS15-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.86) 228 msec 208 msec 220 msec
+  4 10gigabitethernet4-1.core1.chi1.he.net (206.223.119.37) 232 msec 220 msec 220 msec
+  5 10gigabitethernet2-4.core1.nyc4.he.net (72.52.92.101) [AS 6939] 112 msec 28 msec 28 msec
+  6 10gigabitethernet3-3.core1.lon1.he.net (72.52.92.242) [AS 6939] 92 msec
+    10gigabitethernet1-2.core1.lon1.he.net (72.52.92.78) [AS 6939] 92 msec
+    10gigabitethernet3-3.core1.lon1.he.net (72.52.92.242) [AS 6939] 100 msec
+  7 10gigabitethernet1-1.core1.par1.he.net (72.52.92.34) [AS 6939] 112 msec 100 msec 104 msec
+  8 10gigabitethernet1-2.core1.fra1.he.net (72.52.92.90) [AS 6939] 108 msec 112 msec 112 msec
+  9 wFrnk-ten82-decix.de.ipv4ilink.net (80.81.192.107) [AS 6695] 352 msec 328 msec * 
+ 10 wNx-ten84-v17-wFrnk.b.ipv4ilink.net (193.19.195.33) [AS 30890] 216 msec 144 msec 144 msec
+ 11 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) [AS 30890] 140 msec 140 msec 144 msec
+ 12 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) [AS 30890] 144 msec 152 msec 144 msec
+ 13 bbUnr-ten22-v41-bbNx.b.ipv4ilink.net (193.19.195.9) [AS 30890] 144 msec 144 msec 144 msec
+ 14 aUnr-po12-v27-bbUnr.b.ipv4ilink.net (193.19.194.62) [AS 30890] 148 msec 144 msec 144 msec
+ 15 rs.ipv4ilink.net (86.55.0.50) [AS 30890] 144 msec 144 msec 148 msec
+route-server-east.gt.ca>traceroute 196.25.9.46
+
+Type escape sequence to abort.
+Tracing the route to tpr-route-server.saix.net (196.25.9.46)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 0 msec 0 msec 0 msec
+  3 POS6-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.110) 12 msec 8 msec 12 msec
+  4 TenGE10-3.br03.chc01.pccwbtn.net (206.223.119.48) 8 msec 8 msec 12 msec
+  5 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) [AS 3491] 28 msec 28 msec 24 msec
+  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) [AS 5713] 284 msec 280 msec 280 msec
+  7 tpr-route-server.saix.net (196.25.9.46) [AS 5713] 284 msec *  280 msec
+route-server-east.gt.ca>traceroute 164.128.251.50
+
+Type escape sequence to abort.
+Tracing the route to routeserver.ip-plus.net (164.128.251.50)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.25) 4 msec 0 msec 0 msec
+  3 POS15-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.86) 12 msec 8 msec 12 msec
+  4 equinix-chicago.bb.ip-plus.net (206.223.119.82) 32 msec 32 msec 32 msec
+  5 i79zhh-005-pos2-0.bb.ip-plus.net (138.187.159.21) [AS 3303] 120 msec 120 msec 124 msec
+  6 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) [AS 3303] 124 msec 124 msec 124 msec
+  7 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) [AS 3303] 124 msec 124 msec 120 msec
+  8 routeserver.ip-plus.net (164.128.251.50) [AS 3303] 120 msec *  120 msec
+route-server-east.gt.ca>traceroute 212.241.174.1
+
+Type escape sequence to abort.
+Tracing the route to lo1.route-server.as5413.net (212.241.174.1)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-2.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.37) 0 msec 4 msec 4 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 0 msec 0 msec 0 msec
+  4 if-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.41) [AS 6453] 0 msec 0 msec 0 msec
+  5 209.58.94.2 [AS 6453] 8 msec 4 msec 200 msec
+  6 Vlan428.icore1.CT8-Chicago.as6453.net (206.82.131.14) [AS 6453] 200 msec 200 msec * 
+  7 Vlan555.icore1.CT8-Chicago.as6453.net (206.82.141.90) [AS 6453] 16 msec 16 msec 16 msec
+  8 nyk-bb2-link.telia.net (80.91.246.19) [AS 1299] 28 msec
+    nyk-bb1-link.telia.net (80.91.249.109) [AS 1299] 36 msec 36 msec
+  9 ldn-bb2-link.telia.net (80.91.248.253) [AS 1299] 104 msec
+    ldn-bb2-pos7-1-0.telia.net (213.248.65.93) [AS 1299] 104 msec
+    ldn-bb2-link.telia.net (80.91.248.253) [AS 1299] 108 msec
+ 10 ldn-b2-link.telia.net (80.91.250.230) [AS 1299] 104 msec 108 msec 104 msec
+ 11 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) [AS 1299] 112 msec 108 msec 104 msec
+ 12 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) [AS 5413] 108 msec 108 msec 108 msec
+ 13  *  *  * 
+ 14  *  *  * 
+ 15 
+route-server-east.gt.ca>traceroute 69.31.111.255
+
+Type escape sequence to abort.
+Tracing the route to route-server.ord1.nlayer.net (69.31.111.255)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-1.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.33) 4 msec 0 msec 4 msec
+  3 POS15-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.86) 8 msec 12 msec 12 msec
+  4 equinix.xe-1-3-0.cr2.ord1.us.nlayer.net (206.223.119.61) 12 msec 64 msec 12 msec
+  5 po2-30g.ar1.ord1.us.nlayer.net (69.31.111.138) [AS 4436] 12 msec 12 msec 12 msec
+  6 route-server.ord1.nlayer.net (69.31.111.255) [AS 4436] 12 msec 12 msec 8 msec
+route-server-east.gt.ca>traceroute 66.162.47.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.twtelecom.net (66.162.47.58)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-1.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.33) 0 msec 0 msec 0 msec
+  3 POS15-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.86) 12 msec 12 msec 12 msec
+  4 eqix.chcg.twtelecom.net (206.223.119.36) 8 msec 12 msec 12 msec
+  5 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) [AS 4323] 68 msec 72 msec 68 msec
+  6 route-server.twtelecom.net (66.162.47.58) [AS 4323] 80 msec *  276 msec
+route-server-east.gt.ca>traceroute 64.135.5.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.host.net (64.135.5.58)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 0 msec
+  2 GE0-1.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.33) 0 msec 0 msec 0 msec
+  3 POS15-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.86) 12 msec 8 msec 12 msec
+  4 eqx.10ge.ord.wvfiber.net (206.223.119.18) 12 msec 12 msec 12 msec
+  5 nsh-t4-3-2200-chi-vl2200.wvfiber.net (64.127.130.54) [AS 19151] 24 msec 24 msec 24 msec
+  6 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) [AS 19151] 36 msec 36 msec 36 msec
+  7 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) [AS 19151] 52 msec 48 msec 52 msec
+  8 host-wvfiber.wvfiber.net (66.216.1.94) [AS 19151] 48 msec 52 msec 48 msec
+  9 route-server.host.net (64.135.5.58) [AS 13645] 52 msec *  48 msec
+route-server-east.gt.ca>traceroute 66.209.87.106
+
+Type escape sequence to abort.
+Tracing the route to priority.demarc.switchnap.com (66.209.87.106)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 0 msec 0 msec 4 msec
+  2 GE0-2.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.37) 0 msec 0 msec 0 msec
+  3 POS6-0.PEERA-CHCGIL.IP.GROUPTELECOM.NET (66.59.191.110) 12 msec 8 msec 12 msec
+  4 eqx.10ge.ord.wvfiber.net (206.223.119.18) 12 msec 12 msec 12 msec
+  5 sjc-ten6-3-chi-ten3-1.wvfiber.net (64.127.129.62) [AS 19151] 72 msec 68 msec 72 msec
+  6 lv-ten1-2-sjc-ten1-3.wvfiber.net (66.186.192.197) [AS 19151] 92 msec 88 msec 92 msec
+  7 cust-lv-ten1-4.wvfiber.net (66.186.192.46) [AS 19151] 88 msec 88 msec 92 msec
+  8 te4-1.las-esw09.switchnap.com (66.209.64.194) [AS 23005] 88 msec 88 msec 92 msec
+  9 priority.demarc.switchnap.com (66.209.87.106) [AS 23005] 224 msec *  224 msec
+route-server-east.gt.ca>traceroute 12.129.193.235
+
+Type escape sequence to abort.
+Tracing the route to 235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
+
+  1 FE2-6.PEERA-TOROON.IP.GROUPTELECOM.NET (216.18.63.213) 220 msec 216 msec 0 msec
+  2 GE0-2.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.37) 224 msec 208 msec 0 msec
+  3 POS2-0.PEERA-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.150) 204 msec 0 msec 0 msec
+  4 if-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.41) [AS 6453] 0 msec 0 msec 0 msec
+  5 209.58.94.2 [AS 6453] 12 msec 12 msec 0 msec
+  6 Vlan4.icore1.CT8-Chicago.as6453.net (206.82.141.1) [AS 6453] 24 msec
+    Vlan428.icore1.CT8-Chicago.as6453.net (206.82.131.14) [AS 6453] 16 msec
+    Vlan4.icore1.CT8-Chicago.as6453.net (206.82.141.1) [AS 6453] 16 msec
+  7 192.205.36.205 [AS 7018] 16 msec
+    192.205.36.241 [AS 7018] 16 msec
+    192.205.36.205 [AS 7018] 16 msec
+  8 cr1.cgcil.ip.att.net (12.122.81.18) [AS 7018] 68 msec 68 msec 64 msec
+  9 cr2.dvmco.ip.att.net (12.122.31.85) [AS 7018] 68 msec 76 msec 68 msec
+ 10 cr1.slkut.ip.att.net (12.122.30.25) [AS 7018] 68 msec 68 msec 68 msec
+ 11 cr2.la2ca.ip.att.net (12.122.30.30) [AS 7018] 64 msec 64 msec 64 msec
+ 12 cr84.la2ca.ip.att.net (12.123.30.249) [AS 7018] 68 msec 68 msec 64 msec
+ 13 gar5.la2ca.ip.att.net (12.122.129.25) [AS 7018] 68 msec 64 msec 68 msec
+ 14 12.122.255.74 [AS 7018] 64 msec 64 msec 68 msec
+ 15 246.244/30.193.129.12.in-addr.arpa (12.129.193.246) [AS 17233] 64 msec 68 msec 64 msec
+ 16 235.232/29.193.129.12.in-addr.arpa (12.129.193.235) [AS 17233] 68 msec *  64 msec
+route-server-east.gt.ca>logout
+Connection closed by foreign host.
+Trying 213.200.64.94...
+Connected to 213.200.64.94.
+Escape character is '^]'.
+
++--------------------------------------------------------------------+
+|                                                                    |
+|                   Tinet Route Monitor - AS3257                     |
+|                                                                    |
+|   This system is solely for internet operational purposes. Any     |
+|   misuse is strictly prohibited. All connections to this router    |
+|   are logged.                                                      |
+|                                                                    |
+|   This server provides a view on the Tinet routing table that      |
+|   is used in Frankfurt/Germany. If you are interested in other     |
+|   regions of the backbone check out http://www.as3257.net/         |
+|                                                                    |
+|   Please report problems to noc@tinet.net                          |
++--------------------------------------------------------------------+
+
+
+
+
+
+
+route-server.as3257.net>traceroute 203.202.125.6
+
+Type escape sequence to abort.
+Tracing the route to 203.202.125.6
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 48 msec 0 msec 0 msec
+  2 ge-2-0-0.lax22.ip4.tinet.net (89.149.185.218) [AS 3257] 168 msec
+    ge-7-0-0.lax22.ip4.tinet.net (89.149.185.222) [AS 3257] 168 msec
+    ge-2-0-0.lax22.ip4.tinet.net (89.149.185.218) [AS 3257] 164 msec
+  3 singtel-gw.ip4.tinet.net (77.67.79.14) [AS 3257] 164 msec 168 msec 168 msec
+  4 203.208.148.18 [AS 7473] 312 msec 316 msec 312 msec
+  5  *  *  * 
+  6 203.202.125.6 [AS 7474] 320 msec *  324 msec
+route-server.as3257.net>traceroute 216.113.10.50
+
+Type escape sequence to abort.
+Tracing the route to 216.113.10.50
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 0 msec
+  2 if-1-2.core1.Frankfurt.teleglobe.net (213.200.86.66) [AS 3257] 4 msec 12 msec 0 msec
+  3 Vlan80.icore1.PVU-Paris.as6453.net (195.219.241.17) [AS 6453] 20 msec 12 msec 20 msec
+  4 Vlan1278.icore1.MTT-Montreal.as6453.net (206.82.135.17) [AS 6453] 104 msec
+    if-5-0-0-1103.core1.PV1-Paris.as6453.net (195.219.241.114) [AS 6453] 12 msec
+    if-11-1-0-88.core1.PV1-Paris.as6453.net (195.219.215.85) [AS 6453] 12 msec
+  5 if-5-0-0.mcore3.MTT-Montreal.as6453.net (216.6.114.45) [AS 6453] 100 msec 100 msec 100 msec
+  6 216.113.122.89 [AS 5769] 112 msec
+    216.113.125.85 [AS 5769] 116 msec 116 msec
+  7 216.113.122.29 [AS 5769] 116 msec
+    ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) [AS 5769] 112 msec 112 msec
+  8  *  *  * 
+  9  *  *  * 
+ 10 
+route-server.as3257.net>traceroute 154.11.98.18
+
+Type escape sequence to abort.
+Tracing the route to route-views.ab.bb.telus.com (154.11.98.18)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 228 msec 224 msec
+  2 xe-4-0-0.nyc22.ip4.tinet.net (89.149.185.46) [AS 3257] 212 msec
+    xe-2-0-0.nyc22.ip4.tinet.net (89.149.185.77) [AS 3257] 216 msec
+    xe-7-0-0.nyc22.ip4.tinet.net (89.149.185.81) [AS 3257] 152 msec
+  3 telus-gw.ip4.tinet.net (77.67.68.42) [AS 3257] 88 msec 88 msec 92 msec
+  4 CLGRAB21GR01.bb.telus.com (154.11.10.217) [AS 852] 144 msec 144 msec 144 msec
+  5 route-views.ab.bb.telus.com (154.11.98.18) [AS 852] 144 msec *  144 msec
+route-server.as3257.net>traceroute 216.191.14.250
+
+Type escape sequence to abort.
+Tracing the route to route-server.east.bb.allstream.net (216.191.14.250)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 4 msec
+  2 xe-11-1-0.was12.ip4.tinet.net (89.149.185.198) [AS 3257] 96 msec
+    xe-4-2-0.was12.ip4.tinet.net (89.149.185.114) [AS 3257] 100 msec 128 msec
+  3 192.205.36.137 [AS 7018] 124 msec 124 msec 120 msec
+  4 cr2.wswdc.ip.att.net (12.122.84.46) [AS 7018] 124 msec 124 msec 120 msec
+  5 cr2.n54ny.ip.att.net (12.122.3.37) [AS 7018] 120 msec 128 msec 128 msec
+  6 gar1.nyzny.ip.att.net (12.122.130.125) [AS 7018] 128 msec 128 msec 116 msec
+  7 12.118.100.22 [AS 7018] 112 msec 124 msec 116 msec
+  8  *  *  * 
+  9 pos9-0-1.core2-ott.bb.allstream.net (199.212.160.106) 140 msec 144 msec 136 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12  * 
+route-server.as3257.net>traceroute 216.18.63.214
+
+Type escape sequence to abort.
+Tracing the route to 216.18.63.214
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 0 msec
+  2 if-1-2.core1.Frankfurt.teleglobe.net (213.200.86.66) [AS 3257] 0 msec 12 msec 0 msec
+  3 Vlan80.icore1.PVU-Paris.as6453.net (195.219.241.17) [AS 6453] 12 msec 16 msec 16 msec
+  4 Vlan1278.icore1.MTT-Montreal.as6453.net (206.82.135.17) [AS 6453] 100 msec 104 msec 108 msec
+  5 Vlan24.icore1.TTT-Scarborough.as6453.net (206.82.135.14) [AS 6453] 120 msec 132 msec 124 msec
+  6 209.58.94.1 [AS 6453] 116 msec 120 msec 116 msec
+  7 ix-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.42) [AS 6453] 120 msec 120 msec 116 msec
+  8 POS2-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.149) [AS 6539] 120 msec 120 msec 116 msec
+  9 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) [AS 6539] 120 msec 120 msec 116 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12 
+route-server.as3257.net>traceroute 213.192.191.82
+
+Type escape sequence to abort.
+Tracing the route to route-server.as6667.net (213.192.191.82)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 232 msec 208 msec 208 msec
+  2 xe-0-0-0.stk30.ip4.tinet.net (89.149.186.34) [AS 3257] 212 msec 228 msec 236 msec
+  3 ge1-1-0-43.r1.sto1.se.eunetip.net (213.200.72.70) [AS 3257] 208 msec 216 msec 452 msec
+  4 ge0-2-0-0.bbr1.sto2.se.eunetip.net (213.192.191.202) [AS 790] 220 msec 224 msec 224 msec
+  5 as1-0.bbr1.hel2.fi.eunetip.net (213.192.191.133) [AS 790] 220 msec 212 msec 244 msec
+  6 route-server.as6667.net (213.192.191.82) [AS 790] 228 msec 224 msec 224 msec
+route-server.as3257.net>traceroute 213.200.64.94
+
+Type escape sequence to abort.
+Tracing the route to route-server.ip4.tinet.net (213.200.64.94)
+
+  1 route-server.ip4.tinet.net (213.200.64.94) [AS 3257] 0 msec *  4 msec
+route-server.as3257.net>traceroute 62.48.45.129
+
+Type escape sequence to abort.
+Tracing the route to f0-1.route-server.playnet.it (62.48.45.129)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 4 msec 4 msec
+  2 so-7-1-0.mil19.ip4.tinet.net (89.149.186.145) [AS 3257] 28 msec 28 msec 20 msec
+  3 brain-tech-gw.ip4.tinet.net (213.200.68.154) [AS 3257] 28 msec 28 msec 56 msec
+  4 vl27.core2.net.playnet.it (62.48.45.250) [AS 13284] 28 msec 216 msec 220 msec
+  5 f0-1.route-server.playnet.it (62.48.45.129) [AS 13284] 216 msec *  224 msec
+route-server.as3257.net>traceroute 86.55.0.50
+
+Type escape sequence to abort.
+Tracing the route to rs.ipv4ilink.net (86.55.0.50)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 208 msec 216 msec 212 msec
+  2 xe-0-1-0.fra60.ip4.tinet.net (89.149.184.65) [AS 3257] 208 msec 224 msec 212 msec
+  3 wFrnk-ge411-tiscali.de.ipv4ilink.net (193.19.195.46) [AS 30890] 220 msec 224 msec 208 msec
+  4 wNx-ten84-v17-wFrnk.b.ipv4ilink.net (193.19.195.33) [AS 30890] 216 msec 224 msec 208 msec
+  5 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) [AS 30890] 236 msec 224 msec 244 msec
+  6 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) [AS 30890] 228 msec 212 msec 216 msec
+  7 bbUnr-ten81-v19-bbNx.b.ipv4ilink.net (193.19.194.85) [AS 30890] 216 msec 220 msec 228 msec
+  8 aUnr-po12-v27-bbUnr.b.ipv4ilink.net (193.19.194.62) [AS 30890] 216 msec 220 msec 220 msec
+  9 rs.ipv4ilink.net (86.55.0.50) [AS 30890] 224 msec 224 msec 204 msec
+route-server.as3257.net>traceroute 196.25.9.46
+
+Type escape sequence to abort.
+Tracing the route to tpr-route-server.saix.net (196.25.9.46)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 4 msec 0 msec 0 msec
+  2 xe-9-1-0.lon20.ip4.tinet.net (89.149.185.193) [AS 3257] 28 msec
+    xe-5-3-0.lon20.ip4.tinet.net (89.149.187.214) [AS 3257] 52 msec
+    xe-9-1-0.lon20.ip4.tinet.net (89.149.185.193) [AS 3257] 56 msec
+  3 telkom-gw.ip4.tinet.net (77.67.64.246) [AS 3257] 28 msec 28 msec 28 msec
+  4 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) [AS 5713] 220 msec 220 msec 220 msec
+  5 tpr-route-server.saix.net (196.25.9.46) [AS 5713] 380 msec *  356 msec
+route-server.as3257.net>traceroute 164.128.251.50
+
+Type escape sequence to abort.
+Tracing the route to routeserver.ip-plus.net (164.128.251.50)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 0 msec
+  2 xe-10-0-0.fra21.ip4.tinet.net (89.149.184.85) [AS 3257] 4 msec
+    xe-11-2-0.fra21.ip4.tinet.net (89.149.184.77) [AS 3257] 0 msec
+    xe-0-0-0.fra21.ip4.tinet.net (89.149.186.181) [AS 3257] 4 msec
+  3 i00dcx-015-gig1-4.bb.ip-plus.net (164.128.33.209) [AS 3303] 0 msec 4 msec 24 msec
+  4 i68ixe-005-por11.bb.ip-plus.net (138.187.130.96) [AS 3303] 28 msec 28 msec 28 msec
+  5 i68geb-005-gig12-0.bb.ip-plus.net (138.187.130.24) [AS 3303] 28 msec 28 msec 28 msec
+  6 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) [AS 3303] 28 msec 28 msec 28 msec
+  7 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) [AS 3303] 28 msec 28 msec 28 msec
+  8 routeserver.ip-plus.net (164.128.251.50) [AS 3303] 28 msec *  24 msec
+route-server.as3257.net>traceroute 212.241.174.1
+
+Type escape sequence to abort.
+Tracing the route to lo1.route-server.as5413.net (212.241.174.1)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 20 msec
+  2 xe-0-1-0.fra60.ip4.tinet.net (89.149.184.65) [AS 3257] 0 msec 0 msec
+    xe-2-2-0.fra60.ip4.tinet.net (89.149.184.69) [AS 3257] 0 msec
+  3 as1299.ip4.tinet.net (77.67.72.14) [AS 3257] 4 msec 0 msec
+    as1299.ip4.tinet.net (77.67.67.194) [AS 3257] 0 msec
+  4 ffm-bb1-link.telia.net (80.91.251.121) [AS 1299] 0 msec
+    ffm-bb1-link.telia.net (80.91.251.123) [AS 1299] 4 msec
+    ffm-bb2-link.telia.net (80.91.247.190) [AS 1299] 4 msec
+  5 prs-bb1-link.telia.net (80.91.248.69) [AS 1299] 12 msec
+    prs-bb2-pos7-0-0.telia.net (213.248.65.117) [AS 1299] 44 msec
+    prs-bb2-link.telia.net (80.91.248.61) [AS 1299] 28 msec
+  6 ldn-bb2-link.telia.net (80.91.247.241) [AS 1299] 108 msec 32 msec 28 msec
+  7 ldn-b2-link.telia.net (80.91.250.230) [AS 1299] 24 msec 28 msec 28 msec
+  8 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) [AS 1299] 24 msec 28 msec 28 msec
+  9 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) [AS 5413] 28 msec 28 msec 28 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12  * 
+route-server.as3257.net>traceroute 69.31.111.255
+
+Type escape sequence to abort.
+Tracing the route to route-server.ord1.nlayer.net (69.31.111.255)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 28 msec
+  2 so0-0-0-622M.ar2.FRA3.gblx.net (213.200.65.150) [AS 3257] 0 msec 0 msec 0 msec
+  3 as3549.xe-6-1-0.cr1.ord1.us.nlayer.net (69.31.111.205) [AS 4436] 108 msec 108 msec 108 msec
+  4 po1-30g.ar1.ord1.us.nlayer.net (69.31.111.134) [AS 4436] 136 msec 112 msec 108 msec
+  5 route-server.ord1.nlayer.net (69.31.111.255) [AS 4436] 108 msec 108 msec 108 msec
+route-server.as3257.net>traceroute 66.162.47.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.twtelecom.net (66.162.47.58)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 4 msec
+  2 xe-11-1-0.was12.ip4.tinet.net (89.149.185.198) [AS 3257] 108 msec 112 msec
+    xe-4-2-0.was12.ip4.tinet.net (89.149.185.114) [AS 3257] 112 msec
+  3 64.132.69.221 [AS 4323] 108 msec
+    64.128.212.33 [AS 4323] 108 msec
+    64.132.69.221 [AS 4323] 92 msec
+  4 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) [AS 4323] 140 msec 144 msec 140 msec
+  5 route-server.twtelecom.net (66.162.47.58) [AS 4323] 148 msec *  172 msec
+route-server.as3257.net>traceroute 64.135.5.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.host.net (64.135.5.58)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 0 msec
+  2 xe-2-2-0.ams10.ip4.tinet.net (89.149.186.201) [AS 3257] 28 msec
+    xe-7-0-0.ams10.ip4.tinet.net (89.149.185.89) [AS 3257] 32 msec
+    xe-2-2-0.ams10.ip4.tinet.net (89.149.186.201) [AS 3257] 32 msec
+  3 wv-fiber-gw.ip4.tinet.net (77.67.66.210) [AS 3257] 36 msec 32 msec 32 msec
+  4 ny60-vl2-ams-vl2.wvfiber.net (66.216.48.217) [AS 19151] 120 msec 116 msec 116 msec
+  5 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) [AS 19151] 120 msec 144 msec 128 msec
+  6 mia-ten3-2-ash-ten7-5.wvfiber.net (66.216.1.121) [AS 19151] 128 msec 144 msec 140 msec
+  7 host-wvfiber-miami.wvfiber.net (66.216.1.126) [AS 19151] 136 msec 140 msec 140 msec
+  8 te2-2.cr01.swd.mia.host.net (64.135.0.42) [AS 13645] 140 msec 140 msec 140 msec
+  9 te3-1.cr01.903.bct.host.net (64.135.0.5) [AS 13645] 140 msec 132 msec 132 msec
+ 10 route-server.host.net (64.135.5.58) [AS 13645] 132 msec *  124 msec
+route-server.as3257.net>traceroute 66.209.87.106
+
+Type escape sequence to abort.
+Tracing the route to priority.demarc.switchnap.com (66.209.87.106)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 0 msec 0 msec 0 msec
+  2 xe-5-2-0.ams10.ip4.tinet.net (89.149.184.205) [AS 3257] 8 msec
+    xe-2-2-0.ams10.ip4.tinet.net (89.149.186.201) [AS 3257] 8 msec
+    xe-7-0-0.ams10.ip4.tinet.net (89.149.185.89) [AS 3257] 8 msec
+  3 wv-fiber-gw.ip4.tinet.net (77.67.66.210) [AS 3257] 24 msec 20 msec 20 msec
+  4 ny60-vl2-ams-vl2.wvfiber.net (66.216.48.217) [AS 19151] 96 msec 96 msec 96 msec
+  5 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) [AS 19151] 100 msec 100 msec 100 msec
+  6 atl-ten5-4-ash-ten6-3.wvfiber.net (66.216.1.142) [AS 19151] 112 msec 112 msec 112 msec
+  7 nsh-ten4-1-atl-ten3-2.wvfiber.net (64.127.130.58) [AS 19151] 124 msec 128 msec 124 msec
+  8 dal-ten2-1-nsh-ten1-4.wvfiber.net (64.127.130.50) [AS 19151] 140 msec 140 msec 140 msec
+  9 phx-ten1-1-dal-ten2-4.wvfiber.net (64.127.128.238) [AS 19151] 168 msec 168 msec 248 msec
+ 10 la-ten3-3-phx-ten2-1.wvfiber.net (64.127.128.145) [AS 19151] 168 msec 168 msec 168 msec
+ 11 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) [AS 19151] 188 msec 172 msec 196 msec
+ 12 cust-lv-ten1-4.wvfiber.net (66.186.192.46) [AS 19151] 172 msec 176 msec 176 msec
+ 13 te4-1.las-esw09.switchnap.com (66.209.64.194) [AS 23005] 172 msec 172 msec 172 msec
+ 14 priority.demarc.switchnap.com (66.209.87.106) [AS 23005] 168 msec *  172 msec
+route-server.as3257.net>traceroute 12.129.193.235
+
+Type escape sequence to abort.
+Tracing the route to route-server.cerf.net (12.129.193.235)
+
+  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) [AS 3257] 4 msec 0 msec 0 msec
+  2 xe-4-2-0.was12.ip4.tinet.net (89.149.185.114) [AS 3257] 100 msec 96 msec 96 msec
+  3 192.205.36.137 [AS 7018] 124 msec 124 msec 120 msec
+  4 cr1.wswdc.ip.att.net (12.122.82.222) [AS 7018] 192 msec 196 msec 196 msec
+  5 cr2.phlpa.ip.att.net (12.122.4.53) [AS 7018] 192 msec 196 msec 184 msec
+  6 cr2.cl2oh.ip.att.net (12.122.2.209) [AS 7018] 196 msec 188 msec 196 msec
+  7 cr1.cl2oh.ip.att.net (12.122.2.125) [AS 7018] 196 msec 192 msec 188 msec
+  8 cr1.cgcil.ip.att.net (12.122.2.205) [AS 7018] 192 msec 192 msec 192 msec
+  9 cr2.dvmco.ip.att.net (12.122.31.85) [AS 7018] 196 msec 196 msec 196 msec
+ 10 cr1.slkut.ip.att.net (12.122.30.25) [AS 7018] 188 msec 184 msec 188 msec
+ 11 cr2.la2ca.ip.att.net (12.122.30.30) [AS 7018] 192 msec 196 msec 192 msec
+ 12 cr84.la2ca.ip.att.net (12.123.30.249) [AS 7018] 192 msec 192 msec 192 msec
+ 13 gar5.la2ca.ip.att.net (12.122.129.25) [AS 7018] 192 msec 192 msec 196 msec
+ 14 12.122.255.74 [AS 7018] 192 msec 188 msec 184 msec
+ 15 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) [AS 17233] 188 msec
+    mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) [AS 17233] 192 msec
+    mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) [AS 17233] 188 msec
+ 16 route-server.cerf.net (12.129.193.235) [AS 17233] 284 msec *  200 msec
+route-server.as3257.net>logout
+Connection closed by foreign host.
+Trying 86.55.0.50...
+Connected to 86.55.0.50.
+Escape character is '^]'.
+
+==========================
+ route-server.ipilink.net
+   http://lg.evolva.ro
+     http://ilink.ro
+==========================
+
+rs.ipilink.net>traceroute 203.202.125.6traceroute 203.202.125.6                        
+
+Type escape sequence to abort.
+Tracing the route to 203.202.125.6
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 0 msec 4 msec 0 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 184 msec 204 msec 212 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 36 msec 32 msec
+  8 vlan89.csw3.Frankfurt1.Level3.net (4.68.23.190) [AS 3356] 36 msec
+    vlan69.csw1.Frankfurt1.Level3.net (4.68.23.62) [AS 3356] 36 msec
+    vlan99.csw4.Frankfurt1.Level3.net (4.68.23.254) [AS 3356] 44 msec
+  9 ae-82-82.ebr2.Frankfurt1.Level3.net (4.69.140.25) [AS 3356] 32 msec
+    ae-62-62.ebr2.Frankfurt1.Level3.net (4.69.140.17) [AS 3356] 36 msec 36 msec
+ 10 ae-41-41.ebr2.Washington1.Level3.net (4.69.137.50) [AS 3356] 128 msec 124 msec
+    ae-43-43.ebr2.Washington1.Level3.net (4.69.137.58) [AS 3356] 124 msec
+ 11 ae-92-92.csw4.Washington1.Level3.net (4.69.134.158) [AS 3356] 124 msec
+    ae-62-62.csw1.Washington1.Level3.net (4.69.134.146) [AS 3356] 120 msec
+    ae-92-92.csw4.Washington1.Level3.net (4.69.134.158) [AS 3356] 128 msec
+ 12 ae-94-94.ebr4.Washington1.Level3.net (4.69.134.189) [AS 3356] 136 msec 128 msec
+    ae-84-84.ebr4.Washington1.Level3.net (4.69.134.185) [AS 3356] 128 msec
+ 13 ae-3-3.ebr1.NewYork1.Level3.net (4.69.132.94) [AS 3356] 152 msec 128 msec 132 msec
+ 14 ae-81-81.csw3.NewYork1.Level3.net (4.69.134.74) [AS 3356] 132 msec
+    ae-91-91.csw4.NewYork1.Level3.net (4.69.134.78) [AS 3356] 132 msec
+    ae-71-71.csw2.NewYork1.Level3.net (4.69.134.70) [AS 3356] 132 msec
+ 15 ae-74-74.ebr4.NewYork1.Level3.net (4.69.134.117) [AS 3356] 136 msec 144 msec
+    ae-94-94.ebr4.NewYork1.Level3.net (4.69.134.125) [AS 3356] 128 msec
+ 16 ae-2-2.ebr4.SanJose1.Level3.net (4.69.135.185) [AS 3356] 212 msec 212 msec 204 msec
+ 17 ae-64-64.csw1.SanJose1.Level3.net (4.69.134.242) [AS 3356] 200 msec
+    ae-74-74.csw2.SanJose1.Level3.net (4.69.134.246) [AS 3356] 208 msec
+    ae-84-84.csw3.SanJose1.Level3.net (4.69.134.250) [AS 3356] 200 msec
+ 18 ae-42-99.car2.SanJose1.Level3.net (4.68.18.196) [AS 3356] 216 msec
+    ae-12-69.car2.SanJose1.Level3.net (4.68.18.4) [AS 3356] 204 msec
+    ae-22-79.car2.SanJose1.Level3.net (4.68.18.68) [AS 3356] 200 msec
+ 19 SINGAPORE-T.car2.SanJose1.Level3.net (4.79.42.230) [AS 3356] 368 msec 196 msec 220 msec
+ 20 203.208.148.90 [AS 7473] 372 msec 360 msec 696 msec
+ 21  *  *  * 
+ 22 203.202.125.6 [AS 7474] 360 msec *  364 msec
+rs.ipilink.net>traceroute 216.113.10.50
+
+Type escape sequence to abort.
+Tracing the route to 216.113.10.50
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 0 msec 0 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 4 msec 4 msec 0 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 0 msec 0 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 0 msec 4 msec 12 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 92 msec 32 msec 220 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 28 msec 28 msec
+  8 ae-3-89.edge4.Frankfurt1.Level3.net (4.68.23.140) [AS 3356] 32 msec
+    ae-2-79.edge4.Frankfurt1.Level3.net (4.68.23.76) [AS 3356] 32 msec
+    ae-4-99.edge4.Frankfurt1.Level3.net (4.68.23.204) [AS 3356] 32 msec
+  9 4.68.111.146 [AS 3356] 36 msec 36 msec 36 msec
+ 10 Vlan80.icore1.PVU-Paris.as6453.net (195.219.241.17) [AS 6453] 44 msec 40 msec 56 msec
+ 11 if-13-0-0-1102.core1.PV1-Paris.as6453.net (195.219.241.110) [AS 6453] 44 msec
+    if-11-1-0-88.core1.PV1-Paris.as6453.net (195.219.215.85) [AS 6453] 40 msec
+    if-5-0-0-1103.core1.PV1-Paris.as6453.net (195.219.241.114) [AS 6453] 40 msec
+ 12 if-2-0-0-29.mcore4.MTT-Montreal.as6453.net (216.6.115.69) [AS 6453] 132 msec
+    if-5-0-0.mcore3.MTT-Montreal.as6453.net (216.6.114.45) [AS 6453] 132 msec 132 msec
+ 13 216.113.125.85 [AS 5769] 148 msec 144 msec 148 msec
+ 14 ia-piex-gw06-vl10.vtl.net (207.253.253.138) [AS 5769] 288 msec 144 msec 128 msec
+ 15  *  *  * 
+ 16  *  *  * 
+ 17 
+rs.ipilink.net>traceroute 154.11.98.18
+
+Type escape sequence to abort.
+Tracing the route to route-views.ab.bb.telus.com (154.11.98.18)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 4 msec 4 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 16 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 144 msec 212 msec 216 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 32 msec 28 msec
+  8 vlan69.csw1.Frankfurt1.Level3.net (4.68.23.62) [AS 3356] 40 msec
+    vlan99.csw4.Frankfurt1.Level3.net (4.68.23.254) [AS 3356] 32 msec
+    vlan69.csw1.Frankfurt1.Level3.net (4.68.23.62) [AS 3356] 40 msec
+  9 ae-92-92.ebr2.Frankfurt1.Level3.net (4.69.140.29) [AS 3356] 32 msec
+    ae-72-72.ebr2.Frankfurt1.Level3.net (4.69.140.21) [AS 3356] 32 msec
+    ae-92-92.ebr2.Frankfurt1.Level3.net (4.69.140.29) [AS 3356] 32 msec
+ 10 ae-2-2.ebr1.Dusseldorf1.Level3.net (4.69.132.137) [AS 3356] 36 msec 36 msec 44 msec
+ 11 ae-1-100.ebr2.Dusseldorf1.Level3.net (4.69.141.150) [AS 3356] 36 msec 36 msec 36 msec
+ 12 ae-2-2.ebr1.Amsterdam1.Level3.net (4.69.133.89) [AS 3356] 36 msec 40 msec 40 msec
+ 13 ae-1-51.edge4.Amsterdam1.Level3.net (4.69.139.138) [AS 3356] 36 msec 36 msec 36 msec
+ 14 acr1-so-3-0-0.Amsterdamamx.savvis.net (208.174.49.1) [AS 3561] 40 msec 40 msec 40 msec
+ 15 dcr1-so-1-0-0.amsterdamamx.savvis.net (204.70.193.146) [AS 3561] 116 msec 120 msec 112 msec
+ 16 cr1-pos-0-8-0-0.NewYork.savvis.net (204.70.192.121) [AS 3561] 200 msec 204 msec 200 msec
+ 17 206.24.199.2 [AS 3561] 204 msec 200 msec 204 msec
+ 18 CLGRAB21GR01.bb.telus.com (154.11.10.217) [AS 852] 256 msec 260 msec 260 msec
+ 19 route-views.ab.bb.telus.com (154.11.98.18) [AS 852] 260 msec *  260 msec
+rs.ipilink.net>traceroute 216.191.14.250
+
+Type escape sequence to abort.
+Tracing the route to route-server.east.bb.allstream.net (216.191.14.250)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 4 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 4 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 92 msec 228 msec 228 msec
+  7 gwy1-nyc.bb.allstream.net (195.66.225.30) [AS 5459] 116 msec 104 msec 144 msec
+  8  *  *  * 
+  9 199.212.161.194 132 msec 132 msec 132 msec
+ 10  *  *  * 
+ 11  *  *  * 
+ 12 
+rs.ipilink.net>traceroute 216.18.63.214
+
+Type escape sequence to abort.
+Tracing the route to 216.18.63.214
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 4 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 4 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 0 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 40 msec 216 msec 212 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 40 msec 32 msec
+  8 ae-1-69.edge4.Frankfurt1.Level3.net (4.68.23.12) [AS 3356] 28 msec
+    ae-2-79.edge4.Frankfurt1.Level3.net (4.68.23.76) [AS 3356] 28 msec
+    ae-4-99.edge4.Frankfurt1.Level3.net (4.68.23.204) [AS 3356] 36 msec
+  9 4.68.111.146 [AS 3356] 32 msec 40 msec
+    if-2-0.icore1.FR1-Frankfurt.as6453.net (195.219.180.97) [AS 6453] 36 msec
+ 10 Vlan80.icore1.PVU-Paris.as6453.net (195.219.241.17) [AS 6453] 56 msec 52 msec 52 msec
+ 11 Vlan1278.icore1.MTT-Montreal.as6453.net (206.82.135.17) [AS 6453] 132 msec 144 msec 144 msec
+ 12 Vlan24.icore1.TTT-Scarborough.as6453.net (206.82.135.14) [AS 6453] 148 msec 152 msec 160 msec
+ 13 209.58.94.1 [AS 6453] 152 msec 148 msec 148 msec
+ 14 ix-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.42) [AS 6453] 140 msec 144 msec 148 msec
+ 15 POS2-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.149) [AS 6539] 148 msec 144 msec 148 msec
+ 16 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) [AS 6539] 144 msec 148 msec 144 msec
+ 17  *  *  * 
+ 18  *  *  * 
+ 19  *  *  * 
+ 20  * 
+rs.ipilink.net>traceroute 213.192.191.82
+
+Type escape sequence to abort.
+Tracing the route to route-server.as6667.net (213.192.191.82)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 0 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 0 msec 16 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 0 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 16 msec 204 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 144 msec 168 msec 220 msec
+  7 decix.eunetip.net (80.81.192.144) [AS 6695] 36 msec 36 msec 40 msec
+  8 as1-0.bbr1.sto2.se.eunetip.net (213.192.191.198) [AS 790] 52 msec 56 msec 56 msec
+  9 as1-0.bbr1.hel2.fi.eunetip.net (213.192.191.133) [AS 790] 68 msec 68 msec 68 msec
+ 10 route-server.as6667.net (213.192.191.82) [AS 790] 72 msec 72 msec 68 msec
+rs.ipilink.net>traceroute 213.200.64.94
+
+Type escape sequence to abort.
+Tracing the route to route-server.ip4.tinet.net (213.200.64.94)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 0 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 220 msec 216 msec 220 msec
+  7 ge-3-1-1-0.fra60.ip4.tinet.net (77.67.72.41) [AS 3257] 36 msec 36 msec 36 msec
+  8 xe-2-3-0.fra23.ip4.tinet.net (89.149.184.66) [AS 3257] 36 msec 36 msec 32 msec
+  9 route-server.ip4.tinet.net (213.200.64.94) [AS 3257] 32 msec 36 msec 32 msec
+rs.ipilink.net>traceroute 62.48.45.129
+
+Type escape sequence to abort.
+Tracing the route to f0-1.route-server.playnet.it (62.48.45.129)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 0 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 0 msec 0 msec 8 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 108 msec 204 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 236 msec 240 msec 216 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 36 msec 32 msec
+  8 ae-4-99.edge3.Frankfurt1.Level3.net (4.68.23.203) [AS 3356] 36 msec
+    ae-2-79.edge3.Frankfurt1.Level3.net (4.68.23.75) [AS 3356] 32 msec
+    ae-1-69.edge3.Frankfurt1.Level3.net (4.68.23.11) [AS 3356] 36 msec
+  9 sprint-level3-ge.Frankfurt1.Level3.net (4.68.111.142) [AS 3356] 36 msec 36 msec 32 msec
+ 10 sl-crs1-fra-0-0-0-0.sprintlink.net (217.147.96.74) [AS 1239] 32 msec 36 msec 32 msec
+ 11 sl-bb20-zur-11-0-0.sprintlink.net (213.206.129.125) [AS 1239] 36 msec 40 msec 36 msec
+ 12 sl-bb21-zur-15-0-0.sprintlink.net (80.93.8.43) [AS 1239] 44 msec 48 msec 44 msec
+ 13 sl-bb21-mil-4-0-0.sprintlink.net (213.206.129.127) [AS 1239] 44 msec 44 msec 44 msec
+ 14 217.147.128.41 [AS 1239] 44 msec 44 msec 48 msec
+ 15 sl-brain5-157310-0.sprintlink.net (217.147.129.66) [AS 1239] 72 msec 76 msec 72 msec
+ 16 vl25.core2.net.playnet.it (62.48.45.253) [AS 13284] 76 msec 76 msec 76 msec
+ 17 f0-1.route-server.playnet.it (62.48.45.129) [AS 13284] 72 msec *  76 msec
+rs.ipilink.net>traceroute 86.55.0.50
+
+Type escape sequence to abort.
+Tracing the route to rs.ipv4ilink.net (86.55.0.50)
+
+  1 rs.ipv4ilink.net (86.55.0.50) 0 msec 0 msec 0 msec
+rs.ipilink.net>traceroute 196.25.9.46
+
+Type escape sequence to abort.
+Tracing the route to tpr-route-server.saix.net (196.25.9.46)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 4 msec 0 msec 0 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 0 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 0 msec 4 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 188 msec 220 msec 240 msec
+  7 mr1-lon1-gw1.pxmrp.net (195.66.225.113) [AS 5459] 52 msec 52 msec 52 msec
+  8 46-254-167-89.packetexchange.net (89.167.254.46) [AS 16260] 52 msec 52 msec 48 msec
+  9 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) [AS 5713] 304 msec 308 msec 304 msec
+ 10 tpr-route-server.saix.net (196.25.9.46) [AS 5713] 308 msec *  304 msec
+rs.ipilink.net>traceroute 164.128.251.50
+
+Type escape sequence to abort.
+Tracing the route to routeserver.ip-plus.net (164.128.251.50)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 4 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 24 msec 200 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 168 msec 216 msec 444 msec
+  7 decix2.ip-plus.net (80.81.193.183) [AS 6695] 36 msec 36 msec 32 msec
+  8 i68ixe-005-por11.bb.ip-plus.net (138.187.130.96) [AS 3303] 52 msec 112 msec 208 msec
+  9 i68geb-005-gig12-0.bb.ip-plus.net (138.187.130.24) [AS 3303] 52 msec 48 msec 48 msec
+ 10 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) [AS 3303] 192 msec 180 msec 296 msec
+ 11 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) [AS 3303] 48 msec 44 msec 44 msec
+ 12 routeserver.ip-plus.net (164.128.251.50) [AS 3303] 48 msec *  44 msec
+rs.ipilink.net>traceroute 212.241.174.1
+
+Type escape sequence to abort.
+Tracing the route to lo1.route-server.as5413.net (212.241.174.1)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 4 msec 4 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 4 msec 4 msec 0 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 0 msec 0 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 184 msec 456 msec 248 msec
+  7 te1-3.cr01.ixf.bb.gxn.net (80.81.192.11) [AS 6695] 40 msec 40 msec 40 msec
+  8 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) [AS 5413] 48 msec 72 msec 48 msec
+  9  *  *  * 
+ 10  *  *  * 
+ 11 
+rs.ipilink.net>traceroute 69.31.111.255
+
+Type escape sequence to abort.
+Tracing the route to route-server.ord1.nlayer.net (69.31.111.255)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 4 msec 4 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 0 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 0 msec 0 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 172 msec 220 msec 228 msec
+  7 ge-3-1-2-0.fra60.ip4.tinet.net (77.67.72.45) [AS 3257] 36 msec 36 msec 32 msec
+  8 xe-3-3-0.fra23.ip4.tinet.net (89.149.184.70) [AS 3257] 56 msec 36 msec
+    xe-2-3-0.fra23.ip4.tinet.net (89.149.184.66) [AS 3257] 36 msec
+  9 so0-0-0-622M.ar2.FRA3.gblx.net (213.200.65.150) [AS 3257] 36 msec 36 msec 36 msec
+ 10 as3549.xe-6-1-0.cr1.ord1.us.nlayer.net (69.31.111.205) [AS 4436] 140 msec 140 msec 140 msec
+ 11 po1-30g.ar1.ord1.us.nlayer.net (69.31.111.134) [AS 4436] 144 msec 144 msec 140 msec
+ 12 route-server.ord1.nlayer.net (69.31.111.255) [AS 4436] 140 msec 140 msec 140 msec
+rs.ipilink.net>traceroute 66.162.47.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.twtelecom.net (66.162.47.58)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 0 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 0 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 8 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 4 msec 4 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 96 msec 208 msec 220 msec
+  7 xe-5-0-0-2000.edge6.Frankfurt1.Level3.net (195.16.161.1) [AS 3356] 32 msec 32 msec 36 msec
+  8 ae-1-69.edge3.Frankfurt1.Level3.net (4.68.23.11) [AS 3356] 56 msec
+    ae-2-79.edge3.Frankfurt1.Level3.net (4.68.23.75) [AS 3356] 32 msec
+    ae-4-99.edge3.Frankfurt1.Level3.net (4.68.23.203) [AS 3356] 32 msec
+  9 sprint-level3-ge.Frankfurt1.Level3.net (4.68.111.142) [AS 3356] 32 msec 32 msec 32 msec
+ 10 sl-bb21-fra-15-0-0.sprintlink.net (217.147.96.34) [AS 1239] 32 msec 36 msec 32 msec
+ 11 sl-bb20-par-14-0-0.sprintlink.net (213.206.129.65) [AS 1239] 52 msec 48 msec 52 msec
+ 12 sl-crs1-dc-0-8-2-0.sprintlink.net (144.232.19.146) [AS 1239] 132 msec 132 msec 132 msec
+ 13 sl-crs1-fw-0-12-0-1.sprintlink.net (144.232.19.100) [AS 1239] 168 msec
+    sl-crs2-fw-0-11-3-0.sprintlink.net (144.232.19.200) [AS 1239] 168 msec 172 msec
+ 14 sl-gw41-fw-1-0-0.sprintlink.net (144.232.0.26) [AS 1239] 172 msec
+    sl-gw41-fw-0-0-0.sprintlink.net (144.232.0.24) [AS 1239] 168 msec 168 msec
+ 15 sl-timewarner-13-0.sprintlink.net (160.81.236.226) [AS 1239] 160 msec 160 msec 160 msec
+ 16 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) [AS 4323] 180 msec 176 msec 176 msec
+ 17 route-server.twtelecom.net (66.162.47.58) [AS 4323] 232 msec *  228 msec
+rs.ipilink.net>traceroute 64.135.5.58
+
+Type escape sequence to abort.
+Tracing the route to route-server.host.net (64.135.5.58)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 8 msec 8 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 4 msec 0 msec 0 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 216 msec 216 msec 212 msec
+  7 dec-ix-c01.wvfiber.net (80.81.192.220) [AS 6695] 64 msec 68 msec 52 msec
+  8 ny60-vl14-lon-vl14.wvfiber.net (66.216.48.213) [AS 19151] [MPLS: Label 48 Exp 0] 124 msec 148 msec 136 msec
+  9 ash-ten3-3-nyc-ten1-1.wvfiber.net (66.216.1.161) [AS 19151] [MPLS: Label 29 Exp 0] 128 msec 132 msec 128 msec
+ 10 mia-ten3-2-ash-ten7-5.wvfiber.net (66.216.1.121) [AS 19151] 176 msec 160 msec 164 msec
+ 11 host-wvfiber-miami.wvfiber.net (66.216.1.126) [AS 19151] 1552 msec 156 msec 160 msec
+ 12 te2-2.cr01.swd.mia.host.net (64.135.0.42) [AS 13645] 156 msec 160 msec 156 msec
+ 13 te3-1.cr01.903.bct.host.net (64.135.0.5) [AS 13645] 164 msec 160 msec 160 msec
+ 14 route-server.host.net (64.135.5.58) [AS 13645] 160 msec *  156 msec
+rs.ipilink.net>traceroute 66.209.87.106
+
+Type escape sequence to abort.
+Tracing the route to priority.demarc.switchnap.com (66.209.87.106)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 4 msec 0 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 0 msec 0 msec
+  3 bbNx-ten17-v41-bbUnr.b.ipv4ilink.net (193.19.195.10) 0 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 4 msec 4 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 8 msec 4 msec 4 msec
+  6 wFrnk-ten84-v17-wNx.de.ipv4ilink.net (193.19.195.34) 108 msec 204 msec 40 msec
+  7 dec-ix-c01.wvfiber.net (80.81.192.220) [AS 6695] 48 msec 52 msec 68 msec
+  8 ny60-vl14-lon-vl14.wvfiber.net (66.216.48.213) [AS 19151] [MPLS: Label 121 Exp 0] 124 msec 124 msec 124 msec
+  9 ash-ten3-3-nyc-ten1-1.wvfiber.net (66.216.1.161) [AS 19151] [MPLS: Label 102 Exp 0] 128 msec 124 msec 124 msec
+ 10 atl-ten5-4-ash-ten6-3.wvfiber.net (66.216.1.142) [AS 19151] [MPLS: Label 158 Exp 0] 144 msec 144 msec 144 msec
+ 11 nsh-ten4-1-atl-ten3-2.wvfiber.net (64.127.130.58) [AS 19151] [MPLS: Label 170 Exp 0] 152 msec 156 msec 152 msec
+ 12 dal-ten2-1-nsh-ten1-4.wvfiber.net (64.127.130.50) [AS 19151] [MPLS: Label 97 Exp 0] 164 msec 168 msec 164 msec
+ 13 phx-ten1-1-dal-ten2-4.wvfiber.net (64.127.128.238) [AS 19151] [MPLS: Label 149 Exp 0] 204 msec 188 msec 188 msec
+ 14 la-ten3-3-phx-ten2-1.wvfiber.net (64.127.128.145) [AS 19151] [MPLS: Label 111 Exp 0] 196 msec 200 msec 200 msec
+ 15 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) [AS 19151] 216 msec 200 msec 200 msec
+ 16 cust-lv-ten1-4.wvfiber.net (66.186.192.46) [AS 19151] 224 msec 204 msec 204 msec
+ 17 te4-1.las-esw09.switchnap.com (66.209.64.194) [AS 23005] 200 msec 200 msec 200 msec
+ 18 priority.demarc.switchnap.com (66.209.87.106) [AS 23005] 204 msec *  200 msec
+rs.ipilink.net>traceroute 12.129.193.235
+
+Type escape sequence to abort.
+Tracing the route to route-server.cerf.net (12.129.193.235)
+
+  1 aUnr-fe546-v3546-route-server.b.ipv4ilink.net (86.55.0.49) 0 msec 4 msec 4 msec
+  2 bbUnr-po12-v27-aUnr.b.ipv4ilink.net (193.19.194.61) 4 msec 4 msec 0 msec
+  3 bbNx-ten15-v19-bbUnr.b.ipv4ilink.net (193.19.194.86) 4 msec 4 msec 4 msec
+  4 iNx-ten150-v20-bbNx.b.ipv4ilink.net (193.19.194.209) 4 msec 0 msec 0 msec
+  5 wNx-ten82-v700-iNx.b.ipv4ilink.net (193.19.194.133) 104 msec 136 msec 12 msec
+  6 wFrnk-ten81-v9-wNx.de.ipv4ilink.net (193.19.195.30) 176 msec 232 msec 216 msec
+  7 ge-3-1-1-0.fra60.ip4.tinet.net (77.67.72.41) [AS 3257] 32 msec 36 msec 36 msec
+  8 xe-5-0-0.was12.ip4.tinet.net (89.149.185.17) [AS 3257] 136 msec
+    xe-1-0-0.was12.ip4.tinet.net (89.149.185.5) [AS 3257] 132 msec
+    xe-5-0-0.was12.ip4.tinet.net (89.149.185.17) [AS 3257] 136 msec
+  9 192.205.36.137 [AS 7018] 148 msec 148 msec 148 msec
+ 10 cr1.wswdc.ip.att.net (12.122.82.222) [AS 7018] [MPLS: Label 16467 Exp 0] 216 msec *  216 msec
+ 11 cr2.phlpa.ip.att.net (12.122.4.53) [AS 7018] [MPLS: Labels 21288/16008 Exp 0] 212 msec 208 msec 212 msec
+ 12 cr2.cl2oh.ip.att.net (12.122.2.209) [AS 7018] [MPLS: Labels 21285/16008 Exp 0] 212 msec 208 msec 208 msec
+ 13  * 
+    cr1.cl2oh.ip.att.net (12.122.2.125) [AS 7018] [MPLS: Labels 21355/16008 Exp 0] 212 msec 212 msec
+ 14 cr1.cgcil.ip.att.net (12.122.2.205) [AS 7018] [MPLS: Labels 21504/16008 Exp 0] 216 msec 212 msec 216 msec
+ 15 cr2.dvmco.ip.att.net (12.122.31.85) [AS 7018] [MPLS: Labels 21585/16008 Exp 0] 236 msec 236 msec 236 msec
+ 16 cr1.slkut.ip.att.net (12.122.30.25) [AS 7018] [MPLS: Labels 21472/16008 Exp 0] 212 msec 216 msec 212 msec
+ 17 cr2.la2ca.ip.att.net (12.122.30.30) [AS 7018] [MPLS: Labels 0/16008 Exp 0] 212 msec 212 msec 212 msec
+ 18 cr84.la2ca.ip.att.net (12.123.30.249) [AS 7018] [MPLS: Label 16008 Exp 0] 212 msec 216 msec 220 msec
+ 19 gar5.la2ca.ip.att.net (12.122.129.25) [AS 7018] 212 msec 216 msec 212 msec
+ 20 12.122.255.74 [AS 7018] 208 msec 212 msec 212 msec
+ 21 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) [AS 17233] 212 msec 212 msec
+    mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) [AS 17233] 212 msec
+ 22 route-server.cerf.net (12.129.193.235) [AS 17233] 216 msec *  212 msec
+rs.ipilink.net>logout
+Connection closed by foreign host.

@@ -2658,7 +2658,7 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  6  203.208.169.29 (203.208.169.29)  50.661 ms as7473.ge4-4.ar1.pao1.us.nlayer.net (69.22.153.6)  50.645 ms 203.208.186.53 (203.208.186.53)  50.659 ms
  7  203.208.148.90 (203.208.148.90)  210.543 ms  210.586 ms  210.575 ms
  8  * * *
- 9  203.202.125.6 (203.202.125.6)  211.264 ms^^ *  212.448 ms
+ 9  203.202.125.6 (203.202.125.6)  211.264 ms *  212.448 ms
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.556 ms  0.369 ms  0.351 ms
  2  as5769.ge2-24.ar1.ord1.us.nlayer.net (69.31.111.42)  0.605 ms  0.565 ms as5769.ge2-23.ar1.ord1.us.nlayer.net (69.31.111.38)  0.483 ms
@@ -2666,7 +2666,6 @@ FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  4  216.113.122.29 (216.113.122.29)  22.583 ms  22.560 ms  22.592 ms
  5  ia-piex-gw06-ge1-1.vtl.net (207.96.210.138)  26.834 ms  26.920 ms  26.965 ms
  6  * * *
- 7  *^C
 FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.441 ms  0.367 ms  0.701 ms
  2  as852.ge2-14.ar1.ord1.us.nlayer.net (69.31.111.50)  0.300 ms  0.308 ms  0.232 ms
@@ -2680,14 +2679,12 @@ FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
  5  199.212.161.66 (199.212.161.66)  18.211 ms  17.813 ms  17.715 ms
  6  pos8-1.core2-mtl.bb.allstream.net (199.212.160.114)  17.600 ms  17.673 ms  17.839 ms
  7  * * *
- 8  *^C
 FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.644 ms  1.368 ms  0.852 ms
  2  GE3-0-PEERA-CHCGIL.IP.GROUPTELECOM.NET (206.223.119.113)  0.601 ms  0.690 ms  0.610 ms
  3  POS14-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.85)  11.359 ms  11.187 ms  11.103 ms
  4  GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34)  11.602 ms  11.311 ms  11.226 ms
  5  * * *
- 6  *^C
 FROM to 213.192.191.82 (213.192.191.82), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.458 ms  0.370 ms  0.351 ms
  2  ae1-40g.cr1.ord1.us.nlayer.net (69.31.111.133)  0.232 ms  0.197 ms  0.232 ms

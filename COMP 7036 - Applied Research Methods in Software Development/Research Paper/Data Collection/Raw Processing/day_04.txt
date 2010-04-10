@@ -352,7 +352,6 @@ FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  8  216.113.122.105 (216.113.122.105)  148.500 ms  148.591 ms  148.546 ms
  9  ia-piex-gw06-vl10.vtl.net (207.253.253.138)  134.596 ms  134.495 ms  148.558 ms
 10  * * *
-11  *^^ *^C
 FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  1  ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81)  0.824 ms  0.688 ms  0.649 ms
  2  ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201)  8.185 ms  8.211 ms  8.191 ms
@@ -368,7 +367,6 @@ FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
  4  * * *
  5  199.212.161.194 (199.212.161.194)  159.656 ms  159.629 ms  159.648 ms
  6  * * *
- 7  * *^C
 FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  1  ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81)  0.916 ms  0.724 ms  0.654 ms
  2  so2-3-0-0.bbr1.nyc1.us.eunetip.net (213.192.191.174)  112.867 ms  112.852 ms  112.857 ms
@@ -377,7 +375,6 @@ FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  5  POS13-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (216.18.63.197)  132.101 ms  132.225 ms  132.127 ms
  6  GE9-0.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.26)  154.766 ms  132.034 ms  132.263 ms
  7  * * *
- 8  *^C
 FROM to 213.200.64.94 (213.200.64.94), 30 hops max, 40 byte packets
  1  ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81)  0.861 ms  0.717 ms  0.673 ms
  2  ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201)  8.183 ms  8.149 ms  8.115 ms
@@ -425,7 +422,6 @@ FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
  3  te1-3.cr05.tn5.bb.gxn.net (195.66.224.29)  102.289 ms  58.117 ms  58.813 ms
  4  gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142)  64.886 ms  52.649 ms  54.140 ms
  5  * * *
- 6  *^C
 FROM to 69.31.111.255 (69.31.111.255), 30 hops max, 40 byte packets
  1  ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81)  0.874 ms  0.696 ms  0.657 ms
  2  as0-0.bbr1.sto2.se.eunetip.net (213.192.191.134)  7.546 ms  7.567 ms  7.572 ms
@@ -912,7 +908,6 @@ FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  4  216.113.122.29 (216.113.122.29)  22.714 ms  22.676 ms  22.595 ms
  5  ia-piex-gw06-ge1-1.vtl.net (207.96.210.138)  26.830 ms  26.820 ms  27.099 ms
  6  * * *
- 7  *^^^C
 FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.586 ms  1.185 ms  0.376 ms
  2  as852.ge2-14.ar1.ord1.us.nlayer.net (69.31.111.50)  0.200 ms  0.311 ms 154.11.2.205 (154.11.2.205)  0.232 ms
@@ -926,7 +921,6 @@ FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
  5  199.212.161.66 (199.212.161.66)  18.437 ms  18.024 ms  18.083 ms
  6  pos8-1.core2-mtl.bb.allstream.net (199.212.160.114)  17.878 ms  17.811 ms  17.585 ms
  7  * * *
- 8  * *^C
 FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  1.756 ms  1.120 ms  0.478 ms
  2  GE3-0-PEERA-CHCGIL.IP.GROUPTELECOM.NET (206.223.119.113)  0.604 ms  0.696 ms  0.609 ms
@@ -993,7 +987,6 @@ FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
  5  te1-3.cr05.tn5.bb.gxn.net (195.66.224.29)  89.521 ms  89.400 ms  89.413 ms
  6  gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142)  89.928 ms  89.744 ms  89.672 ms
  7  * * *
- 8  *^C
 FROM to 66.162.47.58 (66.162.47.58), 30 hops max, 40 byte packets
  1  ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161)  0.672 ms  0.488 ms  0.729 ms
  2  eqix.chcg.twtelecom.net (206.223.119.36)  0.853 ms  1.070 ms  0.989 ms

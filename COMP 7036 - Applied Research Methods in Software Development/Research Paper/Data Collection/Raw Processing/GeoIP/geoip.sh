@@ -1,3 +1,10 @@
 #!/bin/bash
 
-lynx -dump "http://api.hostip.info/get_html.php?ip=$1&position=true"
+# Read file
+exec< $1
+
+while read line
+do
+	curl "http://api.hostip.info/get_html.php?ip=$line&position=true" >> hostip.txt
+	echo -n "|" >> hostip.txt
+done

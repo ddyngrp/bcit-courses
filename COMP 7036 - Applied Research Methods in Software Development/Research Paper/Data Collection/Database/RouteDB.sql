@@ -2,15 +2,15 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-DROP SCHEMA IF EXISTS `traceroute` ;
-CREATE SCHEMA IF NOT EXISTS `traceroute` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+DROP SCHEMA IF EXISTS `RouteDB` ;
+CREATE SCHEMA IF NOT EXISTS `RouteDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 -- -----------------------------------------------------
--- Table `traceroute`.`IP_Addresses`
+-- Table `RouteDB`.`IP_Addresses`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `traceroute`.`IP_Addresses` ;
+DROP TABLE IF EXISTS `RouteDB`.`IP_Addresses` ;
 
-CREATE  TABLE IF NOT EXISTS `traceroute`.`IP_Addresses` (
+CREATE  TABLE IF NOT EXISTS `RouteDB`.`IP_Addresses` (
   `idIP_Address` VARCHAR(16) NOT NULL ,
   `Domain` VARCHAR(75) NULL ,
   PRIMARY KEY (`idIP_Address`) ,
@@ -19,11 +19,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `traceroute`.`Routes`
+-- Table `RouteDB`.`Routes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `traceroute`.`Routes` ;
+DROP TABLE IF EXISTS `RouteDB`.`Routes` ;
 
-CREATE  TABLE IF NOT EXISTS `traceroute`.`Routes` (
+CREATE  TABLE IF NOT EXISTS `RouteDB`.`Routes` (
   `idRoute` INT NOT NULL ,
   `Date` DATE NOT NULL ,
   `RouteFrom` VARCHAR(16) NOT NULL ,
@@ -32,18 +32,18 @@ CREATE  TABLE IF NOT EXISTS `traceroute`.`Routes` (
   INDEX `IP_Address` (`RouteFrom` ASC, `RouteTo` ASC) ,
   CONSTRAINT `IP_Address`
     FOREIGN KEY (`RouteFrom` , `RouteTo` )
-    REFERENCES `traceroute`.`IP_Addresses` (`idIP_Address` , `idIP_Address` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` , `idIP_Address` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `traceroute`.`Hops`
+-- Table `RouteDB`.`Hops`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `traceroute`.`Hops` ;
+DROP TABLE IF EXISTS `RouteDB`.`Hops` ;
 
-CREATE  TABLE IF NOT EXISTS `traceroute`.`Hops` (
+CREATE  TABLE IF NOT EXISTS `RouteDB`.`Hops` (
   `idHop` INT UNSIGNED NOT NULL ,
   `RouteID` INT NOT NULL ,
   `HopNum` INT UNSIGNED NOT NULL ,
@@ -59,12 +59,12 @@ CREATE  TABLE IF NOT EXISTS `traceroute`.`Hops` (
   INDEX `idIP_Address` (`FirstIP` ASC, `SecondIP` ASC, `ThirdIP` ASC) ,
   CONSTRAINT `idRoute`
     FOREIGN KEY (`RouteID` )
-    REFERENCES `traceroute`.`Routes` (`idRoute` )
+    REFERENCES `RouteDB`.`Routes` (`idRoute` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `idIP_Address`
     FOREIGN KEY (`FirstIP` , `SecondIP` , `ThirdIP` )
-    REFERENCES `traceroute`.`IP_Addresses` (`idIP_Address` , `idIP_Address` , `idIP_Address` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` , `idIP_Address` , `idIP_Address` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

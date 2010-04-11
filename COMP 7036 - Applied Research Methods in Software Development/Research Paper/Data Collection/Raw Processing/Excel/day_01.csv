@@ -9,8 +9,8 @@ FROM to 203.202.125.6
  7 g5-0-0.plapx-dr1.ix.singtel.com (198.32.176.50) 160.000 msec 160.000 msec 160.000 msec
  8 POS4-0-0.access1.ix.singtel.com (203.208.182.214) 160.000 msec 160.000 msec 220.000 msec
  9 203.208.148.90 320.000 msec 320.000 msec 324.000 msec
- 10 * * * 
- 11 203.202.125.6 320.000 msec * 320.000 msec
+ 10 [FW]
+ 11 203.202.125.6 320.000 msec [NR] 320.000 msec
 FROM to 216.113.10.50
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 4.000 msec 0.000 msec
@@ -20,7 +20,7 @@ FROM to 216.113.10.50
  6 paix-ny.ia-unyc-bb05.vtl.net (198.32.118.79) 92.000 msec 92.000 msec 92.000 msec
  7 216.113.122.105 104.000 msec 104.000 msec 100.000 msec
  8 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 104.000 msec 100.000 msec 104.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 4.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 4.000 msec
@@ -28,7 +28,7 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  4 i00eqx-005-pos6-0.bb.ip-plus.net (138.187.159.46) 92.000 msec 92.000 msec 96.000 msec
  5 154.11.3.230 96.000 msec 96.000 msec 92.000 msec
  6 CLGRAB21GR01.bb.telus.com (154.11.10.217) 160.000 msec 160.000 msec 160.000 msec
- 7 route-views.ab.bb.telus.com (154.11.98.18) 160.000 msec * 160.000 msec
+ 7 route-views.ab.bb.telus.com (154.11.98.18) 160.000 msec [NR] 160.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 0.000 msec
@@ -36,9 +36,9 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  4 i00eqx-005-pos6-0.bb.ip-plus.net (138.187.159.46) 96.000 msec 96.000 msec 96.000 msec
  5 ge7-2.gwy1-nyc.allstream.net (206.223.115.3) 96.000 msec 96.000 msec 96.000 msec
  6 pos9-0-1.core1-mtl.bb.allstream.net (199.212.160.125) 104.000 msec 104.000 msec 104.000 msec
- 7 * * * 
+ 7 [FW]
  8 199.212.161.194 116.000 msec 116.000 msec 116.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to 216.18.63.214
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 0.000 msec
@@ -49,7 +49,7 @@ FROM to 216.18.63.214
  7 POS9-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.209) 104.000 msec 104.000 msec 104.000 msec
  8 POS4-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.230) 124.000 msec 120.000 msec 124.000 msec
  9 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 120.000 msec 124.000 msec 120.000 msec
- 10 * * * 
+ 10 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-000-pos1-0.bb.ip-plus.net (138.187.157.33) 0.000 msec 0.000 msec 4.000 msec
@@ -66,7 +66,7 @@ FROM to route-server.ip4.tinet.net (213.200.64.94)
  5 i79tix-015-ten1-1.bb.ip-plus.net (138.187.129.74) 4.000 msec 4.000 msec 4.000 msec
  6 213.200.70.37 4.000 msec 4.000 msec 4.000 msec
  7 xe-8-2-0.fra23.ip4.tinet.net (89.149.186.169) 12.000 msec xe-8-0-0.fra23.ip4.tinet.net (89.149.186.69) 8.000 msec 12.000 msec
- 8 route-server.ip4.tinet.net (213.200.64.94) 8.000 msec * 8.000 msec
+ 8 route-server.ip4.tinet.net (213.200.64.94) 8.000 msec [NR] 8.000 msec
 FROM to f0-1.route-server.playnet.it (62.48.45.129)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-000-pos1-0.bb.ip-plus.net (138.187.157.33) 4.000 msec 0.000 msec 0.000 msec
@@ -77,7 +77,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  7 89.97.200.83 24.000 msec 89.97.200.91 20.000 msec 20.000 msec
  8 193.42.140.4 24.000 msec 24.000 msec 24.000 msec
  9 vl21.core2.net.playnet.it (62.48.45.122) 24.000 msec 20.000 msec 24.000 msec
- 10 f0-1.route-server.playnet.it (62.48.45.129) 24.000 msec * 200.000 msec
+ 10 f0-1.route-server.playnet.it (62.48.45.129) 24.000 msec [NR] 200.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-000-pos1-0.bb.ip-plus.net (138.187.157.33) 0.000 msec 4.000 msec 0.000 msec
@@ -106,7 +106,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  7 xe-5-3-0.lon20.ip4.tinet.net (89.149.187.214) 20.000 msec 20.000 msec xe-7-3-0.lon20.ip4.tinet.net (89.149.187.218) 24.000 msec
  8 telkom-gw.ip4.tinet.net (77.67.64.246) 20.000 msec 20.000 msec 20.000 msec
  9 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 208.000 msec 204.000 msec 208.000 msec
- 10 tpr-route-server.saix.net (196.25.9.46) 208.000 msec * 208.000 msec
+ 10 tpr-route-server.saix.net (196.25.9.46) 208.000 msec [NR] 208.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 4.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 0.000 msec
@@ -115,7 +115,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  5 i00lon-015-ten2-1.bb.ip-plus.net (138.187.129.110) 20.000 msec 24.000 msec 20.000 msec
  6 te1-3.cr05.tn5.bb.gxn.net (195.66.224.29) 24.000 msec 20.000 msec 20.000 msec
  7 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 20.000 msec 20.000 msec 24.000 msec
- 8 * * * 
+ 8 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 4.000 msec 0.000 msec 0.000 msec
  2 i64beb-000-pos1-0.bb.ip-plus.net (138.187.157.33) 4.000 msec 0.000 msec 0.000 msec
@@ -132,7 +132,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  4 i00nye-005-pos9-0.bb.ip-plus.net (138.187.159.22) 92.000 msec 96.000 msec 92.000 msec
  5 NYCL-PEER-03.twtelecom.net (198.32.118.36) 92.000 msec 96.000 msec 92.000 msec
  6 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 144.000 msec 140.000 msec 144.000 msec
- 7 route-server.twtelecom.net (66.162.47.58) 144.000 msec * 140.000 msec
+ 7 route-server.twtelecom.net (66.162.47.58) 144.000 msec [NR] 140.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 0.000 msec
@@ -143,7 +143,7 @@ FROM to route-server.host.net (64.135.5.58)
  7 host-wvfiber-miami.wvfiber.net (66.216.1.126) 124.000 msec 124.000 msec 124.000 msec
  8 te2-2.cr01.swd.mia.host.net (64.135.0.42) 124.000 msec 124.000 msec 124.000 msec
  9 te3-1.cr01.903.bct.host.net (64.135.0.5) 124.000 msec 124.000 msec 124.000 msec
- 10 route-server.host.net (64.135.5.58) 124.000 msec * 124.000 msec
+ 10 route-server.host.net (64.135.5.58) 124.000 msec [NR] 124.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 4.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 0.000 msec 0.000 msec 0.000 msec
@@ -158,7 +158,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  11 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 168.000 msec 172.000 msec 168.000 msec
  12 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 184.000 msec 172.000 msec 168.000 msec
  13 te4-1.las-esw09.switchnap.com (66.209.64.194) 168.000 msec 168.000 msec 172.000 msec
- 14 priority.demarc.switchnap.com (66.209.87.106) 300.000 msec * 248.000 msec
+ 14 priority.demarc.switchnap.com (66.209.87.106) 300.000 msec [NR] 248.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 i64beb-iv6-gig1-0.bb.ip-plus.net (164.128.251.1) 0.000 msec 0.000 msec 0.000 msec
  2 i64beb-010-fas3-0.bb.ip-plus.net (138.187.157.5) 4.000 msec 0.000 msec 0.000 msec
@@ -177,7 +177,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  15 gar5.la2ca.ip.att.net (12.122.129.25) 164.000 msec 164.000 msec 168.000 msec
  16 12.122.255.74 164.000 msec 164.000 msec 164.000 msec
  17 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 168.000 msec 168.000 msec 164.000 msec
- 18 route-server.cerf.net (12.129.193.235) 168.000 msec * 164.000 msec
+ 18 route-server.cerf.net (12.129.193.235) 168.000 msec [NR] 164.000 msec
 FROM 212.241.174.1.
 FROM to 203.202.125.6
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
@@ -189,8 +189,8 @@ FROM to 203.202.125.6
  7 xe-5-1-0.sjc10.ip4.tinet.net (89.149.185.161) 144.000 msec 156.000 msec 144.000 msec
  8 singtel-gw.ip4.tinet.net (77.67.79.6) 144.000 msec 140.000 msec 144.000 msec
  9 203.208.148.90 304.000 msec 300.000 msec 304.000 msec
- 10 * * * 
- 11 203.202.125.6 300.000 msec * 300.000 msec
+ 10 [FW]
+ 11 203.202.125.6 300.000 msec [NR] 300.000 msec
 FROM to 216.113.10.50
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 gi2-1-6.cr01.hx2.bb.gxn.net (62.72.142.129) 4.000 msec 0.000 msec 0.000 msec
@@ -203,7 +203,7 @@ FROM to 216.113.10.50
  9 cr1-pos-0-3-2-0.chicago.savvis.net (204.70.192.101) 96.000 msec 92.000 msec 96.000 msec
  10 216.113.122.77 112.000 msec 112.000 msec 108.000 msec
  11 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 116.000 msec 112.000 msec 112.000 msec
- 12 * * * 
+ 12 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 gi2-1-6.cr01.hx2.bb.gxn.net (62.72.142.129) 0.000 msec 0.000 msec 0.000 msec
@@ -213,12 +213,12 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  6 nyk-b1-link.telia.net (213.248.82.14) 76.000 msec 72.000 msec 76.000 msec
  7 telus-ic-123017-nyk-b1.c.telia.net (213.248.77.50) 72.000 msec 72.000 msec 72.000 msec
  8 CLGRAB21GR01.bb.telus.com (154.11.10.217) 128.000 msec 132.000 msec 128.000 msec
- 9 route-views.ab.bb.telus.com (154.11.98.18) 132.000 msec * 128.000 msec
+ 9 route-views.ab.bb.telus.com (154.11.98.18) 132.000 msec [NR] 128.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 te1-4.cr01.nik.bb.gxn.net (62.72.137.250) 52.000 msec 52.000 msec 52.000 msec
  3 gwy1-nyc.bb.allstream.net (195.69.145.122) 120.000 msec 116.000 msec 116.000 msec
- 4 * * * 
+ 4 [FW]
 FROM to 216.18.63.214
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 4.000 msec 0.000 msec 0.000 msec
  2 gi2-1-6.cr01.hx2.bb.gxn.net (62.72.142.129) 0.000 msec 0.000 msec 0.000 msec
@@ -233,7 +233,7 @@ FROM to 216.18.63.214
  11 208.173.176.210 108.000 msec 108.000 msec 108.000 msec
  12 POS5-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.109) 104.000 msec 108.000 msec 104.000 msec
  13 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 104.000 msec 108.000 msec 108.000 msec
- 14 * * * 
+ 14 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 vl3953.cr05.tn5.bb.gxn.net (62.72.137.29) 4.000 msec 0.000 msec 0.000 msec
@@ -260,7 +260,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  7 so-5-0-0.mil19.ip4.tinet.net (213.200.82.30) 20.000 msec 20.000 msec 24.000 msec
  8 brain-tech-gw.ip4.tinet.net (213.200.68.154) 24.000 msec 24.000 msec 24.000 msec
  9 vl27.core2.net.playnet.it (62.48.45.250) 40.000 msec 40.000 msec 40.000 msec
- 10 f0-1.route-server.playnet.it (62.48.45.129) 40.000 msec * 40.000 msec
+ 10 f0-1.route-server.playnet.it (62.48.45.129) 40.000 msec [NR] 40.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 vl3953.cr05.tn5.bb.gxn.net (62.72.137.29) 4.000 msec 0.000 msec 0.000 msec
@@ -279,7 +279,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  5 ge-4-2-0.mpr1.lhr3.uk.above.net (64.125.27.157) 4.000 msec 4.000 msec 0.000 msec
  6 213-161-92-182.available.lhr.above.net (213.161.92.182) 0.000 msec 0.000 msec 4.000 msec
  7 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 184.000 msec 188.000 msec 188.000 msec
- 8 tpr-route-server.saix.net (196.25.9.46) 188.000 msec * 184.000 msec
+ 8 tpr-route-server.saix.net (196.25.9.46) 188.000 msec [NR] 184.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 4.000 msec
  2 vl3953.cr05.tn5.bb.gxn.net (62.72.137.29) 0.000 msec 0.000 msec 0.000 msec
@@ -288,7 +288,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  5 i79zhh-005-gig11-0.bb.ip-plus.net (138.187.130.169) 24.000 msec 20.000 msec 24.000 msec
  6 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 20.000 msec 20.000 msec 24.000 msec
  7 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 20.000 msec 20.000 msec 24.000 msec
- 8 routeserver.ip-plus.net (164.128.251.50) 20.000 msec * 20.000 msec
+ 8 routeserver.ip-plus.net (164.128.251.50) 20.000 msec [NR] 20.000 msec
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 0.000 msec
  2 vl3953.cr05.tn5.bb.gxn.net (62.72.137.29) 0.000 msec 0.000 msec 0.000 msec
@@ -305,7 +305,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  5 ash-bb1-link.telia.net (213.248.65.210) 76.000 msec 76.000 msec 76.000 msec
  6 timewarnertc-ic-122277-ash-bb1.telia.net (213.248.88.46) 76.000 msec 80.000 msec 84.000 msec
  7 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 136.000 msec 140.000 msec 136.000 msec
- 8 route-server.twtelecom.net (66.162.47.58) 124.000 msec * 124.000 msec
+ 8 route-server.twtelecom.net (66.162.47.58) 124.000 msec [NR] 124.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 4.000 msec
  2 gi3-25-6.cr05.hx2.bb.gxn.net (62.72.142.133) 0.000 msec 4.000 msec 0.000 msec
@@ -316,7 +316,7 @@ FROM to route-server.host.net (64.135.5.58)
  7 host-wvfiber-miami.wvfiber.net (66.216.1.126) 108.000 msec 112.000 msec 108.000 msec
  8 te2-2.cr01.swd.mia.host.net (64.135.0.42) 108.000 msec 108.000 msec 108.000 msec
  9 te3-1.cr01.903.bct.host.net (64.135.0.5) 112.000 msec 112.000 msec 108.000 msec
- 10 route-server.host.net (64.135.5.58) 112.000 msec * 108.000 msec
+ 10 route-server.host.net (64.135.5.58) 112.000 msec [NR] 108.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 4.000 msec
  2 gi3-25-6.cr05.hx2.bb.gxn.net (62.72.142.133) 0.000 msec 0.000 msec 0.000 msec
@@ -331,7 +331,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  11 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 176.000 msec 168.000 msec 160.000 msec
  12 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 156.000 msec 156.000 msec 156.000 msec
  13 te4-1.las-esw09.switchnap.com (66.209.64.194) 156.000 msec 184.000 msec 192.000 msec
- 14 priority.demarc.switchnap.com (66.209.87.106) 388.000 msec * 184.000 msec
+ 14 priority.demarc.switchnap.com (66.209.87.106) 388.000 msec [NR] 184.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 gi2-44.ar01.hx2.bb.gxn.net (212.241.174.5) 0.000 msec 0.000 msec 4.000 msec
  2 gi2-1-6.cr01.hx2.bb.gxn.net (62.72.142.129) 0.000 msec 0.000 msec 0.000 msec
@@ -351,14 +351,14 @@ FROM to route-server.cerf.net (12.129.193.235)
  16 gar5.la2ca.ip.att.net (12.122.129.25) 172.000 msec 176.000 msec 196.000 msec
  17 12.122.255.74 140.000 msec 136.000 msec 136.000 msec
  18 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 140.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 140.000 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 136.000 msec
- 19 route-server.cerf.net (12.129.193.235) 152.000 msec * 152.000 msec
+ 19 route-server.cerf.net (12.129.193.235) 152.000 msec [NR] 152.000 msec
 FROM 66.162.47.58.
 FROM to 203.202.125.6
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 4.000 msec
  2 peer-02-xe-0-0-0.palo.twtelecom.net (66.192.253.26) 24.000 msec 24.000 msec 28.000 msec
  3 203.208.148.90 188.000 msec 184.000 msec 184.000 msec
- 4 * * * 
- 5 203.202.125.6 184.000 msec 188.000 msec * 
+ 4 [FW]
+ 5 203.202.125.6 184.000 msec 188.000 msec [NR] 
 FROM to 216.113.10.50
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 4.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 20.000 msec 16.000 msec 24.000 msec
@@ -369,20 +369,20 @@ FROM to 216.113.10.50
  7 if-1-0.mcore3.MTT-Montreal.as6453.net (216.6.114.17) 60.000 msec 60.000 msec 64.000 msec
  8 216.113.125.85 56.000 msec 56.000 msec 60.000 msec
  9 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 56.000 msec 60.000 msec 68.000 msec
- 10 * * * 
+ 10 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 4.000 msec 0.000 msec 0.000 msec
  2 peer-02-xe-0-0-0.palo.twtelecom.net (66.192.253.26) 24.000 msec 36.000 msec 24.000 msec
  3 CLGRAB21GR01.bb.telus.com (154.11.10.217) 68.000 msec 68.000 msec 68.000 msec
- 4 route-views.ab.bb.telus.com (154.11.98.18) 64.000 msec * 64.000 msec
+ 4 route-views.ab.bb.telus.com (154.11.98.18) 64.000 msec [NR] 64.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-02-ge-7-1-0.chcg.twtelecom.net (66.192.243.138) 28.000 msec 24.000 msec 28.000 msec
- 3 * * * 
+ 3 [FW]
  4 199.212.161.50 40.000 msec 44.000 msec 44.000 msec
  5 199.212.161.66 44.000 msec 44.000 msec 44.000 msec
  6 pos8-1.core2-mtl.bb.allstream.net (199.212.160.114) 44.000 msec 40.000 msec 40.000 msec
- 7 * * * 
+ 7 [FW]
 FROM to 216.18.63.214
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-02-xe-0-0-0.palo.twtelecom.net (66.192.253.26) 24.000 msec 24.000 msec 28.000 msec
@@ -390,7 +390,7 @@ FROM to 216.18.63.214
  4 POS5-0.WANB-VANCBC.IP.GROUPTELECOM.NET (66.59.190.97) 40.000 msec 40.000 msec 44.000 msec
  5 POS3-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.190.61) 68.000 msec 68.000 msec 68.000 msec
  6 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 68.000 msec 68.000 msec 72.000 msec
- 7 * * * 
+ 7 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 4.000 msec 0.000 msec 0.000 msec
  2 66.192.243.234 48.000 msec 48.000 msec 48.000 msec
@@ -417,7 +417,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  8 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) 156.000 msec 152.000 msec 152.000 msec
  9 195.219.159.26 152.000 msec 156.000 msec 156.000 msec
  10 vl27.core2.net.playnet.it (62.48.45.250) 168.000 msec 168.000 msec 168.000 msec
- 11 f0-1.route-server.playnet.it (62.48.45.129) 168.000 msec * 168.000 msec
+ 11 f0-1.route-server.playnet.it (62.48.45.129) 168.000 msec [NR] 168.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 16.000 msec 16.000 msec 12.000 msec
@@ -441,14 +441,14 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  5 nyk-b5-link.telia.net (80.91.249.16) 56.000 msec nyk-b5-link.telia.net (80.91.250.146) 60.000 msec nyk-b5-link.telia.net (80.91.249.16) 56.000 msec
  6 telkom-ic-127602-nyk-b5.c.telia.net (213.248.82.238) 60.000 msec 60.000 msec 68.000 msec
  7 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 312.000 msec 304.000 msec 312.000 msec
- 8 tpr-route-server.saix.net (196.25.9.46) 312.000 msec * 312.000 msec
+ 8 tpr-route-server.saix.net (196.25.9.46) 312.000 msec [NR] 312.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 4.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 16.000 msec 16.000 msec 12.000 msec
  3 i79zhh-005-pos2-0.bb.ip-plus.net (138.187.159.21) 140.000 msec 140.000 msec 140.000 msec
  4 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 140.000 msec 144.000 msec 140.000 msec
  5 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 144.000 msec 144.000 msec 140.000 msec
- 6 routeserver.ip-plus.net (164.128.251.50) 144.000 msec * 140.000 msec
+ 6 routeserver.ip-plus.net (164.128.251.50) 144.000 msec [NR] 140.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 16.000 msec 16.000 msec 12.000 msec
@@ -458,8 +458,8 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  6 ldn-bb1-link.telia.net (80.91.251.206) 140.000 msec ldn-bb2-pos6-0-0.telia.net (213.248.65.209) 140.000 msec ldn-b2-link.telia.net (80.91.250.230) 124.000 msec
  7 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 124.000 msec 124.000 msec 124.000 msec
  8 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 140.000 msec gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 120.000 msec 124.000 msec
- 9 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 140.000 msec * * 
- 10 * * * 
+ 9 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 140.000 msec [NR] * 
+ 10 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 16.000 msec 16.000 msec 20.000 msec
@@ -473,13 +473,13 @@ FROM to route-server.host.net (64.135.5.58)
  4 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) 48.000 msec 48.000 msec 48.000 msec
  5 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) 64.000 msec 72.000 msec 80.000 msec
  6 host-wvfiber.wvfiber.net (66.216.1.94) 168.000 msec 136.000 msec 208.000 msec
- 7 route-server.host.net (64.135.5.58) 64.000 msec * 204.000 msec
+ 7 route-server.host.net (64.135.5.58) 64.000 msec [NR] 204.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 216.000 msec 0.000 msec 224.000 msec
  2 hagg-02-xe-0-0-0-0.lsvk.twtelecom.net (66.192.250.114) 220.000 msec 212.000 msec 40.000 msec
  3 te4-1.las-esw10.switchnap.com (66.209.64.154) 40.000 msec 36.000 msec 40.000 msec
  4 te4-2.esw-10.las.switchnap.com (66.209.64.181) 36.000 msec 40.000 msec 36.000 msec
- 5 priority.demarc.switchnap.com (66.209.87.106) 40.000 msec * 36.000 msec
+ 5 priority.demarc.switchnap.com (66.209.87.106) 40.000 msec [NR] 36.000 msec
 FROM to 235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 4.000 msec 0.000 msec 0.000 msec
  2 peer-01-so-1-0-0-0.dlfw.twtelecom.net (66.192.246.53) 16.000 msec 12.000 msec 16.000 msec
@@ -489,7 +489,7 @@ FROM to 235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
  6 gar5.la2ca.ip.att.net (12.122.129.25) 40.000 msec 40.000 msec 44.000 msec
  7 12.122.255.74 40.000 msec 44.000 msec 40.000 msec
  8 242.240/30.193.129.12.in-addr.arpa (12.129.193.242) 44.000 msec 40.000 msec 40.000 msec
- 9 235.232/29.193.129.12.in-addr.arpa (12.129.193.235) 44.000 msec * 40.000 msec
+ 9 235.232/29.193.129.12.in-addr.arpa (12.129.193.235) 44.000 msec [NR] 40.000 msec
 FROM 64.135.5.58.
 FROM to 203.202.125.6
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
@@ -501,8 +501,8 @@ FROM to 203.202.125.6
  7 la-ten3-3-phx-ten2-1.wvfiber.net (64.127.128.145) 92.000 msec 80.000 msec 80.000 msec
  8 singtel.com.any2ix.coresite.com (206.223.143.63) 68.000 msec 72.000 msec 80.000 msec
  9 203.208.148.18 220.000 msec 220.000 msec 220.000 msec
- 10 * * * 
- 11 203.202.125.6 220.000 msec * 220.000 msec
+ 10 [FW]
+ 11 203.202.125.6 220.000 msec [NR] 220.000 msec
 FROM to 216.113.10.50
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 4.000 msec 0.000 msec
@@ -512,7 +512,7 @@ FROM to 216.113.10.50
  6 paix-ny.ia-unyc-bb05.vtl.net (198.32.118.79) 32.000 msec 32.000 msec 56.000 msec
  7 216.113.122.105 44.000 msec 44.000 msec 40.000 msec
  8 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 44.000 msec 44.000 msec 40.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 0.000 msec 0.000 msec
@@ -520,7 +520,7 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  4 ash-ten7-5-mia-ten3-2.wvfiber.net (66.216.1.122) 32.000 msec 28.000 msec 28.000 msec
  5 telus-wvfiber.wvfiber.net (66.216.1.2) 32.000 msec 28.000 msec 32.000 msec
  6 CLGRAB21GR01.bb.telus.com (154.11.10.217) 84.000 msec 84.000 msec 84.000 msec
- 7 route-views.ab.bb.telus.com (154.11.98.18) 84.000 msec * 84.000 msec
+ 7 route-views.ab.bb.telus.com (154.11.98.18) 84.000 msec [NR] 84.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 4.000 msec 0.000 msec
@@ -528,9 +528,9 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  4 ash-ten7-5-mia-ten3-2.wvfiber.net (66.216.1.122) 28.000 msec 28.000 msec 28.000 msec
  5 ge7-2.gwy1-nyc.allstream.net (206.223.115.3) 28.000 msec 32.000 msec 28.000 msec
  6 199.212.160.121 36.000 msec 36.000 msec 40.000 msec
- 7 * * * 
+ 7 [FW]
  8 pos9-0-1.core2-ott.bb.allstream.net (199.212.160.106) 52.000 msec 48.000 msec 52.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to 216.18.63.214
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 0.000 msec 0.000 msec
@@ -541,7 +541,7 @@ FROM to 216.18.63.214
  7 POS9-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.209) 40.000 msec 44.000 msec 40.000 msec
  8 POS4-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.230) 52.000 msec 52.000 msec 48.000 msec
  9 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 52.000 msec 52.000 msec 48.000 msec
- 10 * * * 
+ 10 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 route-server-gw.host.net (64.135.5.57) 4.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 0.000 msec 0.000 msec
@@ -571,7 +571,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  6 so-2-1-0.mil19.ip4.tinet.net (213.200.81.98) 140.000 msec 140.000 msec 140.000 msec
  7 brain-tech-gw.ip4.tinet.net (213.200.68.154) 136.000 msec 140.000 msec 140.000 msec
  8 vl27.core2.net.playnet.it (62.48.45.250) 152.000 msec 156.000 msec 156.000 msec
- 9 f0-1.route-server.playnet.it (62.48.45.129) 272.000 msec * 152.000 msec
+ 9 f0-1.route-server.playnet.it (62.48.45.129) 272.000 msec [NR] 152.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 4.000 msec 0.000 msec 0.000 msec
@@ -593,7 +593,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  4 ge3-1.cr02.mia02.pccwbtn.net (198.32.124.130) 4.000 msec 0.000 msec 4.000 msec
  5 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) 28.000 msec 32.000 msec 32.000 msec
  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 284.000 msec 288.000 msec 284.000 msec
- 7 tpr-route-server.saix.net (196.25.9.46) 284.000 msec * 348.000 msec
+ 7 tpr-route-server.saix.net (196.25.9.46) 284.000 msec [NR] 348.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 4.000 msec 0.000 msec
@@ -603,7 +603,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  6 i68geb-005-pos6-0-0.bb.ip-plus.net (138.187.159.45) 124.000 msec 120.000 msec 120.000 msec
  7 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) 124.000 msec 124.000 msec 124.000 msec
  8 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) 124.000 msec 124.000 msec 124.000 msec
- 9 routeserver.ip-plus.net (164.128.251.50) 124.000 msec * 124.000 msec
+ 9 routeserver.ip-plus.net (164.128.251.50) 124.000 msec [NR] 124.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 route-server-gw.host.net (64.135.5.57) 4.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 0.000 msec 0.000 msec
@@ -613,7 +613,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  6 lon-vl14-ny60-vl14.wvfiber.net (66.216.48.214) 112.000 msec 124.000 msec 124.000 msec
  7 te1-3.cr05.tn5.bb.gxn.net (195.66.224.29) 112.000 msec 112.000 msec 108.000 msec
  8 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 108.000 msec 108.000 msec 112.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 route-server-gw.host.net (64.135.5.57) 4.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 0.000 msec 0.000 msec 0.000 msec
@@ -630,7 +630,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  4 ash-ten7-5-mia-ten3-2.wvfiber.net (66.216.1.122) 32.000 msec 28.000 msec 28.000 msec
  5 eqix.asbn.twtelecom.net (206.223.115.36) 32.000 msec 32.000 msec 28.000 msec
  6 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 64.000 msec 64.000 msec 64.000 msec
- 7 route-server.twtelecom.net (66.162.47.58) 144.000 msec * 80.000 msec
+ 7 route-server.twtelecom.net (66.162.47.58) 144.000 msec [NR] 80.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 wvfiber-host.wvfiber.net (66.216.1.93) 4.000 msec 0.000 msec 0.000 msec
@@ -642,7 +642,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  8 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 84.000 msec 80.000 msec 80.000 msec
  9 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 76.000 msec 76.000 msec 76.000 msec
  10 te4-1.las-esw09.switchnap.com (66.209.64.194) 76.000 msec 76.000 msec 76.000 msec
- 11 priority.demarc.switchnap.com (66.209.87.106) 76.000 msec * 76.000 msec
+ 11 priority.demarc.switchnap.com (66.209.87.106) 76.000 msec [NR] 76.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 route-server-gw.host.net (64.135.5.57) 0.000 msec 0.000 msec 0.000 msec
  2 te2-3.cr01.swd.mia.host.net (64.135.0.6) 4.000 msec 4.000 msec 0.000 msec
@@ -657,7 +657,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  11 gar5.la2ca.ip.att.net (12.122.129.25) 96.000 msec 108.000 msec 96.000 msec
  12 12.122.255.74 68.000 msec 68.000 msec 68.000 msec
  13 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 68.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 68.000 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 68.000 msec
- 14 route-server.cerf.net (12.129.193.235) 72.000 msec * 68.000 msec
+ 14 route-server.cerf.net (12.129.193.235) 72.000 msec [NR] 68.000 msec
 FROM 12.129.193.235.
 FROM to 203.202.125.6
  1 12.129.193.236 0.000 msec 4.000 msec 0.000 msec
@@ -670,8 +670,8 @@ FROM to 203.202.125.6
  8 ae-3-80.edge3.LosAngeles1.Level3.net (4.69.144.137) 0.000 msec ae-4-90.edge3.LosAngeles1.Level3.net (4.69.144.201) 0.000 msec ae-1-60.edge3.LosAngeles1.Level3.net (4.69.144.9) 0.000 msec
  9 SINGAPORE-T.edge3.LosAngeles1.Level3.net (4.78.195.202) 0.000 msec 0.000 msec 4.000 msec
  10 203.208.148.18 148.000 msec 152.000 msec 148.000 msec
- 11 * * * 
- 12 203.202.125.6 148.000 msec 152.000 msec * 
+ 11 [FW]
+ 12 203.202.125.6 148.000 msec 152.000 msec [NR] 
 FROM to 216.113.10.50
  1 12.129.193.236 0.000 msec 4.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 0.000 msec
@@ -684,7 +684,7 @@ FROM to 216.113.10.50
  9 cr1-tengig-0-7-0-0.chicago.savvis.net (204.70.196.245) 52.000 msec 52.000 msec 52.000 msec
  10 216.113.122.77 80.000 msec 80.000 msec 76.000 msec
  11 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 72.000 msec 80.000 msec 76.000 msec
- 12 * * * 
+ 12 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0001-gig-10-2.lax1.attens.net (12.129.193.241) 4.000 msec 0.000 msec 0.000 msec
@@ -699,7 +699,7 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  11 gi14-0-0.core01.sjc04.atlas.cogentco.com (154.54.0.174) 16.000 msec gi2-0-0.core01.sjc04.atlas.cogentco.com (66.28.4.50) 20.000 msec gi14-0-0.core01.sjc04.atlas.cogentco.com (154.54.0.174) 16.000 msec
  12 154.11.2.53 16.000 msec 20.000 msec 16.000 msec
  13 CLGRAB21GR01.bb.telus.com (154.11.10.217) 84.000 msec 84.000 msec 84.000 msec
- 14 route-views.ab.bb.telus.com (154.11.98.18) 84.000 msec * 80.000 msec
+ 14 route-views.ab.bb.telus.com (154.11.98.18) 84.000 msec [NR] 80.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 12.129.193.236 156.000 msec 188.000 msec 0.000 msec
  2 mdf001c7613r0001-gig-10-2.lax1.attens.net (12.129.193.241) 0.000 msec 0.000 msec 0.000 msec
@@ -710,7 +710,7 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  7 cr1.st6wa.ip.att.net (12.122.31.193) 36.000 msec 36.000 msec 36.000 msec
  8 12.122.146.77 36.000 msec 36.000 msec 36.000 msec
  9 12.118.34.30 36.000 msec 36.000 msec 36.000 msec
- 10 * * * 
+ 10 [FW]
  11 199.212.161.14 92.000 msec 92.000 msec 92.000 msec
  12 199.212.161.30 92.000 msec 92.000 msec 92.000 msec
  13 199.212.161.33 96.000 msec 92.000 msec 92.000 msec
@@ -718,7 +718,7 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  15 199.212.161.54 92.000 msec 92.000 msec 92.000 msec
  16 199.212.161.66 92.000 msec 92.000 msec 100.000 msec
  17 pos8-1.core2-mtl.bb.allstream.net (199.212.160.114) 92.000 msec 92.000 msec 92.000 msec
- 18 * * * 
+ 18 [FW]
 FROM to 216.18.63.214
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 0.000 msec
@@ -733,14 +733,14 @@ FROM to 216.18.63.214
  11 208.173.176.210 68.000 msec 68.000 msec 68.000 msec
  12 POS5-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.109) 68.000 msec 68.000 msec 68.000 msec
  13 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 68.000 msec 68.000 msec 68.000 msec
- 14 * * * 
+ 14 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0001-gig-10-2.lax1.attens.net (12.129.193.241) 0.000 msec 0.000 msec 0.000 msec
  3 gar5.la2ca.ip.att.net (12.122.255.73) 4.000 msec 0.000 msec gar6.la2ca.ip.att.net (12.122.254.65) 0.000 msec
  4 cr83.la2ca.ip.att.net (12.122.128.26) 0.000 msec cr83.la2ca.ip.att.net (12.122.128.2) 4.000 msec 4.000 msec
  5 cr1.la2ca.ip.att.net (12.123.30.110) 0.000 msec 4.000 msec 4.000 msec
- 6 ggr3.la2ca.ip.att.net (12.122.128.13) 0.000 msec 0.000 msec * 
+ 6 ggr3.la2ca.ip.att.net (12.122.128.13) 0.000 msec 0.000 msec [NR] 
  7 192.205.33.226 0.000 msec 0.000 msec 4.000 msec
  8 ae-63-60.ebr3.LosAngeles1.Level3.net (4.69.144.52) 0.000 msec ae-73-70.ebr3.LosAngeles1.Level3.net (4.69.144.116) 0.000 msec 16.000 msec
  9 ae-4-4.ebr4.Washington1.Level3.net (4.69.132.82) 68.000 msec 68.000 msec 68.000 msec
@@ -762,7 +762,7 @@ FROM to route-server.ip4.tinet.net (213.200.64.94)
  5 cr2.la2ca.ip.att.net (12.123.30.250) 0.000 msec 4.000 msec cr1.la2ca.ip.att.net (12.123.30.110) 4.000 msec
  6 la2ca02jt.ip.att.net (12.123.30.189) 0.000 msec 4.000 msec la2ca02jt.ip.att.net (12.123.30.17) 0.000 msec
  7 xe-5-2-0.lax20.ip4.tinet.net (77.67.79.173) 4.000 msec 0.000 msec 4.000 msec
- 8 xe-3-1-0.fra23.ip4.tinet.net (89.149.186.142) 184.000 msec * 184.000 msec
+ 8 xe-3-1-0.fra23.ip4.tinet.net (89.149.186.142) 184.000 msec [NR] 184.000 msec
  9 route-server.ip4.tinet.net (213.200.64.94) 204.000 msec 196.000 msec 320.000 msec
 FROM to f0-1.route-server.playnet.it (62.48.45.129)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
@@ -778,7 +778,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  11 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) 168.000 msec 168.000 msec 172.000 msec
  12 195.219.159.26 168.000 msec 168.000 msec 168.000 msec
  13 vl27.core2.net.playnet.it (62.48.45.250) 180.000 msec 180.000 msec 180.000 msec
- 14 f0-1.route-server.playnet.it (62.48.45.129) 180.000 msec * 176.000 msec
+ 14 f0-1.route-server.playnet.it (62.48.45.129) 180.000 msec [NR] 176.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 4.000 msec 0.000 msec 0.000 msec
@@ -815,9 +815,9 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  11 cr2.phlpa.ip.att.net (12.122.2.210) 72.000 msec 72.000 msec 72.000 msec
  12 cr1.wswdc.ip.att.net (12.122.4.54) 68.000 msec 72.000 msec 68.000 msec
  13 gar1.ascva.ip.att.net (12.122.135.129) 68.000 msec 68.000 msec 68.000 msec
- 14 * * * 
+ 14 [FW]
  15 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 328.000 msec 328.000 msec 328.000 msec
- 16 tpr-route-server.saix.net (196.25.9.46) 328.000 msec * 328.000 msec
+ 16 tpr-route-server.saix.net (196.25.9.46) 328.000 msec [NR] 328.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 12.129.193.236 4.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 0.000 msec
@@ -834,10 +834,10 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  13 ae-94-94.csw4.NewYork1.Level3.net (4.69.134.126) 76.000 msec ae-74-74.csw2.NewYork1.Level3.net (4.69.134.118) 84.000 msec ae-64-64.csw1.NewYork1.Level3.net (4.69.134.114) 88.000 msec
  14 ae-3-89.edge5.NewYork1.Level3.net (4.68.16.137) 76.000 msec 76.000 msec 72.000 msec
  15 SWISSCOM.edge5.NewYork1.Level3.net (4.78.179.6) 76.000 msec 76.000 msec 72.000 msec
- 16 * * * 
+ 16 [FW]
  17 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 164.000 msec 168.000 msec 164.000 msec
  18 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 164.000 msec 164.000 msec 168.000 msec
- 19 routeserver.ip-plus.net (164.128.251.50) 164.000 msec * 164.000 msec
+ 19 routeserver.ip-plus.net (164.128.251.50) 164.000 msec [NR] 164.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0001-gig-10-2.lax1.attens.net (12.129.193.241) 0.000 msec 0.000 msec 0.000 msec
@@ -851,7 +851,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  10 ldn-b2-link.telia.net (80.91.250.226) 152.000 msec 156.000 msec 156.000 msec
  11 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 152.000 msec 152.000 msec 156.000 msec
  12 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 152.000 msec 156.000 msec 156.000 msec
- 13 * * * 
+ 13 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 12.129.193.236 0.000 msec 4.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 0.000 msec
@@ -872,7 +872,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  6 ggr2.la2ca.ip.att.net (12.122.128.101) 0.000 msec 0.000 msec 0.000 msec
  7 192.205.35.194 4.000 msec 0.000 msec 4.000 msec
  8 hagg-03-ge-0-0-0.dnvr.twtelecom.net (66.192.245.68) 40.000 msec 44.000 msec 44.000 msec
- 9 route-server.twtelecom.net (66.162.47.58) 40.000 msec * 40.000 msec
+ 9 route-server.twtelecom.net (66.162.47.58) 40.000 msec [NR] 40.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 12.129.193.236 0.000 msec 0.000 msec 0.000 msec
  2 mdf001c7613r0001-gig-10-2.lax1.attens.net (12.129.193.241) 0.000 msec 0.000 msec 0.000 msec
@@ -887,7 +887,7 @@ FROM to route-server.host.net (64.135.5.58)
  11 12.88.228.14 68.000 msec 68.000 msec 68.000 msec
  12 te2-2.cr01.swd.mia.host.net (64.135.0.42) 68.000 msec 72.000 msec 80.000 msec
  13 te3-1.cr01.903.bct.host.net (64.135.0.5) 68.000 msec 68.000 msec 68.000 msec
- 14 route-server.host.net (64.135.5.58) 72.000 msec * 68.000 msec
+ 14 route-server.host.net (64.135.5.58) 72.000 msec [NR] 68.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 12.129.193.236 0.000 msec 4.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 0.000 msec
@@ -900,7 +900,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  9 ae-4-4.car1.LasVegas1.Level3.net (4.69.133.109) 8.000 msec 8.000 msec 4.000 msec
  10 SWITCH-COMM.car1.LasVegas1.Level3.net (4.71.176.6) 4.000 msec 8.000 msec 8.000 msec
  11 te4-1.las-esw09.switchnap.com (66.209.64.194) 8.000 msec 8.000 msec 8.000 msec
- 12 priority.demarc.switchnap.com (66.209.87.106) 8.000 msec * 8.000 msec
+ 12 priority.demarc.switchnap.com (66.209.87.106) 8.000 msec [NR] 8.000 msec
 FROM 203.202.125.6.
 FROM to 216.113.10.50
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 4.000 msec
@@ -913,18 +913,18 @@ FROM to 216.113.10.50
  8 216.113.122.89 228.000 msec 228.000 msec 228.000 msec
  9 216.113.122.29 228.000 msec 228.000 msec 228.000 msec
  10 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 228.000 msec 228.000 msec 232.000 msec
- 11 * * * 
+ 11 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 0.000 msec
  2 ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 160.000 msec POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 164.000 msec ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 160.000 msec
  3 203.208.154.46 164.000 msec 160.000 msec 160.000 msec
  4 CLGRAB21GR01.bb.telus.com (154.11.10.217) 216.000 msec 216.000 msec 216.000 msec
- 5 route-views.ab.bb.telus.com (154.11.98.18) 216.000 msec * 212.000 msec
+ 5 route-views.ab.bb.telus.com (154.11.98.18) 216.000 msec [NR] 212.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 4.000 msec 0.000 msec 0.000 msec
  2 POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 164.000 msec POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec
  3 gwy1-sea.bb.allstream.net (198.32.176.187) 180.000 msec 180.000 msec 180.000 msec
- 4 * * * 
+ 4 [FW]
 FROM to 216.18.63.214
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 180.000 msec 4.000 msec 216.000 msec
  2 ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 160.000 msec 160.000 msec POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec
@@ -933,7 +933,7 @@ FROM to 216.18.63.214
  5 POS5-0.WANB-VANCBC.IP.GROUPTELECOM.NET (66.59.190.97) 184.000 msec 184.000 msec 180.000 msec
  6 POS3-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.190.61) 240.000 msec 240.000 msec 240.000 msec
  7 GE9-2.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.38) 240.000 msec 236.000 msec 240.000 msec
- 8 * * * 
+ 8 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 0.000 msec
  2 xe-0-0-0-0.plapx-cr3.ix.singtel.com (203.208.183.177) 176.000 msec 160.000 msec 160.000 msec
@@ -957,7 +957,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  8 if-2-0-0.core3.MLT-Milan.as6453.net (195.219.158.57) 320.000 msec 320.000 msec 324.000 msec
  9 195.219.159.26 320.000 msec 324.000 msec 320.000 msec
  10 vl27.core2.net.playnet.it (62.48.45.250) 336.000 msec 336.000 msec 336.000 msec
- 11 f0-1.route-server.playnet.it (62.48.45.129) 336.000 msec * 336.000 msec
+ 11 f0-1.route-server.playnet.it (62.48.45.129) 336.000 msec [NR] 336.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 4.000 msec
  2 ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 160.000 msec 160.000 msec POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec
@@ -981,7 +981,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  4 te2-4-10G.ar2.DCA3.gblx.net (67.16.139.65) 212.000 msec 308.000 msec 388.000 msec
  5 Telkom-SA-Limited.so-3-0-1.ar1.DCA3.gblx.net (208.49.224.162) 216.000 msec 212.000 msec 216.000 msec
  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 380.000 msec 380.000 msec 384.000 msec
- 7 tpr-route-server.saix.net (196.25.9.46) 376.000 msec * 376.000 msec
+ 7 tpr-route-server.saix.net (196.25.9.46) 376.000 msec [NR] 376.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 208.000 msec 208.000 msec 228.000 msec
  2 POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec ge-7-0-0-0.plapx-dr1.ix.singtel.com (203.208.183.178) 160.000 msec POS3-6.sngtp-ar2.ix.singtel.com (203.208.182.213) 160.000 msec
@@ -990,7 +990,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  5 i79zhh-005-pos2-0.bb.ip-plus.net (138.187.159.21) 320.000 msec 320.000 msec 316.000 msec
  6 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 320.000 msec 320.000 msec 320.000 msec
  7 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 320.000 msec 320.000 msec 320.000 msec
- 8 routeserver.ip-plus.net (164.128.251.50) 320.000 msec * 320.000 msec
+ 8 routeserver.ip-plus.net (164.128.251.50) 320.000 msec [NR] 320.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 4.000 msec
  2 203.208.148.89 160.000 msec 172.000 msec 160.000 msec
@@ -1004,7 +1004,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  10 ae-25-52.car5.London1.Level3.net (4.69.139.102) 300.000 msec 300.000 msec 300.000 msec
  11 HOST-EUROPE.car5.London1.Level3.net (217.163.45.82) 300.000 msec 300.000 msec 300.000 msec
  12 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 304.000 msec 304.000 msec 312.000 msec
- 13 * * * 
+ 13 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 0.000 msec
  2 ge4-4.ar1.pao1.us.nlayer.net (69.22.153.5) 164.000 msec 203.208.169.30 160.000 msec 160.000 msec
@@ -1018,24 +1018,24 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  2 ge-5-0-0-0.laxow-cr2.ix.singtel.com (203.208.183.157) 236.000 msec 148.000 msec 152.000 msec
  3 peer-01-ge-3-3-0-13.lsag.twtelecom.net (66.192.252.45) 148.000 msec 148.000 msec 152.000 msec
  4 hagg-03-ge-0-0-0.dnvr.twtelecom.net (66.192.245.68) 184.000 msec 184.000 msec 184.000 msec
- 5 route-server.twtelecom.net (66.162.47.58) 184.000 msec * 184.000 msec
+ 5 route-server.twtelecom.net (66.162.47.58) 184.000 msec [NR] 184.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 0.000 msec 0.000 msec 0.000 msec
- 2 * * * 
+ 2 [FW]
  3 phx-ten2-1-la-ten3-3.wvfiber.net (64.127.128.146) 172.000 msec 168.000 msec 160.000 msec
  4 dal-ten2-4-phx-ten1-1.wvfiber.net (64.127.128.237) 184.000 msec 184.000 msec 180.000 msec
  5 nsh-ten1-4-dal-ten2-1.wvfiber.net (64.127.130.49) 200.000 msec 196.000 msec 200.000 msec
  6 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) 204.000 msec 204.000 msec 204.000 msec
  7 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) 220.000 msec 220.000 msec 220.000 msec
  8 host-wvfiber.wvfiber.net (66.216.1.94) 220.000 msec 220.000 msec 220.000 msec
- 9 route-server.host.net (64.135.5.58) 220.000 msec * 216.000 msec
+ 9 route-server.host.net (64.135.5.58) 220.000 msec [NR] 216.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 4.000 msec 0.000 msec 0.000 msec
- 2 * * * 
+ 2 [FW]
  3 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 152.000 msec 156.000 msec 156.000 msec
  4 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 156.000 msec 156.000 msec 156.000 msec
  5 te4-1.las-esw09.switchnap.com (66.209.64.194) 156.000 msec 156.000 msec 156.000 msec
- 6 priority.demarc.switchnap.com (66.209.87.106) 156.000 msec * 152.000 msec
+ 6 priority.demarc.switchnap.com (66.209.87.106) 156.000 msec [NR] 152.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 vlan299.52gdc76ue2.optus.net.au (203.202.125.3) 80.000 msec 4.000 msec 16.000 msec
  2 61.88.221.73 0.000 msec 4.000 msec 0.000 msec
@@ -1048,7 +1048,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  9 gar5.la2ca.ip.att.net (12.122.129.25) 168.000 msec 148.000 msec 152.000 msec
  10 12.122.255.74 148.000 msec 148.000 msec 152.000 msec
  11 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 152.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 152.000 msec 152.000 msec
- 12 route-server.cerf.net (12.129.193.235) 152.000 msec * 148.000 msec
+ 12 route-server.cerf.net (12.129.193.235) 152.000 msec [NR] 148.000 msec
 FROM 216.113.10.50.
 FROM to 203.202.125.6
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 16.000 msec 0.000 msec 4.000 msec
@@ -1065,19 +1065,19 @@ FROM to 203.202.125.6
  12 ae-32-89.car2.SanJose1.Level3.net (4.68.18.132) 76.000 msec ae-42-99.car2.SanJose1.Level3.net (4.68.18.196) 80.000 msec ae-12-69.car2.SanJose1.Level3.net (4.68.18.4) 76.000 msec
  13 SINGAPORE-T.car2.SanJose1.Level3.net (4.79.42.230) 76.000 msec 76.000 msec 76.000 msec
  14 203.208.148.90 228.000 msec 228.000 msec 228.000 msec
- 15 * * * 
- 16 203.202.125.6 228.000 msec * 228.000 msec
+ 15 [FW]
+ 16 203.202.125.6 228.000 msec [NR] 228.000 msec
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 4.000 msec 0.000 msec
  2 207.253.253.160 0.000 msec 4.000 msec 0.000 msec
  3 peer-telus.vtl.net (216.113.37.10) 0.000 msec 0.000 msec 0.000 msec
  4 CLGRAB21GR01.bb.telus.com (154.11.10.217) 52.000 msec 48.000 msec 52.000 msec
- 5 route-views.ab.bb.telus.com (154.11.98.18) 48.000 msec * 48.000 msec
+ 5 route-views.ab.bb.telus.com (154.11.98.18) 48.000 msec [NR] 48.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 4.000 msec 0.000 msec 0.000 msec
  2 207.96.210.160 4.000 msec 0.000 msec 4.000 msec
  3 ge1-0.gwy1-mtl.bb.allstream.net (192.77.55.12) 0.000 msec 0.000 msec 0.000 msec
- 4 * * * 
+ 4 [FW]
 FROM to 216.18.63.214
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 4.000 msec
  2 207.96.210.160 0.000 msec 0.000 msec 4.000 msec
@@ -1086,7 +1086,7 @@ FROM to 216.18.63.214
  5 66.59.191.141 0.000 msec 4.000 msec 0.000 msec
  6 POS13-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (216.18.63.197) 12.000 msec 12.000 msec 12.000 msec
  7 GE9-2.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.38) 12.000 msec 12.000 msec 12.000 msec
- 8 * * * 
+ 8 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.96.210.160 4.000 msec 0.000 msec 0.000 msec
@@ -1145,10 +1145,10 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  2 207.96.210.159 0.000 msec 0.000 msec 0.000 msec
  3 216.113.122.30 0.000 msec 4.000 msec 0.000 msec
  4 216.113.122.62 24.000 msec 24.000 msec 24.000 msec
- 5 * * ge5-6.br03.chc01.pccwbtn.net (209.8.108.61) 20.000 msec
+ 5 [NR] * ge5-6.br03.chc01.pccwbtn.net (209.8.108.61) 20.000 msec
  6 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) 44.000 msec 44.000 msec 40.000 msec
  7 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 324.000 msec 328.000 msec 324.000 msec
- 8 tpr-route-server.saix.net (196.25.9.46) 456.000 msec * 320.000 msec
+ 8 tpr-route-server.saix.net (196.25.9.46) 456.000 msec [NR] 320.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.96.210.159 0.000 msec 0.000 msec 0.000 msec
@@ -1157,7 +1157,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  5 i79zhh-005-pos2-0.bb.ip-plus.net (138.187.159.21) 100.000 msec 100.000 msec 96.000 msec
  6 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 104.000 msec 100.000 msec 100.000 msec
  7 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 100.000 msec 100.000 msec 100.000 msec
- 8 routeserver.ip-plus.net (164.128.251.50) 100.000 msec * 100.000 msec
+ 8 routeserver.ip-plus.net (164.128.251.50) 100.000 msec [NR] 100.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.96.210.159 0.000 msec 0.000 msec 0.000 msec
@@ -1170,7 +1170,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  9 ldn-b2-link.telia.net (80.91.250.226) 112.000 msec ldn-b2-link.telia.net (80.91.250.230) 112.000 msec ldn-b2-link.telia.net (80.91.250.226) 112.000 msec
  10 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 112.000 msec 112.000 msec 112.000 msec
  11 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 120.000 msec 112.000 msec 116.000 msec
- 12 * * * 
+ 12 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.96.210.159 0.000 msec 0.000 msec 0.000 msec
@@ -1185,11 +1185,11 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  4 216.113.122.90 0.000 msec 0.000 msec 4.000 msec
  5 Vlan29.icore1.MTT-Montreal.as6453.net (216.6.115.70) 8.000 msec 4.000 msec 0.000 msec
  6 Vlan24.icore1.TTT-Scarborough.as6453.net (206.82.135.14) 12.000 msec 20.000 msec 16.000 msec
- 7 * * Vlan4.icore1.CT8-Chicago.as6453.net (206.82.141.1) 24.000 msec
+ 7 [NR] * Vlan4.icore1.CT8-Chicago.as6453.net (206.82.141.1) 24.000 msec
  8 Vlan5.icore2.DTX-Dallas.as6453.net (206.82.141.30) 48.000 msec 60.000 msec 52.000 msec
  9 Vlan556.icore2.DTX-Dallas.as6453.net (206.82.142.14) 48.000 msec 48.000 msec 48.000 msec
  10 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 60.000 msec 64.000 msec 60.000 msec
- 11 route-server.twtelecom.net (66.162.47.58) 64.000 msec * 60.000 msec
+ 11 route-server.twtelecom.net (66.162.47.58) 64.000 msec [NR] 60.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 4.000 msec 0.000 msec
  2 207.96.210.159 0.000 msec 0.000 msec 4.000 msec
@@ -1200,7 +1200,7 @@ FROM to route-server.host.net (64.135.5.58)
  7 host-wvfiber-miami.wvfiber.net (66.216.1.126) 40.000 msec 44.000 msec 40.000 msec
  8 te2-2.cr01.swd.mia.host.net (64.135.0.42) 44.000 msec 40.000 msec 44.000 msec
  9 te3-1.cr01.903.bct.host.net (64.135.0.5) 44.000 msec 40.000 msec 40.000 msec
- 10 route-server.host.net (64.135.5.58) 44.000 msec * 44.000 msec
+ 10 route-server.host.net (64.135.5.58) 44.000 msec [NR] 44.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.253.253.160 0.000 msec 0.000 msec 0.000 msec
@@ -1216,7 +1216,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  12 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 88.000 msec 104.000 msec 88.000 msec
  13 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 168.000 msec 88.000 msec 88.000 msec
  14 te4-1.las-esw09.switchnap.com (66.209.64.194) 92.000 msec 88.000 msec 92.000 msec
- 15 priority.demarc.switchnap.com (66.209.87.106) 88.000 msec * 88.000 msec
+ 15 priority.demarc.switchnap.com (66.209.87.106) 88.000 msec [NR] 88.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 ia-piex-gw06-vl9.vtl.net (216.113.10.49) 0.000 msec 0.000 msec 0.000 msec
  2 207.253.253.160 0.000 msec 0.000 msec 0.000 msec
@@ -1233,7 +1233,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  13 gar5.la2ca.ip.att.net (12.122.129.25) 72.000 msec 72.000 msec 72.000 msec
  14 12.122.255.74 72.000 msec 68.000 msec 72.000 msec
  15 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 72.000 msec 72.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 68.000 msec
- 16 route-server.cerf.net (12.129.193.235) 68.000 msec * 68.000 msec
+ 16 route-server.cerf.net (12.129.193.235) 68.000 msec [NR] 68.000 msec
 FROM route-server.as6667.net.
 FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 30.304 msec 0.743 msec 0.708 msec
@@ -1242,7 +1242,7 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  4 xe-9-1-0.sjc10.ip4.tinet.net (89.149.184.53) 196.798 msec 200.006 msec xe-5-1-0.sjc10.ip4.tinet.net (89.149.185.161) 213.829 msec
  5 singtel-gw.ip4.tinet.net (77.67.79.6) 181.362 msec 257.521 msec 181.371 msec
  6 203.208.148.90 (203.208.148.90) 341.693 msec 340.379 msec 340.285 msec
- 7 * * *
+ 7 FW
  8 203.202.125.6 (203.202.125.6) 341.537 msec 360.150 msec *
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 8.398 msec 0.720 msec 0.647 msec
@@ -1254,8 +1254,8 @@ FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  7 paix-ny.ia-unyc-bb05.vtl.net (198.32.118.79) 140.188 msec 140.415 msec 140.170 msec
  8 216.113.122.105 (216.113.122.105) 139.559 msec 139.642 msec 139.630 msec
  9 ia-piex-gw06-vl10.vtl.net (207.253.253.138) 139.803 msec 130.177 msec 130.019 msec
-10 * * *
-11 * * *
+10 FW
+11 FW
 FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.882 msec 0.695 msec 0.647 msec
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201) 8.244 msec 8.211 msec 8.187 msec
@@ -1263,14 +1263,14 @@ FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  4 62.154.5.201 (62.154.5.201) 140.934 msec 140.744 msec 140.587 msec
  5 212.184.27.22 (212.184.27.22) 137.631 msec 137.554 msec 137.441 msec
  6 154.11.10.186 (154.11.10.186) 180.095 msec 180.029 msec 182.507 msec
- 7 route-views.ab.bb.telus.com (154.11.98.18) 180.559 msec * 180.584 msec
+ 7 route-views.ab.bb.telus.com (154.11.98.18) 180.559 msec [NR] 180.584 msec
 FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 1.008 msec 0.724 msec 0.678 msec
  2 as0-0.bbr1.ams1.nl.eunetip.net (213.192.191.226) 37.614 msec 37.684 msec 37.548 msec
  3 gwy1-nyc.bb.allstream.net (195.69.145.122) 145.255 msec 145.353 msec 145.609 msec
- 4 * * *
+ 4 FW
  5 199.212.161.194 (199.212.161.194) 159.523 msec 159.718 msec 166.544 msec
- 6 * * *
+ 6 FW
 FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.855 msec 0.761 msec 0.669 msec
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net (213.192.191.174) 112.864 msec 112.833 msec 112.821 msec
@@ -1278,7 +1278,7 @@ FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  4 POS7-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.177) 120.279 msec 120.293 msec 120.284 msec
  5 POS13-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (216.18.63.197) 132.171 msec 146.925 msec 132.128 msec
  6 GE9-0.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.26) 131.982 msec 132.087 msec 132.041 msec
- 7 * * *
+ 7 FW
 FROM to 213.200.64.94 (213.200.64.94), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.943 msec 0.693 msec 0.669 msec
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201) 8.184 msec 8.153 msec 8.144 msec
@@ -1292,7 +1292,7 @@ FROM to 62.48.45.129 (62.48.45.129), 30 hops max, 40 byte packets
  4 so-5-0-0.mil19.ip4.tinet.net (213.200.82.30) 39.367 msec 39.341 msec 39.401 msec
  5 brain-tech-gw.ip4.tinet.net (213.200.68.154) 55.335 msec 55.180 msec 55.366 msec
  6 vl27.core2.net.playnet.it (62.48.45.250) 55.845 msec 55.100 msec 55.805 msec
- 7 f0-1.route-server.playnet.it (62.48.45.129) 114.955 msec * 55.093 msec
+ 7 f0-1.route-server.playnet.it (62.48.45.129) 114.955 msec [NR] 55.093 msec
 FROM to 86.55.0.50 (86.55.0.50), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 4.288 msec 0.707 msec 0.649 msec
  2 as0-0.bbr1.ams1.nl.eunetip.net (213.192.191.226) 37.600 msec 37.629 msec 37.598 msec
@@ -1310,7 +1310,7 @@ FROM to 196.25.9.46 (196.25.9.46), 30 hops max, 40 byte packets
  4 xe-8-3-0.lon20.ip4.tinet.net (89.149.185.237) 46.384 msec xe-7-2-0.lon20.ip4.tinet.net (89.149.186.22) 46.585 msec 46.603 msec
  5 telkom-gw.ip4.tinet.net (77.67.64.246) 46.277 msec 45.777 msec 46.409 msec
  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 232.809 msec 232.232 msec 232.191 msec
- 7 tpr-route-server.saix.net (196.25.9.46) 233.736 msec * 233.265 msec
+ 7 tpr-route-server.saix.net (196.25.9.46) 233.736 msec [NR] 233.265 msec
 FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.850 msec 0.688 msec 0.667 msec
  2 as0-0.bbr1.ffm1.de.eunetip.net (213.192.191.197) 27.795 msec 27.889 msec 27.879 msec
@@ -1319,13 +1319,13 @@ FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
  5 i68geb-005-gig12-0.bb.ip-plus.net (138.187.130.24) 42.484 msec 39.317 msec 40.297 msec
  6 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) 39.520 msec 39.583 msec 39.459 msec
  7 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) 39.429 msec 39.785 msec 39.538 msec
- 8 routeserver.ip-plus.net (164.128.251.50) 40.152 msec * 40.267 msec
+ 8 routeserver.ip-plus.net (164.128.251.50) 40.152 msec [NR] 40.267 msec
 FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.873 msec 0.697 msec 0.680 msec
  2 so1-0-0-0.bbr1.ldn1.uk.eunetip.net (213.192.191.141) 45.435 msec 45.463 msec 52.859 msec
  3 te1-3.cr05.tn5.bb.gxn.net (195.66.224.29) 45.231 msec 51.998 msec 60.146 msec
  4 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 46.014 msec 45.867 msec 45.877 msec
- 5 * * *
+ 5 FW
 FROM to 69.31.111.255 (69.31.111.255), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.864 msec 0.753 msec 0.655 msec
  2 as0-0.bbr1.sto2.se.eunetip.net (213.192.191.134) 7.580 msec 7.563 msec 7.543 msec
@@ -1339,7 +1339,7 @@ FROM to 66.162.47.58 (66.162.47.58), 30 hops max, 40 byte packets
  3 64.214.141.25 (64.214.141.25) 8.153 msec 8.142 msec 8.123 msec
  4 TWTCIP-BACKBONE.TenGigabitEthernet1-3.ar2.DAL2.gblx.net (208.48.33.106) 152.993 msec 152.920 msec 152.959 msec
  5 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 169.064 msec 169.164 msec 169.129 msec
- 6 route-server.twtelecom.net (66.162.47.58) 169.620 msec * 169.467 msec
+ 6 route-server.twtelecom.net (66.162.47.58) 169.620 msec [NR] 169.467 msec
 FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 8.869 msec 0.792 msec 0.668 msec
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net (213.192.191.174) 113.357 msec 113.395 msec 113.363 msec
@@ -1349,7 +1349,7 @@ FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
  6 host-wvfiber-miami.wvfiber.net (66.216.1.126) 147.541 msec 146.742 msec 146.871 msec
  7 te2-2.cr01.swd.mia.host.net (64.135.0.42) 146.837 msec 146.877 msec 146.863 msec
  8 te3-1.cr01.903.bct.host.net (64.135.0.5) 148.455 msec 148.425 msec 148.398 msec
- 9 route-server.host.net (64.135.5.58) 148.488 msec * 148.624 msec
+ 9 route-server.host.net (64.135.5.58) 148.488 msec [NR] 148.624 msec
 FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 6.957 msec 0.725 msec 0.652 msec
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net (213.192.191.174) 113.357 msec 113.342 msec 113.353 msec
@@ -1363,7 +1363,7 @@ FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
 10 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 194.353 msec 194.255 msec 194.277 msec
 11 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 194.197 msec 194.172 msec 194.136 msec
 12 te4-1.las-esw09.switchnap.com (66.209.64.194) 194.395 msec 194.276 msec 194.312 msec
-13 priority.demarc.switchnap.com (66.209.87.106) 194.452 msec * 194.523 msec
+13 priority.demarc.switchnap.com (66.209.87.106) 194.452 msec [NR] 194.523 msec
 FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.863 msec 0.692 msec 0.655 msec
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201) 8.175 msec 8.145 msec 8.126 msec
@@ -1411,7 +1411,7 @@ FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
 20 gar5.la2ca.ip.att.net (12.122.129.25) 194.961 msec 195.076 msec 193.824 msec
 21 12.122.255.74 (12.122.255.74) 194.408 msec 194.733 msec 194.586 msec
 22 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 194.530 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 195.731 msec 195.604 msec
-23 route-server.cerf.net (12.129.193.235) 220.007 msec * 226.408 msec
+23 route-server.cerf.net (12.129.193.235) 220.007 msec [NR] 226.408 msec
 FROM f0-1.route-server.playnet.it.
 FROM to 203.202.125.6
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
@@ -1424,8 +1424,8 @@ FROM to 203.202.125.6
  8 203.208.169.157 184.000 msec ix-13-26.icore1.PDI-PaloAlto.as6453.net (209.58.17.30) 184.000 msec 203.208.169.157 180.000 msec
  9 xe-0-0-0-0.plapx-cr3.ix.singtel.com (203.208.183.177) 188.000 msec 184.000 msec 180.000 msec
  10 203.208.148.90 336.000 msec 336.000 msec 484.000 msec
- 11 * * * 
- 12 203.202.125.6 336.000 msec * 336.000 msec
+ 11 [FW]
+ 12 203.202.125.6 336.000 msec [NR] 336.000 msec
 FROM to 216.113.10.50
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 4.000 msec 0.000 msec 0.000 msec
@@ -1436,7 +1436,7 @@ FROM to 216.113.10.50
  7 sl-gw40-nyc-14-0-0.sprintlink.net (144.232.13.50) 104.000 msec 104.000 msec 104.000 msec
  8 216.113.122.81 116.000 msec 116.000 msec 116.000 msec
  9 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 116.000 msec 128.000 msec 132.000 msec
- 10 * * * 
+ 10 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 4.000 msec 0.000 msec
  2 vl27.mix.net.playnet.it (62.48.45.251) 12.000 msec 16.000 msec 16.000 msec
@@ -1447,7 +1447,7 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  7 if-3-0.mcore4.MTT-Montreal.as6453.net (216.6.114.2) 128.000 msec 128.000 msec 128.000 msec
  8 ix-11-0.mcore4.MTT-Montreal.as6453.net (216.6.115.58) 128.000 msec 128.000 msec 128.000 msec
  9 154.11.10.186 180.000 msec 180.000 msec 184.000 msec
- 10 route-views.ab.bb.telus.com (154.11.98.18) 180.000 msec * 180.000 msec
+ 10 route-views.ab.bb.telus.com (154.11.98.18) 180.000 msec [NR] 180.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 4.000 msec 0.000 msec 0.000 msec
@@ -1467,9 +1467,9 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  16 ae-61-61.csw1.NewYork1.Level3.net (4.69.134.66) 124.000 msec ae-71-71.csw2.NewYork1.Level3.net (4.69.134.70) 116.000 msec ae-91-91.csw4.NewYork1.Level3.net (4.69.134.78) 124.000 msec
  17 ae-12-69.car2.NewYork1.Level3.net (4.68.16.4) 112.000 msec ae-22-79.car2.NewYork1.Level3.net (4.68.16.68) 112.000 msec ae-42-99.car2.NewYork1.Level3.net (4.68.16.196) 136.000 msec
  18 ALLSTREAM-I.car2.NewYork1.Level3.net (4.53.84.222) 136.000 msec 140.000 msec 120.000 msec
- 19 * * * 
+ 19 [FW]
  20 pos9-0-1.core2-ott.bb.allstream.net (199.212.160.106) 152.000 msec 136.000 msec 144.000 msec
- 21 * * * 
+ 21 [FW]
 FROM to 216.18.63.214
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl27.mix.net.playnet.it (62.48.45.251) 12.000 msec 16.000 msec 16.000 msec
@@ -1481,7 +1481,7 @@ FROM to 216.18.63.214
  8 ix-4-0-8.core3.TNK-Toronto.as6453.net (216.6.112.42) 220.000 msec 200.000 msec 200.000 msec
  9 POS2-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.149) 200.000 msec 208.000 msec 228.000 msec
  10 GE9-0.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.26) 212.000 msec 220.000 msec 232.000 msec
- 11 * * * 
+ 11 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 4.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 0.000 msec 0.000 msec 0.000 msec
@@ -1535,7 +1535,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  4 xe-9-1-0.lon20.ip4.tinet.net (89.149.185.193) 36.000 msec xe-7-3-0.lon20.ip4.tinet.net (89.149.187.218) 36.000 msec 36.000 msec
  5 telkom-gw.ip4.tinet.net (77.67.64.246) 36.000 msec 36.000 msec 36.000 msec
  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 224.000 msec 224.000 msec 220.000 msec
- 7 tpr-route-server.saix.net (196.25.9.46) 224.000 msec * 220.000 msec
+ 7 tpr-route-server.saix.net (196.25.9.46) 224.000 msec [NR] 220.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl21.tix.net.playnet.it (62.48.45.123) 0.000 msec 0.000 msec 0.000 msec
@@ -1547,7 +1547,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  8 i79zhh-005-gig11-0.bb.ip-plus.net (138.187.130.169) 20.000 msec 24.000 msec 20.000 msec
  9 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 24.000 msec 24.000 msec 24.000 msec
  10 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 24.000 msec 24.000 msec 24.000 msec
- 11 routeserver.ip-plus.net (164.128.251.50) 24.000 msec * 20.000 msec
+ 11 routeserver.ip-plus.net (164.128.251.50) 24.000 msec [NR] 20.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 0.000 msec 4.000 msec 0.000 msec
@@ -1564,7 +1564,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  13 ldn-b2-link.telia.net (80.91.250.226) 40.000 msec 40.000 msec 40.000 msec
  14 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 40.000 msec 40.000 msec 40.000 msec
  15 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 44.000 msec 44.000 msec 40.000 msec
- 16 * * * 
+ 16 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 4.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 0.000 msec 0.000 msec 0.000 msec
@@ -1591,7 +1591,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  10 Vlan1697.icore2.DTX-Dallas.as6453.net (66.198.2.2) 156.000 msec 160.000 msec 164.000 msec
  11 Vlan556.icore2.DTX-Dallas.as6453.net (206.82.142.14) 156.000 msec 160.000 msec 160.000 msec
  12 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 168.000 msec 168.000 msec 172.000 msec
- 13 route-server.twtelecom.net (66.162.47.58) 168.000 msec * 168.000 msec
+ 13 route-server.twtelecom.net (66.162.47.58) 168.000 msec [NR] 168.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 4.000 msec 0.000 msec 0.000 msec
  2 vl27.mix.net.playnet.it (62.48.45.251) 16.000 msec 16.000 msec 12.000 msec
@@ -1599,12 +1599,12 @@ FROM to route-server.host.net (64.135.5.58)
  4 xe-2-2-0.ams10.ip4.tinet.net (89.149.186.201) 32.000 msec 32.000 msec 32.000 msec
  5 wv-fiber-gw.ip4.tinet.net (77.67.66.210) 28.000 msec 32.000 msec 32.000 msec
  6 ny60-vl2-ams-vl2.wvfiber.net (66.216.48.217) 120.000 msec 120.000 msec 120.000 msec
- 7 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) 128.000 msec 128.000 msec * 
+ 7 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) 128.000 msec 128.000 msec [NR] 
  8 mia-ten3-2-ash-ten7-5.wvfiber.net (66.216.1.121) 148.000 msec 152.000 msec 148.000 msec
  9 host-wvfiber-miami.wvfiber.net (66.216.1.126) 152.000 msec 156.000 msec 368.000 msec
  10 te2-2.cr01.swd.mia.host.net (64.135.0.42) 152.000 msec 152.000 msec 152.000 msec
  11 te3-1.cr01.903.bct.host.net (64.135.0.5) 152.000 msec 156.000 msec 152.000 msec
- 12 route-server.host.net (64.135.5.58) 216.000 msec * 152.000 msec
+ 12 route-server.host.net (64.135.5.58) 216.000 msec [NR] 152.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 4.000 msec 0.000 msec 0.000 msec
  2 vl27.mix.net.playnet.it (62.48.45.251) 16.000 msec 16.000 msec 12.000 msec
@@ -1612,16 +1612,16 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  4 xe-7-0-0.ams10.ip4.tinet.net (89.149.185.89) 32.000 msec xe-5-2-0.ams10.ip4.tinet.net (89.149.184.205) 32.000 msec xe-7-0-0.ams10.ip4.tinet.net (89.149.185.89) 32.000 msec
  5 wv-fiber-gw.ip4.tinet.net (77.67.66.210) 44.000 msec 36.000 msec 36.000 msec
  6 ny60-vl2-ams-vl2.wvfiber.net (66.216.48.217) 120.000 msec 120.000 msec 120.000 msec
- 7 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) 128.000 msec * * 
- 8 atl-ten5-4-ash-ten6-3.wvfiber.net (66.216.1.142) 136.000 msec * * 
+ 7 ash-ten7-6-ny111-ten2-3.wvfiber.net (66.216.1.50) 128.000 msec [NR] * 
+ 8 atl-ten5-4-ash-ten6-3.wvfiber.net (66.216.1.142) 136.000 msec [NR] * 
  9 nsh-ten4-1-atl-ten3-2.wvfiber.net (64.127.130.58) 152.000 msec 152.000 msec 156.000 msec
  10 dal-ten2-1-nsh-ten1-4.wvfiber.net (64.127.130.50) 180.000 msec 168.000 msec 184.000 msec
  11 phx-ten1-1-dal-ten2-4.wvfiber.net (64.127.128.238) 192.000 msec 192.000 msec 192.000 msec
- 12 la-ten3-3-phx-ten2-1.wvfiber.net (64.127.128.145) 192.000 msec * * 
+ 12 la-ten3-3-phx-ten2-1.wvfiber.net (64.127.128.145) 192.000 msec [NR] * 
  13 veg-ten1-3-la-ten1-3.wvfiber.net (66.186.192.22) 196.000 msec 200.000 msec 200.000 msec
  14 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 200.000 msec 204.000 msec 200.000 msec
  15 te4-1.las-esw09.switchnap.com (66.209.64.194) 200.000 msec 200.000 msec 200.000 msec
- 16 priority.demarc.switchnap.com (66.209.87.106) 200.000 msec * 212.000 msec
+ 16 priority.demarc.switchnap.com (66.209.87.106) 200.000 msec [NR] 212.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 g5-7.core2.net.playnet.it (62.48.45.130) 0.000 msec 0.000 msec 0.000 msec
  2 vl25.core1.net.playnet.it (62.48.45.252) 0.000 msec 4.000 msec 0.000 msec
@@ -1642,7 +1642,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  17 gar5.la2ca.ip.att.net (12.122.129.25) 180.000 msec 176.000 msec 180.000 msec
  18 12.122.255.74 176.000 msec 176.000 msec 264.000 msec
  19 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 180.000 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 180.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 180.000 msec
- 20 route-server.cerf.net (12.129.193.235) 180.000 msec * 176.000 msec
+ 20 route-server.cerf.net (12.129.193.235) 180.000 msec [NR] 176.000 msec
 FROM tpr-route-server.saix.net.
 FROM to 203.202.125.6
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 4.000 msec
@@ -1654,8 +1654,8 @@ FROM to 203.202.125.6
  7 ge-1-1-0-0.sngtp-dr1.ix.singtel.com (203.208.149.166) 344.000 msec 352.000 msec 348.000 msec
  8 GigabitEthernet2-1-1.sngtp-ar4.ix.singtel.com (203.208.183.122) 348.000 msec 348.000 msec 348.000 msec
  9 203.208.148.86 372.000 msec 203.208.148.206 376.000 msec 203.208.148.86 372.000 msec
- 10 * * * 
- 11 203.202.125.6 400.000 msec 400.000 msec * 
+ 10 [FW]
+ 11 203.202.125.6 400.000 msec 400.000 msec [NR] 
 FROM to 216.113.10.50
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 196.43.18.134 256.000 msec 252.000 msec 256.000 msec
@@ -1664,20 +1664,20 @@ FROM to 216.113.10.50
  5 216.113.123.142 324.000 msec 328.000 msec 328.000 msec
  6 216.113.123.105 320.000 msec 320.000 msec 320.000 msec
  7 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 328.000 msec 324.000 msec 328.000 msec
- 8 * * * 
+ 8 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 196.43.18.134 256.000 msec 256.000 msec 252.000 msec
  3 pos2-0.cr02.ash01.pccwbtn.net (63.218.94.17) 256.000 msec 256.000 msec 328.000 msec
  4 CHCGILDTGR00.bb.telus.com (154.11.3.213) 272.000 msec 272.000 msec 276.000 msec
  5 CLGRAB21GR01.bb.telus.com (154.11.10.217) 324.000 msec 400.000 msec 400.000 msec
- 6 route-views.ab.bb.telus.com (154.11.98.18) 400.000 msec * 400.000 msec
+ 6 route-views.ab.bb.telus.com (154.11.98.18) 400.000 msec [NR] 400.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 ash-ip-dir-equinix-pos-4-0.telkom-ipnet.co.za (196.43.18.30) 260.000 msec 256.000 msec 256.000 msec
  3 pos2-0.cr02.ash01.pccwbtn.net (63.218.94.17) 256.000 msec 256.000 msec 256.000 msec
  4 ge7-2.gwy1-nyc.allstream.net (206.223.115.3) 260.000 msec 256.000 msec 256.000 msec
- 5 * * * 
+ 5 [FW]
 FROM to 216.18.63.214
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 196.43.18.134 256.000 msec 252.000 msec 256.000 msec
@@ -1687,7 +1687,7 @@ FROM to 216.18.63.214
  6 POS7-0.WANB-MTRLPQ.IP.GROUPTELECOM.NET (66.59.191.177) 272.000 msec 268.000 msec 272.000 msec
  7 POS4-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.230) 284.000 msec 284.000 msec 280.000 msec
  8 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 280.000 msec 284.000 msec 280.000 msec
- 9 * * * 
+ 9 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 8.000 msec 200.000 msec 0.000 msec
  2 196.43.9.54 204.000 msec 200.000 msec 200.000 msec
@@ -1716,7 +1716,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  4 so-5-0-0.mil19.ip4.tinet.net (213.200.82.30) 208.000 msec 216.000 msec 208.000 msec
  5 brain-tech-gw.ip4.tinet.net (213.200.68.154) 208.000 msec 208.000 msec 208.000 msec
  6 vl27.core2.net.playnet.it (62.48.45.250) 224.000 msec 224.000 msec 220.000 msec
- 7 f0-1.route-server.playnet.it (62.48.45.129) 224.000 msec * 220.000 msec
+ 7 f0-1.route-server.playnet.it (62.48.45.129) 224.000 msec [NR] 220.000 msec
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 4.000 msec
  2 ash-ip-dir-equinix-pos-4-0.telkom-ipnet.co.za (196.43.18.30) 256.000 msec 260.000 msec 256.000 msec
@@ -1744,14 +1744,14 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  8 i79zhh-005-gig11-0.bb.ip-plus.net (138.187.130.169) 404.000 msec 272.000 msec 208.000 msec
  9 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 204.000 msec 208.000 msec 208.000 msec
  10 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 208.000 msec 208.000 msec 208.000 msec
- 11 routeserver.ip-plus.net (164.128.251.50) 208.000 msec * 208.000 msec
+ 11 routeserver.ip-plus.net (164.128.251.50) 208.000 msec [NR] 208.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 4.000 msec
  2 lon-ip-dir-telecity-pos-1-1-0.telkom-ipnet.co.za (196.43.9.50) 184.000 msec 184.000 msec 188.000 msec
  3 ge-6-2-903.car5.London1.Level3.net (212.113.10.69) 184.000 msec 184.000 msec 188.000 msec
  4 HOST-EUROPE.car5.London1.Level3.net (217.163.45.82) 184.000 msec 184.000 msec 188.000 msec
  5 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 184.000 msec 184.000 msec 188.000 msec
- 6 * * * 
+ 6 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 ash-ip-dir-equinix-pos-4-0.telkom-ipnet.co.za (196.43.18.30) 256.000 msec 260.000 msec 256.000 msec
@@ -1764,9 +1764,9 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 ash-ip-dir-equinix-pos-4-0.telkom-ipnet.co.za (196.43.18.30) 260.000 msec 256.000 msec 260.000 msec
  3 so-3-0-1.ar1.DCA3.gblx.net (208.49.224.161) 256.000 msec 256.000 msec 256.000 msec
- 4 * TWTCIP-BACKBONE.TenGigabitEthernet1-3.ar2.DAL2.gblx.net (208.48.33.106) 296.000 msec 296.000 msec
+ 4 [NR] TWTCIP-BACKBONE.TenGigabitEthernet1-3.ar2.DAL2.gblx.net (208.48.33.106) 296.000 msec 296.000 msec
  5 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 312.000 msec 312.000 msec 312.000 msec
- 6 route-server.twtelecom.net (66.162.47.58) 308.000 msec * 304.000 msec
+ 6 route-server.twtelecom.net (66.162.47.58) 308.000 msec [NR] 304.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 196.43.18.134 256.000 msec 256.000 msec 252.000 msec
@@ -1776,7 +1776,7 @@ FROM to route-server.host.net (64.135.5.58)
  6 host-wvfiber-miami.wvfiber.net (66.216.1.126) 400.000 msec 400.000 msec 400.000 msec
  7 te2-2.cr01.swd.mia.host.net (64.135.0.42) 400.000 msec 400.000 msec 400.000 msec
  8 te3-1.cr01.903.bct.host.net (64.135.0.5) 400.000 msec 400.000 msec 400.000 msec
- 9 route-server.host.net (64.135.5.58) 400.000 msec * 284.000 msec
+ 9 route-server.host.net (64.135.5.58) 400.000 msec [NR] 284.000 msec
 FROM to priority.demarc.switchnap.com (66.209.87.106)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 lon-ip-dir-telecity-pos-1-1-0.telkom-ipnet.co.za (196.43.9.50) 184.000 msec 184.000 msec 188.000 msec
@@ -1796,7 +1796,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  16 ae-11-11.car1.LasVegas1.Level3.net (4.69.133.113) 384.000 msec 348.000 msec 368.000 msec
  17 SWITCH-COMM.car1.LasVegas1.Level3.net (4.71.176.6) 364.000 msec 340.000 msec 336.000 msec
  18 te4-1.las-esw09.switchnap.com (66.209.64.194) 324.000 msec 320.000 msec 320.000 msec
- 19 priority.demarc.switchnap.com (66.209.87.106) 412.000 msec * 596.000 msec
+ 19 priority.demarc.switchnap.com (66.209.87.106) 412.000 msec [NR] 596.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 0.000 msec
  2 196.43.9.54 184.000 msec 188.000 msec 188.000 msec
@@ -1817,7 +1817,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  17 gar5.la2ca.ip.att.net (12.122.129.25) 328.000 msec 328.000 msec 328.000 msec
  18 12.122.255.74 324.000 msec 328.000 msec 328.000 msec
  19 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 324.000 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 328.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 400.000 msec
- 20 route-server.cerf.net (12.129.193.235) 400.000 msec * 400.000 msec
+ 20 route-server.cerf.net (12.129.193.235) 400.000 msec [NR] 400.000 msec
 FROM route-server.ord1.nlayer.net.
 FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.440 msec 0.363 msec 0.354 msec
@@ -1827,35 +1827,35 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  5 te8-1.ar1.pao1.us.nlayer.net (69.22.143.113) 51.028 msec 50.918 msec 50.953 msec
  6 203.208.169.29 (203.208.169.29) 50.922 msec 203.208.186.53 (203.208.186.53) 50.634 msec 203.208.169.29 (203.208.169.29) 50.646 msec
  7 203.208.148.90 (203.208.148.90) 210.591 msec 210.577 msec 210.602 msec
- 8 * * *
- 9 203.202.125.6 (203.202.125.6) 211.354 msec * 211.319 msec
+ 8 FW
+ 9 203.202.125.6 (203.202.125.6) 211.354 msec [NR] 211.319 msec
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.385 msec 0.362 msec 0.354 msec
  2 as5769.ge2-24.ar1.ord1.us.nlayer.net (69.31.111.42) 1.103 msec 0.642 msec 0.480 msec
  3 216.113.123.142 (216.113.123.142) 26.537 msec 26.273 msec 26.242 msec
  4 216.113.122.29 (216.113.122.29) 22.684 msec 22.783 msec 22.587 msec
  5 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 27.090 msec 26.801 msec 26.724 msec
- 6 * * *
+ 6 FW
 FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.406 msec 0.358 msec 0.352 msec
  2 154.11.2.205 (154.11.2.205) 1.353 msec 10.037 msec as852.ge2-14.ar1.ord1.us.nlayer.net (69.31.111.50) 0.232 msec
  3 CLGRAB21GR01.bb.telus.com (154.11.10.217) 30.043 msec 30.555 msec 29.965 msec
- 4 route-views.ab.bb.telus.com (154.11.98.18) 29.857 msec * 29.924 msec
+ 4 route-views.ab.bb.telus.com (154.11.98.18) 29.857 msec [NR] 29.924 msec
 FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.435 msec 0.364 msec 0.354 msec
  2 ge6-0.gwy1-chi.allstream.net (206.223.119.3) 1.356 msec 0.889 msec 0.844 msec
- 3 * * *
+ 3 FW
  4 199.212.161.50 (199.212.161.50) 18.184 msec 17.943 msec 17.697 msec
  5 199.212.161.66 (199.212.161.66) 18.522 msec 17.810 msec 17.849 msec
  6 pos8-1.core2-mtl.bb.allstream.net (199.212.160.114) 17.962 msec 17.555 msec 17.596 msec
- 7 * * *
+ 7 FW
 FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.495 msec 0.369 msec 0.354 msec
  2 GE3-0-PEERA-CHCGIL.IP.GROUPTELECOM.NET (206.223.119.113) 0.853 msec 1.055 msec 0.732 msec
  3 POS14-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.191.85) 11.357 msec 11.556 msec 11.385 msec
  4 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.34) 11.442 msec 11.409 msec 11.384 msec
- 5 * * *
- 6 * * *
+ 5 FW
+ 6 FW
 FROM to 213.192.191.82 (213.192.191.82), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.469 msec 0.369 msec 0.351 msec
  2 ae1-40g.cr1.ord1.us.nlayer.net (69.31.111.133) 0.229 msec 0.200 msec 0.231 msec
@@ -1918,7 +1918,7 @@ FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
  5 i79zhh-005-pos2-0.bb.ip-plus.net (138.187.159.21) 279.595 msec 112.859 msec 201.362 msec
  6 i64beb-000-gig0-3.bb.ip-plus.net (138.187.130.161) 113.405 msec 113.359 msec 113.269 msec
  7 i64beb-iv6-pos4-0.bb.ip-plus.net (138.187.157.34) 113.426 msec 113.459 msec 113.397 msec
- 8 routeserver.ip-plus.net (164.128.251.50) 114.164 msec * 114.043 msec
+ 8 routeserver.ip-plus.net (164.128.251.50) 114.164 msec [NR] 114.043 msec
 FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.413 msec 0.364 msec 0.353 msec
  2 ae1-40g.cr2.ord1.us.nlayer.net (69.31.111.137) 0.229 msec 0.197 msec 0.232 msec
@@ -1926,12 +1926,12 @@ FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
  4 xe-3-2-0.cr1.lhr1.uk.nlayer.net (69.22.142.63) 140.407 msec 89.132 msec 89.068 msec
  5 te1-3.cr05.tn5.bb.gxn.net (195.66.224.29) 89.395 msec 89.370 msec 89.524 msec
  6 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 89.794 msec 89.688 msec 89.597 msec
- 7 * * *
+ 7 FW
 FROM to 66.162.47.58 (66.162.47.58), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.433 msec 0.367 msec 0.356 msec
  2 eqix.chcg.twtelecom.net (206.223.119.36) 0.854 msec 0.792 msec 1.107 msec
  3 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 31.590 msec 31.320 msec 31.434 msec
- 4 route-server.twtelecom.net (66.162.47.58) 123.413 msec * 31.634 msec
+ 4 route-server.twtelecom.net (66.162.47.58) 123.413 msec [NR] 31.634 msec
 FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.503 msec 0.372 msec 0.348 msec
  2 eqx.10ge.ord.wvfiber.net (206.223.119.18) 0.608 msec 1.058 msec 0.732 msec
@@ -1939,7 +1939,7 @@ FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
  4 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) 17.959 msec 17.690 msec 17.845 msec
  5 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) 41.080 msec 46.371 msec 60.073 msec
  6 host-wvfiber.wvfiber.net (66.216.1.94) 41.692 msec 41.125 msec 41.466 msec
- 7 route-server.host.net (64.135.5.58) 41.467 msec * 43.021 msec
+ 7 route-server.host.net (64.135.5.58) 41.467 msec [NR] 43.021 msec
 FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.450 msec 0.737 msec 0.577 msec
  2 eqx.10ge.ord.wvfiber.net (206.223.119.18) 0.718 msec 1.064 msec 0.732 msec
@@ -1947,7 +1947,7 @@ FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
  4 lv-ten1-2-sjc-ten1-3.wvfiber.net (66.186.192.197) 72.299 msec 65.283 msec 65.565 msec
  5 cust-lv-ten1-4.wvfiber.net (66.186.192.46) 65.317 msec 65.424 msec 65.266 msec
  6 te4-1.las-esw09.switchnap.com (66.209.64.194) 65.440 msec 65.875 msec 65.427 msec
- 7 priority.demarc.switchnap.com (66.209.87.106) 169.122 msec * 66.243 msec
+ 7 priority.demarc.switchnap.com (66.209.87.106) 169.122 msec [NR] 66.243 msec
 FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.826 msec 0.863 msec 0.351 msec
  2 ae1-40g.cr1.ord1.us.nlayer.net (69.31.111.133) 9.626 msec 0.186 msec 0.231 msec
@@ -1962,7 +1962,7 @@ FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
 11 gar5.la2ca.ip.att.net (12.122.129.25) 52.774 msec 52.569 msec 52.583 msec
 12 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 53.304 msec 12.122.255.74 (12.122.255.74) 53.143 msec 53.294 msec
 13 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 153.385 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 53.286 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 90.014 msec
-14 route-server.cerf.net (12.129.193.235) 53.529 msec * 53.670 msec
+14 route-server.cerf.net (12.129.193.235) 53.529 msec [NR] 53.670 msec
 FROM priority.demarc.switchnap.com.
 FROM to 203.202.125.6
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
@@ -1971,8 +1971,8 @@ FROM to 203.202.125.6
  4 la-ten1-3-veg-ten1-3.wvfiber.net (66.186.192.21) 8.000 msec 4.000 msec 8.000 msec
  5 singtel.com.any2ix.coresite.com (206.223.143.63) 4.000 msec 8.000 msec 4.000 msec
  6 203.208.148.18 152.000 msec 152.000 msec 156.000 msec
- 7 * * * 
- 8 203.202.125.6 152.000 msec * 152.000 msec
+ 7 [FW]
+ 8 203.202.125.6 152.000 msec [NR] 152.000 msec
 FROM to 216.113.10.50
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 0.000 msec
@@ -1987,7 +1987,7 @@ FROM to 216.113.10.50
  11 paix-ny.ia-unyc-bb05.vtl.net (198.32.118.79) 80.000 msec 80.000 msec 84.000 msec
  12 216.113.122.105 88.000 msec 88.000 msec 92.000 msec
  13 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 96.000 msec 88.000 msec 92.000 msec
- 14 * * * 
+ 14 [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 4.000 msec 0.000 msec 0.000 msec
@@ -1996,7 +1996,7 @@ FROM to route-views.ab.bb.telus.com (154.11.98.18)
  5 chi-ten3-1-sjc-ten6-3.wvfiber.net (64.127.129.61) 68.000 msec 72.000 msec 68.000 msec
  6 telus-pni.wvfiber.net (64.127.129.114) 64.000 msec 60.000 msec 60.000 msec
  7 CLGRAB21GR01.bb.telus.com (154.11.10.217) 92.000 msec 88.000 msec 92.000 msec
- 8 route-views.ab.bb.telus.com (154.11.98.18) 92.000 msec * 88.000 msec
+ 8 route-views.ab.bb.telus.com (154.11.98.18) 92.000 msec [NR] 88.000 msec
 FROM to route-server.east.bb.allstream.net (216.191.14.250)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 200.000 msec 200.000 msec 200.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 200.000 msec 312.000 msec 96.000 msec
@@ -2004,7 +2004,7 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  4 sjc-ten1-3-lv-ten1-2.wvfiber.net (66.186.192.198) 92.000 msec 100.000 msec 116.000 msec
  5 sea-ten2-1-sjc-ten1-1.wvfiber.net (66.186.192.202) 116.000 msec 100.000 msec 112.000 msec
  6 LEGACY-SIX-ADDR.PLEASE-RENUMBER.fe5-0-0.gwy1-sea.bb.attcanada.ca (198.32.180.61) 140.000 msec 112.000 msec 104.000 msec
- 7 * * * 
+ 7 [FW]
  8 199.212.161.14 92.000 msec 96.000 msec 92.000 msec
  9 199.212.161.30 96.000 msec 96.000 msec 96.000 msec
  10 199.212.161.33 96.000 msec 96.000 msec 96.000 msec
@@ -2012,7 +2012,7 @@ FROM to route-server.east.bb.allstream.net (216.191.14.250)
  12 199.212.161.54 96.000 msec 92.000 msec 96.000 msec
  13 199.212.161.66 96.000 msec 96.000 msec 96.000 msec
  14 pos8-1.core2-mtl.bb.allstream.net (199.212.160.114) 92.000 msec 92.000 msec 96.000 msec
- 15 * * * 
+ 15 [FW]
 FROM to 216.18.63.214
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 0.000 msec
@@ -2023,7 +2023,7 @@ FROM to 216.18.63.214
  7 POS5-0.WANB-VANCBC.IP.GROUPTELECOM.NET (66.59.190.97) 40.000 msec 40.000 msec 40.000 msec
  8 POS3-0.WANB-TOROONXN.IP.GROUPTELECOM.NET (66.59.190.61) 88.000 msec 92.000 msec 88.000 msec
  9 GE9-2.WANB-TOROON.IP.GROUPTELECOM.NET (66.59.191.38) 88.000 msec 88.000 msec 88.000 msec
- 10 * * * 
+ 10 [FW]
 FROM to route-server.as6667.net (213.192.191.82)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 4.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 0.000 msec
@@ -2066,7 +2066,7 @@ FROM to f0-1.route-server.playnet.it (62.48.45.129)
  14 sl-bb20-mil-5-0-0.sprintlink.net (213.206.129.123) 176.000 msec 180.000 msec 172.000 msec
  15 sl-gw10-mil-14-0-0.sprintlink.net (217.147.128.37) 176.000 msec 172.000 msec 180.000 msec
  16 vl25.core2.net.playnet.it (62.48.45.253) 196.000 msec sl-brain5-157310-0.sprintlink.net (217.147.129.66) 196.000 msec 196.000 msec
- 17 vl25.core2.net.playnet.it (62.48.45.253) 200.000 msec f0-1.route-server.playnet.it (62.48.45.129) 408.000 msec * 
+ 17 vl25.core2.net.playnet.it (62.48.45.253) 200.000 msec f0-1.route-server.playnet.it (62.48.45.129) 408.000 msec [NR] 
 FROM to rs.ipv4ilink.net (86.55.0.50)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 4.000 msec 0.000 msec 0.000 msec
@@ -2079,7 +2079,7 @@ FROM to rs.ipv4ilink.net (86.55.0.50)
  9 ash-ten6-3-atl-ten5-4.wvfiber.net (66.216.1.141) 76.000 msec 76.000 msec 76.000 msec
  10 nyc-ten1-1-ash-ten3-3.wvfiber.net (66.216.1.162) 80.000 msec 80.000 msec 80.000 msec
  11 lon-vl14-ny60-vl14.wvfiber.net (66.216.48.214) 168.000 msec 164.000 msec 172.000 msec
- 12 * wFrnk-ten82-decix.de.ipv4ilink.net (80.81.192.107) 172.000 msec 172.000 msec
+ 12 [NR] wFrnk-ten82-decix.de.ipv4ilink.net (80.81.192.107) 172.000 msec 172.000 msec
  13 wNx-ten84-v17-wFrnk.b.ipv4ilink.net (193.19.195.33) 204.000 msec 204.000 msec 200.000 msec
  14 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) 200.000 msec 200.000 msec 200.000 msec
  15 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) 208.000 msec 200.000 msec 204.000 msec
@@ -2105,7 +2105,7 @@ FROM to tpr-route-server.saix.net (196.25.9.46)
  16 ae-25-52.car5.London1.Level3.net (4.69.139.102) 288.000 msec 212.000 msec 236.000 msec
  17 cetcrt001-gig2-1.scee.net (212.113.10.70) 164.000 msec 176.000 msec 164.000 msec
  18 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 364.000 msec 364.000 msec 348.000 msec
- 19 tpr-route-server.saix.net (196.25.9.46) 364.000 msec * 344.000 msec
+ 19 tpr-route-server.saix.net (196.25.9.46) 364.000 msec [NR] 344.000 msec
 FROM to routeserver.ip-plus.net (164.128.251.50)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 4.000 msec 0.000 msec 0.000 msec
@@ -2120,7 +2120,7 @@ FROM to routeserver.ip-plus.net (164.128.251.50)
  11 i68geb-005-pos6-0-0.bb.ip-plus.net (138.187.159.45) 168.000 msec 164.000 msec 164.000 msec
  12 i64beb-010-gig0-3.bb.ip-plus.net (138.187.130.181) 168.000 msec 168.000 msec 168.000 msec
  13 i64beb-iv6-fas1-0.bb.ip-plus.net (138.187.157.6) 172.000 msec 172.000 msec 168.000 msec
- 14 routeserver.ip-plus.net (164.128.251.50) 172.000 msec * 168.000 msec
+ 14 routeserver.ip-plus.net (164.128.251.50) 172.000 msec [NR] 168.000 msec
 FROM to lo1.route-server.as5413.net (212.241.174.1)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 4.000 msec
@@ -2135,7 +2135,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  11 lon-vl14-ny60-vl14.wvfiber.net (66.216.48.214) 168.000 msec 176.000 msec 160.000 msec
  12 te2-3.cr05.hx2.bb.gxn.net (193.203.5.14) 160.000 msec 156.000 msec 156.000 msec
  13 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 156.000 msec 156.000 msec 156.000 msec
- 14 * * * 
+ 14 [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 200.000 msec 200.000 msec 100.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 104.000 msec 88.000 msec 88.000 msec
@@ -2152,7 +2152,7 @@ FROM to route-server.twtelecom.net (66.162.47.58)
  3 te2-1.las-core4-1.switchnap.com (66.209.64.153) 0.000 msec 0.000 msec 0.000 msec
  4 206-169-83-1.static.twtelecom.net (206.169.83.1) 4.000 msec 4.000 msec 0.000 msec
  5 hagg-03-ge-1-0-0.dnvr.twtelecom.net (66.192.245.116) 36.000 msec 40.000 msec 36.000 msec
- 6 route-server.twtelecom.net (66.162.47.58) 40.000 msec * 36.000 msec
+ 6 route-server.twtelecom.net (66.162.47.58) 40.000 msec [NR] 36.000 msec
 FROM to route-server.host.net (64.135.5.58)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 0.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 0.000 msec
@@ -2164,7 +2164,7 @@ FROM to route-server.host.net (64.135.5.58)
  8 atl-ten3-2-nsh-ten4-1.wvfiber.net (64.127.130.57) 60.000 msec 64.000 msec 60.000 msec
  9 boc-ten1-4-atl-ten2-6.wvfiber.net (66.216.1.254) 76.000 msec 76.000 msec 76.000 msec
  10 host-wvfiber.wvfiber.net (66.216.1.94) 76.000 msec 76.000 msec 76.000 msec
- 11 route-server.host.net (64.135.5.58) 76.000 msec * 200.000 msec
+ 11 route-server.host.net (64.135.5.58) 76.000 msec [NR] 200.000 msec
 FROM to route-server.cerf.net (12.129.193.235)
  1 p9-1.esw03.las.switchnap.com (66.209.87.105) 0.000 msec 0.000 msec 4.000 msec
  2 te2-8.las-core2-1.switchnap.com (66.209.64.193) 0.000 msec 0.000 msec 0.000 msec
@@ -2177,4 +2177,4 @@ FROM to route-server.cerf.net (12.129.193.235)
  9 gar5.la2ca.ip.att.net (12.122.128.25) 8.000 msec 4.000 msec 8.000 msec
  10 12.122.255.74 8.000 msec 8.000 msec 8.000 msec
  11 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 4.000 msec 8.000 msec 8.000 msec
- 12 route-server.cerf.net (12.129.193.235) 8.000 msec * 4.000 msec
+ 12 route-server.cerf.net (12.129.193.235) 8.000 msec [NR] 4.000 msec

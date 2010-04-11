@@ -13,8 +13,7 @@ DROP TABLE IF EXISTS `RouteDB`.`IP_Addresses` ;
 CREATE  TABLE IF NOT EXISTS `RouteDB`.`IP_Addresses` (
   `idIP_Address` VARCHAR(16) NOT NULL ,
   `Domain` VARCHAR(75) NULL ,
-  PRIMARY KEY (`idIP_Address`) ,
-  UNIQUE INDEX `idIP_Address_UNIQUE` (`idIP_Address` ASC) )
+  PRIMARY KEY (`idIP_Address`) )
 ENGINE = InnoDB;
 
 
@@ -29,10 +28,16 @@ CREATE  TABLE IF NOT EXISTS `RouteDB`.`Routes` (
   `RouteFrom` VARCHAR(16) NOT NULL ,
   `RouteTo` VARCHAR(16) NOT NULL ,
   PRIMARY KEY (`idRoute`) ,
-  INDEX `IP_Address` (`RouteFrom` ASC, `RouteTo` ASC) ,
-  CONSTRAINT `IP_Address`
-    FOREIGN KEY (`RouteFrom` , `RouteTo` )
-    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` , `idIP_Address` )
+  INDEX `RouteFrom` (`RouteFrom` ASC) ,
+  INDEX `RouteTo` (`RouteTo` ASC) ,
+  CONSTRAINT `RouteFrom`
+    FOREIGN KEY (`RouteFrom` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `RouteTo`
+    FOREIGN KEY (`RouteTo` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -56,15 +61,27 @@ CREATE  TABLE IF NOT EXISTS `RouteDB`.`Hops` (
   PRIMARY KEY (`idHop`) ,
   UNIQUE INDEX `idHop` (`idHop` ASC) ,
   INDEX `idRoute` (`RouteID` ASC) ,
-  INDEX `idIP_Address` (`FirstIP` ASC, `SecondIP` ASC, `ThirdIP` ASC) ,
+  INDEX `FirstIP` (`FirstIP` ASC) ,
+  INDEX `SecondIP` (`SecondIP` ASC) ,
+  INDEX `ThirdIP` (`ThirdIP` ASC) ,
   CONSTRAINT `idRoute`
     FOREIGN KEY (`RouteID` )
     REFERENCES `RouteDB`.`Routes` (`idRoute` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `idIP_Address`
-    FOREIGN KEY (`FirstIP` , `SecondIP` , `ThirdIP` )
-    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` , `idIP_Address` , `idIP_Address` )
+  CONSTRAINT `FirstIP`
+    FOREIGN KEY (`FirstIP` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `SecondIP`
+    FOREIGN KEY (`SecondIP` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `ThirdIP`
+    FOREIGN KEY (`ThirdIP` )
+    REFERENCES `RouteDB`.`IP_Addresses` (`idIP_Address` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

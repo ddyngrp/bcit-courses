@@ -340,7 +340,7 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  5 singtel-gw.ip4.tinet.net (77.67.79.6) 184.683 msec 184.764 msec 187.806 msec
  6 203.208.148.90 (203.208.148.90) 346.725 msec 343.697 msec 343.683 msec
  7 FW
- 8 203.202.125.6 (203.202.125.6) 344.879 msec 365.295 msec *
+ 8 203.202.125.6 (203.202.125.6) 344.879 msec 365.295 msec [NR]
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.900 msec 0.710 msec 0.656 msec
  2 ge2-1-0-0.bbr1.sto3.se.eunetip.net (213.192.191.190) 8.244 msec 8.187 msec 8.190 msec
@@ -483,7 +483,7 @@ FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
 20 gar5.la2ca.ip.att.net (12.122.129.25) 219.589 msec 193.760 msec 193.896 msec
 21 12.122.255.74 (12.122.255.74) 312.624 msec 271.734 msec 200.241 msec
 22 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 195.903 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 195.334 msec 194.401 msec
-23 route-server.cerf.net (12.129.193.235) 213.316 msec 211.862 msec *
+23 route-server.cerf.net (12.129.193.235) 213.316 msec 211.862 msec [NR]
 FROM f0-1.route-server.playnet.it.
 FROM to 203.202.125.6
  1 g5-7.core2.net.playnet.it (62.48.45.130) 208.000 msec 220.000 msec 216.000 msec
@@ -900,7 +900,7 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  6 203.208.186.53 (203.208.186.53) 52.948 msec as7473.ge4-4.ar1.pao1.us.nlayer.net (69.22.153.6) 50.774 msec 50.652 msec
  7 203.208.148.90 (203.208.148.90) 210.690 msec 210.652 msec 210.608 msec
  8 FW
- 9 203.202.125.6 (203.202.125.6) 211.284 msec 211.307 msec *
+ 9 203.202.125.6 (203.202.125.6) 211.284 msec 211.307 msec [NR]
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.450 msec 0.368 msec 0.354 msec
  2 as5769.ge2-24.ar1.ord1.us.nlayer.net (69.31.111.42) 1.228 msec 0.564 msec as5769.ge2-23.ar1.ord1.us.nlayer.net (69.31.111.38) 0.486 msec
@@ -969,7 +969,7 @@ FROM to 196.25.9.46 (196.25.9.46), 30 hops max, 40 byte packets
  3 TenGE10-3.br03.chc01.pccwbtn.net (206.223.119.48) 11.354 msec as3491.ae3-310.cr2.ord1.us.nlayer.net (69.31.111.114) 0.572 msec 0.448 msec
  4 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) 17.846 msec 17.808 msec 17.723 msec
  5 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 272.468 msec 272.890 msec 272.566 msec
- 6 tpr-route-server.saix.net (196.25.9.46) 451.832 msec 341.618 msec *
+ 6 tpr-route-server.saix.net (196.25.9.46) 451.832 msec 341.618 msec [NR]
 FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 9.745 msec 14.028 msec 0.913 msec
  2 ae1-40g.cr2.ord1.us.nlayer.net (69.31.111.137) 0.221 msec 0.194 msec 0.235 msec
@@ -1697,7 +1697,7 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  6 ldn-b2-link.telia.net (80.91.250.230) 128.000 msec 124.000 msec 124.000 msec
  7 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 124.000 msec 124.000 msec 124.000 msec
  8 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 124.000 msec pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 140.000 msec gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 124.000 msec
- 9 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 140.000 msec [NR] * 
+ 9 gi2-48-5.ar01.hx2.bb.gxn.net (62.72.142.14) 140.000 msec [NR] [NR] 
  10 [FW] [FW] [FW]
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
@@ -1818,7 +1818,7 @@ FROM to rs.ipv4ilink.net (86.55.0.50)
  4 ash-ten7-5-mia-ten3-2.wvfiber.net (66.216.1.122) 28.000 msec 32.000 msec 28.000 msec
  5 nyc-ten1-1-ash-ten3-3.wvfiber.net (66.216.1.162) 36.000 msec 36.000 msec 32.000 msec
  6 lon-vl14-ny60-vl14.wvfiber.net (66.216.48.214) 128.000 msec 120.000 msec 124.000 msec
- 7 wFrnk-ten82-decix.de.ipv4ilink.net (80.81.192.107) 280.000 msec [NR] * 
+ 7 wFrnk-ten82-decix.de.ipv4ilink.net (80.81.192.107) 280.000 msec [NR] [NR] 
  8 wNx-ten84-v17-wFrnk.b.ipv4ilink.net (193.19.195.33) 164.000 msec 332.000 msec 216.000 msec
  9 iNx-ten149-v700-wNx.b.ipv4ilink.net (193.19.194.134) 160.000 msec 156.000 msec 156.000 msec
  10 bbNx-ten16-v20-iNx.b.ipv4ilink.net (193.19.194.210) 156.000 msec 156.000 msec 164.000 msec

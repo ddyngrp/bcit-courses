@@ -479,7 +479,7 @@ FROM to priority.demarc.switchnap.com (66.209.87.106)
  2 hagg-02-xe-1-0-0-0.lsvk.twtelecom.net (66.192.250.254) 36.000 msec 36.000 msec 36.000 msec
  3 te4-1.las-esw10.switchnap.com (66.209.64.154) 40.000 msec 36.000 msec 40.000 msec
  4 te4-2.esw-10.las.switchnap.com (66.209.64.181) 36.000 msec 40.000 msec 36.000 msec
- 5 priority.demarc.switchnap.com (66.209.87.106) 40.000 msec [NR] * 
+ 5 priority.demarc.switchnap.com (66.209.87.106) 40.000 msec [NR] [NR] 
 FROM to 235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
  1 ge-0-3-0-514.dnvr.twtelecom.net (66.162.47.57) 0.000 msec 0.000 msec 0.000 msec
  2 peer-01-ge-5-0-0.dlfw.twtelecom.net (66.192.240.94) 16.000 msec 24.000 msec 16.000 msec
@@ -1377,7 +1377,7 @@ FROM to 216.113.10.50
  5 if-5-0-0.mcore3.MTT-Montreal.as6453.net (216.6.114.45) 96.000 msec 100.000 msec 96.000 msec
  6 216.113.122.89 116.000 msec 216.113.125.85 116.000 msec 116.000 msec
  7 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 116.000 msec 116.000 msec 116.000 msec
- 8 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 116.000 msec [NR] * 
+ 8 ia-piex-gw06-ge1-1.vtl.net (207.96.210.138) 116.000 msec [NR] [NR] 
  9 [FW] [FW] [FW]
 FROM to route-views.ab.bb.telus.com (154.11.98.18)
  1 xe-9-0-0-3.fra23.ip4.tinet.net (213.200.64.93) 216.000 msec 220.000 msec 228.000 msec
@@ -2113,7 +2113,7 @@ FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
 20 gar5.la2ca.ip.att.net (12.122.129.25) 195.172 msec 194.316 msec 195.118 msec
 21 12.122.255.74 (12.122.255.74) 196.124 msec 196.638 msec 196.655 msec
 22 mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 196.091 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 193.981 msec 196.422 msec
-23 route-server.cerf.net (12.129.193.235) 212.689 msec 212.588 msec *
+23 route-server.cerf.net (12.129.193.235) 212.689 msec 212.588 msec [NR]
 FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.863 msec 0.694 msec 0.651 msec
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net (213.192.191.201) 8.128 msec 8.229 msec 8.199 msec
@@ -2122,7 +2122,7 @@ FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
  5 singtel-gw.ip4.tinet.net (77.67.79.6) 191.236 msec 191.287 msec 194.324 msec
  6 203.208.148.90 (203.208.148.90) 351.423 msec 353.185 msec 350.219 msec
  7 FW
- 8 203.202.125.6 (203.202.125.6) 351.228 msec 354.329 msec *
+ 8 203.202.125.6 (203.202.125.6) 351.228 msec 354.329 msec [NR]
 FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net (213.192.191.81) 0.898 msec 1.192 msec 0.678 msec
  2 ge2-1-0-0.bbr1.sto3.se.eunetip.net (213.192.191.190) 8.226 msec 8.199 msec 8.214 msec
@@ -2472,7 +2472,7 @@ FROM to route-server.cerf.net (12.129.193.235)
  17 gar5.la2ca.ip.att.net (12.122.129.25) 180.000 msec 176.000 msec 180.000 msec
  18 12.122.255.74 180.000 msec 180.000 msec 180.000 msec
  19 mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 180.000 msec mdf001c7613r0004-gig-12-1.lax1.attens.net (12.129.193.246) 176.000 msec mdf001c7613r0003-gig-10-1.lax1.attens.net (12.129.193.242) 176.000 msec
- 20 [NR] * route-server.cerf.net (12.129.193.235) 176.000 msec
+ 20 [NR] [NR] route-server.cerf.net (12.129.193.235) 176.000 msec
 FROM tpr-route-server.saix.net.
 FROM to 203.202.125.6
  1 tpr-ip-esr-1-fe-1-0-3.telkom-ipnet.co.za (196.25.9.45) 0.000 msec 0.000 msec 4.000 msec
@@ -2737,7 +2737,7 @@ FROM to 196.25.9.46 (196.25.9.46), 30 hops max, 40 byte packets
  3 ge9-8.br03.chc01.pccwbtn.net (209.8.108.65) 147.536 msec 6.890 msec TenGE10-3.br03.chc01.pccwbtn.net (206.223.119.48) 1.103 msec
  4 telkomsa.pos2-0.cr02.ash01.pccwbtn.net (63.218.94.18) 17.806 msec 18.058 msec 17.848 msec
  5 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za (196.43.10.86) 275.346 msec 275.399 msec 275.552 msec
- 6 tpr-route-server.saix.net (196.25.9.46) 275.809 msec 276.130 msec *
+ 6 tpr-route-server.saix.net (196.25.9.46) 275.809 msec 276.130 msec [NR]
 FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
  1 ge2-25.ar1.ord1.us.nlayer.net (69.31.111.161) 0.471 msec 0.373 msec 0.353 msec
  2 ae1-40g.cr2.ord1.us.nlayer.net (69.31.111.137) 0.230 msec 0.198 msec 0.231 msec

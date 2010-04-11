@@ -1712,7 +1712,6 @@ FROM to lo1.route-server.as5413.net (212.241.174.1)
  11 pipex-104657-ldn-b2.c.telia.net (213.248.100.94) 192.000 msec 192.000 msec 192.000 msec
  12 gi1-1-6.ar01.hx2.bb.gxn.net (62.72.142.142) 192.000 msec 192.000 msec 192.000 msec
  13 [FW] [FW] [FW]
- 14 [NR] [NR] 
 FROM to route-server.ord1.nlayer.net (69.31.111.255)
  1 12.129.193.236 0.000 msec 4.000 msec 0.000 msec
  2 mdf001c7613r0002-gig-12-2.lax1.attens.net (12.129.193.253) 0.000 msec 0.000 msec 4.000 msec

@@ -2090,7 +2090,7 @@ FROM to route-server.cerf.net(12.129.193.235)
  15 mdf001c7613r0004-gig-12-1.lax1.attens.net(12.129.193.246) 68.000 mdf001c7613r0003-gig-10-1.lax1.attens.net(12.129.193.242) 72.000 mdf001c7613r0004-gig-12-1.lax1.attens.net(12.129.193.246) 72.000
  16 route-server.cerf.net(12.129.193.235) 72.000 [NR] 68.000
 FROM route-server.as6667.net.
-FROM to 12.129.193.235(12.129.193.235), 30 hops max, 40 byte packets
+FROM to 12.129.193.235(12.129.193.235)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.873 0.686 0.679
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 14.701 8.166 8.142
  3 213.242.110.169(213.242.110.169) 21.246 8.241 8.194
@@ -2114,7 +2114,7 @@ FROM to 12.129.193.235(12.129.193.235), 30 hops max, 40 byte packets
 21 12.122.255.74(12.122.255.74) 196.124 196.638 196.655
 22 mdf001c7613r0004-gig-12-1.lax1.attens.net(12.129.193.246) 196.091 mdf001c7613r0003-gig-10-1.lax1.attens.net(12.129.193.242) 193.981 196.422
 23 route-server.cerf.net(12.129.193.235) 212.689 212.588 [NR]
-FROM to 203.202.125.6(203.202.125.6), 30 hops max, 40 byte packets
+FROM to 203.202.125.6(203.202.125.6)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.863 0.694 0.651
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 8.128 8.229 8.199
  3 xe-0-1-0-43.stk30.ip4.tinet.net(213.200.72.69) 8.351 8.570 8.377
@@ -2123,7 +2123,7 @@ FROM to 203.202.125.6(203.202.125.6), 30 hops max, 40 byte packets
  6 203.208.148.90(203.208.148.90) 351.423 353.185 350.219
  7 [FW] [FW] [FW]
  8 203.202.125.6(203.202.125.6) 351.228 354.329 [NR]
-FROM to 216.113.10.50(216.113.10.50), 30 hops max, 40 byte packets
+FROM to 216.113.10.50(216.113.10.50)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.898 1.192 0.678
  2 ge2-1-0-0.bbr1.sto3.se.eunetip.net(213.192.191.190) 8.226 8.199 8.214
  3 xe-0-1-0-xcr1.skt.cw.net(166.63.221.193) 12.958 8.304 8.260
@@ -2134,7 +2134,7 @@ FROM to 216.113.10.50(216.113.10.50), 30 hops max, 40 byte packets
  8 216.113.122.105(216.113.122.105) 143.859 143.783 148.583
  9 ia-piex-gw06-vl10.vtl.net(207.253.253.138) 134.733 152.922 143.836
 10 [FW] [FW] [FW]
-FROM to 154.11.98.18(154.11.98.18), 30 hops max, 40 byte packets
+FROM to 154.11.98.18(154.11.98.18)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 8.654 0.708 0.648
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 8.251 8.239 8.233
  3 212.184.27.185(212.184.27.185) 9.134 10.739 9.946
@@ -2142,14 +2142,14 @@ FROM to 154.11.98.18(154.11.98.18), 30 hops max, 40 byte packets
  5 212.184.27.22(212.184.27.22) 137.633 137.492 137.537
  6 154.11.10.186(154.11.10.186) 180.180 180.065 180.073
  7 route-views.ab.bb.telus.com(154.11.98.18) 180.763 [NR] 180.671
-FROM to 216.191.14.250(216.191.14.250), 30 hops max, 40 byte packets
+FROM to 216.191.14.250(216.191.14.250)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.887 0.692 0.660
  2 as0-0.bbr1.ams1.nl.eunetip.net(213.192.191.226) 37.602 37.611 37.610
  3 gwy1-nyc.bb.allstream.net(195.69.145.122) 145.296 145.380 145.379
  4 [FW] [FW] [FW]
  5 199.212.161.194(199.212.161.194) 159.467 159.561 159.385
  6 [FW] [FW] [FW]
-FROM to 216.18.63.214(216.18.63.214), 30 hops max, 40 byte packets
+FROM to 216.18.63.214(216.18.63.214)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.877 2.544 0.679
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net(213.192.191.174) 112.841 112.846 112.846
  3 GE3-0.PEERA-NYCMNY.IP.GROUPTELECOM.NET(198.32.160.78) 112.913 112.929 112.997
@@ -2157,13 +2157,13 @@ FROM to 216.18.63.214(216.18.63.214), 30 hops max, 40 byte packets
  5 POS13-0.WANB-TOROONXN.IP.GROUPTELECOM.NET(216.18.63.197) 132.241 132.149 132.059
  6 GE9-0.WANB-TOROON.IP.GROUPTELECOM.NET(66.59.191.26) 132.088 132.001 131.933
  7 [FW] [FW] [FW]
-FROM to 213.200.64.94(213.200.64.94), 30 hops max, 40 byte packets
+FROM to 213.200.64.94(213.200.64.94)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 7.904 0.690 0.670
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 8.176 8.093 8.133
  3 xe-0-1-0-43.stk30.ip4.tinet.net(213.200.72.69) 8.420 8.333 8.402
  4 so-2-2-0-0.fra10.ip4.tinet.net(213.200.82.14) 29.659 29.672 xe-5-0-0.fra23.ip4.tinet.net(89.149.185.61) 45.399
  5 route-server.ip4.tinet.net(213.200.64.94) 187.284 169.608 248.096
-FROM to 62.48.45.129(62.48.45.129), 30 hops max, 40 byte packets
+FROM to 62.48.45.129(62.48.45.129)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.877 0.756 0.682
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 10.783 8.203 8.137
  3 xe-0-1-0-43.stk30.ip4.tinet.net(213.200.72.69) 28.873 8.405 8.429
@@ -2171,7 +2171,7 @@ FROM to 62.48.45.129(62.48.45.129), 30 hops max, 40 byte packets
  5 brain-tech-gw.ip4.tinet.net(213.200.68.154) 55.293 55.558 55.939
  6 vl27.core2.net.playnet.it(62.48.45.250) 56.384 55.608 60.696
  7 f0-1.route-server.playnet.it(62.48.45.129) 56.261 [NR] 56.245
-FROM to 86.55.0.50(86.55.0.50), 30 hops max, 40 byte packets
+FROM to 86.55.0.50(86.55.0.50)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.949 55.066 24.599
  2 as0-0.bbr1.ams1.nl.eunetip.net(213.192.191.226) 44.185 47.316 37.630
  3 wFrnk-po3-amsix.de.ipv4ilink.net(195.69.144.54) 97.954 159.601 229.856
@@ -2181,7 +2181,7 @@ FROM to 86.55.0.50(86.55.0.50), 30 hops max, 40 byte packets
  7 bbUnr-ten22-v41-bbNx.b.ipv4ilink.net(193.19.195.9) 64.080 63.876 65.179
  8 aUnr-po12-v27-bbUnr.b.ipv4ilink.net(193.19.194.62) 67.029 67.010 67.119
  9 rs.ipv4ilink.net(86.55.0.50) 69.293 69.764 68.091
-FROM to 196.25.9.46(196.25.9.46), 30 hops max, 40 byte packets
+FROM to 196.25.9.46(196.25.9.46)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.851 0.727 0.661
  2 ge0-0-0-0.bbr1.sto1.se.eunetip.net(213.192.191.201) 8.248 8.290 8.209
  3 xe-0-1-0-43.stk30.ip4.tinet.net(213.200.72.69) 8.489 9.801 8.529
@@ -2189,7 +2189,7 @@ FROM to 196.25.9.46(196.25.9.46), 30 hops max, 40 byte packets
  5 telkom-gw.ip4.tinet.net(77.67.64.246) 45.813 47.188 45.708
  6 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za(196.43.10.86) 232.272 232.497 232.380
  7 tpr-route-server.saix.net(196.25.9.46) 233.355 [NR] 233.490
-FROM to 164.128.251.50(164.128.251.50), 30 hops max, 40 byte packets
+FROM to 164.128.251.50(164.128.251.50)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.851 0.721 0.646
  2 as0-0.bbr1.ffm1.de.eunetip.net(213.192.191.197) 27.861 27.854 27.840
  3 decix2.ip-plus.net(80.81.193.183) 49.921 59.112 39.798
@@ -2198,27 +2198,27 @@ FROM to 164.128.251.50(164.128.251.50), 30 hops max, 40 byte packets
  6 i64beb-010-gig0-3.bb.ip-plus.net(138.187.130.181) 39.627 40.052 39.567
  7 i64beb-iv6-fas1-0.bb.ip-plus.net(138.187.157.6) 39.497 39.526 39.665
  8 routeserver.ip-plus.net(164.128.251.50) 40.291 [NR] 40.174
-FROM to 212.241.174.1(212.241.174.1), 30 hops max, 40 byte packets
+FROM to 212.241.174.1(212.241.174.1)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.879 0.757 9.937
  2 so1-0-0-0.bbr1.ldn1.uk.eunetip.net(213.192.191.141) 45.424 45.480 45.417
  3 te1-3.cr05.tn5.bb.gxn.net(195.66.224.29) 45.260 45.307 45.159
  4 gi1-1-6.ar01.hx2.bb.gxn.net(62.72.142.142) 45.811 45.895 45.757
  5 [FW] [FW] [FW]
-FROM to 69.31.111.255(69.31.111.255), 30 hops max, 40 byte packets
+FROM to 69.31.111.255(69.31.111.255)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.869 6.550 0.682
  2 as0-0.bbr1.sto2.se.eunetip.net(213.192.191.134) 7.541 7.558 13.212
  3 64.214.141.25(64.214.141.25) 7.786 7.733 12.730
  4 as3549.xe-6-1-0.cr1.ord1.us.nlayer.net(69.31.111.205) 140.433 140.422 140.372
  5 po1-30g.ar1.ord1.us.nlayer.net(69.31.111.134) 140.703 140.607 141.048
  6 route-server.ord1.nlayer.net(69.31.111.255) 140.118 140.023 140.123
-FROM to 66.162.47.58(66.162.47.58), 30 hops max, 40 byte packets
+FROM to 66.162.47.58(66.162.47.58)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.863 0.694 0.677
  2 as0-0.bbr1.sto2.se.eunetip.net(213.192.191.134) 16.462 7.999 7.955
  3 64.214.141.25(64.214.141.25) 8.137 8.189 8.136
  4 TWTCIP-BACKBONE.TenGigabitEthernet1-3.ar2.DAL2.gblx.net(208.48.33.106) 150.852 150.849 157.665
  5 hagg-03-ge-1-0-0.dnvr.twtelecom.net(66.192.245.116) 166.299 166.332 166.289
  6 route-server.twtelecom.net(66.162.47.58) 166.980 [NR] 167.072
-FROM to 64.135.5.58(64.135.5.58), 30 hops max, 40 byte packets
+FROM to 64.135.5.58(64.135.5.58)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.848 0.717 0.645
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net(213.192.191.174) 113.365 113.357 113.359
  3 c00.ny2.g6-0.wvfiber.net(198.32.160.137) 113.542 113.506 173.903
@@ -2228,7 +2228,7 @@ FROM to 64.135.5.58(64.135.5.58), 30 hops max, 40 byte packets
  7 te2-2.cr01.swd.mia.host.net(64.135.0.42) 146.936 146.894 146.915
  8 te3-1.cr01.903.bct.host.net(64.135.0.5) 148.388 148.474 148.409
  9 route-server.host.net(64.135.5.58) 148.547 [NR] 148.488
-FROM to 66.209.87.106(66.209.87.106), 30 hops max, 40 byte packets
+FROM to 66.209.87.106(66.209.87.106)
  1 ge2-0-7-0.bbr1.hel2.fi.eunetip.net(213.192.191.81) 0.871 0.726 0.666
  2 so2-3-0-0.bbr1.nyc1.us.eunetip.net(213.192.191.174) 113.296 113.393 113.307
  3 c00.ny2.g6-0.wvfiber.net(198.32.160.137) 113.578 113.607 130.685
@@ -2649,7 +2649,7 @@ FROM to route-server.cerf.net(12.129.193.235)
  19 mdf001c7613r0003-gig-10-1.lax1.attens.net(12.129.193.242) 328.000 328.000 mdf001c7613r0004-gig-12-1.lax1.attens.net(12.129.193.246) 328.000
  20 route-server.cerf.net(12.129.193.235) 328.000 [NR] 328.000
 FROM route-server.ord1.nlayer.net.
-FROM to 203.202.125.6(203.202.125.6), 30 hops max, 40 byte packets
+FROM to 203.202.125.6(203.202.125.6)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.384 0.366 0.354
  2 ae1-40g.cr1.ord1.us.nlayer.net(69.31.111.133) 0.352 0.433 0.354
  3 te7-1.ar1.slc1.us.nlayer.net(69.22.142.102) 38.244 41.165 43.588
@@ -2659,19 +2659,19 @@ FROM to 203.202.125.6(203.202.125.6), 30 hops max, 40 byte packets
  7 203.208.148.90(203.208.148.90) 210.543 210.586 210.575
  8 [FW] [FW] [FW]
  9 203.202.125.6(203.202.125.6) 211.264 [NR] 212.448
-FROM to 216.113.10.50(216.113.10.50), 30 hops max, 40 byte packets
+FROM to 216.113.10.50(216.113.10.50)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.556 0.369 0.351
  2 as5769.ge2-24.ar1.ord1.us.nlayer.net(69.31.111.42) 0.605 0.565 as5769.ge2-23.ar1.ord1.us.nlayer.net(69.31.111.38) 0.483
  3 216.113.123.142(216.113.123.142) 26.299 26.279 26.219
  4 216.113.122.29(216.113.122.29) 22.583 22.560 22.592
  5 ia-piex-gw06-ge1-1.vtl.net(207.96.210.138) 26.834 26.920 26.965
  6 [FW] [FW] [FW]
-FROM to 154.11.98.18(154.11.98.18), 30 hops max, 40 byte packets
+FROM to 154.11.98.18(154.11.98.18)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.441 0.367 0.701
  2 as852.ge2-14.ar1.ord1.us.nlayer.net(69.31.111.50) 0.300 0.308 0.232
  3 CLGRAB21GR01.bb.telus.com(154.11.10.217) 29.972 29.936 29.971
  4 route-views.ab.bb.telus.com(154.11.98.18) 29.797 [NR] 29.911
-FROM to 216.191.14.250(216.191.14.250), 30 hops max, 40 byte packets
+FROM to 216.191.14.250(216.191.14.250)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.397 0.369 0.351
  2 ge6-0.gwy1-chi.allstream.net(206.223.119.3) 0.855 1.033 1.221
  3 [FW] [FW] [FW]
@@ -2679,13 +2679,13 @@ FROM to 216.191.14.250(216.191.14.250), 30 hops max, 40 byte packets
  5 199.212.161.66(199.212.161.66) 18.211 17.813 17.715
  6 pos8-1.core2-mtl.bb.allstream.net(199.212.160.114) 17.600 17.673 17.839
  7 [FW] [FW] [FW]
-FROM to 216.18.63.214(216.18.63.214), 30 hops max, 40 byte packets
+FROM to 216.18.63.214(216.18.63.214)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.644 1.368 0.852
  2 GE3-0-PEERA-CHCGIL.IP.GROUPTELECOM.NET(206.223.119.113) 0.601 0.690 0.610
  3 POS14-0.WANB-TOROONXN.IP.GROUPTELECOM.NET(66.59.191.85) 11.359 11.187 11.103
  4 GE9-1.WANB-TOROON.IP.GROUPTELECOM.NET(66.59.191.34) 11.602 11.311 11.226
  5 [FW] [FW] [FW]
-FROM to 213.192.191.82(213.192.191.82), 30 hops max, 40 byte packets
+FROM to 213.192.191.82(213.192.191.82)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.458 0.370 0.351
  2 ae1-40g.cr1.ord1.us.nlayer.net(69.31.111.133) 0.232 0.197 0.232
  3 xe-3-0-0.cr2.iad1.us.nlayer.net(69.22.142.26) 17.278 17.263 17.193
@@ -2697,14 +2697,14 @@ FROM to 213.192.191.82(213.192.191.82), 30 hops max, 40 byte packets
  9 ge1-2-0-0.bbr1.sto2.se.eunetip.net(213.192.191.189) 133.129 133.225 133.150
 10 as1-0.bbr1.hel2.fi.eunetip.net(213.192.191.133) 140.518 140.591 140.526
 11 route-server.as6667.net(213.192.191.82) 140.887 140.857 140.763
-FROM to 213.200.64.94(213.200.64.94), 30 hops max, 40 byte packets
+FROM to 213.200.64.94(213.200.64.94)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.381 20.738 0.845
  2 ae1-40g.cr1.ord1.us.nlayer.net(69.31.111.133) 40.083 0.192 0.232
  3 te8-3.ar3.CHI2.gblx.net(69.31.110.225) 0.356 0.396 0.354
  4 te4-3-10G.ar3.CHI2.gblx.net(67.17.106.246) 0.357 xe-2-3-0-0.chi10.ip4.tinet.net(213.200.66.57) 0.315 0.321
  5 xe-2-3-0-0.chi10.ip4.tinet.net(213.200.66.57) 0.233 0.322 xe-11-3-0.fra23.ip4.tinet.net(89.149.183.25) 107.681
  6 xe-2-0-0.fra23.ip4.tinet.net(213.200.81.125) 107.727 route-server.ip4.tinet.net(213.200.64.94) 107.993 107.735
-FROM to 62.48.45.129(62.48.45.129), 30 hops max, 40 byte packets
+FROM to 62.48.45.129(62.48.45.129)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.438 0.366 0.356
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 2.225 0.195 ae1-40g.cr1.ord1.us.nlayer.net(69.31.111.133) 0.232
  3 te9-3.ar3.CHI2.gblx.net(69.31.110.233) 0.316 te6-3.ar2.CHI2.gblx.net(69.31.111.201) 0.442 0.440
@@ -2716,7 +2716,7 @@ FROM to 62.48.45.129(62.48.45.129), 30 hops max, 40 byte packets
  9 195.219.159.26(195.219.159.26) 118.867 sl-gw10-mil-14-0-0.sprintlink.net(217.147.128.37) 114.368 sl-bb20-mil-5-0-0.sprintlink.net(213.206.129.123) 114.484
 10 sl-brain5-157310-0.sprintlink.net(217.147.129.66) 129.028 vl27.core2.net.playnet.it(62.48.45.250) 134.340 sl-brain5-157310-0.sprintlink.net(217.147.129.66) 128.959
 11 f0-1.route-server.playnet.it(62.48.45.129) 263.799 sl-brain5-157310-0.sprintlink.net(217.147.129.66) 129.739 128.999
-FROM to 86.55.0.50(86.55.0.50), 30 hops max, 40 byte packets
+FROM to 86.55.0.50(86.55.0.50)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.477 0.492 0.351
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 0.230 0.197 0.233
  3 as6939.ae3-307.cr2.ord1.us.nlayer.net(69.31.111.110) 0.358 4.320 0.232
@@ -2731,14 +2731,14 @@ FROM to 86.55.0.50(86.55.0.50), 30 hops max, 40 byte packets
 12 bbUnr-ten22-v41-bbNx.b.ipv4ilink.net(193.19.195.9) 136.247 136.480 136.284
 13 aUnr-po12-v27-bbUnr.b.ipv4ilink.net(193.19.194.62) 136.887 136.446 136.533
 14 rs.ipv4ilink.net(86.55.0.50) 144.100 140.480 142.861
-FROM to 196.25.9.46(196.25.9.46), 30 hops max, 40 byte packets
+FROM to 196.25.9.46(196.25.9.46)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.460 0.494 0.355
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 0.227 0.194 0.233
  3 ge9-8.br03.chc01.pccwbtn.net(209.8.108.65) 147.536 6.890 TenGE10-3.br03.chc01.pccwbtn.net(206.223.119.48) 1.103
  4 telkomsa.pos2-0.cr02.ash01.pccwbtn.net(63.218.94.18) 17.806 18.058 17.848
  5 tpr-ip-esr-1-ge-6-0-0.telkom-ipnet.co.za(196.43.10.86) 275.346 275.399 275.552
  6 tpr-route-server.saix.net(196.25.9.46) 275.809 276.130 [NR]
-FROM to 164.128.251.50(164.128.251.50), 30 hops max, 40 byte packets
+FROM to 164.128.251.50(164.128.251.50)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.471 0.373 0.353
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 0.230 0.198 0.231
  3 xe-4-1-0.cr1.nyc2.us.nlayer.net(69.22.142.86) 21.614 25.546 49.827
@@ -2747,7 +2747,7 @@ FROM to 164.128.251.50(164.128.251.50), 30 hops max, 40 byte packets
  6 i64beb-000-gig0-3.bb.ip-plus.net(138.187.130.161) 113.524 113.366 118.525
  7 i64beb-iv6-pos4-0.bb.ip-plus.net(138.187.157.34) 113.486 113.457 114.406
  8 routeserver.ip-plus.net(164.128.251.50) 114.140 [NR] 114.113
-FROM to 212.241.174.1(212.241.174.1), 30 hops max, 40 byte packets
+FROM to 212.241.174.1(212.241.174.1)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.944 0.620 0.602
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 11.724 0.196 0.232
  3 xe-4-1-0.cr1.nyc2.us.nlayer.net(69.22.142.86) 21.722 21.684 21.718
@@ -2755,12 +2755,12 @@ FROM to 212.241.174.1(212.241.174.1), 30 hops max, 40 byte packets
  5 te1-3.cr05.tn5.bb.gxn.net(195.66.224.29) 122.658 107.751 114.799
  6 gi1-1-6.ar01.hx2.bb.gxn.net(62.72.142.142) 89.532 89.496 89.548
  7 [FW] [FW] [FW]
-FROM to 66.162.47.58(66.162.47.58), 30 hops max, 40 byte packets
+FROM to 66.162.47.58(66.162.47.58)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.479 0.367 0.354
  2 eqix.chcg.twtelecom.net(206.223.119.36) 1.102 0.820 1.107
  3 hagg-03-ge-1-0-0.dnvr.twtelecom.net(66.192.245.116) 31.342 31.650 31.339
  4 route-server.twtelecom.net(66.162.47.58) 31.460 [NR] 31.425
-FROM to 64.135.5.58(64.135.5.58), 30 hops max, 40 byte packets
+FROM to 64.135.5.58(64.135.5.58)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.411 0.366 0.353
  2 eqx.10ge.ord.wvfiber.net(206.223.119.18) 0.479 0.558 0.732
  3 nsh-t4-3-2200-chi-vl2200.wvfiber.net(64.127.130.54) 13.475 13.689 13.468
@@ -2768,7 +2768,7 @@ FROM to 64.135.5.58(64.135.5.58), 30 hops max, 40 byte packets
  5 boc-ten1-4-atl-ten2-6.wvfiber.net(66.216.1.254) 41.327 41.299 41.212
  6 host-wvfiber.wvfiber.net(66.216.1.94) 41.453 41.414 41.509
  7 route-server.host.net(64.135.5.58) 41.682 [NR] 41.503
-FROM to 66.209.87.106(66.209.87.106), 30 hops max, 40 byte packets
+FROM to 66.209.87.106(66.209.87.106)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.407 0.364 0.355
  2 eqx.10ge.ord.wvfiber.net(206.223.119.18) 0.478 0.819 0.607
  3 sjc-ten6-3-chi-ten3-1.wvfiber.net(64.127.129.62) 51.977 51.777 56.334
@@ -2776,7 +2776,7 @@ FROM to 66.209.87.106(66.209.87.106), 30 hops max, 40 byte packets
  5 cust-lv-ten1-4.wvfiber.net(66.186.192.46) 65.398 65.265 65.216
  6 te4-1.las-esw09.switchnap.com(66.209.64.194) 65.281 65.246 65.319
  7 priority.demarc.switchnap.com(66.209.87.106) 325.193 [NR] 65.675
-FROM to 12.129.193.235(12.129.193.235), 30 hops max, 40 byte packets
+FROM to 12.129.193.235(12.129.193.235)
  1 ge2-25.ar1.ord1.us.nlayer.net(69.31.111.161) 0.451 0.366 0.356
  2 ae1-40g.cr2.ord1.us.nlayer.net(69.31.111.137) 0.227 0.197 ae1-40g.cr1.ord1.us.nlayer.net(69.31.111.133) 0.233
  3 te9-3.ar3.CHI2.gblx.net(69.31.110.233) 0.320 0.325 0.359

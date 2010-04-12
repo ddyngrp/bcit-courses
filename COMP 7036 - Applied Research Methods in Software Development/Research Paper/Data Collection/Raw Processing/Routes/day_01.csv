@@ -1,205 +1,205 @@
-FROM 164.128.251.50.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM 212.241.174.1.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM 66.162.47.58.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to 235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
-FROM 64.135.5.58.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM 12.129.193.235.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM 203.202.125.6.
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM 216.113.10.50.
-FROM to 203.202.125.6
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM route-server.as6667.net.
-FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
-FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
-FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
-FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
-FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
-FROM to 213.200.64.94 (213.200.64.94), 30 hops max, 40 byte packets
-FROM to 62.48.45.129 (62.48.45.129), 30 hops max, 40 byte packets
-FROM to 86.55.0.50 (86.55.0.50), 30 hops max, 40 byte packets
-FROM to 196.25.9.46 (196.25.9.46), 30 hops max, 40 byte packets
-FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
-FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
-FROM to 69.31.111.255 (69.31.111.255), 30 hops max, 40 byte packets
-FROM to 66.162.47.58 (66.162.47.58), 30 hops max, 40 byte packets
-FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
-FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
-FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
-FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
-FROM f0-1.route-server.playnet.it.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM tpr-route-server.saix.net.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to priority.demarc.switchnap.com (66.209.87.106)
-FROM to route-server.cerf.net (12.129.193.235)
-FROM route-server.ord1.nlayer.net.
-FROM to 203.202.125.6 (203.202.125.6), 30 hops max, 40 byte packets
-FROM to 216.113.10.50 (216.113.10.50), 30 hops max, 40 byte packets
-FROM to 154.11.98.18 (154.11.98.18), 30 hops max, 40 byte packets
-FROM to 216.191.14.250 (216.191.14.250), 30 hops max, 40 byte packets
-FROM to 216.18.63.214 (216.18.63.214), 30 hops max, 40 byte packets
-FROM to 213.192.191.82 (213.192.191.82), 30 hops max, 40 byte packets
-FROM to 213.200.64.94 (213.200.64.94), 30 hops max, 40 byte packets
-FROM to 62.48.45.129 (62.48.45.129), 30 hops max, 40 byte packets
-FROM to 86.55.0.50 (86.55.0.50), 30 hops max, 40 byte packets
-FROM to 196.25.9.46 (196.25.9.46), 30 hops max, 40 byte packets
-FROM to 164.128.251.50 (164.128.251.50), 30 hops max, 40 byte packets
-FROM to 212.241.174.1 (212.241.174.1), 30 hops max, 40 byte packets
-FROM to 66.162.47.58 (66.162.47.58), 30 hops max, 40 byte packets
-FROM to 64.135.5.58 (64.135.5.58), 30 hops max, 40 byte packets
-FROM to 66.209.87.106 (66.209.87.106), 30 hops max, 40 byte packets
-FROM to 12.129.193.235 (12.129.193.235), 30 hops max, 40 byte packets
-FROM priority.demarc.switchnap.com.
-FROM to 203.202.125.6
-FROM to 216.113.10.50
-FROM to route-views.ab.bb.telus.com (154.11.98.18)
-FROM to route-server.east.bb.allstream.net (216.191.14.250)
-FROM to 216.18.63.214
-FROM to route-server.as6667.net (213.192.191.82)
-FROM to route-server.ip4.tinet.net (213.200.64.94)
-FROM to f0-1.route-server.playnet.it (62.48.45.129)
-FROM to rs.ipv4ilink.net (86.55.0.50)
-FROM to tpr-route-server.saix.net (196.25.9.46)
-FROM to routeserver.ip-plus.net (164.128.251.50)
-FROM to lo1.route-server.as5413.net (212.241.174.1)
-FROM to route-server.ord1.nlayer.net (69.31.111.255)
-FROM to route-server.twtelecom.net (66.162.47.58)
-FROM to route-server.host.net (64.135.5.58)
-FROM to route-server.cerf.net (12.129.193.235)
+164.128.251.50
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+212.241.174.1
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+66.162.47.58
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|235.232/29.193.129.12.in-addr.arpa (12.129.193.235)
+64.135.5.58
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+12.129.193.235
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+216.113.10.50
+|203.202.125.6
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+route-server.as6667.net
+|203.202.125.6 (203.202.125.6)
+|216.113.10.50 (216.113.10.50)
+|154.11.98.18 (154.11.98.18)
+|216.191.14.250 (216.191.14.250)
+|216.18.63.214 (216.18.63.214)
+|213.200.64.94 (213.200.64.94)
+|62.48.45.129 (62.48.45.129)
+|86.55.0.50 (86.55.0.50)
+|196.25.9.46 (196.25.9.46)
+|164.128.251.50 (164.128.251.50)
+|212.241.174.1 (212.241.174.1)
+|69.31.111.255 (69.31.111.255)
+|66.162.47.58 (66.162.47.58)
+|64.135.5.58 (64.135.5.58)
+|66.209.87.106 (66.209.87.106)
+|12.129.193.235 (12.129.193.235)
+|12.129.193.235 (12.129.193.235)
+f0-1.route-server.playnet.it
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+tpr-route-server.saix.net
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|priority.demarc.switchnap.com (66.209.87.106)
+|route-server.cerf.net (12.129.193.235)
+route-server.ord1.nlayer.net
+|203.202.125.6 (203.202.125.6)
+|216.113.10.50 (216.113.10.50)
+|154.11.98.18 (154.11.98.18)
+|216.191.14.250 (216.191.14.250)
+|216.18.63.214 (216.18.63.214)
+|213.192.191.82 (213.192.191.82)
+|213.200.64.94 (213.200.64.94)
+|62.48.45.129 (62.48.45.129)
+|86.55.0.50 (86.55.0.50)
+|196.25.9.46 (196.25.9.46)
+|164.128.251.50 (164.128.251.50)
+|212.241.174.1 (212.241.174.1)
+|66.162.47.58 (66.162.47.58)
+|64.135.5.58 (64.135.5.58)
+|66.209.87.106 (66.209.87.106)
+|12.129.193.235 (12.129.193.235)
+priority.demarc.switchnap.com
+|203.202.125.6
+|216.113.10.50
+|route-views.ab.bb.telus.com (154.11.98.18)
+|route-server.east.bb.allstream.net (216.191.14.250)
+|216.18.63.214
+|route-server.as6667.net (213.192.191.82)
+|route-server.ip4.tinet.net (213.200.64.94)
+|f0-1.route-server.playnet.it (62.48.45.129)
+|rs.ipv4ilink.net (86.55.0.50)
+|tpr-route-server.saix.net (196.25.9.46)
+|routeserver.ip-plus.net (164.128.251.50)
+|lo1.route-server.as5413.net (212.241.174.1)
+|route-server.ord1.nlayer.net (69.31.111.255)
+|route-server.twtelecom.net (66.162.47.58)
+|route-server.host.net (64.135.5.58)
+|route-server.cerf.net (12.129.193.235)

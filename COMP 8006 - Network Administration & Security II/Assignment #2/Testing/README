@@ -1,0 +1,10 @@
+INSTRUCTIONS:
+=============
+
+Make sure to edit "test-firewall.sh" to set variables such as the output file name
+and IP address to run the tests against.
+
+USAGE:
+======
+
+./test-firewall.sh

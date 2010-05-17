@@ -1,0 +1,7 @@
+Installation Notes:
+===================
+
+To build and run this program, simply do the following:
+
+1. make
+2. ./covert

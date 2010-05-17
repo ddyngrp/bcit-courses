@@ -1,0 +1,18 @@
+This is a simple proof-of-concept program that can be used to
+communicate covertly  over TCP/IP.
+
+
+Other files you might look into:
+================================
+
+`README'  - This file
+`COPYING' -	Copying conditions
+`INSTALL' -	General compilation and installation rules
+
+
+Some issues to consider when using this program:
+================================================
+
+This application makes use of BSD-style TCP/IP headers, which should be
+included in any up-to-date Linux distribution. This is done in order to
+achieve maximum portability between Linux, *BSD, and Max OS X systems.

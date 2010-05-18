@@ -47,29 +47,110 @@ int main (int argc, const char *argv[])
 
 	/* parse CLI options */
 	if (argc == 1)
-		print_usage();
+		print_usage(argv[0], OPTIONS_HELP);
 	else
-		if (parse_options(argc, argv) == ERROR_OPTIONS) {
+		if (parse_options(argc, argv) == OPTIONS_ERROR) {
 			err(1, "Invalid options");
-			print_usage();
-			exit(ERROR_OPTIONS);
+			exit(OPTIONS_ERROR);
 		}
 
-	print_settings();
+	print_settings(argv[0]);
 
     return ERROR_NONE;
 }
 
-void print_settings()
+void print_settings(char *command)
 {
+	printf("Using the Following Options: (For help use \"%s -h\")\n", command);
+	if (conn_info.mode_server == TRUE)
+	printf("  Running as server:       TRUE\n");
+	else
+	printf("  Running as client:       TRUE\n");
+	printf("  Destination IP address:  %s\n", conn_info.dest_ip);
+	printf("  Destination port:        %du\n", conn_info.dest_port);
+	printf("  Output to File:          %s\n", conn_info.file_name);
+	
 }
 
-void print_usage()
+void print_usage(char *command, int err)
 {
+    if (err == OPTIONS_HELP) {
+        printf("usage: %s [arguments]\n\n", command);
+        printf("Arguments:\n");
+        printf("  -s  or  --server     Run as server, otherwise as client\n");
+        printf("  -d  or  --dest-ip    Destination IP address\n");
+        printf("  -p  or  --dest-port  Destination port\n");
+        printf("  -f  or  --file       File to read from or write to\n");
+        printf("  -h  or  --help       Prints out this screen\n");
+    }
+	else if (err == OPTIONS_ERROR)
+        printf("Try `%s --help` for more information.\n", command);
+	else {
+        printf("%s: unknown error\n", command);
+        printf("Try `%s --help` for more information.\n", command);
+    }	
 }
 
 int parse_options(int argc, const char *argv[])
 {
+	int c, option_index = 0;
+
+	static struct option long_options[] =
+	{
+		{"server"	, no_argument		, 0, 's'},
+		{"dest-ip"	, required_argument	, 0, 'd'},
+		{"dest-port", required_argument	, 0, 'p'},
+		{"file"		, required_argument	, 0, 'f'},
+		{"help"		, no_argument		, 0, 'h'},
+		{0, 0, 0, 0}
+	};
+
+	/* set defaults */
+	conn_info.server = FALSE;
+
+	while (TRUE) {
+		c = getopt_long(argc, argv, "sd:p:f:h", long_options, &option_index);
+
+		if (c == -1)
+			break;
+
+		switch (c) {
+			case 0:
+				if (long_options[option_index].flag != 0)
+					break;
+				break;
+
+			case 's':
+				conn_info.server = TRUE;
+				break;
+
+			case 'd':
+				conn_info.dest_ip = optarg;
+				break;
+
+			case 'p':
+				if (atoi(optarg) > 0)
+					conn_info.dest_port = atoi(optarg);
+				else
+					print_usage(argv[0], OPTIONS_ERROR);
+					return OPTIONS_ERROR;
+				break;
+
+			case 'f':
+				conn_info.file_name = optarg;
+				break;
+
+			case 'h':
+				print_usage(argv[0], OPTIONS_HELP);
+				break;			
+
+			default:
+				print_usage(argv[0], OPTIONS_ERROR);
+				return OPTIONS_ERROR;
+				break;
+		}
+	}
+
 	return ERROR_NONE;
 }
 
@@ -84,7 +165,7 @@ int file_io(char *file_name, char *recv_buffer)
 	struct in_addr addr;
 
 	/* determine if we are reading or writing */
-	if (recv_buffer == NULL) { /* server sends file */
+	if (recv_buffer == NULL) { /* client sends file */
 		if ((file = fopen(file_name, "rb")) == NULL)
 			return ERROR_FILE;
 		else {
@@ -114,7 +195,8 @@ int file_io(char *file_name, char *recv_buffer)
 
 		fclose(file);
 	}
-	else if (recv_buffer != NULL) { /* client receives file */
+	else { /* server receives file */
+
 	}
 
 	return ERROR_NONE;
@@ -128,7 +210,7 @@ void packet_forge(unsigned int source_addr)
 	struct timeval time;
 	unsigned char *packet;
 	const int on = 1;
-	int sock_fd;
+	int sock_fd, send_len;
 
 	/* seed random number generator */
 	gettimeofday(&time, NULL);
@@ -148,7 +230,7 @@ void packet_forge(unsigned int source_addr)
 	iph.ip_sum	= 0;
 	iph.ip_p	= IPPROTO_TCP;
 	iph.ip_src.s_addr = source_addr;
-	iph.ip_dst.s_addr = inet_addr("192.168.1.1");
+	iph.ip_dst.s_addr = inet_addr(DEST_IP);
 
 	/* create a forged TCP header */
 	tcph.th_sport = htons(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
@@ -156,7 +238,7 @@ void packet_forge(unsigned int source_addr)
 	tcph.th_seq = htonl(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
 	tcph.th_off = sizeof(struct tcphdr) / 4;
 	tcph.th_flags = TH_SYN;
-	tcph.th_win = htons(32768);
+	tcph.th_win = htons(TCP_WINDOW);
 	tcph.th_sum = 0;
 
 	/* combine the forged headers into a socket struct */
@@ -181,11 +263,16 @@ void packet_forge(unsigned int source_addr)
 			(unsigned short *)&tcph, sizeof(tcph));
 
 	/* finish full header */
-	memcpy(packet, &iph, sizeof(iph)); /* copy IP header to beginning of packet */
-	memcpy(packet + sizeof(iph), &tcph, sizeof(tcph)); /* copy TCP header to offset 20 */
+	memcpy(packet, &iph, sizeof(iph));
+	memcpy(packet + sizeof(iph), &tcph, sizeof(tcph));
 
 	/* send the packet */
-	sendto(sock_fd, packet, 60, 0, (struct sockaddr *)&sin, sizeof(struct sockaddr));
+	if ((send_len = sendto(sock_fd, packet, 60, 0,
+					(struct sockaddr *)&sin,
+					sizeof(struct sockaddr))) < ERROR_NONE) {
+		err(1, "sendto");
+		exit(ERROR_SEND);
+	}
 
 	printf("Sending Data: %s\t = %s\n", inet_ntoa(iph.ip_src),
 			ip_to_string(iph.ip_src));
@@ -195,6 +282,39 @@ void packet_forge(unsigned int source_addr)
 
 void packet_decode()
 {
+	struct recv_tcp {
+		struct ip iph;
+		struct tcphdr tcph;
+		char buffer[BUFFER_RECV];
+	} recv_pkt;
+
+	int sock_fd, recv_len;
+
+	while(TRUE) { /* read packet loop */
+		/* open socket for reading */
+
+		if ((sock_fd = socket(AF_INET, SOCK_RAW, 6)) < ERROR_NONE) {
+			err(1, "socket");
+			exit(ERROR_SOCKET);
+		}
+
+		/* listen for data */
+		if ((recv_len = read(sock_fd, (struct recv_tcp *)&recv_pkt,
+						BUFFER_RECV)) < ERROR_NONE) {
+			err(1, "read");
+			exit(ERROR_READ);
+		}
+
+		/* if the packet has SYN/ACK flag and a window size of TCP_WINDOW */
+		if ((recv_pkt.tcph.th_flags == TH_SYN)
+				&& (ntohs(recv_pkt.tcph.th_win) == TCP_WINDOW)) {
+
+			printf("Receiving Data: %s\n", ip_to_string(recv_pkt.iph.ip_src));
+
+		}
+
+		close(sock_fd);
+	}
 }
 
 /*-----------------------------------------------------------------------------

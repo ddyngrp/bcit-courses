@@ -2,5 +2,9 @@ Authors of Covert.
 
 Steffen L. Norgren - <ironix@trollop.org>
 
+W. Richard Stevens - in_chksum function
+
+Murat Balaban - in_cksum_tcp function
+
 Craig H. Rowland's work on `Covert Channels in the TCP/IP Protocol Suite'
 Was of significant help towards the creation of this program.

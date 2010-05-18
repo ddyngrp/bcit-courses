@@ -23,46 +23,47 @@
 #include <string.h>
 #include <time.h>
 #include <sys/time.h>
-#include <math.h>
+#include <getopt.h>
 
-#define __USE_BSD		/* use BSD-style headers */
-#define __FAVOR_BSD
+#define __FAVOR_BSD		/* use BSD-style headers */
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
 /* error codes */
-#define ERROR_GENERAL	-1
 #define	ERROR_NONE		0
-#define ERROR_OPTIONS	1
-#define ERROR_NOTROOT	2
-#define	ERROR_FILE		3
-#define ERROR_SOCKET	4
+#define ERROR_GENERAL	-1
+#define ERROR_NOTROOT	-3
+#define	ERROR_FILE		-4
+#define ERROR_SOCKET	-5
+#define ERROR_SEND		-6
+#define ERROR_READ		-7
+#define OPTIONS_ERROR	-8
+#define OPTIONS_HELP	-9
 
 /* misc definitions */
 #define USER_ROOT	0
 #define	MODE_SERVER	1
 #define	MODE_CLIENT	2
 #define DELAY_USEC	10000
-#define	BUFFER_SIZE	4 /* 4 bytes = 32 bits */
+#define	BUFFER_SIZE	4	/* 32 bits */
+#define BUFFER_RECV	128
 
 /* true false */
-#define TRUE	0
-#define FALSE	1
-
-/* for testing */
-#define FILE_NAME	"INSTALL"
-#define	DEST_IP		"192.168.1.1"
-#define DEST_PORT	1337
+#define TRUE	1
+#define FALSE	0
 
 struct conn_info {
-	unsigned int dest_ip;
+	int mode_server;
+	char *dest_ip;
 	unsigned int dest_port;
+	unsigned int th_win;
+	char *file_name;
 } conn_info;
 
-void print_settings(void);
-void print_usage(void);
+void print_settings(char *);
+void print_usage(char *, int);
 int parse_options(int, const char **);
 int file_io(char *, char *recv_buff);
 void packet_forge(unsigned int);

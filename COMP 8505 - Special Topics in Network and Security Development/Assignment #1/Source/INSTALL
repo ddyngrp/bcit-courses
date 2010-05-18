@@ -4,4 +4,18 @@ Installation Notes:
 To build and run this program, simply do the following:
 
 1. make
-2. ./covert
+2. ./covert -h
+
+Running as a Server:
+====================
+
+In order for both the client and server to communicate, the window size (-w)
+needs to be identical on both sides.
+
+./covert -s -f save_file_name -d 192.168.1.1 -p 1234 -w 31415
+
+
+Running as a Client:
+====================
+
+./covert -f read_file_name -d 192.168.1.1 -p 1234 -w 31415

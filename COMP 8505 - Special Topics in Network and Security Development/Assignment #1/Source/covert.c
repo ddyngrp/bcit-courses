@@ -226,10 +226,12 @@ int file_io(char *recv_buffer)
 		fclose(file);
 	}
 	else { /* server receives file */
-		if ((file = fopen(conn_info.file_name, "wa")) == NULL)
+		if ((file = fopen(conn_info.file_name, "a+")) == NULL)
 			return ERROR_FILE;
-		else {
-		}
+
+		fprintf(file, "%s", recv_buffer);
+
+		fclose(file);
 	}
 
 	return ERROR_NONE;

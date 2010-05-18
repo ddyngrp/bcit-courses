@@ -46,7 +46,7 @@
 #define USER_ROOT	0
 #define	MODE_SERVER	1
 #define	MODE_CLIENT	2
-#define DELAY_USEC	10000
+#define DELAY_USEC	50000
 #define	BUFFER_SIZE	4	/* 32 bits */
 #define BUFFER_RECV	128
 

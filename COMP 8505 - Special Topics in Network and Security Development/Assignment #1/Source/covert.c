@@ -92,7 +92,7 @@ int file_io(char *file_name, char *recv_buffer)
 			/* accumulate 32 bits of data, which is the length
 			 * of the source addresss */
 			while (file_position < file_size) {
-				read_bytes = fread(buffer, BUFFER_SIZE, 1, file);
+				read_bytes = fread(buffer, sizeof(char), BUFFER_SIZE, file);
 
 				file_position += read_bytes;
 

@@ -42,7 +42,7 @@
 #define	MODE_SERVER	1
 #define	MODE_CLIENT	2
 #define DELAY_USEC	10000
-#define	BUFFER_SIZE	4
+#define	BUFFER_SIZE	4 /* 4 bytes = 32 bits */
 
 /* true false */
 #define TRUE	0

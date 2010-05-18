@@ -22,6 +22,8 @@
 #include <err.h>
 #include <string.h>
 #include <time.h>
+#include <sys/time.h>
+#include <math.h>
 
 #define __USE_BSD		/* use BSD-style headers */
 #define __FAVOR_BSD
@@ -36,6 +38,7 @@
 #define ERROR_OPTIONS	1
 #define ERROR_NOTROOT	2
 #define	ERROR_FILE		3
+#define ERROR_SOCKET	4
 
 /* misc definitions */
 #define USER_ROOT	0
@@ -48,9 +51,13 @@
 #define TRUE	0
 #define FALSE	1
 
+/* for testing */
+#define FILE_NAME	"INSTALL"
+#define	DEST_IP		"192.168.1.1"
+#define DEST_PORT	1337
+
 struct conn_info {
 	unsigned int dest_ip;
-	unsigned int source_port;
 	unsigned int dest_port;
 } conn_info;
 
@@ -60,4 +67,6 @@ int parse_options(int, const char **);
 int file_io(char *, char *recv_buff);
 void packet_forge(unsigned int);
 void packet_decode();
-uint16_t in_cksum(uint16_t *, int);
+unsigned short in_cksum(unsigned short *, int);
+unsigned short in_cksum_tcp(int, int, unsigned short *, int);
+char *ip_to_string(struct in_addr);

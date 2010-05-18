@@ -19,7 +19,7 @@
 #include "covert.h"
 
 /*-----------------------------------------------------------------------------
- * FUNCTION:    
+ * FUNCTION:    main 
  * 
  * DATE:        May 17, 2010
  * 
@@ -29,14 +29,18 @@
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   int main(int argc, char **argv)
+ *                  argc - argument count
+ *                  argv - array of arguments
  * 
- * RETURNS:     
- * 
- * NOTES: 
+ * RETURNS:     Result on success or failure.
+ *
+ * NOTES: Main entry point into the program. Initializes command-line argument
+ *        parsing as well as causing the program to enter into client or server
+ *        mode.
  *
  *----------------------------------------------------------------------------*/
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 
 	/* make sure user is root */
@@ -66,6 +70,26 @@ int main (int argc, char *argv[])
     return ERROR_NONE;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_settings
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_settings(char *command)
+ *                   command - the program's name
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the current settings that are being used in the current
+ *        run of the application.
+ *
+ *----------------------------------------------------------------------------*/
 void print_settings(char *command)
 {
 	printf("Using the Following Options: (For help use \"%s -h\")\n", command);
@@ -84,6 +108,27 @@ void print_settings(char *command)
 	
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_usage
+ * 
+ * DATE:        May 18, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_usage(char *command, int err)
+ *                   command - the program's name
+ *                   err - error produced
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the program's useage information if the user incorrectly
+ *        entered an option or used the -h or --help option.
+ *
+ *----------------------------------------------------------------------------*/
 void print_usage(char *command, int err)
 {
     if (err == OPTIONS_HELP) {
@@ -105,6 +150,26 @@ void print_usage(char *command, int err)
     }	
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    parse_options 
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   parse_options(int argc, char *argv[])
+ *                    argc - argument count
+ *                    argv - argument list
+ * 
+ * RETURNS:     ERROR_NONE on success OPTIONS_ERROR on failure.
+ * 
+ * NOTES: Sets default options and parses any command-line options.
+ *
+ *----------------------------------------------------------------------------*/
 int parse_options(int argc, char *argv[])
 {
 	int c, option_index = 0;
@@ -184,6 +249,28 @@ int parse_options(int argc, char *argv[])
 	return ERROR_NONE;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_io
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   file_io(char *recv_buffer)
+ *                   recv_buffer - buffer to be saved to disk 
+ * 
+ * RETURNS:     ERROR_NONE on success, ERROR_FILE on failure.
+ * 
+ * NOTES: If running as a server and recv_buffer is not null, this function
+ *        goes into write mode. Otherwise, running as a client, this function
+ *        reads a file 32 bits at a time and sends each chunk over a raw socket
+ *        as part of the source IP field.
+ *
+ *----------------------------------------------------------------------------*/
 int file_io(char *recv_buffer)
 {
 	FILE *file;
@@ -237,6 +324,25 @@ int file_io(char *recv_buffer)
 	return ERROR_NONE;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    packet_forge
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   packet_forge(unsigned int source_addr)
+ *                    source_addr - the address being forged into the packet.
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Sends data over a raw socket encoded into the source IP field.
+ *
+ *----------------------------------------------------------------------------*/
 void packet_forge(unsigned int source_addr)
 {
 	struct ip iph;
@@ -315,6 +421,26 @@ void packet_forge(unsigned int source_addr)
 	close(sock_fd);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    packet_decode
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   packet_decode(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Decodes incoming packets that have a specified window setting.
+ *        Additionally decodes the forged source IP address into a string to be
+ *        written to disk.
+ *
+ *----------------------------------------------------------------------------*/
 void packet_decode()
 {
 	struct recv_tcp {
@@ -366,11 +492,13 @@ void packet_decode()
  * 
  * PROGRAMMER:  W. Richard Stevens (From UNIX Network Programming)
  * 
- * INTERFACE:   
+ * INTERFACE:   in_cksum(unsigned short *addr, int len)
+ *                     addr - the IP to be checksummed
+ *                     len - lengh of the header
  * 
- * RETURNS:     
+ * RETURNS:     A checksum on the IP header.
  * 
- * NOTES: 
+ * NOTES: Creates a valid checksum for an IP header.
  *
  *----------------------------------------------------------------------------*/
 unsigned short in_cksum(unsigned short *addr, int len)
@@ -414,11 +542,15 @@ unsigned short in_cksum(unsigned short *addr, int len)
  * 
  * PROGRAMMER:  Murat Balaban <murat@enderunix.org>
  * 
- * INTERFACE:   
+ * INTERFACE:   in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
+ *                   src - source IP address
+ *                   dst - destination IP address
+ *                   addr - TCP header
+ *                   len - length of TCP header
  * 
- * RETURNS:     
+ * RETURNS:     Valid checksum on TCP header
  * 
- * NOTES: 
+ * NOTES: Creates a valid TCP checksum.
  *
  *----------------------------------------------------------------------------*/
 unsigned short in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
@@ -449,6 +581,26 @@ unsigned short in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
 	return (answer);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ip_to_string
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   ip_to_string(struct in_addr addr)
+ *                   addr - struct to hold IP address info
+ * 
+ * RETURNS:     Decoded string
+ * 
+ * NOTES: Splits an IP address up into 4 parts, each 8 bytes or 1 char per
+ *        section and the returns the 32-bit string to the calling function.
+ *
+ *----------------------------------------------------------------------------*/
 char *ip_to_string(struct in_addr addr)
 {
 	char *ip_str = inet_ntoa(addr);

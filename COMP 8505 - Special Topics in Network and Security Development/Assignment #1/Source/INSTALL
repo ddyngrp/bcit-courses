@@ -12,7 +12,9 @@ Running as a Server:
 In order for both the client and server to communicate, the window size (-w)
 needs to be identical on both sides.
 
-./covert -s -f save_file_name -d 192.168.1.1 -p 1234 -w 31415
+NOTE: As a server, the destination IP address and port number have no effect.
+
+./covert -s -f save_file_name -w 31415
 
 
 Running as a Client:

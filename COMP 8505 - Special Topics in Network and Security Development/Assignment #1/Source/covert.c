@@ -36,7 +36,7 @@
  * NOTES: 
  *
  *----------------------------------------------------------------------------*/
-int main (int argc, const char *argv[])
+int main (int argc, char *argv[])
 {
 
 	/* make sure user is root */
@@ -46,15 +46,22 @@ int main (int argc, const char *argv[])
 	}
 
 	/* parse CLI options */
-	if (argc == 1)
-		print_usage(argv[0], OPTIONS_HELP);
-	else
-		if (parse_options(argc, argv) == OPTIONS_ERROR) {
-			err(1, "Invalid options");
-			exit(OPTIONS_ERROR);
-		}
+	if (parse_options(argc, argv) == OPTIONS_ERROR) {
+		err(1, "Invalid options");
+		exit(OPTIONS_ERROR);
+	}
 
 	print_settings(argv[0]);
+
+	/* run as client/server */
+	if (conn_info.mode_server == TRUE) {
+		packet_decode();
+	}
+	else
+		if (file_io(NULL) == ERROR_FILE) {
+			err(1, "file_io");
+			exit(ERROR_FILE);
+		}
 
     return ERROR_NONE;
 }
@@ -63,12 +70,17 @@ void print_settings(char *command)
 {
 	printf("Using the Following Options: (For help use \"%s -h\")\n", command);
 	if (conn_info.mode_server == TRUE)
-	printf("  Running as server:       TRUE\n");
+		printf("  Running as server:       TRUE\n");
 	else
-	printf("  Running as client:       TRUE\n");
+		printf("  Running as client:       TRUE\n");
 	printf("  Destination IP address:  %s\n", conn_info.dest_ip);
-	printf("  Destination port:        %du\n", conn_info.dest_port);
-	printf("  Output to File:          %s\n", conn_info.file_name);
+	printf("  Destination port:        %d\n", conn_info.dest_port);
+	printf("  Window size:             %d\n", conn_info.th_win);
+
+	if (conn_info.mode_server == TRUE)
+		printf("  Output to File:          %s\n\n", conn_info.file_name);
+	else
+		printf("  Input from File:         %s\n\n", conn_info.file_name);
 	
 }
 
@@ -77,11 +89,13 @@ void print_usage(char *command, int err)
     if (err == OPTIONS_HELP) {
         printf("usage: %s [arguments]\n\n", command);
         printf("Arguments:\n");
-        printf("  -s  or  --server     Run as server, otherwise as client\n");
-        printf("  -d  or  --dest-ip    Destination IP address\n");
-        printf("  -p  or  --dest-port  Destination port\n");
-        printf("  -f  or  --file       File to read from or write to\n");
-        printf("  -h  or  --help       Prints out this screen\n");
+        printf("  -s  or  --server       Run as server, otherwise as client\n");
+        printf("  -d  or  --dest-ip      Destination IP address\n");
+        printf("  -p  or  --dest-port    Destination port\n");
+        printf("  -w  or  --window-size  Window size (server/client must agree)\n");
+        printf("  -f  or  --file         File to read from or write to\n");
+        printf("  -h  or  --help         Prints out this screen\n");
+		exit(OPTIONS_HELP);
     }
 	else if (err == OPTIONS_ERROR)
         printf("Try `%s --help` for more information.\n", command);
@@ -91,25 +105,31 @@ void print_usage(char *command, int err)
     }	
 }
 
-int parse_options(int argc, const char *argv[])
+int parse_options(int argc, char *argv[])
 {
 	int c, option_index = 0;
 
 	static struct option long_options[] =
 	{
-		{"server"	, no_argument		, 0, 's'},
-		{"dest-ip"	, required_argument	, 0, 'd'},
-		{"dest-port", required_argument	, 0, 'p'},
-		{"file"		, required_argument	, 0, 'f'},
-		{"help"		, no_argument		, 0, 'h'},
+		{"server"		, no_argument		, 0, 's'},
+		{"dest-ip"		, required_argument	, 0, 'd'},
+		{"dest-port"	, required_argument	, 0, 'p'},
+		{"window-size"	, required_argument	, 0, 'w'},
+		{"file"			, required_argument	, 0, 'f'},
+		{"help"			, no_argument		, 0, 'h'},
 		{0, 0, 0, 0}
 	};
 
 	/* set defaults */
-	conn_info.server = FALSE;
+	conn_info.mode_server = FALSE;
+	conn_info.dest_ip = "192.168.1.1";
+	conn_info.dest_port = 3141;
+	conn_info.th_win = 31415;
+	conn_info.file_name = "./INSTALL";
 
+	/* parse options */
 	while (TRUE) {
-		c = getopt_long(argc, argv, "sd:p:f:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "sd:p:w:f:h", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -121,7 +141,7 @@ int parse_options(int argc, const char *argv[])
 				break;
 
 			case 's':
-				conn_info.server = TRUE;
+				conn_info.mode_server = TRUE;
 				break;
 
 			case 'd':
@@ -131,9 +151,19 @@ int parse_options(int argc, const char *argv[])
 			case 'p':
 				if (atoi(optarg) > 0)
 					conn_info.dest_port = atoi(optarg);
-				else
+				else {
 					print_usage(argv[0], OPTIONS_ERROR);
 					return OPTIONS_ERROR;
+				}
+				break;
+
+			case 'w':
+				if (atoi(optarg) > 0)
+					conn_info.th_win = atoi(optarg);
+				else {
+					print_usage(argv[0], OPTIONS_ERROR);
+					return OPTIONS_ERROR;
+				}
 				break;
 
 			case 'f':
@@ -154,7 +184,7 @@ int parse_options(int argc, const char *argv[])
 	return ERROR_NONE;
 }
 
-int file_io(char *file_name, char *recv_buffer)
+int file_io(char *recv_buffer)
 {
 	FILE *file;
 	char buffer[BUFFER_SIZE + 1];
@@ -166,7 +196,7 @@ int file_io(char *file_name, char *recv_buffer)
 
 	/* determine if we are reading or writing */
 	if (recv_buffer == NULL) { /* client sends file */
-		if ((file = fopen(file_name, "rb")) == NULL)
+		if ((file = fopen(conn_info.file_name, "rb")) == NULL)
 			return ERROR_FILE;
 		else {
 			fseek(file, 0, SEEK_END);
@@ -196,7 +226,10 @@ int file_io(char *file_name, char *recv_buffer)
 		fclose(file);
 	}
 	else { /* server receives file */
-
+		if ((file = fopen(conn_info.file_name, "wa")) == NULL)
+			return ERROR_FILE;
+		else {
+		}
 	}
 
 	return ERROR_NONE;
@@ -230,7 +263,7 @@ void packet_forge(unsigned int source_addr)
 	iph.ip_sum	= 0;
 	iph.ip_p	= IPPROTO_TCP;
 	iph.ip_src.s_addr = source_addr;
-	iph.ip_dst.s_addr = inet_addr(DEST_IP);
+	iph.ip_dst.s_addr = inet_addr(conn_info.dest_ip);
 
 	/* create a forged TCP header */
 	tcph.th_sport = htons(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
@@ -238,7 +271,7 @@ void packet_forge(unsigned int source_addr)
 	tcph.th_seq = htonl(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
 	tcph.th_off = sizeof(struct tcphdr) / 4;
 	tcph.th_flags = TH_SYN;
-	tcph.th_win = htons(TCP_WINDOW);
+	tcph.th_win = htons(conn_info.th_win);
 	tcph.th_sum = 0;
 
 	/* combine the forged headers into a socket struct */
@@ -307,10 +340,13 @@ void packet_decode()
 
 		/* if the packet has SYN/ACK flag and a window size of TCP_WINDOW */
 		if ((recv_pkt.tcph.th_flags == TH_SYN)
-				&& (ntohs(recv_pkt.tcph.th_win) == TCP_WINDOW)) {
+				&& (ntohs(recv_pkt.tcph.th_win) == conn_info.th_win)) {
 
 			printf("Receiving Data: %s\n", ip_to_string(recv_pkt.iph.ip_src));
-
+			if (file_io(ip_to_string(recv_pkt.iph.ip_src)) == ERROR_FILE) {
+				err(1, "file_io");
+				exit(ERROR_FILE);
+			}
 		}
 
 		close(sock_fd);

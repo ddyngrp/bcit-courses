@@ -64,8 +64,8 @@ struct conn_info {
 
 void print_settings(char *);
 void print_usage(char *, int);
-int parse_options(int, const char **);
-int file_io(char *, char *recv_buff);
+int parse_options(int, char **);
+int file_io(char *recv_buff);
 void packet_forge(unsigned int);
 void packet_decode();
 unsigned short in_cksum(unsigned short *, int);

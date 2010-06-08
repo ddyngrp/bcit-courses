@@ -21,15 +21,27 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
+#include <sys/time.h>
+#include <err.h>
 
 #define __FAVOR_BSD	/* use BSD-style headers */
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+/* error codes */
+#define ERROR_NONE		 0
+#define ERROR_SOCKET	-1
+#define ERROR_SEND		-2
 
 /* function prototypes */
 unsigned short in_cksum(unsigned short *, int);
 unsigned short in_cksum_tcp(int, int, unsigned short *, int);
 char *xor(char *);
+void packet_forge(char *, char *, char *);
 
 #endif

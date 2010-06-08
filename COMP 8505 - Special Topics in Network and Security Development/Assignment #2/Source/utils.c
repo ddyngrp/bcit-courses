@@ -343,3 +343,97 @@ char *xor(char *string)
 
 	return answer;
 }
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    packet_forge
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   packet_forge(char *payload)
+ *                    payload - the data being sent
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Sends data over a raw socket.
+ *
+ *----------------------------------------------------------------------------*/
+void packet_forge(char *payload, char *src, char *dst)
+{
+	struct ip iph;
+	struct tcphdr tcph;
+	struct sockaddr_in sin;
+	struct timeval time;
+	unsigned char *packet;
+	const int on = 1;
+	int sock_fd, send_len;
+
+	/* seed random number generator */
+	gettimeofday(&time, NULL);
+	srand(time.tv_usec);
+
+	/* allocate memory for the packet */
+	packet = (unsigned char *)malloc(40 + strlen(payload));
+
+	/* create a forged IP header */
+	iph.ip_hl	= 0x5;
+	iph.ip_v	= 0x4;
+	iph.ip_tos	= 0x0;
+	iph.ip_len	= sizeof(struct ip) + sizeof(struct tcphdr) + strlen(payload);
+	iph.ip_id	= htonl((int)(255.0 * rand() / (RAND_MAX + 1.0)));
+	iph.ip_off	= 0x0;
+	iph.ip_ttl	= 0x64;
+	iph.ip_sum	= 0;
+	iph.ip_p	= IPPROTO_TCP;
+	iph.ip_src.s_addr = inet_addr(src);
+	iph.ip_dst.s_addr = inet_addr(dst);
+
+	/* create a forged TCP header */
+	tcph.th_sport = htons(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
+	tcph.th_dport = htons(31415);
+	tcph.th_seq = htonl(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
+	tcph.th_off = sizeof(struct tcphdr) / 4;
+	tcph.th_flags = TH_SYN;
+	tcph.th_win = htons(65535);
+	tcph.th_sum = 0;
+
+	/* combine the forged headers into a socket struct */
+	memset(&sin, 0, sizeof(sin));
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = iph.ip_dst.s_addr;
+
+	/* open raw socket for sending */
+	if ((sock_fd = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)) < ERROR_NONE) {
+		err(1, "socket");
+		exit(ERROR_SOCKET);
+	}
+
+	if (setsockopt(sock_fd, IPPROTO_IP, IP_HDRINCL, &on, sizeof(on)) < ERROR_NONE) {
+		err(1, "setsockopt");
+		exit(ERROR_SOCKET);
+	}	
+
+	/* create checksums */
+	iph.ip_sum = in_cksum((unsigned short*)&iph, sizeof(iph));
+	tcph.th_sum = in_cksum_tcp(iph.ip_src.s_addr, iph.ip_dst.s_addr,
+			(unsigned short *)&tcph, sizeof(tcph));
+
+	/* finish full header */
+	memcpy(packet, &iph, sizeof(iph));
+	memcpy(packet + sizeof(iph), &tcph, sizeof(tcph));
+	memcpy(packet + sizeof(iph) + sizeof(tcph), payload, strlen(payload));
+
+	/* send the packet */
+	if ((send_len = sendto(sock_fd, packet, iph.ip_len, 0,
+					(struct sockaddr *)&sin,
+					sizeof(struct sockaddr))) < ERROR_NONE) {
+		err(1, "sendto");
+		exit(ERROR_SEND);
+	}
+
+	close(sock_fd);
+}
+

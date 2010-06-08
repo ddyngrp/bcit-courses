@@ -21,33 +21,20 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <time.h>
-#include <sys/time.h>
 #include <err.h>
 #include <signal.h>
 
 #include <getopt.h>
-#include <pcap.h>
 #include <sys/prctl.h>
-
-#define __FAVOR_BSD	/* use BSD-style headers */
-#include <netinet/ip.h>
-#include <netinet/tcp.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
 
 /* error codes */
 #define ERROR_NONE		 0
 #define ERROR_GENERAL	-1
 #define ERROR_NOTROOT	-2
-#define ERROR_SOCKET	-3
-#define	ERROR_SEND		-4
-#define ERROR_READ		-5
-#define ERROR_OPTS		-6
-#define	ERROR_OPTS_HELP	-7
-#define ERROR_FORK		-8
+#define ERROR_OPTS		-3
+#define	ERROR_OPTS_HELP	-4
+#define ERROR_FORK		-5
 
 /* defaults */
 #define	TRUE			1
@@ -61,6 +48,7 @@ struct svr_vars {
 	char *client_ip;
 } svr_vars;
 
+/* function prototypes */
 void print_settings(char *);
 void print_usage(char *, int);
 int parse_options(int, char **);

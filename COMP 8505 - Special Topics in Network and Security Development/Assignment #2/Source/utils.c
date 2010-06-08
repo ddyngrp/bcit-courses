@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * utils.c - Linux backdoor client utilities
+ * utils.c - Linux backdoor utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify

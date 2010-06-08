@@ -45,12 +45,6 @@ int main(int argc, char *argv[])
 {
 	char packet[MAX_PKT_LEN];
 
-	/* make sure user is root */
-	if (geteuid() != USER_ROOT) {
-		fprintf(stderr, "Must be root to run this program.\n");
-		exit(ERROR_NOTROOT);
-	}
-
 	/* parse CLI options */
 	if (parse_options(argc, argv) == ERROR_OPTS) {
 		err(1, "Invalid options");
@@ -58,6 +52,12 @@ int main(int argc, char *argv[])
 	}
 
 	print_settings(argv[0]);
+
+	/* make sure user is root */
+	if (geteuid() != USER_ROOT) {
+		fprintf(stderr, "Must be root to run this program.\n");
+		exit(ERROR_NOTROOT);
+	}
 
 	/* raise privileges */
 	if (set_root() == ERROR_NOTROOT) {

@@ -10,7 +10,7 @@ Compilation:
 Installation:
 =============
 To run the server, execute the following command:
-./backdoor-betty
+sudo ./backdoor-betty
 
 To run the client, execute the following command:
-./backdoor-carl
+sudo ./backdoor-carl

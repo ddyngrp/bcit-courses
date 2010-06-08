@@ -437,6 +437,22 @@ void packet_forge(char *payload, char *src, char *dst)
 	close(sock_fd);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    set_root
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   set_root(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Sets the UID/GID to root
+ *
+ *----------------------------------------------------------------------------*/
 int set_root()
 {
 	/* change the UID/GIT to 0 (root) */

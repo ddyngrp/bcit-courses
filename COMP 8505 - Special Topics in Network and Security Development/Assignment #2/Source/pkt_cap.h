@@ -91,6 +91,8 @@ struct pcap_tcp {
 	unsigned short		th_urp;		/* urgent pointer */
 };
 
+int print_output;
+
 /* function prototypes */
 void packet_callback(unsigned char *, const struct pcap_pkthdr *, const unsigned char *);
 void print_payload(const unsigned char *, int);

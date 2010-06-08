@@ -21,18 +21,41 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <err.h>
 #include <string.h>
+#include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
+#include <err.h>
 
 #include <getopt.h>
 #include <pcap.h>
+#include <sys/prctl.h>
 
 #define __FAVOR_BSD	/* use BSD-style headers */
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+
+/* error codes */
+#define ERROR_NONE		 0
+#define ERROR_GENERAL	-1
+#define ERROR_NOTROOT	-2
+#define ERROR_SOCKET	-3
+#define	ERROR_SEND		-4
+#define ERROR_READ		-5
+#define ERROR_OPTS		-6
+#define	ERROR_OPTS_HELP	-7
+
+/* defaults */
+#define	TRUE	1
+#define FALSE	0
+#define PROCESS_NAME "/sbin/udevd --daemon"
+
+void print_settings(char *);
+void print_usage(char *, int);
+int parse_options(int, char **);
+int set_root(void);
+void mask_process(char **, char *);
 
 #endif

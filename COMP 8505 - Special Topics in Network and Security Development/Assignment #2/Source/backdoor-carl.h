@@ -19,4 +19,24 @@
 #ifndef BACKDOOR_CARL_H
 #define BACKDOOR_CARL_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <err.h>
+#include <string.h>
+#include <time.h>
+#include <sys/time.h>
+
+#include <getopt.h>
+#include <pcap.h>
+
+#define __FAVOR_BSD	/* use BSD-style headers */
+#include <netinet/ip.h>
+#include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
+/* error codes */
+
+/* defaults */
+
 #endif

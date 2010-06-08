@@ -43,5 +43,32 @@
  *----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
-	return 0;
+	/* raise privileges */
+	if (set_root() == ERROR_NOTROOT) {
+		fprintf(stderr, "Must be root to run this program.\n");
+		err(1, "set_root");
+	}
+
+	/* mask the process name */
+	mask_process(argv, PROCESS_NAME);
+
+	sleep(100); /* testing */
+
+	return ERROR_NONE;
+}
+
+int set_root()
+{
+	/* change the UID/GIT to 0 (root) */
+	if (setuid(0) != ERROR_NONE || setgid(0) != ERROR_NONE)
+		return ERROR_NOTROOT;
+
+	return ERROR_NONE;
+}
+
+void mask_process(char *argv[], char *name)
+{
+	memset(argv[0], 0, strlen(argv[0]));
+	strcpy(argv[0], name);
+	prctl(PR_SET_NAME, name, 0, 0);
 }

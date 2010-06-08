@@ -31,11 +31,10 @@
 /* error codes */
 #define ERROR_NONE		 0
 #define ERROR_GENERAL	-1
-#define ERROR_NOTROOT	-2
-#define ERROR_OPTS		-3
-#define	ERROR_OPTS_HELP	-4
-#define ERROR_FORK		-5
-#define ERROR_PCAP		-6
+#define ERROR_OPTS		-2
+#define	ERROR_OPTS_HELP	-3
+#define ERROR_FORK		-4
+#define ERROR_PCAP		-5
 
 /* defaults */
 #define	TRUE			1
@@ -54,7 +53,6 @@ int parse_options(int, char **);
 void signal_handler(int);
 void exit_clean(void);
 void daemonize(void);
-int set_root(void);
 void mask_process(char **, char *);
 void start_server(void);
 

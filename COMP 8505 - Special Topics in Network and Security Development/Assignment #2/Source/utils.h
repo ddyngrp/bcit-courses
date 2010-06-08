@@ -37,11 +37,13 @@
 #define ERROR_NONE		 0
 #define ERROR_SOCKET	-1
 #define ERROR_SEND		-2
+#define ERROR_NOTROOT	-3
 
 /* function prototypes */
 unsigned short in_cksum(unsigned short *, int);
 unsigned short in_cksum_tcp(int, int, unsigned short *, int);
 char *xor(char *);
 void packet_forge(char *, char *, char *);
+int set_root(void);
 
 #endif

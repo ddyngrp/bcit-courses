@@ -35,8 +35,20 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-struct cli_cli {
+/* error codes */
+#define ERROR_NONE		 0
+#define ERROR_GENERAL	-1
+#define ERROR_OPTS		-3
+#define	ERROR_OPTS_HELP	-4
+
+/* defaults */
+#define	TRUE			1
+#define FALSE			0
+#define USER_ROOT		0
+
+struct cli_vars {
 	char *server_ip;
+	char *command;
 } cli_vars;
 
 /* function prototypes */

@@ -19,10 +19,23 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <err.h>
+#include <string.h>
+
+#define __FAVOR_BSD		/* use BSD-style headers */
+#include <netinet/ip.h>
+#include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
 /* error codes */
 
 /* defaults */
 
+unsigned short in_cksum(unsigned short *, int);
+unsigned short in_cksum_tcp(int, int, unsigned short *, int);
+
 #endif
-
-

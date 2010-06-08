@@ -338,8 +338,10 @@ char *xor(char *string)
 	answer = (char *)malloc(len);
 
 	/* decrypt by XOR_SALT */
-	for (i = 0; i < len; i++)
+	for (i = 0; i < len; i++) {
 		answer[i] = string[i] ^ xor_salt[(i % strlen((const char *)xor_salt))];
+		/* answer[i] = string[i]; */
+	}
 
 	return answer;
 }

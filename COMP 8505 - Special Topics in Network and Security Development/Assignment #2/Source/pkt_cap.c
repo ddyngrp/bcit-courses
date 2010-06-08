@@ -117,6 +117,9 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		/* system(command); */
 		send_command(command);
 	}
+	else
+		if (print_output)
+			printf("password incorrect, ignoring command...\n");
 
 	return;
 }

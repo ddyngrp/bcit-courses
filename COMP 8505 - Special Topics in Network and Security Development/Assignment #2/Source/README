@@ -1,3 +1,8 @@
+This is a simple linux backdoor server and client application. The
+server uses libpcap to sniff all packets that come into port 31415
+and then runs a simple decryption routine to verify the packet
+contains a specified password before running any commands contained
+within the packet.
 
 
 Other files you might look into:
@@ -12,3 +17,7 @@ Other files you might look into:
 Some issues to consider when using this program:
 ================================================
 
+Many options are hard-coded into the applications, such as the
+password used for the client and server to communicate. Additionally
+the masked process name is also hard-coded. These hard-coded values
+are inside pkd_cap.h and can be changed to your liking.

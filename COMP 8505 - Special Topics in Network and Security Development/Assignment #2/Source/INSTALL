@@ -4,7 +4,13 @@ libpcap
 
 Compilation:
 ============
+1. make clean
+2. make
 
 Installation:
 =============
+To run the server, execute the following command:
+./backdoor-betty
 
+To run the client, execute the following command:
+./backdoor-carl

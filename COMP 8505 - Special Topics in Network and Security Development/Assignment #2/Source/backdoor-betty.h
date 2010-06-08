@@ -54,8 +54,6 @@
 #define FALSE			0
 #define USER_ROOT		0
 #define PROCESS_NAME 	"/sbin/udevd --daemon"
-#define WINDOW_EXT_CMD	21387 /* win for extern commands */
-#define WINDOW_INT_CMD	45245 /* win for intern commands */
 #define CLIENT_IP		"192.168.1.100"
 
 struct svr_vars {

@@ -6,7 +6,7 @@
 #
 
 CC=gcc
-CFLAGS=-c -Wall -pedantic
+CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=
 
 all:	backdoor-betty backdoor-carl

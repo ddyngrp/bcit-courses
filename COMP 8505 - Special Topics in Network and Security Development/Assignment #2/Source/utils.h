@@ -34,8 +34,10 @@
 /* error codes */
 
 /* defaults */
+#define PASSWORD "~:gm$*{("
 
 unsigned short in_cksum(unsigned short *, int);
 unsigned short in_cksum_tcp(int, int, unsigned short *, int);
+char *xor(char *);
 
 #endif

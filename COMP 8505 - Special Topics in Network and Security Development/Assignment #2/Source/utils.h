@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * auth.c - Authentication mechanisms
+ * utils.h - Linux backdoor client utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -16,11 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#ifndef AUTH_H
-#define AUTH_H
+#ifndef UTILS_H
+#define UTILS_H
 
 /* error codes */
 
 /* defaults */
 
 #endif
+
+

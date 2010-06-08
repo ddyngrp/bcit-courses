@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * crypt.c - Cryptographic mechanisms
+ * utils.c - Linux backdoor client utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -16,5 +16,4 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#include "crypt.h"
-
+#include "utils.h"

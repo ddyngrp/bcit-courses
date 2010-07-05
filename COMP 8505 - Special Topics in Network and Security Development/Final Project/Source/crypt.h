@@ -20,18 +20,42 @@
 #define CRYPT_H
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <sys/time.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <err.h>
+
+#include <openssl/blowfish.h>
+#include <openssl/evp.h>
 
 /* error codes */
 #define ERROR_NONE		 0
 #define ERROR_GENERAL	-1
+#define ERROR_ENCRYPT	-2
+#define ERROR_DECRYPT	-3
+
+/* true/false */
+#define TRUE	1
+#define FALSE	0
 
 /* defaults */
+#define KEY_LENGTH	56	/* 448-bit key (maximum blowfish key length) */
+#define IV_LENGTH	8	/* 64-bit initialization vector */
+#define IN_SIZE
+#define OUT_SIZE
 
 /* function prototypes */
+int generate_key(void);
+char *encrypt_string(char *);
+char *decrypt_string(char *);
+int encrypt_file(int, int);
+int decrypt_file(int, int);
+
+/* globals */
+unsigned char key[] = {143, 217, 186, 251, 227, 8, 27, 160, 135, 64, 12, 187, 59, 38, 90, 23, 37, 101, 238, 204, 16, 50, 26, 244, 54, 173, 202, 142, 121, 222, 56, 56, 32, 92, 242, 230, 190, 53, 235, 101, 232, 102, 83, 173, 49, 239, 211, 251, 251, 225, 120, 14, 58, 197, 160, 235};
+unsigned char iv[] = {90, 210, 231, 11, 143, 73, 130, 20};
 
 #endif

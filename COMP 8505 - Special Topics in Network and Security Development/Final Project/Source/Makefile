@@ -6,7 +6,7 @@
 
 CC=gcc
 CFLAGS=-Os -c -Wall -pedantic
-LDFLAGS=-lpcap
+LDFLAGS=-lpcap -lcrypto
 
 all:	client server test
 

@@ -1,5 +1,8 @@
 Dependencies:
 =============
+gpgme
+libgcrypt
+zlib
 
 Compilation:
 ============

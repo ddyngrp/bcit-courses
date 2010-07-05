@@ -1,4 +1,4 @@
-# Makefile for Final Project - 
+# Makefile for Final Project
 #
 # utilsor: Steffen L. Norgren <ironix@trollop.org>
 #         A00683006
@@ -8,25 +8,25 @@ CC=gcc
 CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=-lpcap
 
-all:	backdoor-betty backdoor-carl
+all:	client server test
 
-backdoor-betty: backdoor-betty.o utils.o pkt_cap.o
-		${CC} ${LDFLAGS} backdoor-betty.o utils.o pkt_cap.o -o backdoor-betty
+server: server.o
+		${CC} ${LDFLAGS} server.o -o server
 
-backdoor-carl: backdoor-carl.o utils.o pkt_cap.o
-		${CC} ${LDFLAGS} backdoor-carl.o utils.o pkt_cap.o -o backdoor-carl
+client: client.o
+		${CC} ${LDFLAGS} client.o -o client
 
-backdoor-betty.o: backdoor-betty.c
-		${CC} ${CFLAGS} backdoor-betty.c 
+test: crypt.o
+	  ${CC} ${LDFLAGS} crypt.o -o test
 
-backdoor-carl.o: backdoor-carl.c
-		${CC} ${CFLAGS} backdoor-carl.c
+server.o: server.c
+		${CC} ${CFLAGS} server.c 
 
-utils.o: utils.c
-	${CC} ${CFLAGS} utils.c
+client.o: client.c
+		${CC} ${CFLAGS} client.c
 
-pkt_cap.o: pkt_cap.c
-	${CC} ${CFLAGS} pkt_cap.c
+crypt.o: crypt.c
+	${CC} ${CFLAGS} crypt.c
 
 clean:
-		rm -rf *.o backdoor-betty backdoor-carl
+		rm -rf *.o server client test

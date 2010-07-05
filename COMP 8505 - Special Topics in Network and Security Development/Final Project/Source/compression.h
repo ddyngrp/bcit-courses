@@ -1,0 +1,46 @@
+/*-----------------------------------------------------------------------------
+ * compression.h - Compression Utilities
+ * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *----------------------------------------------------------------------------*/
+
+#ifndef COMPRESSION_H
+#define COMPRESSION_H
+
+#include <stdio.h>
+#include <string.h>
+#include <zlib.h>
+
+/* error codes */
+#define SUCCESS		 0
+#define ERROR		-1
+
+/* true/false */
+#define TRUE		1
+#define FALSE		0
+
+/* defaults */
+#define ZLIB_CHUNK	32768
+#define SET_BINARY_MODE(file)
+
+/* function prototypes */
+void test_compression(void);
+int deflate_file(FILE *, FILE *, int);
+int inflate_file(FILE *, FILE *);
+unsigned char *deflate_string(unsigned char *, int);
+unsigned char *inflate_string(unsigned char *);
+void zerr(int);
+
+#endif

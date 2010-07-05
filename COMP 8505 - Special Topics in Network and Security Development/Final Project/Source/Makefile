@@ -8,25 +8,19 @@ CC=gcc
 CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=-lpcap -lcrypto
 
-all:	client server test
+all:	test_crypto test_compression
 
-server: server.o
-		${CC} ${LDFLAGS} server.o -o server
+test_crypto: cryptography.o
+	  ${CC} ${LDFLAGS} cryptography.o -o test_crypto
 
-client: client.o
-		${CC} ${LDFLAGS} client.o -o client
-
-test: cryptography.o
-	  ${CC} ${LDFLAGS} cryptography.o -o test
-
-server.o: server.c
-		${CC} ${CFLAGS} server.c 
-
-client.o: client.c
-		${CC} ${CFLAGS} client.c
+test_compression: compression.o
+	  ${CC} ${LDFLAGS} compression.o -o test_compression
 
 cryptography.o: cryptography.c
 	${CC} ${CFLAGS} cryptography.c
 
+compression.o: compression.c
+	${CC} ${CFLAGS} compression.c
+
 clean:
-		rm -rf *.o *.ciphertext *.plaintext server client test
+		rm -rf *.o *.ciphertext *.plaintext test_crypto test_compression

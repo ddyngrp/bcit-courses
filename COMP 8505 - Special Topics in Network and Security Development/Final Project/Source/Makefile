@@ -16,8 +16,8 @@ server: server.o
 client: client.o
 		${CC} ${LDFLAGS} client.o -o client
 
-test: crypt.o
-	  ${CC} ${LDFLAGS} crypt.o -o test
+test: cryptography.o
+	  ${CC} ${LDFLAGS} cryptography.o -o test
 
 server.o: server.c
 		${CC} ${CFLAGS} server.c 
@@ -25,8 +25,8 @@ server.o: server.c
 client.o: client.c
 		${CC} ${CFLAGS} client.c
 
-crypt.o: crypt.c
-	${CC} ${CFLAGS} crypt.c
+cryptography.o: cryptography.c
+	${CC} ${CFLAGS} cryptography.c
 
 clean:
 		rm -rf *.o server client test

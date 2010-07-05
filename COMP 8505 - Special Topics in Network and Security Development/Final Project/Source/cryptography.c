@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * crypt.c - Cryptographic Utilities
+ * cryptography.c - Cryptographic Utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#include "crypt.h"
+#include "cryptography.h"
 
 int main (int argc, const char * argv[])
 {
@@ -92,7 +92,6 @@ char *encrypt_string(char *string)
 	}
 
 	EVP_CIPHER_CTX_cleanup (&ctx);
-	/* free(encrypted); */
 
 	return (char *)encrypted;
 }
@@ -123,7 +122,6 @@ char *decrypt_string(char *string)
 	}
 
 	EVP_CIPHER_CTX_cleanup(&ctx);
-	/* free(decrypted) */
 
 	return (char *)decrypted;
 }

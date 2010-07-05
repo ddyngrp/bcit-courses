@@ -16,24 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#ifndef CRYPT_H
-#define CRYPT_H
+#ifndef CRYPTOGRAPHY_H
+#define CRYPTOGRAPHY_H
 
 #include <stdio.h>
 #include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <err.h>
 
-#include <openssl/blowfish.h>
 #include <openssl/evp.h>
 
 /* error codes */
-#define ERROR_NONE		 0
-#define ERROR_GENERAL	-1
+#define SUCCESS			 0
+#define ERROR			-1
 #define ERROR_ENCRYPT	-2
 #define ERROR_DECRYPT	-3
 
@@ -42,23 +35,12 @@
 #define FALSE	0
 
 /* defaults */
-#define KEY_LENGTH	56	/* 448-bit key (maximum blowfish key length) */
-#define IV_LENGTH	8	/* 64-bit initialization vector */
-#define IN_SIZE		1024
-#define OUT_SIZE	IN_SIZE + 8
-#define FLAGS_IN	O_RDONLY
-#define FLAGS_OUT	O_RDONLY | O_WRONLY | O_CREAT
-#define MODE		S_IRUSR | S_IWUSR
 
 /* function prototypes */
-int generate_key(void);
-char *encrypt_string(char *);
-char *decrypt_string(char *);
-int encrypt_file(int, int);
-int decrypt_file(int, int);
-
-/* globals */
-unsigned char key[] = {0xBE, 0x63, 0x93, 0x30, 0xD7, 0xB3, 0x24, 0x85, 0xC1, 0xE1, 0x3D, 0x1C, 0x69, 0xC4, 0xEB, 0xDF, 0x1, 0xB5, 0xD0, 0x62, 0x88, 0x9A, 0xB, 0xAD, 0xD9, 0xC5, 0x7E, 0x2E, 0x73, 0x16, 0xC, 0x51, 0xC1, 0x1E, 0x11, 0x6A, 0xBE, 0x38, 0xF1, 0xDD, 0xAC, 0xDB, 0x2A, 0xBE, 0x15, 0x15, 0x70, 0x78, 0x2F, 0x79, 0xC3, 0xFE, 0xFF, 0x81, 0x86, 0xEF};
-unsigned char iv[] = {0x39, 0xB6, 0xAA, 0x1F, 0xEE, 0x4D, 0x1F, 0xB5};
+int aes_init(unsigned char *, int, unsigned char *, EVP_CIPHER_CTX *, EVP_CIPHER *);
+unsigned char *aes_encrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
+unsigned char *aes_decrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
+int file_encrypt(int, int);
+int file_decrypt(int, int);
 
 #endif

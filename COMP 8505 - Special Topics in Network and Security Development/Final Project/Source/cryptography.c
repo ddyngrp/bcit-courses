@@ -18,219 +18,143 @@
 
 #include "cryptography.h"
 
-int main (int argc, const char * argv[])
+int main(int argc, const char * argv[])
 {
-	int fd_in, fd_out;
-
-	if ((fd_in = open("./COPYING", FLAGS_IN, MODE)) == ERROR_GENERAL)
-		err(1, "open");
-
-	if ((fd_out = open("./COPYING.encrypt", FLAGS_OUT, MODE)) == ERROR_GENERAL)
-		err(1, "open");
-
-	encrypt_file(fd_in, fd_out);
-
-	close(fd_in);
-	close(fd_out);
-
-	if ((fd_in = open("./COPYING.encrypt", FLAGS_IN, MODE)) == ERROR_GENERAL)
-		err(1, "open");
-
-	if ((fd_out = open("./COPYING.decrypt", FLAGS_OUT, MODE)) == ERROR_GENERAL)
-		err(1, "open");
-
-	decrypt_file(fd_in, fd_out);
-
-	close(fd_in);
-	close(fd_out);
-
-    return ERROR_NONE;
+	return SUCCESS;
 }
 
-int generate_key()
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    aes_init
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   aes_init(unsigned char *key_data, int key_data_length
+ *                       unsigned char *salt, EVP_CIPHER_CTX *e_ctx,
+ *                       EVP_CIPHER *d_ctx)
+ *                  key_data        - data to be used to create a key
+ *                  key_data_length - length of the key_data
+ *                  salt            - salt to be added for taste
+ *                  e_ctx           - OpenSSL cipher structure
+ *                  d_ctx           - OpenSSL cipher structure
+ * 
+ * RETURNS:     SUCCESS or ERROR
+ *
+ * NOTES: Creates a 256-bit key and initializtion vector using the supplied key
+ *        data. Salt may be added for taste. Fills in the encryption and
+ *        decryption ctx objects.
+ *----------------------------------------------------------------------------*/
+int aes_init(unsigned char *key_data, int key_data_length, unsigned char *salt,
+		EVP_CIPHER_CTX *e_ctx, EVP_CIPHER *d_ctx)
 {
-	unsigned char tmp_key[KEY_LENGTH];	/* temporary key buffer */
-	unsigned char tmp_iv[IV_LENGTH];	/* temporary initialization vector buffer */
-	int i, fd_rand;
+	
 
-	/* open non-blocking random source */
-	if ((fd_rand = open("/dev/urandom", O_RDONLY)) == ERROR_GENERAL)
-		err(1, "open");
-
-	/* read random bits into the key */
-	if ((read(fd_rand, tmp_key, KEY_LENGTH)) == ERROR_GENERAL)
-		err(1, "read");
-
-	/* read random bits into the initialization vector */
-	if ((read(fd_rand, tmp_iv, IV_LENGTH)) == ERROR_GENERAL)
-		err(1, "read");
-
-	/* print key in a copy/paste friendly array */
-	printf("%d-bit tmp_key:\n{", KEY_LENGTH * 8);
-	for (i = 0; i < KEY_LENGTH; i++) {
-		if (i != KEY_LENGTH - 1)
-			printf("0x%X, ", tmp_key[i]);
-		else
-			printf("0x%X", tmp_key[i]);
-	}
-	printf("}\n ------ \n");
-
-	/* print initialization vector in a copy/paste friendly array*/
-	printf("Initialization Vector:\n{");
-	for (i = 0; i < IV_LENGTH; i++) {
-		if (i != IV_LENGTH - 1)
-			printf("0x%X, ", tmp_iv[i]);
-		else
-			printf("0x%X", tmp_iv[i]);
-	}
-	printf("}\n ------ \n");
-
-	close(fd_rand);
-
-	return ERROR_NONE;
+	return SUCCESS;
 }
 
-char *encrypt_string(char *string)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    aes_encrypt 
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:  unsigned char *aes_encrypt(EVP_CIPHER_CTX *e_ctx,
+ *                                        unsigned char *plaintext, int *length) 
+ *                  e_ctx     - OpenSSL encryption cipher structure
+ *                  plaintext - text to be encrypted
+ *                  length    - length of plaintext
+ * 
+ * RETURNS:     Encrypted string
+ *
+ * NOTES: Encrypts *length bytes of data. All the data going in and out is
+ *        considered binary.
+ *----------------------------------------------------------------------------*/
+unsigned char *aes_encrypt(EVP_CIPHER_CTX *e_ctx, unsigned char *plaintext, int *length)
 {
-	int olen, tlen;
-	unsigned char *encrypted;
-	EVP_CIPHER_CTX ctx;
-
-	EVP_CIPHER_CTX_init(&ctx);
-	EVP_EncryptInit(&ctx, EVP_bf_cbc(), key, iv);
-
-	if ((encrypted = malloc(strlen(string) + 1)) == NULL)
-			err(1, "malloc");
-
-	if (EVP_EncryptUpdate(&ctx, encrypted, &olen, (unsigned char *)string,
-				strlen(string)) != TRUE)
-	{
-		fprintf(stderr, "error in decrypt update\n");
-		exit(ERROR_ENCRYPT);
-	}
-
-	if (EVP_EncryptFinal(&ctx, encrypted + olen, &tlen) != TRUE)
-	{
-		fprintf(stderr, "error in decrypt final\n");
-		exit(ERROR_ENCRYPT);
-	}
-
-	EVP_CIPHER_CTX_cleanup (&ctx);
-
-	return (char *)encrypted;
+	return NULL;
 }
 
-char *decrypt_string(char *string)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    aes_decrypt
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx,
+ *                                       unsigned char *ciphertext, int *length)
+ *                  e_ctx      - OpenSSL encryption cipher structure 
+ *                  ciphertext - encrypted text to be decrypted
+ *                  length     - length of ciphertext
+ * 
+ * RETURNS:     Decrypted string
+ *
+ * NOTES: Decrypts *length bytes of ciphertext. All the data going in and out
+ *        is considered binary.
+ *----------------------------------------------------------------------------*/
+unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx, unsigned char *ciphertext, int *length)
 {
-	int olen, tlen;
-	unsigned char *decrypted;
-	EVP_CIPHER_CTX ctx;
-
-	EVP_CIPHER_CTX_init(&ctx);
-	EVP_DecryptInit(&ctx, EVP_bf_cbc(), key, iv);
-
-	if ((decrypted = malloc(strlen(string) + 1)) == NULL)
-		err(1, "malloc");
-
-	if (EVP_DecryptUpdate(&ctx, decrypted, &olen, (unsigned char *)string,
-				strlen(string)) != TRUE)
-	{
-		fprintf(stderr, "error in decrypt update\n");
-		exit(ERROR_DECRYPT);
-	}
-
-	if (EVP_DecryptFinal(&ctx, decrypted + olen, &tlen) != TRUE)
-	{
-		fprintf(stderr, "error in decrypt final\n");
-		exit(ERROR_DECRYPT);
-	}
-
-	EVP_CIPHER_CTX_cleanup(&ctx);
-
-	return (char *)decrypted;
+	return NULL;
 }
 
-int encrypt_file(int fd_in, int fd_out)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_encrypt
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int file_encrypt(int fd_in, int fd_out)
+ *                  fd_in  - file to be encrypted
+ *                  fd_out - destination of encrypted file
+ * 
+ * RETURNS:     SUCCESS or ERROR
+ *
+ * NOTES: Encrypts a fd_in file and saves it to fd_out.
+ *----------------------------------------------------------------------------*/
+int file_encrypt(int fd_in, int fd_out)
 {
-	unsigned char outbuf[OUT_SIZE];
-	int olen, tlen, n;
-	char inbuff[IN_SIZE];
-	EVP_CIPHER_CTX ctx;
-	EVP_CIPHER_CTX_init (&ctx);
-	EVP_EncryptInit (&ctx, EVP_bf_cbc (), key, iv);
-
-	for (;;)
-	{
-		bzero (&inbuff, IN_SIZE);
-
-		if ((n = read (fd_in, inbuff, IN_SIZE)) == -1)
-		{
-			perror ("read error");
-			break;
-		}
-		else if (n == 0)
-			break;
-
-		if (EVP_EncryptUpdate (&ctx, outbuf, &olen, (unsigned char *)inbuff, n) != 1)
-		{
-			printf ("error in encrypt update\n");
-			return 0;
-		}
-
-		if (EVP_EncryptFinal (&ctx, outbuf + olen, &tlen) != 1)
-		{
-			printf ("error in encrypt final\n");
-			return 0;
-		}
-		olen += tlen;
-		if ((n = write (fd_out, outbuf, olen)) == -1)
-			perror ("write error");
-	}
-	EVP_CIPHER_CTX_cleanup (&ctx);
-	return ERROR_NONE;
+	return SUCCESS;
 }
 
-int decrypt_file(int fd_in, int fd_out)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_decrypt
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int file_decrypt(int fd_in, int fd_out)
+ *                  fd_in  - file to be decrypted
+ *                  fd_out - destination of decrypted file
+ * 
+ * RETURNS:     SUCCESS or ERROR
+ *
+ * NOTES: Decrypts a fd_in file and saves it to fd_out.
+ *----------------------------------------------------------------------------*/
+int file_decrypt(int fd_in, int fd_out)
 {
-	unsigned char outbuf[IN_SIZE];
-	int olen, tlen, n;
-	char inbuff[OUT_SIZE];
-	EVP_CIPHER_CTX ctx;
-	EVP_CIPHER_CTX_init (&ctx);
-	EVP_DecryptInit (&ctx, EVP_bf_cbc (), key, iv);
-
-	for (;;)
-	{
-		bzero (&inbuff, OUT_SIZE);
-		if ((n = read (fd_in, inbuff, OUT_SIZE)) == -1)
-		{
-			perror ("read error");
-			break;
-		}
-		else if (n == 0)
-			break;
-
-		bzero (&outbuf, IN_SIZE);
-
-		if (EVP_DecryptUpdate (&ctx, outbuf, &olen, (unsigned char *)inbuff, n) != 1)
-		{
-			printf ("error in decrypt update\n");
-			return 0;
-		}
-
-		printf("tlen = %d\n", olen);
-
-		if (EVP_DecryptFinal (&ctx, outbuf + olen, &tlen) != 1)
-		{
-			printf ("error in decrypt final\n");
-			return 0;
-		}
-
-		olen += tlen;
-		if ((n = write (fd_out, outbuf, olen)) == -1)
-			perror ("write error");
-	}
-
-	EVP_CIPHER_CTX_cleanup (&ctx);
-	return ERROR_NONE;
+	return SUCCESS;
 }

@@ -20,7 +20,56 @@
 
 int main(int argc, const char * argv[])
 {
+	test_crypto();
+
 	return SUCCESS;
+}
+
+
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    test_crypto
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   test_crypto(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Tests whether encryption/decryption is sane or not. 
+ *----------------------------------------------------------------------------*/
+void test_crypto(void)
+{
+	EVP_CIPHER_CTX encrypt, decrypt;
+	char *input = "This is a test string to encrypt.";
+	unsigned char *ciphertext;
+	char *plaintext;
+	int olen, len;
+
+	aes_init(&encrypt, &decrypt);
+
+	olen = len = strlen(input) + 1;
+
+	ciphertext = aes_encrypt(&encrypt, (unsigned char *)input, &len);
+	plaintext = (char *)aes_decrypt(&decrypt, ciphertext, &len);
+
+	if (strncmp(plaintext, input, olen))
+		fprintf(stderr, "FAILURE: encryption/decryption failed for \"%s\"\n",
+				input);
+	else
+		fprintf(stderr, "SUCCESS: encryption/decryption succeeded for \"%s\"\n",
+				plaintext);
+
+	free(ciphertext);
+	free(plaintext);
+
+	EVP_CIPHER_CTX_cleanup(&encrypt);
+	EVP_CIPHER_CTX_cleanup(&decrypt);
 }
 
 /*-----------------------------------------------------------------------------
@@ -34,14 +83,9 @@ int main(int argc, const char * argv[])
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   aes_init(unsigned char *key_data, int key_data_length
- *                       unsigned char *salt, EVP_CIPHER_CTX *e_ctx,
- *                       EVP_CIPHER *d_ctx)
- *                  key_data        - data to be used to create a key
- *                  key_data_length - length of the key_data
- *                  salt            - salt to be added for taste
- *                  e_ctx           - OpenSSL cipher structure
- *                  d_ctx           - OpenSSL cipher structure
+ * INTERFACE:   aes_init(EVP_CIPHER_CTX *e_ctx, EVP_CIPHER *d_ctx)
+ *                  e_ctx           - OpenSSL encryption cipher structure
+ *                  d_ctx           - OpenSSL decryption cipher structure
  * 
  * RETURNS:     SUCCESS or ERROR
  *
@@ -49,10 +93,33 @@ int main(int argc, const char * argv[])
  *        data. Salt may be added for taste. Fills in the encryption and
  *        decryption ctx objects.
  *----------------------------------------------------------------------------*/
-int aes_init(unsigned char *key_data, int key_data_length, unsigned char *salt,
-		EVP_CIPHER_CTX *e_ctx, EVP_CIPHER *d_ctx)
+int aes_init(EVP_CIPHER_CTX *e_ctx, EVP_CIPHER_CTX *d_ctx)
 {
-	
+	unsigned int salt[] = {42756, 26042}; /* 8 bytes to salt the key */
+	unsigned char key_data[] = {0x23, 0xf6, 0x9d, 0x75, 0xec, 0x48, 0x2d, 0xb7,
+								0x57, 0x4a, 0x6f, 0xcf, 0xca, 0xd6, 0x59, 0xed,
+								0x7c, 0xea, 0x84, 0xe8, 0x2c, 0x4a, 0x0b, 0xeb,
+								0xc0, 0x30, 0x42, 0x5c, 0xe1, 0xeb, 0x8f, 0x0b};
+	unsigned char key[KEY_SIZE];
+	unsigned char iv[KEY_SIZE];
+	int i, key_data_length = strlen((char *)key_data);
+
+	/* Generate key and initialization vector (iv) for AES 256-bit CBC mode.
+	 * An SHA1 digest is used to hash the supplied key materiel. AES_ROUNDS
+	 * is the number of times we hash the material. More rounds are more secure
+	 * but slower. */
+	i = EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha1(), (unsigned char *)&salt, key_data,
+			key_data_length, AES_ROUNDS, key, iv);
+
+	if (i != 32) {
+		fprintf(stderr, "Key size is %d bits and should be 256 bits.\n", i);
+		return ERROR;
+	}
+
+	EVP_CIPHER_CTX_init(e_ctx);
+	EVP_EncryptInit_ex(e_ctx, EVP_aes_256_cbc(), NULL, key, iv);
+	EVP_CIPHER_CTX_init(d_ctx);
+	EVP_DecryptInit_ex(d_ctx, EVP_aes_256_cbc(), NULL, key, iv);
 
 	return SUCCESS;
 }
@@ -79,9 +146,28 @@ int aes_init(unsigned char *key_data, int key_data_length, unsigned char *salt,
  * NOTES: Encrypts *length bytes of data. All the data going in and out is
  *        considered binary.
  *----------------------------------------------------------------------------*/
-unsigned char *aes_encrypt(EVP_CIPHER_CTX *e_ctx, unsigned char *plaintext, int *length)
+unsigned char *aes_encrypt(EVP_CIPHER_CTX *e_ctx,
+		unsigned char *plaintext, int *length)
 {
-	return NULL;
+	/* max ciphertext length for a n-bytes of plaintext is
+	 * n + AES_BLOCK_SIZE - 1 bytes */
+	int c_len = *length + AES_BLOCK_SIZE;
+	int f_len = 0;
+	unsigned char *ciphertext = malloc(c_len);
+
+	/* allows reuse of 'e_ctx' for multiple encryption cycles */
+	EVP_EncryptInit_ex(e_ctx, NULL, NULL, NULL, NULL);
+
+	/* update ciphertext as c_len is filled with the length of ciphertext
+	 * generated and *length is the size of plaintext in bytes */
+	EVP_EncryptUpdate(e_ctx, ciphertext, &c_len, plaintext, *length);
+
+	/* update the ciphertext with the remaining bytes */
+	EVP_EncryptFinal_ex(e_ctx, ciphertext + c_len, &f_len);
+
+	*length = c_len + f_len;
+
+	return ciphertext;
 }
 
 /*-----------------------------------------------------------------------------
@@ -106,9 +192,22 @@ unsigned char *aes_encrypt(EVP_CIPHER_CTX *e_ctx, unsigned char *plaintext, int 
  * NOTES: Decrypts *length bytes of ciphertext. All the data going in and out
  *        is considered binary.
  *----------------------------------------------------------------------------*/
-unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx, unsigned char *ciphertext, int *length)
+unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx,
+		unsigned char *ciphertext, int *length)
 {
-	return NULL;
+	/* the plaintext will always be equal to or lesser than the
+	 * length of the ciphertext */
+	int p_len = *length;
+	int f_len = 0;
+	unsigned char *plaintext = malloc(p_len);
+
+	EVP_DecryptInit_ex(e_ctx, NULL, NULL, NULL, NULL);
+	EVP_DecryptUpdate(e_ctx, plaintext, &p_len, ciphertext, *length);
+	EVP_DecryptFinal_ex(e_ctx, plaintext + p_len, &f_len);
+
+	*length = p_len + f_len;
+
+	return plaintext;
 }
 
 /*-----------------------------------------------------------------------------

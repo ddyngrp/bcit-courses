@@ -23,6 +23,7 @@
 #include <string.h>
 
 #include <openssl/evp.h>
+#include <openssl/aes.h>
 
 /* error codes */
 #define SUCCESS			 0
@@ -35,9 +36,12 @@
 #define FALSE	0
 
 /* defaults */
+#define AES_ROUNDS	16
+#define KEY_SIZE	32	/* 256-bytes */
 
 /* function prototypes */
-int aes_init(unsigned char *, int, unsigned char *, EVP_CIPHER_CTX *, EVP_CIPHER *);
+void test_crypto(void);
+int aes_init(EVP_CIPHER_CTX *, EVP_CIPHER_CTX *);
 unsigned char *aes_encrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
 unsigned char *aes_decrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
 int file_encrypt(int, int);

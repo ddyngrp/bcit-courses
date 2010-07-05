@@ -1,8 +1,7 @@
 Dependencies:
 =============
-gpgme
-libgcrypt
-zlib
+OpenSSL - encryption
+zlib - compression
 
 Compilation:
 ============

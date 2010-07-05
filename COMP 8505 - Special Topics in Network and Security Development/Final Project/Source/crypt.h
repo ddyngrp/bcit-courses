@@ -30,6 +30,8 @@
 #define ERROR_NONE		 0
 #define ERROR_GENERAL	-1
 
+/* defaults */
+
 /* function prototypes */
 
 #endif

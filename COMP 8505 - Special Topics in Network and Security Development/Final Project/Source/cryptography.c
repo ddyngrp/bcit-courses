@@ -69,9 +69,9 @@ int generate_key()
 	printf("%d-bit tmp_key:\n{", KEY_LENGTH * 8);
 	for (i = 0; i < KEY_LENGTH; i++) {
 		if (i != KEY_LENGTH - 1)
-			printf("%d, ", tmp_key[i]);
+			printf("0x%X, ", tmp_key[i]);
 		else
-			printf("%d", tmp_key[i]);
+			printf("0x%X", tmp_key[i]);
 	}
 	printf("}\n ------ \n");
 
@@ -79,9 +79,9 @@ int generate_key()
 	printf("Initialization Vector:\n{");
 	for (i = 0; i < IV_LENGTH; i++) {
 		if (i != IV_LENGTH - 1)
-			printf("%d, ", tmp_iv[i]);
+			printf("0x%X, ", tmp_iv[i]);
 		else
-			printf("%d", tmp_iv[i]);
+			printf("0x%X", tmp_iv[i]);
 	}
 	printf("}\n ------ \n");
 
@@ -218,11 +218,14 @@ int decrypt_file(int fd_in, int fd_out)
 			return 0;
 		}
 
+		printf("tlen = %d\n", olen);
+
 		if (EVP_DecryptFinal (&ctx, outbuf + olen, &tlen) != 1)
 		{
 			printf ("error in decrypt final\n");
 			return 0;
 		}
+
 		olen += tlen;
 		if ((n = write (fd_out, outbuf, olen)) == -1)
 			perror ("write error");

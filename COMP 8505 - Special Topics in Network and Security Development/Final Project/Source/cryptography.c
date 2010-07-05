@@ -50,6 +50,7 @@ void test_crypto(void)
 	unsigned char *ciphertext;
 	char *plaintext;
 	int olen, len;
+	FILE *fd_in, *fd_out;
 
 	aes_init(&encrypt, &decrypt);
 
@@ -70,6 +71,28 @@ void test_crypto(void)
 
 	EVP_CIPHER_CTX_cleanup(&encrypt);
 	EVP_CIPHER_CTX_cleanup(&decrypt);
+
+	if ((fd_in = fopen("./COPYING", "r")) == NULL)
+		err(1, "fopen");
+
+	if ((fd_out = fopen("./COPYING.ciphertext", "w")) == NULL)
+		err(1, "fopen");
+
+	file_encrypt(fd_in, fd_out);
+
+	fclose(fd_in);
+	fclose(fd_out);
+
+	if ((fd_in = fopen("./COPYING.ciphertext", "r")) == NULL)
+		err(1, "fopen");
+
+	if ((fd_out = fopen("./COPYING.plaintext", "w")) == NULL)
+		err(1, "fopen");
+
+	file_decrypt(fd_in, fd_out);
+
+	fclose(fd_in);
+	fclose(fd_out);
 }
 
 /*-----------------------------------------------------------------------------
@@ -221,7 +244,7 @@ unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx,
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   int file_encrypt(int fd_in, int fd_out)
+ * INTERFACE:   int file_encrypt(FILE *fd_in, FILE *fd_out)
  *                  fd_in  - file to be encrypted
  *                  fd_out - destination of encrypted file
  * 
@@ -229,8 +252,38 @@ unsigned char *aes_decrypt(EVP_CIPHER_CTX *e_ctx,
  *
  * NOTES: Encrypts a fd_in file and saves it to fd_out.
  *----------------------------------------------------------------------------*/
-int file_encrypt(int fd_in, int fd_out)
+int file_encrypt(FILE *fd_in, FILE *fd_out)
 {
+	EVP_CIPHER_CTX encrypt, decrypt;
+	int read_bytes, write_bytes, file_size, aes_block;
+	int file_position = 0;
+	unsigned char in_buff[IN_SIZE];
+	unsigned char *out_buff;
+	
+	aes_init(&encrypt, &decrypt);
+
+	fseek(fd_in, 0, SEEK_END);
+	file_size = ftell(fd_in);
+	rewind(fd_in);
+
+	while (file_position < file_size) {
+		if ((read_bytes = fread(in_buff, sizeof(unsigned char), IN_SIZE, fd_in)) == ERROR)
+			err(1, "fread");
+
+		file_position += read_bytes;
+		aes_block = read_bytes;
+
+		out_buff = aes_encrypt(&encrypt, in_buff, &aes_block);
+
+		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block, fd_out)) == ERROR)
+			err(1, "fwrite");
+
+		memset(&in_buff, 0x00, IN_SIZE);
+	}
+
+	EVP_CIPHER_CTX_cleanup(&encrypt);
+	EVP_CIPHER_CTX_cleanup(&decrypt);
+
 	return SUCCESS;
 }
 
@@ -245,7 +298,7 @@ int file_encrypt(int fd_in, int fd_out)
  * 
  * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
  * 
- * INTERFACE:   int file_decrypt(int fd_in, int fd_out)
+ * INTERFACE:   int file_decrypt(FILE *fd_in, FILE *fd_out)
  *                  fd_in  - file to be decrypted
  *                  fd_out - destination of decrypted file
  * 
@@ -253,7 +306,37 @@ int file_encrypt(int fd_in, int fd_out)
  *
  * NOTES: Decrypts a fd_in file and saves it to fd_out.
  *----------------------------------------------------------------------------*/
-int file_decrypt(int fd_in, int fd_out)
+int file_decrypt(FILE *fd_in, FILE *fd_out)
 {
+	EVP_CIPHER_CTX encrypt, decrypt;
+	int read_bytes, write_bytes, file_size, aes_block;
+	int file_position = 0;
+	unsigned char in_buff[OUT_SIZE];
+	unsigned char *out_buff;
+	
+	aes_init(&encrypt, &decrypt);
+
+	fseek(fd_in, 0, SEEK_END);
+	file_size = ftell(fd_in);
+	rewind(fd_in);
+
+	while (file_position < file_size) {
+		if ((read_bytes = fread(in_buff, sizeof(unsigned char), OUT_SIZE, fd_in)) == ERROR)
+			err(1, "fread");
+
+		file_position += read_bytes;
+		aes_block = read_bytes;
+
+		out_buff = aes_decrypt(&decrypt, in_buff, &aes_block);
+
+		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block, fd_out)) == ERROR)
+			err(1, "fwrite");
+
+		memset(&in_buff, 0x00, IN_SIZE);
+	}
+
+	EVP_CIPHER_CTX_cleanup(&encrypt);
+	EVP_CIPHER_CTX_cleanup(&decrypt);
+
 	return SUCCESS;
 }

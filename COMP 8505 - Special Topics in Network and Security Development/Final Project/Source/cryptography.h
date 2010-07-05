@@ -21,6 +21,11 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <err.h>
 
 #include <openssl/evp.h>
 #include <openssl/aes.h>
@@ -37,14 +42,16 @@
 
 /* defaults */
 #define AES_ROUNDS	16
-#define KEY_SIZE	32	/* 256-bytes */
+#define KEY_SIZE	32		/* 256-bytes */
+#define IN_SIZE		1024	/* file chunks */
+#define OUT_SIZE	1040	/* AES file chunks */
 
 /* function prototypes */
 void test_crypto(void);
 int aes_init(EVP_CIPHER_CTX *, EVP_CIPHER_CTX *);
 unsigned char *aes_encrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
 unsigned char *aes_decrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
-int file_encrypt(int, int);
-int file_decrypt(int, int);
+int file_encrypt(FILE *, FILE *);
+int file_decrypt(FILE *, FILE *);
 
 #endif

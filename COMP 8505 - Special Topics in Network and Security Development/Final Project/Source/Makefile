@@ -29,4 +29,4 @@ cryptography.o: cryptography.c
 	${CC} ${CFLAGS} cryptography.c
 
 clean:
-		rm -rf *.o server client test
+		rm -rf *.o *.ciphertext *.plaintext server client test

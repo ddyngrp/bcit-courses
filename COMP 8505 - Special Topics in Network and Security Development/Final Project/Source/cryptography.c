@@ -20,6 +20,30 @@
 
 int main (int argc, const char * argv[])
 {
+	int fd_in, fd_out;
+
+	if ((fd_in = open("./COPYING", FLAGS_IN, MODE)) == ERROR_GENERAL)
+		err(1, "open");
+
+	if ((fd_out = open("./COPYING.encrypt", FLAGS_OUT, MODE)) == ERROR_GENERAL)
+		err(1, "open");
+
+	encrypt_file(fd_in, fd_out);
+
+	close(fd_in);
+	close(fd_out);
+
+	if ((fd_in = open("./COPYING.encrypt", FLAGS_IN, MODE)) == ERROR_GENERAL)
+		err(1, "open");
+
+	if ((fd_out = open("./COPYING.decrypt", FLAGS_OUT, MODE)) == ERROR_GENERAL)
+		err(1, "open");
+
+	decrypt_file(fd_in, fd_out);
+
+	close(fd_in);
+	close(fd_out);
+
     return ERROR_NONE;
 }
 
@@ -128,10 +152,82 @@ char *decrypt_string(char *string)
 
 int encrypt_file(int fd_in, int fd_out)
 {
+	unsigned char outbuf[OUT_SIZE];
+	int olen, tlen, n;
+	char inbuff[IN_SIZE];
+	EVP_CIPHER_CTX ctx;
+	EVP_CIPHER_CTX_init (&ctx);
+	EVP_EncryptInit (&ctx, EVP_bf_cbc (), key, iv);
+
+	for (;;)
+	{
+		bzero (&inbuff, IN_SIZE);
+
+		if ((n = read (fd_in, inbuff, IN_SIZE)) == -1)
+		{
+			perror ("read error");
+			break;
+		}
+		else if (n == 0)
+			break;
+
+		if (EVP_EncryptUpdate (&ctx, outbuf, &olen, (unsigned char *)inbuff, n) != 1)
+		{
+			printf ("error in encrypt update\n");
+			return 0;
+		}
+
+		if (EVP_EncryptFinal (&ctx, outbuf + olen, &tlen) != 1)
+		{
+			printf ("error in encrypt final\n");
+			return 0;
+		}
+		olen += tlen;
+		if ((n = write (fd_out, outbuf, olen)) == -1)
+			perror ("write error");
+	}
+	EVP_CIPHER_CTX_cleanup (&ctx);
 	return ERROR_NONE;
 }
 
 int decrypt_file(int fd_in, int fd_out)
 {
+	unsigned char outbuf[IN_SIZE];
+	int olen, tlen, n;
+	char inbuff[OUT_SIZE];
+	EVP_CIPHER_CTX ctx;
+	EVP_CIPHER_CTX_init (&ctx);
+	EVP_DecryptInit (&ctx, EVP_bf_cbc (), key, iv);
+
+	for (;;)
+	{
+		bzero (&inbuff, OUT_SIZE);
+		if ((n = read (fd_in, inbuff, OUT_SIZE)) == -1)
+		{
+			perror ("read error");
+			break;
+		}
+		else if (n == 0)
+			break;
+
+		bzero (&outbuf, IN_SIZE);
+
+		if (EVP_DecryptUpdate (&ctx, outbuf, &olen, (unsigned char *)inbuff, n) != 1)
+		{
+			printf ("error in decrypt update\n");
+			return 0;
+		}
+
+		if (EVP_DecryptFinal (&ctx, outbuf + olen, &tlen) != 1)
+		{
+			printf ("error in decrypt final\n");
+			return 0;
+		}
+		olen += tlen;
+		if ((n = write (fd_out, outbuf, olen)) == -1)
+			perror ("write error");
+	}
+
+	EVP_CIPHER_CTX_cleanup (&ctx);
 	return ERROR_NONE;
 }

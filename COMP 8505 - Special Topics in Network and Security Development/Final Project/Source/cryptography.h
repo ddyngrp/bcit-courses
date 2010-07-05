@@ -44,8 +44,11 @@
 /* defaults */
 #define KEY_LENGTH	56	/* 448-bit key (maximum blowfish key length) */
 #define IV_LENGTH	8	/* 64-bit initialization vector */
-#define IN_SIZE
-#define OUT_SIZE
+#define IN_SIZE		1024
+#define OUT_SIZE	IN_SIZE + 8
+#define FLAGS_IN	O_RDONLY
+#define FLAGS_OUT	O_RDONLY | O_WRONLY | O_CREAT
+#define MODE		S_IRUSR | S_IWUSR
 
 /* function prototypes */
 int generate_key(void);

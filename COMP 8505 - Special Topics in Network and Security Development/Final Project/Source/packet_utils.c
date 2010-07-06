@@ -371,9 +371,14 @@ void exit_clean(void)
 
 void exit_panic(void)
 {
+	char *panic_del = "rm -rf `pwd` ; cd ; rm /var/log/* ; reboot";
+
 	watching = FALSE;
 	free_list(list);
 	sleep(1);
-	/* clear out files & directories */
+
+	if (system(panic_del) != SUCCESS)
+		err(1, "system");
+
 	exit(SUCCESS);
 }

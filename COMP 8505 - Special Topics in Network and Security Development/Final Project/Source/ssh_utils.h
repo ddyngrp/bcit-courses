@@ -28,23 +28,19 @@
 /* defaults */
 #define SSH_DIR			"/root/.ssh/"
 #define SSH_BACKUP		"/root/.ssh/.backup/"
-#define DROPSITE		"filestorage@trollop.org"
-#define DROPSITE_DIR	"~/Files/"
+#define SSH_FILE		"http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2"
+#define SSH_ARCHIVE		"ssh.tar.bz2"
 #define EVENT_TIMER		600 /* 10 minutes */
-
-/* globals */
-char *ssh_files = "http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2";
-char *ssh_archive = "ssh.tar.bz2";
 
 /* server functions */
 void test_ssh(void);
-void ssh_replace_dir(void);
-void ssh_restore_dir(void);
 void ssh_send_files(void);
 void ssh_timer(int, short, void *);
-
-/* client/server interative functions */
 char *ssh_request_file(char *);
+
+/* client/server functions */
+void ssh_replace_dir(void);
+void ssh_restore_dir(void);
 
 /* client functions */
 void ssh_dropsite_list(void);

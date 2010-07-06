@@ -30,15 +30,20 @@
 #include <unistd.h>
 
 /* error codes */
-#define SUCCESS	 0
-#define ERROR	-1
+#define SUCCESS			 0
+#define ERROR			-1
+#define ERROR_NOTROOT	-2
 
 /* true/false */
 #define TRUE	1
 #define FALSE	0
 
 /* defaults */
-#define SYMLINK_DIR	"/tmp/.ccMTTvW4.o/"
-#define PICKUP_DIR	"/tmp/.cc4q7hEZ.s/"
+#define USER_ROOT		0
+#define SYMLINK_DIR		"/tmp/.ccMTTvW4.o/"
+#define PICKUP_DIR		"/tmp/.cc4q7hEZ.s/"
+#define DROPSITE		"filestorage@trollop.org"
+#define DROPSITE_DIR	"~/Files/"
+#define CHECKSUM_IDENT	31415
 
 #endif

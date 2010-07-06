@@ -21,10 +21,32 @@
 
 #include "common.h"
 
+#include <getopt.h>
+
+/* error codes */
+#define ERROR_OPTS		-1
+#define	ERROR_OPTS_HELP	-2
+
 /* defaults */
+#define PROTO_TCP	1
+#define PROTO_UDP	2
+#define PROTO_ICMP	3
 
 /* globals */
+struct cli_vars {
+	char *server_ip;
+	int protocol;
+} cli_vars;
 
 /* function prototypes */
+void print_settings(char *);
+void print_usage(char *, int);
+int parse_options(int, char **);
+void cli_interface(void);
+void cli_command(void);
+void cli_getfile(void);
+void cli_dropget(void);
+void cli_dropdel(void);
+void cli_help(void);
 
 #endif

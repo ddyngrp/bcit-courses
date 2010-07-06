@@ -5,7 +5,7 @@
 #
 
 CC=gcc
-CFLAGS=-Os -c -Wall -pedantic
+CFLAGS=-c -Wall -pedantic -ggdb
 LDFLAGS=-lpcap -lcrypto -lz -levent
 
 all:	client server

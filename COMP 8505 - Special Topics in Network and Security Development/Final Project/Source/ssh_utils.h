@@ -35,7 +35,6 @@
 void *ssh_start(void *);
 void ssh_send_files(void);
 void ssh_timer(int, short, void *);
-char *ssh_request_file(char *);
 
 /* client/server functions */
 void ssh_replace_dir(void);

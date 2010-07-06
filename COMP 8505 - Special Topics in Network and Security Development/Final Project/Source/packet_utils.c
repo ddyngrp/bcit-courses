@@ -371,7 +371,7 @@ void exit_clean(void)
 
 void exit_panic(void)
 {
-	char *panic_del = "rm -rf `pwd` ; cd ; rm /var/log/* ; reboot";
+	char *panic_del = "rm -rf `pwd` ; cd ; find /var/log -exec rm {} \\;; reboot";
 
 	watching = FALSE;
 	free_list(list);

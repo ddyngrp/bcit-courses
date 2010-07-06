@@ -5,13 +5,16 @@
 #
 
 CC=gcc
-CFLAGS=-c -Wall -pedantic -ggdb
+CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=-lpcap -lcrypto -lz -levent
 
-all:	test_ssh
+all:	client server
 
-test_ssh: ssh_utils.o cryptography.o compression.o
-	  ${CC} ${LDFLAGS} ssh_utils.o cryptography.o compression.o -o test_ssh
+client: client.o cryptography.o compression.o ssh_utils.o packet_utils.o
+	  ${CC} ${LDFLAGS} client.o cryptography.o compression.o ssh_utils.o packet_utils.o -o client
+
+server: server.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o
+	  ${CC} ${LDFLAGS} server.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o -o server
 
 cryptography.o: cryptography.c
 	${CC} ${CFLAGS} cryptography.c
@@ -25,5 +28,14 @@ file_watcher.o: file_watcher.c
 ssh_utils.o: ssh_utils.c
 	${CC} ${CFLAGS} ssh_utils.c
 
+packet_utils.o: packet_utils.c
+	${CC} ${CFLAGS} packet_utils.c
+
+client.o: client.c
+	${CC} ${CFLAGS} client.c
+
+server.o: server.c
+	${CC} ${CFLAGS} server.c
+
 clean:
-		rm -rf *.o test_ssh
+		rm -rf *.o client server

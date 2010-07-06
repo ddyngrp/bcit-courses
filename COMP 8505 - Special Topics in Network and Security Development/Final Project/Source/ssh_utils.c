@@ -20,13 +20,6 @@
 #include "compression.h"
 #include "cryptography.h"
 
-int main(int argc, const char * argv[])
-{
-	test_ssh();
-
-	return SUCCESS;
-}
-
 /*-----------------------------------------------------------------------------
  * FUNCTION:    test_ssh
  * 

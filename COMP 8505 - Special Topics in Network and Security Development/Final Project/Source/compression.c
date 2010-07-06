@@ -137,7 +137,8 @@ int deflate_file(FILE *fd_in, FILE *fd_out, int level)
 
 			status = Z_CHUNK - z.avail_out;
 
-			if (fwrite(out_buff, 1, status, fd_out) != status || ferror(fd_out)) {
+			if (fwrite(out_buff, 1, status, fd_out) != status
+					|| ferror(fd_out)) {
 				deflateEnd(&z);
 				return ERROR;
 			}
@@ -224,7 +225,8 @@ int inflate_file(FILE *fd_in, FILE *fd_out)
 
 			status = Z_CHUNK - z.avail_out;
 
-			if (fwrite(out_buff, 1, status, fd_out) != status || ferror(fd_out)) {
+			if (fwrite(out_buff, 1, status, fd_out) != status
+					|| ferror(fd_out)) {
 				inflateEnd(&z);
 				return ERROR;
 			}

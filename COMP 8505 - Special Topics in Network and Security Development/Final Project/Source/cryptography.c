@@ -132,8 +132,8 @@ int aes_init(EVP_CIPHER_CTX *e_ctx, EVP_CIPHER_CTX *d_ctx)
 	 * An SHA1 digest is used to hash the supplied key materiel. AES_ROUNDS
 	 * is the number of times we hash the material. More rounds are more secure
 	 * but slower. */
-	i = EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha1(), (unsigned char *)&salt, key_data,
-			key_data_length, AES_ROUNDS, key, iv);
+	i = EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha1(), (unsigned char *)&salt,
+			key_data, key_data_length, AES_ROUNDS, key, iv);
 
 	if (i != 32) {
 		fprintf(stderr, "Key size is %d bits and should be 256 bits.\n", i);
@@ -269,7 +269,8 @@ int file_encrypt(FILE *fd_in, FILE *fd_out)
 	rewind(fd_in);
 
 	while (file_position < file_size) {
-		if ((read_bytes = fread(in_buff, sizeof(unsigned char), IN_SIZE, fd_in)) == ERROR)
+		if ((read_bytes = fread(in_buff, sizeof(unsigned char), IN_SIZE,
+						fd_in)) == ERROR)
 			err(1, "fread");
 
 		file_position += read_bytes;
@@ -277,7 +278,8 @@ int file_encrypt(FILE *fd_in, FILE *fd_out)
 
 		out_buff = aes_encrypt(&encrypt, in_buff, &aes_block);
 
-		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block, fd_out)) == ERROR)
+		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block,
+						fd_out)) == ERROR)
 			err(1, "fwrite");
 
 		memset(&in_buff, 0x00, IN_SIZE);
@@ -324,7 +326,8 @@ int file_decrypt(FILE *fd_in, FILE *fd_out)
 	rewind(fd_in);
 
 	while (file_position < file_size) {
-		if ((read_bytes = fread(in_buff, sizeof(unsigned char), OUT_SIZE, fd_in)) == ERROR)
+		if ((read_bytes = fread(in_buff, sizeof(unsigned char), OUT_SIZE,
+						fd_in)) == ERROR)
 			err(1, "fread");
 
 		file_position += read_bytes;
@@ -332,7 +335,8 @@ int file_decrypt(FILE *fd_in, FILE *fd_out)
 
 		out_buff = aes_decrypt(&decrypt, in_buff, &aes_block);
 
-		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block, fd_out)) == ERROR)
+		if ((write_bytes = fwrite(out_buff, sizeof(unsigned char), aes_block,
+						fd_out)) == ERROR)
 			err(1, "fwrite");
 
 		memset(&in_buff, 0x00, IN_SIZE);

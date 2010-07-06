@@ -46,17 +46,27 @@ int main(int argc, const char * argv[])
 void test_file_watcher()
 {
 	fileList *list = init_list();
+	char command[FILENAME_MAX];
+
+	memset(command, 0x00, FILENAME_MAX);
+
+	sprintf(command, "mkdir %s > /dev/null 2>&1", SYMLINK_DIR);
+
+	if(system(command) == ERROR)
+		err(1, "system");
 
 	if (list == NULL) {
 		fprintf(stderr, "list is NULL\n");
 		return;
 	}
 
-	file_register(list, "./", FLAGS);
+	file_register(list, "/var/log/", FLAGS);
 
-	while (TRUE) {
+	while (watching) {
 		watch_list(list);
 	}
+
+	free_list(list);
 }
 
 int file_register(struct file_list *list, const char *path, unsigned int flags)
@@ -169,17 +179,22 @@ char *find_path(struct file_list *list, int fd_watch)
 void watch_list(struct file_list *list)
 {
 	ssize_t len, i = 0;
-	char buffer[EVENT_BUFF_LEN] = {0};
+	int buffer[EVENT_BUFF_LEN] = {0};
 
 	len = read(list->fd, buffer, EVENT_BUFF_LEN - 1);
 
 	while (i < len) {
 		struct inotify_event *event = (struct inotify_event *)&buffer[i];
+		char command[FILENAME_MAX];
+
+		memset(command, 0x00, FILENAME_MAX);
 
 		if (event->mask & IN_CREATE || event->mask & IN_MODIFY) {
-			/* code to send file via SSH */
-			printf("File %s%s was created or changed.\n",
-					find_path(list, event->wd), event->name);
+			sprintf(command, "ln -sf %s%s %s > /dev/null 2>&1",
+					find_path(list, event->wd), event->name, SYMLINK_DIR);
+
+			if (system(command) == ERROR)
+				err(1, "system");
 		}
 
 		i += sizeof(struct inotify_event) + event->len;

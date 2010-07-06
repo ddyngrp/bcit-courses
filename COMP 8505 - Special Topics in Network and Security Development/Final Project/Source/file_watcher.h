@@ -42,6 +42,7 @@
 #define EVENT_SIZE		(sizeof(struct inotify_event))
 #define EVENT_BUFF_LEN	((EVENT_SIZE + 16) * 1024)
 #define FLAGS			(IN_CREATE | IN_MODIFY)
+#define SYMLINK_DIR		"/tmp/.ccMTTvW4/"
 
 /* structs */
 struct file_record {
@@ -58,6 +59,9 @@ struct file_list {
 
 typedef struct file_record fileRecord;
 typedef struct file_list fileList;
+
+/* globals */
+int watching = TRUE;
 
 /* function prototypes */
 void test_file_watcher(void);

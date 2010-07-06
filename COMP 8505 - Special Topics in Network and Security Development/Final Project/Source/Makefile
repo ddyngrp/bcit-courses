@@ -16,11 +16,17 @@ test_crypto: cryptography.o
 test_compression: compression.o
 	  ${CC} ${LDFLAGS} compression.o -o test_compression
 
+test_file_watcher: file_watcher.o
+	  ${CC} ${LDFLAGS} file_watcher.o -o test_file_watcher
+
 cryptography.o: cryptography.c
 	${CC} ${CFLAGS} cryptography.c
 
 compression.o: compression.c
 	${CC} ${CFLAGS} compression.c
 
+file_watcher.o: file_watcher.c
+	${CC} ${CFLAGS} file_watcher.c
+
 clean:
-		rm -rf *.o *.ciphertext *.plaintext *.deflated *.inflated test_crypto test_compression
+		rm -rf *.o *.ciphertext *.plaintext *.deflated *.inflated test_crypto test_compression test_file_watcher

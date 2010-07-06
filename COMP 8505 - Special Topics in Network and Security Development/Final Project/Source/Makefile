@@ -5,8 +5,8 @@
 #
 
 CC=gcc
-CFLAGS=-Os -c -Wall -pedantic
-LDFLAGS=-lpcap -lcrypto -lz
+CFLAGS=-c -Wall -pedantic -ggdb
+LDFLAGS=-lpcap -lcrypto -lz -levent
 
 all:	test_ssh
 

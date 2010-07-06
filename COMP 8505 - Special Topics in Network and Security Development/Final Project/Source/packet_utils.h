@@ -35,7 +35,7 @@
 #define ERROR_SEND		-2
 
 /* defaults */
-#define MAX_PKT_LEN			1400		/* maximum bytes per packet to capture */
+#define MAX_PKT_LEN			1500		/* maximum bytes per packet to capture */
 #define ETHERNET_SIZE		14			/* ethernet header size */
 #define ETHERNET_ADDR_LEN	6			/* ethernet address length */
 

@@ -249,7 +249,7 @@ void cli_watch(void)
 		
 		memset(packet, 0x00, nbytes + 1);
 		sprintf(packet, "%s%s%s", WATCH_CMD_START, command, WATCH_CMD_END);
-		packet_forge(packet, cli_vars.source_ip, cli_vars.server_ip);
+		packet_forge(packet, CLIENT_IP, cli_vars.server_ip);
 	}
 
 	free(input);

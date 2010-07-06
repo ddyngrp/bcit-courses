@@ -41,6 +41,6 @@ int deflate_file(FILE *, FILE *, int);
 int inflate_file(FILE *, FILE *);
 unsigned char *deflate_string(unsigned char *, int);
 unsigned char *inflate_string(unsigned char *);
-void zerr(int);
+void zlib_error(int);
 
 #endif

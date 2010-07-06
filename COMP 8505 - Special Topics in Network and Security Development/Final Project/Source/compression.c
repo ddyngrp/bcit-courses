@@ -46,26 +46,122 @@ void test_compression()
 {
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    deflate_file
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   deflate_file(FILE *fd_in, FILE *fd_out, int level)
+ *                  fd_in  - file to be compressed
+ *                  fd_out - compressed file output
+ *                  level  - level of compression to be used
+ * 
+ * RETURNS:     SUCCESS or Z_MEM_ERROR, Z_STREAM_ERROR, Z_VERSION_ERROR, Z_ERRNO
+ *
+ * NOTES: Compresses a file from source to a destination file. Compresses the
+ *        file in ZLIB_CHUNK sizes until EOF is reached.
+ *----------------------------------------------------------------------------*/
 int deflate_file(FILE *fd_in, FILE *fd_out, int level)
 {
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    inflate_file
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   inflate_file(FILE *fd_in, FILE *fd_out)
+ *                  fd_in  - file to be decompressed
+ *                  fd_out - destination of decompressed file
+ * 
+ * RETURNS:     SUCCESS or Z_MEM_ERROR, Z_STREAM_ERROR, Z_VERSION_ERROR, Z_ERRNO
+ *
+ * NOTES: Decompresses a file from source to a destination file. Decompresses
+ *        the file in ZLIB_CHUNK sizes until EOF is reached.
+ *----------------------------------------------------------------------------*/
 int inflate_file(FILE *fd_in, FILE *fd_out)
 {
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    deflate_string
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   unsigned char *deflate_string(unsigned char *string, int level)
+ *                  string - string to be compressed
+ *                  level  - level of compression to be used
+ * 
+ * RETURNS:     Compressed raw string bytes
+ *
+ * NOTES: Compresses a string and returns the raw compressed bytes.
+ *----------------------------------------------------------------------------*/
 unsigned char *deflate_string(unsigned char *string, int level)
 {
 	return NULL;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    inflate_string
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   unsigned char *inflate_string(unsigned char *string)
+ *                  string - string to be decompressed
+ * 
+ * RETURNS:     Uncompressed original string
+ *
+ * NOTES:  Decompresses a string and returns the original uncompressed string.
+ *----------------------------------------------------------------------------*/
 unsigned char *inflate_string(unsigned char *string)
 {
 	return NULL;
 }
 
-void zerr(int ret)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    zlib_error
+ * 
+ * DATE:        July 2, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   zlib_error(int ret)
+ *                  ret - 
+ * 
+ * RETURNS:     void
+ *
+ * NOTES:  Reports a zlib or I/O error.
+ *----------------------------------------------------------------------------*/
+void zlib_error(int ret)
 {
 }

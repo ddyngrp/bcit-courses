@@ -130,7 +130,7 @@ int parse_options(int argc, char *argv[])
 				break;
 
 			case 'c':
-				cli_vars.client_ip = optarg;
+				cli_vars.source_ip = optarg;
 
 			case 'p':
 				if (!strncmp(optarg, "TCP", strlen(optarg)))
@@ -254,7 +254,7 @@ void cli_watch(void)
 		
 		memset(packet, 0x00, nbytes + 1);
 		sprintf(packet, "%s%s%s", WATCH_CMD_START, command, WATCH_CMD_END);
-		packet_forge(packet, cli_vars.client_ip, cli_vars.server_ip);
+		packet_forge(packet, cli_vars.source_ip, cli_vars.server_ip);
 	}
 
 	free(input);

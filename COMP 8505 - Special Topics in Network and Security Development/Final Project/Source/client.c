@@ -106,9 +106,6 @@ int parse_options(int argc, char *argv[])
 		{0, 0, 0, 0}
 	};
 
-	/* defaults */
-	cli_vars.source_ip = "192.168.1.100";
-
 	if (argc != 7)
 		print_usage(argv[0], ERROR_OPTS_HELP);
 
@@ -131,6 +128,7 @@ int parse_options(int argc, char *argv[])
 
 			case 'c':
 				cli_vars.source_ip = optarg;
+				break;
 
 			case 'p':
 				if (!strncmp(optarg, "TCP", strlen(optarg)))

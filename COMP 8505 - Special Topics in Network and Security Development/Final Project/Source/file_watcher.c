@@ -18,28 +18,11 @@
 
 #include "file_watcher.h"
 
-/*-----------------------------------------------------------------------------
- * FUNCTION:    test_file_watcher
- * 
- * DATE:        July 2, 2010
- * 
- * REVISIONS:   
- * 
- * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
- * 
- * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
- * 
- * INTERFACE:   test_file_watcher(void)
- * 
- * RETURNS:     void
- *
- * NOTES: Tests whether file watcher is sane or not. Creates a watcher thread
- *        to monitor for changes.
- *----------------------------------------------------------------------------*/
-void test_file_watcher()
+void *file_watcher(void *ptr)
 {
-	fileList *list = init_list();
 	char command[FILENAME_MAX];
+
+	list = init_list();
 
 	/* create pickup directory */
 	memset(command, 0x00, FILENAME_MAX);
@@ -57,16 +40,28 @@ void test_file_watcher()
 
 	if (list == NULL) {
 		fprintf(stderr, "list is NULL\n");
-		return;
+		return NULL;
 	}
-
-	file_register(list, "/var/log/", FLAGS);
 
 	while (watching) {
 		watch_list(list);
 	}
 
-	free_list(list);
+	/* delete pickup directory */
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "rm -rf %s > /dev/null 2>&1", PICKUP_DIR);
+
+	if(system(command) == ERROR)
+		err(1, "system");
+
+	/* delete storage directory */
+	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "rm -rf %s > /dev/null 2>&1", SYMLINK_DIR);
+
+	if(system(command) == ERROR)
+		err(1, "system");
+
+	return NULL;
 }
 
 int file_register(struct file_list *list, const char *path, unsigned int flags)

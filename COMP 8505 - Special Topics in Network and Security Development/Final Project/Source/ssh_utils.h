@@ -30,10 +30,9 @@
 #define SSH_BACKUP		"/root/.ssh/.backup/"
 #define SSH_FILE		"http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2"
 #define SSH_ARCHIVE		"ssh.tar.bz2"
-#define EVENT_TIMER		600 /* 10 minutes */
 
 /* server functions */
-void test_ssh(void);
+void *ssh_start(void *);
 void ssh_send_files(void);
 void ssh_timer(int, short, void *);
 char *ssh_request_file(char *);

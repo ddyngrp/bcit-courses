@@ -45,10 +45,11 @@ typedef struct file_record fileRecord;
 typedef struct file_list fileList;
 
 /* globals */
-int watching = TRUE;
+int watching;
+fileList *list;
 
 /* function prototypes */
-void test_file_watcher(void);
+void *file_watcher(void *);
 int file_register(struct file_list *, const char *, unsigned int);
 void file_unregister(struct file_list *);
 struct file_list *init_list(void);

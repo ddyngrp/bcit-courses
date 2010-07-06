@@ -10,8 +10,8 @@ LDFLAGS=-lpcap -lcrypto -lz -levent
 
 all:	client server
 
-client: client.o cryptography.o compression.o ssh_utils.o packet_utils.o
-	  ${CC} ${LDFLAGS} client.o cryptography.o compression.o ssh_utils.o packet_utils.o -o client
+client: client.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o
+	  ${CC} ${LDFLAGS} client.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o -o client
 
 server: server.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o
 	  ${CC} ${LDFLAGS} server.o cryptography.o compression.o file_watcher.o ssh_utils.o packet_utils.o -o server

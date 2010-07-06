@@ -28,11 +28,13 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <pthread.h>
 
 /* error codes */
 #define SUCCESS			 0
 #define ERROR			-1
 #define ERROR_NOTROOT	-2
+#define ERROR_PCAP		-3
 
 /* true/false */
 #define TRUE	1
@@ -44,6 +46,11 @@
 #define PICKUP_DIR		"/tmp/.cc4q7hEZ.s/"
 #define DROPSITE		"filestorage@trollop.org"
 #define DROPSITE_DIR	"~/Files/"
-#define CHECKSUM_IDENT	31415
+#define CLIENT_IP		"192.168.1.150"
+#define SERVER_IP		"192.168.1.1"
+#define EVENT_TIMER		10 /* seconds */
+
+/* globals */
+int server;
 
 #endif

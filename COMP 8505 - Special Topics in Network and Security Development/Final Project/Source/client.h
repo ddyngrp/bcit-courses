@@ -35,6 +35,7 @@
 /* globals */
 struct cli_vars {
 	char *server_ip;
+	char *source_ip;
 	int protocol;
 } cli_vars;
 
@@ -44,6 +45,7 @@ void print_usage(char *, int);
 int parse_options(int, char **);
 void cli_interface(void);
 void cli_command(void);
+void cli_watch(void);
 void cli_getfile(void);
 void cli_dropget(void);
 void cli_dropdel(void);

@@ -20,25 +20,7 @@
 #include "compression.h"
 #include "cryptography.h"
 
-/*-----------------------------------------------------------------------------
- * FUNCTION:    test_ssh
- * 
- * DATE:        July 2, 2010
- * 
- * REVISIONS:   
- * 
- * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
- * 
- * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
- * 
- * INTERFACE:   test_ssh(void)
- * 
- * RETURNS:     void
- *
- * NOTES: Tests whether program sens files from the pickup directory using the
- *        libevent timer.
- *----------------------------------------------------------------------------*/
-void test_ssh()
+void *ssh_start(void *ptr)
 {
 	struct event timeout;
 	struct timeval tv;
@@ -54,6 +36,8 @@ void test_ssh()
 
 	/* start the event loop */
 	event_dispatch();
+
+	return NULL;
 }
 
 void ssh_replace_dir(void)

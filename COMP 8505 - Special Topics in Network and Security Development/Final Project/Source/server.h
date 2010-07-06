@@ -21,10 +21,15 @@
 
 #include "common.h"
 
-/* defaults */
+#include <signal.h>
+#include <sys/prctl.h>
 
-/* globals */
+/* defaults */
+#define PROCESS_NAME	"/sbin/udevd --daemon"
 
 /* function prototypes */
+void signal_handler(int);
+void daemonize(void);
+void mask_process(char **, char *);
 
 #endif

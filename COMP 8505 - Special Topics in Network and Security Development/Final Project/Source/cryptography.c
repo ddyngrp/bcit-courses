@@ -45,7 +45,7 @@ void test_crypto(void)
 	FILE *fd_in, *fd_out;
 
 	if (aes_init(&encrypt, &decrypt) == ERROR)
-		fprintf(stderr, "ERROR: aes_init");
+		fprintf(stderr, "ERROR: aes_init\n");
 
 	olen = len = strlen(input) + 1;
 

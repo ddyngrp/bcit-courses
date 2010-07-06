@@ -18,13 +18,6 @@
 
 #include "file_watcher.h"
 
-int main(int argc, const char * argv[])
-{
-	test_file_watcher();
-
-	return SUCCESS;
-}
-
 /*-----------------------------------------------------------------------------
  * FUNCTION:    test_file_watcher
  * 

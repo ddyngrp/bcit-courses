@@ -18,14 +18,6 @@
 
 #include "cryptography.h"
 
-int main(int argc, const char * argv[])
-{
-	test_crypto();
-
-	return SUCCESS;
-}
-
-
 /*-----------------------------------------------------------------------------
  * FUNCTION:    test_crypto
  * 

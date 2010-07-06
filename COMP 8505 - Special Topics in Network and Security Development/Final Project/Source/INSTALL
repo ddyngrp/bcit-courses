@@ -2,6 +2,7 @@ Dependencies:
 =============
 OpenSSL - encryption
 zlib - compression
+libevent - timer
 
 Compilation:
 ============

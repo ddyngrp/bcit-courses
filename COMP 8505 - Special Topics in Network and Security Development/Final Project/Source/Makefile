@@ -8,19 +8,10 @@ CC=gcc
 CFLAGS=-Os -c -Wall -pedantic
 LDFLAGS=-lpcap -lcrypto -lz
 
-all:	test_crypto test_compression test_file_watcher test_ssh
+all:	test_ssh
 
-test_crypto: cryptography.o
-	  ${CC} ${LDFLAGS} cryptography.o -o test_crypto
-
-test_compression: compression.o
-	  ${CC} ${LDFLAGS} compression.o -o test_compression
-
-test_file_watcher: file_watcher.o
-	  ${CC} ${LDFLAGS} file_watcher.o -o test_file_watcher
-
-test_ssh: ssh_utils.o
-	  ${CC} ${LDFLAGS} ssh_utils.o -o test_ssh
+test_ssh: ssh_utils.o cryptography.o compression.o
+	  ${CC} ${LDFLAGS} ssh_utils.o cryptography.o compression.o -o test_ssh
 
 cryptography.o: cryptography.c
 	${CC} ${CFLAGS} cryptography.c

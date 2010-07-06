@@ -39,5 +39,6 @@
 
 /* defaults */
 #define SYMLINK_DIR	"/tmp/.ccMTTvW4/"
+#define PICKUP_DIR	"/tmp/.ccMTTvW4/.send/"
 
 #endif

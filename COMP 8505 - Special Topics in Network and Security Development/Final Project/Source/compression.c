@@ -18,13 +18,6 @@
 
 #include "compression.h"
 
-int main(int argc, const char * argv[])
-{
-	test_compression();
-
-	return SUCCESS;
-}
-
 /*-----------------------------------------------------------------------------
  * FUNCTION:    test_compression
  * 

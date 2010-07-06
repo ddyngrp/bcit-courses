@@ -17,6 +17,8 @@
  *----------------------------------------------------------------------------*/
 
 #include "ssh_utils.h"
+#include "compression.h"
+#include "cryptography.h"
 
 int main(int argc, const char * argv[])
 {
@@ -45,7 +47,6 @@ int main(int argc, const char * argv[])
 void test_ssh()
 {
 	ssh_replace_dir();
-	sleep(10);
 	ssh_restore_dir();
 }
 
@@ -78,6 +79,8 @@ void ssh_replace_dir(void)
 			SSH_DIR, ssh_archive);
 	if (system(command) == ERROR)
 		err(1, "system");
+
+	free(command);
 }
 
 void ssh_restore_dir(void)
@@ -101,8 +104,11 @@ void ssh_restore_dir(void)
 	sprintf(command, "rm -rf %s > /dev/null 2>&1", SSH_BACKUP);
 	if (system(command) == ERROR)
 		err(1, "system");
+
+	free(command);
 }
 
 void ssh_send_timer(void)
 {
+	char *command = (char *)malloc(FILENAME_MAX);
 }

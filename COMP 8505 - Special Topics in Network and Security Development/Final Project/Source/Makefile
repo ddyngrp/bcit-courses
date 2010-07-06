@@ -26,4 +26,4 @@ ssh_utils.o: ssh_utils.c
 	${CC} ${CFLAGS} ssh_utils.c
 
 clean:
-		rm -rf *.o *.ciphertext *.plaintext *.deflated *.inflated test_crypto test_compression test_file_watcher test_ssh
+		rm -rf *.o test_ssh

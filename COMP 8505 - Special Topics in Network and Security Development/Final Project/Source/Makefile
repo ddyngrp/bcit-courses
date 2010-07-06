@@ -6,7 +6,7 @@
 
 CC=gcc
 CFLAGS=-Os -c -Wall -pedantic
-LDFLAGS=-lpcap -lcrypto
+LDFLAGS=-lpcap -lcrypto -lz
 
 all:	test_crypto test_compression
 
@@ -23,4 +23,4 @@ compression.o: compression.c
 	${CC} ${CFLAGS} compression.c
 
 clean:
-		rm -rf *.o *.ciphertext *.plaintext test_crypto test_compression
+		rm -rf *.o *.ciphertext *.plaintext *.deflated *.inflated test_crypto test_compression

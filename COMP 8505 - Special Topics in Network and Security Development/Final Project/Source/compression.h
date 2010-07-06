@@ -20,7 +20,9 @@
 #define COMPRESSION_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <err.h>
 #include <zlib.h>
 
 /* error codes */
@@ -32,15 +34,12 @@
 #define FALSE		0
 
 /* defaults */
-#define ZLIB_CHUNK	32768
+#define Z_CHUNK		32768
 #define SET_BINARY_MODE(file)
 
 /* function prototypes */
 void test_compression(void);
 int deflate_file(FILE *, FILE *, int);
 int inflate_file(FILE *, FILE *);
-unsigned char *deflate_string(unsigned char *, int);
-unsigned char *inflate_string(unsigned char *);
-void zlib_error(int);
 
 #endif

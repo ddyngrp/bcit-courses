@@ -52,7 +52,8 @@ void test_crypto(void)
 	int olen, len;
 	FILE *fd_in, *fd_out;
 
-	aes_init(&encrypt, &decrypt);
+	if (aes_init(&encrypt, &decrypt) == ERROR)
+		fprintf(stderr, "ERROR: aes_init");
 
 	olen = len = strlen(input) + 1;
 
@@ -260,7 +261,8 @@ int file_encrypt(FILE *fd_in, FILE *fd_out)
 	unsigned char in_buff[IN_SIZE];
 	unsigned char *out_buff;
 	
-	aes_init(&encrypt, &decrypt);
+	if (aes_init(&encrypt, &decrypt) == ERROR)
+		fprintf(stderr, "ERROR: aes_init");
 
 	fseek(fd_in, 0, SEEK_END);
 	file_size = ftell(fd_in);
@@ -314,7 +316,8 @@ int file_decrypt(FILE *fd_in, FILE *fd_out)
 	unsigned char in_buff[OUT_SIZE];
 	unsigned char *out_buff;
 	
-	aes_init(&encrypt, &decrypt);
+	if (aes_init(&encrypt, &decrypt) == ERROR)
+		fprintf(stderr, "ERROR: aes_init");
 
 	fseek(fd_in, 0, SEEK_END);
 	file_size = ftell(fd_in);

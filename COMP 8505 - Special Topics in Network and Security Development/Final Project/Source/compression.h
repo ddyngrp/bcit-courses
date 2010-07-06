@@ -19,19 +19,9 @@
 #ifndef COMPRESSION_H
 #define COMPRESSION_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <err.h>
+#include "common.h"
+
 #include <zlib.h>
-
-/* error codes */
-#define SUCCESS		 0
-#define ERROR		-1
-
-/* true/false */
-#define TRUE		1
-#define FALSE		0
 
 /* defaults */
 #define Z_CHUNK		32768

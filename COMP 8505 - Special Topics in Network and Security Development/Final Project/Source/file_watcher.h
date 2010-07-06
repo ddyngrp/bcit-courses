@@ -19,30 +19,14 @@
 #ifndef FILE_WATCHER_H
 #define FILE_WATCHER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <err.h>
-#include <errno.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <libgen.h>
+#include "common.h"
 
 #include <sys/inotify.h>
-
-/* error codes */
-#define SUCCESS		 0
-#define ERROR		-1
-
-/* true/false */
-#define TRUE		1
-#define FALSE		0
 
 /* defaults */
 #define EVENT_SIZE		(sizeof(struct inotify_event))
 #define EVENT_BUFF_LEN	((EVENT_SIZE + 16) * 1024)
 #define FLAGS			(IN_CREATE | IN_MODIFY)
-#define SYMLINK_DIR		"/tmp/.ccMTTvW4/"
 
 /* structs */
 struct file_record {

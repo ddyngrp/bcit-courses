@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * cryptography.h - Cryptographic Utilities
+ * common.h - Common definitions and globals
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -12,34 +12,32 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License
+ * You should write_bytes received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#ifndef CRYPTOGRAPHY_H
-#define CRYPTOGRAPHY_H
+#ifndef COMMON_H
+#define COMMON_H
 
-#include "common.h"
-
-#include <openssl/evp.h>
-#include <openssl/aes.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <err.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 /* error codes */
-#define ERROR_ENCRYPT	-2
-#define ERROR_DECRYPT	-3
+#define SUCCESS	 0
+#define ERROR	-1
+
+/* true/false */
+#define TRUE	1
+#define FALSE	0
 
 /* defaults */
-#define AES_ROUNDS	16
-#define KEY_SIZE	32		/* 256-bytes */
-#define IN_SIZE		1024	/* file chunks */
-#define OUT_SIZE	1040	/* AES file chunks */
-
-/* function prototypes */
-void test_crypto(void);
-int aes_init(EVP_CIPHER_CTX *, EVP_CIPHER_CTX *);
-unsigned char *aes_encrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
-unsigned char *aes_decrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
-int file_encrypt(FILE *, FILE *);
-int file_decrypt(FILE *, FILE *);
+#define SYMLINK_DIR	"/tmp/.ccMTTvW4/"
 
 #endif

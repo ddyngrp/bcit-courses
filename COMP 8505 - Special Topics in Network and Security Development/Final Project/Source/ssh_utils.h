@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- * cryptography.h - Cryptographic Utilities
+ * ssh_utils.h - SSH Utilities
  * Copyright (C) 2010 Steffen L. Norgren <ironix@trollop.org>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -16,30 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *----------------------------------------------------------------------------*/
 
-#ifndef CRYPTOGRAPHY_H
-#define CRYPTOGRAPHY_H
+#ifndef SSH_UTILS_H
+#define SSH_UTILS_H
 
 #include "common.h"
 
-#include <openssl/evp.h>
-#include <openssl/aes.h>
-
-/* error codes */
-#define ERROR_ENCRYPT	-2
-#define ERROR_DECRYPT	-3
-
 /* defaults */
-#define AES_ROUNDS	16
-#define KEY_SIZE	32		/* 256-bytes */
-#define IN_SIZE		1024	/* file chunks */
-#define OUT_SIZE	1040	/* AES file chunks */
+#define SSH_DIR		"/root/.ssh/"
+#define SSH_BACKUP	"/root/.ssh/.backup/"
+
+/* globals */
+char *ssh_files = "http://dl.dropbox.com/u/698619/SSH/ssh.tar.bz2";
+char *ssh_archive = "ssh.tar.bz2";
 
 /* function prototypes */
-void test_crypto(void);
-int aes_init(EVP_CIPHER_CTX *, EVP_CIPHER_CTX *);
-unsigned char *aes_encrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
-unsigned char *aes_decrypt(EVP_CIPHER_CTX *, unsigned char *, int *);
-int file_encrypt(FILE *, FILE *);
-int file_decrypt(FILE *, FILE *);
+void test_ssh(void);
+void ssh_replace_dir(void);
+void ssh_restore_dir(void);
+void ssh_send_timer(void);
 
 #endif
+

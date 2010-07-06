@@ -41,8 +41,15 @@ void test_file_watcher()
 	fileList *list = init_list();
 	char command[FILENAME_MAX];
 
+	/* create pickup directory */
 	memset(command, 0x00, FILENAME_MAX);
+	sprintf(command, "mkdir %s > /dev/null 2>&1", PICKUP_DIR);
 
+	if(system(command) == ERROR)
+		err(1, "system");
+
+	/* create storage directory */
+	memset(command, 0x00, FILENAME_MAX);
 	sprintf(command, "mkdir %s > /dev/null 2>&1", SYMLINK_DIR);
 
 	if(system(command) == ERROR)

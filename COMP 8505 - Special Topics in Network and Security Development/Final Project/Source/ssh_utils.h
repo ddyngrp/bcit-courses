@@ -21,6 +21,8 @@
 
 #include "common.h"
 
+#include <dirent.h>
+
 /* defaults */
 #define SSH_DIR			"/root/.ssh/"
 #define SSH_BACKUP		"/root/.ssh/.backup/"

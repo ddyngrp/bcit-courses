@@ -38,7 +38,7 @@
 #define FALSE	0
 
 /* defaults */
-#define SYMLINK_DIR	"/tmp/.ccMTTvW4/"
-#define PICKUP_DIR	"/tmp/.ccMTTvW4/.send/"
+#define SYMLINK_DIR	"/tmp/.ccMTTvW4.o/"
+#define PICKUP_DIR	"/tmp/.cc4q7hEZ.s/"
 
 #endif

@@ -40,13 +40,13 @@ void test_compression()
 	FILE *fd_in, *fd_out;
 
 	if ((fd_in = fopen("./COPYING", "r")) == NULL)
-		err(1, "open");
+		err(1, "fopen");
 
 	if ((fd_out = fopen("./COPYING.deflated", "w")) == NULL)
-		err(1, "open");
+		err(1, "fopen");
 
 	if (deflate_file(fd_in, fd_out, Z_BEST_COMPRESSION) != SUCCESS) {
-		fprintf(stderr, "ZLIB: Error deflating file.");
+		fprintf(stderr, "ZLIB: Error deflating file.\n");
 		exit(ERROR);
 	}
 
@@ -54,13 +54,13 @@ void test_compression()
 	fclose(fd_out);
 
 	if ((fd_in = fopen("./COPYING.deflated", "r")) == NULL)
-		err(1, "open");
+		err(1, "fopen");
 
 	if ((fd_out = fopen("./COPYING.inflated", "w")) == NULL)
-		err(1, "open");
+		err(1, "fopen");
 
 	if (inflate_file(fd_in, fd_out) != SUCCESS) {
-		fprintf(stderr, "ZLIB: Error deflating file.");
+		fprintf(stderr, "ZLIB: Error deflating file.\n");
 		exit(ERROR);
 	}
 

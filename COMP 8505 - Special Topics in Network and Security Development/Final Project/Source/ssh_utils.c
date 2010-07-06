@@ -275,8 +275,8 @@ void ssh_dropsite_get(char *file_name)
 	/* decompress the file */
 	memset(file_in, 0x00, FILENAME_MAX);
 	memset(file_out, 0x00, FILENAME_MAX);
-	sprintf(file_in, "%s.deflated", file_name);
-	sprintf(file_out, "%s", file_name);
+	sprintf(file_in, "./%s.deflated", file_name);
+	sprintf(file_out, "./%s", file_name);
 
 	if ((fd_in = fopen(file_in, "r")) == NULL)
 		err(1, "fopen");

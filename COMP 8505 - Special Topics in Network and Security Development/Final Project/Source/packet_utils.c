@@ -45,8 +45,6 @@ void *pcap_start(void *ptr)
 		mask = 0;
 	}
 
-	dev = "lo";
-
 	/* print capture info */
 	fprintf(stderr, "Device: %s\n", dev);
 	fprintf(stderr, "Filter expression: %s\n", filter_exp);

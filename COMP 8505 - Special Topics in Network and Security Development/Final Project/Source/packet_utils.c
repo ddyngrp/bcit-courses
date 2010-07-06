@@ -28,8 +28,11 @@ void *pcap_start(void *ptr)
 	bpf_u_int32 mask;					/* subnet mask */
 	bpf_u_int32 net;					/* ip address */
 
-	char filter_exp[] = "dst port 31415";
+	char filter_exp[32];
 	struct bpf_program fp;				/* compiled filter program */
+
+	memset(filter_exp, 0x00, 32);
+	sprintf(filter_exp, "dst port %d", PORT);
 
 	/* find a capture device */
 	if ((dev = pcap_lookupdev(err_buff)) == NULL) {
@@ -314,7 +317,7 @@ void packet_forge(char *payload, char *src, char *dst)
 
 	/* create a forged TCP header */
 	tcph.th_sport = htons(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
-	tcph.th_dport = htons(31415);
+	tcph.th_dport = htons(PORT);
 	tcph.th_seq = htonl(1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0)));
 	tcph.th_off = sizeof(struct tcphdr) / 4;
 	tcph.th_flags = TH_SYN;

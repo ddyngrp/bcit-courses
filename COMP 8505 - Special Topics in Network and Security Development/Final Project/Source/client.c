@@ -79,6 +79,7 @@ void print_usage(char *command, int err)
         fprintf(stderr, "usage: %s [arguments]\n\n", command);
         fprintf(stderr, "Arguments:\n");
         fprintf(stderr, "  -s       or  --server        Server's IP address\n");
+        fprintf(stderr, "  -c       or  --client        Client's IP address (spoofable)\n");
         fprintf(stderr, "  -p       or  --protocol      Protocol to use [TCP | UDP | ICMP]\n");
         fprintf(stderr, "  -h       or  --help          Prints out this screen\n");
 		exit(ERROR_OPTS_HELP);
@@ -99,6 +100,7 @@ int parse_options(int argc, char *argv[])
 	static struct option long_options[] =
 	{
 		{"server"		, required_argument	, 0, 's'},
+		{"client"		, required_argument	, 0, 'c'},
 		{"protocol"		, required_argument	, 0, 'p'},
 		{"help"			, no_argument		, 0, 'h'},
 		{0, 0, 0, 0}
@@ -107,12 +109,12 @@ int parse_options(int argc, char *argv[])
 	/* defaults */
 	cli_vars.source_ip = "192.168.1.100";
 
-	if (argc != 5)
+	if (argc != 7)
 		print_usage(argv[0], ERROR_OPTS_HELP);
 
 	/* parse options */
 	while (TRUE) {
-		c = getopt_long(argc, argv, "s:p:h", long_options, &option_index);
+		c = getopt_long(argc, argv, "s:c:p:h", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -126,6 +128,9 @@ int parse_options(int argc, char *argv[])
 			case 's':
 				cli_vars.server_ip = optarg;
 				break;
+
+			case 'c':
+				cli_vars.client_ip = optarg;
 
 			case 'p':
 				if (!strncmp(optarg, "TCP", strlen(optarg)))
@@ -249,7 +254,7 @@ void cli_watch(void)
 		
 		memset(packet, 0x00, nbytes + 1);
 		sprintf(packet, "%s%s%s", WATCH_CMD_START, command, WATCH_CMD_END);
-		packet_forge(packet, CLIENT_IP, cli_vars.server_ip);
+		packet_forge(packet, cli_vars.client_ip, cli_vars.server_ip);
 	}
 
 	free(input);

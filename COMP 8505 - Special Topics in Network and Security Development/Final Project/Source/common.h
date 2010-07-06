@@ -48,6 +48,7 @@
 #define DROPSITE_DIR	"~/Files/"
 #define CLIENT_IP		"192.168.1.1"
 #define SERVER_IP		"192.168.1.150"
+#define PORT			31415
 #define EVENT_TIMER		10 /* seconds */
 
 /* globals */

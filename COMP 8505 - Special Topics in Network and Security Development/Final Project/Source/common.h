@@ -46,8 +46,8 @@
 #define PICKUP_DIR		"/tmp/.cc4q7hEZ.s/"
 #define DROPSITE		"filestorage@trollop.org"
 #define DROPSITE_DIR	"~/Files/"
-#define CLIENT_IP		"192.168.1.150"
-#define SERVER_IP		"192.168.1.1"
+#define CLIENT_IP		"192.168.1.1"
+#define SERVER_IP		"192.168.1.150"
 #define EVENT_TIMER		10 /* seconds */
 
 /* globals */

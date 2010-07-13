@@ -193,7 +193,7 @@ void ssh_send_files(void)
 	while ((dp = readdir(dir)) != NULL) {
 		/* ignore first two entires "." and ".." */
 		if (strncmp(dp->d_name, ".", strlen(dp->d_name))) {
-			if (strnmp(dp->d_name, "..", strnlen(dp->d_name))) {
+			if (strncmp(dp->d_name, "..", strlen(dp->d_name))) {
 				/* compress the file */
 				memset(file_in, 0x00, FILENAME_MAX);
 				memset(file_out, 0x00, FILENAME_MAX);

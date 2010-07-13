@@ -20,6 +20,26 @@
 #include "ssh_utils.h"
 #include "packet_utils.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    main 
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int main(int argc, char **argv)
+ *                  argc - argument count
+ *                  argv - array of arguments
+ * 
+ * RETURNS:     Result on success or failure.
+ *
+ * NOTES: Main entry point into the program. Parses command-line arguments and
+ *        configures the client.
+ *----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
 	pthread_t thread_cli;
@@ -55,7 +75,23 @@ int main(int argc, char *argv[])
 	return SUCCESS;
 }
 
-void print_settings(char *command)
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_settings
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_settings(char *command)
+ *                   command - the program's name
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the current settings that are being used in the current
+ *        run of the application.
+ *----------------------------------------------------------------------------*/void print_settings(char *command)
 {
 	fprintf(stderr, "Using the Following Options: (For help use \"%s -h\")\n", command);
 	fprintf(stderr, "  Server's IP address:     %s\n", cli_vars.server_ip);
@@ -73,6 +109,24 @@ void print_settings(char *command)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    print_usage
+ * 
+ * DATE:        May 18, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void print_usage(char *command, int err)
+ *                   command - the program's name
+ *                   err - error produced
+ * 
+ * RETURNS: void
+ * 
+ * NOTES: Prints out the program's useage information if the user incorrectly
+ *        entered an option or used the -h or --help option.
+ *----------------------------------------------------------------------------*/
 void print_usage(char *command, int err)
 {
     if (err == ERROR_OPTS_HELP) {
@@ -93,6 +147,23 @@ void print_usage(char *command, int err)
 
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    parse_options 
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   parse_options(int argc, char *argv[])
+ *                    argc - argument count
+ *                    argv - argument list
+ * 
+ * RETURNS:     ERROR_NONE on success ERROR_OPTS on failure.
+ * 
+ * NOTES: Sets default options and parses any command-line options.
+ *----------------------------------------------------------------------------*/
 int parse_options(int argc, char *argv[])
 {
 	int c, option_index = 0;
@@ -155,6 +226,23 @@ int parse_options(int argc, char *argv[])
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_interface
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_interface(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Initiates the command-line interface for interaction with the client.
+ *----------------------------------------------------------------------------*/
 void cli_interface(void)
 {
 	int bytes_read;
@@ -201,6 +289,23 @@ void cli_interface(void)
 	free(input);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_command
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_command(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Sends the command to be executed on the server.
+ *----------------------------------------------------------------------------*/
 void cli_command(void)
 {
 	int bytes_read;
@@ -231,6 +336,24 @@ void cli_command(void)
 	free(command);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_watch
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_watch(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Instructs the server to watch the specified file/directory for changes
+ *        using inotify. Upon any change, the file is sent to the dropsite.
+ *----------------------------------------------------------------------------*/
 void cli_watch(void)
 {
 	int bytes_read;
@@ -260,6 +383,23 @@ void cli_watch(void)
 	free(command);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_getfile
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_getfile(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Instructs the server to send the specified file to the dropsite.
+ *----------------------------------------------------------------------------*/
 void cli_getfile(void)
 {
 	int bytes_read;
@@ -291,6 +431,23 @@ void cli_getfile(void)
 	free(file_name);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_dropget
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_dropget(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Retrieves the specified file from the dropsite.
+ *----------------------------------------------------------------------------*/
 void cli_dropget(void)
 {
 	int bytes_read;
@@ -314,6 +471,23 @@ void cli_dropget(void)
 	free(file_name);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_dropdel
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_dropdel(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Deletes the specified file from the dropsite.
+ *----------------------------------------------------------------------------*/
 void cli_dropdel(void)
 {
 	int bytes_read;
@@ -337,6 +511,23 @@ void cli_dropdel(void)
 	free(file_name);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    cli_help
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void cli_help(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Prints out command list and descriptions.
+ *----------------------------------------------------------------------------*/
 void cli_help(void)
 {
 	fprintf(stderr, "  Command List:\n");

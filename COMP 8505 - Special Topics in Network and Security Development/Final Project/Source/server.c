@@ -21,6 +21,25 @@
 #include "file_watcher.h"
 #include "ssh_utils.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    main 
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int main(int argc, char **argv)
+ *                  argc - argument count
+ *                  argv - array of arguments
+ * 
+ * RETURNS:     Result on success or failure.
+ *
+ * NOTES: Main entry point into the program. Configures the server defaults.
+ *----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
 	pthread_t thread_fw, thread_ssh, thread_pcap;
@@ -64,6 +83,22 @@ int main(int argc, char *argv[])
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    signal_handler 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   signal_handler(int sig)
+ *                    sig - the signal that caught the handler
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Enables graceful termination of the program.
+ *----------------------------------------------------------------------------*/
 void signal_handler(int sig)
 {
 	switch(sig) {
@@ -84,6 +119,22 @@ void signal_handler(int sig)
 	}
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    daemonize 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   daemonize(void)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Daemonizes the application such that it technically runs as a zombie
+ *        process.
+ *----------------------------------------------------------------------------*/
 void daemonize(void)
 {
 	pid_t pid;
@@ -96,6 +147,24 @@ void daemonize(void)
 		exit(SUCCESS);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    mask_process 
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   mask_process(char *argv[], char *name)
+ *                   argv - initial command used
+ *                   name - new name to mask the process with
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Masks the process name with something that might go unnoticed.
+ *
+ *----------------------------------------------------------------------------*/
 void mask_process(char *argv[], char *name)
 {
 	memset(argv[0], 0, strlen(argv[0]));

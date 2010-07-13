@@ -18,6 +18,24 @@
 
 #include "file_watcher.h"
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_watcher
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void *file_watcher(void *ptr)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: File watcher thread. Initiates loop to watch for changes in the list
+ *        of files being watched.
+ *----------------------------------------------------------------------------*/
 void *file_watcher(void *ptr)
 {
 	char command[FILENAME_MAX];
@@ -64,6 +82,27 @@ void *file_watcher(void *ptr)
 	return NULL;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_register
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int file_register(struct file_list *list, const char *path,
+ *                                unsigned int flags)
+ *                  list - linked list of files being watched
+ *                  path - path to file being watched
+ *                  flags - inotify flags to be used
+ * 
+ * RETURNS:     SUCCESS or ERROR
+ *
+ * NOTES: Registers a file or path to be watched with inotify.
+ *----------------------------------------------------------------------------*/
 int file_register(struct file_list *list, const char *path, unsigned int flags)
 {
 	fileRecord *fr = (fileRecord *)malloc(sizeof(fileRecord));
@@ -87,6 +126,25 @@ int file_register(struct file_list *list, const char *path, unsigned int flags)
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    file_unregister
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void file_unregister(struct file_list *list)
+ *                   list - list of files being watched
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Removes the last file from the linked list and unregisters the
+ *        inotify event for that file.
+ *----------------------------------------------------------------------------*/
 void file_unregister(struct file_list *list)
 {
 	fileRecord *fr_next, *fr_current;
@@ -113,6 +171,23 @@ void file_unregister(struct file_list *list)
 	free(fr_current);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    init_list
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   struct file_list *init_list(void)
+ * 
+ * RETURNS:     linked list of files being watched
+ *
+ * NOTES: Initializes the linked list of files we want inotify to watch.
+ *----------------------------------------------------------------------------*/
 struct file_list *init_list(void)
 {
 	int fd = inotify_init();
@@ -128,6 +203,25 @@ struct file_list *init_list(void)
 	return list;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    free_list
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int free_list(fileList *list)
+ *                  list - linked list of files being watched
+ * 
+ * RETURNS:     SUCCESS or ERROR
+ *
+ * NOTES: Cycles through the linked list of files being watched and clears
+ *        each file and inotify event for the file.
+ *----------------------------------------------------------------------------*/
 int free_list(fileList *list)
 {
 	if (list == NULL) {
@@ -142,6 +236,24 @@ int free_list(fileList *list)
 	return SUCCESS;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    path_exists
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   int path_exists(const char *path)
+ *                  path - path of the file or directory
+ * 
+ * RETURNS:     TRUE or FALSE
+ *
+ * NOTES: Checks to see if a path already exists.
+ *----------------------------------------------------------------------------*/
 int path_exists(const char *path)
 {
 	struct stat buffer;
@@ -149,6 +261,25 @@ int path_exists(const char *path)
 	return (stat(path, &buffer) == 0 || errno != ENOENT);
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    find_path
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   char *find_path(struct file_list *list, int fd_watch)
+ *                    list - linked ist of files being watched
+ *                    fd_watch - inotify device
+ * 
+ * RETURNS:     file name found or NULL
+ *
+ * NOTES: Searches the watch list for a filename or path
+ *----------------------------------------------------------------------------*/
 char *find_path(struct file_list *list, int fd_watch)
 {
 	fileRecord *fr = list->files;
@@ -171,6 +302,26 @@ char *find_path(struct file_list *list, int fd_watch)
 	return NULL;
 }
 
+/*-----------------------------------------------------------------------------
+ * FUNCTION:    watch_list
+ * 
+ * DATE:        July 4, 2010
+ * 
+ * REVISIONS:   
+ * 
+ * DESIGNER:    Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * PROGRAMMER:  Steffen L. Norgren <ironix@trollop.org>
+ * 
+ * INTERFACE:   void watch_list(struct file_list *list)
+ * 
+ * RETURNS:     void
+ *
+ * NOTES: Cyles through any inotify events for the list of files being watched
+ *        and if a matching event appears, takes the appropriate action. In this
+ *        case it creates a symlink to the file in a directory for our SSH timer
+ *        to pickup and send to the dropsite.
+ *----------------------------------------------------------------------------*/
 void watch_list(struct file_list *list)
 {
 	ssize_t len, i = 0;

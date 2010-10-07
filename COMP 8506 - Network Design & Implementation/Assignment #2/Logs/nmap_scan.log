@@ -1,0 +1,366 @@
+
+Starting Nmap 5.35DC1 ( http://nmap.org ) at 2010-10-06 23:37 PDT
+NSE: Loaded 131 scripts for scanning.
+Initiating Ping Scan at 23:37
+Scanning trollop.org (70.70.128.178) [7 ports]
+Completed Ping Scan at 23:37, 0.03s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 23:37
+Completed Parallel DNS resolution of 1 host. at 23:37, 0.02s elapsed
+Initiating SYN Stealth Scan at 23:37
+Scanning trollop.org (70.70.128.178) [1000 ports]
+Discovered open port 443/tcp on 70.70.128.178
+Discovered open port 25/tcp on 70.70.128.178
+Discovered open port 3389/tcp on 70.70.128.178
+Discovered open port 80/tcp on 70.70.128.178
+Discovered open port 993/tcp on 70.70.128.178
+Discovered open port 22/tcp on 70.70.128.178
+Completed SYN Stealth Scan at 23:37, 6.45s elapsed (1000 total ports)
+Initiating UDP Scan at 23:37
+Scanning trollop.org (70.70.128.178) [1000 ports]
+Increasing send delay for 70.70.128.178 from 0 to 50 due to max_successful_tryno increase to 5
+Increasing send delay for 70.70.128.178 from 50 to 100 due to max_successful_tryno increase to 6
+Increasing send delay for 70.70.128.178 from 100 to 200 due to max_successful_tryno increase to 7
+Increasing send delay for 70.70.128.178 from 200 to 400 due to max_successful_tryno increase to 8
+Increasing send delay for 70.70.128.178 from 400 to 800 due to max_successful_tryno increase to 9
+Discovered open port 53/udp on 70.70.128.178
+Completed UDP Scan at 23:38, 23.62s elapsed (1000 total ports)
+Initiating Service scan at 23:38
+Scanning 977 services on trollop.org (70.70.128.178)
+Service scan Timing: About 0.82% done
+Service scan Timing: About 3.89% done; ETC: 00:44 (1:03:50 remaining)
+Service scan Timing: About 6.96% done; ETC: 00:33 (0:51:41 remaining)
+Service scan Timing: About 10.03% done; ETC: 00:29 (0:46:21 remaining)
+Service scan Timing: About 13.10% done; ETC: 00:27 (0:42:47 remaining)
+Service scan Timing: About 16.17% done; ETC: 00:26 (0:40:10 remaining)
+Service scan Timing: About 21.80% done; ETC: 00:20 (0:32:42 remaining)
+Service scan Timing: About 22.31% done; ETC: 00:24 (0:35:59 remaining)
+Service scan Timing: About 27.94% done; ETC: 00:20 (0:30:10 remaining)
+Service scan Timing: About 28.45% done; ETC: 00:23 (0:32:29 remaining)
+Service scan Timing: About 34.08% done; ETC: 00:20 (0:27:37 remaining)
+Service scan Timing: About 40.23% done; ETC: 00:20 (0:25:04 remaining)
+Service scan Timing: About 46.37% done; ETC: 00:20 (0:22:30 remaining)
+Service scan Timing: About 52.51% done; ETC: 00:20 (0:19:56 remaining)
+Service scan Timing: About 58.65% done; ETC: 00:20 (0:17:21 remaining)
+Service scan Timing: About 64.79% done; ETC: 00:20 (0:14:47 remaining)
+Service scan Timing: About 70.93% done; ETC: 00:20 (0:12:12 remaining)
+Service scan Timing: About 77.07% done; ETC: 00:20 (0:09:38 remaining)
+Service scan Timing: About 83.21% done; ETC: 00:20 (0:07:03 remaining)
+Service scan Timing: About 88.33% done; ETC: 00:20 (0:04:56 remaining)
+Service scan Timing: About 93.35% done; ETC: 00:20 (0:02:48 remaining)
+Service scan Timing: About 98.46% done; ETC: 00:19 (0:00:38 remaining)
+Completed Service scan at 00:19, 2478.06s elapsed (977 services on 1 host)
+Initiating OS detection (try #1) against trollop.org (70.70.128.178)
+Initiating Traceroute at 00:19
+Completed Traceroute at 00:19, 3.01s elapsed
+NSE: Script scanning 70.70.128.178.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 00:19
+NSE Timing: About 98.89% done; ETC: 01:04 (0:00:30 remaining)
+NSE Timing: About 98.89% done; ETC: 01:05 (0:00:30 remaining)
+Completed NSE at 01:05, 2728.17s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 01:05
+Completed NSE at 01:05, 10.00s elapsed
+Nmap scan report for trollop.org (70.70.128.178)
+Host is up (0.028s latency).
+rDNS record for 70.70.128.178: S010600c04f4c59d3.vw.shawcable.net
+Not shown: 970 open|filtered ports, 939 filtered ports, 84 closed ports
+PORT     STATE SERVICE       VERSION
+22/tcp   open  ssh           OpenSSH 5.6 (protocol 2.0)
+| ssh-hostkey: 1024 71:19:3a:99:46:4e:a0:4d:47:11:60:e3:7c:75:f9:04 (DSA)
+|_2048 63:2c:a6:d9:7f:2c:f7:11:ab:1d:db:e0:4e:ae:1a:21 (RSA)
+|_banner: SSH-2.0-OpenSSH_5.6
+25/tcp   open  smtp          Postfix smtpd
+|_banner: 220 mail.trollop.org ESMTP Postfix
+| ssl-cert: Subject: commonName=mail.trollop.org/organizationName=Esurient Systems Inc./stateOrProvinceName=British Columbia/countryName=CA
+| Issuer: commonName=mail.trollop.org/organizationName=Esurient Systems Inc./stateOrProvinceName=British Columbia/countryName=CA
+| Not valid before: 2009-11-09 05:40:24
+| Not valid after:  2010-11-09 05:40:24
+| MD5:   a5f9 cc1b 359b 8a3d cfc1 9f9b d1ec e204
+|_SHA-1: 278a c4b4 4fca 240e e191 c82c e34b ee62 db19 fe5a
+| smtp-enum-users:  
+|_  Couldn't find any accounts
+|_smtp-open-relay: Server doesn't seem to be an open relay, all tests failed
+80/tcp   open  http          Apache httpd
+|_citrix-brute-xml: FAILED: No domain specified (use ntdomain argument)
+| http-php-version: Logo query returned unknown hash d41d8cd98f00b204e9800998ecf8427e
+|_Credits query returned unknown hash d41d8cd98f00b204e9800998ecf8427e
+| html-title: An Esurient Trollop
+|_Requested resource was http://www.trollop.org/
+|_http-methods: No Allow or Public header in OPTIONS response (status code 302)
+|_http-iis-webdav-vuln: ERROR: This web server is not supported.
+|_http-date: Thu, 07 Oct 2010 07:20:01 GMT; +18s from local time.
+| http-headers:  
+|   Date: Thu, 07 Oct 2010 07:20:03 GMT
+|   Server: Apache
+|   X-Pingback: http://www.trollop.org/xmlrpc.php
+|   Location: http://www.trollop.org/
+|   Content-Length: 0
+|   Connection: close
+|   Content-Type: text/html; charset=UTF-8
+|   
+|_  (Request type: GET)
+| http-enum:  
+|   /icons/: Icons and images
+|_  /robots.txt: Robots file
+443/tcp  open  ssl/http      Apache httpd
+|_citrix-brute-xml: FAILED: No domain specified (use ntdomain argument)
+|_html-title: Did not follow redirect to https://www.trollop.org/ and no page was returned.
+| ssl-cert: Subject: commonName=localhost/organizationName=Apache HTTP Server/stateOrProvinceName=California/countryName=US
+| Issuer: commonName=localhost CA/organizationName=Apache HTTP Server/stateOrProvinceName=California/countryName=US
+| Not valid before: 2010-05-03 05:08:16
+| Not valid after:  2012-05-02 05:08:16
+| MD5:   177f dde3 c2a2 6e5d 7acb 4dcb 5866 1949
+|_SHA-1: ad1a cf9c 544b 5a2f 02c3 d8c2 5f81 b9ae d6ec 7f5c
+|_http-methods: No Allow or Public header in OPTIONS response (status code 301)
+| http-php-version: Logo query returned unknown hash d41d8cd98f00b204e9800998ecf8427e
+|_Credits query returned unknown hash d41d8cd98f00b204e9800998ecf8427e
+|_http-iis-webdav-vuln: ERROR: This web server is not supported.
+|_sslv2: server still supports SSLv2
+|_http-malware-host: Host appears to be clean
+|_http-date: Thu, 07 Oct 2010 07:19:53 GMT; +10s from local time.
+| http-headers:  
+|   Date: Thu, 07 Oct 2010 07:19:55 GMT
+|   Server: Apache
+|   X-Pingback: http://www.trollop.org/xmlrpc.php
+|   Location: https://www.trollop.org/
+|   Content-Length: 0
+|   Connection: close
+|   Content-Type: text/html; charset=UTF-8
+|   
+|_  (Request type: GET)
+| ssl-enum-ciphers:  
+|   SSLv3
+|     Ciphers (21)
+|       TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA
+|       TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_DES_CBC_SHA
+|       TLS_DHE_RSA_WITH_SEED_CBC_SHA
+|       TLS_RSA_EXPORT_WITH_DES40_CBC_SHA
+|       TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5
+|       TLS_RSA_EXPORT_WITH_RC4_40_MD5
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_RSA_WITH_AES_128_CBC_SHA
+|       TLS_RSA_WITH_AES_256_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_RSA_WITH_DES_CBC_SHA
+|       TLS_RSA_WITH_IDEA_CBC_SHA
+|       TLS_RSA_WITH_RC4_128_MD5
+|       TLS_RSA_WITH_RC4_128_SHA
+|       TLS_RSA_WITH_SEED_CBC_SHA
+|     Compressors (1)
+|       uncompressed
+|   TLSv1.0
+|     Ciphers (21)
+|       TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA
+|       TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_DES_CBC_SHA
+|       TLS_DHE_RSA_WITH_SEED_CBC_SHA
+|       TLS_RSA_EXPORT_WITH_DES40_CBC_SHA
+|       TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5
+|       TLS_RSA_EXPORT_WITH_RC4_40_MD5
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_RSA_WITH_AES_128_CBC_SHA
+|       TLS_RSA_WITH_AES_256_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_RSA_WITH_DES_CBC_SHA
+|       TLS_RSA_WITH_IDEA_CBC_SHA
+|       TLS_RSA_WITH_RC4_128_MD5
+|       TLS_RSA_WITH_RC4_128_SHA
+|       TLS_RSA_WITH_SEED_CBC_SHA
+|     Compressors (1)
+|_      uncompressed
+| http-enum:  
+|   /icons/: Icons and images
+|_  /robots.txt: Robots file
+993/tcp  open  ssl/imap      Dovecot imapd
+| ssl-cert: Subject: commonName=mail.trollop.org/organizationName=Esurient Systems Inc./stateOrProvinceName=British Columbia/countryName=CA
+| Issuer: commonName=mail.trollop.org/organizationName=Esurient Systems Inc./stateOrProvinceName=British Columbia/countryName=CA
+| Not valid before: 2009-11-09 05:40:24
+| Not valid after:  2010-11-09 05:40:24
+| MD5:   a5f9 cc1b 359b 8a3d cfc1 9f9b d1ec e204
+|_SHA-1: 278a c4b4 4fca 240e e191 c82c e34b ee62 db19 fe5a
+|_imap-capabilities: IMAP4rev1 ID ENABLE AUTH=LOGIN LITERAL+ AUTH=PLAIN SASL-IR LOGIN-REFERRALS
+| banner: * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID 
+|_ENABLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+| ssl-enum-ciphers:  
+|   SSLv3
+|     Ciphers (15)
+|       TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_SEED_CBC_SHA
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_RSA_WITH_AES_128_CBC_SHA
+|       TLS_RSA_WITH_AES_256_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_RSA_WITH_IDEA_CBC_SHA
+|       TLS_RSA_WITH_RC4_128_MD5
+|       TLS_RSA_WITH_RC4_128_SHA
+|       TLS_RSA_WITH_SEED_CBC_SHA
+|     Compressors (1)
+|       uncompressed
+|   TLSv1.0
+|     Ciphers (15)
+|       TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_DHE_RSA_WITH_SEED_CBC_SHA
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA
+|       TLS_RSA_WITH_AES_128_CBC_SHA
+|       TLS_RSA_WITH_AES_256_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA
+|       TLS_RSA_WITH_IDEA_CBC_SHA
+|       TLS_RSA_WITH_RC4_128_MD5
+|       TLS_RSA_WITH_RC4_128_SHA
+|       TLS_RSA_WITH_SEED_CBC_SHA
+|     Compressors (1)
+|_      uncompressed
+3389/tcp open  microsoft-rdp Microsoft Terminal Service
+53/udp   open  domain        ISC BIND 9.7.2-P2
+|_dns-random-txid: ERROR: Server refused recursion
+|_dns-random-srcport: ERROR: Server refused recursion
+|_dns-cache-snoop: 0 of 100 tested domains are cached.
+|_dns-fuzz: The server seems impervious to our assault.
+Device type: general purpose
+Running: Linux 2.6.X
+OS details: Linux 2.6.15 - 2.6.27
+Uptime guess: 0.228 days (since Wed Oct  6 19:37:35 2010)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=200 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: Host:  mail.trollop.org; OS: Windows
+
+Host script results:
+| asn-query:  
+| BGP: 70.70.128.0/17 | Country: CA
+|   Origin AS: 6327 - SHAW - Shaw Communications Inc.
+|_    Peer AS: 2516 2914 3356 4565 4657 6453 8928 10310 11537 22822
+| whois: Record found at whois.arin.net
+| netrange: 70.64.0.0 - 70.79.255.255
+| netname: SHAW-COMM
+| orgname: Shaw Communications Inc.
+| orgid: SHAWC
+| country: CA stateprov: AB 
+| orgtechname: IP Admin
+|_orgtechemail: ipadmin@sjrb.ca
+|_ipidseq: Unknown
+| qscan:  
+| PORT   FAMILY  MEAN (ms)  STDDEV  LOSS (%)  
+| 22     0       0.00       -0.00   100.0%    
+| 25     1       0.00       -0.00   100.0%    
+| 53     2       0.00       -0.00   100.0%    
+| 80     3       0.00       -0.00   100.0%    
+| 443    4       0.00       -0.00   100.0%    
+| 993    5       0.00       -0.00   100.0%    
+| 3389   6       0.00       -0.00   100.0%    
+| 49152  7       0.00       -0.00   100.0%    
+| 49153  8       0.00       -0.00   100.0%    
+| 49154  9       0.00       -0.00   100.0%    
+| 49155  10      0.00       -0.00   100.0%    
+| 49156  11      0.00       -0.00   100.0%    
+| 49157  12      0.00       -0.00   100.0%    
+| 49157  13      0.00       -0.00   100.0%    
+| 49158  14      0.00       -0.00   100.0%    
+| 49158  15      0.00       -0.00   100.0%    
+| 49159  16      0.00       -0.00   100.0%    
+| 49159  17      0.00       -0.00   100.0%    
+| 49160  18      0.00       -0.00   100.0%    
+| 49161  19      0.00       -0.00   100.0%    
+| 49163  20      0.00       -0.00   100.0%    
+| 49165  21      0.00       -0.00   100.0%    
+| 49167  22      0.00       -0.00   100.0%    
+| 49175  23      0.00       -0.00   100.0%    
+| 49176  24      0.00       -0.00   100.0%    
+| 49182  25      0.00       -0.00   100.0%    
+| 49188  26      0.00       -0.00   100.0%    
+| 49189  27      0.00       -0.00   100.0%    
+| 49192  28      0.00       -0.00   100.0%    
+| 49193  29      0.00       -0.00   100.0%    
+| 49200  30      0.00       -0.00   100.0%    
+| 49205  31      0.00       -0.00   100.0%    
+| 49214  32      0.00       -0.00   100.0%    
+| 49400  33      0.00       -0.00   100.0%    
+| 49999  34      0.00       -0.00   100.0%    
+| 50000  35      0.00       -0.00   100.0%    
+| 50001  36      0.00       -0.00   100.0%    
+| 50002  37      0.00       -0.00   100.0%    
+| 50003  38      0.00       -0.00   100.0%    
+| 50006  39      0.00       -0.00   100.0%    
+| 50300  40      0.00       -0.00   100.0%    
+| 50389  41      0.00       -0.00   100.0%    
+| 50500  42      0.00       -0.00   100.0%    
+| 50636  43      0.00       -0.00   100.0%    
+| 50708  44      0.00       -0.00   100.0%    
+| 50800  45      778.00     nan     90.0%     
+| 51103  46      0.00       -0.00   100.0%    
+| 51493  47      0.00       -0.00   100.0%    
+| 51586  48      0.00       -0.00   100.0%    
+| 51905  49      0.00       -0.00   100.0%    
+| 52225  50      0.00       -0.00   100.0%    
+| 52673  51      0.00       -0.00   100.0%    
+| 52822  52      0.00       -0.00   100.0%    
+| 52848  53      0.00       -0.00   100.0%    
+| 52869  54      0.00       -0.00   100.0%    
+| 54045  55      0.00       -0.00   100.0%    
+| 54328  56      0.00       -0.00   100.0%    
+| 54925  57      0.00       -0.00   100.0%    
+| 55055  58      0.00       -0.00   100.0%    
+| 55056  59      0.00       -0.00   100.0%    
+| 55544  60      0.00       -0.00   100.0%    
+| 55555  61      0.00       -0.00   100.0%    
+| 55600  62      0.00       -0.00   100.0%    
+| 56737  63      0.00       -0.00   100.0%    
+| 56738  64      0.00       -0.00   100.0%    
+| 57294  65      0.00       -0.00   100.0%    
+| 57410  66      0.00       -0.00   100.0%    
+| 57797  67      0.00       -0.00   100.0%    
+| 57958  68      0.00       -0.00   100.0%    
+| 58080  69      0.00       -0.00   100.0%    
+| 58178  70      0.00       -0.00   100.0%    
+| 58640  71      0.00       -0.00   100.0%    
+| 60020  72      0.00       -0.00   100.0%    
+| 60443  73      0.00       -0.00   100.0%    
+| 61322  74      0.00       -0.00   100.0%    
+| 61481  75      0.00       -0.00   100.0%    
+| 61532  76      0.00       -0.00   100.0%    
+| 61550  77      0.00       -0.00   100.0%    
+| 61900  78      890.00     nan     90.0%     
+| 62078  79      0.00       -0.00   100.0%    
+| 62287  80      0.00       -0.00   100.0%    
+| 62575  81      0.00       -0.00   100.0%    
+| 63331  82      0.00       -0.00   100.0%    
+| 63420  83      0.00       -0.00   100.0%    
+| 64481  84      0.00       -0.00   100.0%    
+| 64590  85      0.00       -0.00   100.0%    
+| 64623  86      0.00       -0.00   100.0%    
+| 64680  87      0.00       -0.00   100.0%    
+| 65000  88      0.00       -0.00   100.0%    
+| 65129  89      0.00       -0.00   100.0%    
+|_65389  90      0.00       -0.00   100.0%    
+
+TRACEROUTE (using port 50500/tcp)
+HOP RTT      ADDRESS
+1   ...
+2   22.87 ms S010600c04f4c59d3.vw.shawcable.net (70.70.128.178)
+
+Read data files from: /usr/local/share/nmap
+OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 5259.77 seconds
+           Raw packets sent: 14648 (479.407KB) | Rcvd: 2200 (187.782KB)

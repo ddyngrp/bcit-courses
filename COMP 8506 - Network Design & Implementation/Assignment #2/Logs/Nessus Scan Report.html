@@ -1,0 +1,1761 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd"><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Nessus Scan Report</title>
+<style type="text/css" media="all"> 
+BODY {BACKGROUND-COLOR: #2a4d66; font-family: tahoma,helvetica,sans-serif; font-size: 13px}
+A {TEXT-DECORATION: none}
+A {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif, font-size: 13px}
+A:link {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline;font-size:13px}
+A:active {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline;font-size:13px}
+a:hover {color: #000; font-family: tahoma,helvetica,sans-serif; text-decoration:none;font-size:13px}
+TD {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:13px; word-wrap:break-word;}
+TR {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:13px}
+.even {background-color: #FFF;}
+.odd {background-color: #DCDCDC;}
+.sev_low {color: #397AB2}
+.sev_med {color: #FDBE00}
+.sev_high {color: red}
+.ip_sev_low {color:#397AB2;font-weight:bold;font-size:1.5em;padding:3px}
+.ip_sev_med {color:#FDBE00;font-weight:bold;font-size:1.5em;padding:3px}
+.ip_sev_high {color:red;font-weight:bold;font-size:1.5em;padding:3px}
+.hostlist {color:#FFF;font-size:2em;font-weight:bold;padding:3px}
+.backTo a {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+.backTo a:link {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+.backTo a:active {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+.backTo a:hover {color:#DFDFDF;font-family:tahoma,helvetica,sans-serif;text-decoration:none}
+.backToContainer {padding: 4px 0 4px 0}
+.vuln_info {font-weight:bold;text-decoration:underline}
+.scan_time {font-weight:bold;text-decoration:underline}
+.host_info {font-weight:bold;text-decoration:underline}
+.plugin_sev_low {background-color:#397AB2}
+.plugin_sev_med {background-color:#FDBE00}
+.plugin_sev_high {background-color:red}
+.plugin_label {color:#FFF;font-weight:bold;padding:3px}
+.port_header {background-color:#67889f}
+.port_header_label {font-weight:bold;color:#FFF;padding: 3px}
+.toggle {color: #FFF}
+.divider {padding-top: 2px}
+.info_text {padding-left: 8px;}
+.default_header {background-color:#67889f}
+.info_bg {background-color:#EEF2F3; }
+.plugin_output {
+width: 600px;
+overflow: auto;
+white-space: -moz-pre-wrap; /* Mozilla */
+white-space: -hp-pre-wrap; /* HP printers */
+white-space: -o-pre-wrap; /* Opera 7 */
+white-space: -pre-wrap; /* Opera 4-6 */
+white-space: pre-wrap; /* CSS 2.1 */
+white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+word-wrap: break-word; /* IE */
+}
+</style>
+<script type="text/javascript"> 
+function toggle(divId)
+{
+	var divObj = document.getElementById(divId);
+ 
+	if (divObj) {
+		var displayType = divObj.style.display;
+		if (displayType == "" || displayType == "block") {
+			divObj.style.display = "none";
+		} else {
+			divObj.style.display = "block";
+		}	
+	}
+}
+</script>
+</head>
+<body>
+<a name="toc"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr class="default_header"><td align="left" class="hostlist">List of hosts</td></tr>
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="even">
+<td width="60%"><a href="#toc_trollop.org">trollop.org</a></td>
+<td width="40%" align="right" class="sev_med">Medium Severity problem(s) found</td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+<a name="toc_trollop.org"></a><div class="backToContainer">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr><td class="backTo" align="right"><a href="#toc">[^] Back</a></td></tr>
+</tbody></table>
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr class="default_header"><td align="left" class="ip_sev_med">trollop.org</td></tr>
+<tr class="info_bg"><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr><td>
+<span class="scan_time">Scan Time</span><br><table width="60%" border="0" align="center">
+<tbody><tr>
+<td align="left">Start time : </td>
+<td align="right">Wed Oct  6 20:53:56 2010</td>
+</tr>
+<tr>
+<td align="left">End time : </td>
+<td align="right">Wed Oct  6 21:39:15 2010</td>
+</tr>
+</tbody></table>
+</td></tr>
+<tr><td colspan="2"><hr></td></tr>
+<tr><td>
+<span class="vuln_info">Number of vulnerabilities</span><br><table width="60%" border="0" align="center">
+<tbody><tr>
+<td align="left">Open ports : </td>
+<td align="right">10</td>
+</tr>
+<tr>
+<td align="left" class="sev_high">High : </td>
+<td align="right" class="sev_high">0</td>
+</tr>
+<tr>
+<td align="left" class="sev_med">Medium : </td>
+<td align="right" class="sev_med">4</td>
+</tr>
+<tr>
+<td align="left" class="sev_low">Low : </td>
+<td align="right" class="sev_low">48</td>
+</tr>
+</tbody></table>
+</td></tr>
+<tr><td colspan="2"><hr></td></tr>
+<tr><td>
+<span class="host_info">Remote host information</span><br><table width="60%" border="0" align="center">
+<tbody><tr>
+<td align="left">Operating System : </td>
+<td align="right">Microsoft Windows Vista</td>
+</tr>
+<tr><td align="left">NetBIOS name : </td></tr>
+<tr>
+<td align="left">DNS name : </td>
+<td align="right">trollop.org</td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+<div class="backToContainer">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr><td class="backTo" align="right"><a href="#toc_trollop.org">[^] Back to trollop.org</a></td></tr>
+</tbody></table>
+</div>
+
+			<br><a name="trollop.org_general(0/general)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_general_0&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port general (0/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_general_0" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Traceroute Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It was possible to obtain traceroute information.<br><br><b>Description:</b><br>Makes a traceroute to the remote host.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>For your information, here is the traceroute from 70.70.150.116 to 70.70.128.178 : 
+70.70.150.116
+?
+70.70.128.178
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10287">10287</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Nessus Scan Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">Information about this scan : 
+
+Nessus version : 4.2.2
+Plugin feed version : 201010061834
+Type of plugin feed : HomeFeed (Non-commercial use only)
+Scanner IP : 70.70.150.116
+Port scanner(s) : nessus_syn_scanner 
+Port range : default
+Thorough tests : yes
+Experimental tests : yes
+Paranoia level : 1
+Report Verbosity : 1
+Safe checks : yes
+Optimize the test : yes
+CGI scanning : enabled
+Web application tests : enabled
+Web app tests -  Test mode : single
+Web app tests -  Send POST requests : yes
+Web app tests -  Maximum run time : 60 minutes.
+Web app tests -  Stop at first flaw : CGI
+Max hosts : 80
+Max checks : 20
+Recv timeout : 5
+Backports : None
+Scan Start Date : 2010/10/6 20:53
+Scan duration : 2719 sec
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=19506">19506</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Common Platform Enumeration (CPE)</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to enumerate CPE names that matched on the remote
+system.<br><br><b>Description:</b><br>By using information obtained from a Nessus scan, this plugin reports
+CPE (Common Platform Enumeration) matches for various hardware and
+software products found on a host.  
+
+Note that if an official CPE is not available for the product, this
+plugin computes the best possible CPE based on the information
+available from the scan.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://cpe.mitre.org/<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+The remote operating system matched the following CPE : 
+
+  cpe:/o:microsoft:windows_vista
+
+Here is the list of application CPE IDs that matched on the remote system :
+
+  cpe:/a:openbsd:openssh:5.6
+  cpe:/a:isc:bind:9.7.2:p2
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=45590">45590</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">OS Identification</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+Remote operating system : Microsoft Windows Vista
+Confidence Level : 65
+Method : SinFP
+
+ 
+The remote host is running Microsoft Windows Vista<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11936">11936</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Additional DNS Hostnames</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>Potential virtual hosts have been detected.<br><br><b>Description:</b><br>Hostnames different from the current hostname have been collected by
+miscellaneous plugins.  Different web servers may be hosted on name-
+based virtual hosts.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://en.wikipedia.org/wiki/Virtual_hosting<br><br><b>Solution:</b><br>If you want to test them, re-scan using the special vhost syntax,
+such as :
+
+www.example.com[192.0.32.10]<br><br><b>Plugin output:</b><br>
+  - www.trollop.org
+  - mail.trollop.org
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=46180">46180</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Host Fully Qualified Domain Name (FQDN) Resolution</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It was possible to resolve the name of the remote host.<br><br><b>Description:</b><br>Nessus was able to resolve the FQDN of the remote host.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+70.70.128.178 resolves as trollop.org.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=12053">12053</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Reverse NAT/Intercepting Proxy Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote IP address seems to connect to different hosts
+via reverse NAT, or an intercepting proxy is in the way.<br><br><b>Description:</b><br>Reverse NAT is a technology which lets multiple computers offer
+public services on different ports via the same IP address. 
+
+Based on OS fingerprinting results, it seems that different 
+operating systems are listening on different remote ports.
+
+Note that this behavior may also indicate the presence of a
+intercepting proxy, a load balancer or a traffic shaper.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://en.wikipedia.org/wiki/Proxy_server#Intercepting_proxy_server<br><br><b>Solution:</b><br>Make sure that this setup is authorized by your security policy<br><br><b>Plugin output:</b><br>+ On the following port(s) : 
+ - 3389 (2 hops away)
+
+The operating system was identified as :
+
+Microsoft Windows Vista
+
++ On the following port(s) : 
+ - 443 (1 hops away)
+ - 22 (1 hops away)
+ - 993 (1 hops away)
+ - 1925 (1 hops away)
+ - 25 (1 hops away)
+ - 80 (1 hops away)
+
+The operating system was identified as :
+
+Linux Kernel 2.6
+
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=31422">31422</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_smtp(1925/smtp)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_smtp_1925&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port smtp (1925/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_smtp_1925" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_med"><td align="left" class="plugin_label">SMTP Server Non-standard Port Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote SMTP service is running on a non-standard port.<br><br><b>Description:</b><br>This SMTP server is running on a non standard port.
+This might be a backdoor set up by crackers to send spam
+or even control your machine.<br><br><b>Risk factor:</b><br>Medium<br><br><b>CVSS Base Score:</b>5.0<br>CVSS2#AV:N/AC:L/Au:N/C:N/I:P/A:N<br><br><b>See also:</b><br>http://www.icir.org/vern/papers/backdoor/<br><br><b>Solution:</b><br>Check and clean your configuration<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=18391">18391</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service encrypts communications using SSL.<br><br><b>Description:</b><br>This script detects which SSL ciphers are supported by the remote
+service for encrypting communications.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://www.openssl.org/docs/apps/ciphers.html<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the list of SSL ciphers supported by the remote server :
+
+  Low Strength Ciphers (&lt; 56-bit key)
+    SSLv2
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    SSLv3
+      EXP-ADH-DES-CBC-SHA        Kx=DH(512)    Au=None    Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-RC4-MD5            Kx=DH(512)    Au=None    Enc=RC4(40)        Mac=MD5    export     
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    TLSv1
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-DES-CBC-SHA        Kx=DH(512)    Au=None    Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-RC4-MD5            Kx=DH(512)    Au=None    Enc=RC4(40)        Mac=MD5    export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+
+  Medium Strength Ciphers (&gt;= 56-bit and &lt; 112-bit key)
+    SSLv2
+      DES-CBC-MD5                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=MD5    
+    SSLv3
+      ADH-DES-CBC-SHA            Kx=DH         Au=None    Enc=DES(56)        Mac=SHA1   
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      ADH-DES-CBC-SHA            Kx=DH         Au=None    Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+
+  High Strength Ciphers (&gt;= 112-bit key)
+    SSLv2
+      DES-CBC3-MD5               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=MD5    
+      IDEA-CBC-MD5               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=MD5    
+      RC2-CBC-MD5                Kx=RSA        Au=RSA     Enc=RC2(128)       Mac=MD5    
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+    SSLv3
+      ADH-DES-CBC3-SHA           Kx=DH         Au=None    Enc=3DES(168)      Mac=SHA1   
+      ADH-RC4-MD5                Kx=DH         Au=None    Enc=RC4(128)       Mac=MD5    
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DHE-RSA-AES128-SHA         Kx=DH         Au=RSA     Enc=AES(128)       Mac=SHA1   
+      DHE-RSA-AES256-SHA         Kx=DH         Au=RSA     Enc=AES(256)       Mac=SHA1   
+      DHE-RSA-CAMELLIA128-SHA    Kx=DH         Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      DHE-RSA-CAMELLIA256-SHA    Kx=DH         Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      DHE-RSA-SEED-SHA           Kx=DH         Au=RSA     Enc=SEED(128)      Mac=SHA1   
+      ADH-DES-CBC3-SHA           Kx=DH         Au=None    Enc=3DES(168)      Mac=SHA1   
+      ADH-AES128-SHA             Kx=DH         Au=None    Enc=AES(128)       Mac=SHA1   
+      ADH-AES256-SHA             Kx=DH         Au=None    Enc=AES(256)       Mac=SHA1   
+      ADH-CAMELLIA128-SHA        Kx=DH         Au=None    Enc=Camellia(128)  Mac=SHA1   
+      ADH-CAMELLIA256-SHA        Kx=DH         Au=None    Enc=Camellia(256)  Mac=SHA1   
+      ADH-RC4-MD5                Kx=DH         Au=None    Enc=RC4(128)       Mac=MD5    
+      ADH-SEED-SHA               Kx=DH         Au=None    Enc=SEED(128)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      AES128-SHA                 Kx=RSA        Au=RSA     Enc=AES(128)       Mac=SHA1   
+      AES256-SHA                 Kx=RSA        Au=RSA     Enc=AES(256)       Mac=SHA1   
+      CAMELLIA128-SHA            Kx=RSA        Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      CAMELLIA256-SHA            Kx=RSA        Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+      SEED-SHA                   Kx=RSA        Au=RSA     Enc=SEED(128)      Mac=SHA1   
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+
+Note that this service does not encrypt traffic by default but does
+support upgrading to an encrypted connection using STARTTLS.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=21643">21643</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SMTP Service STARTTLS Command Support</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote mail service supports encrypting traffic.<br><br><b>Description:</b><br>The remote SMTP service supports the use of the 'STARTTLS' command to
+switch from a plaintext to an encrypted communications channel.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://en.wikipedia.org/wiki/STARTTLS<br><br><b>See also:</b><br>http://tools.ietf.org/html/rfc2487<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the SMTP service's SSL certificate that Nessus was able to
+collect after sending a 'STARTTLS' command :
+
+------------------------------ snip ------------------------------
+Subject Name: 
+
+Country: CA
+State/Province: British Columbia
+Locality: White Rock
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Issuer Name: 
+
+Country: CA
+State/Province: British Columbia
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Serial Number: 00 EE 55 08 25 EE D0 A9 C8 
+
+Version: 3
+
+Signature Algorithm: SHA-1 With RSA Encryption
+
+Not Valid Before: Nov 09 05:40:24 2009 GMT
+Not Valid After: Nov 09 05:40:24 2010 GMT
+
+Public Key Info: 
+
+Algorithm: RSA Encryption
+Public Key: 00 ED A1 F7 DE 7B 3A FF 63 42 FA D8 22 47 77 C3 B7 F5 06 40 
+            5C 6F A1 36 A5 6D A6 85 F0 50 73 0F 26 7D 79 CA 78 B7 16 82 
+            87 2C DC A7 44 95 BA 70 A5 89 CA 6B EE F2 84 53 6A AD 6F 89 
+            AE 83 40 76 08 B4 3F 9A FE 6D D2 56 4C 45 93 7F 77 19 FF 7C 
+            AF 09 54 C1 D7 ED 95 2F 70 0E 72 B2 52 17 5B 4D DD AF C1 D3 
+            CF 68 E1 70 F0 6A 43 CE 54 49 21 AF 6E B7 C7 17 5D 77 6A 6A 
+            74 97 EF F0 27 F4 B7 BD 58 AD 46 24 39 97 4D 84 6E 6C 67 D8 
+            82 22 03 4E 4E C4 91 69 B6 3F 37 39 43 C7 4C F5 14 82 8A B3 
+            05 02 9C F1 B5 F5 68 54 F1 01 D2 33 FF B3 5D CF E3 A8 BC FD 
+            21 CC 55 87 EF 03 31 58 75 73 79 0E F2 96 13 9A 38 61 45 83 
+            DA 52 5C 1D 89 E2 47 28 6E DA A6 AA 6A 36 C3 05 55 C7 68 97 
+            57 A0 99 B2 59 E6 AC 73 3F BF 13 00 59 25 6A 1B 8A 67 B7 1D 
+            9A AF 64 53 6C 95 BE 33 FA EC 7A 36 0B 6D 6E 5B FE EB B8 02 
+            DE C7 E6 29 96 03 90 DE 22 10 EA 9B EB 22 8B 10 85 A9 78 5B 
+            DF 63 B7 9D 54 76 E8 21 A5 1D 19 40 1E F6 CD CA 17 8D 0B C0 
+            6F F3 B6 19 05 E8 26 37 8F F4 80 EF F6 F3 14 E9 58 75 FB 57 
+            B6 65 99 34 1E 1A 91 80 A8 A7 F1 D2 96 DF 86 3F 6E 72 55 3F 
+            71 BE B2 15 EE 3B 91 47 C3 87 5E E6 E0 3B A7 87 A1 08 A6 47 
+            A1 A1 0B 12 60 AD 67 4D 23 15 38 C6 E6 CB FA AB A9 C6 CD AB 
+            FA D3 BA BD 25 4B 58 7C 47 6C 5A E2 67 F0 E3 11 C4 AC C9 65 
+            0C B7 9C 2B FA 04 56 D6 4E 4B 3A D7 D4 B8 05 1E 79 03 E8 78 
+            82 A5 14 D7 B8 A0 EB 62 71 BA 71 6C E9 6F 47 92 8C 9B 1D 5F 
+            55 28 AA 9F 5A C1 D5 5E 94 5C AC FC D4 CE 83 15 99 CD 3C B1 
+            29 DB 5B C8 73 0A D4 AD E3 0A 5E D4 1C 2B 86 9F 79 C0 CD 8D 
+            DA 1C 29 6B A4 D2 CF D3 25 65 B0 AB 71 AE B5 C7 EB 5B CB 16 
+            4C BA 37 9A AB 5E 1C ED CF 62 25 1C F7 
+Exponent: 01 00 01 
+
+Signature: 00 AE FB 16 C7 71 B1 B6 93 99 37 1D A2 89 6C 77 5C CD FA DD 
+           48 5B D7 07 F4 0E 38 BD FE 82 4E 89 04 96 66 67 C5 BC 4E 15 
+           D3 A6 68 B2 47 7E 10 59 1B 15 12 53 19 9A 8D 21 58 1A 75 7D 
+           84 2F 15 25 E0 53 B1 D3 A2 A0 02 53 D6 FD A0 0C 4F F3 2C 1B 
+           F9 7C B4 76 E9 76 E4 66 65 BA 74 02 C3 DE 2A E8 59 ED 90 0F 
+           A5 51 E9 9E 8A 9B 9A 1C 88 1E 6C A4 FB 27 18 A5 0B AD 2F 56 
+           6A B8 11 48 CC F4 74 4C 52 4C 87 BB A7 8B 1C 7B EB 76 A1 63 
+           08 14 4A 5B 2A 9C 68 58 B2 A4 7A 66 EB C4 2E C3 88 FF CF 1B 
+           AB 90 0B 93 CD 5C 2D A3 EA 79 A1 07 59 5E 08 70 ED F2 21 0B 
+           33 A9 2C 6C 2D E9 26 26 88 81 61 7A B0 75 50 6A BD 36 83 23 
+           F7 BD AC 58 EF D8 FF 51 FC 41 E9 13 E2 2B C3 5B 17 FA 2C C6 
+           F1 EB 19 6A 4E BA 5A C6 00 E6 18 2C 75 4D BA A9 62 CD EB C0 
+           43 EF 50 4E 2F 75 F8 ED 2E 07 14 4D ED 1A D6 A8 0B C7 9C 66 
+           F4 9B 96 BE 89 15 D1 8E 4B 96 74 94 A1 6E DE 6A 44 3A 7B 51 
+           B2 C5 47 A1 0B A5 3C 64 94 11 B3 34 3E 58 B8 D3 34 30 4A 8F 
+           94 35 76 92 39 78 4A 8D 2A 65 E3 C4 05 80 2E 29 08 41 1B 20 
+           1B A5 A8 1E F2 ED 60 5C 8E 91 0A 67 6E 14 C3 08 BC 65 2B 02 
+           D6 7D C7 71 4F B3 79 B2 F4 B2 B9 C6 B1 B7 78 73 C9 83 A9 3D 
+           02 63 59 01 7A C2 2B 6A 1E 5E C3 C4 5C 13 22 87 0F A6 3D 88 
+           A7 16 5B 1C 50 0E DE CB 48 A5 D4 84 6D E7 CE 6F 45 FF 38 45 
+           A1 D7 E2 79 23 7B 2F 8C 57 37 3A 39 CD 8B 66 13 7C E1 33 16 
+           E9 0A AB A9 11 FD 3D 4E 0C A1 B3 DD A1 42 8E 05 AA 3D E6 0B 
+           5E BB 36 71 DD 19 32 98 1F 29 AE 7C CA 6A 30 6D E9 CE AC 3A 
+           75 22 49 46 56 BE 04 35 C0 79 80 4C 5B 0B 92 A2 6B A2 45 B8 
+           04 D2 08 F6 05 86 FD 22 B1 B1 81 74 F7 92 F5 F7 C7 B1 4E D8 
+           5D 76 3B CA 4D 52 97 57 B9 79 22 DF A6 
+
+Extension: Basic Constraints (2.5.29.19)
+Critical: 0
+Data: 30 00 
+
+
+Extension: Comment (2.16.840.1.113730.1.13)
+Critical: 0
+Comment: OpenSSL Generated Certificate
+
+
+Extension: Subject Key Identifier (2.5.29.14)
+Critical: 0
+Subject Key Identifier: 8C CF DD C5 62 A1 7A 2C 02 6E FA 54 60 43 C9 E5 79 67 BE 20 
+
+
+Extension: Authority Key Identifier (2.5.29.35)
+Critical: 0
+
+
+------------------------------ snip ------------------------------
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=42088">42088</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SMTP Server Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>An SMTP server is listening on the remote port.<br><br><b>Description:</b><br>The remote host is running a mail (SMTP) server on this port. 
+
+Since SMTP servers are the targets of spammers, it is recommended you
+disable it if you do not use it.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>Disable this service if you do not use it, or filter incoming traffic
+to this port.<br><br><b>Plugin output:</b><br>
+Remote SMTP server banner :
+
+220 mail.trollop.org ESMTP Postfix
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10263">10263</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">smtpscan SMTP Fingerprinting</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to fingerprint the remote mail server.<br><br><b>Description:</b><br>smtpscan is a SMTP fingerprinting tool written by Julien Bordet It
+identifies the remote mail server even if the banners were changed.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+This server could be fingerprinted as :
+
+Postfix 2.0.12
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11421">11421</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">An SMTP server is running on this port.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_ssh(22/ssh)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_ssh_22&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port ssh (22/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_ssh_22" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSH Protocol Versions Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>A SSH server is running on the remote host.<br><br><b>Description:</b><br>This plugin determines the versions of the SSH protocol supported by
+the remote SSH daemon.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>The remote SSH daemon supports the following versions of the
+SSH protocol :
+
+  - 1.99
+  - 2.0
+
+
+SSHv2 host key fingerprint : 63:2c:a6:d9:7f:2c:f7:11:ab:1d:db:e0:4e:ae:1a:21
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10881">10881</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSH Server Type and Version Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>An SSH server is listening on this port.<br><br><b>Description:</b><br>It is possible to obtain information about the remote SSH
+server by sending an empty authentication request.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+SSH version : SSH-2.0-OpenSSH_5.6
+SSH supported authentication : publickey,keyboard-interactive
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10267">10267</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">An SSH server is running on this port.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_smtp(25/smtp)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_smtp_25&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port smtp (25/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_smtp_25" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service encrypts communications using SSL.<br><br><b>Description:</b><br>This script detects which SSL ciphers are supported by the remote
+service for encrypting communications.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://www.openssl.org/docs/apps/ciphers.html<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the list of SSL ciphers supported by the remote server :
+
+  Low Strength Ciphers (&lt; 56-bit key)
+    SSLv2
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    SSLv3
+      EXP-ADH-DES-CBC-SHA        Kx=DH(512)    Au=None    Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-RC4-MD5            Kx=DH(512)    Au=None    Enc=RC4(40)        Mac=MD5    export     
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    TLSv1
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-DES-CBC-SHA        Kx=DH(512)    Au=None    Enc=DES(40)        Mac=SHA1   export     
+      EXP-ADH-RC4-MD5            Kx=DH(512)    Au=None    Enc=RC4(40)        Mac=MD5    export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+
+  Medium Strength Ciphers (&gt;= 56-bit and &lt; 112-bit key)
+    SSLv2
+      DES-CBC-MD5                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=MD5    
+    SSLv3
+      ADH-DES-CBC-SHA            Kx=DH         Au=None    Enc=DES(56)        Mac=SHA1   
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      ADH-DES-CBC-SHA            Kx=DH         Au=None    Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+
+  High Strength Ciphers (&gt;= 112-bit key)
+    SSLv2
+      DES-CBC3-MD5               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=MD5    
+      IDEA-CBC-MD5               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=MD5    
+      RC2-CBC-MD5                Kx=RSA        Au=RSA     Enc=RC2(128)       Mac=MD5    
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+    SSLv3
+      ADH-DES-CBC3-SHA           Kx=DH         Au=None    Enc=3DES(168)      Mac=SHA1   
+      ADH-RC4-MD5                Kx=DH         Au=None    Enc=RC4(128)       Mac=MD5    
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DHE-RSA-AES128-SHA         Kx=DH         Au=RSA     Enc=AES(128)       Mac=SHA1   
+      DHE-RSA-AES256-SHA         Kx=DH         Au=RSA     Enc=AES(256)       Mac=SHA1   
+      DHE-RSA-CAMELLIA128-SHA    Kx=DH         Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      DHE-RSA-CAMELLIA256-SHA    Kx=DH         Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      DHE-RSA-SEED-SHA           Kx=DH         Au=RSA     Enc=SEED(128)      Mac=SHA1   
+      ADH-DES-CBC3-SHA           Kx=DH         Au=None    Enc=3DES(168)      Mac=SHA1   
+      ADH-AES128-SHA             Kx=DH         Au=None    Enc=AES(128)       Mac=SHA1   
+      ADH-AES256-SHA             Kx=DH         Au=None    Enc=AES(256)       Mac=SHA1   
+      ADH-CAMELLIA128-SHA        Kx=DH         Au=None    Enc=Camellia(128)  Mac=SHA1   
+      ADH-CAMELLIA256-SHA        Kx=DH         Au=None    Enc=Camellia(256)  Mac=SHA1   
+      ADH-RC4-MD5                Kx=DH         Au=None    Enc=RC4(128)       Mac=MD5    
+      ADH-SEED-SHA               Kx=DH         Au=None    Enc=SEED(128)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      AES128-SHA                 Kx=RSA        Au=RSA     Enc=AES(128)       Mac=SHA1   
+      AES256-SHA                 Kx=RSA        Au=RSA     Enc=AES(256)       Mac=SHA1   
+      CAMELLIA128-SHA            Kx=RSA        Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      CAMELLIA256-SHA            Kx=RSA        Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+      SEED-SHA                   Kx=RSA        Au=RSA     Enc=SEED(128)      Mac=SHA1   
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+
+Note that this service does not encrypt traffic by default but does
+support upgrading to an encrypted connection using STARTTLS.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=21643">21643</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SMTP Service STARTTLS Command Support</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote mail service supports encrypting traffic.<br><br><b>Description:</b><br>The remote SMTP service supports the use of the 'STARTTLS' command to
+switch from a plaintext to an encrypted communications channel.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://en.wikipedia.org/wiki/STARTTLS<br><br><b>See also:</b><br>http://tools.ietf.org/html/rfc2487<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the SMTP service's SSL certificate that Nessus was able to
+collect after sending a 'STARTTLS' command :
+
+------------------------------ snip ------------------------------
+Subject Name: 
+
+Country: CA
+State/Province: British Columbia
+Locality: White Rock
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Issuer Name: 
+
+Country: CA
+State/Province: British Columbia
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Serial Number: 00 EE 55 08 25 EE D0 A9 C8 
+
+Version: 3
+
+Signature Algorithm: SHA-1 With RSA Encryption
+
+Not Valid Before: Nov 09 05:40:24 2009 GMT
+Not Valid After: Nov 09 05:40:24 2010 GMT
+
+Public Key Info: 
+
+Algorithm: RSA Encryption
+Public Key: 00 ED A1 F7 DE 7B 3A FF 63 42 FA D8 22 47 77 C3 B7 F5 06 40 
+            5C 6F A1 36 A5 6D A6 85 F0 50 73 0F 26 7D 79 CA 78 B7 16 82 
+            87 2C DC A7 44 95 BA 70 A5 89 CA 6B EE F2 84 53 6A AD 6F 89 
+            AE 83 40 76 08 B4 3F 9A FE 6D D2 56 4C 45 93 7F 77 19 FF 7C 
+            AF 09 54 C1 D7 ED 95 2F 70 0E 72 B2 52 17 5B 4D DD AF C1 D3 
+            CF 68 E1 70 F0 6A 43 CE 54 49 21 AF 6E B7 C7 17 5D 77 6A 6A 
+            74 97 EF F0 27 F4 B7 BD 58 AD 46 24 39 97 4D 84 6E 6C 67 D8 
+            82 22 03 4E 4E C4 91 69 B6 3F 37 39 43 C7 4C F5 14 82 8A B3 
+            05 02 9C F1 B5 F5 68 54 F1 01 D2 33 FF B3 5D CF E3 A8 BC FD 
+            21 CC 55 87 EF 03 31 58 75 73 79 0E F2 96 13 9A 38 61 45 83 
+            DA 52 5C 1D 89 E2 47 28 6E DA A6 AA 6A 36 C3 05 55 C7 68 97 
+            57 A0 99 B2 59 E6 AC 73 3F BF 13 00 59 25 6A 1B 8A 67 B7 1D 
+            9A AF 64 53 6C 95 BE 33 FA EC 7A 36 0B 6D 6E 5B FE EB B8 02 
+            DE C7 E6 29 96 03 90 DE 22 10 EA 9B EB 22 8B 10 85 A9 78 5B 
+            DF 63 B7 9D 54 76 E8 21 A5 1D 19 40 1E F6 CD CA 17 8D 0B C0 
+            6F F3 B6 19 05 E8 26 37 8F F4 80 EF F6 F3 14 E9 58 75 FB 57 
+            B6 65 99 34 1E 1A 91 80 A8 A7 F1 D2 96 DF 86 3F 6E 72 55 3F 
+            71 BE B2 15 EE 3B 91 47 C3 87 5E E6 E0 3B A7 87 A1 08 A6 47 
+            A1 A1 0B 12 60 AD 67 4D 23 15 38 C6 E6 CB FA AB A9 C6 CD AB 
+            FA D3 BA BD 25 4B 58 7C 47 6C 5A E2 67 F0 E3 11 C4 AC C9 65 
+            0C B7 9C 2B FA 04 56 D6 4E 4B 3A D7 D4 B8 05 1E 79 03 E8 78 
+            82 A5 14 D7 B8 A0 EB 62 71 BA 71 6C E9 6F 47 92 8C 9B 1D 5F 
+            55 28 AA 9F 5A C1 D5 5E 94 5C AC FC D4 CE 83 15 99 CD 3C B1 
+            29 DB 5B C8 73 0A D4 AD E3 0A 5E D4 1C 2B 86 9F 79 C0 CD 8D 
+            DA 1C 29 6B A4 D2 CF D3 25 65 B0 AB 71 AE B5 C7 EB 5B CB 16 
+            4C BA 37 9A AB 5E 1C ED CF 62 25 1C F7 
+Exponent: 01 00 01 
+
+Signature: 00 AE FB 16 C7 71 B1 B6 93 99 37 1D A2 89 6C 77 5C CD FA DD 
+           48 5B D7 07 F4 0E 38 BD FE 82 4E 89 04 96 66 67 C5 BC 4E 15 
+           D3 A6 68 B2 47 7E 10 59 1B 15 12 53 19 9A 8D 21 58 1A 75 7D 
+           84 2F 15 25 E0 53 B1 D3 A2 A0 02 53 D6 FD A0 0C 4F F3 2C 1B 
+           F9 7C B4 76 E9 76 E4 66 65 BA 74 02 C3 DE 2A E8 59 ED 90 0F 
+           A5 51 E9 9E 8A 9B 9A 1C 88 1E 6C A4 FB 27 18 A5 0B AD 2F 56 
+           6A B8 11 48 CC F4 74 4C 52 4C 87 BB A7 8B 1C 7B EB 76 A1 63 
+           08 14 4A 5B 2A 9C 68 58 B2 A4 7A 66 EB C4 2E C3 88 FF CF 1B 
+           AB 90 0B 93 CD 5C 2D A3 EA 79 A1 07 59 5E 08 70 ED F2 21 0B 
+           33 A9 2C 6C 2D E9 26 26 88 81 61 7A B0 75 50 6A BD 36 83 23 
+           F7 BD AC 58 EF D8 FF 51 FC 41 E9 13 E2 2B C3 5B 17 FA 2C C6 
+           F1 EB 19 6A 4E BA 5A C6 00 E6 18 2C 75 4D BA A9 62 CD EB C0 
+           43 EF 50 4E 2F 75 F8 ED 2E 07 14 4D ED 1A D6 A8 0B C7 9C 66 
+           F4 9B 96 BE 89 15 D1 8E 4B 96 74 94 A1 6E DE 6A 44 3A 7B 51 
+           B2 C5 47 A1 0B A5 3C 64 94 11 B3 34 3E 58 B8 D3 34 30 4A 8F 
+           94 35 76 92 39 78 4A 8D 2A 65 E3 C4 05 80 2E 29 08 41 1B 20 
+           1B A5 A8 1E F2 ED 60 5C 8E 91 0A 67 6E 14 C3 08 BC 65 2B 02 
+           D6 7D C7 71 4F B3 79 B2 F4 B2 B9 C6 B1 B7 78 73 C9 83 A9 3D 
+           02 63 59 01 7A C2 2B 6A 1E 5E C3 C4 5C 13 22 87 0F A6 3D 88 
+           A7 16 5B 1C 50 0E DE CB 48 A5 D4 84 6D E7 CE 6F 45 FF 38 45 
+           A1 D7 E2 79 23 7B 2F 8C 57 37 3A 39 CD 8B 66 13 7C E1 33 16 
+           E9 0A AB A9 11 FD 3D 4E 0C A1 B3 DD A1 42 8E 05 AA 3D E6 0B 
+           5E BB 36 71 DD 19 32 98 1F 29 AE 7C CA 6A 30 6D E9 CE AC 3A 
+           75 22 49 46 56 BE 04 35 C0 79 80 4C 5B 0B 92 A2 6B A2 45 B8 
+           04 D2 08 F6 05 86 FD 22 B1 B1 81 74 F7 92 F5 F7 C7 B1 4E D8 
+           5D 76 3B CA 4D 52 97 57 B9 79 22 DF A6 
+
+Extension: Basic Constraints (2.5.29.19)
+Critical: 0
+Data: 30 00 
+
+
+Extension: Comment (2.16.840.1.113730.1.13)
+Critical: 0
+Comment: OpenSSL Generated Certificate
+
+
+Extension: Subject Key Identifier (2.5.29.14)
+Critical: 0
+Subject Key Identifier: 8C CF DD C5 62 A1 7A 2C 02 6E FA 54 60 43 C9 E5 79 67 BE 20 
+
+
+Extension: Authority Key Identifier (2.5.29.35)
+Critical: 0
+
+
+------------------------------ snip ------------------------------
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=42088">42088</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SMTP Server Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>An SMTP server is listening on the remote port.<br><br><b>Description:</b><br>The remote host is running a mail (SMTP) server on this port. 
+
+Since SMTP servers are the targets of spammers, it is recommended you
+disable it if you do not use it.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>Disable this service if you do not use it, or filter incoming traffic
+to this port.<br><br><b>Plugin output:</b><br>
+Remote SMTP server banner :
+
+220 mail.trollop.org ESMTP Postfix
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10263">10263</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">smtpscan SMTP Fingerprinting</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to fingerprint the remote mail server.<br><br><b>Description:</b><br>smtpscan is a SMTP fingerprinting tool written by Julien Bordet It
+identifies the remote mail server even if the banners were changed.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+This server could be fingerprinted as :
+
+Postfix 2.0.12
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11421">11421</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">An SMTP server is running on this port.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_ms-wbt-server?(3389/ms-wbt-server?)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_ms-wbt-server?_3389&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port ms-wbt-server? (3389/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_ms-wbt-server?_3389" class="divider"></div>
+			<br><a name="trollop.org_www(443/www)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_www_443&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port www (443/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_www_443" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_med"><td align="left" class="plugin_label">SSL Certificate with Wrong Hostname</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The SSL certificate for this service is for a different host.<br><br><b>Description:</b><br>The commonName (CN) of the SSL certificate presented on this port is
+for a different machine.<br><br><b>Risk factor:</b><br>Medium<br><br><b>CVSS Base Score:</b>5.0<br>CVSS2#AV:N/AC:L/Au:N/C:N/I:P/A:N<br><br><b>Solution:</b><br>Purchase or generate a proper certificate for this service.<br><br><b>Plugin output:</b><br>
+The following hostnames were checked :
+localhost
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=45411">45411</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_med"><td align="left" class="plugin_label">SSL Medium Strength Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service supports the use of medium strength SSL ciphers.<br><br><b>Description:</b><br>The remote host supports the use of SSL ciphers that offer medium
+strength encryption, which we currently regard as those with key 
+lengths at least 56 bits and less than 112 bits.<br><br><b>Risk factor:</b><br>Medium<br><br><b>CVSS Base Score:</b>5.0<br>CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N<br><br><b>Solution:</b><br>Reconfigure the affected application if possible to avoid use of
+medium strength ciphers.<br><br><b>Plugin output:</b><br>
+Here are the medium strength SSL ciphers supported by the remote server :
+
+  Medium Strength Ciphers (&gt;= 56-bit and &lt; 112-bit key)
+    SSLv2
+      DES-CBC-MD5                Kx=RSA        Au=RSA     Enc=DES(56)      Mac=MD5    
+    SSLv3
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)      Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)      Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)      Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)      Mac=SHA1   
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=42873">42873</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_med"><td align="left" class="plugin_label">SSL Weak Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service supports the use of weak SSL ciphers.<br><br><b>Description:</b><br>The remote host supports the use of SSL ciphers that offer either weak
+encryption or no encryption at all.<br><br><b>Risk factor:</b><br>Medium<br><br><b>CVSS Base Score:</b>5.0<br>CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N<br><br><b>See also:</b><br>http://www.openssl.org/docs/apps/ciphers.html<br><br><b>Solution:</b><br>Reconfigure the affected application if possible to avoid use of weak
+ciphers.<br><br><b>Plugin output:</b><br>Here is the list of weak SSL ciphers supported by the remote server :
+
+  Low Strength Ciphers (&lt; 56-bit key)
+    SSLv2
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)      Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)      Mac=MD5    export     
+    SSLv3
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)      Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)      Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)      Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)      Mac=MD5    export     
+    TLSv1
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)      Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)      Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)      Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)      Mac=MD5    export     
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=26928">26928</a><br><br><b>Other references: </b><br>CWE:327, CWE:326, CWE:753, CWE:803, CWE:720</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HTTP methods per directory</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>This plugin determines which HTTP methods are allowed on various CGI
+directories.<br><br><b>Description:</b><br>By calling the OPTIONS method, it is possible to determine which HTTP 
+methods are allowed on each directory. 
+
+As this list may be incomplete, the plugin also tests - if 'Thorough
+tests' are enabled or 'Enable web applications tests' is set to 'yes'
+in the scan policy - various known HTTP methods on each directory and
+considers them as unsupported if it receives a response code of 400,
+403, 405, or 501. 
+
+Note that the plugin output is only informational and does not
+necessarily indicate the presence of any security vulnerabilities.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>Based on the response to an OPTIONS request :
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /icons
+
+
+Based on tests of each method : 
+
+  - HTTP methods ACL BASELINE-CONTROL BCOPY BDELETE BMOVE BPROPFIND 
+    BPROPPATCH CHECKIN CHECKOUT COPY DEBUG DELETE GET HEAD INDEX 
+    LABEL LOCK MERGE MKACTIVITY MKCOL MKWORKSPACE MOVE NOTIFY OPTIONS 
+    ORDERPATCH PATCH POLL POST PROPFIND PROPPATCH PUT REPORT SEARCH 
+    SUBSCRIBE UNCHECKOUT UNLOCK UNSUBSCRIBE UPDATE VERSION-CONTROL 
+    X-MS-ENUMATTS are allowed on : 
+
+    /
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /icons
+
+  - Invalid/unknown HTTP methods are allowed on :
+
+    /
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=43111">43111</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HyperText Transfer Protocol (HTTP) Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>Some information about the remote HTTP configuration can be extracted.<br><br><b>Description:</b><br>This test gives some information about the remote HTTP protocol - the
+version used, whether HTTP Keep-Alive and HTTP pipelining are enabled,
+etc... 
+
+This test is informational only and does not denote any security
+problem.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Protocol version : HTTP/1.0
+SSL : yes
+Keep-Alive : no
+Options allowed : (Not implemented)
+Headers :
+
+  Date: Thu, 07 Oct 2010 04:14:43 GMT
+  Server: Apache
+  X-Pingback: http://www.trollop.org/xmlrpc.php
+  Location: https://www.trollop.org/
+  Content-Length: 0
+  Connection: close
+  Content-Type: text/html; charset=UTF-8
+  
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=24260">24260</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Web Server No 404 Error Code Check</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote web server does not return 404 error codes.<br><br><b>Description:</b><br>The remote web server is configured such that it does not return '404
+Not Found' error codes when a nonexistent file is requested, perhaps
+returning instead a site map, search page or authentication page.
+
+Nessus has enabled some counter measures for this.  However, they
+might be insufficient.  If a great number of security holes are
+produced for this port, they might not all be accurate.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+CGI scanning will be disabled for this host.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10386">10386</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HTTP Server type and version</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>A web server is running on the remote host.<br><br><b>Description:</b><br>This plugin attempts to determine the type and the version of the
+remote web server.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>The remote web server type is :
+
+Apache
+and the 'ServerTokens' directive is ProductOnly
+Apache does not offer a way to hide the server type.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10107">10107</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">External URLs</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>Links to external sites were gathered.<br><br><b>Description:</b><br>Nessus gathered HREF links to external sites by crawling the remote
+web server.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+2 external URLs were gathered on this web server : 
+URL...                                  - Seen on...
+
+https://www.trollop.org/                - /
+https://www.trollop.org/icons           - /
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=49704">49704</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Web Server Directory Enumeration</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to enumerate directories on the web server.<br><br><b>Description:</b><br>This plugin attempts to determine the presence of various common
+directories on the remote web server.  By sending a request for a
+directory, the web server response code indicates if it is a valid
+directory or not.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://projects.webappsec.org/Predictable-Resource-Location<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+The following directories were discovered:
+/icons
+
+While this is not, in and of itself, a bug, you should manually inspect 
+these directories to ensure that they are in compliance with company
+security standards
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11032">11032</a><br><br><b>Other references: </b><br>OWASP:OWASP-CM-006</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service encrypts communications using SSL.<br><br><b>Description:</b><br>This script detects which SSL ciphers are supported by the remote
+service for encrypting communications.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://www.openssl.org/docs/apps/ciphers.html<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the list of SSL ciphers supported by the remote server :
+
+  Low Strength Ciphers (&lt; 56-bit key)
+    SSLv2
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    SSLv3
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+    TLSv1
+      EXP-EDH-RSA-DES-CBC-SHA    Kx=DH(512)    Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-DES-CBC-SHA            Kx=RSA(512)   Au=RSA     Enc=DES(40)        Mac=SHA1   export     
+      EXP-RC2-CBC-MD5            Kx=RSA(512)   Au=RSA     Enc=RC2(40)        Mac=MD5    export     
+      EXP-RC4-MD5                Kx=RSA(512)   Au=RSA     Enc=RC4(40)        Mac=MD5    export     
+
+  Medium Strength Ciphers (&gt;= 56-bit and &lt; 112-bit key)
+    SSLv2
+      DES-CBC-MD5                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=MD5    
+    SSLv3
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)        Mac=SHA1   
+      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)        Mac=SHA1   
+
+  High Strength Ciphers (&gt;= 112-bit key)
+    SSLv2
+      DES-CBC3-MD5               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=MD5    
+      IDEA-CBC-MD5               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=MD5    
+      RC2-CBC-MD5                Kx=RSA        Au=RSA     Enc=RC2(128)       Mac=MD5    
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+    SSLv3
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DHE-RSA-AES128-SHA         Kx=DH         Au=RSA     Enc=AES(128)       Mac=SHA1   
+      DHE-RSA-AES256-SHA         Kx=DH         Au=RSA     Enc=AES(256)       Mac=SHA1   
+      DHE-RSA-CAMELLIA128-SHA    Kx=DH         Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      DHE-RSA-CAMELLIA256-SHA    Kx=DH         Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      DHE-RSA-SEED-SHA           Kx=DH         Au=RSA     Enc=SEED(128)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      AES128-SHA                 Kx=RSA        Au=RSA     Enc=AES(128)       Mac=SHA1   
+      AES256-SHA                 Kx=RSA        Au=RSA     Enc=AES(256)       Mac=SHA1   
+      CAMELLIA128-SHA            Kx=RSA        Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      CAMELLIA256-SHA            Kx=RSA        Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+      SEED-SHA                   Kx=RSA        Au=RSA     Enc=SEED(128)      Mac=SHA1   
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=21643">21643</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Certificate commonName Mismatch</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The SSL certificate commonName does not match the host name.<br><br><b>Description:</b><br>This service presents an SSL certificate for which the 'commonName'
+(CN) does not match the host name on which the service listens.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>If the machine has several names, make sure that users connect to the
+service through the DNS host name that matches the common name in the
+certificate.<br><br><b>Plugin output:</b><br>
+The host name known by Nessus is     : trollop.org
+The CommonName of the certificate is : localhost.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=45410">45410</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Certificate Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>This plugin displays the SSL certificate.<br><br><b>Description:</b><br>This plugin connects to every SSL-related port and attempts to 
+extract and dump the X.509 certificate.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>Subject Name: 
+
+Country: US
+State/Province: California
+Locality: Santa Barbara
+Organization: Apache HTTP Server
+Organization Unit: For Testing Purposes Only
+Common Name: localhost
+Email Address: root@localhost
+
+Issuer Name: 
+
+Country: US
+State/Province: California
+Locality: Santa Barbara
+Organization: Apache HTTP Server
+Organization Unit: For Testing Purposes Only
+Common Name: localhost CA
+Email Address: root@localhost
+
+Serial Number: 02 
+
+Version: 3
+
+Signature Algorithm: SHA-1 With RSA Encryption
+
+Not Valid Before: May 03 05:08:16 2010 GMT
+Not Valid After: May 02 05:08:16 2012 GMT
+
+Public Key Info: 
+
+Algorithm: RSA Encryption
+Public Key: 00 B6 BE CB 72 1E 06 D9 33 BF FE 2E 70 44 41 72 6E 9F 56 31 
+            9B 82 7E 07 32 8E 17 8F 64 38 58 1D F9 D2 61 A3 8D 9F 8E F3 
+            4D E0 F4 C0 1C C7 CF B1 8F 0C 6A FD E1 E9 52 CA 9F F9 40 49 
+            B9 B6 99 35 50 25 39 F8 C3 BA 50 F9 D6 E6 68 06 E2 FA 87 C0 
+            48 01 F3 CC 65 66 15 0B F7 8F EA 63 F4 F9 C8 ED CC 61 67 46 
+            77 16 82 44 3B 87 47 B8 FC B0 9D 9A 06 DC 04 CB CF C7 22 5B 
+            25 CB 0A CE E7 93 59 2F 27 
+Exponent: 01 00 01 
+
+Signature: 00 16 47 D3 85 99 2E CF A0 B2 82 FF 15 8B 41 76 94 33 DF 15 
+           2D D5 7F BD EF 52 48 7D 75 87 1B D1 09 63 26 81 A6 CD 90 A5 
+           ED FA 5D 80 8A D6 C7 33 B7 20 69 36 20 59 52 0D 1B 4A 34 E5 
+           3C A9 84 1C 10 D6 D6 45 8A 2C 74 51 93 7C 7F 96 01 E7 CB 5B 
+           C2 DA 62 20 ED 36 B7 CB 61 40 BA BB A5 8E 83 16 A5 72 59 54 
+           E2 66 4A 8B 95 00 95 96 40 0D 41 19 9B 9C B2 76 BC C3 DE EF 
+           EE 54 FF 1A C8 B7 64 6E 83 
+
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10863">10863</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">A TLSv1 server answered on this port.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">A web server is running on this port through TLSv1.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_dns(53/dns)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_dns_53&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port dns (53/udp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_dns_53" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">DNS Server UDP Query Limitation</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote DNS server is not RFC1035 compliant.<br><br><b>Description:</b><br>A DNS server is running on this port but it only answers to UDP
+requests.  This means that TCP requests are blocked by a firewall. 
+
+This configuration is not RFC-compliant.  Contrary to common belief,
+TCP transport is not restricted to zone transfers (AXFR) :
+
+  - answers bigger than 512 bytes are always transmitted 
+    over TCP.
+  - for all other requests, UDP is only 'preferred' for 
+    performance reasons. i.e. RFC1035 (STD0013) does not 
+    forbid a DNS client from issuing its queries directly 
+    over TCP.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://www.faqs.org/rfcs/rfc1035.html<br><br><b>Solution:</b><br>If you are sure that the DNS server will never return answers bigger
+than 512 bytes and that the client software prefers UDP (which is
+nearly certain), you may ignore this message.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=18356">18356</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">ISC BIND version Directive Remote Version Disclosure</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to obtain the version number of the remote DNS server.<br><br><b>Description:</b><br>The remote host is running BIND, an open-source DNS server.  It is
+possible to extract the version number of the remote installation by
+sending a special DNS request for the text 'version.bind' in the
+domain 'chaos'.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>It is possible to hide the version number of bind by using the
+'version' directive in the 'options' section in named.conf<br><br><b>Plugin output:</b><br>
+The version of the remote DNS server is :
+
+9.7.2-P2<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10028">10028</a><br><br><b>Other references: </b><br>OSVDB:23</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">DNS Server hostname.bind Map Hostname Disclosure</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The DNS server discloses the remote host name.<br><br><b>Description:</b><br>It is possible to learn the remote host name by querying the remote
+DNS server for 'hostname.bind' in the CHAOS domain.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>It may be possible to disable this feature.  Consult the vendor's
+documentation for more information.<br><br><b>Plugin output:</b><br>
+The remote host name is :
+
+strumpet
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=35371">35371</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">DNS Server Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>A DNS server is listening on the remote host.<br><br><b>Description:</b><br>The remote service is a Domain Name System (DNS) server, which
+provides a mapping between hostnames and IP addresses.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://en.wikipedia.org/wiki/Domain_Name_System<br><br><b>Solution:</b><br>Disable this service if it is not needed or restrict access to
+internal hosts only if the service is available externally.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11002">11002</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_www(80/www)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_www_80&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port www (80/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_www_80" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HyperText Transfer Protocol (HTTP) Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>Some information about the remote HTTP configuration can be extracted.<br><br><b>Description:</b><br>This test gives some information about the remote HTTP protocol - the
+version used, whether HTTP Keep-Alive and HTTP pipelining are enabled,
+etc... 
+
+This test is informational only and does not denote any security
+problem.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Protocol version : HTTP/1.1
+SSL : no
+Keep-Alive : yes
+Options allowed : (Not implemented)
+Headers :
+
+  Date: Thu, 07 Oct 2010 04:14:41 GMT
+  Server: Apache
+  X-Pingback: http://www.trollop.org/xmlrpc.php
+  Location: http://www.trollop.org/
+  Content-Length: 0
+  Keep-Alive: timeout=15, max=100
+  Connection: Keep-Alive
+  Content-Type: text/html; charset=UTF-8
+  
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=24260">24260</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HTTP methods per directory</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>This plugin determines which HTTP methods are allowed on various CGI
+directories.<br><br><b>Description:</b><br>By calling the OPTIONS method, it is possible to determine which HTTP 
+methods are allowed on each directory. 
+
+As this list may be incomplete, the plugin also tests - if 'Thorough
+tests' are enabled or 'Enable web applications tests' is set to 'yes'
+in the scan policy - various known HTTP methods on each directory and
+considers them as unsupported if it receives a response code of 400,
+403, 405, or 501. 
+
+Note that the plugin output is only informational and does not
+necessarily indicate the presence of any security vulnerabilities.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>Based on the response to an OPTIONS request :
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /icons
+
+
+Based on tests of each method : 
+
+  - HTTP methods ACL BASELINE-CONTROL BCOPY BDELETE BMOVE BPROPFIND 
+    BPROPPATCH CHECKIN CHECKOUT COPY DEBUG DELETE GET HEAD INDEX 
+    LABEL LOCK MERGE MKACTIVITY MKCOL MKWORKSPACE MOVE NOTIFY OPTIONS 
+    ORDERPATCH PATCH POLL POST PROPFIND PROPPATCH PUT REPORT SEARCH 
+    SUBSCRIBE UNCHECKOUT UNLOCK UNSUBSCRIBE UPDATE VERSION-CONTROL 
+    X-MS-ENUMATTS are allowed on : 
+
+    /
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /icons
+
+  - Invalid/unknown HTTP methods are allowed on :
+
+    /
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=43111">43111</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">HTTP Server type and version</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>A web server is running on the remote host.<br><br><b>Description:</b><br>This plugin attempts to determine the type and the version of the
+remote web server.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>The remote web server type is :
+
+Apache
+and the 'ServerTokens' directive is ProductOnly
+Apache does not offer a way to hide the server type.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10107">10107</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Web Server No 404 Error Code Check</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote web server does not return 404 error codes.<br><br><b>Description:</b><br>The remote web server is configured such that it does not return '404
+Not Found' error codes when a nonexistent file is requested, perhaps
+returning instead a site map, search page or authentication page.
+
+Nessus has enabled some counter measures for this.  However, they
+might be insufficient.  If a great number of security holes are
+produced for this port, they might not all be accurate.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+CGI scanning will be disabled for this host.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10386">10386</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">External URLs</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>Links to external sites were gathered.<br><br><b>Description:</b><br>Nessus gathered HREF links to external sites by crawling the remote
+web server.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+2 external URLs were gathered on this web server : 
+URL...                                  - Seen on...
+
+http://www.trollop.org/                 - /
+http://www.trollop.org/icons            - /
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=49704">49704</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Web Server Directory Enumeration</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>It is possible to enumerate directories on the web server.<br><br><b>Description:</b><br>This plugin attempts to determine the presence of various common
+directories on the remote web server.  By sending a request for a
+directory, the web server response code indicates if it is a valid
+directory or not.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://projects.webappsec.org/Predictable-Resource-Location<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+The following directories were discovered:
+/icons
+
+While this is not, in and of itself, a bug, you should manually inspect 
+these directories to ensure that they are in compliance with company
+security standards
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11032">11032</a><br><br><b>Other references: </b><br>OWASP:OWASP-CM-006</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">A web server is running on this port.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+			<br><a name="trollop.org_imap(993/imap)"></a><table width="70%" align="center" border="0" cellspacing="0" cellpadding="2"><tbody><tr class="port_header" onclick="toggle(&quot;trollop.org_imap_993&quot;)" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td align="left" class="port_header_label">Port imap (993/tcp)</td>
+<td align="right" class="toggle">[-/+]</td>
+</tr></tbody></table>
+<div id="trollop.org_imap_993" class="divider">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Cipher Suites Supported</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The remote service encrypts communications using SSL.<br><br><b>Description:</b><br>This script detects which SSL ciphers are supported by the remote
+service for encrypting communications.<br><br><b>Risk factor:</b><br>None<br><br><b>See also:</b><br>http://www.openssl.org/docs/apps/ciphers.html<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>
+Here is the list of SSL ciphers supported by the remote server :
+
+  High Strength Ciphers (&gt;= 112-bit key)
+    SSLv3
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+    TLSv1
+      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      DHE-RSA-AES128-SHA         Kx=DH         Au=RSA     Enc=AES(128)       Mac=SHA1   
+      DHE-RSA-AES256-SHA         Kx=DH         Au=RSA     Enc=AES(256)       Mac=SHA1   
+      DHE-RSA-CAMELLIA128-SHA    Kx=DH         Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      DHE-RSA-CAMELLIA256-SHA    Kx=DH         Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      DHE-RSA-SEED-SHA           Kx=DH         Au=RSA     Enc=SEED(128)      Mac=SHA1   
+      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)      Mac=SHA1   
+      AES128-SHA                 Kx=RSA        Au=RSA     Enc=AES(128)       Mac=SHA1   
+      AES256-SHA                 Kx=RSA        Au=RSA     Enc=AES(256)       Mac=SHA1   
+      CAMELLIA128-SHA            Kx=RSA        Au=RSA     Enc=Camellia(128)  Mac=SHA1   
+      CAMELLIA256-SHA            Kx=RSA        Au=RSA     Enc=Camellia(256)  Mac=SHA1   
+      IDEA-CBC-SHA               Kx=RSA        Au=RSA     Enc=IDEA(128)      Mac=SHA1   
+      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=MD5    
+      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)       Mac=SHA1   
+      SEED-SHA                   Kx=RSA        Au=RSA     Enc=SEED(128)      Mac=SHA1   
+
+The fields above are :
+
+  {OpenSSL ciphername}
+  Kx={key exchange}
+  Au={authentication}
+  Enc={symmetric encryption method}
+  Mac={message authentication code}
+  {export flag}
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=21643">21643</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Certificate Expiry - Future Expiry</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>The SSL certificate associated with the remote service will expire
+soon.<br><br><b>Description:</b><br>The SSL certificate associated with the remote service will expire
+soon.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>Purchase or generate a new SSL certificate in the near future to
+replace the existing one.<br><br><b>Plugin output:</b><br>
+The SSL certificate of the remote service will expire within 60 days,
+at Nov  9 05:40:24 2010 GMT.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=42981">42981</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">SSL Certificate Information</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>This plugin displays the SSL certificate.<br><br><b>Description:</b><br>This plugin connects to every SSL-related port and attempts to 
+extract and dump the X.509 certificate.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>Subject Name: 
+
+Country: CA
+State/Province: British Columbia
+Locality: White Rock
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Issuer Name: 
+
+Country: CA
+State/Province: British Columbia
+Organization: Esurient Systems Inc.
+Common Name: mail.trollop.org
+Email Address: ironix@trollop.org
+
+Serial Number: 00 EE 55 08 25 EE D0 A9 C8 
+
+Version: 3
+
+Signature Algorithm: SHA-1 With RSA Encryption
+
+Not Valid Before: Nov 09 05:40:24 2009 GMT
+Not Valid After: Nov 09 05:40:24 2010 GMT
+
+Public Key Info: 
+
+Algorithm: RSA Encryption
+Public Key: 00 ED A1 F7 DE 7B 3A FF 63 42 FA D8 22 47 77 C3 B7 F5 06 40 
+            5C 6F A1 36 A5 6D A6 85 F0 50 73 0F 26 7D 79 CA 78 B7 16 82 
+            87 2C DC A7 44 95 BA 70 A5 89 CA 6B EE F2 84 53 6A AD 6F 89 
+            AE 83 40 76 08 B4 3F 9A FE 6D D2 56 4C 45 93 7F 77 19 FF 7C 
+            AF 09 54 C1 D7 ED 95 2F 70 0E 72 B2 52 17 5B 4D DD AF C1 D3 
+            CF 68 E1 70 F0 6A 43 CE 54 49 21 AF 6E B7 C7 17 5D 77 6A 6A 
+            74 97 EF F0 27 F4 B7 BD 58 AD 46 24 39 97 4D 84 6E 6C 67 D8 
+            82 22 03 4E 4E C4 91 69 B6 3F 37 39 43 C7 4C F5 14 82 8A B3 
+            05 02 9C F1 B5 F5 68 54 F1 01 D2 33 FF B3 5D CF E3 A8 BC FD 
+            21 CC 55 87 EF 03 31 58 75 73 79 0E F2 96 13 9A 38 61 45 83 
+            DA 52 5C 1D 89 E2 47 28 6E DA A6 AA 6A 36 C3 05 55 C7 68 97 
+            57 A0 99 B2 59 E6 AC 73 3F BF 13 00 59 25 6A 1B 8A 67 B7 1D 
+            9A AF 64 53 6C 95 BE 33 FA EC 7A 36 0B 6D 6E 5B FE EB B8 02 
+            DE C7 E6 29 96 03 90 DE 22 10 EA 9B EB 22 8B 10 85 A9 78 5B 
+            DF 63 B7 9D 54 76 E8 21 A5 1D 19 40 1E F6 CD CA 17 8D 0B C0 
+            6F F3 B6 19 05 E8 26 37 8F F4 80 EF F6 F3 14 E9 58 75 FB 57 
+            B6 65 99 34 1E 1A 91 80 A8 A7 F1 D2 96 DF 86 3F 6E 72 55 3F 
+            71 BE B2 15 EE 3B 91 47 C3 87 5E E6 E0 3B A7 87 A1 08 A6 47 
+            A1 A1 0B 12 60 AD 67 4D 23 15 38 C6 E6 CB FA AB A9 C6 CD AB 
+            FA D3 BA BD 25 4B 58 7C 47 6C 5A E2 67 F0 E3 11 C4 AC C9 65 
+            0C B7 9C 2B FA 04 56 D6 4E 4B 3A D7 D4 B8 05 1E 79 03 E8 78 
+            82 A5 14 D7 B8 A0 EB 62 71 BA 71 6C E9 6F 47 92 8C 9B 1D 5F 
+            55 28 AA 9F 5A C1 D5 5E 94 5C AC FC D4 CE 83 15 99 CD 3C B1 
+            29 DB 5B C8 73 0A D4 AD E3 0A 5E D4 1C 2B 86 9F 79 C0 CD 8D 
+            DA 1C 29 6B A4 D2 CF D3 25 65 B0 AB 71 AE B5 C7 EB 5B CB 16 
+            4C BA 37 9A AB 5E 1C ED CF 62 25 1C F7 
+Exponent: 01 00 01 
+
+Signature: 00 AE FB 16 C7 71 B1 B6 93 99 37 1D A2 89 6C 77 5C CD FA DD 
+           48 5B D7 07 F4 0E 38 BD FE 82 4E 89 04 96 66 67 C5 BC 4E 15 
+           D3 A6 68 B2 47 7E 10 59 1B 15 12 53 19 9A 8D 21 58 1A 75 7D 
+           84 2F 15 25 E0 53 B1 D3 A2 A0 02 53 D6 FD A0 0C 4F F3 2C 1B 
+           F9 7C B4 76 E9 76 E4 66 65 BA 74 02 C3 DE 2A E8 59 ED 90 0F 
+           A5 51 E9 9E 8A 9B 9A 1C 88 1E 6C A4 FB 27 18 A5 0B AD 2F 56 
+           6A B8 11 48 CC F4 74 4C 52 4C 87 BB A7 8B 1C 7B EB 76 A1 63 
+           08 14 4A 5B 2A 9C 68 58 B2 A4 7A 66 EB C4 2E C3 88 FF CF 1B 
+           AB 90 0B 93 CD 5C 2D A3 EA 79 A1 07 59 5E 08 70 ED F2 21 0B 
+           33 A9 2C 6C 2D E9 26 26 88 81 61 7A B0 75 50 6A BD 36 83 23 
+           F7 BD AC 58 EF D8 FF 51 FC 41 E9 13 E2 2B C3 5B 17 FA 2C C6 
+           F1 EB 19 6A 4E BA 5A C6 00 E6 18 2C 75 4D BA A9 62 CD EB C0 
+           43 EF 50 4E 2F 75 F8 ED 2E 07 14 4D ED 1A D6 A8 0B C7 9C 66 
+           F4 9B 96 BE 89 15 D1 8E 4B 96 74 94 A1 6E DE 6A 44 3A 7B 51 
+           B2 C5 47 A1 0B A5 3C 64 94 11 B3 34 3E 58 B8 D3 34 30 4A 8F 
+           94 35 76 92 39 78 4A 8D 2A 65 E3 C4 05 80 2E 29 08 41 1B 20 
+           1B A5 A8 1E F2 ED 60 5C 8E 91 0A 67 6E 14 C3 08 BC 65 2B 02 
+           D6 7D C7 71 4F B3 79 B2 F4 B2 B9 C6 B1 B7 78 73 C9 83 A9 3D 
+           02 63 59 01 7A C2 2B 6A 1E 5E C3 C4 5C 13 22 87 0F A6 3D 88 
+           A7 16 5B 1C 50 0E DE CB 48 A5 D4 84 6D E7 CE 6F 45 FF 38 45 
+           A1 D7 E2 79 23 7B 2F 8C 57 37 3A 39 CD 8B 66 13 7C E1 33 16 
+           E9 0A AB A9 11 FD 3D 4E 0C A1 B3 DD A1 42 8E 05 AA 3D E6 0B 
+           5E BB 36 71 DD 19 32 98 1F 29 AE 7C CA 6A 30 6D E9 CE AC 3A 
+           75 22 49 46 56 BE 04 35 C0 79 80 4C 5B 0B 92 A2 6B A2 45 B8 
+           04 D2 08 F6 05 86 FD 22 B1 B1 81 74 F7 92 F5 F7 C7 B1 4E D8 
+           5D 76 3B CA 4D 52 97 57 B9 79 22 DF A6 
+
+Extension: Basic Constraints (2.5.29.19)
+Critical: 0
+Data: 30 00 
+
+
+Extension: Comment (2.16.840.1.113730.1.13)
+Critical: 0
+Comment: OpenSSL Generated Certificate
+
+
+Extension: Subject Key Identifier (2.5.29.14)
+Critical: 0
+Subject Key Identifier: 8C CF DD C5 62 A1 7A 2C 02 6E FA 54 60 43 C9 E5 79 67 BE 20 
+
+
+Extension: Authority Key Identifier (2.5.29.35)
+Critical: 0
+
+
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=10863">10863</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">IMAP Service Banner Retrieval</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">
+<br><b>Synopsis:</b><br>An IMAP server is running on the remote host.<br><br><b>Description:</b><br>An IMAP (Internet Message Access Protocol) server is
+installed and running on the remote host.<br><br><b>Risk factor:</b><br>None<br><br><b>Solution:</b><br>n/a<br><br><b>Plugin output:</b><br>The remote imap server banner is :
+
+* OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=11414">11414</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">An IMAP server is running on this port through TLSv1.<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="2">
+<tbody><tr class="plugin_sev_low"><td align="left" class="plugin_label">Service Detection</td></tr>
+<tr class="info_bg"><td colspan="2" class="info_text">
+<div class="plugin_output">A TLSv1 server answered on this port.
+<br><br><b>Plugin ID:</b><br><a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22964">22964</a>
+</div>
+</td></tr>
+</tbody></table>
+<div class="divider">
+</div>
+</div>
+<div class="backToContainer">
+<table width="70%" align="center" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr><td class="backTo" align="right"><a href="#toc_trollop.org">[^] Back to trollop.org</a></td></tr>
+</tbody></table>
+</div>
+
+</body></html>

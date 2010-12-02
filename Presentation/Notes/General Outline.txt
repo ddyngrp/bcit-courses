@@ -1,0 +1,53 @@
+Main Title - Steffen
+	Presenters
+	Objective
+
+Design Overview - Steffen
+	False Starts
+		FreeBSD 8.1
+		Windows 2003
+		HoneyWall (Roo 1.4)
+	Final Design
+		Tools Used
+		HoneyWall Setup
+		Ubuntu 7.10 Setup
+		Windows 2000 Setup
+		Network & VMWare Design
+		VMWare Snapshots
+
+Statistical Overview - Steffen
+	Analysis Tools Used
+	Totals
+		Top Source IPs (TCP)
+		Top Source IPs (UDP)
+		Top Destination Ports (UDP)
+		Top Destination Ports (TCP)
+	Windows
+	Linux
+
+Windows 2000 Results - Javed & Brendan
+	Analysis Tools Used
+	Reconnaissance Activity
+	Successful
+		Exploits Used
+		Reasons for Success
+	Unsuccessful
+		Attempted Exploits
+		Reasons for Failure
+	Conclusions
+
+Ubuntu 7.10 Results - Bobby
+	Analysis Tools Used
+	Reconnaissance Activity
+	Successful
+		Exploits Used
+		Reasons for Success
+	Unsuccessful
+		Attempted Exploits
+		Reasons for Failure
+	Conclusions
+
+Final Remarks - Steffen
+	Final Successful Hack Overview
+	Shortcomings of Setup
+	Future Recommendations for Improvement

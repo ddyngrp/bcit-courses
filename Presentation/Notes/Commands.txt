@@ -1,0 +1,5 @@
+-- GeoIP Lookups
+for IP in `cat tcp_connections.txt | awk '{print $2}'`; do echo $(geoiplookup $IP); done > tcp_source_country.txt &
+for IP in `cat tcp_connections.txt | awk '{print $4}'`; do echo $(geoiplookup $IP); done > tcp_destination_country.txt &
+for IP in `cat udp_connections.txt | awk '{print $2}'`; do echo $(geoiplookup $IP); done > udp_source_country.txt &
+for IP in `cat udp_connections.txt | awk '{print $4}'`; do echo $(geoiplookup $IP); done > udp_destination_country.txt &

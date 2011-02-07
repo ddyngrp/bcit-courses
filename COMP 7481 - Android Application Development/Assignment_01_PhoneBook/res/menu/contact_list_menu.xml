@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Add Contact" android:id="@+id/add_contact" android:icon="@android:drawable/ic_menu_add"></item>
+    <item android:title="Delete Phone Book" android:id="@+id/delete_phone_book" android:icon="@android:drawable/ic_menu_delete"></item>
+</menu>

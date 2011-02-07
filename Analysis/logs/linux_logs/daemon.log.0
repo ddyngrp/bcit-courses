@@ -1,0 +1,80 @@
+Nov  1 17:37:49 majikthise init: tty4 main process (4278) killed by TERM signal
+Nov  1 17:37:49 majikthise init: tty5 main process (4279) killed by TERM signal
+Nov  1 17:37:49 majikthise init: tty2 main process (4281) killed by TERM signal
+Nov  1 17:37:49 majikthise init: tty3 main process (4283) killed by TERM signal
+Nov  1 17:37:49 majikthise init: tty6 main process (4286) killed by TERM signal
+Nov  1 17:37:49 majikthise init: tty1 main process (5138) killed by TERM signal
+Nov  1 17:37:49 majikthise mysqld[17574]: 101101 17:37:49 [Note] /usr/sbin/mysqld: Normal shutdown
+Nov  1 17:37:49 majikthise mysqld[17574]: 
+Nov  1 17:37:49 majikthise mysqld[17574]: 101101 17:37:49  InnoDB: Starting shutdown...
+Nov  1 17:37:50 majikthise mysqld[17574]: 101101 17:37:50  InnoDB: Shutdown completed; log sequence number 0 43655
+Nov  1 17:37:50 majikthise mysqld[17574]: 101101 17:37:50 [Note] /usr/sbin/mysqld: Shutdown complete
+Nov  1 17:37:50 majikthise mysqld[17574]: 
+Nov  1 17:37:50 majikthise mysqld_safe[21241]: ended
+Nov  1 17:45:14 majikthise named[4811]: starting BIND 9.4.1-P1.1 -u bind
+Nov  1 17:45:14 majikthise named[4811]: found 2 CPUs, using 2 worker threads
+Nov  1 17:45:14 majikthise named[4811]: loading configuration from '/etc/bind/named.conf'
+Nov  1 17:45:14 majikthise named[4811]: listening on IPv4 interface lo, 127.0.0.1#53
+Nov  1 17:45:14 majikthise named[4811]: listening on IPv4 interface eth0, 96.53.93.58#53
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: D.F.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Nov  1 17:45:14 majikthise named[4811]: command channel listening on 127.0.0.1#953
+Nov  1 17:45:14 majikthise named[4811]: command channel listening on ::1#953
+Nov  1 17:45:17 majikthise mysqld_safe[4926]: started
+Nov  1 17:45:18 majikthise mysqld[4929]: 101101 17:45:18  InnoDB: Started; log sequence number 0 43655
+Nov  1 17:45:18 majikthise mysqld[4929]: 101101 17:45:18 [Note] /usr/sbin/mysqld: ready for connections.
+Nov  1 17:45:18 majikthise mysqld[4929]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Nov  1 17:45:18 majikthise /etc/mysql/debian-start[4972]: Upgrading MySQL tables if necessary.
+Nov  1 17:45:19 majikthise /etc/mysql/debian-start[4977]: Looking for 'mysql' in: /usr/bin/mysql
+Nov  1 17:45:19 majikthise /etc/mysql/debian-start[4977]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Nov  1 17:45:19 majikthise /etc/mysql/debian-start[4977]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Nov  1 17:45:19 majikthise /etc/mysql/debian-start[5016]: Checking for insecure root accounts.
+Nov  1 17:45:19 majikthise /etc/mysql/debian-start[5033]: Checking for crashed MySQL tables.
+Nov  1 17:54:59 majikthise init: tty4 main process (4345) killed by TERM signal
+Nov  1 17:54:59 majikthise init: tty5 main process (4346) killed by TERM signal
+Nov  1 17:54:59 majikthise init: tty1 main process (4352) killed by TERM signal
+Nov  1 17:54:59 majikthise init: tty2 main process (4348) killed by TERM signal
+Nov  1 17:54:59 majikthise init: tty3 main process (4350) killed by TERM signal
+Nov  1 17:54:59 majikthise init: tty6 main process (4353) killed by TERM signal
+Nov  1 17:54:59 majikthise mysqld[4929]: 101101 17:54:59 [Note] /usr/sbin/mysqld: Normal shutdown
+Nov  1 17:54:59 majikthise mysqld[4929]: 
+Nov  1 17:54:59 majikthise mysqld[4929]: 101101 17:54:59  InnoDB: Starting shutdown...
+Nov  1 17:55:02 majikthise mysqld[4929]: 101101 17:55:02  InnoDB: Shutdown completed; log sequence number 0 43655
+Nov  1 17:55:02 majikthise mysqld[4929]: 101101 17:55:02 [Note] /usr/sbin/mysqld: Shutdown complete
+Nov  1 17:55:02 majikthise mysqld[4929]: 
+Nov  1 17:55:02 majikthise mysqld_safe[5412]: ended
+Nov  1 17:57:43 majikthise named[4800]: starting BIND 9.4.1-P1.1 -u bind
+Nov  1 17:57:43 majikthise named[4800]: found 2 CPUs, using 2 worker threads
+Nov  1 17:57:43 majikthise named[4800]: loading configuration from '/etc/bind/named.conf'
+Nov  1 17:57:43 majikthise named[4800]: listening on IPv4 interface lo, 127.0.0.1#53
+Nov  1 17:57:43 majikthise named[4800]: listening on IPv4 interface eth0, 96.53.93.58#53
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: D.F.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Nov  1 17:57:43 majikthise named[4800]: command channel listening on 127.0.0.1#953
+Nov  1 17:57:43 majikthise named[4800]: command channel listening on ::1#953
+Nov  1 17:57:46 majikthise mysqld_safe[4915]: started
+Nov  1 17:57:47 majikthise mysqld[4918]: 101101 17:57:47  InnoDB: Started; log sequence number 0 43655
+Nov  1 17:57:48 majikthise mysqld[4918]: 101101 17:57:48 [Note] /usr/sbin/mysqld: ready for connections.
+Nov  1 17:57:48 majikthise mysqld[4918]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Nov  1 17:57:48 majikthise /etc/mysql/debian-start[4961]: Upgrading MySQL tables if necessary.
+Nov  1 17:57:49 majikthise /etc/mysql/debian-start[4965]: Looking for 'mysql' in: /usr/bin/mysql
+Nov  1 17:57:49 majikthise /etc/mysql/debian-start[4965]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Nov  1 17:57:49 majikthise /etc/mysql/debian-start[4965]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Nov  1 17:57:49 majikthise /etc/mysql/debian-start[5004]: Checking for insecure root accounts.
+Nov  1 17:57:49 majikthise /etc/mysql/debian-start[5010]: Checking for crashed MySQL tables.

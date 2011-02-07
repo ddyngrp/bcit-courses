@@ -1,0 +1,982 @@
+Nov 11 22:12:04 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 131072) 0 entries of 256 used
+Nov 11 22:12:04 majikthise kernel: [    0.000000] On node 0 totalpages: 131072
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   Normal zone: 992 pages used for memmap
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   Normal zone: 125984 pages, LIFO batch:31
+Nov 11 22:12:04 majikthise kernel: [    0.000000]   HighMem zone: 0 pages used for memmap
+Nov 11 22:12:04 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Nov 11 22:12:04 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Nov 11 22:12:04 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Nov 11 22:12:04 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Nov 11 22:12:04 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Nov 11 22:12:04 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Nov 11 22:12:04 majikthise kernel: [    7.846206] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Nov 11 22:12:04 majikthise kernel: [    7.846225] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Nov 11 22:12:04 majikthise kernel: [    8.195280] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Nov 11 22:12:04 majikthise kernel: [    8.195295] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Nov 11 22:12:04 majikthise kernel: [    8.532981] ACPI: EC: Look up EC in DSDT
+Nov 11 22:12:04 majikthise kernel: [    8.592323] PCI: Probing PCI hardware (bus 00)
+Nov 11 22:12:04 majikthise kernel: [    8.623389] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Nov 11 22:12:04 majikthise kernel: [    9.077607] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.077760] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.077853] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.077948] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078042] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078136] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078235] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078329] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078423] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078517] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078611] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078711] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078805] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078899] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.078993] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079087] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079202] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079296] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079390] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079484] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079577] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079677] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079771] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079865] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.079959] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080053] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080147] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080246] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080340] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080434] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080527] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080621] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.080721] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.526094] Boot video device is 0000:00:0f.0
+Nov 11 22:12:04 majikthise kernel: [    9.526412] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.526832] Allocate Port Service[0000:00:15.0:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.526859] Allocate Port Service[0000:00:15.0:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.527374] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.527796] Allocate Port Service[0000:00:15.1:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.527823] Allocate Port Service[0000:00:15.1:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.528320] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.528732] Allocate Port Service[0000:00:15.2:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.528776] Allocate Port Service[0000:00:15.2:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.529277] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.529669] Allocate Port Service[0000:00:15.3:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.529696] Allocate Port Service[0000:00:15.3:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.530147] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.530538] Allocate Port Service[0000:00:15.4:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.530602] Allocate Port Service[0000:00:15.4:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.531162] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.531555] Allocate Port Service[0000:00:15.5:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.531623] Allocate Port Service[0000:00:15.5:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.532108] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.532344] Allocate Port Service[0000:00:15.6:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.532407] Allocate Port Service[0000:00:15.6:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.532898] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.533282] Allocate Port Service[0000:00:15.7:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.533357] Allocate Port Service[0000:00:15.7:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.533887] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.534389] Allocate Port Service[0000:00:16.0:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.534443] Allocate Port Service[0000:00:16.0:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.534974] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.535363] Allocate Port Service[0000:00:16.1:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.535415] Allocate Port Service[0000:00:16.1:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.535926] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.536310] Allocate Port Service[0000:00:16.2:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.536380] Allocate Port Service[0000:00:16.2:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.536916] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.537300] Allocate Port Service[0000:00:16.3:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.537356] Allocate Port Service[0000:00:16.3:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.537841] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.538226] Allocate Port Service[0000:00:16.4:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.538334] Allocate Port Service[0000:00:16.4:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.538823] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.539207] Allocate Port Service[0000:00:16.5:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.539256] Allocate Port Service[0000:00:16.5:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.539794] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.540179] Allocate Port Service[0000:00:16.6:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.540245] Allocate Port Service[0000:00:16.6:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.540770] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.541155] Allocate Port Service[0000:00:16.7:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.541205] Allocate Port Service[0000:00:16.7:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.541709] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.542100] Allocate Port Service[0000:00:17.0:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.542150] Allocate Port Service[0000:00:17.0:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.542312] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.542566] Allocate Port Service[0000:00:17.1:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.542633] Allocate Port Service[0000:00:17.1:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.543077] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.543462] Allocate Port Service[0000:00:17.2:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.543523] Allocate Port Service[0000:00:17.2:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.543979] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.544370] Allocate Port Service[0000:00:17.3:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.544395] Allocate Port Service[0000:00:17.3:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.544903] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.545292] Allocate Port Service[0000:00:17.4:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.545318] Allocate Port Service[0000:00:17.4:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.545775] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.546158] Allocate Port Service[0000:00:17.5:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.546184] Allocate Port Service[0000:00:17.5:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.546663] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.547048] Allocate Port Service[0000:00:17.6:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.547089] Allocate Port Service[0000:00:17.6:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.547571] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.547962] Allocate Port Service[0000:00:17.7:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.547988] Allocate Port Service[0000:00:17.7:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.548448] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.548838] Allocate Port Service[0000:00:18.0:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.548863] Allocate Port Service[0000:00:18.0:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.549371] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.549783] Allocate Port Service[0000:00:18.1:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.549811] Allocate Port Service[0000:00:18.1:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.550288] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.550673] Allocate Port Service[0000:00:18.2:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.550715] Allocate Port Service[0000:00:18.2:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.551232] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.551622] Allocate Port Service[0000:00:18.3:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.551649] Allocate Port Service[0000:00:18.3:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.552108] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.552290] Allocate Port Service[0000:00:18.4:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.552290] Allocate Port Service[0000:00:18.4:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.552554] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.552960] Allocate Port Service[0000:00:18.5:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.552986] Allocate Port Service[0000:00:18.5:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.553446] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.553837] Allocate Port Service[0000:00:18.6:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.553863] Allocate Port Service[0000:00:18.6:pcie02]
+Nov 11 22:12:04 majikthise kernel: [    9.554322] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Nov 11 22:12:04 majikthise kernel: [    9.554706] Allocate Port Service[0000:00:18.7:pcie00]
+Nov 11 22:12:04 majikthise kernel: [    9.554750] Allocate Port Service[0000:00:18.7:pcie02]
+Nov 11 22:12:04 majikthise kernel: [   10.782230] libata version 2.21 loaded.
+Nov 11 22:12:04 majikthise kernel: [   10.783578] ata_piix 0000:00:07.1: version 2.11
+Nov 11 22:12:04 majikthise kernel: [   11.462144] sr 1:0:0:0: Attached scsi CD-ROM sr0
+Nov 11 22:12:04 majikthise kernel: [   12.282847] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Nov 11 22:12:04 majikthise kernel: [   12.290740] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Nov 11 22:12:04 majikthise kernel: [   12.291255] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Nov 11 22:12:04 majikthise kernel: [   14.117678] Ending clean XFS mount for filesystem: sda3
+Nov 11 22:12:04 majikthise kernel: [   50.890660] eth0: no IPv6 routers present
+Nov 11 22:18:38 majikthise kernel: [  444.413887] vmmemctl: started kernel thread pid=12904
+Nov 11 22:18:38 majikthise kernel: [  444.496884] vmmemctl: started kernel thread pid=12923
+Nov 11 22:18:38 majikthise kernel: [  444.773513] vmmemctl: started kernel thread pid=12944
+Nov 11 22:18:38 majikthise kernel: [  444.836316] vmmemctl: started kernel thread pid=12963
+Nov 11 22:18:39 majikthise kernel: [  445.138916] vmmemctl: started kernel thread pid=12984
+Nov 11 22:18:39 majikthise kernel: [  445.201581] vmmemctl: started kernel thread pid=13003
+Nov 11 22:18:39 majikthise kernel: [  445.496008] vmmemctl: started kernel thread pid=13026
+Nov 11 22:18:39 majikthise kernel: [  445.561492] vmmemctl: started kernel thread pid=13045
+Nov 11 22:18:39 majikthise kernel: [  445.838256] vmmemctl: started kernel thread pid=13066
+Nov 11 22:18:39 majikthise kernel: [  445.901253] vmmemctl: started kernel thread pid=13085
+Nov 11 22:18:40 majikthise kernel: [  446.178140] vmmemctl: started kernel thread pid=13106
+Nov 11 22:18:40 majikthise kernel: [  446.240458] vmmemctl: started kernel thread pid=13125
+Nov 11 22:18:40 majikthise kernel: [  446.521001] vmmemctl: started kernel thread pid=13146
+Nov 11 22:18:40 majikthise kernel: [  446.583865] vmmemctl: started kernel thread pid=13165
+Nov 11 22:18:40 majikthise kernel: [  446.861470] vmmemctl: started kernel thread pid=13186
+Nov 11 22:18:40 majikthise kernel: [  446.939749] vmmemctl: started kernel thread pid=13205
+Nov 11 22:18:50 majikthise kernel: [  456.228898] VMware PVSCSI driver - version 0.0.0.7
+Nov 11 22:18:50 majikthise kernel: [  456.304903] vmmemctl: started kernel thread pid=16546
+Nov 30 11:38:47 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 131072) 0 entries of 256 used
+Nov 30 11:38:47 majikthise kernel: [    0.000000] On node 0 totalpages: 131072
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   Normal zone: 992 pages used for memmap
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   Normal zone: 125984 pages, LIFO batch:31
+Nov 30 11:38:47 majikthise kernel: [    0.000000]   HighMem zone: 0 pages used for memmap
+Nov 30 11:38:47 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Nov 30 11:38:47 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Nov 30 11:38:47 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Nov 30 11:38:47 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Nov 30 11:38:47 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Nov 30 11:38:47 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Nov 30 11:38:47 majikthise kernel: [    7.418849] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Nov 30 11:38:47 majikthise kernel: [    7.418868] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Nov 30 11:38:47 majikthise kernel: [    7.757937] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Nov 30 11:38:47 majikthise kernel: [    7.757952] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Nov 30 11:38:47 majikthise kernel: [    8.103240] ACPI: EC: Look up EC in DSDT
+Nov 30 11:38:47 majikthise kernel: [    8.156733] PCI: Probing PCI hardware (bus 00)
+Nov 30 11:38:47 majikthise kernel: [    8.187351] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Nov 30 11:38:47 majikthise kernel: [    8.632851] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633002] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633097] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633191] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633285] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633385] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633480] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633574] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633668] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633762] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633862] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.633957] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634051] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634145] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634239] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634334] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634434] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634529] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634623] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634717] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634811] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.634912] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635006] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635100] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635195] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635289] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635389] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635483] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635577] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635671] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635768] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635863] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    8.635958] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.058973] Boot video device is 0000:00:0f.0
+Nov 30 11:38:47 majikthise kernel: [    9.059264] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.059685] Allocate Port Service[0000:00:15.0:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.059712] Allocate Port Service[0000:00:15.0:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.060225] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.060648] Allocate Port Service[0000:00:15.1:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.060674] Allocate Port Service[0000:00:15.1:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.061186] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.061599] Allocate Port Service[0000:00:15.2:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.061642] Allocate Port Service[0000:00:15.2:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.062143] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.062535] Allocate Port Service[0000:00:15.3:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.062562] Allocate Port Service[0000:00:15.3:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.063021] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.063405] Allocate Port Service[0000:00:15.4:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.063445] Allocate Port Service[0000:00:15.4:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.063902] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.064293] Allocate Port Service[0000:00:15.5:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.064318] Allocate Port Service[0000:00:15.5:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.064771] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.065074] Allocate Port Service[0000:00:15.6:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.065074] Allocate Port Service[0000:00:15.6:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.065299] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.065704] Allocate Port Service[0000:00:15.7:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.065729] Allocate Port Service[0000:00:15.7:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.066190] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.066583] Allocate Port Service[0000:00:16.0:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.066608] Allocate Port Service[0000:00:16.0:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.067059] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.067444] Allocate Port Service[0000:00:16.1:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.067468] Allocate Port Service[0000:00:16.1:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.067921] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.068312] Allocate Port Service[0000:00:16.2:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.068337] Allocate Port Service[0000:00:16.2:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.068791] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.069181] Allocate Port Service[0000:00:16.3:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.069205] Allocate Port Service[0000:00:16.3:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.069657] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.070041] Allocate Port Service[0000:00:16.4:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.070076] Allocate Port Service[0000:00:16.4:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.070529] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.070920] Allocate Port Service[0000:00:16.5:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.070945] Allocate Port Service[0000:00:16.5:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.071399] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.071790] Allocate Port Service[0000:00:16.6:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.071815] Allocate Port Service[0000:00:16.6:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.072276] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.072667] Allocate Port Service[0000:00:16.7:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.072691] Allocate Port Service[0000:00:16.7:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.073144] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.073528] Allocate Port Service[0000:00:17.0:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.073560] Allocate Port Service[0000:00:17.0:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.074016] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.074406] Allocate Port Service[0000:00:17.1:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.074432] Allocate Port Service[0000:00:17.1:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.074885] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.075052] Allocate Port Service[0000:00:17.2:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.075052] Allocate Port Service[0000:00:17.2:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.075261] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.075660] Allocate Port Service[0000:00:17.3:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.075686] Allocate Port Service[0000:00:17.3:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.076149] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.076541] Allocate Port Service[0000:00:17.4:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.076566] Allocate Port Service[0000:00:17.4:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.077049] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.077435] Allocate Port Service[0000:00:17.5:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.077460] Allocate Port Service[0000:00:17.5:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.077931] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.078322] Allocate Port Service[0000:00:17.6:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.078348] Allocate Port Service[0000:00:17.6:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.078812] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.079198] Allocate Port Service[0000:00:17.7:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.079223] Allocate Port Service[0000:00:17.7:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.079683] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.080084] Allocate Port Service[0000:00:18.0:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.080118] Allocate Port Service[0000:00:18.0:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.080585] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.080972] Allocate Port Service[0000:00:18.1:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.080998] Allocate Port Service[0000:00:18.1:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.081456] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.081847] Allocate Port Service[0000:00:18.2:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.081873] Allocate Port Service[0000:00:18.2:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.082336] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.082730] Allocate Port Service[0000:00:18.3:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.082755] Allocate Port Service[0000:00:18.3:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.083216] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.083603] Allocate Port Service[0000:00:18.4:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.083628] Allocate Port Service[0000:00:18.4:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.084087] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.084472] Allocate Port Service[0000:00:18.5:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.084497] Allocate Port Service[0000:00:18.5:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.084963] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.085029] Allocate Port Service[0000:00:18.6:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.085029] Allocate Port Service[0000:00:18.6:pcie02]
+Nov 30 11:38:47 majikthise kernel: [    9.085348] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Nov 30 11:38:47 majikthise kernel: [    9.085765] Allocate Port Service[0000:00:18.7:pcie00]
+Nov 30 11:38:47 majikthise kernel: [    9.085793] Allocate Port Service[0000:00:18.7:pcie02]
+Nov 30 11:38:47 majikthise kernel: [   10.324511] libata version 2.21 loaded.
+Nov 30 11:38:47 majikthise kernel: [   10.327439] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Nov 30 11:38:47 majikthise kernel: [   11.422640] ata_piix 0000:00:07.1: version 2.11
+Nov 30 11:38:47 majikthise kernel: [   11.434938] sd 0:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Nov 30 11:38:47 majikthise kernel: [   11.435314] sd 0:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Nov 30 11:38:47 majikthise kernel: [   12.113275] sr 2:0:0:0: Attached scsi CD-ROM sr0
+Nov 30 11:38:47 majikthise kernel: [   58.554892] eth0: no IPv6 routers present
+Nov 30 11:38:47 majikthise kernel: [   62.195198] VMware PVSCSI driver - version 0.0.0.7
+Nov 30 11:38:47 majikthise kernel: [   62.440209] vmmemctl: started kernel thread pid=4541
+Dec  3 23:04:11 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 131072) 0 entries of 256 used
+Dec  3 23:04:11 majikthise kernel: [    0.000000] On node 0 totalpages: 131072
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   Normal zone: 992 pages used for memmap
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   Normal zone: 125984 pages, LIFO batch:31
+Dec  3 23:04:11 majikthise kernel: [    0.000000]   HighMem zone: 0 pages used for memmap
+Dec  3 23:04:11 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Dec  3 23:04:11 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Dec  3 23:04:11 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Dec  3 23:04:11 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Dec  3 23:04:11 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Dec  3 23:04:11 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Dec  3 23:04:11 majikthise kernel: [    8.648617] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  3 23:04:11 majikthise kernel: [    8.648635] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  3 23:04:11 majikthise kernel: [    8.997646] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  3 23:04:11 majikthise kernel: [    8.997661] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  3 23:04:11 majikthise kernel: [    9.314162] ACPI: EC: Look up EC in DSDT
+Dec  3 23:04:11 majikthise kernel: [    9.369530] PCI: Probing PCI hardware (bus 00)
+Dec  3 23:04:11 majikthise kernel: [    9.399763] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Dec  3 23:04:11 majikthise kernel: [    9.844130] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844282] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844376] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844470] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844564] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844659] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844761] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844856] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.844950] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845044] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845138] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845233] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845327] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845421] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845516] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845610] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845710] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845816] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.845910] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846004] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846098] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846166] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846166] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846166] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846166] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846166] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846176] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846271] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846365] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846459] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846553] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846647] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  3 23:04:11 majikthise kernel: [    9.846742] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.258677] Boot video device is 0000:00:0f.0
+Dec  3 23:04:11 majikthise kernel: [   10.258950] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.259365] Allocate Port Service[0000:00:15.0:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.259392] Allocate Port Service[0000:00:15.0:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.259925] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.260350] Allocate Port Service[0000:00:15.1:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.260377] Allocate Port Service[0000:00:15.1:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.260888] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.261300] Allocate Port Service[0000:00:15.2:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.261343] Allocate Port Service[0000:00:15.2:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.261864] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.262259] Allocate Port Service[0000:00:15.3:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.262287] Allocate Port Service[0000:00:15.3:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.262759] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.263148] Allocate Port Service[0000:00:15.4:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.263173] Allocate Port Service[0000:00:15.4:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.263655] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.264042] Allocate Port Service[0000:00:15.5:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.264067] Allocate Port Service[0000:00:15.5:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.264547] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.264861] Allocate Port Service[0000:00:15.6:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.264861] Allocate Port Service[0000:00:15.6:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.265177] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.265578] Allocate Port Service[0000:00:15.7:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.265604] Allocate Port Service[0000:00:15.7:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.266093] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.266484] Allocate Port Service[0000:00:16.0:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.266509] Allocate Port Service[0000:00:16.0:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.266989] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.267377] Allocate Port Service[0000:00:16.1:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.267402] Allocate Port Service[0000:00:16.1:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.267859] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.268244] Allocate Port Service[0000:00:16.2:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.268299] Allocate Port Service[0000:00:16.2:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.268795] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.269185] Allocate Port Service[0000:00:16.3:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.269210] Allocate Port Service[0000:00:16.3:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.269668] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.270062] Allocate Port Service[0000:00:16.4:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.270117] Allocate Port Service[0000:00:16.4:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.270581] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.270966] Allocate Port Service[0000:00:16.5:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.270991] Allocate Port Service[0000:00:16.5:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.271490] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.271878] Allocate Port Service[0000:00:16.6:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.271920] Allocate Port Service[0000:00:16.6:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.272420] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.272804] Allocate Port Service[0000:00:16.7:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.272830] Allocate Port Service[0000:00:16.7:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.273311] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.273695] Allocate Port Service[0000:00:17.0:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.273720] Allocate Port Service[0000:00:17.0:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.274199] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.274584] Allocate Port Service[0000:00:17.1:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.274626] Allocate Port Service[0000:00:17.1:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.274838] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.274962] Allocate Port Service[0000:00:17.2:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.275004] Allocate Port Service[0000:00:17.2:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.275490] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.275876] Allocate Port Service[0000:00:17.3:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.275902] Allocate Port Service[0000:00:17.3:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.276385] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.276769] Allocate Port Service[0000:00:17.4:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.276794] Allocate Port Service[0000:00:17.4:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.277273] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.277658] Allocate Port Service[0000:00:17.5:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.277683] Allocate Port Service[0000:00:17.5:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.278176] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.278562] Allocate Port Service[0000:00:17.6:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.278604] Allocate Port Service[0000:00:17.6:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.279091] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.279476] Allocate Port Service[0000:00:17.7:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.279502] Allocate Port Service[0000:00:17.7:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.279979] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.280369] Allocate Port Service[0000:00:18.0:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.280395] Allocate Port Service[0000:00:18.0:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.280849] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.281232] Allocate Port Service[0000:00:18.1:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.281257] Allocate Port Service[0000:00:18.1:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.281751] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.282142] Allocate Port Service[0000:00:18.2:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.282184] Allocate Port Service[0000:00:18.2:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.282664] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.283053] Allocate Port Service[0000:00:18.3:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.283079] Allocate Port Service[0000:00:18.3:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.283539] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.283929] Allocate Port Service[0000:00:18.4:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.283954] Allocate Port Service[0000:00:18.4:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.284467] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.284816] Allocate Port Service[0000:00:18.5:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.284816] Allocate Port Service[0000:00:18.5:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.284873] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.285284] Allocate Port Service[0000:00:18.6:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.285330] Allocate Port Service[0000:00:18.6:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   10.285786] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  3 23:04:11 majikthise kernel: [   10.286181] Allocate Port Service[0000:00:18.7:pcie00]
+Dec  3 23:04:11 majikthise kernel: [   10.286225] Allocate Port Service[0000:00:18.7:pcie02]
+Dec  3 23:04:11 majikthise kernel: [   11.531455] libata version 2.21 loaded.
+Dec  3 23:04:11 majikthise kernel: [   12.382811] ata_piix 0000:00:07.1: version 2.11
+Dec  3 23:04:11 majikthise kernel: [   12.394692] sd 0:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  3 23:04:11 majikthise kernel: [   12.395165] sd 0:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  3 23:04:11 majikthise kernel: [   13.049265] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Dec  3 23:04:11 majikthise kernel: [   13.053818] sr 2:0:0:0: Attached scsi CD-ROM sr0
+Dec  3 23:04:11 majikthise kernel: [   15.244119] Ending clean XFS mount for filesystem: sda3
+Dec  3 23:04:11 majikthise kernel: [   59.206498] eth0: no IPv6 routers present
+Dec  3 23:04:11 majikthise kernel: [   61.429399] VMware PVSCSI driver - version 0.0.0.7
+Dec  3 23:04:11 majikthise kernel: [   62.179482] vmmemctl: started kernel thread pid=4542
+Dec  7 20:33:49 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 131072) 0 entries of 256 used
+Dec  7 20:33:49 majikthise kernel: [    0.000000] On node 0 totalpages: 131072
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   Normal zone: 992 pages used for memmap
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   Normal zone: 125984 pages, LIFO batch:31
+Dec  7 20:33:49 majikthise kernel: [    0.000000]   HighMem zone: 0 pages used for memmap
+Dec  7 20:33:49 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Dec  7 20:33:49 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Dec  7 20:33:49 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Dec  7 20:33:49 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Dec  7 20:33:49 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Dec  7 20:33:49 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Dec  7 20:33:49 majikthise kernel: [    8.840045] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 20:33:49 majikthise kernel: [    8.840064] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 20:33:49 majikthise kernel: [    9.179122] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 20:33:49 majikthise kernel: [    9.179142] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 20:33:49 majikthise kernel: [    9.455746] ACPI: EC: Look up EC in DSDT
+Dec  7 20:33:49 majikthise kernel: [    9.511906] PCI: Probing PCI hardware (bus 00)
+Dec  7 20:33:49 majikthise kernel: [    9.542512] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Dec  7 20:33:49 majikthise kernel: [    9.991768] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.991920] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992030] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992125] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992226] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992321] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992416] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992511] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992606] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992702] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992797] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992893] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.992988] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993083] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993184] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993280] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993375] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993470] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993565] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993667] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993762] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993857] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.993953] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994048] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994143] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994244] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994339] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994434] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994530] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994624] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994720] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994815] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 20:33:49 majikthise kernel: [    9.994910] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.391725] Boot video device is 0000:00:0f.0
+Dec  7 20:33:49 majikthise kernel: [   10.392018] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.392439] Allocate Port Service[0000:00:15.0:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.392467] Allocate Port Service[0000:00:15.0:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.392983] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.393402] Allocate Port Service[0000:00:15.1:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.393449] Allocate Port Service[0000:00:15.1:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.393944] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.394356] Allocate Port Service[0000:00:15.2:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.394398] Allocate Port Service[0000:00:15.2:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.394955] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.395343] Allocate Port Service[0000:00:15.3:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.395371] Allocate Port Service[0000:00:15.3:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.395847] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396240] Allocate Port Service[0000:00:15.4:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396266] Allocate Port Service[0000:00:15.4:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.5:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.5:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.6:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.6:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.7:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:15.7:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.0:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.0:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.1:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.1:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.2:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.2:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.3:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.3:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.4:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.4:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.5:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.5:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.6:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.6:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.7:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:16.7:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.0:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.0:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.1:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.1:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.2:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.2:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.3:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.3:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.4:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.4:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.5:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.5:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.6:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.6:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396426] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396426] Allocate Port Service[0000:00:17.7:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396427] Allocate Port Service[0000:00:17.7:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396427] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396427] Allocate Port Service[0000:00:18.0:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396427] Allocate Port Service[0000:00:18.0:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.396511] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.396912] Allocate Port Service[0000:00:18.1:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.396948] Allocate Port Service[0000:00:18.1:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.397427] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.397827] Allocate Port Service[0000:00:18.2:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.397884] Allocate Port Service[0000:00:18.2:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.398491] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.398941] Allocate Port Service[0000:00:18.3:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.398982] Allocate Port Service[0000:00:18.3:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.399550] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.400027] Allocate Port Service[0000:00:18.4:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.400061] Allocate Port Service[0000:00:18.4:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.400569] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.400959] Allocate Port Service[0000:00:18.5:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.400986] Allocate Port Service[0000:00:18.5:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.401450] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.401838] Allocate Port Service[0000:00:18.6:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.401881] Allocate Port Service[0000:00:18.6:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   10.402379] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 20:33:49 majikthise kernel: [   10.402775] Allocate Port Service[0000:00:18.7:pcie00]
+Dec  7 20:33:49 majikthise kernel: [   10.402848] Allocate Port Service[0000:00:18.7:pcie02]
+Dec  7 20:33:49 majikthise kernel: [   11.618391] libata version 2.21 loaded.
+Dec  7 20:33:49 majikthise kernel: [   11.618957] ata_piix 0000:00:07.1: version 2.11
+Dec  7 20:33:49 majikthise kernel: [   12.282535] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Dec  7 20:33:49 majikthise kernel: [   12.285713] sr 1:0:0:0: Attached scsi CD-ROM sr0
+Dec  7 20:33:49 majikthise kernel: [   13.119472] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 20:33:49 majikthise kernel: [   13.119769] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 20:33:49 majikthise kernel: [   61.222681] eth0: no IPv6 routers present
+Dec  7 20:33:49 majikthise kernel: [   66.160128] VMware PVSCSI driver - version 0.0.0.7
+Dec  7 20:33:49 majikthise kernel: [   66.692527] vmmemctl: started kernel thread pid=4600
+Dec  7 21:07:24 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 262144) 0 entries of 256 used
+Dec  7 21:07:24 majikthise kernel: [    0.000000] On node 0 totalpages: 262144
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   Normal zone: 1760 pages used for memmap
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   Normal zone: 223520 pages, LIFO batch:31
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   HighMem zone: 256 pages used for memmap
+Dec  7 21:07:24 majikthise kernel: [    0.000000]   HighMem zone: 32512 pages, LIFO batch:7
+Dec  7 21:07:24 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Dec  7 21:07:24 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Dec  7 21:07:24 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Dec  7 21:07:24 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Dec  7 21:07:24 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Dec  7 21:07:24 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Dec  7 21:07:24 majikthise kernel: [    7.315663] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 21:07:24 majikthise kernel: [    7.315682] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 21:07:24 majikthise kernel: [    7.664540] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 21:07:24 majikthise kernel: [    7.664556] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 21:07:24 majikthise kernel: [    7.935767] ACPI: EC: Look up EC in DSDT
+Dec  7 21:07:24 majikthise kernel: [    7.987115] PCI: Probing PCI hardware (bus 00)
+Dec  7 21:07:24 majikthise kernel: [    8.013973] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Dec  7 21:07:24 majikthise kernel: [    8.407017] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407167] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407262] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407357] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407452] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407547] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407642] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407736] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407830] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.407925] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408026] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408121] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408217] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408311] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408405] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408500] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408594] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408688] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408782] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408876] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.408970] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409064] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409158] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409252] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409345] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409440] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409534] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409628] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409723] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409816] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.409910] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.410004] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.410098] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.785369] Boot video device is 0000:00:0f.0
+Dec  7 21:07:24 majikthise kernel: [    8.785615] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.786041] Allocate Port Service[0000:00:15.0:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.786069] Allocate Port Service[0000:00:15.0:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.786573] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.786990] Allocate Port Service[0000:00:15.1:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.787016] Allocate Port Service[0000:00:15.1:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.787484] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.787894] Allocate Port Service[0000:00:15.2:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.787920] Allocate Port Service[0000:00:15.2:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.788406] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.788792] Allocate Port Service[0000:00:15.3:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.788817] Allocate Port Service[0000:00:15.3:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.789269] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.789654] Allocate Port Service[0000:00:15.4:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.789679] Allocate Port Service[0000:00:15.4:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.790133] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.790517] Allocate Port Service[0000:00:15.5:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.790540] Allocate Port Service[0000:00:15.5:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.790997] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.791381] Allocate Port Service[0000:00:15.6:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.791406] Allocate Port Service[0000:00:15.6:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.791544] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.791544] Allocate Port Service[0000:00:15.7:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.791544] Allocate Port Service[0000:00:15.7:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.791544] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.791544] Allocate Port Service[0000:00:16.0:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.791544] Allocate Port Service[0000:00:16.0:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.791956] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.792344] Allocate Port Service[0000:00:16.1:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.792375] Allocate Port Service[0000:00:16.1:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.792829] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.793214] Allocate Port Service[0000:00:16.2:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.793239] Allocate Port Service[0000:00:16.2:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.793693] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.794079] Allocate Port Service[0000:00:16.3:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.794103] Allocate Port Service[0000:00:16.3:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.794554] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.794938] Allocate Port Service[0000:00:16.4:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.794963] Allocate Port Service[0000:00:16.4:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.795415] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.795800] Allocate Port Service[0000:00:16.5:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.795825] Allocate Port Service[0000:00:16.5:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.796279] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.796667] Allocate Port Service[0000:00:16.6:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.796693] Allocate Port Service[0000:00:16.6:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.797146] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.797530] Allocate Port Service[0000:00:16.7:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.797554] Allocate Port Service[0000:00:16.7:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.798006] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.798390] Allocate Port Service[0000:00:17.0:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.798414] Allocate Port Service[0000:00:17.0:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.798867] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.799252] Allocate Port Service[0000:00:17.1:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.799277] Allocate Port Service[0000:00:17.1:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.799728] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.800112] Allocate Port Service[0000:00:17.2:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.800137] Allocate Port Service[0000:00:17.2:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.800643] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.801027] Allocate Port Service[0000:00:17.3:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.801077] Allocate Port Service[0000:00:17.3:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.4:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.4:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.5:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.5:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.6:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.801516] Allocate Port Service[0000:00:17.6:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.801912] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.802297] Allocate Port Service[0000:00:17.7:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.802348] Allocate Port Service[0000:00:17.7:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.802851] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.803236] Allocate Port Service[0000:00:18.0:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.803286] Allocate Port Service[0000:00:18.0:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.803767] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.804159] Allocate Port Service[0000:00:18.1:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.804209] Allocate Port Service[0000:00:18.1:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.804731] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.805117] Allocate Port Service[0000:00:18.2:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.805173] Allocate Port Service[0000:00:18.2:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.805658] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.806043] Allocate Port Service[0000:00:18.3:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.806112] Allocate Port Service[0000:00:18.3:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.806595] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.806980] Allocate Port Service[0000:00:18.4:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.807029] Allocate Port Service[0000:00:18.4:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.807563] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.807948] Allocate Port Service[0000:00:18.5:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.808018] Allocate Port Service[0000:00:18.5:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.808513] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.808898] Allocate Port Service[0000:00:18.6:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.808959] Allocate Port Service[0000:00:18.6:pcie02]
+Dec  7 21:07:24 majikthise kernel: [    8.809441] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 21:07:24 majikthise kernel: [    8.809826] Allocate Port Service[0000:00:18.7:pcie00]
+Dec  7 21:07:24 majikthise kernel: [    8.809908] Allocate Port Service[0000:00:18.7:pcie02]
+Dec  7 21:07:24 majikthise kernel: [   10.091337] libata version 2.21 loaded.
+Dec  7 21:07:24 majikthise kernel: [   10.092749] ata_piix 0000:00:07.1: version 2.11
+Dec  7 21:07:24 majikthise kernel: [   10.758045] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Dec  7 21:07:24 majikthise kernel: [   10.763346] sr 1:0:0:0: Attached scsi CD-ROM sr0
+Dec  7 21:07:24 majikthise kernel: [   11.553734] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 21:07:24 majikthise kernel: [   11.554133] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 21:07:24 majikthise kernel: [   15.390171] Ending clean XFS mount for filesystem: sda3
+Dec  7 21:07:24 majikthise kernel: [   62.922488] VMware PVSCSI driver - version 0.0.0.7
+Dec  7 21:07:24 majikthise kernel: [   64.072322] vmmemctl: started kernel thread pid=4601
+Dec  7 21:07:24 majikthise kernel: [   64.170388] eth0: no IPv6 routers present
+Dec  7 22:18:06 majikthise kernel: [    0.000000] Entering add_active_range(0, 0, 262144) 0 entries of 256 used
+Dec  7 22:18:06 majikthise kernel: [    0.000000] On node 0 totalpages: 262144
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   DMA zone: 32 pages used for memmap
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   DMA zone: 0 pages reserved
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   DMA zone: 4064 pages, LIFO batch:0
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   Normal zone: 1760 pages used for memmap
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   Normal zone: 223520 pages, LIFO batch:31
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   HighMem zone: 256 pages used for memmap
+Dec  7 22:18:06 majikthise kernel: [    0.000000]   HighMem zone: 32512 pages, LIFO batch:7
+Dec  7 22:18:06 majikthise kernel: [    0.000000] ACPI: Local APIC address 0xfee00000
+Dec  7 22:18:06 majikthise kernel: [    0.000000] ACPI: IRQ0 used by override.
+Dec  7 22:18:06 majikthise kernel: [    0.000000] ACPI: IRQ2 used by override.
+Dec  7 22:18:06 majikthise kernel: [    0.000000] ACPI: IRQ9 used by override.
+Dec  7 22:18:06 majikthise kernel: [    0.000000] mapped APIC to ffffd000 (fee00000)
+Dec  7 22:18:06 majikthise kernel: [    0.000000] mapped IOAPIC to ffffc000 (fec00000)
+Dec  7 22:18:06 majikthise kernel: [    7.763388] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 22:18:06 majikthise kernel: [    7.763406] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 22:18:06 majikthise kernel: [    8.102324] CPU: After generic identify, caps: 1febfbff 28100000 00000000 00000000 80982201 00000000 00000001
+Dec  7 22:18:06 majikthise kernel: [    8.102339] CPU: After all inits, caps: 1febfbff 28100000 00000000 00003940 80982201 00000000 00000001
+Dec  7 22:18:06 majikthise kernel: [    8.458983] ACPI: EC: Look up EC in DSDT
+Dec  7 22:18:06 majikthise kernel: [    8.518004] PCI: Probing PCI hardware (bus 00)
+Dec  7 22:18:06 majikthise kernel: [    8.549510] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+Dec  7 22:18:06 majikthise kernel: [    9.012611] PCI: Setting latency timer of device 0000:00:01.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.012762] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.012857] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.012952] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013047] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013143] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013238] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013333] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013427] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013521] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013616] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013711] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013806] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013900] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.013995] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014089] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014213] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014308] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014403] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014497] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014592] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014687] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014782] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014876] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.014971] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015065] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015162] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015256] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015350] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015445] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015539] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015634] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.015728] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.414806] Boot video device is 0000:00:0f.0
+Dec  7 22:18:06 majikthise kernel: [    9.415079] PCI: Setting latency timer of device 0000:00:15.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.415495] Allocate Port Service[0000:00:15.0:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.415524] Allocate Port Service[0000:00:15.0:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.416089] PCI: Setting latency timer of device 0000:00:15.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.416510] Allocate Port Service[0000:00:15.1:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.416538] Allocate Port Service[0000:00:15.1:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.417041] PCI: Setting latency timer of device 0000:00:15.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.417498] Allocate Port Service[0000:00:15.2:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.417529] Allocate Port Service[0000:00:15.2:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.418021] PCI: Setting latency timer of device 0000:00:15.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.418440] Allocate Port Service[0000:00:15.3:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.418468] Allocate Port Service[0000:00:15.3:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.418927] PCI: Setting latency timer of device 0000:00:15.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.419350] Allocate Port Service[0000:00:15.4:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.419381] Allocate Port Service[0000:00:15.4:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.419704] PCI: Setting latency timer of device 0000:00:15.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.420124] Allocate Port Service[0000:00:15.5:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.420151] Allocate Port Service[0000:00:15.5:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.420613] PCI: Setting latency timer of device 0000:00:15.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.421052] Allocate Port Service[0000:00:15.6:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.421080] Allocate Port Service[0000:00:15.6:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.421541] PCI: Setting latency timer of device 0000:00:15.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.421951] Allocate Port Service[0000:00:15.7:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.421978] Allocate Port Service[0000:00:15.7:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.422441] PCI: Setting latency timer of device 0000:00:16.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.422827] Allocate Port Service[0000:00:16.0:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.422851] Allocate Port Service[0000:00:16.0:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.423338] PCI: Setting latency timer of device 0000:00:16.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.423750] Allocate Port Service[0000:00:16.1:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.423779] Allocate Port Service[0000:00:16.1:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.424271] PCI: Setting latency timer of device 0000:00:16.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.424680] Allocate Port Service[0000:00:16.2:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.424710] Allocate Port Service[0000:00:16.2:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.425193] PCI: Setting latency timer of device 0000:00:16.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.425607] Allocate Port Service[0000:00:16.3:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.425637] Allocate Port Service[0000:00:16.3:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.426125] PCI: Setting latency timer of device 0000:00:16.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.426537] Allocate Port Service[0000:00:16.4:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.426566] Allocate Port Service[0000:00:16.4:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.427051] PCI: Setting latency timer of device 0000:00:16.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.427460] Allocate Port Service[0000:00:16.5:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.427489] Allocate Port Service[0000:00:16.5:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.428001] PCI: Setting latency timer of device 0000:00:16.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.428417] Allocate Port Service[0000:00:16.6:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.428447] Allocate Port Service[0000:00:16.6:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.428935] PCI: Setting latency timer of device 0000:00:16.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.429322] Allocate Port Service[0000:00:16.7:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.429349] Allocate Port Service[0000:00:16.7:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.429384] PCI: Setting latency timer of device 0000:00:17.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.429786] Allocate Port Service[0000:00:17.0:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.429815] Allocate Port Service[0000:00:17.0:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.430331] PCI: Setting latency timer of device 0000:00:17.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.430746] Allocate Port Service[0000:00:17.1:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.430777] Allocate Port Service[0000:00:17.1:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.431255] PCI: Setting latency timer of device 0000:00:17.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.431669] Allocate Port Service[0000:00:17.2:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.431699] Allocate Port Service[0000:00:17.2:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.432225] PCI: Setting latency timer of device 0000:00:17.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.432643] Allocate Port Service[0000:00:17.3:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.432696] Allocate Port Service[0000:00:17.3:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.433222] PCI: Setting latency timer of device 0000:00:17.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.433636] Allocate Port Service[0000:00:17.4:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.433710] Allocate Port Service[0000:00:17.4:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.434200] PCI: Setting latency timer of device 0000:00:17.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.434613] Allocate Port Service[0000:00:17.5:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.434666] Allocate Port Service[0000:00:17.5:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.435150] PCI: Setting latency timer of device 0000:00:17.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.435539] Allocate Port Service[0000:00:17.6:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.435610] Allocate Port Service[0000:00:17.6:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.436120] PCI: Setting latency timer of device 0000:00:17.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.436531] Allocate Port Service[0000:00:17.7:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.436584] Allocate Port Service[0000:00:17.7:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.437126] PCI: Setting latency timer of device 0000:00:18.0 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.437527] Allocate Port Service[0000:00:18.0:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.437581] Allocate Port Service[0000:00:18.0:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.438095] PCI: Setting latency timer of device 0000:00:18.1 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.438522] Allocate Port Service[0000:00:18.1:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.438578] Allocate Port Service[0000:00:18.1:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.439106] PCI: Setting latency timer of device 0000:00:18.2 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.439508] Allocate Port Service[0000:00:18.2:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.439594] Allocate Port Service[0000:00:18.2:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.440119] PCI: Setting latency timer of device 0000:00:18.3 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.440538] Allocate Port Service[0000:00:18.3:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.440567] Allocate Port Service[0000:00:18.3:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.441029] PCI: Setting latency timer of device 0000:00:18.4 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.441445] Allocate Port Service[0000:00:18.4:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.441473] Allocate Port Service[0000:00:18.4:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.441935] PCI: Setting latency timer of device 0000:00:18.5 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.442384] Allocate Port Service[0000:00:18.5:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.442412] Allocate Port Service[0000:00:18.5:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.442877] PCI: Setting latency timer of device 0000:00:18.6 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.443263] Allocate Port Service[0000:00:18.6:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.443304] Allocate Port Service[0000:00:18.6:pcie02]
+Dec  7 22:18:06 majikthise kernel: [    9.443801] PCI: Setting latency timer of device 0000:00:18.7 to 64
+Dec  7 22:18:06 majikthise kernel: [    9.444187] Allocate Port Service[0000:00:18.7:pcie00]
+Dec  7 22:18:06 majikthise kernel: [    9.444230] Allocate Port Service[0000:00:18.7:pcie02]
+Dec  7 22:18:06 majikthise kernel: [   10.721759] libata version 2.21 loaded.
+Dec  7 22:18:06 majikthise kernel: [   10.722986] ata_piix 0000:00:07.1: version 2.11
+Dec  7 22:18:06 majikthise kernel: [   11.399601] sr 1:0:0:0: Attached scsi CD-ROM sr0
+Dec  7 22:18:06 majikthise kernel: [   12.200452] PCI: Setting latency timer of device 0000:02:00.0 to 64
+Dec  7 22:18:06 majikthise kernel: [   12.210833] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 22:18:06 majikthise kernel: [   12.211324] sd 2:0:0:0: [sda] Mode Sense: 5d 00 00 00
+Dec  7 22:18:06 majikthise kernel: [   15.051146] Ending clean XFS mount for filesystem: sda3
+Dec  7 22:18:06 majikthise kernel: [   54.788526] eth0: no IPv6 routers present
+Dec  7 22:18:06 majikthise kernel: [   55.066136] VMware PVSCSI driver - version 0.0.0.7
+Dec  7 22:18:06 majikthise kernel: [   55.937545] vmmemctl: started kernel thread pid=4568

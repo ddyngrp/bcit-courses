@@ -1,0 +1,195 @@
+Dec  4 06:25:47 majikthise CRON[8930]: pam_unix(cron:session): session closed for user root
+Dec  4 06:39:01 majikthise CRON[9298]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 06:39:01 majikthise CRON[9298]: pam_unix(cron:session): session closed for user root
+Dec  4 07:09:01 majikthise CRON[9546]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 07:09:01 majikthise CRON[9546]: pam_unix(cron:session): session closed for user root
+Dec  4 07:17:01 majikthise CRON[9617]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 07:17:01 majikthise CRON[9617]: pam_unix(cron:session): session closed for user root
+Dec  4 07:39:01 majikthise CRON[9805]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 07:39:01 majikthise CRON[9805]: pam_unix(cron:session): session closed for user root
+Dec  4 08:09:01 majikthise CRON[10052]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 08:09:01 majikthise CRON[10052]: pam_unix(cron:session): session closed for user root
+Dec  4 08:17:01 majikthise CRON[10123]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 08:17:01 majikthise CRON[10123]: pam_unix(cron:session): session closed for user root
+Dec  4 08:39:01 majikthise CRON[10310]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 08:39:01 majikthise CRON[10310]: pam_unix(cron:session): session closed for user root
+Dec  4 09:09:01 majikthise CRON[10558]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 09:09:01 majikthise CRON[10558]: pam_unix(cron:session): session closed for user root
+Dec  4 09:17:01 majikthise CRON[10629]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 09:17:01 majikthise CRON[10629]: pam_unix(cron:session): session closed for user root
+Dec  4 09:39:01 majikthise CRON[10816]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 09:39:01 majikthise CRON[10816]: pam_unix(cron:session): session closed for user root
+Dec  4 10:09:01 majikthise CRON[11063]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 10:09:01 majikthise CRON[11063]: pam_unix(cron:session): session closed for user root
+Dec  4 10:17:01 majikthise CRON[11134]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 10:17:01 majikthise CRON[11134]: pam_unix(cron:session): session closed for user root
+Dec  4 10:39:01 majikthise CRON[11317]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 10:39:01 majikthise CRON[11317]: pam_unix(cron:session): session closed for user root
+Dec  4 11:09:01 majikthise CRON[11565]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 11:09:01 majikthise CRON[11565]: pam_unix(cron:session): session closed for user root
+Dec  4 11:17:01 majikthise CRON[11636]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 11:17:01 majikthise CRON[11636]: pam_unix(cron:session): session closed for user root
+Dec  4 11:39:01 majikthise CRON[11823]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 11:39:01 majikthise CRON[11823]: pam_unix(cron:session): session closed for user root
+Dec  4 12:09:01 majikthise CRON[12070]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 12:09:01 majikthise CRON[12070]: pam_unix(cron:session): session closed for user root
+Dec  4 12:17:01 majikthise CRON[12141]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 12:17:01 majikthise CRON[12141]: pam_unix(cron:session): session closed for user root
+Dec  4 12:39:01 majikthise CRON[12329]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 12:39:01 majikthise CRON[12329]: pam_unix(cron:session): session closed for user root
+Dec  4 13:09:01 majikthise CRON[12576]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 13:09:01 majikthise CRON[12576]: pam_unix(cron:session): session closed for user root
+Dec  4 13:17:01 majikthise CRON[12647]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 13:17:01 majikthise CRON[12647]: pam_unix(cron:session): session closed for user root
+Dec  4 13:39:01 majikthise CRON[12834]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 13:39:01 majikthise CRON[12834]: pam_unix(cron:session): session closed for user root
+Dec  4 14:09:01 majikthise CRON[13082]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 14:09:01 majikthise CRON[13082]: pam_unix(cron:session): session closed for user root
+Dec  4 14:17:01 majikthise CRON[13153]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 14:17:01 majikthise CRON[13153]: pam_unix(cron:session): session closed for user root
+Dec  4 14:39:01 majikthise CRON[13340]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 14:39:01 majikthise CRON[13340]: pam_unix(cron:session): session closed for user root
+Dec  4 15:09:01 majikthise CRON[13587]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 15:09:01 majikthise CRON[13587]: pam_unix(cron:session): session closed for user root
+Dec  4 15:17:01 majikthise CRON[13658]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 15:17:01 majikthise CRON[13658]: pam_unix(cron:session): session closed for user root
+Dec  4 15:39:01 majikthise CRON[13845]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 15:39:01 majikthise CRON[13845]: pam_unix(cron:session): session closed for user root
+Dec  4 16:09:01 majikthise CRON[14093]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 16:09:01 majikthise CRON[14093]: pam_unix(cron:session): session closed for user root
+Dec  4 16:17:01 majikthise CRON[14164]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 16:17:01 majikthise CRON[14164]: pam_unix(cron:session): session closed for user root
+Dec  4 16:39:01 majikthise CRON[14351]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 16:39:01 majikthise CRON[14351]: pam_unix(cron:session): session closed for user root
+Dec  4 17:09:01 majikthise CRON[14598]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 17:09:01 majikthise CRON[14598]: pam_unix(cron:session): session closed for user root
+Dec  4 17:17:01 majikthise CRON[14669]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 17:17:01 majikthise CRON[14669]: pam_unix(cron:session): session closed for user root
+Dec  4 17:39:01 majikthise CRON[14857]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 17:39:01 majikthise CRON[14857]: pam_unix(cron:session): session closed for user root
+Dec  4 18:09:01 majikthise CRON[15104]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 18:09:01 majikthise CRON[15104]: pam_unix(cron:session): session closed for user root
+Dec  4 18:17:01 majikthise CRON[15175]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  4 18:17:01 majikthise CRON[15175]: pam_unix(cron:session): session closed for user root
+Dec  4 18:21:37 majikthise sshd[15222]: Did not receive identification string from 119.97.196.155
+Dec  4 18:21:37 majikthise sshd[15223]: Invalid user ant from 119.97.196.155
+Dec  4 18:21:38 majikthise sshd[15223]: pam_unix(ssh:auth): check pass; user unknown
+Dec  4 18:21:38 majikthise sshd[15223]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=119.97.196.155 
+Dec  4 18:21:38 majikthise sshd[15225]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=113.106.197.131  user=root
+Dec  4 18:21:37 majikthise sshd[15227]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=202.111.167.29  user=root
+Dec  4 18:21:36 majikthise sshd[15229]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=219.139.108.134  user=root
+Dec  4 18:21:36 majikthise sshd[15237]: Invalid user PlcmSpIp from 94.102.1.248
+Dec  4 18:21:36 majikthise sshd[15237]: pam_unix(ssh:auth): check pass; user unknown
+Dec  4 18:21:36 majikthise sshd[15237]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=server248.nt101.datacenter.ni.net.tr 
+Dec  4 18:21:36 majikthise login[4282]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Dec  4 18:21:36 majikthise login[15276]: ROOT LOGIN  on 'tty1'
+Dec  4 18:21:36 majikthise login[4278]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Dec  7 20:33:54 majikthise sshd[4870]: Server listening on :: port 22.
+Dec  7 20:33:54 majikthise sshd[4870]: error: Bind to port 22 on 0.0.0.0 failed: Address already in use.
+Dec  7 20:34:07 majikthise saslauthd[5159]: detach_tty      : master pid is: 5159
+Dec  7 20:34:07 majikthise saslauthd[5159]: ipc_init        : listening on socket: /var/spool/postfix/var/run/saslauthd/mux
+Dec  7 20:35:20 majikthise sshd[5284]: Accepted password for root from 96.53.91.26 port 58348 ssh2
+Dec  7 20:35:23 majikthise sshd[5290]: pam_unix(ssh:session): session opened for user root by root(uid=0)
+Dec  7 20:39:01 majikthise CRON[5331]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 20:39:01 majikthise CRON[5331]: pam_unix(cron:session): session closed for user root
+Dec  7 21:00:54 majikthise login[4340]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Dec  7 21:00:54 majikthise login[5514]: ROOT LOGIN  on 'tty1'
+Dec  7 21:07:27 majikthise sshd[4872]: Server listening on :: port 22.
+Dec  7 21:07:27 majikthise sshd[4872]: error: Bind to port 22 on 0.0.0.0 failed: Address already in use.
+Dec  7 21:07:36 majikthise saslauthd[5143]: detach_tty      : master pid is: 5143
+Dec  7 21:07:36 majikthise saslauthd[5143]: ipc_init        : listening on socket: /var/spool/postfix/var/run/saslauthd/mux
+Dec  7 21:08:54 majikthise login[4340]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Dec  7 21:08:54 majikthise login[5271]: ROOT LOGIN  on 'tty1'
+Dec  7 21:09:02 majikthise CRON[5381]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 21:09:02 majikthise CRON[5381]: pam_unix(cron:session): session closed for user root
+Dec  7 22:18:09 majikthise sshd[4839]: Server listening on :: port 22.
+Dec  7 22:18:09 majikthise sshd[4839]: error: Bind to port 22 on 0.0.0.0 failed: Address already in use.
+Dec  7 22:18:17 majikthise saslauthd[5101]: detach_tty      : master pid is: 5101
+Dec  7 22:18:17 majikthise saslauthd[5101]: ipc_init        : listening on socket: /var/spool/postfix/var/run/saslauthd/mux
+Dec  7 22:39:01 majikthise CRON[5381]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 22:39:01 majikthise CRON[5381]: pam_unix(cron:session): session closed for user root
+Dec  7 23:09:01 majikthise CRON[5628]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 23:09:01 majikthise CRON[5628]: pam_unix(cron:session): session closed for user root
+Dec  7 23:17:01 majikthise CRON[5699]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 23:17:01 majikthise CRON[5699]: pam_unix(cron:session): session closed for user root
+Dec  7 23:39:01 majikthise CRON[5879]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  7 23:39:01 majikthise CRON[5879]: pam_unix(cron:session): session closed for user root
+Dec  8 00:09:01 majikthise CRON[6127]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 00:09:01 majikthise CRON[6127]: pam_unix(cron:session): session closed for user root
+Dec  8 00:17:01 majikthise CRON[6198]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 00:17:01 majikthise CRON[6198]: pam_unix(cron:session): session closed for user root
+Dec  8 00:39:01 majikthise CRON[6377]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 00:39:01 majikthise CRON[6377]: pam_unix(cron:session): session closed for user root
+Dec  8 01:09:01 majikthise CRON[6624]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 01:09:01 majikthise CRON[6624]: pam_unix(cron:session): session closed for user root
+Dec  8 01:17:01 majikthise CRON[6695]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 01:17:01 majikthise CRON[6695]: pam_unix(cron:session): session closed for user root
+Dec  8 01:39:01 majikthise CRON[6875]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 01:39:01 majikthise CRON[6875]: pam_unix(cron:session): session closed for user root
+Dec  8 02:04:16 majikthise login[4309]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Dec  8 02:04:16 majikthise login[7086]: ROOT LOGIN  on 'tty1'
+Dec  8 02:06:27 majikthise sshd[7144]: Accepted password for root from 96.53.91.26 port 60935 ssh2
+Dec  8 02:06:27 majikthise sshd[7146]: pam_unix(ssh:session): session opened for user root by root(uid=0)
+Dec  8 02:09:01 majikthise CRON[7174]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 02:09:01 majikthise CRON[7174]: pam_unix(cron:session): session closed for user root
+Dec  8 02:17:01 majikthise CRON[7267]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 02:17:01 majikthise CRON[7267]: pam_unix(cron:session): session closed for user root
+Dec  8 02:39:01 majikthise CRON[7446]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 02:39:02 majikthise CRON[7446]: pam_unix(cron:session): session closed for user root
+Dec  8 02:53:41 majikthise dovecot-auth: pam_unix(dovecot:auth): check pass; user unknown
+Dec  8 02:53:41 majikthise dovecot-auth: pam_unix(dovecot:auth): authentication failure; logname= uid=0 euid=0 tty=dovecot ruser= rhost=207.210.209.134 
+Dec  8 02:53:45 majikthise dovecot-auth: pam_unix(dovecot:auth): check pass; user unknown
+Dec  8 02:53:45 majikthise dovecot-auth: pam_unix(dovecot:auth): authentication failure; logname= uid=0 euid=0 tty=dovecot ruser= rhost=207.210.209.134 
+Dec  8 03:02:24 majikthise sshd[7663]: Accepted password for root from 96.53.91.26 port 61343 ssh2
+Dec  8 03:02:24 majikthise sshd[7665]: pam_unix(ssh:session): session opened for user root by root(uid=0)
+Dec  8 03:09:01 majikthise CRON[7727]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 03:09:01 majikthise CRON[7727]: pam_unix(cron:session): session closed for user root
+Dec  8 03:17:01 majikthise CRON[7798]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 03:17:01 majikthise CRON[7798]: pam_unix(cron:session): session closed for user root
+Dec  8 03:39:01 majikthise CRON[7947]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 03:39:01 majikthise CRON[7947]: pam_unix(cron:session): session closed for user root
+Dec  8 04:09:01 majikthise CRON[8194]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 04:09:01 majikthise CRON[8194]: pam_unix(cron:session): session closed for user root
+Dec  8 04:17:01 majikthise CRON[8265]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 04:17:01 majikthise CRON[8265]: pam_unix(cron:session): session closed for user root
+Dec  8 04:39:01 majikthise CRON[8444]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 04:39:01 majikthise CRON[8444]: pam_unix(cron:session): session closed for user root
+Dec  8 05:09:01 majikthise CRON[8696]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 05:09:01 majikthise CRON[8696]: pam_unix(cron:session): session closed for user root
+Dec  8 05:17:01 majikthise CRON[8768]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 05:17:01 majikthise CRON[8768]: pam_unix(cron:session): session closed for user root
+Dec  8 05:39:01 majikthise CRON[8947]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 05:39:01 majikthise CRON[8947]: pam_unix(cron:session): session closed for user root
+Dec  8 06:09:01 majikthise CRON[9194]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 06:09:01 majikthise CRON[9194]: pam_unix(cron:session): session closed for user root
+Dec  8 06:17:01 majikthise CRON[9265]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 06:17:01 majikthise CRON[9265]: pam_unix(cron:session): session closed for user root
+Dec  8 06:25:01 majikthise CRON[9332]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 06:25:07 majikthise su[9364]: Successful su for nobody by root
+Dec  8 06:25:07 majikthise su[9364]: + ??? root:nobody
+Dec  8 06:25:07 majikthise su[9364]: pam_unix(su:session): session opened for user nobody by (uid=0)
+Dec  8 06:25:07 majikthise su[9364]: pam_unix(su:session): session closed for user nobody
+Dec  8 06:25:07 majikthise su[9367]: Successful su for nobody by root
+Dec  8 06:25:07 majikthise su[9367]: + ??? root:nobody
+Dec  8 06:25:07 majikthise su[9367]: pam_unix(su:session): session opened for user nobody by (uid=0)
+Dec  8 06:25:07 majikthise su[9367]: pam_unix(su:session): session closed for user nobody
+Dec  8 06:25:07 majikthise su[9369]: Successful su for nobody by root
+Dec  8 06:25:07 majikthise su[9369]: + ??? root:nobody
+Dec  8 06:25:07 majikthise su[9369]: pam_unix(su:session): session opened for user nobody by (uid=0)
+Dec  8 06:25:40 majikthise su[9369]: pam_unix(su:session): session closed for user nobody
+Dec  8 06:25:44 majikthise CRON[9332]: pam_unix(cron:session): session closed for user root
+Dec  8 06:39:01 majikthise CRON[9598]: pam_unix(cron:session): session opened for user root by (uid=0)
+Dec  8 06:39:01 majikthise CRON[9598]: pam_unix(cron:session): session closed for user root
+Dec  8 06:42:41 majikthise sshd[9633]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=91.212.182.134  user=root
+Dec  8 06:42:43 majikthise sshd[9633]: Failed password for root from 91.212.182.134 port 54311 ssh2
+Dec  8 07:00:50 majikthise sshd[9782]: Accepted password for root from 96.53.91.26 port 62567 ssh2
+Dec  8 07:00:50 majikthise sshd[9784]: pam_unix(ssh:session): session opened for user root by root(uid=0)
+Dec  8 07:01:22 majikthise sshd[9796]: Invalid user ironix from 96.53.93.58
+Dec  8 07:01:22 majikthise sshd[9796]: Failed none for invalid user ironix from 96.53.93.58 port 54369 ssh2
+Dec  8 07:01:27 majikthise sshd[9796]: pam_unix(ssh:auth): check pass; user unknown
+Dec  8 07:01:27 majikthise sshd[9796]: pam_unix(ssh:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=96.53.93.58 
+Dec  8 07:01:29 majikthise sshd[9796]: Failed password for invalid user ironix from 96.53.93.58 port 54369 ssh2
+Dec  8 07:01:32 majikthise sshd[9796]: pam_unix(ssh:auth): check pass; user unknown
+Dec  8 07:01:34 majikthise sshd[9796]: Failed password for invalid user ironix from 96.53.93.58 port 54369 ssh2
+Dec  8 07:01:41 majikthise sshd[9796]: pam_unix(ssh:auth): check pass; user unknown
+Dec  8 07:01:43 majikthise sshd[9796]: Failed password for invalid user ironix from 96.53.93.58 port 54369 ssh2

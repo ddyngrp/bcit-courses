@@ -1,0 +1,4175 @@
+Name: anna/choose_modules
+Type: multiselect
+Choices: ${CHOICES}
+Description: Installer components to load:
+Extended_description: All components of the installer needed to complete the install will be loaded automatically and are not listed here. Some other (optional) installer components are shown below. They are probably not necessary, but may be interesting to some users.\n\nNote that if you select a component that requires others, those components will also be loaded.
+
+Name: anna/choose_modules_lowmem
+Type: multiselect
+Choices: ${CHOICES}
+Description: Installer components to load:
+Extended_description: To save memory, only components that are certainly needed for an install are selected by default. The other installer components are not all necessary for a basic install, but you may need some of them, especially certain kernel modules, so look through the list carefully and select the components you need.\n\nNote that if you select a component that requires others, those components will also be loaded.
+
+Name: anna/install_failed
+Type: error
+Description: Failed to load installer component
+Extended_description: Loading ${PACKAGE} failed for unknown reasons. Aborting.
+
+Name: anna/no_kernel_modules
+Type: boolean
+Default: false
+Description: Continue the install without loading kernel modules?
+Extended_description: No kernel modules were found. This probably is due to a mismatch between the kernel used by this version of the installer and the kernel version available in the archive.\n\nIf you're installing from a mirror, you can work around this problem by choosing to install a different version of Ubuntu. The install will probably fail to work if you continue without kernel modules.
+
+Name: anna/progress_step_retr
+Type: text
+Description: Retrieving ${PACKAGE}
+
+Name: anna/progress_title
+Type: text
+Description: Loading additional components
+
+Name: anna/retriever
+Type: string
+Description: for internal use only
+Extended_description: Default retriever
+
+Name: anna/standard_modules
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+Extended_description: Install standard modules?
+
+Name: apt-setup/backports
+Type: boolean
+Default: false
+Description: Use backported software?
+Extended_description: Some software has been backported from the development tree to work with this release. Although this software has not gone through such complete testing as that contained in the release, it includes newer versions of some applications which may provide useful features.\n\nPlease choose whether you want this software to be made available to you.
+
+Name: apt-setup/cdrom/failed
+Type: error
+Description: apt configuration problem
+Extended_description: An attempt to configure apt to install additional packages from the CD failed.
+
+Name: apt-setup/contrib
+Type: boolean
+Default: false
+Description: Use contrib software?
+Extended_description: Some additional software has been made to work with Debian. Though this software is free, it depends on non-free software for its operation. This software is not a part of Debian, but standard Debian tools can be used to install it.\n\nPlease choose whether you want this software to be made available to you.
+
+Name: apt-setup/mirror/error
+Type: select
+Default: Retry
+Choices: Retry, Change mirror, Ignore
+Description: Downloading a file failed:
+Extended_description: The installer failed to access the mirror. This may be a problem with your network, or with the mirror. You can choose to retry the download, select a different mirror, or ignore the problem and continue without all the packages from this mirror.
+
+Name: apt-setup/multiverse
+Type: boolean
+Default: true
+Description: Use software from the "multiverse" component?
+Extended_description: Some non-free software is available in packaged form. Though this software is not a part of the main distribution, standard package management tools can be used to install it. This software has varying licenses and (in some cases) patent restrictions which may prevent you from using, modifying, or sharing it.\n\nPlease choose whether you want this software to be made available to you.
+
+Name: apt-setup/non-free
+Type: boolean
+Default: false
+Description: Use non-free software?
+Extended_description: Some non-free software has been made to work with Debian. Though this software is not at all a part of Debian, standard Debian tools can be used to install it. This software has varying licenses which may prevent you from using, modifying, or sharing it.\n\nPlease choose whether you want to have it available anyway.
+
+Name: apt-setup/progress/cdrom
+Type: text
+Description: Scanning the CD-ROM...
+
+Name: apt-setup/progress/fallback
+Type: text
+Description: Running ${SCRIPT}...
+
+Name: apt-setup/progress/local
+Type: text
+Description: Scanning local repositories...
+
+Name: apt-setup/progress/mirror
+Type: text
+Description: Scanning the mirror...
+
+Name: apt-setup/progress/security
+Type: text
+Description: Scanning the security updates repository...
+
+Name: apt-setup/progress/title
+Type: text
+Description: Configuring apt
+
+Name: apt-setup/restricted
+Type: boolean
+Default: true
+Description: Use restricted software?
+Extended_description: Some non-free software is available in packaged form. Though this software is not a part of the main distribution, standard package management tools can be used to install it. This software has varying licenses which may prevent you from using, modifying, or sharing it.\n\nPlease choose whether you want to have it available anyway.
+
+Name: apt-setup/security-updates-failed
+Type: error
+Description: Cannot access security updates
+Extended_description: The security updates on ${SECURITY_HOST} couldn't be accessed, so those updates will not be made available to you at this time. You should investigate this later.\n\nCommented out entries for ${SECURITY_HOST} have been added to the /etc/apt/sources.list file.
+
+Name: apt-setup/security_host
+Type: string
+Default: security.ubuntu.com
+Description: for internal use; can be preseeded
+Extended_description: Host to use for security updates
+
+Name: apt-setup/universe
+Type: boolean
+Default: true
+Description: Use software from the "universe" component?
+Extended_description: Some additional software is available in packaged form. This software is free and, though it is not a part of the main distribution, standard package management tools can be used to install it.\n\nPlease choose whether you want this software to be made available to you.
+
+Name: apt-setup/use_mirror
+Type: boolean
+Default: true
+Description: Use a network mirror?
+Extended_description: A network mirror can be used to supplement the software that is included on the CD-ROM. This may also make newer versions of software available.\n\nIf you are installing from a netinst CD and you choose not to use a mirror, you will end up with only a very minimal base system.
+
+Name: babelbox/info
+Type: title
+Description: Demo - ${LANGNAME}
+
+Name: base-installer/cannot_install
+Type: error
+Description: Cannot install base system
+Extended_description: The installer cannot figure out how to install the base system. No installable CD-ROM was found and no valid mirror was configured.
+
+Name: base-installer/debootstrap-failed
+Type: error
+Description: Failed to install the base system
+Extended_description: The base system installation into /target/ failed.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/debootstrap/error-abnormal
+Type: error
+Description: Base system installation error
+Extended_description: The debootstrap program exited abnormally.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/debootstrap/error-exitcode
+Type: error
+Description: Base system installation error
+Extended_description: The debootstrap program exited with an error (return value ${EXITCODE}).\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/debootstrap/error/couldntdl
+Type: error
+Description: Debootstrap Error
+Extended_description: Couldn't retrieve ${SUBST0}. This may be due to a network problem or a bad CD, depending on your installation method.\n\nIf you are installing from CD-R or CD-RW, burning the CD at a lower speed may help.
+
+Name: base-installer/debootstrap/error/invalidrel
+Type: error
+Description: Debootstrap Error
+Extended_description: Invalid Release file: no valid components.
+
+Name: base-installer/debootstrap/error/missingrelentry
+Type: error
+Description: Debootstrap Error
+Extended_description: Invalid Release file: no entry for ${SUBST0}.
+
+Name: base-installer/debootstrap/error/nogetrel
+Type: error
+Description: Debootstrap Error
+Extended_description: Failed getting Release file ${SUBST0}.
+
+Name: base-installer/debootstrap/error/nogetrelsig
+Type: error
+Description: Debootstrap Error
+Extended_description: Failed getting Release signature file ${SUBST0}.
+
+Name: base-installer/debootstrap/error/unknownrelsig
+Type: error
+Description: Debootstrap Error
+Extended_description: Release file signed by unknown key (key id ${SUBST0})
+
+Name: base-installer/debootstrap/fallback-error
+Type: error
+Description: Debootstrap Error
+Extended_description: The following error occurred:\n\n${ERROR}\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/debootstrap/fallback-info
+Type: text
+Description: ${SECTION}: ${INFO}...
+
+Name: base-installer/debootstrap/fallback-warning
+Type: error
+Description: Debootstrap warning
+Extended_description: Warning: ${INFO}
+
+Name: base-installer/debootstrap/info/basesuccess
+Type: text
+Description: Base system installed successfully.
+
+Name: base-installer/debootstrap/info/checkingsizes
+Type: text
+Description: Checking component ${SUBST0} on ${SUBST1}...
+
+Name: base-installer/debootstrap/info/confbase
+Type: text
+Description: Configuring the base system...
+
+Name: base-installer/debootstrap/info/configuring
+Type: text
+Description: Configuring ${SUBST0}...
+
+Name: base-installer/debootstrap/info/confreq
+Type: text
+Description: Configuring required packages...
+
+Name: base-installer/debootstrap/info/extracting
+Type: text
+Description: Extracting ${SUBST0}...
+
+Name: base-installer/debootstrap/info/instbase
+Type: text
+Description: Installing base packages...
+
+Name: base-installer/debootstrap/info/instcore
+Type: text
+Description: Installing core packages...
+
+Name: base-installer/debootstrap/info/newbase
+Type: text
+Description: Found additional base dependencies: ${SUBST0}
+
+Name: base-installer/debootstrap/info/newrequired
+Type: text
+Description: Found additional required dependencies: ${SUBST0}
+
+Name: base-installer/debootstrap/info/redundantbase
+Type: text
+Description: Found packages in base already in required: ${SUBST0}
+
+Name: base-installer/debootstrap/info/releasesig
+Type: text
+Description: Checking Release signature
+
+Name: base-installer/debootstrap/info/resolvebase
+Type: text
+Description: Resolving dependencies of base packages...
+
+Name: base-installer/debootstrap/info/resolvereq
+Type: text
+Description: Resolving dependencies of required packages...
+
+Name: base-installer/debootstrap/info/retrieving
+Type: text
+Description: Retrieving ${SUBST0}...
+
+Name: base-installer/debootstrap/info/unpackbase
+Type: text
+Description: Unpacking the base system...
+
+Name: base-installer/debootstrap/info/unpacking
+Type: text
+Description: Unpacking ${SUBST0}...
+
+Name: base-installer/debootstrap/info/unpackreq
+Type: text
+Description: Unpacking required packages...
+
+Name: base-installer/debootstrap/info/validating
+Type: text
+Description: Validating ${SUBST0}...
+
+Name: base-installer/debootstrap/info/validrelsig
+Type: text
+Description: Valid Release signature (key id ${SUBST0})
+
+Name: base-installer/debootstrap/progress/downrelsig
+Type: text
+Description: Retrieving Release file signature
+
+Name: base-installer/debootstrap/section/confbase
+Type: text
+Description: Configuring the base system
+
+Name: base-installer/debootstrap/section/confreq
+Type: text
+Description: Configuring required packages
+
+Name: base-installer/debootstrap/section/downdebs
+Type: text
+Description: Retrieving packages
+
+Name: base-installer/debootstrap/section/downmainpkgs
+Type: text
+Description: Retrieving Packages file
+
+Name: base-installer/debootstrap/section/downpkgs
+Type: text
+Description: Retrieving Packages files
+
+Name: base-installer/debootstrap/section/downrel
+Type: text
+Description: Retrieving Release file
+
+Name: base-installer/debootstrap/section/extractpkgs
+Type: text
+Description: Extracting packages
+
+Name: base-installer/debootstrap/section/instbase
+Type: text
+Description: Installing the base system
+
+Name: base-installer/debootstrap/section/instcore
+Type: text
+Description: Installing core packages
+
+Name: base-installer/debootstrap/section/sizedebs
+Type: text
+Description: Finding package sizes
+
+Name: base-installer/debootstrap/section/unpackbase
+Type: text
+Description: Unpacking the base system
+
+Name: base-installer/debootstrap/section/unpackreq
+Type: text
+Description: Unpacking required packages
+
+Name: base-installer/debootstrap/warning/retrying
+Type: text
+Description: Retrying failed download of ${SUBST0}
+
+Name: base-installer/initramfs/generator
+Type: select
+Choices: ${GENERATORS}
+Description: Tool to use to generate boot initrd:
+Extended_description: The list shows the available tools. If you are unsure which to select, you should select the default. If your system fails to boot, you can retry the installation using the other options.
+
+Name: base-installer/initramfs/unsupported
+Type: error
+Description: Unsupported initrd generator
+Extended_description: The package ${GENERATOR} that was selected to generate the initrd is not supported.
+
+Name: base-installer/kernel/failed-install
+Type: error
+Description: Unable to install the selected kernel
+Extended_description: An error was returned while trying to install the kernel into the target system.\n\nKernel package: '${KERNEL}'.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/kernel/failed-package-install
+Type: error
+Description: Unable to install ${PACKAGE}
+Extended_description: An error was returned while trying to install the ${PACKAGE} package onto the target system.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: base-installer/kernel/image
+Type: string
+Default: kernel-image
+Description: for internal use only (?)
+Extended_description: Default kernel image if nothing better is found
+
+Name: base-installer/kernel/image-2.6
+Type: string
+Default: linux-image
+Description: for internal use only (?)
+Extended_description: Default kernel image if nothing better is found (2.6)
+
+Name: base-installer/kernel/linux/extra-packages
+Type: string
+Description: for internal use; can be preseeded
+
+Name: base-installer/kernel/linux/extra-packages-2.6
+Type: string
+Description: for internal use; can be preseeded
+
+Name: base-installer/kernel/linux/initramfs-generators
+Type: string
+Default: initramfs-tools yaird
+Description: for internal use; can be preseeded
+Extended_description: Package to use to generate initramfs
+
+Name: base-installer/kernel/linux/initrd-2.6
+Type: boolean
+Default: true
+Description: for internal use only
+Extended_description: Use an (initramfs) initrd (linux 2.6 only)
+
+Name: base-installer/kernel/linux/link_in_boot
+Type: boolean
+Default: false
+Description: for internal use only
+Extended_description: Kernel needs a link in /boot/ (linux only)
+
+Name: base-installer/kernel/no-kernels-found
+Type: error
+Description: Cannot install kernel
+Extended_description: The installer cannot find a suitable kernel package to install. 
+
+Name: base-installer/kernel/override-image
+Type: string
+Description: always use this kernel image (for preseeding)
+
+Name: base-installer/kernel/skip-install
+Type: boolean
+Default: false
+Description: Continue without installing a kernel?
+Extended_description: No installable kernel was found in the defined APT sources.\n\nYou may try to continue without a kernel, and manually install your own kernel later. This is only recommended for experts, otherwise you will likely end up with a machine that doesn't boot.
+
+Name: base-installer/kernel/which-kernel
+Type: select
+Choices: ${KERNELS}, none
+Description: Kernel to install:
+Extended_description: The list shows the available kernels. Please choose one of them in order to make the system bootable from the hard drive.
+
+Name: base-installer/no_codename
+Type: error
+Description: Debootstrap Error
+Extended_description: Failed to determine the codename for the release.
+
+Name: base-installer/no_target_mounted
+Type: error
+Description: No file system mounted on /target
+Extended_description: Before the installation can proceed, a root file system must be mounted on /target. The partitioner and formatter should have done this for you.
+
+Name: base-installer/progress/fallback
+Type: text
+Description: Running ${SCRIPT}...
+
+Name: base-installer/progress/installing-debian
+Type: text
+Description: Installing the base system
+
+Name: base-installer/progress/netcfg
+Type: text
+Description: Storing network settings ...
+
+Name: base-installer/progress/preparing
+Type: text
+Description: Preparing to install the base system...
+
+Name: base-installer/progress/register-modules
+Type: text
+Description: Registering modules...
+
+Name: base-installer/section/apt_update
+Type: text
+Description: Updating the list of available packages...
+
+Name: base-installer/section/configure_apt
+Type: text
+Description: Configuring APT sources...
+
+Name: base-installer/section/create_devices
+Type: text
+Description: Creating device files...
+
+Name: base-installer/section/install_extra
+Type: text
+Description: Installing extra packages...
+
+Name: base-installer/section/install_extra_package
+Type: text
+Description: Installing extra packages - retrieving and installing ${SUBST0}...
+
+Name: base-installer/section/install_kernel_package
+Type: text
+Description: Installing the kernel - retrieving and installing ${SUBST0}...
+
+Name: base-installer/section/install_linux
+Type: text
+Description: Installing the kernel...
+
+Name: base-installer/section/install_pcmcia_modules
+Type: text
+Description: Installing the PCMCIA modules
+
+Name: base-installer/section/pick_kernel
+Type: text
+Description: Selecting the kernel to install...
+
+Name: base-installer/unclean_target_cancel
+Type: error
+Description: Not installing to unclean target
+Extended_description: The installation to the target file system has been canceled. You should go back and erase or format the target file system before proceeding with the install.
+
+Name: base-installer/use_unclean_target
+Type: boolean
+Default: true
+Description: Proceed with installation to unclean target?
+Extended_description: The target file system contains files from a past installation. These files could cause problems with the installation process, and if you proceed, some of the existing files may be overwritten.
+
+Name: cdrom-checker/askmount
+Type: note
+Description: Insert an Ubuntu CD-ROM
+Extended_description: Please insert one of the official Ubuntu CD-ROMs into the drive before continuing.
+
+Name: cdrom-checker/firstcd
+Type: note
+Description: Insert Ubuntu boot CD-ROM
+Extended_description: Please make sure you have inserted the Ubuntu boot CD-ROM  to continue with the installation.
+
+Name: cdrom-checker/md5file_failed
+Type: error
+Description: Failed to open checksum file
+Extended_description: Opening the MD5 file on the CD-ROM failed. This file contains the checksums of the files located on the CD-ROM.
+
+Name: cdrom-checker/mismatch
+Type: error
+Description: Integrity test failed
+Extended_description: The ${FILE} file failed the MD5 checksum verification. Your CD-ROM or this file may have been corrupted.
+
+Name: cdrom-checker/mntfailed
+Type: error
+Description: Failed to mount CD-ROM
+Extended_description: The CD-ROM ${CDROM} could not be mounted correctly. Please check the media and cables, and try it again.
+
+Name: cdrom-checker/nextcd
+Type: boolean
+Default: false
+Description: Check the integrity of another CD-ROM?
+
+Name: cdrom-checker/passed
+Type: note
+Description: Integrity test successful
+Extended_description: The CD-ROM integrity test was successful. The CD-ROM is valid.
+
+Name: cdrom-checker/progress_step
+Type: text
+Description: Checking file: ${FILE}
+
+Name: cdrom-checker/progress_title
+Type: text
+Description: Checking CD-ROM integrity
+
+Name: cdrom-checker/start
+Type: boolean
+Default: false
+Description: Check CD-ROM integrity?
+Extended_description: Warning: this check depends on your hardware and may take some time.
+
+Name: cdrom-checker/wrongcd
+Type: error
+Description: No valid Ubuntu CD-ROM
+Extended_description: The CD-ROM you have inserted is not a valid Ubuntu CD-ROM. Please change the disk.
+
+Name: cdrom-detect/cdrom_device
+Type: string
+Default: /dev/cdrom
+Description: Device file for accessing the CD-ROM:
+Extended_description: In order to access your CD-ROM drive, please enter the device file that should be used. Non-standard CD-ROM drives use non-standard device files (such as /dev/mcdx).\n\nYou may switch to the shell on the second terminal (ALT+F2) to check the available devices in /dev with "ls /dev". You can return to this screen by pressing ALT+F1.
+
+Name: cdrom-detect/cdrom_hdparm
+Type: string
+Description: Tune CD-ROM drive parameters with hdparm?
+Extended_description: The installer can use hdparm to tune some CD-ROM drive parameters, which may significantly speed up reading packages from the CD. You can change the parameters to be used. To disable hdparm, enter an empty parameter list.
+
+Name: cdrom-detect/cdrom_module
+Type: select
+Default: none
+Choices: ${choices}
+Description: Module needed for accessing the CD-ROM:
+Extended_description: The automatic detection didn't find a CD-ROM drive. You can try to load a specific module if you have a unusual CD-ROM drive (that is neither IDE nor SCSI).
+
+Name: cdrom-detect/detect_progress_title
+Type: text
+Description: Detecting hardware to find CD-ROM drives
+
+Name: cdrom-detect/eject
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+Extended_description: Set to false to prevent the system from ejecting the CD-ROM before rebooting
+
+Name: cdrom-detect/load_floppy
+Type: boolean
+Default: true
+Description: Load CD-ROM drivers from a driver floppy?
+Extended_description: No common CD-ROM drive was detected.\n\nYou may need to load additional CD-ROM drivers from a driver floppy. If you have such a floppy available now, put it in the drive, and continue. Otherwise, you will be given the option to manually select CD-ROM modules.
+
+Name: cdrom-detect/manual_config
+Type: boolean
+Default: true
+Description: Manually select a CD-ROM module and device?
+Extended_description: No common CD-ROM drive was detected.\n\nYour CD-ROM drive may be an old Mitsumi or another non-IDE, non-SCSI CD-ROM drive. In that case you should choose which module to load and the device to use. If you don't know which module and device are needed, look for some documentation or try a network installation instead of a CD-ROM installation.
+
+Name: cdrom-detect/no-release
+Type: error
+Description: Error reading Release file
+Extended_description: The CD-ROM does not seem to contain a valid 'Release' file, or that file could not be read correctly.\n\nYou may try to repeat CD-ROM detection but, even if it does succeed the second time, you may experience problems later in the installation.
+
+Name: cdrom-detect/retry
+Type: boolean
+Default: true
+Description: Try again to mount the CD-ROM?
+Extended_description: Your installation CD-ROM couldn't be mounted. This probably means that the CD-ROM was not in the drive. If so you can insert it and try again.
+
+Name: cdrom-detect/scanning_progress_step
+Type: text
+Description: Scanning ${DIR}...
+
+Name: cdrom-detect/scanning_progress_title
+Type: text
+Description: Scanning CD-ROM
+
+Name: cdrom-detect/success
+Type: note
+Description: CD-ROM detected
+Extended_description: The CD-ROM autodetection was successful. A CD-ROM drive has been found and it currently contains the CD ${cdname}. The installation will now continue.
+
+Name: cdrom-detect/wrong-cd
+Type: error
+Description: Incorrect CD-ROM detected
+Extended_description: The CD-ROM drive contains a CD which cannot be used for installation.\n\nPlease insert a suitable CD to continue with the installation.
+
+Name: cdrom/codename
+Type: string
+Description: for internal use only
+Extended_description: Codename for the selected suite
+
+Name: cdrom/suite
+Type: select
+Default: gutsy
+Choices: warty, hoary, breezy, dapper, edgy, feisty, gutsy
+Description: for internal use only
+Extended_description: Ubuntu version to install
+
+Name: clock-setup/progress/title
+Type: text
+Description: Setting up the clock
+
+Name: clock-setup/progress/working
+Type: text
+Description: Please wait...
+
+Name: clock-setup/utc
+Type: boolean
+Default: true
+Description: Is the system clock set to UTC?
+Extended_description: System clocks are generally set to Coordinated Universal Time (UTC). The operating system uses your time zone to convert system time into local time. This is recommended unless you also use another operating system that expects the clock to be set to local time.
+
+Name: console-setup/altgr
+Type: select
+Default: Right Alt
+Choices: No AltGr key, Right Alt, Right Control, Menu key, Right Logo key, Left Logo key, Both Logo keys, Left Alt
+Description: AltGr key replacement:
+Extended_description: With some of the keyboard layouts, AltGr is a modifier key used to input some characters, primarily ones that are unusual for the language of the keyboard layout, such as foreign currency symbols and accented letters.  If a key has a third symbol on it (on the front vertical face or the bottom right of the key top, sometimes in a different colour), then AltGr is often the means of eliciting that symbol.
+
+Name: console-setup/ask_detect
+Type: boolean
+Default: true
+Description: Detect keyboard layout?
+Extended_description: You can try to have your keyboard layout detected by pressing a series of keys. If you do not want to do this, you will be able to select your keyboard layout from a list.
+
+Name: console-setup/charmap
+Type: select
+Default: UTF-8
+Choices: ${CHOICES}
+Description: Encoding on the console:
+
+Name: console-setup/codeset
+Type: select
+Default: . Combined - Latin; Slavic Cyrillic; Hebrew; basic Arabic
+Choices: . Arabic, # Armenian, # Cyrillic - KOI8-R and KOI8-U, # Cyrillic - non-Slavic languages, # Cyrillic - Slavic languages (also Bosnian and Serbian Latin), . Ethiopic, # Georgian, # Greek, # Hebrew, # Lao, # Latin1 and Latin5 - western Europe and Turkic languages, # Latin2 - central Europe and Romanian, # Latin3 and Latin8 - Chichewa; Esperanto; Irish; Maltese and Welsh, # Latin7 - Lithuanian; Latvian; Maori and Marshallese, . Latin - Vietnamese, # Thai, . Combined - Latin; Slavic Cyrillic; Hebrew; basic Arabic, . Combined - Latin; Slavic Cyrillic; Greek, . Combined - Latin; Slavic and non-Slavic Cyrillic
+Description: Set of characters that should be supported by the console font:
+Extended_description: If you don't use framebuffer the choices that start with dot will reduce the number of the available colors on the console.
+
+Name: console-setup/codesetcode
+Type: string
+Description: for internal use
+
+Name: console-setup/compose
+Type: select
+Default: No compose key
+Choices: No compose key, Right Alt, Right Logo key, Right Control, Menu key, Caps Lock
+Description: Compose key:
+Extended_description: The Compose key (known also as Multi_key) is a key which is designated to signal the software to interpret the next keystrokes as a combination in order to produce a character not found on the keyboard.\n\nOn the text console the Compose key does not work in Unicode mode. If not in Unicode mode, regardless of what you choose here, you can always use also the Alt+period combination as a Compose key.
+
+Name: console-setup/detect
+Type: detect-keyboard
+Choices: ${FILENAME}
+Description: Detecting your keyboard layout
+
+Name: console-setup/detected
+Type: note
+Description: Keyboard layout detection complete
+Extended_description: Based on the keys you pressed, your keyboard layout appears to be "${LAYOUT}". If this is not correct, you can go back and select your layout from the full list instead.
+
+Name: console-setup/dont_ask_layout
+Type: note
+Description: Unsupported settings in configuration file
+Extended_description: The configuration file /etc/default/console-setup specifies keyboard layout and variant that are not supported by the configuration program.  Because of that no questions about the keyboard layout will be asked and your current configuration will be preserved.
+
+Name: console-setup/fontface
+Type: select
+Default: Fixed
+Choices: ${CHOICES}
+Description: Font for the console:
+Extended_description: Please choose the font face you would like to use on Linux console.\n\n - VGA is traditionally looking and has medium coverage\n   of international scripts;\n - Fixed has simplistic look and has a better coverage\n   of international scripts;\n - Terminus is aimed to reduce the eyes fatigue though\n   some symbols have a similar aspect which may be a problem\n   for programmers. It only supports the Latin and the\n   Cyrillic scripts.\n\nIf you prefer bold version of the Terminus font and you don't use framebuffer then choose TerminusBoldVGA.  If you use framebuffer then choose TerminusBold.
+
+Name: console-setup/fontsize
+Type: string
+Description: for internal use
+
+Name: console-setup/fontsize-fb
+Type: select
+Default: 16
+Choices: ${CHOICES}
+Description: Font size:
+Extended_description: Please select the size of the font for the Linux console.  When the size is represented as a plain number then the corresponding font can be used with all console drivers and the number measures the height of the symbols (in number of scan lines).  Otherwise the size has the format HEIGHTxWIDTH and the corresponding fonts can be used only if you use framebuffer and the kbd console package (console-tools doesn't work for such fonts).  Currently these fonts can not be used if the framebuffer you use is based on the RadeonFB kernel module.\n\nYou can use the height of the fonts in order to figure out the real size of the symbols on the console.  For a reference - the font your computer starts with has height 16.
+
+Name: console-setup/fontsize-text
+Type: select
+Default: 16
+Choices: ${CHOICES}
+Description: Font size:
+Extended_description: Please select the size of the font for the Linux console.  For a reference - the font your computer starts with has size 16.
+
+Name: console-setup/layout
+Type: select
+Default: U.S. English
+Choices: ${CHOICES}
+Description: The origin of the keyboard:
+
+Name: console-setup/layoutcode
+Type: string
+Description: for internal use
+
+Name: console-setup/model
+Type: select
+Choices: ${CHOICES}
+Description: Keyboard model:
+
+Name: console-setup/modelcode
+Type: string
+Description: for internal use
+
+Name: console-setup/optionscode
+Type: string
+Description: for internal use
+
+Name: console-setup/switch
+Type: select
+Default: No temporary switch
+Choices: No temporary switch, Right Alt, Left Alt, Right Logo key, Left Logo key, Both Logo keys
+Description: Method for temporarily toggle between national and Latin input:
+Extended_description: Sometimes the keyboard is in national mode and you want to type only few Latin letters. In this case it may be desirable to have a key for temporary switching between national and Latin symbols.  While this key is pressed in national mode the keyboard types Latin letters and in reverse, when the keyboard is in Latin mode and you are pressing this key the keyboard will type national letters.\n\nIf you don't like this feature, choose the option "No temporary switch".
+
+Name: console-setup/toggle
+Type: select
+Default: Alt+Shift
+Choices: Caps Lock, Right Alt, Right Control, Right Shift, Right Logo key, Menu key, Alt+Shift, Control+Shift, Shift+Caps Lock, Control+Alt, Both Shift keys together, Both Control keys together, Both Alt keys together, Left Alt, Left Control, Left Shift, Left Logo key, No toggling
+Description: Method for toggling between national and Latin mode:
+Extended_description: You will need a way to toggle the keyboard between the national layout and the standard Latin layout.  Several options are available.\n\nThe most ergonomic choices seem to be the right Alt and the Caps Lock keys (in the later case use the combination Shift+Caps Lock for normal Caps toggle).  Another popular choice is the Alt+Shift combination; notice however that in this case the combination Alt+Shift (or Control+Shift if you choose it) will lose its usual meaning in Emacs and other programs using it.\n\nNotice the listed keys are not present on all keyboards.
+
+Name: console-setup/ttys
+Type: string
+Default: /dev/tty[1-6]
+Description: Virtual consoles in use:
+Extended_description: Please enter a space delimited list of virtual consoles you use. The usual Unix filename wildcards are allowed (*, ? and [...]).\n\nIf you are unsure, then use the default /dev/tty[1-6] which stands for six virtual consoles. If you use devfs, then enter /dev/vc/[1-6] instead.
+
+Name: console-setup/variant
+Type: select
+Choices: ${CHOICES}
+Description: Keyboard layout:
+Extended_description: There are more than one keyboard layouts with the origin you selected. Please select the layout matching your keyboard.
+
+Name: console-setup/variantcode
+Type: string
+Description: for internal use
+
+Name: countrychooser/country-name
+Type: select
+Default: United States
+Choices: -- North America --, Canada, Mexico, Saint Pierre and Miquelon, United States, -- Central America --, Belize, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panama, -- South America --, Argentina, Bolivia, Brazil, Chile, Colombia, Ecuador, Falkland Islands (Malvinas), French Guiana, Guyana, Paraguay, Peru, Suriname, Uruguay, Venezuela, -- Caribbean --, Anguilla, Antigua and Barbuda, Aruba, Bahamas, Barbados, Bermuda, Cuba, Dominica, Dominican Republic, Grenada, Guadeloupe, Haiti, Jamaica, Martinique, Montserrat, Netherlands Antilles, Puerto Rico, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Trinidad and Tobago, Turks and Caicos Islands, -- Europe --, Albania, Andorra, Armenia, Austria, Azerbaijan, Belarus, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Faroe Islands, Finland, France, Georgia, Germany, Gibraltar, Greece, Greenland, Guernsey, Holy See (Vatican City State), Hungary, Iceland, Ireland, Isle of Man, Italy, Jersey, Latvia, Liechtenstein, Lithuania, Luxembourg, Macedonia\, Republic of, Malta, Moldova\, Republic of, Monaco, Montenegro, Netherlands, Norway, Poland, Portugal, Romania, Russian Federation, San Marino, Serbia, Slovakia, Slovenia, Spain, Svalbard and Jan Mayen, Sweden, Switzerland, Ukraine, United Kingdom, -- Asia --, Afghanistan, Bahrain, Bangladesh, Bhutan, Brunei Darussalam, Cambodia, China, Hong Kong, India, Indonesia, Iran\, Islamic Republic of, Iraq, Israel, Japan, Jordan, Kazakhstan, Korea\, Democratic People's Republic of, Korea\, Republic of, Kuwait, Kyrgyzstan, Lao People's Democratic Republic, Lebanon, Macao, Malaysia, Mongolia, Myanmar, Nepal, Oman, Pakistan, Palestinian Territory\, Occupied, Philippines, Qatar, Saudi Arabia, Singapore, Sri Lanka, Syrian Arab Republic, Taiwan, Tajikistan, Thailand, Turkey, Turkmenistan, United Arab Emirates, Uzbekistan, Viet Nam, Yemen, -- Africa --, Algeria, Angola, Benin, Botswana, Burkina Faso, Burundi, Cameroon, Cape Verde, Central African Republic, Chad, Congo, Congo\, The Democratic Republic of the, Djibouti, Egypt, Equatorial Guinea, Eritrea, Ethiopia, Gabon, Gambia, Ghana, Guinea, Guinea-Bissau, Kenya, Lesotho, Liberia, Libyan Arab Jamahiriya, Malawi, Mali, Mauritius, Morocco, Mozambique, Namibia, Niger, Nigeria, Rwanda, Saint Helena, Sao Tome and Principe, Senegal, Sierra Leone, Somalia, South Africa, Sudan, Swaziland, Tanzania\, United Republic of, Togo, Tunisia, Uganda, Western Sahara, Zambia, Zimbabwe, -- Indian Ocean --, British Indian Ocean Territory, Comoros, Madagascar, Maldives, Mauritania, Mayotte, Reunion, Seychelles, -- Oceania --, American Samoa, Australia, Cayman Islands, Christmas Island, Cocos (Keeling) Islands, Cook Islands, Fiji, French Polynesia, Guam, Kiribati, Marshall Islands, Micronesia\, Federated States of, Nauru, New Caledonia, New Zealand, Niue, Norfolk Island, Northern Mariana Islands, Palau, Papua New Guinea, Pitcairn, Samoa, Solomon Islands, Timor-Leste, Tokelau, Tonga, Tuvalu, United States Minor Outlying Islands, Vanuatu, Virgin Islands\, British, Virgin Islands\, U.S., Wallis and Futuna, -- Antarctica --, Antarctica, Bouvet Island, French Southern Territories, Heard Island and McDonald Islands, South Georgia and the South Sandwich Islands
+Description: Choose a country, territory or area:
+
+Name: countrychooser/shortlist-ar
+Type: select
+Default: KW
+Choices: Jordan, United Arab Emirates, Bahrain, Algeria, Libyan Arab Jamahiriya, Syrian Arab Republic, Saudi Arabia, Sudan, Iraq, Kuwait, Morocco, India, Yemen, Tunisia, Oman, Qatar, Lebanon, Egypt, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: JO, AE, BH, DZ, LY, SY, SA, SD, IQ, KW, MA, IN, YE, TN, OM, QA, LB, EG, other
+
+Name: countrychooser/shortlist-bn
+Type: select
+Default: BD
+Choices: Bangladesh, India, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BD, IN, other
+
+Name: countrychooser/shortlist-ca
+Type: select
+Default: ES
+Choices: Andorra, Spain, France, Italy, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: AD, ES, FR, IT, other
+
+Name: countrychooser/shortlist-de
+Type: select
+Default: DE
+Choices: Belgium, Germany, Luxembourg, Austria, Switzerland, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BE, DE, LU, AT, CH, other
+
+Name: countrychooser/shortlist-el
+Type: select
+Default: GR
+Choices: Greece, Cyprus, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: GR, CY, other
+
+Name: countrychooser/shortlist-en
+Type: select
+Default: US
+Choices: Australia, Botswana, Canada, Hong Kong, India, Ireland, New Zealand, Philippines, Singapore, South Africa, United Kingdom, United States, Zimbabwe, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: AU, BW, CA, HK, IN, IE, NZ, PH, SG, ZA, GB, US, ZW, other
+
+Name: countrychooser/shortlist-es
+Type: select
+Default: ES
+Choices: Argentina, Bolivia, Chile, Colombia, Costa Rica, Ecuador, El Salvador, Spain, United States, Guatemala, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Puerto Rico, Dominican Republic, Uruguay, Venezuela, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: AR, BO, CL, CO, CR, EC, SV, ES, US, GT, HN, MX, NI, PA, PY, PE, PR, DO, UY, VE, other
+
+Name: countrychooser/shortlist-eu
+Type: select
+Default: ES
+Choices: Spain, France, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: ES, FR, other
+
+Name: countrychooser/shortlist-fr
+Type: select
+Default: FR
+Choices: Belgium, Canada, France, Luxembourg, Switzerland, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BE, CA, FR, LU, CH, other
+
+Name: countrychooser/shortlist-it
+Type: select
+Default: IT
+Choices: Italy, Switzerland, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: IT, CH, other
+
+Name: countrychooser/shortlist-nl
+Type: select
+Default: NL
+Choices: Belgium, Netherlands, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BE, NL, other
+
+Name: countrychooser/shortlist-pa
+Type: select
+Default: IN
+Choices: India, Pakistan, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: IN, PK, other
+
+Name: countrychooser/shortlist-pt
+Type: select
+Default: PT
+Choices: Brazil, Portugal, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BR, PT, other
+
+Name: countrychooser/shortlist-pt_BR
+Type: select
+Default: BR
+Choices: Brazil, Portugal, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: BR, PT, other
+
+Name: countrychooser/shortlist-ru
+Type: select
+Default: RU
+Choices: Russian Federation, Ukraine, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: RU, UA, other
+
+Name: countrychooser/shortlist-sv
+Type: select
+Default: SE
+Choices: Finland, Sweden, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: FI, SE, other
+
+Name: countrychooser/shortlist-tr
+Type: select
+Default: TR
+Choices: Cyprus, Turkey, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: CY, TR, other
+
+Name: countrychooser/shortlist-zh_CN
+Type: select
+Default: CN
+Choices: China, Taiwan, Singapore, Hong Kong, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: CN, TW, SG, HK, other
+
+Name: countrychooser/shortlist-zh_TW
+Type: select
+Default: TW
+Choices: China, Taiwan, Singapore, Hong Kong, other
+Description: Choose a country, territory or area:
+Extended_description: Based on your language, you are probably located in one of these countries or regions.
+Choices-C: CN, TW, SG, HK, other
+
+Name: debconf-apt-progress/info
+Type: text
+Description: Installed update-manager-core
+
+Name: debconf-apt-progress/preparing
+Type: text
+Description: Please wait...
+
+Name: debconf/button-cancel
+Type: text
+Description: Cancel
+
+Name: debconf/button-continue
+Type: text
+Description: Continue
+
+Name: debconf/button-goback
+Type: text
+Description: Go Back
+
+Name: debconf/button-no
+Type: text
+Description: No
+
+Name: debconf/button-yes
+Type: text
+Description: Yes
+
+Name: debconf/cont-prompt
+Type: text
+Description: [Press enter to continue]
+
+Name: debconf/frontend
+Type: string
+Description: for internal use only
+Extended_description: Frontend to use. Change this setting in your script to  switch the cdebconf frontend upon the next GO command.
+
+Name: debconf/help-line
+Type: text
+Description: <Tab> moves between items; <Space> selects; <Enter> activates buttons
+
+Name: debconf/language
+Type: string
+Default: en
+Description: for internal use only
+Extended_description: Default language
+
+Name: debconf/no
+Type: text
+Description: No
+
+Name: debconf/priority
+Type: select
+Default: high
+Choices: critical, high, medium, low
+Description: Ignore questions with a priority less than:
+Extended_description: Packages that use debconf for configuration prioritize the questions they might ask you. Only questions with a certain priority or higher are actually shown to you; all less important questions are skipped.\n\nYou can select the lowest priority of question you want to see:\n - 'critical' is for items that will probably break the system\n    without user intervention.\n - 'high' is for items that don't have reasonable defaults.\n - 'medium' is for normal items that have reasonable defaults.\n - 'low' is for trivial items that have defaults that will work in\n   the vast majority of cases.\n\nFor example, this question is of medium priority, and if your priority were already 'high' or 'critical', you wouldn't see this question.
+
+Name: debconf/showold
+Type: boolean
+Default: false
+Description: for internal use only
+Extended_description: Display again already asked questions
+
+Name: debconf/text-error
+Type: text
+Description: !! ERROR: %s
+
+Name: debconf/text-help-clear
+Type: text
+Description: Select an empty entry
+
+Name: debconf/text-help-goback
+Type: text
+Description: Go back to previous question
+
+Name: debconf/text-help-help
+Type: text
+Description: Display this help message
+
+Name: debconf/text-help-keystrokes
+Type: text
+Description: KEYSTROKES:
+
+Name: debconf/text-prompt
+Type: text
+Description: Prompt: '%c' for help> 
+
+Name: debconf/text-prompt-default
+Type: text
+Description: Prompt: '%c' for help, default=%d> 
+
+Name: debconf/text-prompt-default-string
+Type: text
+Description: Prompt: '%c' for help, default=%s> 
+
+Name: debconf/yes
+Type: text
+Description: Yes
+
+Name: debian-installer/add-kernel-opts
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Which extra options I should add as default?
+
+Name: debian-installer/allow_unauthenticated
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+
+Name: debian-installer/apt-setup-udeb/title
+Type: text
+Description: Configure the package manager
+
+Name: debian-installer/base-installer/title
+Type: text
+Description: Install the base system
+
+Name: debian-installer/cdebconf-priority/title
+Type: text
+Description: Change debconf priority
+
+Name: debian-installer/cdrom-checker/title
+Type: text
+Description: Check the CD-ROM(s) integrity
+
+Name: debian-installer/cdrom-detect/title
+Type: text
+Description: Detect and mount CD-ROM
+
+Name: debian-installer/choose-mirror/title
+Type: text
+Description: Choose a mirror of the Ubuntu archive
+Description-en.UTF-8: Choose a mirror of the Ubuntu archive
+
+Name: debian-installer/clock-setup/title
+Type: text
+Description: Configure the clock
+
+Name: debian-installer/consoledisplay
+Type: string
+Description: for internal use only
+
+Name: debian-installer/country
+Type: string
+Description: for internal use; can be preseeded
+
+Name: debian-installer/di-utils-reboot/title
+Type: text
+Description: Abort the installation
+
+Name: debian-installer/di-utils-shell/title
+Type: text
+Description: Execute a shell
+
+Name: debian-installer/disk-detect/title
+Type: text
+Description: Detect disks
+
+Name: debian-installer/dummy
+Type: string
+Description: Dummy template for preseeding unavailable questions
+Extended_description: The answer to this question has been preseeded (${ID}). If you see this template, you've found a bug in the installer; please file a report.
+
+Name: debian-installer/elilo-installer/title
+Type: text
+Description: Install the elilo boot loader on a hard disk
+
+Name: debian-installer/ethdetect/title
+Type: text
+Description: Detect network hardware
+
+Name: debian-installer/exit/always_halt
+Type: boolean
+Default: false
+Description: for internal use only
+Extended_description: Always halt the machine
+
+Name: debian-installer/exit/halt
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Halt the machine
+
+Name: debian-installer/fallbacklocale
+Type: select
+Choices: ${LOCALELIST}
+Description: for internal use only
+
+Name: debian-installer/file-preseed/title
+Type: text
+Description: Load debconf preconfiguration file
+
+Name: debian-installer/finish-install/title
+Type: text
+Description: Finish the installation
+
+Name: debian-installer/framebuffer
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+Extended_description: Enable frame buffer console on boot
+
+Name: debian-installer/grub-installer/title
+Type: text
+Description: Install the GRUB boot loader on a hard disk
+
+Name: debian-installer/language
+Type: string
+Description: for internal use only
+
+Name: debian-installer/lilo-installer/title
+Type: text
+Description: Install the LILO boot loader on a hard disk
+
+Name: debian-installer/load-cdrom/title
+Type: text
+Description: Load installer components from CD
+
+Name: debian-installer/locale
+Type: select
+Choices: ${LOCALELIST}
+Description: Choose a locale:
+Extended_description: Based on your language and country choices, the following locale parameters are supported.
+
+Name: debian-installer/localechooser/title
+Type: text
+Description: Choose language
+
+Name: debian-installer/main-menu
+Type: select
+Default: ${DEFAULT}
+Choices: ${MENU}
+Description: Choose the next step in the install process:
+
+Name: debian-installer/main-menu-title
+Type: text
+Description: Ubuntu installer main menu
+
+Name: debian-installer/main-menu/item-failure
+Type: error
+Description: Installation step failed
+Extended_description: An installation step failed. You can try to run the failing item again from the menu, or skip it and choose something else. The failing step is: ${ITEM}
+
+Name: debian-installer/mdcfg/title
+Type: text
+Description: Configure MD devices
+
+Name: debian-installer/missing-provide
+Type: select
+Default: ${DEFAULT}
+Choices: ${CHOICES}
+Description: Choose an installation step:
+Extended_description: This installation step depends on one or more other steps that have not yet been performed.
+
+Name: debian-installer/netcfg-static/title
+Type: text
+Description: Configure a network using static addressing
+
+Name: debian-installer/netcfg/title
+Type: text
+Description: Configure the network
+
+Name: debian-installer/network-preseed/title
+Type: text
+Description: Download debconf preconfiguration file
+
+Name: debian-installer/nobootloader/title
+Type: text
+Description: Continue without boot loader
+
+Name: debian-installer/partman-base/title
+Type: text
+Description: Partition disks
+
+Name: debian-installer/partman-lvm/title
+Type: text
+Description: Configure the Logical Volume Manager
+
+Name: debian-installer/pkgsel/title
+Type: text
+Description: Select and install software
+
+Name: debian-installer/probe/usb
+Type: boolean
+Default: true
+Description: for internal use; can be preseeded
+Extended_description: Probe for USB devices?
+
+Name: debian-installer/save-logs/title
+Type: text
+Description: Save debug logs
+
+Name: debian-installer/theme
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Theme to use for the (newt or gtk) frontend
+
+Name: debian-installer/tzsetup-udeb/title
+Type: text
+Description: Configure time zone
+
+Name: debian-installer/user-setup-udeb/title
+Type: title
+Description: Set up users and passwords
+
+Name: di-utils-reboot/really_reboot
+Type: boolean
+Default: false
+Description: Are you sure you want to exit now?
+Extended_description: If you have not finished the install, your system may be left in an unusable state.
+
+Name: di-utils-shell/do-shell
+Type: note
+Description: Interactive shell
+Extended_description: After this message, you will be running "ash", a Bourne-shell clone. \n\nThe root file system is a RAM disk. The hard disk file systems are mounted on "/target". The editor available to you is nano. It's very small and easy to figure out. To get an idea of what Unix utilities are available to you, use the "help" command.\n\nUse the "exit" command to return to the installation menu.
+
+Name: disk-detect/cannot_find
+Type: error
+Description: No partitionable media
+Extended_description: No partitionable media were found.\n\nPlease check that a hard disk is attached to this machine.
+
+Name: disk-detect/detect_progress_title
+Type: text
+Description: Detecting disks and all other hardware
+
+Name: disk-detect/module_select
+Type: select
+Default: continue with no disk drive
+Choices: continue with no disk drive, ${CHOICES}, none of the above
+Description: Driver needed for your disk drive:
+Extended_description: No disk drive was detected. If you know the name of the driver needed by your disk drive, you can select it from the list.
+
+Name: elilo-installer/apt-install-failed
+Type: boolean
+Default: true
+Description: ELILO installation failed.  Continue anyway?
+Extended_description: The elilo package failed to install into /target/.  Installing ELILO as a boot loader is a required step.  The install problem might however be unrelated to ELILO, so continuing the installation may be possible.
+
+Name: elilo-installer/bootpart
+Type: select
+Choices: ${BOOTPARTS}
+Description: Partition for boot loader installation:
+Extended_description: Partitions currently available in your system are listed. Please choose the one you want elilo to use to boot your new system.
+
+Name: elilo-installer/failed
+Type: error
+Description: ELILO installation failed
+Extended_description: Running "/usr/sbin/elilo" failed with error code "${ERRCODE}".
+
+Name: elilo-installer/no-bootpart
+Type: error
+Description: No boot partitions detected
+Extended_description: There were no suitable partitions found for elilo to use.  Elilo needs a partition with a FAT file system, and the boot flag set.
+
+Name: elilo-installer/progress_installing
+Type: text
+Description: Installing the ELILO package
+
+Name: elilo-installer/progress_running
+Type: text
+Description: Running ELILO for ${bootdev}
+
+Name: ethdetect/cannot_find
+Type: error
+Description: Ethernet card not found
+Extended_description: No Ethernet card was found on the system.
+
+Name: ethdetect/detect_progress_title
+Type: text
+Description: Detecting network hardware
+
+Name: ethdetect/module_select
+Type: select
+Default: no ethernet card
+Choices: no ethernet card, ${CHOICES}, none of the above
+Description: Driver needed by your Ethernet card:
+Extended_description: No Ethernet card was detected. If you know the name of the driver needed by your Ethernet card, you can select it from the list.
+
+Name: ethdetect/use_firewire_ethernet
+Type: boolean
+Default: false
+Description: Do you intend to use FireWire Ethernet?
+Extended_description: No Ethernet card was detected, but a FireWire interface is present. It's possible, though unlikely, that with the right FireWire hardware connected to it, this could be your primary Ethernet interface.
+
+Name: finish-install/progress/cdrom-detect
+Type: text
+Description: Unmounting and ejecting CD-ROM...
+
+Name: finish-install/progress/clock-setup
+Type: text
+Description: Saving UTC setting...
+
+Name: finish-install/progress/config-target-network
+Type: text
+Description: Configuring network...
+
+Name: finish-install/progress/fallback
+Type: text
+Description: Running ${SCRIPT}...
+
+Name: finish-install/progress/framebuffer-module-linux-i386
+Type: text
+Description: Setting up frame buffer...
+
+Name: finish-install/progress/localechooser
+Type: text
+Description: Storing language...
+
+Name: finish-install/progress/reboot
+Type: text
+Description: Rebooting into your new system...
+
+Name: finish-install/progress/save-logs
+Type: text
+Description: Gathering information for installation report...
+
+Name: finish-install/progress/title
+Type: text
+Description: Finishing the installation
+
+Name: finish-install/progress/tzsetup
+Type: text
+Description: Saving time zone...
+
+Name: finish-install/progress/umount
+Type: text
+Description: Unmounting file systems...
+
+Name: finish-install/progress/user-setup
+Type: text
+Description: Setting users and passwords...
+
+Name: finish-install/reboot_in_progress
+Type: note
+Description: Installation complete
+Extended_description: Installation is complete, so it is time to boot into your new system. Make sure to remove the installation media (CD-ROM, floppies), so that you boot into the new system rather than restarting the installation.
+
+Name: floppy/device
+Type: select
+Choices: Cancel, ${DEVS}
+Description: Select your floppy device:
+Extended_description: No standard floppy drive was found. If you have a USB floppy drive or some other unusual type of floppy drive, select it from the list. Note that the list may also include devices that are not floppy drives.
+
+Name: grub-installer/apt-install-failed
+Type: boolean
+Default: true
+Description: GRUB installation failed.  Continue anyway?
+Extended_description: The grub package failed to install into /target/.  Installing GRUB as a boot loader is a required step.  The install problem might however be unrelated to GRUB, so continuing the installation may be possible.
+
+Name: grub-installer/bootdev
+Type: string
+Description: Device for boot loader installation:
+Extended_description: You need to make the newly installed system bootable, by installing the GRUB boot loader on a bootable device. The usual way to do this is to install GRUB on the master boot record of your first hard drive. If you prefer, you can install GRUB elsewhere on the drive, or to another drive, or even to a floppy.\n\nThe device can be specified using GRUB's "(hdn,m)" notation, or as a device in /dev. Below are some examples:\n - "(hd0)" or "/dev/hda" will install GRUB to the master boot record\n   of your first hard drive (IDE);\n - "(hd0,1)" or "/dev/hda2" will use the second partition of your\n   first IDE drive;\n - "(hd2,4)" or "/dev/sdc5" will use the first extended partition of\n   your third drive (SCSI here);\n - "(fd0)" or "/dev/fd0" will install GRUB to a floppy.\n\n
+
+Name: grub-installer/bootdev_directory
+Type: string
+Description: for internal use; relative boot directory for grub4dos
+Extended_description: Note that setting this disables installing grub. You are expected to install grub4dos some other way.
+
+Name: grub-installer/grub-install-failed
+Type: error
+Description: Unable to install GRUB in ${BOOTDEV}
+Extended_description: Executing 'grub-install ${BOOTDEV}' failed.\n\nThis is a fatal error.
+
+Name: grub-installer/grub2_instead_of_grub_legacy
+Type: boolean
+Default: false
+Description: Install GRUB 2 instead of GRUB Legacy?
+Extended_description: GRUB 2 is the next generation of GNU GRUB. It has interesting new features but is still experimental software. If you choose to install it, you should be prepared for breakage, and have an idea on how to recover your system if it becomes unbootable. You're advised not to try this in production environments.
+
+Name: grub-installer/install_to_xfs
+Type: boolean
+Default: false
+Description: Install the GRUB boot loader to XFS file system?
+Extended_description: The GRUB boot loader installation often fails or hangs when /boot is on a XFS file system. Using LILO in this situation is recommended.
+
+Name: grub-installer/only_debian
+Type: boolean
+Default: true
+Description: Install the GRUB boot loader to the master boot record?
+Extended_description: It seems that this new installation is the only operating system on this computer. If so, it should be safe to install the GRUB boot loader to the master boot record of your first hard drive.\n\nWarning: If the installer failed to detect another operating system that is present on your computer, modifying the master boot record will make that operating system temporarily unbootable, though GRUB can be manually configured later to boot it.
+
+Name: grub-installer/password
+Type: password
+Description: GRUB password:
+Extended_description: The GRUB boot loader offers many powerful interactive features, which could be used to compromise your system if unauthorized users have access to the machine when it is starting up. To defend against this, you may choose a password which will be required before editing menu entries or entering the GRUB command-line interface. By default, any user will still be able to start any menu entry without entering the password.\n\nIf you do not wish to set a GRUB password, leave this field blank.
+
+Name: grub-installer/password-crypted
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Has the value of grub-installer/password already been encrypted?
+
+Name: grub-installer/progress/step_bootdev
+Type: text
+Description: Determining GRUB boot device...
+
+Name: grub-installer/progress/step_config_loader
+Type: text
+Description: Running "update-grub"...
+
+Name: grub-installer/progress/step_install
+Type: text
+Description: Installing the 'grub' package...
+
+Name: grub-installer/progress/step_install_loader
+Type: text
+Description: Running "grub-install ${BOOTDEV}"...
+
+Name: grub-installer/progress/step_os-probe
+Type: text
+Description: Looking for other operating systems...
+
+Name: grub-installer/progress/step_update_etc
+Type: text
+Description: Updating /etc/kernel-img.conf...
+
+Name: grub-installer/progress/title
+Type: text
+Description: Installing GRUB boot loader
+
+Name: grub-installer/skip
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Skip installing grub?
+
+Name: grub-installer/update-grub-failed
+Type: error
+Description: Unable to configure GRUB
+Extended_description: Executing 'update-grub' failed.\n\nThis is a fatal error.
+
+Name: grub-installer/with_other_os
+Type: boolean
+Default: true
+Description: Install the GRUB boot loader to the master boot record?
+Extended_description: The following other operating systems have been detected on this computer: ${OS_LIST}\n\nIf all of your operating systems are listed above, then it should be safe to install the boot loader to the master boot record of your first hard drive. When your computer boots, you will be able to choose to load one of these operating systems or your new system.
+
+Name: hw-detect/detect_progress_step
+Type: text
+Description: Detecting hardware, please wait...
+
+Name: hw-detect/load_floppy
+Type: boolean
+Default: false
+Description: Load missing drivers from a driver floppy?
+Extended_description: A driver for your hardware is not available. You may need to load drivers from a driver floppy. If you have such a floppy available now, put it in the drive before continuing.
+
+Name: hw-detect/load_progress_step
+Type: text
+Description: Loading module '${MODULE}' for '${CARDNAME}'...
+
+Name: hw-detect/modprobe_error
+Type: error
+Description: Error while running '${CMD_LINE_PARAM}'
+
+Name: hw-detect/pcmcia_resources
+Type: string
+Description: PCMCIA resource range options:
+Extended_description: Some PCMCIA hardware needs special resource configuration options in order to work, and can cause the computer to freeze otherwise. For example, some Dell laptops need "exclude port 0x800-0x8ff" to be specified here. These options will be added to /etc/pcmcia/config.opts. See the installation manual or the PCMCIA HOWTO for more information.\n\nFor most hardware, you do not need to specify anything here.
+
+Name: hw-detect/pcmcia_step
+Type: text
+Description: Starting PC card services...
+
+Name: hw-detect/retry_params
+Type: string
+Description: Additional parameters for module ${MODULE}:
+Extended_description: The module ${MODULE} failed to load. You may need to pass parameters to the module to make it work; this is common with older hardware. These parameters are often I/O port and IRQ numbers that vary from machine to machine and cannot be determined from the hardware. An example string looks something like "irq=7 io=0x220"\n\nIf you don't know what to enter, consult your documentation, or leave it blank to not load the module.
+
+Name: hw-detect/select_modules
+Type: multiselect
+Choices: ${list}
+Description: Modules to load:
+Extended_description: The following Linux kernel modules were detected as matching your hardware. If you know some are unnecessary, or cause problems, you can choose not to load them. If you're unsure, you should leave them all selected.
+
+Name: hw-detect/start_pcmcia
+Type: boolean
+Default: true
+Description: Start PC card services?
+Extended_description: Please choose whether PC card services should be started in order to allow the use of PCMCIA cards.
+
+Name: initrd-kickseed/nfs-mount-failed
+Type: error
+Description: NFS mount failed
+Extended_description: An error occurred while mounting the directory ${DIR} from NFS server ${SERVER}. See /var/log/syslog for more information.
+
+Name: initrd-kickseed/wget-failed
+Type: error
+Description: Failed to download Kickstart file
+Extended_description: The Kickstart file at ${URL} could not be downloaded. The error was:\n\n${ERROR}
+
+Name: languagechooser/language-name
+Type: select
+Default: English
+Choices: C, Albanian, Arabic, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, Dzongkha, English, Esperanto, Estonian, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Khmer, Korean, Kurdish, Latvian, Lithuanian, Macedonian, Malayalam, Nepali, Northern Sami, Norwegian Bokmaal, Norwegian Nynorsk, Polish, Portuguese, Portuguese (Brazil), Punjabi (Gurmukhi), Romanian, Russian, Slovak, Slovenian, Spanish, Swedish, Tagalog, Tamil, Thai, Turkish, Ukrainian, Vietnamese, Wolof
+Description: Choose a language:
+Extended_description: Please choose the language used for the installation process. This language will be the default language for the final system.
+Choices-en.UTF-8: C                     - No localization, Albanian              - Shqip, Arabic                - عربي, Basque                - Euskaraz, Belarusian            - Беларуская, Bengali               - বাংলা, Bosnian               - Bosanski, Bulgarian             - Български, Catalan               - Català, Chinese (Simplified)  - 中文(简体), Chinese (Traditional) - 中文(繁體), Croatian              - Hrvatski, Czech                 - Čeština, Danish                - Dansk, Dutch                 - Nederlands, Dzongkha              - རྫོང་ཁ།, English               - English, Esperanto             - Esperanto, Estonian              - Eesti, Finnish               - Suomi, French                - Français, Galician              - Galego, Georgian              - ქართული, German                - Deutsch, Greek                 - Ελληνικά, Gujarati              - ગુજરાતી, Hebrew                - עברית, Hindi                 - हिन्दी , Hungarian             - Magyarul, Indonesian            - Bahasa Indonesia, Italian               - Italiano, Japanese              - 日本語, Khmer                 - ﻿ខ្មែរ, Korean                - 한국어, Kurdish               - Kurdî, Latvian               - Latviski, Lithuanian            - Lietuviškai, Macedonian            - Македонски, Malayalam             - മലയാളഠ, Nepali                - नेपाली , Northern Sami         - Sámegillii, Norwegian Bokmaal     - Norsk bokmål, Norwegian Nynorsk     - Norsk nynorsk, Polish                - Polski, Portuguese            - Português, Portuguese (Brazil)   - Português do Brasil, Punjabi (Gurmukhi)    - ਪੰਜਾਬੀ, Romanian              - Română, Russian               - Русский, Slovak                - Slovenčina, Slovenian             - Slovenščina, Spanish               - Español, Swedish               - Svenska, Tagalog               - Tagalog, Tamil                 - தமிழ், Thai                  - ภาษาไทย, Turkish               - Türkçe, Ukrainian             - Українська, Vietnamese            - Tiếng Việt, Wolof                 - Wolof
+
+Name: languagechooser/language-name-ascii
+Type: select
+Default: English
+Choices: C, English
+Description: Choose a language:
+Extended_description: Please choose the language used for the installation process. This language will be the default language for the final system.\n\nThis list is restricted to languages that can currently be displayed.
+Choices-en.UTF-8: C                     - No localization, English               - English
+
+Name: languagechooser/language-name-fb
+Type: select
+Default: English
+Choices: C, Albanian, Arabic, Basque, Belarusian, Bosnian, Bulgarian, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Finnish, French, Galician, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Kurdish, Latvian, Lithuanian, Macedonian, Northern Sami, Norwegian Bokmaal, Norwegian Nynorsk, Polish, Portuguese, Portuguese (Brazil), Romanian, Russian, Slovak, Slovenian, Spanish, Swedish, Tagalog, Turkish, Ukrainian, Vietnamese, Wolof
+Description: Choose a language:
+Extended_description: Please choose the language used for the installation process. This language will be the default language for the final system.\n\nThis list is restricted to languages that can currently be displayed.
+Choices-en.UTF-8: C                     - No localization, Albanian              - Shqip, Arabic                - عربي, Basque                - Euskaraz, Belarusian            - Беларуская, Bosnian               - Bosanski, Bulgarian             - Български, Catalan               - Català, Chinese (Simplified)  - 中文(简体), Chinese (Traditional) - 中文(繁體), Croatian              - Hrvatski, Czech                 - Čeština, Danish                - Dansk, Dutch                 - Nederlands, English               - English, Esperanto             - Esperanto, Estonian              - Eesti, Finnish               - Suomi, French                - Français, Galician              - Galego, German                - Deutsch, Greek                 - Ελληνικά, Hebrew                - עברית, Hungarian             - Magyarul, Indonesian            - Bahasa Indonesia, Italian               - Italiano, Japanese              - 日本語, Korean                - 한국어, Kurdish               - Kurdî, Latvian               - Latviski, Lithuanian            - Lietuviškai, Macedonian            - Македонски, Northern Sami         - Sámegillii, Norwegian Bokmaal     - Norsk bokmål, Norwegian Nynorsk     - Norsk nynorsk, Polish                - Polski, Portuguese            - Português, Portuguese (Brazil)   - Português do Brasil, Romanian              - Română, Russian               - Русский, Slovak                - Slovenčina, Slovenian             - Slovenščina, Spanish               - Español, Swedish               - Svenska, Tagalog               - Tagalog, Turkish               - Türkçe, Ukrainian             - Українська, Vietnamese            - Tiếng Việt, Wolof                 - Wolof
+
+Name: languagechooser/language-name-latin
+Type: select
+Default: English
+Choices: C, Basque, Catalan, Danish, Dutch, English, Finnish, French, Galician, German, Indonesian, Italian, Northern Sami, Norwegian Bokmaal, Norwegian Nynorsk, Portuguese, Portuguese (Brazil), Spanish, Swedish, Tagalog
+Description: Choose a language:
+Extended_description: Please choose the language used for the installation process. This language will be the default language for the final system.\n\nThis list is restricted to languages that can currently be displayed.
+Choices-en.UTF-8: C                     - No localization, Basque                - Euskaraz, Catalan               - Català, Danish                - Dansk, Dutch                 - Nederlands, English               - English, Finnish               - Suomi, French                - Français, Galician              - Galego, German                - Deutsch, Indonesian            - Bahasa Indonesia, Italian               - Italiano, Northern Sami         - Sámegillii, Norwegian Bokmaal     - Norsk bokmål, Norwegian Nynorsk     - Norsk nynorsk, Portuguese            - Português, Portuguese (Brazil)   - Português do Brasil, Spanish               - Español, Swedish               - Svenska, Tagalog               - Tagalog
+
+Name: languagechooser/locale
+Type: string
+Description: for internal use; can be preseeded
+
+Name: lilo-installer/activate-part
+Type: boolean
+Default: true
+Description: Would you like to make this partition active?
+Extended_description: You have chosen to install LILO on a partition that is not the active one. If this partition is not marked active, then LILO will not be loaded by the boot loader.  This may cause you to be unable to boot into the system that is being installed.\n\nYou should make this partition active unless you have another boot loader that will allow you to access your new Linux installation.
+
+Name: lilo-installer/apt-install-failed
+Type: boolean
+Default: true
+Description: LILO installation failed.  Continue anyway?
+Extended_description: The lilo package failed to install into /target/.  Installing LILO as a boot loader is a required step.  The install problem might however be unrelated to LILO, so continuing the installation may be possible.
+
+Name: lilo-installer/bootdev
+Type: select
+Choices: ${disc}: Master Boot Record, ${part}: new Ubuntu partition, Other choice (Advanced)
+Description: LILO installation target:
+Extended_description: The LILO program needs to be installed to make your new system bootable. By installing it onto your disk's Master Boot Record, LILO will take complete control of the boot process, but if you want to use a different boot manager, just install LILO on the new Ubuntu partition instead.\n\nIf unsure, install LILO into the Master Boot Record.
+
+Name: lilo-installer/bootdev_raid
+Type: select
+Choices: ${disc}: software RAID array, Other choice (Advanced)
+Description: LILO installation target:
+Extended_description: The LILO program needs to be installed to make your new system bootable. You may choose to install it onto a software RAID array or another device.
+
+Name: lilo-installer/failed
+Type: error
+Description: LILO installation failed
+Extended_description: Running "/sbin/lilo" failed with error code "${ERRCODE}".
+
+Name: lilo-installer/manual_bootdev
+Type: string
+Description: LILO installation target:
+Extended_description: Please enter the partition or disk onto which LILO should be installed. Devfs style names, such as those that start with /dev/ide, /dev/scsi, and /dev/discs are accepted, as well as traditional names, such as /dev/hda or /dev/sda.
+
+Name: lilo-installer/manual_bootdev_error
+Type: error
+Description: Invalid partition name
+Extended_description: The path ${path} does not represent a partition or hard disk device. Please try again.
+
+Name: lilo-installer/progress_active
+Type: text
+Description: Activating partition ${bootdev}
+
+Name: lilo-installer/progress_installing
+Type: text
+Description: Installing the LILO package
+
+Name: lilo-installer/progress_lilo_conf
+Type: text
+Description: Creating lilo.conf
+
+Name: lilo-installer/progress_running
+Type: text
+Description: Running LILO for ${bootdev}
+
+Name: lilo-installer/progress_title
+Type: text
+Description: Installing LILO...
+
+Name: lilo-installer/serial-console
+Type: note
+Description: LILO configured to use a serial console
+Extended_description: LILO is configured to use serial port ${PORT} as the console. The serial port speed is set to ${SPEED}.
+
+Name: lilo-installer/skip
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Skip installing lilo?
+
+Name: localechooser/alreadyrun
+Type: boolean
+Description: for internal use only
+
+Name: localechooser/no-translations-yet
+Type: note
+Description: Translations temporarily not available
+Extended_description: Because of the low available space on the installation media, translations will not be available immediately.\n\nThe installation will continue in English until the installer loads packages that include translations from a CD or the network.
+
+Name: localechooser/supported-locales
+Type: multiselect
+Choices: ${LOCALELIST}
+Description: Choose other locales to be supported:
+Extended_description: You may choose additional locales to be installed from this list.
+
+Name: lowmem/info
+Type: title
+Description: Low memory mode
+
+Name: lowmem/insufficient
+Type: error
+Description: Insufficient memory
+Extended_description: This system does not have enough memory to be supported by this program. At least ${MIN} megabytes of memory are required. If you continue, unpredictable and broken behavior will likely result. You should reboot now and add memory or find some other program to use.
+
+Name: lowmem/low
+Type: note
+Description: Entering low memory mode
+Extended_description: This system has relatively little free memory, so it will enter low memory mode. Among other things, this means that this program will proceed in English. You should set up swap space as soon as possible.
+
+Name: mdcfg/createmain
+Type: select
+Choices: RAID0, RAID1, RAID5, Cancel
+Description: Multidisk device type:
+Extended_description: Please choose the type of the multidisk device to be created.
+
+Name: mdcfg/delete_no_md
+Type: error
+Description: No multidisk devices available
+Extended_description: No multidisk devices are available for deletion.
+
+Name: mdcfg/deletefailed
+Type: error
+Description: Failed to delete the multidisk device
+Extended_description: There was an error deleting the multidisk device. It may be in use.
+
+Name: mdcfg/deletemenu
+Type: select
+Choices: ${DEVICES}, Cancel
+Description: Multidisk device to be deleted:
+Extended_description: Deleting a multidisk device will stop it and clear the superblock of all its components.\n\nPlease note this will not immediately allow you to reuse the partitions or devices in a new multidisk device. The array will however be unusable after the deletion.\n\nIf you select a device for deletion, you will get some information about it and you will be given the option of aborting this operation.
+
+Name: mdcfg/deleteverify
+Type: boolean
+Default: false
+Description: Really delete this multidisk device?
+Extended_description: Please confirm whether you really want to delete the following multidisk device:\n\n Device:            ${DEVICE}\n Type:              ${TYPE}\n Component devices:\n\n${DEVICES}
+
+Name: mdcfg/mainmenu
+Type: select
+Choices: Create MD device, Delete MD device, Finish
+Description: Multidisk configuration actions
+Extended_description: This is the Multidisk (MD) and software RAID configuration menu.\n\nPlease select one of the proposed actions to configure multidisk devices.
+
+Name: mdcfg/nomd
+Type: error
+Description: Multidisk (MD) not available
+Extended_description: The current kernel doesn't seem to support multidisk devices. This should be solved by loading the needed modules.
+
+Name: mdcfg/noparts
+Type: error
+Description: No RAID partitions available
+Extended_description: No unused partitions of the type "Linux RAID Autodetect" are available. Please create such a partition, or delete an already used multidisk device to free its partitions.\n\nIf you have such partitions, they might contain actual file systems, and are therefore not available for use by this configuration utility.
+
+Name: mdcfg/notenoughparts
+Type: error
+Description: Not enough RAID partitions available
+Extended_description: There are not enough RAID partitions available for your selected configuration.  You have ${NUM_PART} RAID partitions available but your configuration requires ${REQUIRED} partitions.
+
+Name: mdcfg/raid0devs
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Active devices for the RAID0 multidisk device:
+Extended_description: You have chosen to create a RAID0 array. Please choose the active devices in this array.
+
+Name: mdcfg/raid1devcount
+Type: string
+Description: Number of active devices for the RAID1 array:
+Extended_description: The RAID1 array will consist of both active and spare partitions. The active partitions are those used, while the spare devices will only be used if one or more of the active devices fail.\n\nNOTE: this setting cannot be changed later.
+
+Name: mdcfg/raid1devs
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Active devices for the RAID1 multidisk device:
+Extended_description: You have chosen to create an RAID1 array with ${COUNT} active devices.\n\nPlease choose which partitions are active devices. You must select exactly ${COUNT} partitions.
+
+Name: mdcfg/raid1sparecount
+Type: string
+Description: Number of spare devices for the RAID1 array:
+
+Name: mdcfg/raid1sparedevs
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Spare devices for the RAID1 multidisk device:
+Extended_description: You have chosen to create an RAID1 array with ${COUNT} spare devices.\n\nPlease choose which partitions will be used as spare devices. You may choose up to ${COUNT} partitions. If you choose less than ${COUNT} devices, the remaining partitions will be added to the array as "missing". You will be able to add them later to the array.
+
+Name: mdcfg/raid5devcount
+Type: string
+Description: Number of active devices for the RAID5 array:
+Extended_description: The RAID5 array will consist of both active and spare partitions. The active partitions are those used, while the spare devices will only be used if one or more of the active devices fail. A minimum of three active devices is required.\n\nNOTE: this setting cannot be changed later.
+
+Name: mdcfg/raid5devs
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Active devices for the RAID5 multidisk device:
+Extended_description: You have chosen to create an RAID5 array with ${COUNT} active devices.\n\nPlease choose which partitions are active devices. You must select exactly ${COUNT} partitions.
+
+Name: mdcfg/raid5sparecount
+Type: string
+Description: Number of spare devices for the RAID5 array:
+
+Name: mdcfg/raid5sparedevs
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Spare devices for the RAID5 multidisk device:
+Extended_description: You have chosen to create an RAID5 array with ${COUNT} spare devices.\n\nPlease choose which partitions will be used as spare devices. You may choose up to ${COUNT} partitions. If you choose less than ${COUNT} devices, the remaining partitions will be added to the array as "missing". You will be able to add them later to the array.
+
+Name: mirror/bad
+Type: error
+Description: Bad archive mirror
+Extended_description: The specified Ubuntu archive mirror is either not available, or does not have a valid Release file on it. Please try a different mirror.
+Description-en.UTF-8: Bad archive mirror
+Extended_description-en.UTF-8: The specified Ubuntu archive mirror is either not available, or does not have a valid Release file on it. Please try a different mirror.
+
+Name: mirror/checking_download
+Type: text
+Description: Downloading the Release file...
+Description-en.UTF-8: Downloading the Release file...
+
+Name: mirror/checking_title
+Type: text
+Description: Checking the Ubuntu archive mirror
+Description-en.UTF-8: Checking the Ubuntu archive mirror
+
+Name: mirror/codename
+Type: string
+Description: codename for the selected suite (internal use)
+
+Name: mirror/country
+Type: string
+Description: country code or "enter information manually" (internal use)
+
+Name: mirror/ftp/directory
+Type: string
+Default: /ubuntu/
+Description: Ubuntu archive mirror directory:
+Extended_description: Please enter the directory in which the mirror of the Ubuntu archive is located.
+Description-en.UTF-8: Ubuntu archive mirror directory:
+Extended_description-en.UTF-8: Please enter the directory in which the mirror of the Ubuntu archive is located.
+
+Name: mirror/ftp/hostname
+Type: string
+Description: Ubuntu archive mirror hostname:
+Extended_description: Please enter the hostname of the mirror from which Ubuntu will be downloaded.\n\nAn alternate port can be specified using the standard [hostname]:[port] format.
+Description-en.UTF-8: Ubuntu archive mirror hostname:
+Extended_description-en.UTF-8: Please enter the hostname of the mirror from which Ubuntu will be downloaded.\n\nAn alternate port can be specified using the standard [hostname]:[port] format.
+
+Name: mirror/ftp/proxy
+Type: string
+Description: FTP proxy information (blank for none):
+Extended_description: If you need to use a FTP proxy to access the outside world, enter the proxy information here. Otherwise, leave this blank.\n\nThe proxy information should be given in the standard form of "http://[[user][:pass]@]host[:port]/".
+Description-en.UTF-8: FTP proxy information (blank for none):
+Extended_description-en.UTF-8: If you need to use a FTP proxy to access the outside world, enter the proxy information here. Otherwise, leave this blank.\n\nThe proxy information should be given in the standard form of "http://[[user][:pass]@]host[:port]/".
+
+Name: mirror/http/countries
+Type: select
+Default: GB
+Choices: enter information manually, AD, AE, AF, AG, AI, AL, AM, AN, AO, AQ, AR, AS, AT, AU, AW, AX, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BM, BN, BO, BR, BS, BT, BV, BW, BY, BZ, CA, CC, CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, EH, ER, ES, ET, FI, FJ, FK, FM, FO, FR, GA, GB, GD, GE, GF, GG, GH, GI, GL, GM, GN, GP, GQ, GR, GS, GT, GU, GW, GY, HK, HM, HN, HR, HT, HU, ID, IE, IL, IM, IN, IO, IQ, IR, IS, IT, JE, JM, JO, JP, KE, KG, KH, KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MM, MN, MO, MP, MQ, MR, MS, MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NF, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PL, PM, PN, PR, PS, PT, PW, PY, QA, RE, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG, SH, SI, SJ, SK, SL, SM, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TF, TG, TH, TJ, TK, TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, UM, US, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW
+Description: Ubuntu archive mirror country:
+Extended_description: The goal is to find a mirror of the Ubuntu archive that is close to you on the network -- be aware that nearby countries, or even your own, may not be the best choice.
+Default-en.UTF-8: GB
+Choices-en.UTF-8: enter information manually, Andorra, United Arab Emirates, Afghanistan, Antigua and Barbuda, Anguilla, Albania, Armenia, Netherlands Antilles, Angola, Antarctica, Argentina, American Samoa, Austria, Australia, Aruba, Åland Islands, Azerbaijan, Bosnia and Herzegovina, Barbados, Bangladesh, Belgium, Burkina Faso, Bulgaria, Bahrain, Burundi, Benin, Bermuda, Brunei Darussalam, Bolivia, Brazil, Bahamas, Bhutan, Bouvet Island, Botswana, Belarus, Belize, Canada, Cocos (Keeling) Islands, Congo\, The Democratic Republic of the, Central African Republic, Congo, Switzerland, Côte d'Ivoire, Cook Islands, Chile, Cameroon, China, Colombia, Costa Rica, Cuba, Cape Verde, Christmas Island, Cyprus, Czech Republic, Germany, Djibouti, Denmark, Dominica, Dominican Republic, Algeria, Ecuador, Estonia, Egypt, Western Sahara, Eritrea, Spain, Ethiopia, Finland, Fiji, Falkland Islands (Malvinas), Micronesia\, Federated States of, Faroe Islands, France, Gabon, United Kingdom, Grenada, Georgia, French Guiana, Guernsey, Ghana, Gibraltar, Greenland, Gambia, Guinea, Guadeloupe, Equatorial Guinea, Greece, South Georgia and the South Sandwich Islands, Guatemala, Guam, Guinea-Bissau, Guyana, Hong Kong, Heard Island and McDonald Islands, Honduras, Croatia, Haiti, Hungary, Indonesia, Ireland, Israel, Isle of Man, India, British Indian Ocean Territory, Iraq, Iran\, Islamic Republic of, Iceland, Italy, Jersey, Jamaica, Jordan, Japan, Kenya, Kyrgyzstan, Cambodia, Kiribati, Comoros, Saint Kitts and Nevis, Korea\, Democratic People's Republic of, Korea\, Republic of, Kuwait, Cayman Islands, Kazakhstan, Lao People's Democratic Republic, Lebanon, Saint Lucia, Liechtenstein, Sri Lanka, Liberia, Lesotho, Lithuania, Luxembourg, Latvia, Libyan Arab Jamahiriya, Morocco, Monaco, Moldova\, Republic of, Montenegro, Madagascar, Marshall Islands, Macedonia\, Republic of, Mali, Myanmar, Mongolia, Macao, Northern Mariana Islands, Martinique, Mauritania, Montserrat, Malta, Mauritius, Maldives, Malawi, Mexico, Malaysia, Mozambique, Namibia, New Caledonia, Niger, Norfolk Island, Nigeria, Nicaragua, Netherlands, Norway, Nepal, Nauru, Niue, New Zealand, Oman, Panama, Peru, French Polynesia, Papua New Guinea, Philippines, Pakistan, Poland, Saint Pierre and Miquelon, Pitcairn, Puerto Rico, Palestinian Territory\, Occupied, Portugal, Palau, Paraguay, Qatar, Reunion, Romania, Serbia, Russian Federation, Rwanda, Saudi Arabia, Solomon Islands, Seychelles, Sudan, Sweden, Singapore, Saint Helena, Slovenia, Svalbard and Jan Mayen, Slovakia, Sierra Leone, San Marino, Senegal, Somalia, Suriname, Sao Tome and Principe, El Salvador, Syrian Arab Republic, Swaziland, Turks and Caicos Islands, Chad, French Southern Territories, Togo, Thailand, Tajikistan, Tokelau, Timor-Leste, Turkmenistan, Tunisia, Tonga, Turkey, Trinidad and Tobago, Tuvalu, Taiwan, Tanzania\, United Republic of, Ukraine, Uganda, United States Minor Outlying Islands, United States, Uruguay, Uzbekistan, Holy See (Vatican City State), Saint Vincent and the Grenadines, Venezuela, Virgin Islands\, British, Virgin Islands\, U.S., Viet Nam, Vanuatu, Wallis and Futuna, Samoa, Yemen, Mayotte, South Africa, Zambia, Zimbabwe
+Indices-en.UTF-8: 1, 4, 17, 7, 61, 13, 2, 10, 6, 11, 5, 12, 8, 16, 15, 14, 18, 32, 25, 21, 20, 36, 22, 37, 27, 28, 33, 30, 19, 35, 34, 31, 105, 29, 24, 23, 26, 116, 47, 38, 52, 123, 41, 211, 46, 48, 53, 39, 49, 118, 42, 40, 45, 50, 44, 97, 51, 54, 55, 58, 57, 59, 60, 62, 64, 207, 87, 66, 63, 68, 71, 73, 70, 69, 74, 79, 173, 212, 75, 84, 78, 56, 81, 82, 88, 83, 77, 86, 91, 90, 80, 85, 92, 93, 98, 95, 232, 96, 94, 99, 108, 104, 100, 107, 106, 101, 103, 102, 109, 111, 113, 110, 112, 124, 114, 117, 120, 121, 122, 115, 125, 134, 126, 131, 130, 135, 128, 132, 133, 146, 142, 140, 154, 156, 153, 143, 151, 141, 148, 149, 152, 242, 155, 72, 138, 137, 145, 139, 150, 136, 157, 144, 158, 167, 166, 164, 9, 159, 169, 163, 160, 162, 168, 161, 147, 165, 170, 176, 183, 181, 171, 174, 184, 172, 175, 179, 177, 182, 180, 185, 186, 187, 189, 190, 197, 119, 127, 178, 233, 240, 202, 206, 191, 203, 188, 193, 201, 196, 200, 198, 192, 204, 243, 89, 67, 129, 194, 205, 199, 209, 195, 43, 208, 224, 215, 225, 214, 217, 213, 216, 220, 222, 219, 221, 218, 210, 223, 227, 226, 3, 76, 229, 228, 230, 231, 238, 234, 237, 235, 236, 239, 65, 241, 244, 245
+Description-en.UTF-8: Ubuntu archive mirror country:
+Extended_description-en.UTF-8: The goal is to find a mirror of the Ubuntu archive that is close to you on the network -- be aware that nearby countries, or even your own, may not be the best choice.
+
+Name: mirror/http/directory
+Type: string
+Default: /ubuntu/
+Description: Ubuntu archive mirror directory:
+Extended_description: Please enter the directory in which the mirror of the Ubuntu archive is located.
+Description-en.UTF-8: Ubuntu archive mirror directory:
+Extended_description-en.UTF-8: Please enter the directory in which the mirror of the Ubuntu archive is located.
+
+Name: mirror/http/hostname
+Type: string
+Description: Ubuntu archive mirror hostname:
+Extended_description: Please enter the hostname of the mirror from which Ubuntu will be downloaded.\n\nAn alternate port can be specified using the standard [hostname]:[port] format.
+Description-en.UTF-8: Ubuntu archive mirror hostname:
+Extended_description-en.UTF-8: Please enter the hostname of the mirror from which Ubuntu will be downloaded.\n\nAn alternate port can be specified using the standard [hostname]:[port] format.
+
+Name: mirror/http/mirror
+Type: select
+Default: archive.ubuntu.com
+Choices: ${mirrors}
+Description: Ubuntu archive mirror:
+Extended_description: Please select an Ubuntu archive mirror. You should use a mirror in your country or region if you do not know which mirror has the best Internet connection to you.\n\nUsually, <your country code>.archive.ubuntu.com is a good choice.
+Description-en.UTF-8: Ubuntu archive mirror:
+Extended_description-en.UTF-8: Please select an Ubuntu archive mirror. You should use a mirror in your country or region if you do not know which mirror has the best Internet connection to you.\n\nUsually, <your country code>.archive.ubuntu.com is a good choice.
+
+Name: mirror/http/proxy
+Type: string
+Description: HTTP proxy information (blank for none):
+Extended_description: If you need to use a HTTP proxy to access the outside world, enter the proxy information here. Otherwise, leave this blank.\n\nThe proxy information should be given in the standard form of "http://[[user][:pass]@]host[:port]/".
+Description-en.UTF-8: HTTP proxy information (blank for none):
+Extended_description-en.UTF-8: If you need to use a HTTP proxy to access the outside world, enter the proxy information here. Otherwise, leave this blank.\n\nThe proxy information should be given in the standard form of "http://[[user][:pass]@]host[:port]/".
+
+Name: mirror/noarch
+Type: error
+Description: Architecture not supported
+Extended_description: The specified Ubuntu archive mirror does not seem to support your architecture. Please try a different mirror.
+Description-en.UTF-8: Architecture not supported
+Extended_description-en.UTF-8: The specified Ubuntu archive mirror does not seem to support your architecture. Please try a different mirror.
+
+Name: mirror/protocol
+Type: select
+Default: http
+Choices: ${protocols}
+Description: Protocol for file downloads:
+Extended_description: Please select the protocol to be used for downloading files. If unsure, select "http"; it is less prone to problems involving firewalls.
+Description-en.UTF-8: Protocol for file downloads:
+Extended_description-en.UTF-8: Please select the protocol to be used for downloading files. If unsure, select "http"; it is less prone to problems involving firewalls.
+
+Name: mirror/suite
+Type: select
+Default: gutsy
+Choices: warty, hoary, breezy, dapper, edgy, feisty, gutsy
+Description: Ubuntu version to install:
+Extended_description: In Ubuntu, this question is never asked, and is only for preseeding. Caveat emptor.
+
+Name: netcfg/bad_ipaddress
+Type: error
+Description: Malformed IP address
+Extended_description: The IP address you provided is malformed. It should be in the form x.x.x.x where each 'x' is no larger than 255. Please try again.
+
+Name: netcfg/choose_interface
+Type: select
+Choices: ${ifchoices}
+Description: Primary network interface:
+Extended_description: Your system has multiple network interfaces. Choose the one to use as the primary network interface during the installation. If possible, the first connected network interface found has been selected.
+
+Name: netcfg/confirm_static
+Type: boolean
+Default: true
+Description: Is this information correct?
+Extended_description: Currently configured network parameters:\n\n interface     = ${interface}\n ipaddress     = ${ipaddress}\n netmask       = ${netmask}\n gateway       = ${gateway}\n pointopoint   = ${pointopoint}\n nameservers   = ${nameservers}\n\n
+
+Name: netcfg/dhcp_failed
+Type: note
+Description: Network autoconfiguration failed
+Extended_description: Your network is probably not using the DHCP protocol. Alternatively, the DHCP server may be slow or some network hardware is not working properly.
+
+Name: netcfg/dhcp_hostname
+Type: string
+Description: DHCP hostname:
+Extended_description: You may need to supply a DHCP host name. If you are using a cable modem, you might need to specify an account number here.\n\nMost other users can just leave this blank.
+
+Name: netcfg/dhcp_options
+Type: select
+Default: Configure network manually
+Choices: Retry network autoconfiguration, Retry network autoconfiguration with a DHCP hostname, Configure network manually, ${wifireconf}, Do not configure the network at this time
+Description: Network configuration method:
+Extended_description: From here you can choose to retry DHCP network autoconfiguration (which may succeed if your DHCP server takes a long time to respond) or to configure the network manually. Some DHCP servers require a DHCP hostname to be sent by the client, so you can also choose to retry DHCP network autoconfiguration with a hostname that you provide.
+
+Name: netcfg/dhcp_progress
+Type: text
+Description: Configuring the network with DHCP
+
+Name: netcfg/dhcp_progress_note
+Type: text
+Description: This may take some time.
+
+Name: netcfg/dhcp_success_note
+Type: text
+Description: Network autoconfiguration has succeeded
+
+Name: netcfg/dhcp_timeout
+Type: text
+Default: 15
+Description: for internal use; can be preseeded
+Extended_description: Timeout for trying DHCP
+
+Name: netcfg/disable_dhcp
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Set to true to force static network configuration
+
+Name: netcfg/error
+Type: error
+Description: Error
+Extended_description: An error occurred and the network configuration process has been aborted. You may retry it from the installation main menu.
+
+Name: netcfg/gateway_unreachable
+Type: error
+Description: Unreachable gateway
+Extended_description: The gateway address you entered is unreachable.\n\nYou may have made an error entering your IP address, netmask and/or gateway.
+
+Name: netcfg/get_domain
+Type: string
+Description: Domain name:
+Extended_description: The domain name is the part of your Internet address to the right of your host name.  It is often something that ends in .com, .net, .edu, or .org.  If you are setting up a home network, you can make something up, but make sure you use the same domain name on all your computers.
+
+Name: netcfg/get_gateway
+Type: string
+Description: Gateway:
+Extended_description: The gateway is an IP address (four numbers separated by periods) that indicates the gateway router, also known as the default router.  All traffic that goes outside your LAN (for instance, to the Internet) is sent through this router.  In rare circumstances, you may have no router; in that case, you can leave this blank.  If you don't know the proper answer to this question, consult your network administrator.
+
+Name: netcfg/get_hostname
+Type: string
+Default: ubuntu
+Description: Hostname:
+Extended_description: Please enter the hostname for this system.\n\nThe hostname is a single word that identifies your system to the network. If you don't know what your hostname should be, consult your network administrator. If you are setting up your own home network, you can make something up here.
+
+Name: netcfg/get_ipaddress
+Type: string
+Description: IP address:
+Extended_description: The IP address is unique to your computer and consists of four numbers separated by periods.  If you don't know what to use here, consult your network administrator.
+
+Name: netcfg/get_nameservers
+Type: string
+Description: Name server addresses:
+Extended_description: The name servers are used to look up host names on the network. Please enter the IP addresses (not host names) of up to 3 name servers, separated by spaces. Do not use commas. The first name server in the list will be the first to be queried. If you don't want to use any name server, just leave this field blank.
+
+Name: netcfg/get_netmask
+Type: string
+Default: 255.255.255.0
+Description: Netmask:
+Extended_description: The netmask is used to determine which machines are local to your network.  Consult your network administrator if you do not know the value.  The netmask should be entered as four numbers separated by periods.
+
+Name: netcfg/get_pointopoint
+Type: string
+Description: Point-to-point address:
+Extended_description: The point-to-point address is used to determine the other endpoint of the point to point network.  Consult your network administrator if you do not know the value.  The point-to-point address should be entered as four numbers separated by periods.
+
+Name: netcfg/internal-arc
+Type: text
+Description: Arcnet
+
+Name: netcfg/internal-ctc
+Type: text
+Description: Channel-to-channel
+
+Name: netcfg/internal-escon
+Type: text
+Description: Real channel-to-channel
+
+Name: netcfg/internal-eth
+Type: text
+Description: Ethernet or FireWire (IEEE 1394)
+
+Name: netcfg/internal-hsi
+Type: text
+Description: Hipersocket
+
+Name: netcfg/internal-ippp
+Type: text
+Description: ISDN Point-to-Point Protocol
+
+Name: netcfg/internal-iucv
+Type: text
+Description: Inter-user communication vehicle
+
+Name: netcfg/internal-none
+Type: text
+Description: <none>
+
+Name: netcfg/internal-plip
+Type: text
+Description: Parallel-port IP
+
+Name: netcfg/internal-ppp
+Type: text
+Description: Point-to-Point Protocol
+
+Name: netcfg/internal-sit
+Type: text
+Description: IPv6-in-IPv4
+
+Name: netcfg/internal-slip
+Type: text
+Description: Serial-line IP
+
+Name: netcfg/internal-tr
+Type: text
+Description: Token Ring
+
+Name: netcfg/internal-unknown-iface
+Type: text
+Description: Unknown interface
+
+Name: netcfg/internal-usb
+Type: text
+Description: USB net
+
+Name: netcfg/internal-wifi
+Type: text
+Description: Wireless ethernet (802.11x)
+
+Name: netcfg/internal-wifireconf
+Type: text
+Description: Reconfigure the wireless network
+
+Name: netcfg/internal-wireless
+Type: text
+Description: wireless
+
+Name: netcfg/invalid_essid
+Type: error
+Description: Invalid ESSID
+Extended_description: The ESSID "${essid}" is invalid. ESSIDs may only be up to 32 characters, but may contain all kinds of characters.
+
+Name: netcfg/invalid_hostname
+Type: error
+Description: Invalid hostname
+Extended_description: The name "${hostname}" is invalid.\n\nA valid hostname may contain only the numbers 0-9, the lowercase letters a-z, and the minus sign. It must be between 2 and 63 characters long, and may not begin or end with a minus sign.
+
+Name: netcfg/invalid_wep
+Type: error
+Description: Invalid WEP key
+Extended_description: The WEP key '${wepkey}' is invalid. Please refer to the instructions on the next screen carefully on how to enter your WEP key correctly, and try again.
+
+Name: netcfg/kill_switch_enabled
+Type: note
+Description: Kill switch enabled on ${iface}
+Extended_description: ${iface} appears to have been disabled by means of a physical "kill switch". If you intend to use this interface, please switch it on before continuing.
+
+Name: netcfg/no_default_route
+Type: boolean
+Description: Continue without a default route?
+Extended_description: The network autoconfiguration was successful. However, no default route was set: the system does not know how to communicate with hosts on the Internet. This will make it impossible to continue with the installation unless you have the first installation CD-ROM, a 'Netinst' CD-ROM, or packages available on the local network.\n\nIf you are unsure, you should not continue without a default route: contact your local network administrator about this problem.
+
+Name: netcfg/no_dhcp_client
+Type: error
+Description: No DHCP client found
+Extended_description: No DHCP client was found. This package requires pump or dhcp-client.\n\nThe DHCP configuration process has been aborted.
+
+Name: netcfg/no_interfaces
+Type: error
+Description: No network interfaces detected
+Extended_description: No network interfaces were found. The installation system was unable to find a network device. \n\nYou may need to load a specific module for your network card, if you have one. For this, go back to the network hardware detection step.
+
+Name: netcfg/use_dhcp
+Type: boolean
+Default: true
+Description: Auto-configure network with DHCP?
+Extended_description: Networking can either be configured by DHCP or by manually entering all the information. If you choose to use DHCP and the installer is unable to get a working configuration from a DHCP server on your network, you will be given the opportunity to configure your network manually after the attempt to configure it by DHCP.
+
+Name: netcfg/wifi_progress_info
+Type: text
+Description: Searching for wireless access points ...
+
+Name: netcfg/wifi_progress_title
+Type: text
+Description: Wireless network configuration
+
+Name: netcfg/wireless_adhoc_managed
+Type: select
+Default: Infrastructure (Managed) network
+Choices: Infrastructure (Managed) network, Ad-hoc network (Peer to peer)
+Description: Type of wireless network:
+Extended_description: Wireless networks are either managed or ad-hoc. If you use a real access point of some sort, your network is Managed. If another computer is your 'access point', then your network may be Ad-hoc.
+
+Name: netcfg/wireless_essid
+Type: string
+Description: Wireless ESSID for ${iface}:
+Extended_description: ${iface} is a wireless network interface. Please enter the name (the ESSID) of the wireless network you would like ${iface} to use. If you would like to use any available network, leave this field blank.
+
+Name: netcfg/wireless_essid_again
+Type: string
+Description: Wireless ESSID for ${iface}:
+Extended_description: Attempting to find an available wireless network failed.\n\n${iface} is a wireless network interface. Please enter the name (the ESSID) of the wireless network you would like ${iface} to use. To skip wireless configuration and continue, leave this field blank.
+
+Name: netcfg/wireless_wep
+Type: string
+Description: WEP key for wireless device ${iface}:
+Extended_description: If applicable, please enter the WEP security key for the wireless device ${iface}. There are two ways to do this:\n\nIf your WEP key is in the format 'nnnn-nnnn-nn', 'nn:nn:nn:nn:nn:nn:nn:nn', or 'nnnnnnnn', where n is a number, just enter it as it is into this field.\n\nIf your WEP key is in the format of a passphrase, prefix it with 's:' (without quotes).\n\nOf course, if there is no WEP key for your wireless network, leave this field blank.
+
+Name: nobootloader/confirmation_arm_netwinder_nettrom
+Type: note
+Description: Setting firmware variables for automatic boot
+Extended_description: Some variables need to be set in the Netwinder NeTTrom firmware in order for your system to boot linux automatically.  At the end of this installation stage, the system will reboot, and the firmware will attempt to autoboot.  You can abort this by pressing any key. You will then be dropped into the NeTTrom command system where you have to execute the following commands:\n\n   setenv kernconfig fs\n   setenv kerndev ${KERNDEV}\n   setenv kernfile ${KERNFILE}\n   setenv rootdev ${ROOTDEV}\n   setenv cmdappend ${CMDAPPEND}\n   save-all\n\nYou will only need to do this once.  Afterwards, enter the "boot" command or reboot the system to proceed to your newly installed system.
+
+Name: nobootloader/confirmation_common
+Type: note
+Description: No boot loader installed
+Extended_description: No boot loader has been installed, either because you chose not to or because your specific architecture doesn't support a boot loader yet.\n\nYou will need to boot manually with the ${KERNEL} kernel on partition ${BOOT} and ${ROOT} passed as a kernel argument.
+
+Name: nobootloader/confirmation_powerpc_chrp_pegasos
+Type: note
+Description: Setting firmware variables for automatic boot
+Extended_description: Some variables need to be set in the Genesi firmware in order for your system to boot automatically.  At the end of the installation, the system will reboot.  At the firmware prompt, set the following firmware variables to enable auto-booting:\n\n setenv boot-device ${OF_BOOT_DEVICE}\n setenv boot-file ${OF_BOOT_FILE}\n setenv auto-boot-timeout 5000\n setenv auto-boot? true\n\nYou will only need to do this once.  Afterwards, enter the "boot" command or reboot the system to proceed to your newly installed system.\n\nAlternatively, you will be able to boot the kernel manually by entering, at the firmware prompt:\n\n ${KERNEL_BOOT}
+
+Name: nobootloader/mounterr
+Type: error
+Description: Failed to mount /target/proc
+Extended_description: Mounting the proc file system on /target/proc failed.\n\nCheck /var/log/syslog or see virtual console 4 for the details.\n\nWarning: Your system may be unbootable!
+
+Name: oem-config/enable
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Enable OEM mode? This is only recommended for use by manufacturers who will be shipping systems to end users.
+
+Name: oem-config/info
+Type: title
+Description: OEM mode (for manufacturers only)
+
+Name: partman-auto-crypto/text/choice
+Type: text
+Description: Guided - use entire disk and set up encrypted LVM
+
+Name: partman-auto-loop/unclean_host
+Type: error
+Description: Loop-mounted file systems already present
+Extended_description: The selected partition (partition ${PARTITION} of ${DISK}) already contains the following file system images:\n\n${IMAGES}\n\nPlease uninstall these before trying again.
+
+Name: partman-auto-lvm/new_vg_name
+Type: string
+Description: Name of the volume group for the new system:
+
+Name: partman-auto-lvm/new_vg_name_exists
+Type: string
+Description: Name of the volume group for the new system:
+Extended_description: The selected volume group name is already in use. Please choose another name.
+
+Name: partman-auto-lvm/no_boot
+Type: boolean
+Description: Continue installation without /boot partition?
+Extended_description: The recipe you selected does not contain a separate partition for /boot. This is normally needed to allow you to boot the system when using LVM.\n\nYou can choose to ignore this warning, but that may result in a failure to reboot the system after the installation is completed.
+
+Name: partman-auto-lvm/text/choice
+Type: text
+Description: Guided - use entire disk and set up LVM
+
+Name: partman-auto-lvm/unusable_recipe
+Type: error
+Description: Failed to partition the selected disk
+Extended_description: This happened because the selected recipe does not contain any partition that can be created on LVM volumes.
+
+Name: partman-auto-lvm/vg_create_error
+Type: error
+Description: Unexpected error while creating volume group
+Extended_description: Autopartitioning using LVM failed because an error occurred while creating the volume group.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-auto-lvm/vg_exists
+Type: error
+Description: Volume group name already in use
+Extended_description: The volume group name used to automatically partition using LVM is already in use. Lowering the priority for configuration questions will allow you to specify an alternative name.
+
+Name: partman-auto/automatically_partition
+Type: select
+Choices: ${CHOICES}
+Description: Partitioning method:
+Extended_description: If you choose guided partitioning for an entire disk, you will next be asked which disk should be used.
+
+Name: partman-auto/autopartitioning_failed
+Type: error
+Description: Failed to partition the selected disk
+Extended_description: This probably happened because there are too many (primary) partitions in the partition table.
+
+Name: partman-auto/cannot_purge_lvm_from_device
+Type: error
+Description: LVM physical volume already exists on the selected device
+Extended_description: The selected device already contains one or more LVM physical volumes which cannot be removed. It is therefore not possible to automatically partition this device.
+
+Name: partman-auto/choose_recipe
+Type: select
+Choices: ${CHOICES}
+Description: Partitioning scheme:
+Extended_description: Selected for partitioning:\n\n${TARGET}\n\nThe disk can be partitioned using one of several different schemes. If you are unsure, choose the first one.
+
+Name: partman-auto/disk
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Device to partition, in either devfs or non format
+
+Name: partman-auto/expert_recipe
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Expert recipe content
+
+Name: partman-auto/expert_recipe_file
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: File to load for expert recipe
+
+Name: partman-auto/init_automatically_partition
+Type: select
+Choices: ${CHOICES}
+Description: Partitioning method:
+Extended_description: The installer can guide you through partitioning a disk (using different standard schemes) or, if you prefer, you can do it manually. With guided partitioning you will still have a chance later to review and customise the results.\n\nIf you choose guided partitioning for an entire disk, you will next be asked which disk should be used.
+
+Name: partman-auto/method
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Method to use for partitioning
+
+Name: partman-auto/no_recipe
+Type: error
+Description: Failed to partition the selected disk
+Extended_description: This probably happened because the selected disk or free space is too small to be automatically partitioned.
+
+Name: partman-auto/progress/info
+Type: text
+Description: Computing the new partitions...
+
+Name: partman-auto/progress/title
+Type: text
+Description: Please wait...
+
+Name: partman-auto/purge_crypto_from_device
+Type: boolean
+Default: false
+Description: Remove existing crypto volume data?
+Extended_description: The selected device already contains a crypto volume which is about to be removed.\n\nThe following crypto volume will be removed: ${TARGET}\n\nNote that this will also permanently erase any data currently on the crypto volume.
+
+Name: partman-auto/purge_lvm_from_device
+Type: boolean
+Default: false
+Description: Remove existing logical volume data?
+Extended_description: The selected device already contains the following LVM logical volumes, volume groups and physical volumes which are about to be removed:\n\nLogical volume(s) to be removed: ${LVTARGETS}\n\nVolume group(s) to be removed: ${VGTARGETS}\n\nPhysical volume(s) to be removed: ${PVTARGETS}\n\nNote that this will permanently erase any data currently on the logical volumes.
+
+Name: partman-auto/resize_insufficient_space
+Type: error
+Description: Failed to create enough space for installation
+Extended_description: The resize operation did not create enough free space for the installation. Resizing may have failed. You will have to set up partitions manually.
+
+Name: partman-auto/select_disk
+Type: select
+Choices: ${CHOICES}
+Description: Select disk to partition:
+Extended_description: Note that all data on the disk you select will be erased, but not before you have confirmed that you really want to make the changes.
+
+Name: partman-auto/select_disks
+Type: multiselect
+Choices: ${CHOICES}
+Description: Select disk(s) to partition:
+Extended_description: Note that all data on the disk(s) you select will be erased, but not before you have confirmed that you really want to make the changes.
+
+Name: partman-auto/text/atomic_scheme
+Type: text
+Description: All files in one partition (recommended for new users)
+
+Name: partman-auto/text/auto_free_space
+Type: text
+Description: Automatically partition the free space
+
+Name: partman-auto/text/automatically_partition
+Type: text
+Description: Guided partitioning
+
+Name: partman-auto/text/custom_partitioning
+Type: text
+Description: Manual
+
+Name: partman-auto/text/home_scheme
+Type: text
+Description: Separate /home partition
+
+Name: partman-auto/text/multi_scheme
+Type: text
+Description: Separate /home, /usr, /var, and /tmp partitions
+
+Name: partman-auto/text/resize_use_free
+Type: text
+Description: Guided - resize ${PARTITION} and use freed space
+
+Name: partman-auto/text/small_disk
+Type: text
+Description: Small-disk (< 1GB) partitioning scheme
+
+Name: partman-auto/text/use_biggest_free
+Type: text
+Description: Guided - use the largest continuous free space
+
+Name: partman-auto/text/use_device
+Type: text
+Description: Guided - use entire disk
+
+Name: partman-auto/unusable_space
+Type: error
+Description: Unusable free space
+Extended_description: Partitioning failed because the chosen free space may not be used. There are probably too many (primary) partitions in the partition table.
+
+Name: partman-base/devicelocked
+Type: error
+Description: Device in use
+Extended_description: No modifications can be made to the device ${DEVICE} for the following reasons:\n\n${MESSAGE}
+
+Name: partman-base/partlocked
+Type: error
+Description: Partition in use
+Extended_description: No modifications can be made to the partition #${PARTITION} of device ${DEVICE} for the following reasons:\n\n${MESSAGE}
+
+Name: partman-basicfilesystems/bad_mountpoint
+Type: error
+Description: Invalid mount point
+Extended_description: The mount point you entered is invalid.\n\nMount points must start with "/". They cannot contain spaces.
+
+Name: partman-basicfilesystems/check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the file system with type ${TYPE} in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will be used as is.
+
+Name: partman-basicfilesystems/choose_label
+Type: string
+Description: Label for the file system in this partition:
+
+Name: partman-basicfilesystems/create_failed
+Type: error
+Description: Failed to create a file system
+Extended_description: The ${TYPE} file system creation in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-basicfilesystems/create_swap_failed
+Type: error
+Description: Failed to create a swap space
+Extended_description: The creation of swap space in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-basicfilesystems/fat_mountpoint
+Type: select
+Choices: /dos, /windows, Enter manually, Do not mount it
+Description: Mount point for this partition:
+
+Name: partman-basicfilesystems/fatoptions
+Type: multiselect
+Choices: ro - mount the file system read-only, sync - all input/output activities occur synchronously, quiet - changing owner and permissions does not return errors
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-basicfilesystems/mountpoint
+Type: select
+Choices: / - the root file system, /boot - static files of the boot loader, /home - user home directories, /tmp - temporary files, /usr - static data, /var - variable data, /srv - data for services provided by this system, /opt - add-on application software packages, /usr/local - local hierarchy, Enter manually, Do not mount it
+Description: Mount point for this partition:
+
+Name: partman-basicfilesystems/mountpoint_manual
+Type: string
+Description: Mount point for this partition:
+
+Name: partman-basicfilesystems/no_mount_point
+Type: boolean
+Description: Do you want to return to the partitioning menu?
+Extended_description: No mount point is assigned for ${FILESYSTEM} file system in partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a mount point from there, this partition will not be used at all.
+
+Name: partman-basicfilesystems/no_swap
+Type: boolean
+Default: true
+Description: Do you want to return to the partitioning menu?
+Extended_description: You have not selected any partitions for use as swap space. Enabling swap space is recommended so that the system can make better use of the available physical memory, and so that it behaves better when physical memory is scarce. You may experience installation problems if you do not have enough physical memory.\n\nIf you do not go back to the partitioning menu and assign a swap partition, the installation will continue without swap space.
+
+Name: partman-basicfilesystems/options
+Type: multiselect
+Choices: noatime - do not update inode access times at each access, nodev - do not support character or block special devices, nosuid - ignore set-user-identifier or set-group-identifier bits, noexec - do not allow execution of any binaries, ro - mount the file system read-only, sync - all input/output activities occur synchronously, usrquota - user disk quota accounting enabled, grpquota - group disk quota accounting enabled, user_xattr - support user extended attributes
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-basicfilesystems/posix_filesystem_required
+Type: error
+Description: Invalid file system for this mount point
+Extended_description: The file system type ${FILESYSTEM} cannot be mounted on ${MOUNTPOINT}, because it is not a fully-functional Unix file system. Please choose a different file system, such as ${EXT2}.
+
+Name: partman-basicfilesystems/progress_checking
+Type: text
+Description: Checking the ${TYPE} file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-basicfilesystems/progress_formatting
+Type: text
+Description: Creating ${TYPE} file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-basicfilesystems/progress_formatting_mountable
+Type: text
+Description: Creating ${TYPE} file system for ${MOUNT_POINT} in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-basicfilesystems/progress_swap_checking
+Type: text
+Description: Checking the swap space in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-basicfilesystems/progress_swap_formatting
+Type: text
+Description: Formatting swap space in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-basicfilesystems/specify_reserved
+Type: string
+Description: Percentage of the file system blocks reserved for the super-user:
+
+Name: partman-basicfilesystems/specify_usage
+Type: select
+Choices: ${CHOICES}
+Description: Typical usage of this partition:
+Extended_description: Please specify how the file system is going to be used, so that optimal file system parameters can be chosen for that use.\n\nstandard = standard parameters, news = one inode per 4KB block, largefile = one inode per megabyte, largefile4 = one inode per 4 megabytes.
+
+Name: partman-basicfilesystems/swap_check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the swap space in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will be used as is.
+
+Name: partman-basicfilesystems/text/format_swap
+Type: text
+Description: Format the swap area:
+
+Name: partman-basicfilesystems/text/no
+Type: text
+Description: no
+
+Name: partman-basicfilesystems/text/no_mountpoint
+Type: text
+Description: none
+
+Name: partman-basicfilesystems/text/none
+Type: text
+Description: none
+
+Name: partman-basicfilesystems/text/options
+Type: text
+Description: Mount options:
+
+Name: partman-basicfilesystems/text/reserved_for_root
+Type: text
+Description: Reserved blocks:
+
+Name: partman-basicfilesystems/text/specify_label
+Type: text
+Description: Label:
+
+Name: partman-basicfilesystems/text/specify_mountpoint
+Type: text
+Description: Mount point:
+
+Name: partman-basicfilesystems/text/typical_usage
+Type: text
+Description: standard
+
+Name: partman-basicfilesystems/text/usage
+Type: text
+Description: Typical usage:
+
+Name: partman-basicfilesystems/text/yes
+Type: text
+Description: yes
+
+Name: partman-basicmethods/method_only
+Type: boolean
+Description: Go back to the menu?
+Extended_description: No file system is specified for partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a file system to this partition, it won't be used at all.
+
+Name: partman-basicmethods/text/dont_use
+Type: text
+Description: do not use the partition
+
+Name: partman-basicmethods/text/format
+Type: text
+Description: Format the partition:
+
+Name: partman-basicmethods/text/no_dont_format
+Type: text
+Description: no, keep existing data
+
+Name: partman-basicmethods/text/yes_format
+Type: text
+Description: yes, format it
+
+Name: partman-crypto/cipher
+Type: select
+Choices: ${CHOICES}
+Description: Encryption for this partition:
+
+Name: partman-crypto/commit_failed
+Type: error
+Description: Configuration of encrypted volumes failed
+Extended_description: An error occurred while configuring encrypted volumes.\n\nThe configuration has been aborted.
+
+Name: partman-crypto/confirm
+Type: boolean
+Default: false
+Description: Write the changes to disk and configure encrypted volumes?
+Extended_description: Before encrypted volumes can be configured, the current partitioning scheme has to be written to disk.  These changes cannot be undone.\n\nAfter the encrypted volumes have been configured, no additional changes to the partitions on the disks containing encrypted volumes are allowed. Please decide if you are satisfied with the current partitioning scheme for these disks before continuing.\n\n${ITEMS}
+
+Name: partman-crypto/confirm_nochanges
+Type: boolean
+Default: false
+Description: Keep current partition layout and configure encrypted volumes?
+Extended_description: After the encrypted volumes have been configured, no additional changes to the partitions on the disks containing encrypted volumes are allowed. Please decide if you are satisfied with the current partitioning scheme for these disks before continuing.
+
+Name: partman-crypto/crypto_boot_not_possible
+Type: error
+Description: Encryption configuration failure
+Extended_description: You have selected the /boot file system to be stored on an encrypted partition. This is not possible because the boot loader would be unable to load the kernel and initrd. Continuing now would result in an installation that cannot be used.\n\nYou should go back and choose a non-encrypted partition for the /boot file system.
+
+Name: partman-crypto/crypto_root_needs_boot
+Type: error
+Description: Encryption configuration failure
+Extended_description: You have selected the root file system to be stored on an encrypted partition. This feature requires a separate /boot partition on which the kernel and initrd can be stored.\n\nYou should go back and setup a /boot partition.
+
+Name: partman-crypto/crypto_root_unimplemented
+Type: error
+Description: Encryption configuration failure
+Extended_description: You have selected the root file system to be stored on an encrypted partition. This feature is not available and continuing now would result in an installation that cannot be used.\n\nPlease go back and choose a non-encrypted partition for the root file system.
+
+Name: partman-crypto/crypto_type
+Type: select
+Choices: ${CHOICES}
+Description: Encryption method for this partition:
+
+Name: partman-crypto/crypto_type/dm-crypt
+Type: text
+Description: Device-mapper (dm-crypt)
+
+Name: partman-crypto/crypto_type/loop-AES
+Type: text
+Description: Loopback (loop-AES)
+
+Name: partman-crypto/entropy-text
+Type: entropy-text
+Description: Enter random characters
+Extended_description: The encryption key for ${DEVICE} is now being created.\n\nYou can help speed up the process by entering random characters on the keyboard, or just wait until enough keydata has been collected. (NOTE: this can take a long time)
+
+Name: partman-crypto/erase_failed
+Type: error
+Description: Erasing data on ${DEVICE} failed
+Extended_description: An error occurred trying to erase the data on ${DEVICE}. The data has not been erased.
+
+Name: partman-crypto/init_failed
+Type: error
+Description: Initialisation of encrypted volume failed
+Extended_description: An error occurred while setting up encrypted volumes.
+
+Name: partman-crypto/install_udebs_failure
+Type: error
+Description: Failed to download crypto components
+Extended_description: An error occurred trying to download additional crypto components.
+
+Name: partman-crypto/install_udebs_low_mem
+Type: boolean
+Description: Proceed to install crypto components despite insufficient memory?
+Extended_description: There does not seem to be sufficient memory available to install additional crypto components. If you choose to go ahead and continue anyway, the installation process could fail.
+
+Name: partman-crypto/ivalgorithm
+Type: select
+Choices: ${CHOICES}
+Description: Initialization vector generation algorithm for this partition:
+Extended_description: Different algorithms exist to derive the initialization vector for each sector. This choice influences the encryption security. Normally, there is no reason to change this from the recommended default, except for compatibility with older systems.
+
+Name: partman-crypto/keyfile-problem
+Type: error
+Description: Keyfile creation failure
+Extended_description: An error occurred while creating the keyfile.
+
+Name: partman-crypto/keyhash
+Type: select
+Choices: ${CHOICES}
+Description: Type of encryption key hash for this partition:
+Extended_description: The encryption key is derived from the passphrase by applying a one-way hash function to it. Normally, there is no reason to change this from the recommended default and doing so in the wrong way can reduce the encryption strength.
+
+Name: partman-crypto/keysize
+Type: select
+Choices: ${CHOICES}
+Description: Key size for this partition:
+
+Name: partman-crypto/keytype
+Type: select
+Choices: ${CHOICES}
+Description: Type of encryption key for this partition:
+
+Name: partman-crypto/module_package_missing
+Type: error
+Description: Encryption package installation failure
+Extended_description: The kernel module package ${PACKAGE} could not be found or an error occurred during its installation.\n\nIt is likely that there will be problems setting up encrypted partitions when the system is rebooted. You may be able to correct this by installing the required package(s) later on.
+
+Name: partman-crypto/nothing_to_setup
+Type: note
+Description: No partitions to encrypt
+Extended_description: No partitions have been selected for encryption.
+
+Name: partman-crypto/options_missing
+Type: error
+Description: Required encryption options missing
+Extended_description: The encryption options for ${DEVICE} are incomplete. Please return to the partition menu and select all required options.\n\n${ITEMS}
+
+Name: partman-crypto/passphrase
+Type: password
+Description: Encryption passphrase:
+Extended_description: You need to choose a passphrase to encrypt ${DEVICE}.\n\nThe overall strength of the encryption depends strongly on this passphrase, so you should take care to choose a passphrase that is not easy to guess. It should not be a word or sentence found in dictionaries, or a phrase that could be easily associated with you.\n\nA good passphrase will contain a mixture of letters, numbers and punctuation. Passphrases are recommended to have a length of 20 or more characters.\n\nThere is no way to recover this passphrase if you lose it. To avoid losing data, you should normally write down the passphrase and keep it in a safe place separate from this computer.
+
+Name: partman-crypto/passphrase-again
+Type: password
+Description: Re-enter passphrase to verify:
+Extended_description: Please enter the same passphrase again to verify that you have typed it correctly.
+
+Name: partman-crypto/passphrase-empty
+Type: error
+Description: Empty passphrase
+Extended_description: You entered an empty passphrase, which is not allowed. Please choose a non-empty passphrase.
+
+Name: partman-crypto/passphrase-mismatch
+Type: error
+Description: Passphrase input error
+Extended_description: The two passphrases you entered were not the same. Please try again.
+
+Name: partman-crypto/progress/erase
+Type: text
+Description: Erasing data on ${DEVICE}
+
+Name: partman-crypto/text/configure_crypto
+Type: text
+Description: Configure encrypted volumes
+
+Name: partman-crypto/text/cryptdev_description
+Type: text
+Description: ${CIPHER} ${KEYTYPE}
+
+Name: partman-crypto/text/erase_data
+Type: text
+Description: Erase data:
+
+Name: partman-crypto/text/erase_data_partition
+Type: text
+Description: Erase data on this partition
+
+Name: partman-crypto/text/in_use
+Type: text
+Description: In use as physical volume for encrypted volume ${DEV}
+
+Name: partman-crypto/text/keytype/keyfile
+Type: text
+Description: Keyfile (GnuPG)
+
+Name: partman-crypto/text/keytype/passphrase
+Type: text
+Description: Passphrase
+
+Name: partman-crypto/text/keytype/random
+Type: text
+Description: Random key
+
+Name: partman-crypto/text/missing
+Type: text
+Description: missing
+
+Name: partman-crypto/text/no_erase_data
+Type: text
+Description: no
+
+Name: partman-crypto/text/not_active
+Type: text
+Description: not active
+
+Name: partman-crypto/text/specify_cipher
+Type: text
+Description: Encryption:
+
+Name: partman-crypto/text/specify_crypto_type
+Type: text
+Description: Encryption method:
+
+Name: partman-crypto/text/specify_ivalgorithm
+Type: text
+Description: IV algorithm:
+
+Name: partman-crypto/text/specify_keyhash
+Type: text
+Description: Encryption key hash:
+
+Name: partman-crypto/text/specify_keysize
+Type: text
+Description: Key size:
+
+Name: partman-crypto/text/specify_keytype
+Type: text
+Description: Encryption key:
+
+Name: partman-crypto/text/yes_erase_data
+Type: text
+Description: yes
+
+Name: partman-crypto/tools_missing
+Type: note
+Description: Required programs missing
+Extended_description: This build of debian-installer does not include one or more programs that are required for partman-crypto to function correctly.
+
+Name: partman-crypto/unsafe_swap
+Type: error
+Description: Unsafe swap space detected
+Extended_description: An unsafe swap space has been detected.\n\nThis is a fatal error since sensitive data could be written out to disk unencrypted. This would allow someone with access to the disk to recover parts of the encryption key or passphrase.\n\nPlease disable the swap space (e.g. by running swapoff) or configure an encrypted swap space and then run setup of encrypted volumes again. This program will now abort.
+
+Name: partman-crypto/use_random_for_nonswap
+Type: boolean
+Default: false
+Description: Are you sure you want to use a random key?
+Extended_description: You have chosen a random key type for ${DEVICE} but requested the partitioner to create a file system on it.\n\nUsing a random key type means that the partition data is going to be destroyed upon each reboot. This should only be used for swap partitions.
+
+Name: partman-crypto/warn_erase
+Type: boolean
+Default: false
+Description: Really erase the data on ${DEVICE}?
+Extended_description: The data on ${DEVICE} will be overwritten with random data. It can no longer be recovered after this step has completed. This is the last opportunity to abort the erase.
+
+Name: partman-crypto/weak_passphrase
+Type: boolean
+Default: false
+Description: Use weak passphrase?
+Extended_description: You entered a passphrase that consists of less than ${MINIMUM} characters, which is considered too weak. You should choose a stronger passphrase.
+
+Name: partman-efi/no_efi
+Type: boolean
+Description: Go back to the menu and resume partitioning?
+Extended_description: No EFI partition was found.
+
+Name: partman-efi/text/efi
+Type: text
+Description: EFI boot partition
+
+Name: partman-ext3/check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the file system with type ext3 in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will not be used at all.
+
+Name: partman-ext3/create_failed
+Type: error
+Description: Failed to create a file system
+Extended_description: The ext3 file system creation in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-ext3/no_mount_point
+Type: boolean
+Description: Do you want to return to the partitioning menu?
+Extended_description: No mount point is assigned for the ext3 file system in partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a mount point from there, this partition will not be used at all.
+
+Name: partman-ext3/options
+Type: multiselect
+Choices: noatime - do not update inode access times at each access, nodev - do not support character or block special devices, nosuid - ignore set-user-identifier or set-group-identifier bits, noexec - do not allow execution of any binaries, ro - mount the file system read-only, sync - all input/output activities occur synchronously, usrquota - user disk quota accounting enabled, grpquota - group disk quota accounting enabled, user_xattr - support user extended attributes
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-ext3/progress_checking
+Type: text
+Description: Checking the ext3 file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-ext3/text/ext3
+Type: text
+Description: ext3
+
+Name: partman-ext3/text/specify_mountpoint
+Type: text
+Description: Mount point:
+
+Name: partman-jfs/check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the file system with type jfs in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will not be used at all.
+
+Name: partman-jfs/create_failed
+Type: error
+Description: Failed to create a file system
+Extended_description: The jfs file system creation in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-jfs/jfs_boot
+Type: boolean
+Default: false
+Description: Use unrecommended JFS /boot file system?
+Extended_description: You have mounted a JFS file system as /boot. This is likely to cause problems with the boot loader used by default by this installer.\n\nYou should use another file system, such as ext3, for the /boot partition.
+
+Name: partman-jfs/jfs_root
+Type: boolean
+Default: false
+Description: Use unrecommended JFS root file system?
+Extended_description: Your root file system is a JFS file system. This can cause problems with the boot loader used by default by this installer.\n\nYou should use a small /boot partition with another file system, such as ext3.
+
+Name: partman-jfs/no_mount_point
+Type: boolean
+Description: Do you want to return to the partitioning menu?
+Extended_description: No mount point is assigned for the jfs file system in partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a mount point from there, this partition will not be used at all.
+
+Name: partman-jfs/options
+Type: multiselect
+Choices: noatime - do not update inode access times at each access, nodev - do not support character or block special devices, nosuid - ignore set-user-identifier or set-group-identifier bits, noexec - do not allow execution of any binaries, ro - mount the file system read-only, sync - all input/output activities occur synchronously
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-jfs/progress_checking
+Type: text
+Description: Checking the jfs file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-jfs/text/jfs
+Type: text
+Description: jfs
+
+Name: partman-jfs/text/specify_mountpoint
+Type: text
+Description: Mount point:
+
+Name: partman-lvm/activevg
+Type: boolean
+Default: true
+Description: Activate existing volume groups?
+Extended_description: ${COUNT} existing volume groups have been found. Please indicate whether you want to activate them.
+
+Name: partman-lvm/badnamegiven
+Type: error
+Description: Invalid logical volume or volume group name
+Extended_description: Logical volume or volume group names may only contain alphanumeric characters, hyphen, plus, period and underscore. They must be 128 characters or less and may not begin with a hyphen. The names "." and ".." are not allowed. In addition, logical volume names may not begin with "snapshot".\n\nPlease choose another name.
+
+Name: partman-lvm/commit_failed
+Type: error
+Description: LVM configuration failure
+Extended_description: An error occurred while writing the changes to the disks.\n\nThe configuration of the Logical Volume Manager is aborted.
+
+Name: partman-lvm/confirm
+Type: boolean
+Default: false
+Description: Write the changes to disks and configure LVM?
+Extended_description: Before the Logical Volume Manager can be configured, the current partitioning scheme has to be written to disk.  These changes cannot be undone.\n\nAfter the Logical Volume Manager is configured, no additional changes to the partitioning scheme of disks containing physical volumes are allowed during the installation. Please decide if you are satisfied with the current partitioning scheme before continuing.\n\n${ITEMS}
+
+Name: partman-lvm/confirm_nochanges
+Type: boolean
+Default: false
+Description: Keep current partition layout and configure LVM?
+Extended_description: After the Logical Volume Manager is configured, no additional changes to the partitions in the disks containing physical volumes are allowed. Please decide if you are satisfied with the current partitioning scheme in these disks before continuing.
+
+Name: partman-lvm/displayall
+Type: note
+Description: Current LVM configuration:
+Extended_description: ${CURRENT_CONFIG}
+
+Name: partman-lvm/lvcreate_error
+Type: error
+Description: Error while creating a new logical volume
+Extended_description: Unable to create a new logical volume (${LV}) on ${VG} with the new size ${SIZE}.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-lvm/lvcreate_exists
+Type: error
+Description: Error while creating a new logical volume
+Extended_description: The name ${LV} is already in use by another logical volume on the same volume group (${VG}).
+
+Name: partman-lvm/lvcreate_name
+Type: string
+Description: Logical volume name:
+Extended_description: Please enter the name you would like to use for the new logical volume.
+
+Name: partman-lvm/lvcreate_nofreevg
+Type: error
+Description: No volume group found
+Extended_description: No free volume groups were found for creating a new logical volume. Please create more physical volumes and volume groups, or reduce an existing volume group.
+
+Name: partman-lvm/lvcreate_nonamegiven
+Type: error
+Description: No logical volume name entered
+Extended_description: No name for the logical volume has been entered.  Please enter a name.
+
+Name: partman-lvm/lvcreate_size
+Type: string
+Description: Logical volume size:
+Extended_description: Please enter the size of the new logical volume. The size may be entered in the following formats: 10K (Kilobytes), 10M (Megabytes), 10G (Gigabytes), 10T (Terabytes). The default unit is Megabytes.
+
+Name: partman-lvm/lvcreate_vgnames
+Type: select
+Choices: ${GROUPS}
+Description: Volume group:
+Extended_description: Please select the volume group where the new logical volume should be created.
+
+Name: partman-lvm/lvdelete_error
+Type: error
+Description: Error while deleting the logical volume
+Extended_description: The logical volume (${LV}) on ${VG} could not be deleted.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-lvm/lvdelete_lvnames
+Type: select
+Choices: ${LVS}
+Description: Logical volume:
+Extended_description: Please select the logical volume to delete.
+
+Name: partman-lvm/lvdelete_nolv
+Type: error
+Description: No logical volume found
+Extended_description: No logical volume has been found.  Please create a logical volume first.
+
+Name: partman-lvm/mainmenu
+Type: select
+Choices: ${CHOICES_L10N}
+Description: LVM configuration action:
+Extended_description: Summary of current LVM configuration:\n\n Free Physical Volumes:  ${FREE_PVS}\n Used Physical Volumes:  ${USED_PVS}\n Volume Groups:          ${VGS}\n Logical Volumes:        ${LVS}\n\n
+Choices-C: ${CHOICES}
+
+Name: partman-lvm/menu/createlv
+Type: text
+Description: Create logical volume
+
+Name: partman-lvm/menu/createvg
+Type: text
+Description: Create volume group
+
+Name: partman-lvm/menu/deletelv
+Type: text
+Description: Delete logical volume
+
+Name: partman-lvm/menu/deletevg
+Type: text
+Description: Delete volume group
+
+Name: partman-lvm/menu/display
+Type: text
+Description: Display configuration details
+
+Name: partman-lvm/menu/extendvg
+Type: text
+Description: Extend volume group
+
+Name: partman-lvm/menu/finish
+Type: text
+Description: Finish
+
+Name: partman-lvm/menu/reducevg
+Type: text
+Description: Reduce volume group
+
+Name: partman-lvm/nolvm
+Type: error
+Description: Logical Volume Manager not available
+Extended_description: The current kernel doesn't support the Logical Volume Manager. You may need to load the lvm-mod module.
+
+Name: partman-lvm/nopartitions
+Type: error
+Description: No usable physical volumes found
+Extended_description: No physical volumes (i.e. partitions) were found in your system. All physical volumes may already be in use. You may also need to load some required kernel modules or re-partition the hard drives.
+
+Name: partman-lvm/pvcreate_error
+Type: error
+Description: Error while initializing physical volume
+Extended_description: The physical volume ${PV} could not be initialized.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-lvm/text/configuration_freepvs
+Type: text
+Description: Unallocated physical volumes:
+
+Name: partman-lvm/text/configuration_lv
+Type: text
+Description: Provides logical volume:
+
+Name: partman-lvm/text/configuration_none_pvs
+Type: text
+Description: none
+
+Name: partman-lvm/text/configuration_none_vgs
+Type: text
+Description: none
+
+Name: partman-lvm/text/configuration_pv
+Type: text
+Description: Uses physical volume:
+
+Name: partman-lvm/text/configuration_vgs
+Type: text
+Description: Volume groups:
+
+Name: partman-lvm/text/configure_lvm
+Type: text
+Description: Configure the Logical Volume Manager
+
+Name: partman-lvm/text/in_use
+Type: text
+Description: In use by LVM volume group ${VG}
+
+Name: partman-lvm/text/lvdelete_invg
+Type: text
+Description: in VG ${VG}
+
+Name: partman-lvm/text/pvs
+Type: text
+Description: PV
+
+Name: partman-lvm/vgcreate_devnameused
+Type: error
+Description: Volume group name overlaps with device name
+Extended_description: The selected volume group name overlaps with an existing device name. Please choose another name.
+
+Name: partman-lvm/vgcreate_error
+Type: error
+Description: Error while reducing volume group
+Extended_description: The volume group ${VG} could not be created.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-lvm/vgcreate_name
+Type: string
+Description: Volume group name:
+Extended_description: Please enter the name you would like to use for the new volume group.
+
+Name: partman-lvm/vgcreate_nameused
+Type: error
+Description: Volume group name already in use
+Extended_description: The selected volume group name is already in use. Please choose another name.
+
+Name: partman-lvm/vgcreate_nonamegiven
+Type: error
+Description: No volume group name entered
+Extended_description: No name for the volume group has been entered.  Please enter a name.
+
+Name: partman-lvm/vgcreate_nosel
+Type: error
+Description: No physical volumes selected
+Extended_description: No physical volumes were selected. The creation of a new volume group was aborted.
+
+Name: partman-lvm/vgcreate_parts
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Devices for the new volume group:
+Extended_description: Please select the devices for the new volume group.\n\nYou can select one or more devices.
+
+Name: partman-lvm/vgdelete_confirm
+Type: boolean
+Default: true
+Description: Really delete the volume group?
+Extended_description: Please confirm the ${VG} volume group removal.
+
+Name: partman-lvm/vgdelete_error
+Type: error
+Description: Error while deleting volume group
+Extended_description: The selected volume group could not be deleted. One or more logical volumes may currently be in use.
+
+Name: partman-lvm/vgdelete_names
+Type: select
+Choices: ${GROUPS}
+Description: Volume group to delete:
+Extended_description: Please select the volume group you wish to delete.
+
+Name: partman-lvm/vgdelete_novg
+Type: error
+Description: No volume group found
+Extended_description: No volume group has been found.\n\nThe volume group may have already been deleted.
+
+Name: partman-lvm/vgextend_error
+Type: error
+Description: Error while extending volume group
+Extended_description: The physical volume ${PARTITION} could not be added to the selected volume group.
+
+Name: partman-lvm/vgextend_names
+Type: select
+Choices: ${GROUPS}
+Description: Volume group to extend:
+Extended_description: Please select the volume group you wish to extend.
+
+Name: partman-lvm/vgextend_nosel
+Type: error
+Description: No physical volumes selected
+Extended_description: No physical volumes were selected. Extension of the volume group was aborted.
+
+Name: partman-lvm/vgextend_novg
+Type: error
+Description: No volume group found
+Extended_description: No volume group has been found.\n\nNo volume group can be deleted.
+
+Name: partman-lvm/vgextend_parts
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Devices to add to the volume group:
+Extended_description: Please select the devices you wish to add to the volume group.\n\nYou can select one or more devices.
+
+Name: partman-lvm/vgreduce_error
+Type: error
+Description: Error while reducing volume group
+Extended_description: The physical volume ${PARTITION} could not be removed from the selected volume group.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-lvm/vgreduce_names
+Type: select
+Choices: ${GROUPS}
+Description: Volume group to reduce:
+Extended_description: Please select the volume group you wish to reduce.
+
+Name: partman-lvm/vgreduce_nosel
+Type: error
+Description: No physical volumes selected
+Extended_description: No physical volumes were selected. Reduction of the volume group was aborted.
+
+Name: partman-lvm/vgreduce_novg
+Type: error
+Description: No volume group found
+Extended_description: No volume group has been found.\n\nNo volume group can be reduced.
+
+Name: partman-lvm/vgreduce_parts
+Type: multiselect
+Choices: ${PARTITIONS}
+Description: Devices to remove from the volume group:
+Extended_description: Please select the devices you wish to remove from the volume group.\n\nYou can select one or more devices.
+
+Name: partman-md/commit_failed
+Type: error
+Description: RAID configuration failure
+Extended_description: An error occurred while writing the changes to the storage devices.\n\nThe configuration of RAID is aborted.
+
+Name: partman-md/confirm
+Type: boolean
+Default: false
+Description: Write the changes to the storage devices and configure RAID?
+Extended_description: Before RAID can be configured, the changes have to be written to the storage devices.  These changes cannot be undone.\n\nWhen RAID is configured, no additional changes to the partitions in the disks containing physical volumes are allowed.  Please convince yourself that you are satisfied with the current partitioning scheme in these disks.\n\n${ITEMS}
+
+Name: partman-md/confirm_nochanges
+Type: boolean
+Default: false
+Description: Keep current partition layout and configure RAID?
+Extended_description: When RAID is configured, no additional changes to the partitions in the disks containing physical volumes are allowed.  Please convince yourself that you are satisfied with the current partitioning scheme in these disks.
+
+Name: partman-md/text/configure_md
+Type: text
+Description: Configure software RAID
+
+Name: partman-md/text/device
+Type: text
+Description: Software RAID device
+
+Name: partman-partitioning/bad_new_partition_size
+Type: error
+Description: Invalid size
+
+Name: partman-partitioning/bad_new_size
+Type: error
+Description: Invalid size
+
+Name: partman-partitioning/big_new_size
+Type: error
+Description: Too large size
+
+Name: partman-partitioning/choose_label
+Type: select
+Choices: ${CHOICES}
+Description: Partition table type:
+Extended_description: Select the type of partition table to use.
+
+Name: partman-partitioning/confirm_copy
+Type: boolean
+Description: Write previous changes to disk and continue?
+Extended_description: Before you can select a partition to copy, any previous changes have to be written to disk.\n\nYou cannot undo this operation.\n\nPlease note that the copy operation may take a long time.
+
+Name: partman-partitioning/confirm_resize
+Type: boolean
+Description: Write previous changes to disk and continue?
+Extended_description: Before you can select a new partition size, any previous changes have to be written to disk.\n\nYou cannot undo this operation.\n\nPlease note that the resize operation may take a long time.
+
+Name: partman-partitioning/copy_commit_failed
+Type: error
+Description: Copy operation failure
+Extended_description: An error occurred while writing the changes to the storage devices.\n\nThe copy operation is aborted.
+
+Name: partman-partitioning/impossible_resize
+Type: error
+Description: The resize operation is impossible
+Extended_description: Because of an unknown reason it is impossible to resize this partition.\n\nCheck /var/log/syslog or see virtual console 4 for the details.
+
+Name: partman-partitioning/new_partition_fs
+Type: select
+Choices: ${CHOICES}
+Description: File system for the new partition:
+
+Name: partman-partitioning/new_partition_place
+Type: select
+Choices: Beginning, End
+Description: Location for the new partition:
+Extended_description: Please choose whether you want the new partition to be created at the beginning or at the end of the available space.
+
+Name: partman-partitioning/new_partition_size
+Type: string
+Default: some number
+Description: New partition size:
+Extended_description: The maximum size you can use is ${MAXSIZE}.\n\nHint: Use "20%" (or "30%", etc.) for 20% (resp. 30%, etc.) of the available free space for this partition.  Use "max" as a shortcut for the maximum allowed size.
+
+Name: partman-partitioning/new_partition_type
+Type: select
+Choices: Primary, Logical
+Description: Type for the new partition:
+
+Name: partman-partitioning/new_size
+Type: string
+Default: some number
+Description: New partition size:
+Extended_description: The minimum size you can use is ${MINSIZE} or ${PERCENT} and the maximum size is ${MAXSIZE}.\n\nHint: Use "20%" (or "30%", etc.) for 20% (resp. 30%, etc.) of the available free space for this partition.  Use "max" as a shortcut for the maximum allowed size.
+
+Name: partman-partitioning/new_size_commit_failed
+Type: error
+Description: Resize operation failure
+Extended_description: An error occurred while writing the changes to the storage devices.\n\nThe resize operation is aborted.
+
+Name: partman-partitioning/new_state
+Type: text
+Description: Computing the new state of the partition table...
+
+Name: partman-partitioning/progress_copying
+Type: text
+Description: Copying partition...
+
+Name: partman-partitioning/progress_resizing
+Type: text
+Description: Resizing partition...
+
+Name: partman-partitioning/set_flags
+Type: multiselect
+Choices: ${CHOICES}
+Description: Flags for the new partition:
+
+Name: partman-partitioning/set_name
+Type: string
+Description: Partition name:
+
+Name: partman-partitioning/small_new_size
+Type: error
+Description: Too small size
+
+Name: partman-partitioning/source_partition
+Type: select
+Choices: ${CHOICES}
+Description: Source partition:
+Extended_description: Please choose the partition which contains the data you want to copy.
+
+Name: partman-partitioning/text/bootable
+Type: text
+Description: Bootable flag:
+
+Name: partman-partitioning/text/copy
+Type: text
+Description: Copy data from another partition
+
+Name: partman-partitioning/text/delete
+Type: text
+Description: Delete the partition
+
+Name: partman-partitioning/text/label
+Type: text
+Description: Create a new empty partition table on this device
+
+Name: partman-partitioning/text/new
+Type: text
+Description: Create a new partition
+
+Name: partman-partitioning/text/off
+Type: text
+Description: off
+
+Name: partman-partitioning/text/on
+Type: text
+Description: on
+
+Name: partman-partitioning/text/resize
+Type: text
+Description: Resize the partition (currently ${SIZE})
+
+Name: partman-partitioning/text/set_flags
+Type: text
+Description: Set the partition flags
+
+Name: partman-partitioning/text/set_name
+Type: text
+Description: Name:
+
+Name: partman-reiserfs/check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the file system with type ReiserFS in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will not be used at all.
+
+Name: partman-reiserfs/create_failed
+Type: error
+Description: Failed to create a file system
+Extended_description: The ReiserFS file system creation in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-reiserfs/no_mount_point
+Type: boolean
+Description: Do you want to return to the partitioning menu?
+Extended_description: No mount point is assigned for the ReiserFS file system in partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a mount point from there, this partition will not be used at all.
+
+Name: partman-reiserfs/options
+Type: multiselect
+Choices: notail - disable packing of files into the file system tree, noatime - do not update inode access times at each access, nodev - do not support character or block special devices, nosuid - ignore set-user-identifier or set-group-identifier bits, noexec - do not allow execution of any binaries, ro - mount the file system read-only, sync - all input/output activities occur synchronously, usrquota - user disk quota accounting enabled, grpquota - group disk quota accounting enabled, user_xattr - support user extended attributes
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-reiserfs/progress_checking
+Type: text
+Description: Checking the ReiserFS file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-reiserfs/text/reiserfs
+Type: text
+Description: ReiserFS
+
+Name: partman-reiserfs/text/specify_mountpoint
+Type: text
+Description: Mount point:
+
+Name: partman-target/arch_help/i386/generic
+Type: text
+Description: In order to start your new system, a so called boot loader is used.  It can be installed either in the master boot record of the first hard disk, or in a partition.  When the boot loader is installed in a partition, you must set the bootable flag for it. Such a partition will be marked with "${BOOTABLE}" in the main partitioning menu.
+
+Name: partman-target/arch_help/ia64
+Type: text
+Description: In order to start your new system, the firmware on your Itanium system loads the boot loader from its private EFI partition on the hard disk.  The boot loader then loads the operating system from that same partition.  An EFI partition has a FAT16 file system formatted on it and the bootable flag set. Most installations place the EFI partition on the first primary partition of the same hard disk that holds the root file system.
+
+Name: partman-target/arch_help/powerpc/powermac_newworld
+Type: text
+Description: In order to start your new system, a so called boot loader is used.  It is installed in a boot partition.  You must set the bootable flag for the partition.  Such a partition will be marked with "${BOOTABLE}" in the main partitioning menu.
+
+Name: partman-target/choose_method
+Type: select
+Choices: ${CHOICES}
+Description: How to use this partition:
+
+Name: partman-target/help
+Type: note
+Description: Help on partitioning
+Extended_description: Partitioning a hard drive consists of dividing it to create the space needed to install your new system.  You need to choose which partition(s) will be used for the installation.\n\nSelect a free space to create partitions in it.\n\nSelect a device to remove all partitions in it and create a new empty partition table.\n\nSelect a partition to remove it or to specify how it should be used. At a bare minimum, you need one partition to contain the root of the file system (whose mount point is /).  Most people also feel that a separate swap partition is a necessity.  "Swap" is scratch space for an operating system, which allows the system to use disk storage as "virtual memory".\n\nWhen the partition is already formatted you may choose to keep and use the existing data in the partition.  Partitions that will be used in this way are marked with "${KEEP}" in the main partitioning menu.\n\nIn general you will want to format the partition with a newly created file system.  NOTE: all data in the partition will be irreversibly deleted.  If you decide to format a partition that is already formatted, it will be marked with "${DESTROY}" in the main partitioning menu.  Otherwise it will be marked with "${FORMAT}".\n\n${ARCHITECTURE_HELP}
+
+Name: partman-target/mount_failed
+Type: boolean
+Description: Do you want to resume partitioning?
+Extended_description: The attempt to mount a file system with type ${TYPE} in ${DEVICE} at ${MOUNTPOINT} failed.\n\nYou may resume partitioning from the partitioning menu.
+
+Name: partman-target/no_root
+Type: error
+Description: No root file system
+Extended_description: No root file system is defined.\n\nPlease correct this from the partitioning menu.
+
+Name: partman-target/same_mountpoint
+Type: error
+Description: Identical mount points for two file systems
+Extended_description: Two file systems are assigned the same mount point (${MOUNTPOINT}): ${PART1} and ${PART2}.\n\nPlease correct this by changing mount points.
+
+Name: partman-target/text/get_help
+Type: text
+Description: Help on partitioning
+
+Name: partman-target/text/method
+Type: text
+Description: Use as:
+
+Name: partman-xfs/check_failed
+Type: boolean
+Description: Go back to the menu and correct errors?
+Extended_description: The test of the file system with type xfs in partition #${PARTITION} of ${DEVICE} found uncorrected errors.\n\nIf you do not go back to the partitioning menu and correct these errors, the partition will not be used at all.
+
+Name: partman-xfs/create_failed
+Type: error
+Description: Failed to create a file system
+Extended_description: The xfs file system creation in partition #${PARTITION} of ${DEVICE} failed.
+
+Name: partman-xfs/no_mount_point
+Type: boolean
+Description: Do you want to return to the partitioning menu?
+Extended_description: No mount point is assigned for the xfs file system in partition #${PARTITION} of ${DEVICE}.\n\nIf you do not go back to the partitioning menu and assign a mount point from there, this partition will not be used at all.
+
+Name: partman-xfs/options
+Type: multiselect
+Choices: noatime - do not update inode access times at each access, nodev - do not support character or block special devices, nosuid - ignore set-user-identifier or set-group-identifier bits, noexec - do not allow execution of any binaries, ro - mount the file system read-only, sync - all input/output activities occur synchronously, usrquota - user disk quota accounting enabled, grpquota - group disk quota accounting enabled
+Description: Mount options:
+Extended_description: Mount options can tune the behavior of the file system.
+
+Name: partman-xfs/progress_checking
+Type: text
+Description: Checking the xfs file system in partition #${PARTITION} of ${DEVICE}...
+
+Name: partman-xfs/text/specify_mountpoint
+Type: text
+Description: Mount point:
+
+Name: partman-xfs/text/xfs
+Type: text
+Description: xfs
+
+Name: partman/active_partition
+Type: select
+Choices: ${CHOICES}
+Description: Partition settings:
+Extended_description: You are editing partition #${PARTITION} of ${DEVICE}. ${OTHERINFO} ${DESTROYED}
+
+Name: partman/choose_partition
+Type: select
+Choices: ${CHOICES}
+Description: This is an overview of your currently configured partitions and mount points. Select a partition to modify its settings (file system, mount point, etc.), a free space to create partitions, or a device to initialise its partition table.
+
+Name: partman/confirm
+Type: boolean
+Default: false
+Description: Write the changes to disks?
+Extended_description: If you continue, the changes listed below will be written to the disks. Otherwise, you will be able to make further changes manually.\n\nWARNING: This will destroy all data on any partitions you have removed as well as on the partitions that are going to be formatted.\n\n${ITEMS}
+
+Name: partman/confirm_new_label
+Type: boolean
+Default: false
+Description: Create new empty partition table on this device?
+Extended_description: You have selected an entire device to partition. If you proceed with creating a new partition table on the device, then all current partitions will be removed.\n\nNote that you will be able to undo this operation later if you wish.
+
+Name: partman/confirm_nochanges
+Type: boolean
+Default: false
+Description: Continue with the installation?
+Extended_description: No partition table changes and no creation of file systems have been planned.\n\nIf you plan on using already created file systems, be aware that existing files may prevent the successful installation of the base system.
+
+Name: partman/confirm_write_new_label
+Type: boolean
+Default: false
+Description: Write a new empty partition table?
+Extended_description: Because of limitations in the current implementation of the Sun partition tables in libparted, the newly created partition table has to be written to the disk immediately.\n\nYou will NOT be able to undo this operation later and all existing data on the disk will be irreversibly removed.\n\nConfirm whether you actually want to create a new partition table and write it to disk.
+
+Name: partman/exception_handler
+Type: select
+Choices: ${CHOICES}
+Description: ${TYPE}
+Extended_description: ${DESCRIPTION}
+
+Name: partman/exception_handler_note
+Type: note
+Description: ${TYPE}
+Extended_description: ${DESCRIPTION}
+
+Name: partman/filesystem_long/ext2
+Type: text
+Description: Ext2 file system
+
+Name: partman/filesystem_long/ext3
+Type: text
+Description: Ext3 journaling file system
+
+Name: partman/filesystem_long/fat16
+Type: text
+Description: FAT16 file system
+
+Name: partman/filesystem_long/fat32
+Type: text
+Description: FAT32 file system
+
+Name: partman/filesystem_long/jfs
+Type: text
+Description: JFS journaling file system
+
+Name: partman/filesystem_long/linux-swap
+Type: text
+Description: swap area
+
+Name: partman/filesystem_long/reiserfs
+Type: text
+Description: ReiserFS journaling file system
+
+Name: partman/filesystem_long/xfs
+Type: text
+Description: XFS journaling file system
+
+Name: partman/filesystem_short/efi
+Type: text
+Description: EFI-fat16
+
+Name: partman/filesystem_short/ext2
+Type: text
+Description: ext2
+
+Name: partman/filesystem_short/ext3
+Type: text
+Description: ext3
+
+Name: partman/filesystem_short/fat16
+Type: text
+Description: fat16
+
+Name: partman/filesystem_short/fat32
+Type: text
+Description: fat32
+
+Name: partman/filesystem_short/jfs
+Type: text
+Description: jfs
+
+Name: partman/filesystem_short/linux-swap
+Type: text
+Description: swap
+
+Name: partman/filesystem_short/reiserfs
+Type: text
+Description: reiserfs
+
+Name: partman/filesystem_short/xfs
+Type: text
+Description: xfs
+
+Name: partman/free_space
+Type: select
+Choices: ${CHOICES}
+Description: How to use this free space:
+
+Name: partman/method_long/crypto
+Type: text
+Description: physical volume for encryption
+
+Name: partman/method_long/dont_use
+Type: text
+Description: do not use
+
+Name: partman/method_long/efi
+Type: text
+Description: EFI boot partition
+
+Name: partman/method_long/format
+Type: text
+Description: format the partition
+
+Name: partman/method_long/keep
+Type: text
+Description: keep and use the existing data
+
+Name: partman/method_long/lvm
+Type: text
+Description: physical volume for LVM
+
+Name: partman/method_long/raid
+Type: text
+Description: physical volume for RAID
+
+Name: partman/method_long/swap
+Type: text
+Description: swap area
+
+Name: partman/method_short/crypto
+Type: text
+Description: crypto
+
+Name: partman/method_short/dont_use
+Type: text
+Description: unused
+
+Name: partman/method_short/efi
+Type: text
+Description: EFIboot
+
+Name: partman/method_short/format
+Type: text
+Description: format
+
+Name: partman/method_short/keep
+Type: text
+Description: keep
+
+Name: partman/method_short/lvm
+Type: text
+Description: lvm
+
+Name: partman/method_short/raid
+Type: text
+Description: raid
+
+Name: partman/method_short/swap
+Type: text
+Description: swap
+
+Name: partman/progress/init/crypto
+Type: text
+Description: Setting up encryption...
+
+Name: partman/progress/init/fallback
+Type: text
+Description: Please wait...
+
+Name: partman/progress/init/parted
+Type: text
+Description: Scanning disks...
+
+Name: partman/progress/init/title
+Type: text
+Description: Starting up the partitioner
+
+Name: partman/progress/init/update_partitions
+Type: text
+Description: Detecting file systems...
+
+Name: partman/show_free_chs
+Type: note
+Description: The free space starts from ${FROMCHS} and ends at ${TOCHS}.
+
+Name: partman/show_partition_chs
+Type: note
+Description: The partition starts from ${FROMCHS} and ends at ${TOCHS}.
+
+Name: partman/storage_device
+Type: select
+Choices: ${CHOICES}
+Description: What to do with this device:
+
+Name: partman/text/cancel_menu
+Type: text
+Description: Cancel this menu
+
+Name: partman/text/confirm_item
+Type: text
+Description: partition #${PARTITION} of ${DEVICE} as ${TYPE}
+
+Name: partman/text/confirm_item_header
+Type: text
+Description: The following partitions are going to be formatted:
+
+Name: partman/text/confirm_partitem_header
+Type: text
+Description: The partition tables of the following devices are changed:
+
+Name: partman/text/confirm_unpartitioned_item
+Type: text
+Description: ${DEVICE} as ${TYPE}
+
+Name: partman/text/dasd_disk
+Type: text
+Description: DASD %s (%s)
+
+Name: partman/text/dasd_partition
+Type: text
+Description: DASD %s (%s), partition #%s
+
+Name: partman/text/destroyed
+Type: text
+Description: All data in it WILL BE DESTROYED!
+
+Name: partman/text/dmcrypt_volume
+Type: text
+Description: Encrypted volume (%s)
+
+Name: partman/text/dump_partition_info
+Type: text
+Description: Dump partition info in %s
+
+Name: partman/text/end_the_partitioning
+Type: text
+Description: Finish partitioning and write changes to disk
+
+Name: partman/text/finished_with_partition
+Type: text
+Description: Done setting up the partition
+
+Name: partman/text/formatting
+Type: text
+Description: Partitions formatting
+
+Name: partman/text/free_space
+Type: text
+Description: FREE SPACE
+
+Name: partman/text/ide_master_disk
+Type: text
+Description: IDE%s master (%s)
+
+Name: partman/text/ide_master_partition
+Type: text
+Description: IDE%s master, partition #%s (%s)
+
+Name: partman/text/ide_slave_disk
+Type: text
+Description: IDE%s slave (%s)
+
+Name: partman/text/ide_slave_partition
+Type: text
+Description: IDE%s slave, partition #%s (%s)
+
+Name: partman/text/logical
+Type: text
+Description: logical
+
+Name: partman/text/loopback
+Type: text
+Description: Loopback (loop%s)
+
+Name: partman/text/lvm_lv
+Type: text
+Description: LVM VG %s, LV %s
+
+Name: partman/text/none_detected
+Type: text
+Description: No existing file system was detected in this partition.
+
+Name: partman/text/number
+Type: text
+Description: #%s
+
+Name: partman/text/please_wait
+Type: text
+Description: Please wait...
+
+Name: partman/text/pri/log
+Type: text
+Description: pri/log
+
+Name: partman/text/primary
+Type: text
+Description: primary
+
+Name: partman/text/processing
+Type: text
+Description: Processing...
+
+Name: partman/text/raid_device
+Type: text
+Description: RAID%s device #%s
+
+Name: partman/text/scsi_disk
+Type: text
+Description: SCSI%s (%s,%s,%s) (%s)
+
+Name: partman/text/scsi_partition
+Type: text
+Description: SCSI%s (%s,%s,%s), partition #%s (%s)
+
+Name: partman/text/show_chs
+Type: text
+Description: Show Cylinder/Head/Sector information
+
+Name: partman/text/show_chs_free
+Type: text
+Description: Show Cylinder/Head/Sector information
+
+Name: partman/text/text_template
+Type: text
+Description: ${DESCRIPTION}
+
+Name: partman/text/there_is_detected
+Type: text
+Description: This partition is formatted with the ${FILESYSTEM}.
+
+Name: partman/text/undo_everything
+Type: text
+Description: Undo changes to partitions
+
+Name: partman/text/unusable
+Type: text
+Description: unusable
+
+Name: partman/unknown_label
+Type: boolean
+Default: true
+Description: Continue with partitioning?
+Extended_description: This partitioner doesn't have information about the default type of the partition tables on your architecture.  Please send an e-mail message to debian-boot@lists.debian.org with information.\n\nPlease note that if the type of the partition table is unsupported by libparted, then this partitioner will not work properly.
+
+Name: partman/unsupported_label
+Type: boolean
+Default: false
+Description: Continue with partitioning?
+Extended_description: This partitioner is based on the library libparted which doesn't have support for the partition tables used on your architecture.  It is strongly recommended that you exit this partitioner.\n\nIf you can, please help to add support for your partition table type to libparted.
+
+Name: passwd/make-user
+Type: boolean
+Default: true
+Description: Create a normal user account now?
+Extended_description: It's a bad idea to use the root account for normal day-to-day activities, such as the reading of electronic mail, because even a small mistake can result in disaster. You should create a normal user account to use for those day-to-day tasks.\n\nNote that you may create it later (as well as any additional account) by typing 'adduser <username>' as root, where <username> is an username, like 'imurdock' or 'rms'.
+
+Name: passwd/root-login
+Type: boolean
+Default: false
+Description: Allow login as root?
+Extended_description: If you choose not to allow root to log in, then a user account will be created and given the power to become root using the 'sudo' command.
+
+Name: passwd/root-password
+Type: password
+Description: Root password:
+Extended_description: You need to set a password for 'root', the system administrative account. A malicious or unqualified user with root access can have disastrous results, so you should take care to choose a root password that is not easy to guess. It should not be a word found in dictionaries, or a word that could be easily associated with you.\n\nA good password will contain a mixture of letters, numbers and punctuation and should be changed at regular intervals.\n\nNote that you will not be able to see the password as you type it.
+
+Name: passwd/root-password-again
+Type: password
+Description: Re-enter password to verify:
+Extended_description: Please enter the same root password again to verify that you have typed it correctly.
+
+Name: passwd/root-password-crypted
+Type: password
+Description: for internal use only
+
+Name: passwd/shadow
+Type: boolean
+Default: true
+Description: Enable shadow passwords?
+Extended_description: Shadow passwords make your system more secure because nobody is able to view even encrypted passwords. The passwords are stored in a separate file that can only be read by special programs. The use of shadow passwords is strongly recommended, except in a few cases such as NIS environments.
+
+Name: passwd/user-fullname
+Type: string
+Description: Full name for the new user:
+Extended_description: A user account will be created for you to use instead of the root account for non-administrative activities.\n\nPlease enter the real name of this user. This information will be used for instance as default origin for emails sent by this user as well as any program which displays or uses the user's real name. Your full name is a reasonable choice.
+
+Name: passwd/user-password
+Type: password
+Description: Choose a password for the new user:
+Extended_description: A good password will contain a mixture of letters, numbers and punctuation and should be changed at regular intervals.
+
+Name: passwd/user-password-again
+Type: password
+Description: Re-enter password to verify:
+Extended_description: Please enter the same user password again to verify you have typed it correctly.
+
+Name: passwd/user-password-crypted
+Type: password
+Description: for internal use only
+
+Name: passwd/user-uid
+Type: string
+Description: for internal use only
+
+Name: passwd/username
+Type: string
+Description: Username for your account:
+Extended_description: Select a username for the new account. Your first name is a reasonable choice. The username should start with a lower-case letter, which can be followed by any combination of numbers and more lower-case letters.
+
+Name: passwd/username-bad
+Type: error
+Description: Invalid username
+Extended_description: The username you entered is invalid. Note that usernames must start with a lower-case letter, which can be followed by any combination of numbers and more lower-case letters.
+
+Name: passwd/username-reserved
+Type: error
+Description: Reserved username
+Extended_description: The username you entered (${USERNAME}) is reserved for use by the system. Please select a different one.
+
+Name: pkgsel/include
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Comma/space-separated list of extra packages to install
+
+Name: pkgsel/install-language-support
+Type: boolean
+Default: true
+Description: Download language support?
+Extended_description: The installation CD does not contain full support for your language. Do you want to download the required packages from the Internet now? This includes spell-checking, dictionaries, and translations for various applications.\n\nIf you do not want to download this now, you may start the Language Selector after installation to install complete support for your language.
+
+Name: pkgsel/language-pack-patterns
+Type: string
+Default: language-pack-gnome-$LL
+Description: Patterns for language packs to install
+Extended_description: This template may be preseeded to modify the packages that will be installed to provide translations for a given language. The selected language will be substituted in place of $LL; multiple patterns may be given, separated by spaces.\n\nlanguage-pack-$LL is required, and is always installed. You do not need to list it here.
+
+Name: pkgsel/language-packs
+Type: multiselect
+Choices: af am ar as az be bg bn br bs ca cs cy da de el en eo es et eu fa fi fr ga gl gu he hi hr hu ia id is it ja ka kn ko ku lg li lo lt lv mg mi mk ml mn mr ms my nb ne nl nn no or pa pl pt rm ro ru rw se si sk sl sq sr sv ta tg th tk tl tr ug uk ur uz vi wa wo xh yi yo zh zu
+Description: Language packs to install
+Extended_description: This template may be preseeded to modify the set of language packs to be installed. If not set, the language pack matching the language selected in the installer will be installed.
+
+Name: pkgsel/progress/cleanup
+Type: text
+Description: Cleaning up...
+
+Name: pkgsel/progress/init
+Type: text
+Description: Setting up...
+
+Name: pkgsel/progress/tasksel
+Type: text
+Description: Running tasksel...
+
+Name: preseed/boot_command
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Shell command or commands to run in the d-i environment during boot
+
+Name: preseed/command_failed
+Type: error
+Description: Failed to run preseeded command
+Extended_description: Execution of preseeded command "${COMMAND}" failed with exit code ${CODE}.
+
+Name: preseed/early_command
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Shell command or commands to run in the d-i environment as early as possible
+
+Name: preseed/file
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Path to debconf preconfiguration file (or files) to load
+
+Name: preseed/file/checksum
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Optional md5sum (or sums) for the preconfiguration files
+
+Name: preseed/include
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Additional preseed files to load
+
+Name: preseed/include/checksum
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: md5sums of additional preseed files to load
+
+Name: preseed/include_command
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Shell command to run that may output a list of preseed files to load
+
+Name: preseed/interactive
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: If true, preseed questions but don't mark them as seen
+
+Name: preseed/late_command
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Shell command or commands to run in the d-i environment as late as possible
+
+Name: preseed/load_error
+Type: error
+Description: Failed to process the preconfiguration file
+Extended_description: The installer failed to process the preconfiguration file from ${LOCATION}. The file may be corrupt.
+
+Name: preseed/retrieve_error
+Type: error
+Description: Failed to retrieve the preconfiguration file
+Extended_description: The file needed for preconfiguration could not be retrieved from ${LOCATION}. The installation will proceed in non-automated mode.
+
+Name: preseed/run
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Programs to be obtained & run
+
+Name: preseed/url
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Url of debconf preconfiguration file (or files) to download
+
+Name: preseed/url/checksum
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Optional md5sum (or sums) for the preconfiguration files
+
+Name: rescue/enable
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+Extended_description: Enable rescue mode?
+
+Name: rescue/info
+Type: title
+Description: Rescue mode
+
+Name: rescue/menu/grub-reinstall
+Type: text
+Description: Reinstall GRUB boot loader
+
+Name: retriever/cdrom/error
+Type: boolean
+Default: true
+Description: Failed to copy file from CD-ROM. Retry?
+Extended_description: There was a problem reading data from the CD-ROM. Please make sure it is in the drive. If retrying does not work, you should check the integrity of your CD-ROM.
+
+Name: retriever/floppy/error
+Type: text
+Description: Cannot read floppy, or not a driver floppy.
+Extended_description: There was a problem reading data from the floppy disk. Please make sure that the right floppy is in the drive. If you continue to have trouble, you may have a bad floppy disk.
+
+Name: retriever/floppy/packages/progress
+Type: text
+Description: Scanning the floppy
+
+Name: save-logs/bad_directory
+Type: error
+Description: Cannot save logs
+Extended_description: The directory "${DIR}" does not exist.
+
+Name: save-logs/directory
+Type: string
+Default: /mnt
+Description: Directory in which to save debug logs:
+Extended_description: Please make sure the file system you want to save debug logs on is mounted before you continue.
+
+Name: save-logs/floppy_mount_failed
+Type: error
+Description: Failed to mount the floppy
+Extended_description: Either the floppy device cannot be found, or a formatted floppy is not in the drive.
+
+Name: save-logs/httpd_running
+Type: note
+Description: Web server started
+Extended_description: A simple web server has been started on this computer to serve log files and debug info. An index of all the available log files can be found at http://${ADDRESS}/
+
+Name: save-logs/insert_floppy
+Type: note
+Description: Insert formatted floppy in drive
+Extended_description: Log files and debug info will be copied into this floppy.\n\nThe information will also be stored in /var/log/installer/ on the installed system.
+
+Name: save-logs/menu
+Type: select
+Choices: floppy, web, mounted file system
+Description: How should the debug logs be saved or transferred?
+Extended_description: Debugging log files for the installer can be saved to floppy, served up over the web, or saved to a mounted file system.
+
+Name: save-logs/no_network
+Type: note
+Description: Web server started, but network not running
+Extended_description: A simple web server has been started on this computer to serve log files and debug info. However, the network is not set up yet. The web server will be left running, and will be accessible once the network is configured.
+
+Name: tasksel/first
+Type: multiselect
+Choices: DNS server, LAMP server, Mail server, OpenSSH server, PostgreSQL database, Print server, Samba File server
+Description: Choose software to install:
+Extended_description: At the moment, only the core of the system is installed. To tune the system to your needs, you can choose to install one or more of the following predefined collections of software.
+
+Name: tasksel/title
+Type: title
+Description: Software selection
+
+Name: time/zone
+Type: string
+Description: for internal use; can be preseeded
+Extended_description: Time zone code
+
+Name: tzsetup/country/AQ
+Type: select
+Choices: Antarctica/McMurdo, Antarctica/South_Pole, Antarctica/Rothera, Antarctica/Palmer, Antarctica/Mawson, Antarctica/Davis, Antarctica/Casey, Antarctica/Vostok, Antarctica/DumontDUrville, Antarctica/Syowa
+Description: Select a location in your time zone:
+Choices-en.UTF-8: McMurdo, south pole, Rothera, Palmer, Mawson, Davis, Casey, Vostok, Dumont-d'Urville, Syowa
+
+Name: tzsetup/country/AU
+Type: select
+Default: Australia/Sydney
+Choices: Australia/Lord_Howe, Australia/Hobart, Australia/Melbourne, Australia/Sydney, Australia/Broken_Hill, Australia/Brisbane, Australia/Lindeman, Australia/Adelaide, Australia/Darwin, Australia/Perth
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Lord Howe Island, Hobart, Melbourne, Sydney, Broken Hill, Brisbane, Lindeman, Adelaide, Darwin, Perth
+
+Name: tzsetup/country/BR
+Type: select
+Default: America/Sao_Paulo
+Choices: America/Noronha, America/Belem, America/Fortaleza, America/Recife, America/Araguaina, America/Maceio, America/Bahia, America/Sao_Paulo, America/Campo_Grande, America/Cuiaba, America/Porto_Velho, America/Boa_Vista, America/Manaus, America/Eirunepe, America/Rio_Branco
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Noronha, Belem, Fortaleza, Recife, Araguaina, Maceio, Bahia, Sao Paulo, Campo Grande, Cuiaba, Porto Velho, Boa Vista, Manaus, Eirunepe, Rio Branco
+
+Name: tzsetup/country/CA
+Type: select
+Default: Canada/Eastern
+Choices: Canada/Newfoundland, Canada/Atlantic, Canada/Eastern, Canada/Central, Canada/East-Saskatchewan, Canada/Saskatchewan, Canada/Mountain, Canada/Pacific, Canada/Yukon
+Description: Select your time zone:
+Choices-en.UTF-8: Newfoundland, Atlantic, Eastern, Central, East Saskatchewan, Saskatchewan, Mountain, Pacific, Yukon
+
+Name: tzsetup/country/CD
+Type: select
+Choices: Africa/Kinshasa, Africa/Lubumbashi
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Kinshasa, Lubumbashi
+
+Name: tzsetup/country/CL
+Type: select
+Choices: America/Santiago, Pacific/Easter
+Description: Select your time zone:
+Choices-en.UTF-8: Santiago, Easter Island
+
+Name: tzsetup/country/EC
+Type: select
+Choices: America/Guayaquil, Pacific/Galapagos
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Guayaquil, Galapagos
+
+Name: tzsetup/country/ES
+Type: select
+Choices: Europe/Madrid, Africa/Ceuta, Atlantic/Canary
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Madrid, Ceuta, Canary Islands
+
+Name: tzsetup/country/FM
+Type: select
+Choices: Pacific/Yap, Pacific/Truk, Pacific/Ponape, Pacific/Kosrae
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Yap, Truk, Ponape, Kosrae
+
+Name: tzsetup/country/GL
+Type: select
+Choices: America/Godthab, America/Danmarkshavn, America/Scoresbysund, America/Thule
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Godthab, Danmarkshavn, Scoresbysund, Thule
+
+Name: tzsetup/country/ID
+Type: select
+Choices: Asia/Jakarta, Asia/Pontianak, Asia/Makassar, Asia/Jayapura
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Jakarta, Pontianak, Makassar, Jayapura
+
+Name: tzsetup/country/KI
+Type: select
+Choices: Pacific/Tarawa, Pacific/Enderbury, Pacific/Kiritimati
+Description: Select your time zone:
+Choices-en.UTF-8: Tarawa (Gilbert Islands), Enderbury (Phoenix Islands), Kiritimati (Line Islands)
+
+Name: tzsetup/country/KZ
+Type: select
+Choices: Asia/Almaty, Asia/Qyzylorda, Asia/Aqtobe, Asia/Aqtau, Asia/Oral
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Almaty, Qyzylorda, Aqtobe, Atyrau, Oral
+
+Name: tzsetup/country/MN
+Type: select
+Choices: Asia/Ulaanbaatar, Asia/Hovd, Asia/Choibalsan
+Description: Select a city in your time zone:
+Choices-en.UTF-8: Ulaanbaatar, Hovd, Choibalsan
+
+Name: tzsetup/country/MX
+Type: select
+Choices: Mexico/General, Mexico/BajaSur, Mexico/BajaNorte
+Description: Select your time zone:
+Choices-en.UTF-8: Central, Mountain, Pacific
+
+Name: tzsetup/country/NZ
+Type: select
+Choices: Pacific/Auckland, Pacific/Chatham
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Auckland, Chatham Islands
+
+Name: tzsetup/country/PF
+Type: select
+Choices: Pacific/Tahiti, Pacific/Marquesas, Pacific/Gambier
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Tahiti (Society Islands), Marquesas Islands, Gambier Islands
+
+Name: tzsetup/country/PT
+Type: select
+Choices: Europe/Lisbon, Atlantic/Madeira, Atlantic/Azores
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Lisbon, Madeira Islands, Azores
+
+Name: tzsetup/country/RU
+Type: select
+Default: Europe/Moscow
+Choices: Europe/Kaliningrad, Europe/Moscow, Europe/Samara, Asia/Yekaterinburg, Asia/Omsk, Asia/Novosibirsk, Asia/Krasnoyarsk, Asia/Irkutsk, Asia/Yakutsk, Asia/Vladivostok, Asia/Sakhalin, Asia/Magadan, Asia/Kamchatka, Asia/Anadyr
+Description: Select your time zone:
+Choices-en.UTF-8: Moscow-01 - Kaliningrad, Moscow+00 - west Russia, Moscow+01 - Samara, Moscow+02 - Urals, Moscow+03 - west Siberia, Moscow+03 - Novosibirsk, Moscow+04 - Yenisei River, Moscow+05 - Lake Baikal, Moscow+06 - Lena River, Moscow+07 - Amur River, Moscow+07 - Sakhalin Island, Moscow+08 - Magadan, Moscow+09 - Kamchatka, Moscow+10 - Bering Sea
+
+Name: tzsetup/country/UM
+Type: select
+Choices: Pacific/Johnston, Pacific/Midway, Pacific/Wake
+Description: Select a location in your time zone:
+Choices-en.UTF-8: Johnston Atoll, Midway Islands, Wake Island
+
+Name: tzsetup/country/US
+Type: select
+Default: US/Eastern
+Choices: US/Eastern, US/Central, US/Mountain, US/Pacific, US/Alaska, US/Hawaii, US/Arizona, US/East-Indiana, US/Samoa
+Description: Select your time zone:
+Choices-en.UTF-8: Eastern, Central, Mountain, Pacific, Alaska, Hawaii, Arizona, East Indiana, Samoa
+
+Name: tzsetup/selected
+Type: note
+Description: Selected timezone
+Extended_description: Based on your country, your time zone is ${ZONE}.
+
+Name: user-setup/password-empty
+Type: error
+Description: Empty password
+Extended_description: You entered an empty password, which is not allowed. Please choose a non-empty password.
+
+Name: user-setup/password-mismatch
+Type: error
+Description: Password input error
+Extended_description: The two passwords you entered were not the same. Please try again.
+

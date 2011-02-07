@@ -1,0 +1,768 @@
+umame -a: Linux majikthise 2.6.22-14-generic #1 SMP Sun Oct 14 23:05:12 GMT 2007 i686 unknown
+lspci -nn: 00:00.0 Host bridge [0600]: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge [8086:7190] (rev 01)
+lspci -nn: 00:01.0 PCI bridge [0604]: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX AGP bridge [8086:7191] (rev 01)
+lspci -nn: 00:07.0 ISA bridge [0601]: Intel Corporation 82371AB/EB/MB PIIX4 ISA [8086:7110] (rev 08)
+lspci -nn: 00:07.1 IDE interface [0101]: Intel Corporation 82371AB/EB/MB PIIX4 IDE [8086:7111] (rev 01)
+lspci -nn: 00:07.3 Bridge [0680]: Intel Corporation 82371AB/EB/MB PIIX4 ACPI [8086:7113] (rev 08)
+lspci -nn: 00:07.7 System peripheral [0880]: VMware Inc Unknown device [15ad:0740] (rev 10)
+lspci -nn: 00:0f.0 VGA compatible controller [0300]: VMware Inc [VMware SVGA II] PCI Display Adapter [15ad:0405]
+lspci -nn: 00:10.0 SCSI storage controller [0100]: LSI Logic / Symbios Logic 53c1030 PCI-X Fusion-MPT Dual Ultra320 SCSI [1000:0030] (rev 01)
+lspci -nn: 00:11.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:0790] (rev 02)
+lspci -nn: 00:15.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:15.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:16.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:17.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 00:18.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -nn: 02:00.0 Ethernet controller [0200]: Advanced Micro Devices [AMD] 79c970 [PCnet32 LANCE] [1022:2000] (rev 10)
+lspci -vnn: 00:00.0 Host bridge [0600]: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge [8086:7190] (rev 01)
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:1976]
+lspci -vnn: 	Flags: bus master, medium devsel, latency 0
+lspci -vnn: 
+lspci -vnn: 00:01.0 PCI bridge [0604]: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX AGP bridge [8086:7191] (rev 01)
+lspci -vnn: 	Flags: bus master, 66MHz, medium devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=01, subordinate=01, sec-latency=64
+lspci -vnn: 
+lspci -vnn: 00:07.0 ISA bridge [0601]: Intel Corporation 82371AB/EB/MB PIIX4 ISA [8086:7110] (rev 08)
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:1976]
+lspci -vnn: 	Flags: bus master, medium devsel, latency 0
+lspci -vnn: 
+lspci -vnn: 00:07.1 IDE interface [0101]: Intel Corporation 82371AB/EB/MB PIIX4 IDE [8086:7111] (rev 01) (prog-if 8a [Master SecP PriP])
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:1976]
+lspci -vnn: 	Flags: bus master, medium devsel, latency 64
+lspci -vnn: 	[virtual] Memory at 000001f0 (32-bit, non-prefetchable) [disabled] [size=8]
+lspci -vnn: 	[virtual] Memory at 000003f0 (type 3, non-prefetchable) [disabled] [size=1]
+lspci -vnn: 	[virtual] Memory at 00000170 (32-bit, non-prefetchable) [disabled] [size=8]
+lspci -vnn: 	[virtual] Memory at 00000370 (type 3, non-prefetchable) [disabled] [size=1]
+lspci -vnn: 	I/O ports at 10c0 [size=16]
+lspci -vnn: 
+lspci -vnn: 00:07.3 Bridge [0680]: Intel Corporation 82371AB/EB/MB PIIX4 ACPI [8086:7113] (rev 08)
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:1976]
+lspci -vnn: 	Flags: medium devsel, IRQ 9
+lspci -vnn: 
+lspci -vnn: 00:07.7 System peripheral [0880]: VMware Inc Unknown device [15ad:0740] (rev 10)
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:0740]
+lspci -vnn: 	Flags: medium devsel, IRQ 9
+lspci -vnn: 	I/O ports at 1080 [size=64]
+lspci -vnn: 
+lspci -vnn: 00:0f.0 VGA compatible controller [0300]: VMware Inc [VMware SVGA II] PCI Display Adapter [15ad:0405]
+lspci -vnn: 	Subsystem: VMware Inc [VMware SVGA II] PCI Display Adapter [15ad:0405]
+lspci -vnn: 	Flags: medium devsel, IRQ 9
+lspci -vnn: 	I/O ports at 10d0 [size=16]
+lspci -vnn: 	Memory at d0000000 (32-bit, non-prefetchable) [size=128M]
+lspci -vnn: 	Memory at d8000000 (32-bit, non-prefetchable) [size=8M]
+lspci -vnn: 	[virtual] Expansion ROM at 30000000 [disabled] [size=32K]
+lspci -vnn: 	Capabilities: [40] Vendor Specific Information
+lspci -vnn: 
+lspci -vnn: 00:10.0 SCSI storage controller [0100]: LSI Logic / Symbios Logic 53c1030 PCI-X Fusion-MPT Dual Ultra320 SCSI [1000:0030] (rev 01)
+lspci -vnn: 	Subsystem: VMware Inc Unknown device [15ad:1976]
+lspci -vnn: 	Flags: bus master, medium devsel, latency 64, IRQ 16
+lspci -vnn: 	I/O ports at 1400 [size=256]
+lspci -vnn: 	Memory at d8820000 (64-bit, non-prefetchable) [size=128K]
+lspci -vnn: 	Memory at d8800000 (64-bit, non-prefetchable) [size=128K]
+lspci -vnn: 	[virtual] Expansion ROM at 30008000 [disabled] [size=16K]
+lspci -vnn: 
+lspci -vnn: 00:11.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:0790] (rev 02) (prog-if 01)
+lspci -vnn: 	Flags: bus master, medium devsel, latency 64
+lspci -vnn: 	Bus: primary=00, secondary=02, subordinate=02, sec-latency=68
+lspci -vnn: 	I/O behind bridge: 00002000-00003fff
+lspci -vnn: 	Memory behind bridge: d9200000-d9cfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dc100000-00000000dc6fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:0790]
+lspci -vnn: 
+lspci -vnn: 00:15.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=03, subordinate=03, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00004000-00004fff
+lspci -vnn: 	Memory behind bridge: d9d00000-d9dfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dc700000-00000000dc7fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=04, subordinate=04, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00008000-00008fff
+lspci -vnn: 	Memory behind bridge: da100000-da1fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dcb00000-00000000dcbfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=05, subordinate=05, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000c000-0000cfff
+lspci -vnn: 	Memory behind bridge: da500000-da5fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dcf00000-00000000dcffffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=06, subordinate=06, sec-latency=0
+lspci -vnn: 	Memory behind bridge: da900000-da9fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd300000-00000000dd3fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=07, subordinate=07, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dad00000-dadfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd700000-00000000dd7fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=08, subordinate=08, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db100000-db1fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000ddb00000-00000000ddbfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=09, subordinate=09, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db500000-db5fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000ddf00000-00000000ddffffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:15.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0a, subordinate=0a, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db900000-db9fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de300000-00000000de3fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0b, subordinate=0b, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00005000-00005fff
+lspci -vnn: 	Memory behind bridge: d9e00000-d9efffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dc800000-00000000dc8fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0c, subordinate=0c, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00009000-00009fff
+lspci -vnn: 	Memory behind bridge: da200000-da2fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dcc00000-00000000dccfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0d, subordinate=0d, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000d000-0000dfff
+lspci -vnn: 	Memory behind bridge: da600000-da6fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd000000-00000000dd0fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0e, subordinate=0e, sec-latency=0
+lspci -vnn: 	Memory behind bridge: daa00000-daafffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd400000-00000000dd4fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=0f, subordinate=0f, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dae00000-daefffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd800000-00000000dd8fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=10, subordinate=10, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db200000-db2fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000ddc00000-00000000ddcfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=11, subordinate=11, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db600000-db6fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de000000-00000000de0fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:16.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=12, subordinate=12, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dba00000-dbafffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de400000-00000000de4fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=13, subordinate=13, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00006000-00006fff
+lspci -vnn: 	Memory behind bridge: d9f00000-d9ffffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dc900000-00000000dc9fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=14, subordinate=14, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000a000-0000afff
+lspci -vnn: 	Memory behind bridge: da300000-da3fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dcd00000-00000000dcdfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=15, subordinate=15, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000e000-0000efff
+lspci -vnn: 	Memory behind bridge: da700000-da7fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd100000-00000000dd1fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=16, subordinate=16, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dab00000-dabfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd500000-00000000dd5fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=17, subordinate=17, sec-latency=0
+lspci -vnn: 	Memory behind bridge: daf00000-daffffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd900000-00000000dd9fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=18, subordinate=18, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db300000-db3fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000ddd00000-00000000dddfffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=19, subordinate=19, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db700000-db7fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de100000-00000000de1fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:17.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1a, subordinate=1a, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dbb00000-dbbfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de500000-00000000de5fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.0 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1b, subordinate=1b, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 00007000-00007fff
+lspci -vnn: 	Memory behind bridge: da000000-da0fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dca00000-00000000dcafffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.1 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1c, subordinate=1c, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000b000-0000bfff
+lspci -vnn: 	Memory behind bridge: da400000-da4fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dce00000-00000000dcefffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.2 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1d, subordinate=1d, sec-latency=0
+lspci -vnn: 	I/O behind bridge: 0000f000-0000ffff
+lspci -vnn: 	Memory behind bridge: da800000-da8fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd200000-00000000dd2fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.3 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1e, subordinate=1e, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dac00000-dacfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dd600000-00000000dd6fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.4 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=1f, subordinate=1f, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db000000-db0fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dda00000-00000000ddafffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.5 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=20, subordinate=20, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db400000-db4fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000dde00000-00000000ddefffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.6 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=21, subordinate=21, sec-latency=0
+lspci -vnn: 	Memory behind bridge: db800000-db8fffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de200000-00000000de2fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 00:18.7 PCI bridge [0604]: VMware Inc Unknown device [15ad:07a0] (rev 01)
+lspci -vnn: 	Flags: bus master, fast devsel, latency 0
+lspci -vnn: 	Bus: primary=00, secondary=22, subordinate=22, sec-latency=0
+lspci -vnn: 	Memory behind bridge: dbc00000-dbcfffff
+lspci -vnn: 	Prefetchable memory behind bridge: 00000000de600000-00000000de6fffff
+lspci -vnn: 	Capabilities: [40] Subsystem: VMware Inc Unknown device [15ad:07a0]
+lspci -vnn: 	Capabilities: [48] Power Management version 3
+lspci -vnn: 	Capabilities: [50] Express Root Port (Slot+) IRQ 0
+lspci -vnn: 	Capabilities: [8c] Message Signalled Interrupts: Mask+ 64bit+ Queue=0/0 Enable-
+lspci -vnn: 
+lspci -vnn: 02:00.0 Ethernet controller [0200]: Advanced Micro Devices [AMD] 79c970 [PCnet32 LANCE] [1022:2000] (rev 10)
+lspci -vnn: 	Subsystem: Advanced Micro Devices [AMD] 79c970 [PCnet32 LANCE] [1022:2000]
+lspci -vnn: 	Flags: bus master, medium devsel, latency 64, IRQ 17
+lspci -vnn: 	I/O ports at 2000 [size=128]
+lspci -vnn: 	[virtual] Expansion ROM at dc100000 [disabled] [size=64K]
+lspci -vnn: 
+modulemap: 8086:7111 ata_piix
+modulemap: 1000:0030 mptspi
+modulemap: 1022:2000 pcnet32
+lsmod: Module                  Size  Used by
+lsmod: ufs                    83332  0 
+lsmod: hfsplus                78084  0 
+lsmod: hfs                    49924  0 
+lsmod: ntfs                  108096  0 
+lsmod: xfs                   575192  1 
+lsmod: reiserfs              248704  0 
+lsmod: jfs                   189412  0 
+lsmod: ext3                  133896  0 
+lsmod: jbd                    60456  1 ext3
+lsmod: fuse                   47124  1 
+lsmod: vfat                   14080  0 
+lsmod: fat                    54300  1 vfat
+lsmod: ext2                   67208  1 
+lsmod: mbcache                 9732  2 ext3,ext2
+lsmod: af_packet              24840  2 
+lsmod: sd_mod                 30208  4 
+lsmod: parport_pc             37412  0 
+lsmod: parport                37448  1 parport_pc
+lsmod: pcnet32                34308  0 
+lsmod: mii                     6528  1 pcnet32
+lsmod: mptspi                 19848  3 
+lsmod: mptscsih               23936  1 mptspi
+lsmod: mptbase                57440  2 mptspi,mptscsih
+lsmod: scsi_transport_spi     25472  1 mptspi
+lsmod: rsrc_nonstatic         14080  0 
+lsmod: pcmcia_core            40980  1 rsrc_nonstatic
+lsmod: isofs                  36284  0 
+lsmod: ide_cd                 32672  0 
+lsmod: ide_disk               18560  0 
+lsmod: ide_floppy             19200  0 
+lsmod: ide_generic             2176  0 [permanent]
+lsmod: pdc202xx_old            9472  0 [permanent]
+lsmod: aec62xx                 8064  0 [permanent]
+lsmod: alim15x3               12556  0 [permanent]
+lsmod: amd74xx                15260  0 [permanent]
+lsmod: atiixp                  7056  0 [permanent]
+lsmod: cmd64x                 10780  0 [permanent]
+lsmod: cs5530                  6912  0 [permanent]
+lsmod: cs5535                  5248  0 [permanent]
+lsmod: cy82c693                5380  0 [permanent]
+lsmod: hpt34x                  5760  0 [permanent]
+lsmod: hpt366                 17664  0 [permanent]
+lsmod: ns87415                 5396  0 [permanent]
+lsmod: opti621                 5380  0 [permanent]
+lsmod: via82cxxx              10372  0 [permanent]
+lsmod: sc1200                  8192  0 [permanent]
+lsmod: trm290                  5380  0 [permanent]
+lsmod: usb_storage            73024  0 
+lsmod: libusual               18448  1 usb_storage
+lsmod: ide_core              116804  21 ide_cd,ide_disk,ide_floppy,ide_generic,pdc202xx_old,aec62xx,alim15x3,amd74xx,atiixp,cmd64x,cs5530,cs5535,cy82c693,hpt34x,hpt366,ns87415,opti621,via82cxxx,sc1200,trm290,usb_storage
+lsmod: fbcon                  41760  70 
+lsmod: tileblit                3584  1 fbcon
+lsmod: font                    9216  1 fbcon
+lsmod: bitblit                 6912  1 fbcon
+lsmod: softcursor              3200  1 bitblit
+lsmod: vga16fb                15500  2 
+lsmod: vgastate               10880  1 vga16fb
+lsmod: vesafb                  9092  0 
+lsmod: usbserial              34920  0 
+lsmod: usbhid                 29536  0 
+lsmod: hid                    28928  1 usbhid
+lsmod: usbkbd                  7808  0 
+lsmod: usbcore               138632  5 usb_storage,libusual,usbserial,usbhid,usbkbd
+lsmod: thermal                14344  0 
+lsmod: processor              32072  1 thermal
+lsmod: fan                     5764  0 
+lsmod: sg                     36764  0 
+lsmod: sr_mod                 17828  0 
+lsmod: cdrom                  37536  2 ide_cd,sr_mod
+lsmod: ata_generic             8452  0 
+lsmod: floppy                 60004  0 
+lsmod: psmouse                39952  0 
+lsmod: ata_piix               17540  0 
+lsmod: libata                125040  2 ata_generic,ata_piix
+lsmod: scsi_mod              147084  8 sd_mod,mptspi,mptscsih,scsi_transport_spi,usb_storage,sg,sr_mod,libata
+lsmod: evdev                  11136  0 
+df: Filesystem           1k-blocks      Used Available Use% Mounted on
+df: tmpfs                   257920        24    257896   0% /dev
+df: tmpfs                   257920        24    257896   0% /.dev
+df: /dev/sda3             41563888    319376  41244512   1% /target
+df: /dev/sda1               466662     16894    424869   4% /target/boot
+free:               total         used         free       shared      buffers
+free:   Mem:       515840       434620        81220            0          932
+free:  Swap:      1951888            0      1951888
+free: Total:      2467728       434620      2033108
+cardctl status: /usr/bin/report-hw: /usr/bin/report-hw: 50: cardctl: not found
+cardctl ident: /usr/bin/report-hw: /usr/bin/report-hw: 51: cardctl: not found
+/proc/cpuinfo: processor	: 0
+/proc/cpuinfo: vendor_id	: GenuineIntel
+/proc/cpuinfo: cpu family	: 6
+/proc/cpuinfo: model		: 26
+/proc/cpuinfo: model name	: Intel(R) Core(TM) i7 CPU         940  @ 2.93GHz
+/proc/cpuinfo: stepping	: 4
+/proc/cpuinfo: cpu MHz		: 3222.731
+/proc/cpuinfo: cache size	: 8192 KB
+/proc/cpuinfo: fdiv_bug	: no
+/proc/cpuinfo: hlt_bug		: no
+/proc/cpuinfo: f00f_bug	: no
+/proc/cpuinfo: coma_bug	: no
+/proc/cpuinfo: fpu		: yes
+/proc/cpuinfo: fpu_exception	: yes
+/proc/cpuinfo: cpuid level	: 11
+/proc/cpuinfo: wp		: yes
+/proc/cpuinfo: flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss nx rdtscp lm constant_tsc up pni ssse3 cx16 popcnt lahf_lm
+/proc/cpuinfo: bogomips	: 6451.59
+/proc/cpuinfo: clflush size	: 64
+/proc/cpuinfo: 
+/proc/ioports: 0000-001f : dma1
+/proc/ioports: 0020-0021 : pic1
+/proc/ioports: 0040-0043 : timer0
+/proc/ioports: 0050-0053 : timer1
+/proc/ioports: 0060-006f : keyboard
+/proc/ioports: 0070-0077 : rtc
+/proc/ioports: 0080-008f : dma page reg
+/proc/ioports: 00a0-00a1 : pic2
+/proc/ioports: 00c0-00df : dma2
+/proc/ioports: 00f0-00ff : fpu
+/proc/ioports: 0170-0177 : 0000:00:07.1
+/proc/ioports:   0170-0177 : libata
+/proc/ioports: 01f0-01f7 : 0000:00:07.1
+/proc/ioports:   01f0-01f7 : libata
+/proc/ioports: 02f8-02ff : serial
+/proc/ioports: 0376-0376 : 0000:00:07.1
+/proc/ioports:   0376-0376 : libata
+/proc/ioports: 0378-037a : parport0
+/proc/ioports: 03c0-03df : vga+
+/proc/ioports: 03f2-03f5 : floppy
+/proc/ioports: 03f6-03f6 : 0000:00:07.1
+/proc/ioports:   03f6-03f6 : libata
+/proc/ioports: 03f7-03f7 : floppy DIR
+/proc/ioports: 03f8-03ff : serial
+/proc/ioports: 0cf8-0cff : PCI conf1
+/proc/ioports: 1000-103f : 0000:00:07.3
+/proc/ioports:   1000-1003 : ACPI PM1a_EVT_BLK
+/proc/ioports:   1004-1005 : ACPI PM1a_CNT_BLK
+/proc/ioports:   1008-100b : ACPI PM_TMR
+/proc/ioports:   100c-100f : ACPI GPE0_BLK
+/proc/ioports:   1010-1015 : ACPI CPU throttle
+/proc/ioports: 1040-104f : 0000:00:07.3
+/proc/ioports: 1060-107f : pnp 00:0c
+/proc/ioports: 1080-10bf : 0000:00:07.7
+/proc/ioports: 10c0-10cf : 0000:00:07.1
+/proc/ioports:   10c0-10cf : libata
+/proc/ioports: 10d0-10df : 0000:00:0f.0
+/proc/ioports: 1400-14ff : 0000:00:10.0
+/proc/ioports: 2000-3fff : PCI Bus #02
+/proc/ioports:   2000-207f : 0000:02:00.0
+/proc/ioports:     2000-201f : pcnet32_probe_pci
+/proc/ioports: 4000-4fff : PCI Bus #03
+/proc/ioports: 5000-5fff : PCI Bus #0b
+/proc/ioports: 6000-6fff : PCI Bus #13
+/proc/ioports: 7000-7fff : PCI Bus #1b
+/proc/ioports: 8000-8fff : PCI Bus #04
+/proc/ioports: 9000-9fff : PCI Bus #0c
+/proc/ioports: a000-afff : PCI Bus #14
+/proc/ioports: b000-bfff : PCI Bus #1c
+/proc/ioports: c000-cfff : PCI Bus #05
+/proc/ioports: d000-dfff : PCI Bus #0d
+/proc/ioports: e000-efff : PCI Bus #15
+/proc/ioports: f000-ffff : PCI Bus #1d
+/proc/iomem: 00000000-0009f7ff : System RAM
+/proc/iomem:   00000000-00000000 : Crash kernel
+/proc/iomem: 0009f800-0009ffff : reserved
+/proc/iomem: 000a0000-000bffff : Video RAM area
+/proc/iomem: 000c0000-000c7fff : Video ROM
+/proc/iomem: 000ca000-000cafff : Adapter ROM
+/proc/iomem: 000dc000-000e3fff : reserved
+/proc/iomem: 000f0000-000fffff : System ROM
+/proc/iomem: 00100000-1feeffff : System RAM
+/proc/iomem:   00100000-002f7d25 : Kernel code
+/proc/iomem:   002f7d26-003dce83 : Kernel data
+/proc/iomem: 1fef0000-1fefefff : ACPI Tables
+/proc/iomem: 1feff000-1fefffff : ACPI Non-volatile Storage
+/proc/iomem: 1ff00000-1fffffff : System RAM
+/proc/iomem: 30000000-30007fff : 0000:00:0f.0
+/proc/iomem: 30008000-3000bfff : 0000:00:10.0
+/proc/iomem: d0000000-d7ffffff : 0000:00:0f.0
+/proc/iomem: d8000000-d87fffff : 0000:00:0f.0
+/proc/iomem: d8800000-d881ffff : 0000:00:10.0
+/proc/iomem: d8820000-d883ffff : 0000:00:10.0
+/proc/iomem: d8a00000-d8bfffff : pnp 00:0c
+/proc/iomem: d9200000-d9cfffff : PCI Bus #02
+/proc/iomem: d9d00000-d9dfffff : PCI Bus #03
+/proc/iomem: d9e00000-d9efffff : PCI Bus #0b
+/proc/iomem: d9f00000-d9ffffff : PCI Bus #13
+/proc/iomem: da000000-da0fffff : PCI Bus #1b
+/proc/iomem: da100000-da1fffff : PCI Bus #04
+/proc/iomem: da200000-da2fffff : PCI Bus #0c
+/proc/iomem: da300000-da3fffff : PCI Bus #14
+/proc/iomem: da400000-da4fffff : PCI Bus #1c
+/proc/iomem: da500000-da5fffff : PCI Bus #05
+/proc/iomem: da600000-da6fffff : PCI Bus #0d
+/proc/iomem: da700000-da7fffff : PCI Bus #15
+/proc/iomem: da800000-da8fffff : PCI Bus #1d
+/proc/iomem: da900000-da9fffff : PCI Bus #06
+/proc/iomem: daa00000-daafffff : PCI Bus #0e
+/proc/iomem: dab00000-dabfffff : PCI Bus #16
+/proc/iomem: dac00000-dacfffff : PCI Bus #1e
+/proc/iomem: dad00000-dadfffff : PCI Bus #07
+/proc/iomem: dae00000-daefffff : PCI Bus #0f
+/proc/iomem: daf00000-daffffff : PCI Bus #17
+/proc/iomem: db000000-db0fffff : PCI Bus #1f
+/proc/iomem: db100000-db1fffff : PCI Bus #08
+/proc/iomem: db200000-db2fffff : PCI Bus #10
+/proc/iomem: db300000-db3fffff : PCI Bus #18
+/proc/iomem: db400000-db4fffff : PCI Bus #20
+/proc/iomem: db500000-db5fffff : PCI Bus #09
+/proc/iomem: db600000-db6fffff : PCI Bus #11
+/proc/iomem: db700000-db7fffff : PCI Bus #19
+/proc/iomem: db800000-db8fffff : PCI Bus #21
+/proc/iomem: db900000-db9fffff : PCI Bus #0a
+/proc/iomem: dba00000-dbafffff : PCI Bus #12
+/proc/iomem: dbb00000-dbbfffff : PCI Bus #1a
+/proc/iomem: dbc00000-dbcfffff : PCI Bus #22
+/proc/iomem: dc100000-dc6fffff : PCI Bus #02
+/proc/iomem:   dc100000-dc10ffff : 0000:02:00.0
+/proc/iomem: dc700000-dc7fffff : PCI Bus #03
+/proc/iomem: dc800000-dc8fffff : PCI Bus #0b
+/proc/iomem: dc900000-dc9fffff : PCI Bus #13
+/proc/iomem: dca00000-dcafffff : PCI Bus #1b
+/proc/iomem: dcb00000-dcbfffff : PCI Bus #04
+/proc/iomem: dcc00000-dccfffff : PCI Bus #0c
+/proc/iomem: dcd00000-dcdfffff : PCI Bus #14
+/proc/iomem: dce00000-dcefffff : PCI Bus #1c
+/proc/iomem: dcf00000-dcffffff : PCI Bus #05
+/proc/iomem: dd000000-dd0fffff : PCI Bus #0d
+/proc/iomem: dd100000-dd1fffff : PCI Bus #15
+/proc/iomem: dd200000-dd2fffff : PCI Bus #1d
+/proc/iomem: dd300000-dd3fffff : PCI Bus #06
+/proc/iomem: dd400000-dd4fffff : PCI Bus #0e
+/proc/iomem: dd500000-dd5fffff : PCI Bus #16
+/proc/iomem: dd600000-dd6fffff : PCI Bus #1e
+/proc/iomem: dd700000-dd7fffff : PCI Bus #07
+/proc/iomem: dd800000-dd8fffff : PCI Bus #0f
+/proc/iomem: dd900000-dd9fffff : PCI Bus #17
+/proc/iomem: dda00000-ddafffff : PCI Bus #1f
+/proc/iomem: ddb00000-ddbfffff : PCI Bus #08
+/proc/iomem: ddc00000-ddcfffff : PCI Bus #10
+/proc/iomem: ddd00000-dddfffff : PCI Bus #18
+/proc/iomem: dde00000-ddefffff : PCI Bus #20
+/proc/iomem: ddf00000-ddffffff : PCI Bus #09
+/proc/iomem: de000000-de0fffff : PCI Bus #11
+/proc/iomem: de100000-de1fffff : PCI Bus #19
+/proc/iomem: de200000-de2fffff : PCI Bus #21
+/proc/iomem: de300000-de3fffff : PCI Bus #0a
+/proc/iomem: de400000-de4fffff : PCI Bus #12
+/proc/iomem: de500000-de5fffff : PCI Bus #1a
+/proc/iomem: de600000-de6fffff : PCI Bus #22
+/proc/iomem: e0000000-efffffff : reserved
+/proc/iomem: fec00000-fec0ffff : reserved
+/proc/iomem: fee00000-fee00fff : reserved
+/proc/iomem: fffe0000-ffffffff : reserved
+/proc/interrupts:            CPU0       
+/proc/interrupts:   0:         82   IO-APIC-edge      timer
+/proc/interrupts:   1:       1196   IO-APIC-edge      i8042
+/proc/interrupts:   6:          8   IO-APIC-edge      floppy
+/proc/interrupts:   7:          0   IO-APIC-edge      parport0
+/proc/interrupts:   8:          0   IO-APIC-edge      rtc
+/proc/interrupts:   9:          0   IO-APIC-fasteoi   acpi
+/proc/interrupts:  12:        276   IO-APIC-edge      i8042
+/proc/interrupts:  14:          0   IO-APIC-edge      libata
+/proc/interrupts:  15:       3415   IO-APIC-edge      libata
+/proc/interrupts:  16:      22907   IO-APIC-fasteoi   ioc0
+/proc/interrupts:  17:       2086   IO-APIC-fasteoi   eth0
+/proc/interrupts: NMI:          0 
+/proc/interrupts: LOC:      87344 
+/proc/interrupts: ERR:          0
+/proc/interrupts: MIS:          0
+/proc/meminfo: MemTotal:       515840 kB
+/proc/meminfo: MemFree:         80964 kB
+/proc/meminfo: Buffers:           932 kB
+/proc/meminfo: Cached:         375668 kB
+/proc/meminfo: SwapCached:          0 kB
+/proc/meminfo: Active:         177232 kB
+/proc/meminfo: Inactive:       203164 kB
+/proc/meminfo: HighTotal:           0 kB
+/proc/meminfo: HighFree:            0 kB
+/proc/meminfo: LowTotal:       515840 kB
+/proc/meminfo: LowFree:         80964 kB
+/proc/meminfo: SwapTotal:     1951888 kB
+/proc/meminfo: SwapFree:      1951888 kB
+/proc/meminfo: Dirty:             608 kB
+/proc/meminfo: Writeback:           0 kB
+/proc/meminfo: AnonPages:        3784 kB
+/proc/meminfo: Mapped:           2080 kB
+/proc/meminfo: Slab:            43656 kB
+/proc/meminfo: SReclaimable:    33152 kB
+/proc/meminfo: SUnreclaim:      10504 kB
+/proc/meminfo: PageTables:        192 kB
+/proc/meminfo: NFS_Unstable:        0 kB
+/proc/meminfo: Bounce:              0 kB
+/proc/meminfo: CommitLimit:   2209808 kB
+/proc/meminfo: Committed_AS:     7204 kB
+/proc/meminfo: VmallocTotal:   507896 kB
+/proc/meminfo: VmallocUsed:      7628 kB
+/proc/meminfo: VmallocChunk:   499196 kB
+/proc/bus/input/devices: I: Bus=0017 Vendor=0001 Product=0001 Version=0100
+/proc/bus/input/devices: N: Name="Macintosh mouse button emulation"
+/proc/bus/input/devices: P: Phys=
+/proc/bus/input/devices: S: Sysfs=/class/input/input0
+/proc/bus/input/devices: U: Uniq=
+/proc/bus/input/devices: H: Handlers=mouse0 event0 
+/proc/bus/input/devices: B: EV=7
+/proc/bus/input/devices: B: KEY=70000 0 0 0 0 0 0 0 0
+/proc/bus/input/devices: B: REL=3
+/proc/bus/input/devices: 
+/proc/bus/input/devices: I: Bus=0011 Vendor=0001 Product=0001 Version=ab41
+/proc/bus/input/devices: N: Name="AT Translated Set 2 keyboard"
+/proc/bus/input/devices: P: Phys=isa0060/serio0/input0
+/proc/bus/input/devices: S: Sysfs=/class/input/input1
+/proc/bus/input/devices: U: Uniq=
+/proc/bus/input/devices: H: Handlers=kbd event1 
+/proc/bus/input/devices: B: EV=120013
+/proc/bus/input/devices: B: KEY=4 2000000 3802078 f840d001 feffffdf ffefffff ffffffff fffffffe
+/proc/bus/input/devices: B: MSC=10
+/proc/bus/input/devices: B: LED=7
+/proc/bus/input/devices: 
+/proc/bus/input/devices: I: Bus=0011 Vendor=0002 Product=0005 Version=0000
+/proc/bus/input/devices: N: Name="ImPS/2 Generic Wheel Mouse"
+/proc/bus/input/devices: P: Phys=isa0060/serio1/input0
+/proc/bus/input/devices: S: Sysfs=/class/input/input2
+/proc/bus/input/devices: U: Uniq=
+/proc/bus/input/devices: H: Handlers=mouse1 event2 
+/proc/bus/input/devices: B: EV=7
+/proc/bus/input/devices: B: KEY=70000 0 0 0 0 0 0 0 0
+/proc/bus/input/devices: B: REL=103
+/proc/bus/input/devices: 
+dmidecode: /usr/bin/report-hw: /usr/bin/report-hw: 57: dmidecode: not found

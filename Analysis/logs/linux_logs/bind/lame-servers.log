@@ -1,0 +1,9 @@
+21-Oct-2010 08:56:09.302 lame server resolving '21.163.73.222.in-addr.arpa' (in '73.222.in-addr.arpa'?): 211.147.6.4#53
+25-Oct-2010 13:42:18.727 lame server resolving '20.112.144.211.in-addr.arpa' (in '112.144.211.in-addr.arpa'?): 203.95.7.1#53
+25-Oct-2010 13:42:19.001 lame server resolving '20.112.144.211.in-addr.arpa' (in '112.144.211.in-addr.arpa'?): 203.95.1.1#53
+29-Oct-2010 14:35:10.629 lame server resolving '20.112.144.211.in-addr.arpa' (in '112.144.211.in-addr.arpa'?): 203.95.7.1#53
+29-Oct-2010 14:35:11.247 lame server resolving '20.112.144.211.in-addr.arpa' (in '112.144.211.in-addr.arpa'?): 203.95.1.1#53
+31-Oct-2010 11:31:02.164 unexpected RCODE (REFUSED) resolving 'ns.zjpta.net.cn/AAAA/IN': 202.96.104.18#53
+07-Nov-2010 17:51:39.241 lame server resolving '66.54.108.59.in-addr.arpa' (in '54.108.59.in-addr.arpa'?): 219.232.48.62#53
+07-Nov-2010 18:01:43.003 lame server resolving '66.54.108.59.in-addr.arpa' (in '54.108.59.in-addr.arpa'?): 219.232.48.62#53
+01-Dec-2010 02:40:35.540 lame server resolving '61.28.181.221.in-addr.arpa' (in '28.181.221.in-addr.arpa'?): 211.136.20.201#53

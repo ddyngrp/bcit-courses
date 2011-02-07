@@ -1,0 +1,32 @@
+Dec  7 20:34:06 majikthise postfix/master[5141]: daemon started -- version 2.5.4, configuration /etc/postfix
+Dec  7 20:34:07 majikthise dovecot: Dovecot v1.0.5 starting up
+Dec  7 20:34:34 majikthise dovecot: ssl-build-param: SSL parameters regeneration completed
+Dec  7 21:00:58 majikthise postfix/master[5141]: terminating on signal 15
+Dec  7 21:07:35 majikthise postfix/master[5125]: daemon started -- version 2.5.4, configuration /etc/postfix
+Dec  7 21:07:36 majikthise dovecot: Dovecot v1.0.5 starting up
+Dec  7 21:08:59 majikthise postfix/master[5125]: terminating on signal 15
+Dec  7 22:18:17 majikthise postfix/master[5083]: daemon started -- version 2.5.4, configuration /etc/postfix
+Dec  7 22:18:18 majikthise dovecot: Dovecot v1.0.5 starting up
+Dec  8 02:47:44 majikthise postfix/smtpd[7525]: warning: 64.20.227.133: address not listed for hostname recover.mxtoolbox.com
+Dec  8 02:47:45 majikthise postfix/smtpd[7525]: connect from unknown[64.20.227.133]
+Dec  8 02:47:45 majikthise postfix/smtpd[7525]: NOQUEUE: reject: RCPT from unknown[64.20.227.133]: 554 5.7.1 <test@example.com>: Relay access denied; from=<supertool@mxtoolbox.com> to=<test@example.com> proto=SMTP helo=<please-read-policy.mxtoolbox.com>
+Dec  8 02:47:45 majikthise postfix/smtpd[7525]: disconnect from unknown[64.20.227.133]
+Dec  8 02:51:05 majikthise postfix/anvil[7527]: statistics: max connection rate 1/60s for (smtp:64.20.227.133) at Dec  8 02:47:44
+Dec  8 02:51:05 majikthise postfix/anvil[7527]: statistics: max connection count 1 for (smtp:64.20.227.133) at Dec  8 02:47:44
+Dec  8 02:51:05 majikthise postfix/anvil[7527]: statistics: max cache size 1 at Dec  8 02:47:44
+Dec  8 02:53:11 majikthise dovecot: pop3-login: Login: user=<steffen>, method=PLAIN, rip=207.210.209.134, lip=96.53.93.58
+Dec  8 02:53:12 majikthise dovecot: POP3(steffen): Disconnected: Logged out top=0/0, retr=0/0, del=0/0, size=0
+Dec  8 02:53:44 majikthise dovecot: pop3-login: Aborted login: user=<steffen2>, method=PLAIN, rip=207.210.209.134, lip=96.53.93.58
+Dec  8 02:53:48 majikthise dovecot: pop3-login: Aborted login: user=<steffen2>, method=PLAIN, rip=207.210.209.134, lip=96.53.93.58
+Dec  8 02:54:00 majikthise dovecot: imap-login: Login: user=<steffen>, method=PLAIN, rip=207.210.209.134, lip=96.53.93.58
+Dec  8 02:54:00 majikthise dovecot: IMAP(steffen): Disconnected: Logged out
+Dec  8 05:07:16 majikthise postfix/smtpd[8675]: connect from smtp.lajunta.bluehornet.com[67.216.225.202]
+Dec  8 05:07:17 majikthise postfix/smtpd[8675]: 4C025E015CBE: client=smtp.lajunta.bluehornet.com[67.216.225.202]
+Dec  8 05:07:17 majikthise postfix/cleanup[8678]: 4C025E015CBE: message-id=<8F.4B.28171.2546EFC4@dc1bhmta03>
+Dec  8 05:07:17 majikthise postfix/qmgr[5096]: 4C025E015CBE: from=<bounce-use=M=12041946387=echo4=7A5136D35D0409C782C6FA46542F0E38@returnpath.bluehornet.com>, size=19495, nrcpt=1 (queue active)
+Dec  8 05:07:18 majikthise postfix/local[8679]: 4C025E015CBE: to=<brendan@virtual-void.org>, relay=local, delay=2.6, delays=1.3/0.59/0/0.64, dsn=2.0.0, status=sent (delivered to maildir)
+Dec  8 05:07:18 majikthise postfix/qmgr[5096]: 4C025E015CBE: removed
+Dec  8 05:07:22 majikthise postfix/smtpd[8675]: disconnect from smtp.lajunta.bluehornet.com[67.216.225.202]
+Dec  8 05:10:42 majikthise postfix/anvil[8676]: statistics: max connection rate 1/60s for (smtp:67.216.225.202) at Dec  8 05:07:16
+Dec  8 05:10:42 majikthise postfix/anvil[8676]: statistics: max connection count 1 for (smtp:67.216.225.202) at Dec  8 05:07:16
+Dec  8 05:10:42 majikthise postfix/anvil[8676]: statistics: max cache size 1 at Dec  8 05:07:16

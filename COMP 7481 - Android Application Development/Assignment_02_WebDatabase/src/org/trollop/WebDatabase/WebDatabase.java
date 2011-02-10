@@ -3,8 +3,6 @@ package org.trollop.WebDatabase;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -14,11 +12,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -26,53 +27,58 @@ import org.xml.sax.InputSource;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
-import android.sax.Element;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class WebDatabase extends ListActivity {
-	private ArrayList<Message> messagesArrayList = null;
+	private ArrayList<Message> messageArrayList = null;
 	private MessageAdapter m_adapter;
 	private String userName = "android";
 	private String password = "android";
+	private String getURL = "http://192.168.1.100:3000/posts?format=xml";
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		messagesArrayList = new ArrayList<Message>();
+		messageArrayList = new ArrayList<Message>();
 		retreiveMessages();
 
-		this.m_adapter = new MessageAdapter(this, R.layout.row, messagesArrayList);
+		this.m_adapter = new MessageAdapter(this, R.layout.row, messageArrayList);
+		setListAdapter(this.m_adapter);
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		retreiveMessages();
+		this.m_adapter = new MessageAdapter(this, R.layout.row, messageArrayList);
 		setListAdapter(this.m_adapter);
 	}
 
 	private void retreiveMessages() {
-		Authenticator.setDefault(new Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				// couldn't get this to work with the dialog
-				return new PasswordAuthentication(userName, password.toCharArray());
-			}
-		});
-
-		HttpClient httpClient = new DefaultHttpClient();
+		// Setup basic authentication
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		Credentials creds = new UsernamePasswordCredentials(userName, password);
+		httpClient.getCredentialsProvider().setCredentials(
+				new AuthScope(null, -1, AuthScope.ANY_REALM), creds);
 
 		String xmlResponse;
 
 		try {
-			String url = "http://192.168.1.100:3000/posts?format=xml";
-			Log.d("retrieveMessage", "performing get " + url);
+			Log.d("retrieveMessage", "performing get " + getURL);
 
-			HttpGet method = new HttpGet(new URI(url));
+			HttpGet method = new HttpGet(new URI(getURL));
 			HttpResponse response = httpClient.execute(method);
 			
 			if (response != null) {
+				messageArrayList.clear();
 				xmlResponse = getResponse(response.getEntity());
-				messagesArrayList = parseXMLString(xmlResponse);
+				messageArrayList.addAll(parseXMLString(xmlResponse));
 			}
 			else {
 				Log.i("retrieveMessage", "got a null response");
@@ -122,29 +128,28 @@ public class WebDatabase extends ListActivity {
 			Document doc = db.parse(is);
 			NodeList nodes = doc.getElementsByTagName("post");
 
-			messagesArrayList = new ArrayList<Message>();
+			messageArrayList = new ArrayList<Message>();
 
 			// Iterate the events
 			for (int i = 0; i < nodes.getLength(); i++) {
-				Element element = (Element)nodes.item(i+1);
-				messagesArrayList.add(new Message());
+				Element element = (Element)nodes.item(i);
+				messageArrayList.add(new Message());
 
-				NodeList messageIDNum = ((Document)element).getElementsByTagName("id");
+				NodeList messageIDNum = element.getElementsByTagName("id");
 				Element line = (Element)messageIDNum.item(0);
-				messagesArrayList.get(i).messageID = 
+				messageArrayList.get(i).messageID = 
 					Integer.parseInt(getCharacterDataFromElement(line));
 
-				NodeList message = ((Document)element).getElementsByTagName("message");
+				NodeList message = element.getElementsByTagName("message");
 				line = (Element)message.item(0);
-				messagesArrayList.get(i).message = getCharacterDataFromElement(line).trim();
+				messageArrayList.get(i).message = getCharacterDataFromElement(line).trim();
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return messagesArrayList;
-
+		return messageArrayList;
 	}
 
 	public static String getCharacterDataFromElement(Element e) {

@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -20,7 +23,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AddMessageView extends Activity implements OnClickListener {
-	private EditText editMessage; 
+	private EditText editMessage;
+	private String postURL = "http://192.168.1.100:3000/posts";
+	private String userName = "android";
+	private String password = "android";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,6 @@ public class AddMessageView extends Activity implements OnClickListener {
         
         findViews();
         setClickListeners();
-
     }
     
 	/** Get a handle to all user interface elements */
@@ -53,9 +58,12 @@ public class AddMessageView extends Activity implements OnClickListener {
 	}
 	
 	private void postMessages() {
-		DefaultHttpClient client = new DefaultHttpClient();
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		Credentials creds = new UsernamePasswordCredentials(userName, password);
+		httpClient.getCredentialsProvider().setCredentials(
+				new AuthScope(null, -1, AuthScope.ANY_REALM), creds);
 		
-		HttpPost post = new HttpPost("http://192.168.1.100:3000/posts");
+		HttpPost post = new HttpPost(postURL);
 	    JSONObject holder = new JSONObject();
 	    JSONObject messageObj = new JSONObject();
 	    	    
@@ -83,7 +91,7 @@ public class AddMessageView extends Activity implements OnClickListener {
 	    HttpResponse response = null;
 	    
 	    try {
-	        response = client.execute(post);
+	        response = httpClient.execute(post);
 	    }
 	    catch (ClientProtocolException e) {
 	        e.printStackTrace();

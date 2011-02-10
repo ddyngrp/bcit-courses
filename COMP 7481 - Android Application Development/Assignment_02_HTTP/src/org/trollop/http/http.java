@@ -4,17 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +27,8 @@ public class http extends Activity {
 	private EditText txtURL;
 	private Button btnLoad;
 	private WebView webView;
+	private String userName = "android";
+	private String password = "android";
 
 	/** Called when the activity is first created. */
 	@Override
@@ -37,7 +43,7 @@ public class http extends Activity {
 		webView.getSettings().setJavaScriptEnabled(true);
 		
 		/***
-		 * Disable navigation within the webview
+		 * Disable navigation within the web view
 		 */
 		webView.setOnTouchListener(new View.OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -56,6 +62,13 @@ public class http extends Activity {
 	}
 
 	private void connect(String address) {
+		Authenticator.setDefault(new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				// couldn't get this to work with the dialog
+				return new PasswordAuthentication(userName, password.toCharArray());
+			}
+		});
+		
 		try {
 			URL url = new URL(address);
 			System.out.println(address);

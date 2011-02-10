@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, WebDatabase!</string>
     <string name="app_name">Assignment #2 - Web Database</string>
+    <string name="text_message">Message:</string>
+    <string name="button_text">Add Message</string>
 </resources>

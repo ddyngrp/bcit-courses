@@ -1,0 +1,217 @@
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 17 11:37:09 -0800 2011
+  Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/prototype.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/javascripts/effects.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/dragdrop.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/dragdrop.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/javascripts/controls.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/controls.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/javascripts/rails.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/rails.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/javascripts/application.js?1297354677" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/javascripts/application.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:37:15 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Feb 17 11:37:19 -0800 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:37:19 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Feb 17 11:37:22 -0800 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:37:22 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:37:25 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Feb 17 11:37:27 -0800 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:37:27 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:29 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 17 11:38:29 -0800 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:29 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Feb 17 11:38:33 -0800 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:33 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:34 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Feb 17 11:38:34 -0800 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:34 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/post" for 127.0.0.1 at Thu Feb 17 11:38:37 -0800 2011
+
+ActionController::RoutingError (No route matches "/post"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:37 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:38 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at Thu Feb 17 11:38:38 -0800 2011
+
+ActionController::RoutingError (No route matches "/favicon.ico"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)

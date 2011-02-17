@@ -1,0 +1,19 @@
+User Interface:
+	Ability to manually create charts
+		Create blank grid with user X/Y scale
+		Input points by touching the screen
+		Manually edit/add points
+	Ability to select from generated charts
+	Ability to save created charts to a file
+	
+Charting:
+	Click to zoom in
+	Zoom out button
+	View full chart button
+	Drag to scroll
+	Automatically scale X/Y axes
+	Y axis is always scaled on data
+	
+Misc:
+	Do away with all integers since we end up using floats anyhow
+	Figure out exactly what charting labels would mean?

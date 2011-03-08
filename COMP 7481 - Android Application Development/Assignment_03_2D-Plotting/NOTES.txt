@@ -15,5 +15,4 @@ Charting:
 	Y axis is always scaled on data
 	
 Misc:
-	Do away with all integers since we end up using floats anyhow
 	Figure out exactly what charting labels would mean?

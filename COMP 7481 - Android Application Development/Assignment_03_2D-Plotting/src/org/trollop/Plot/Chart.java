@@ -6,7 +6,11 @@
  */
 package org.trollop.Plot;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.SortedMap;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -16,6 +20,8 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.view.View;
 
 /**
@@ -26,27 +32,32 @@ import android.view.View;
  */
 public class Chart extends View {
 	private Paint paint;
-	
-	private int viewXSize;
-	private int viewYSize;
-	private int xMargin = 60;
-	private int yMargin = 40;
+
+	private Point viewSize = new Point();
+	private Point margin = new Point(60, 40);
+	private PointF minBounds = new PointF(Float.MAX_VALUE, Float.MAX_VALUE);
+	private PointF maxBounds = new PointF(Float.MIN_VALUE, Float.MIN_VALUE);
+	private PointF xZoomed = new PointF();;
+
+	private boolean smooth;
+	private boolean zoomed = false;
+
 	private float chartTitleSize = 18;
-	private float axisTitleSize = 15;
-	
+	private float axisTitleSize = 14;
+
 	private String chartTitle;
 	private String xAxisTitle;
 	private String yAxisTitle;
 	private String xAxisUnits;
 	private String yAxisUnits;
-	
-	ArrayList<Object[]> dataPoints;
-	
-	public Chart(Context context, ArrayList<Object[]> dataPoints, String chartTitle,
-			String xAxisTitle, String yAxisTitle,
+
+	SortedMap<Float, Float> dataPoints;
+
+	public Chart(Context context, SortedMap<Float, Float> dataPoints,
+			String chartTitle, String xAxisTitle, String yAxisTitle,
 			String xAxisUnits, String yAxisUnits, boolean smooth) {
 		super(context);
-		
+
 		this.paint = new Paint();
 		this.chartTitle = chartTitle;
 		this.xAxisTitle = xAxisTitle;
@@ -54,183 +65,159 @@ public class Chart extends View {
 		this.xAxisUnits = xAxisUnits;
 		this.yAxisUnits = yAxisUnits;
 		this.dataPoints = dataPoints;
+		this.smooth = smooth;
+		this.setMinMaxXY();
 	}
-	
+
 	@Override
 	protected void onDraw(Canvas canvas) {
-		viewXSize = this.getWidth();
-		viewYSize = this.getHeight();
+		viewSize.set(this.getWidth(), this.getHeight());
 
 		drawAxes(canvas);
 		plot(canvas);
 	}
-	
+
 	private void drawAxes(Canvas canvas) {
 		/* Draw x axis */
 		paint.setColor(Color.WHITE);
-		canvas.drawLine(
-				xMargin,
-				viewYSize - yMargin,
-				viewXSize,
-				viewYSize - yMargin,
-				paint);
-		
+		canvas.drawLine(margin.x, viewSize.y - margin.y, viewSize.x, viewSize.y
+				- margin.y, paint);
+
 		/* Draw y axis */
-		canvas.drawLine(
-				xMargin,
-				yMargin,
-				xMargin,
-				viewYSize - yMargin,
+		canvas.drawLine(margin.x, margin.y, margin.x, viewSize.y - margin.y,
 				paint);
-		
+
 		/* Draw chart title */
 		paint.setColor(Color.YELLOW);
 		paint.setTextAlign(Align.CENTER);
 		paint.setAntiAlias(true);
 		paint.setTextSize(chartTitleSize);
-		canvas.drawText(
-				chartTitle,
-				viewXSize / 2,
-				(yMargin + chartTitleSize) / 2,
-				paint);
-		
+		canvas.drawText(chartTitle, viewSize.x / 2,
+				(margin.y + chartTitleSize) / 2, paint);
+
 		/* Draw x axis title */
 		paint.setColor(Color.LTGRAY);
 		paint.setTextSize(axisTitleSize);
 
 		Path path = new Path();
-		path.moveTo(0, viewYSize);
+		path.moveTo(0, viewSize.y);
 		path.lineTo(0, 0);
 
-		canvas.drawTextOnPath(xAxisTitle + " (" + xAxisUnits + ") ",
-				path, 0, axisTitleSize, paint);
-		
+		canvas.drawTextOnPath(xAxisTitle + " (" + xAxisUnits + ") ", path, 0,
+				axisTitleSize, paint);
+
 		/* Draw y axis title */
 		path.reset();
-		path.moveTo(0, viewYSize);
-		path.lineTo(viewXSize, viewYSize);
+		path.moveTo(0, viewSize.y);
+		path.lineTo(viewSize.x, viewSize.y);
 
-		canvas.drawTextOnPath(yAxisTitle + " (" + yAxisUnits + ") ",
-				path, 0, -axisTitleSize / 5, paint);
+		canvas.drawTextOnPath(yAxisTitle + " (" + yAxisUnits + ") ", path, 0,
+				-axisTitleSize / 5, paint);
 	}
-	
+
 	public void drawLabels(Canvas canvas) {
-		
+
 	}
-	
+
 	public void setXDataRange(float minX, float maxX) {
-
-	}
-
-	public void setYDataRange(float minY, float maxY) {
-
-	}
-
-	public void setXDataRange(int minX, int maxX) {
-
-	}
-
-	public void setYDataRange(int minY, int maxY) {
-
+		minBounds.set(minX, minBounds.y);
+		maxBounds.set(maxX, maxBounds.y);
+		this.postInvalidate();
 	}
 
 	public void plot(Canvas canvas) {
-		int drawWidth = viewXSize - xMargin;
-		int drawHeight = viewYSize - (yMargin * 2);
-		float[] minMaxXY = getMinMaxXY();
-		
-		/* detect the stored data type and take appropriate action */
-		if (!dataPoints.get(0)[1].equals(Integer.TYPE)) {
-			paint.reset();
-			paint.setColor(Color.CYAN);
-			paint.setStyle(Style.STROKE);
-			
-			float xMultiplier = drawWidth / (minMaxXY[1] - minMaxXY[0]);
-			float yMultiplier = drawHeight / minMaxXY[3];
-			
-			Path path = new Path();
-			path.moveTo( /* set initial point */
-					(Integer)dataPoints.get(0)[0],
-					(Integer)dataPoints.get(0)[1]);
-			
-			for (int i = 1; i < dataPoints.size(); i++) {
-				path.lineTo(
-						(Integer)dataPoints.get(i)[0],
-						(Integer)dataPoints.get(i)[1]);
-			}
-			Matrix m = new Matrix();
-			m.setScale(xMultiplier, -yMultiplier);
-			path.transform(m);
-			path.offset(xMargin + 1, drawHeight + yMargin);
-			canvas.drawPath(path, paint);
-		}
-//		else if (dataPoints.get(0)[1].equals(Float.TYPE)) {
-//		}
-//		else if (dataPoints.get(0)[1].equals(String.class)) {
-//		}
-	}
-	
-	private float[] getMinMaxXY() {
-		float[] minMaxXY = new float[4];
-		
-		if (!dataPoints.get(0)[1].equals(Integer.TYPE)) {
-			int xSmallest = Integer.MAX_VALUE;
-			int xLargest = Integer.MIN_VALUE;
-			int ySmallest = Integer.MAX_VALUE;
-			int yLargest = Integer.MIN_VALUE;
+		boolean initPoint = false;
+		int drawWidth = viewSize.x - margin.x;
+		int drawHeight = viewSize.y - (margin.y * 2);
+		Path path = new Path();
 
-			for (int i = 0; i < dataPoints.size(); i++) {
-				if ((Integer)dataPoints.get(i)[0] < xSmallest)
-					xSmallest = (Integer)dataPoints.get(i)[0];
-				if ((Integer)dataPoints.get(i)[0] > xLargest)
-					xLargest = (Integer)dataPoints.get(i)[0];
-				if ((Integer)dataPoints.get(i)[1] < ySmallest)
-					ySmallest = (Integer)dataPoints.get(i)[1];
-				if ((Integer)dataPoints.get(i)[1] > yLargest)
-					yLargest = (Integer)dataPoints.get(i)[1];
+		paint.reset();
+		paint.setColor(Color.CYAN);
+		paint.setStyle(Style.STROKE);
+		paint.setStrokeWidth(1.5F);
+		paint.setAntiAlias(true);
+
+		float xMultiplier = drawWidth / (maxBounds.x - minBounds.x);
+		float yMultiplier = drawHeight / maxBounds.y;
+
+		// Iterate through the data set
+		Set<?> set = dataPoints.entrySet();
+		Iterator<?> iterPrev = set.iterator();
+		Iterator<?> iterCur = set.iterator();
+
+		if (!smooth) {
+			while (iterPrev.hasNext()) {
+								
+				Map.Entry<?, ?> map = (Entry<?, ?>) iterPrev.next();
+				
+				if ((Float) map.getKey() >= minBounds.x
+						&& (Float) map.getKey() <= maxBounds.x) {
+					
+					/* set initial point */
+					if (!initPoint) {
+						path.moveTo((Float) map.getKey(), (Float) map.getValue());
+						initPoint = true;
+					}
+
+					path.lineTo((Float) map.getKey(), (Float) map.getValue());
+				}
 			}
-			minMaxXY[0] = xSmallest;
-			minMaxXY[1] = xLargest;
-			minMaxXY[2] = ySmallest;
-			minMaxXY[3] = yLargest;
+		} else {
+			iterCur.next(); /* move one point forward */
+
+			while (iterCur.hasNext()) {
+				PointF start = new PointF();
+				PointF end = new PointF();
+				PointF mid = new PointF();
+
+				Map.Entry<?, ?> mapPrev = (Entry<?, ?>) iterPrev.next();
+				Map.Entry<?, ?> mapCur = (Entry<?, ?>) iterCur.next();
+
+				if ((Float) mapPrev.getKey() >= minBounds.x
+						&& (Float) mapPrev.getKey() <= maxBounds.x) {
+					
+					/* set initial point */
+					if (!initPoint) {
+						path.moveTo((Float) mapPrev.getKey(), (Float) mapPrev.getValue());
+						initPoint = true;
+					}
+					
+					start.set((Float) mapPrev.getKey(),
+							(Float) mapPrev.getValue());
+
+					mid.set(((Float) mapPrev.getKey() + (Float) mapCur.getKey()) / 2,
+							((Float) mapPrev.getValue() + (Float) mapCur.getValue()) / 2);
+
+					end.set((Float) mapCur.getKey(), (Float) mapCur.getValue());
+
+					path.quadTo((start.x + mid.x) / 2, start.y, mid.x, mid.y);
+					path.quadTo((mid.x + end.x) / 2, end.y, end.x, end.y);
+				}
+			}
 		}
-//		else if (dataPoints.get(0)[1].equals(Float.TYPE)) {
-//			float xSmallest = Float.MAX_VALUE;
-//			float xLargest = Float.MIN_VALUE;
-//			float ySmallest = Float.MAX_VALUE;
-//			float yLargest = Float.MIN_VALUE;
-//
-//			for (int i = 0; i < dataPoints.size(); i++) {
-//				if ((Float)dataPoints.get(i)[1] < xSmallest)
-//					xSmallest = (Float)dataPoints.get(i)[0];
-//				if ((Float)dataPoints.get(i)[1] > xLargest)
-//					xLargest = (Float)dataPoints.get(i)[0];
-//				if ((Float)dataPoints.get(i)[1] < ySmallest)
-//					ySmallest = (Float)dataPoints.get(i)[1];
-//				if ((Float)dataPoints.get(i)[1] > yLargest)
-//					yLargest = (Float)dataPoints.get(i)[1];
-//			}
-//			minMaxXY[0] = xSmallest;
-//			minMaxXY[1] = xLargest;
-//			minMaxXY[2] = ySmallest;
-//			minMaxXY[3] = yLargest;
-//		}
-//		else if (dataPoints.get(0)[1].equals(String.class)) {
-//			float xSmallest = Float.MAX_VALUE;
-//			float xLargest = Float.MIN_VALUE;
-//
-//			for (int i = 0; i < dataPoints.size(); i++) {
-//				if ((Float)dataPoints.get(i)[1] < xSmallest)
-//					xSmallest = (Float)dataPoints.get(i)[0];
-//				if ((Float)dataPoints.get(i)[1] > xLargest)
-//					xLargest = (Float)dataPoints.get(i)[0];
-//			}
-//			minMaxXY[0] = xSmallest;
-//			minMaxXY[1] = xLargest;
-//			minMaxXY[2] = Float.MIN_VALUE; /* these will be strings */
-//			minMaxXY[3] = Float.MAX_VALUE;
-//		}
-		
-		return minMaxXY;
+
+		/* Transformations */
+		Matrix m = new Matrix();
+		path.offset(-minBounds.x, 0);
+		m.setScale(xMultiplier, -yMultiplier);
+		path.transform(m);
+		path.offset(margin.x + 1, drawHeight + margin.y);
+		canvas.drawPath(path, paint);
+	}
+
+	private void setMinMaxXY() {
+		// Iterate through the data set
+		Set<?> set = dataPoints.entrySet();
+		Iterator<?> i = set.iterator();
+
+		while (i.hasNext()) {
+			Map.Entry<?, ?> map = (Entry<?, ?>) i.next();
+			Float yValue = (Float) map.getValue();
+
+			if (yValue < minBounds.y)
+				minBounds.set(dataPoints.firstKey(), yValue);
+			else if (yValue > maxBounds.y)
+				maxBounds.set(dataPoints.lastKey(), yValue);
+		}
 	}
 }

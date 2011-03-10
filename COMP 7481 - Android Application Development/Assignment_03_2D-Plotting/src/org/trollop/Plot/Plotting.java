@@ -23,7 +23,7 @@ public class Plotting extends Activity {
         
         Float fl = -6F;
         floatPoints.put(fl++, 0.000F);
-        floatPoints.put(fl++, -0.189F);
+        floatPoints.put(fl++, -0.089F);
         floatPoints.put(fl++, 0.070F);
         floatPoints.put(fl++, 0.046F);
         floatPoints.put(fl++, 0.058F);

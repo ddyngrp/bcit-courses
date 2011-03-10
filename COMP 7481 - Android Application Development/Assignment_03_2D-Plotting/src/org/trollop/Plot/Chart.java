@@ -38,6 +38,7 @@ public class Chart extends View {
 	private PointF transMultiplier = new PointF();
 
 	private boolean smooth;
+	private boolean autoScale = true;
 
 	private float chartTitleSize = 18F;
 	private float axisTitleSize = 14F;
@@ -68,13 +69,8 @@ public class Chart extends View {
 	protected void onDraw(Canvas canvas) {
 		viewSize.set(this.getWidth(), this.getHeight());
 
-		setMinMaxXY();
-		generateScales();
-		transMultiplier.set(
-				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
-				(viewSize.y - (margin.y * 2))
-						/ Math.abs(maxBounds.y - minBounds.y));
-
+		if (autoScale)
+			autoScale();
 		drawAxes(canvas);
 		plot(canvas);
 	}
@@ -134,47 +130,22 @@ public class Chart extends View {
 				axisTitleSize, paint);
 	}
 
-	private int countDigits(float value, boolean decimals) {
-		/* Discount whole numbers */
-		if (Math.round(minBounds.x) == minBounds.x)
-			return 0;
-
-		final String s = Float.toString(minBounds.x);
-		final int index = s.indexOf('.');
-
-		if (index < 0) {
-			return 0;
-		}
-		return s.length() - 1 - index;
-	}
-
-	private void setXDataRange(float minX, float maxX) {
+	public void setXDataRange(float minX, float maxX) {
 		minBounds.set(minX, minBounds.y);
 		maxBounds.set(maxX, maxBounds.y);
+		
+		setTransMultiplier();
 		this.postInvalidate();
 	}
 
-	private void setYDataRange(float minY, float maxY) {
+	public void setYDataRange(float minY, float maxY) {
 		minBounds.set(minBounds.x, minY);
 		maxBounds.set(maxBounds.x, maxY);
+		
+		setTransMultiplier();
 		this.postInvalidate();
 	}
-
-	private void generateScales() {
-		PointF minScale = new PointF();
-		PointF maxScale = new PointF();
-		PointF diff = new PointF();
-		
-		diff.set(maxBounds.x - minBounds.x, maxBounds.y - minBounds.y);
-		
-		if (Math.abs(diff.x) >= 1) {
-			
-		}
-		else {
-			
-		}
-	}
-
+	
 	private void plot(Canvas canvas) {
 		boolean initPoint = false;
 		Path path = new Path();
@@ -252,8 +223,25 @@ public class Chart extends View {
 		path.offset(margin.x + 1, (viewSize.y - (margin.y * 2)) + margin.y);
 		canvas.drawPath(path, paint);
 	}
+	
+	private void setTransMultiplier() {
+		transMultiplier.set(
+				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
+				(viewSize.y - (margin.y * 2))
+						/ Math.abs(maxBounds.y - minBounds.y));
+	}
+	
+	public void setAutoScale(boolean autoScale) {
+		if (autoScale) {
+			this.autoScale = true;
+			autoScale();
+		}
+		else {
+			this.autoScale = false;
+		}
+	}
 
-	private void setMinMaxXY() {
+	private void autoScale() {
 		// Iterate through the data set
 		Set<?> set = dataPoints.entrySet();
 		Iterator<?> iter = set.iterator();
@@ -268,5 +256,7 @@ public class Chart extends View {
 			if (yValue > maxBounds.y)
 				maxBounds.set(dataPoints.lastKey(), yValue);
 		}
+		setTransMultiplier();
+		this.postInvalidate();
 	}
 }

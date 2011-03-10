@@ -21,39 +21,37 @@ public class Plotting extends Activity {
 //        	floatPoints.put(randomGenerator.nextFloat(), randomGenerator.nextFloat());
 //        }
         
-        Float fl = 0F;
-        floatPoints.put(fl++, 0.02F);
-        floatPoints.put(fl++, 0.89F);
-        floatPoints.put(fl++, 0.70F);
-        floatPoints.put(fl++, 0.46F);
-        floatPoints.put(fl++, 0.58F);
-        floatPoints.put(fl++, 0.67F);
-        floatPoints.put(fl++, 0.28F);
-        floatPoints.put(fl++, 0.68F);
-        floatPoints.put(fl++, 0.84F);
-        floatPoints.put(fl++, 0.31F);
-        floatPoints.put(fl++, 0.73F);
-        floatPoints.put(fl++, 0.64F);
-        floatPoints.put(fl++, 0.89F);
-        floatPoints.put(fl++, 0.51F);
-        floatPoints.put(fl++, 0.47F);
-        floatPoints.put(fl++, 0.71F);
-        floatPoints.put(fl++, 0.07F);
-        floatPoints.put(fl++, 0.15F);
-        floatPoints.put(fl++, 0.58F);
-        floatPoints.put(fl++, 0.18F);
+        Float fl = -6F;
+        floatPoints.put(fl++, 0.000F);
+        floatPoints.put(fl++, -0.189F);
+        floatPoints.put(fl++, 0.070F);
+        floatPoints.put(fl++, 0.046F);
+        floatPoints.put(fl++, 0.058F);
+        floatPoints.put(fl++, 0.067F);
+        floatPoints.put(fl++, 0.028F);
+        floatPoints.put(fl++, 0.068F);
+        floatPoints.put(fl++, 0.084F);
+        floatPoints.put(fl++, 0.031F);
+        floatPoints.put(fl++, 0.173F);
+        floatPoints.put(fl++, 0.064F);
+        floatPoints.put(fl++, 0.089F);
+        floatPoints.put(fl++, 0.051F);
+        floatPoints.put(fl++, 0.047F);
+        floatPoints.put(fl++, 0.071F);
+        floatPoints.put(fl++, 0.007F);
+        floatPoints.put(fl++, 0.015F);
+        floatPoints.put(fl++, 0.058F);
+        floatPoints.put(fl++, 0.018F);
         
         Chart chart = new Chart(getApplicationContext(),
         		floatPoints,
-        		"This is a chart of some sort.",
-        		"X Axis",
-        		"Y Axis",
-        		"X Units",
-        		"Y Units",
+        		"Fancy Chart of Some Kind",
+        		"Time",
+        		"Power",
+        		"Seconds",
+        		"Volts",
         		true);
         
         setContentView(chart);
-        
-        chart.setXDataRange(0F, 3F);
     }
 }

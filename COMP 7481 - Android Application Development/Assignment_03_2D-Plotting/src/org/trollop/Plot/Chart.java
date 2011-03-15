@@ -32,15 +32,19 @@ import android.view.View;
  */
 public class Chart extends View {
 	private Point viewSize = new Point();
-	private Point margin = new Point(60, 40);
+	private Point margin = new Point(60, 50);
 	private PointF minBounds = new PointF(Float.MAX_VALUE, Float.MAX_VALUE);
 	private PointF maxBounds = new PointF(Float.MIN_VALUE, Float.MIN_VALUE);
 	private PointF transMultiplier = new PointF();
+
+	private NiceScale scaleXAxis;
+	private NiceScale scaleYAxis;
 
 	private boolean smooth;
 
 	private float chartTitleSize = 18F;
 	private float axisTitleSize = 14F;
+	private float tickLabelSize = 14F;
 
 	private String chartTitle;
 	private String xAxisTitle;
@@ -66,6 +70,7 @@ public class Chart extends View {
 
 		setDataBounds();
 		autoScale();
+		drawTickLabels(canvas);
 		drawAxes(canvas);
 		plot(canvas);
 	}
@@ -122,7 +127,52 @@ public class Chart extends View {
 
 		canvas.drawTextOnPath(yAxisTitle, path, 0, axisTitleSize, paint);
 	}
-	
+
+	private void drawTickLabels(Canvas canvas) {
+		Paint tickLine = new Paint();
+		Paint tickLabel = new Paint();
+
+		/* Set tick line properties */
+		tickLine.setColor(Color.LTGRAY);
+		tickLine.setStyle(Style.STROKE);
+		tickLine.setAntiAlias(true);
+		tickLine.setStrokeWidth(0.5F);
+
+		/* Set tick label properties */
+		tickLabel.setColor(Color.LTGRAY);
+		tickLabel.setTextAlign(Align.RIGHT);
+		tickLabel.setAntiAlias(true);
+		tickLabel.setTextSize(tickLabelSize);
+
+		/* y-axis lines & labels */
+		int ticks = (int) ((scaleYAxis.getNiceMax() - scaleYAxis.getNiceMin()) / scaleYAxis.getTickSpacing()) + 1;
+
+		for (int i = 0; i < ticks; i++) {
+			float yPoint = (float) (i * scaleYAxis.getTickSpacing()) * transMultiplier.y + margin.y;
+			float label = (float) (scaleYAxis.getNiceMax() - (i * scaleYAxis.getTickSpacing()));
+
+			if (label != 0)
+				canvas.drawLine(margin.x, yPoint, viewSize.x, yPoint, tickLine);
+			canvas.drawText(Float.toString(label), margin.x - 2, yPoint, tickLabel);
+		}
+
+		/* x-axis lines & labels */
+		tickLabel.setTextAlign(Align.CENTER);
+		ticks = (int) ((scaleXAxis.getNiceMax() - scaleXAxis.getNiceMin()) / scaleXAxis.getTickSpacing()) + 1;
+
+		for (int i = 0; i < ticks; i++) {
+			float xPoint = (float) (i * scaleXAxis.getTickSpacing()) * transMultiplier.x + margin.x;
+			float label = (float) (scaleXAxis.getNiceMin() + (i * scaleXAxis.getTickSpacing()));
+
+			if (label != 0)
+				canvas.drawLine(xPoint, margin.y, xPoint, viewSize.y - margin.y, tickLine);
+
+			if (i == ticks - 1)
+				tickLabel.setTextAlign(Align.RIGHT);
+			canvas.drawText(Float.toString(label), xPoint, viewSize.y - margin.y + tickLabelSize, tickLabel);
+		}
+	}
+
 	private void plot(Canvas canvas) {
 		boolean initPoint = false;
 		Path path = new Path();
@@ -143,18 +193,14 @@ public class Chart extends View {
 
 				Map.Entry<?, ?> map = (Entry<?, ?>) iterCur.next();
 
-				if ((Float) map.getKey() >= minBounds.x
-						&& (Float) map.getKey() <= maxBounds.x) {
-
-					/* set initial point */
-					if (!initPoint) {
-						path.moveTo((Float) map.getKey(),
-								(Float) map.getValue());
-						initPoint = true;
-					}
-
-					path.lineTo((Float) map.getKey(), (Float) map.getValue());
+				/* set initial point */
+				if (!initPoint) {
+					path.moveTo((Float) map.getKey(),
+							(Float) map.getValue());
+					initPoint = true;
 				}
+
+				path.lineTo((Float) map.getKey(), (Float) map.getValue());
 			}
 		} else {
 			iterCur.next(); /* move one point forward */
@@ -167,28 +213,23 @@ public class Chart extends View {
 				Map.Entry<?, ?> mapPrev = (Entry<?, ?>) iterPrev.next();
 				Map.Entry<?, ?> mapCur = (Entry<?, ?>) iterCur.next();
 
-				if ((Float) mapPrev.getKey() >= minBounds.x
-						&& (Float) mapPrev.getKey() <= maxBounds.x) {
-
-					/* set initial point */
-					if (!initPoint) {
-						path.moveTo((Float) mapPrev.getKey(),
-								(Float) mapPrev.getValue());
-						initPoint = true;
-					}
-
-					start.set((Float) mapPrev.getKey(),
+				/* set initial point */
+				if (!initPoint) {
+					path.moveTo((Float) mapPrev.getKey(),
 							(Float) mapPrev.getValue());
-
-					mid.set(((Float) mapPrev.getKey() + (Float) mapCur.getKey()) / 2,
-							((Float) mapPrev.getValue() + (Float) mapCur
-									.getValue()) / 2);
-
-					end.set((Float) mapCur.getKey(), (Float) mapCur.getValue());
-
-					path.quadTo((start.x + mid.x) / 2, start.y, mid.x, mid.y);
-					path.quadTo((mid.x + end.x) / 2, end.y, end.x, end.y);
+					initPoint = true;
 				}
+
+				start.set((Float) mapPrev.getKey(),
+						(Float) mapPrev.getValue());
+
+				mid.set(((Float) mapPrev.getKey() + (Float) mapCur.getKey()) / 2,
+						((Float) mapPrev.getValue() + (Float) mapCur.getValue()) / 2);
+
+				end.set((Float) mapCur.getKey(), (Float) mapCur.getValue());
+
+				path.quadTo((start.x + mid.x) / 2, start.y, mid.x, mid.y);
+				path.quadTo((mid.x + end.x) / 2, end.y, end.x, end.y);
 			}
 		}
 
@@ -200,7 +241,7 @@ public class Chart extends View {
 		path.offset(margin.x + 1, (viewSize.y - (margin.y * 2)) + margin.y);
 		canvas.drawPath(path, paint);
 	}
-	
+
 	private void setTransMultiplier() {
 		transMultiplier.set(
 				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
@@ -223,11 +264,11 @@ public class Chart extends View {
 				maxBounds.set(dataPoints.lastKey(), yValue);
 		}
 	}
-	
+
 	private void autoScale() {
-		NiceScale scaleXAxis = new NiceScale(minBounds.x, maxBounds.x);
-		NiceScale scaleYAxis = new NiceScale(minBounds.y, maxBounds.y);
-		
+		scaleXAxis = new NiceScale(minBounds.x, maxBounds.x);
+		scaleYAxis = new NiceScale(minBounds.y, maxBounds.y);
+
 		minBounds.set((float) scaleXAxis.getNiceMin(), (float) scaleYAxis.getNiceMin());
 		maxBounds.set((float) scaleXAxis.getNiceMax(), (float) scaleYAxis.getNiceMax());
 		setTransMultiplier();

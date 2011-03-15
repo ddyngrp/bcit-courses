@@ -43,6 +43,7 @@ public class Plotting extends Activity {
         floatPoints.put(fl++, 0.015F);
         floatPoints.put(fl++, 0.058F);
         floatPoints.put(fl++, 0.018F);
+        floatPoints.put(fl++, -0.068F);
         
         Chart chart = new Chart(getApplicationContext(),
         		floatPoints,

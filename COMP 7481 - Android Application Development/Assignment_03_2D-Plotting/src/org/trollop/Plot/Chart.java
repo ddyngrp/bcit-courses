@@ -38,7 +38,6 @@ public class Chart extends View {
 	private PointF transMultiplier = new PointF();
 
 	private boolean smooth;
-	private boolean autoScale = true;
 
 	private float chartTitleSize = 18F;
 	private float axisTitleSize = 14F;
@@ -46,8 +45,6 @@ public class Chart extends View {
 	private String chartTitle;
 	private String xAxisTitle;
 	private String yAxisTitle;
-	private String xAxisUnits;
-	private String yAxisUnits;
 
 	SortedMap<Float, Float> dataPoints;
 
@@ -57,10 +54,8 @@ public class Chart extends View {
 		super(context);
 
 		this.chartTitle = chartTitle;
-		this.xAxisTitle = xAxisTitle;
-		this.yAxisTitle = yAxisTitle;
-		this.xAxisUnits = xAxisUnits;
-		this.yAxisUnits = yAxisUnits;
+		this.xAxisTitle = xAxisTitle + " (" + xAxisUnits + ")";
+		this.yAxisTitle = yAxisTitle + " (" + yAxisUnits + ")";
 		this.dataPoints = dataPoints;
 		this.smooth = smooth;
 	}
@@ -69,8 +64,8 @@ public class Chart extends View {
 	protected void onDraw(Canvas canvas) {
 		viewSize.set(this.getWidth(), this.getHeight());
 
-		if (autoScale)
-			autoScale();
+		setDataBounds();
+		autoScale();
 		drawAxes(canvas);
 		plot(canvas);
 	}
@@ -118,32 +113,14 @@ public class Chart extends View {
 		path.moveTo(0, viewSize.y);
 		path.lineTo(viewSize.x, viewSize.y);
 
-		canvas.drawTextOnPath(xAxisTitle + " (" + xAxisUnits + ") ", path, 0,
-				-axisTitleSize / 5, paint);
+		canvas.drawTextOnPath(xAxisTitle, path, 0, -axisTitleSize / 5, paint);
 
 		/* Draw y axis title */
 		path.reset();
 		path.moveTo(0, viewSize.y);
 		path.lineTo(0, 0);
 
-		canvas.drawTextOnPath(yAxisTitle + " (" + yAxisUnits + ") ", path, 0,
-				axisTitleSize, paint);
-	}
-
-	public void setXDataRange(float minX, float maxX) {
-		minBounds.set(minX, minBounds.y);
-		maxBounds.set(maxX, maxBounds.y);
-		
-		setTransMultiplier();
-		this.postInvalidate();
-	}
-
-	public void setYDataRange(float minY, float maxY) {
-		minBounds.set(minBounds.x, minY);
-		maxBounds.set(maxBounds.x, maxY);
-		
-		setTransMultiplier();
-		this.postInvalidate();
+		canvas.drawTextOnPath(yAxisTitle, path, 0, axisTitleSize, paint);
 	}
 	
 	private void plot(Canvas canvas) {
@@ -227,21 +204,10 @@ public class Chart extends View {
 	private void setTransMultiplier() {
 		transMultiplier.set(
 				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
-				(viewSize.y - (margin.y * 2))
-						/ Math.abs(maxBounds.y - minBounds.y));
-	}
-	
-	public void setAutoScale(boolean autoScale) {
-		if (autoScale) {
-			this.autoScale = true;
-			autoScale();
-		}
-		else {
-			this.autoScale = false;
-		}
+				(viewSize.y - (margin.y * 2)) / Math.abs(maxBounds.y - minBounds.y));
 	}
 
-	private void autoScale() {
+	private void setDataBounds() {
 		// Iterate through the data set
 		Set<?> set = dataPoints.entrySet();
 		Iterator<?> iter = set.iterator();
@@ -256,7 +222,14 @@ public class Chart extends View {
 			if (yValue > maxBounds.y)
 				maxBounds.set(dataPoints.lastKey(), yValue);
 		}
+	}
+	
+	private void autoScale() {
+		NiceScale scaleXAxis = new NiceScale(minBounds.x, maxBounds.x);
+		NiceScale scaleYAxis = new NiceScale(minBounds.y, maxBounds.y);
+		
+		minBounds.set((float) scaleXAxis.getNiceMin(), (float) scaleYAxis.getNiceMin());
+		maxBounds.set((float) scaleXAxis.getNiceMax(), (float) scaleYAxis.getNiceMax());
 		setTransMultiplier();
-		this.postInvalidate();
 	}
 }

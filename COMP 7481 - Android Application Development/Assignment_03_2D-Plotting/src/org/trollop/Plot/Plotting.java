@@ -16,10 +16,11 @@ public class Plotting extends Activity {
         //        X-axis Y-axis
         SortedMap<Float, Float> floatPoints = new TreeMap<Float, Float>();
         
-//        Random randomGenerator = new Random();
-//        for (Float i = 0F; i < 20; i++) {
-//        	floatPoints.put(randomGenerator.nextFloat(), randomGenerator.nextFloat());
-//        }
+        Random randomGenerator = new Random();
+        for (Float i = 0F; i < 20; i++) {
+        	floatPoints.put(randomGenerator.nextFloat(), randomGenerator.nextFloat());
+        }
+        floatPoints.clear();
         
         Float fl = -6F;
         floatPoints.put(fl++, 0.000F);

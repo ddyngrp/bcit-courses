@@ -22,6 +22,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -33,8 +34,8 @@ import android.view.View;
 public class Chart extends View {
 	private Point viewSize = new Point();
 	private Point margin = new Point(60, 50);
-	private PointF minBounds = new PointF(Float.MAX_VALUE, Float.MAX_VALUE);
-	private PointF maxBounds = new PointF(Float.MIN_VALUE, Float.MIN_VALUE);
+	private PointF minBounds;
+	private PointF maxBounds;
 	private PointF transMultiplier = new PointF();
 
 	private NiceScale scaleXAxis;
@@ -68,11 +69,31 @@ public class Chart extends View {
 	protected void onDraw(Canvas canvas) {
 		viewSize.set(this.getWidth(), this.getHeight());
 
-		setDataBounds();
 		autoScale();
 		drawTickLabels(canvas);
 		drawAxes(canvas);
 		plot(canvas);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			this.postInvalidate();
+			return true;
+			
+		case MotionEvent.ACTION_MOVE:
+			this.postInvalidate();
+			return true;
+			
+		case MotionEvent.ACTION_UP:
+			this.postInvalidate();
+			return true;
+			
+		default:
+			return true;
+		}
 	}
 
 	private void drawAxes(Canvas canvas) {
@@ -249,9 +270,13 @@ public class Chart extends View {
 	}
 
 	private void setDataBounds() {
-		// Iterate through the data set
+		/* Iterate through the data set */
 		Set<?> set = dataPoints.entrySet();
 		Iterator<?> iter = set.iterator();
+		
+		/* reset data bounds */
+		minBounds = new PointF(Float.MAX_VALUE, Float.MAX_VALUE);
+		maxBounds = new PointF(Float.MIN_VALUE, Float.MIN_VALUE);
 
 		while (iter.hasNext()) {
 			Map.Entry<?, ?> map = (Entry<?, ?>) iter.next();
@@ -266,6 +291,7 @@ public class Chart extends View {
 	}
 
 	private void autoScale() {
+		setDataBounds();
 		scaleXAxis = new NiceScale(minBounds.x, maxBounds.x);
 		scaleYAxis = new NiceScale(minBounds.y, maxBounds.y);
 

@@ -22,6 +22,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -31,7 +33,7 @@ import android.view.View;
  * @author Steffen L. Norgren, A00683006
  * 
  */
-public class Chart extends View {
+public class Chart extends View implements OnGestureListener {
 	private Point viewSize = new Point();
 	private Point margin = new Point(60, 40);
 	private PointF minBounds = new PointF();
@@ -58,6 +60,8 @@ public class Chart extends View {
 	private String chartTitle;
 	private String xAxisTitle;
 	private String yAxisTitle;
+	
+	private GestureDetector gestureScanner;
 
 	SortedMap<Float, Float> dataPoints;
 
@@ -65,6 +69,8 @@ public class Chart extends View {
 			String chartTitle, String xAxisTitle, String yAxisTitle,
 			String xAxisUnits, String yAxisUnits, boolean smooth) {
 		super(context);
+		
+		gestureScanner = new GestureDetector(this);
 
 		this.chartTitle = chartTitle;
 		this.xAxisTitle = xAxisTitle + " (" + xAxisUnits + ")";
@@ -83,39 +89,42 @@ public class Chart extends View {
 		plot(canvas);
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-
-		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			touchPoint.set(event.getRawX(), event.getRawY());
-			return true;
-
-		case MotionEvent.ACTION_MOVE:
-			currentPoint.set(event.getRawX(), event.getRawY());
-			xDisplacementTmp = currentPoint.x - touchPoint.x + xDisplacement;
-			this.postInvalidate();
-			return true;
-
-		case MotionEvent.ACTION_UP:
-			releasePoint.set(event.getRawX(), event.getRawY());
-
-			xDisplacement = xDisplacementTmp;
-
-			if (touchPoint.x == releasePoint.x
-					&& touchPoint.y == releasePoint.y
-					&& releasePoint.x > margin.x) {
-				// zoomed = true;
-				// if (zoomFactor != 10)
-				// zoomFactor += 1;
-				this.postInvalidate();
-			}
-			return true;
-
-		default:
-			return true;
-		}
-	}
+//	@Override
+//	public boolean onTouchEvent(MotionEvent event) {
+//
+//		switch (event.getAction()) {
+//		case MotionEvent.ACTION_DOWN:
+//			/* don't count clicks outside the X margin */
+//			if (event.getRawX() > margin.x) {
+//				touchPoint.set(event.getRawX(), event.getRawY());
+//				return true;
+//			}
+//			else
+//				return true;
+//
+//		case MotionEvent.ACTION_MOVE:
+//			currentPoint.set(event.getRawX(), event.getRawY());
+//			xDisplacementTmp = currentPoint.x - touchPoint.x + xDisplacement;
+//			this.postInvalidate();
+//			return true;
+//
+//		case MotionEvent.ACTION_UP:
+//			releasePoint.set(event.getRawX(), event.getRawY());
+//
+//			xDisplacement = xDisplacementTmp;
+//
+//			if (touchPoint.x == releasePoint.x && touchPoint.y == releasePoint.y && releasePoint.x > margin.x) {
+//				 zoomed = true;
+//				 if (zoomFactor != 5)
+//					 zoomFactor += 1;
+//				 this.postInvalidate();
+//			}
+//			return true;
+//
+//		default:
+//			return true;
+//		}
+//	}
 
 	private void drawTitles(Canvas canvas) {
 		Path path = new Path();
@@ -128,7 +137,7 @@ public class Chart extends View {
 		paint.setTextSize(chartTitleSize);
 		canvas.drawText(chartTitle, viewSize.x / 2,
 				(margin.y + chartTitleSize) / 2, paint);
-		
+
 		/* Set axes title colours */
 		paint.setColor(Color.LTGRAY);
 		paint.setTextSize(axisTitleSize);
@@ -175,14 +184,14 @@ public class Chart extends View {
 			if (label == 0) {
 				tickLine.setColor(Color.WHITE);
 				tickLine.setStrokeWidth(1F);
-			}
-			else {
+			} else {
 				tickLine.setColor(Color.LTGRAY);
 				tickLine.setStrokeWidth(0.5F);
 			}
-				
+
 			canvas.drawLine(margin.x, yPoint, viewSize.x, yPoint, tickLine);
-			canvas.drawText(Float.toString(label), margin.x - 2, yPoint, tickLabel);
+			canvas.drawText(Float.toString(label), margin.x - 2, yPoint,
+					tickLabel);
 		}
 
 		/* x-axis lines & labels */
@@ -199,16 +208,16 @@ public class Chart extends View {
 			if (label == 0) {
 				tickLine.setColor(Color.WHITE);
 				tickLine.setStrokeWidth(1F);
-			}
-			else {
+			} else {
 				tickLine.setColor(Color.LTGRAY);
 				tickLine.setStrokeWidth(0.5F);
 			}
 			if (i == ticks - 1)
 				tickLabel.setTextAlign(Align.RIGHT);
 
-			canvas.drawLine(xPoint, margin.y, xPoint, viewSize.y - margin.y, tickLine);
-			canvas.drawText(Float.toString(label), xPoint, viewSize.y 
+			canvas.drawLine(xPoint, margin.y, xPoint, viewSize.y - margin.y,
+					tickLine);
+			canvas.drawText(Float.toString(label), xPoint, viewSize.y
 					- margin.y + tickLabelSize, tickLabel);
 		}
 	}
@@ -270,29 +279,27 @@ public class Chart extends View {
 				path.quadTo((mid.x + end.x) / 2, end.y, end.x, end.y);
 			}
 		}
-
-		/* Transformations */
+		
+		canvas.drawPath(translatePath(path), paint);
+	}
+	
+	private Path translatePath(Path path) {
 		Matrix m = new Matrix();
 
-		if (zoomed) {
-			path.offset(-minBounds.x
-					- (touchPoint.x / (transMultiplier.x * zoomFactor)),
-					-minBounds.y);
-		}
+		if (zoomed)
+			path.offset(-minBounds.x - (touchPoint.x / (transMultiplier.x * zoomFactor)), -minBounds.y);
 		else
 			path.offset(-minBounds.x, -minBounds.y);
 
 		m.setScale(transMultiplier.x * zoomFactor, -transMultiplier.y);
 		path.transform(m);
-		path.offset(margin.x + 1, (viewSize.y - (margin.y * 2)) + margin.y);
-		canvas.drawPath(path, paint);
-	}
 
-	private void setTransMultiplier() {
-		transMultiplier.set(
-				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
-				(viewSize.y - (margin.y * 2))
-						/ Math.abs(maxBounds.y - minBounds.y));
+		if (zoomed)
+			path.offset(margin.x + 1 + (touchPoint.x / (transMultiplier.x * zoomFactor)), (viewSize.y - (margin.y * 2)) + margin.y);
+		else
+			path.offset(margin.x + 1, (viewSize.y - (margin.y * 2)) + margin.y);
+		
+		return path;
 	}
 
 	private void setDataBounds() {
@@ -325,6 +332,63 @@ public class Chart extends View {
 				(float) scaleYAxis.getNiceMin());
 		maxBounds.set((float) scaleXAxis.getNiceMax(),
 				(float) scaleYAxis.getNiceMax());
-		setTransMultiplier();
+
+		transMultiplier.set(
+				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
+				(viewSize.y - (margin.y * 2)) / Math.abs(maxBounds.y - minBounds.y));
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onDown(android.view.MotionEvent)
+	 */
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onShowPress(android.view.MotionEvent)
+	 */
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onSingleTapUp(android.view.MotionEvent)
+	 */
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onScroll(android.view.MotionEvent, android.view.MotionEvent, float, float)
+	 */
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onLongPress(android.view.MotionEvent)
+	 */
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnGestureListener#onFling(android.view.MotionEvent, android.view.MotionEvent, float, float)
+	 */
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

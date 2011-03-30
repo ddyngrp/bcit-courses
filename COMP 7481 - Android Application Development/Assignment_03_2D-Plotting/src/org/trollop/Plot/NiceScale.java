@@ -103,6 +103,15 @@ public class NiceScale {
 		this.maxTicks = maxTicks;
 		calculate();
 	}
+	
+	/**
+	 * Gets the maximum number of ticks for the scale
+	 *
+	 * @return maximum number of ticks
+	 */
+	public double getMaxTicks() {
+		return maxTicks;
+	}
 
 	/**
 	 * Gets the tick spacing.

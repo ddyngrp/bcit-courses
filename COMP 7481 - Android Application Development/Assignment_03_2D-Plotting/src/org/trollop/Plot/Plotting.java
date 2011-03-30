@@ -22,28 +22,29 @@ public class Plotting extends Activity {
         }
         floatPoints.clear();
         
-        Float fl = -6F;
-        floatPoints.put(fl++, 0.000F);
-        floatPoints.put(fl++, -0.089F);
-        floatPoints.put(fl++, 0.070F);
-        floatPoints.put(fl++, 0.046F);
-        floatPoints.put(fl++, 0.058F);
-        floatPoints.put(fl++, 0.067F);
-        floatPoints.put(fl++, 0.028F);
-        floatPoints.put(fl++, 0.068F);
-        floatPoints.put(fl++, 0.084F);
-        floatPoints.put(fl++, 0.031F);
-        floatPoints.put(fl++, 0.173F);
-        floatPoints.put(fl++, 0.064F);
-        floatPoints.put(fl++, 0.089F);
-        floatPoints.put(fl++, 0.051F);
-        floatPoints.put(fl++, 0.047F);
-        floatPoints.put(fl++, 0.071F);
-        floatPoints.put(fl++, 0.007F);
-        floatPoints.put(fl++, 0.015F);
-        floatPoints.put(fl++, 0.058F);
-        floatPoints.put(fl++, 0.018F);
-        floatPoints.put(fl++, -0.068F);
+        float fl = -1.425F;
+        float interval = 0.2F;
+        floatPoints.put(fl += interval, 0.000F);
+        floatPoints.put(fl += interval, -0.089F);
+        floatPoints.put(fl += interval, 0.070F);
+        floatPoints.put(fl += interval, 0.046F);
+        floatPoints.put(fl += interval, 0.058F);
+        floatPoints.put(fl += interval, 0.067F);
+        floatPoints.put(fl += interval, 0.028F);
+        floatPoints.put(fl += interval, 0.068F);
+        floatPoints.put(fl += interval, 0.084F);
+        floatPoints.put(fl += interval, 0.031F);
+        floatPoints.put(fl += interval, 0.173F);
+        floatPoints.put(fl += interval, 0.064F);
+        floatPoints.put(fl += interval, 0.089F);
+        floatPoints.put(fl += interval, 0.051F);
+        floatPoints.put(fl += interval, 0.047F);
+        floatPoints.put(fl += interval, 0.071F);
+        floatPoints.put(fl += interval, 0.007F);
+        floatPoints.put(fl += interval, 0.015F);
+        floatPoints.put(fl += interval, 0.058F);
+        floatPoints.put(fl += interval, 0.018F);
+        floatPoints.put(fl += interval, -0.068F);
         
         Chart chart = new Chart(getApplicationContext(),
         		floatPoints,

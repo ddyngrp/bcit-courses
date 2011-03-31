@@ -42,7 +42,7 @@ public class SimpleVideo extends Activity {
 					
 					while (true) {
 						in = openHttpConnection(url + Integer.toString(i) + "." + type);
-						byte[] bt = in.toString().getBytes();
+						ImageData id = new ImageData(in.toString().getBytes(), i);
 						
 						if (i != 10)
 							i++;
@@ -90,19 +90,5 @@ public class SimpleVideo extends Activity {
 		}
 		
 		return in;
-	}
-	
-	/* adds data to the buffer */
-	private boolean addData(byte[] image, int size) {
-		return false;
-	}
-	
-	private boolean isFull() {
-		return false;
-	}
-	
-	/* get data from the buffer */
-	public byte[] getData() {
-		return null;
 	}
 }

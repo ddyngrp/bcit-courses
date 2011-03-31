@@ -23,7 +23,6 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -33,7 +32,7 @@ import android.view.View;
  * @author Steffen L. Norgren, A00683006
  * 
  */
-public class Chart extends View implements OnGestureListener {
+public class Chart extends View {
 	private Point viewSize = new Point();
 	private Point margin = new Point(60, 40);
 	private PointF minBounds = new PointF();
@@ -70,7 +69,72 @@ public class Chart extends View implements OnGestureListener {
 			String xAxisUnits, String yAxisUnits, boolean smooth) {
 		super(context);
 		
-		gestureScanner = new GestureDetector(this);
+		gestureScanner = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+	        /**
+	         * Notified when a tap occurs with the up {@link MotionEvent}
+	         * that triggered it.
+	         * 
+	         * This handles zooming in on the chart.
+	         *
+	         * @param e The up motion event that completed the first tap
+	         * @return true if the event is consumed, else false
+	         */
+			@Override
+			public boolean onSingleTapConfirmed(MotionEvent event) {
+				zoomed = true;
+				
+				touchPoint.set(event.getRawX(), event.getRawY());
+				
+				if (zoomFactor < 5)
+					zoomFactor++;
+				
+				return true;
+			}
+			
+	        /**
+	         * Notified when a double-tap occurs.
+	         * 
+	         * This handles zooming out of the chart.
+	         *
+	         * @param e The down motion event of the first tap of the double-tap.
+	         * @return true if the event is consumed, else false
+	         */
+			@Override
+			public boolean onDoubleTap(MotionEvent event) {
+				
+				touchPoint.set(event.getRawX(), event.getRawY());
+				
+				if (zoomFactor > 1) {
+					if (--zoomFactor == 1) {
+						zoomed = false;
+					}
+				}
+				
+				return true;
+			}
+			
+	        /**
+	         * Notified when a scroll occurs with the initial on down {@link MotionEvent} and the
+	         * current move {@link MotionEvent}. The distance in x and y is also supplied for
+	         * convenience.
+	         * 
+	         * This handles scrolling through the chart.
+	         *
+	         * @param e1 The first down motion event that started the scrolling.
+	         * @param e2 The move motion event that triggered the current onScroll.
+	         * @param distanceX The distance along the X axis that has been scrolled since the last
+	         *              call to onScroll. This is NOT the distance between {@code e1}
+	         *              and {@code e2}.
+	         * @param distanceY The distance along the Y axis that has been scrolled since the last
+	         *              call to onScroll. This is NOT the distance between {@code e1}
+	         *              and {@code e2}.
+	         * @return true if the event is consumed, else false
+	         */
+			@Override
+			public boolean onScroll(MotionEvent event1, MotionEvent event2, float distanceX, float distanceY) {
+				return true;
+			}
+		});
 
 		this.chartTitle = chartTitle;
 		this.xAxisTitle = xAxisTitle + " (" + xAxisUnits + ")";
@@ -79,52 +143,32 @@ public class Chart extends View implements OnGestureListener {
 		this.smooth = smooth;
 	}
 
+    /**
+     * Implement this to do your drawing.
+     *
+     * @param canvas the canvas on which the background will be drawn
+     */
 	@Override
 	protected void onDraw(Canvas canvas) {
 		viewSize.set(this.getWidth(), this.getHeight());
-
+		
 		autoScale();
 		drawAxes(canvas);
 		drawTitles(canvas);
 		plot(canvas);
 	}
-
-//	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
-//
-//		switch (event.getAction()) {
-//		case MotionEvent.ACTION_DOWN:
-//			/* don't count clicks outside the X margin */
-//			if (event.getRawX() > margin.x) {
-//				touchPoint.set(event.getRawX(), event.getRawY());
-//				return true;
-//			}
-//			else
-//				return true;
-//
-//		case MotionEvent.ACTION_MOVE:
-//			currentPoint.set(event.getRawX(), event.getRawY());
-//			xDisplacementTmp = currentPoint.x - touchPoint.x + xDisplacement;
-//			this.postInvalidate();
-//			return true;
-//
-//		case MotionEvent.ACTION_UP:
-//			releasePoint.set(event.getRawX(), event.getRawY());
-//
-//			xDisplacement = xDisplacementTmp;
-//
-//			if (touchPoint.x == releasePoint.x && touchPoint.y == releasePoint.y && releasePoint.x > margin.x) {
-//				 zoomed = true;
-//				 if (zoomFactor != 5)
-//					 zoomFactor += 1;
-//				 this.postInvalidate();
-//			}
-//			return true;
-//
-//		default:
-//			return true;
-//		}
-//	}
+	
+    /**
+     * Implement this method to handle touch screen motion events.
+     *
+     * @param event The motion event.
+     * @return True if the event was handled, false otherwise.
+     */
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		gestureScanner.onTouchEvent(event);
+		return true;
+	}
 
 	private void drawTitles(Canvas canvas) {
 		Path path = new Path();
@@ -336,59 +380,5 @@ public class Chart extends View implements OnGestureListener {
 		transMultiplier.set(
 				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
 				(viewSize.y - (margin.y * 2)) / Math.abs(maxBounds.y - minBounds.y));
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onDown(android.view.MotionEvent)
-	 */
-	@Override
-	public boolean onDown(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onShowPress(android.view.MotionEvent)
-	 */
-	@Override
-	public void onShowPress(MotionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onSingleTapUp(android.view.MotionEvent)
-	 */
-	@Override
-	public boolean onSingleTapUp(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onScroll(android.view.MotionEvent, android.view.MotionEvent, float, float)
-	 */
-	@Override
-	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onLongPress(android.view.MotionEvent)
-	 */
-	@Override
-	public void onLongPress(MotionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnGestureListener#onFling(android.view.MotionEvent, android.view.MotionEvent, float, float)
-	 */
-	@Override
-	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

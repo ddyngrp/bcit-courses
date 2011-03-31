@@ -1,6 +1,11 @@
+/**
+ * Project: Assignment_03_2D-Plotting
+ * File: Plotting.java
+ * Date: 2011-02-16
+ * Time: 8:49:11 PM
+ */
 package org.trollop.Plot;
 
-import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -12,17 +17,11 @@ public class Plotting extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        //        X-axis Y-axis
+
         SortedMap<Float, Float> floatPoints = new TreeMap<Float, Float>();
         
-        Random randomGenerator = new Random();
-        for (Float i = 0F; i < 20; i++) {
-        	floatPoints.put(randomGenerator.nextFloat(), randomGenerator.nextFloat());
-        }
         floatPoints.clear();
-        
-        float fl = -1.425F;
+        float fl = -1.7F;
         float interval = 0.2F;
         floatPoints.put(fl += interval, 0.000F);
         floatPoints.put(fl += interval, -0.089F);

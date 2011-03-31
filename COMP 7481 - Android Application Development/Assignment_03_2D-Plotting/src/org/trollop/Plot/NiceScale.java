@@ -1,10 +1,10 @@
-package org.trollop.Plot;
 /**
  * Project: Scale
  * File: Scale.java
  * Date: 2011-03-15
  * Time: 8:53:50 AM
  */
+package org.trollop.Plot;
 
 /**
  * @author Steffen L. Norgren, A00683006

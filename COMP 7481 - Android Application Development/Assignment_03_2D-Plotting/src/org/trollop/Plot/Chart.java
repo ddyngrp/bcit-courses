@@ -22,6 +22,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,37 +35,47 @@ import android.view.GestureDetector.OnGestureListener;
  * 
  */
 public class Chart extends View implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
+	
 	private Point viewSize = new Point();
 	private Point margin = new Point(60, 40);
 	private PointF minBounds = new PointF();
 	private PointF maxBounds = new PointF();
 	private PointF transMultiplier = new PointF();
 	private PointF touchPoint = new PointF();
-	private PointF releasePoint = new PointF();
-	private PointF currentPoint = new PointF();
-
+	
 	private NiceScale scaleXAxis;
 	private NiceScale scaleYAxis;
-
+	
 	private boolean smooth;
-	private boolean zoomed;
-
-	private int zoomFactor = 1;
-
+	private boolean zoomed = false;
+	
+	private float zoomFactor = 1;
+	private float maxZoomFactor = 5;
 	private float chartTitleSize = 18F;
 	private float axisTitleSize = 14F;
 	private float tickLabelSize = 13F;
 	private float xDisplacement = 0;
-	private float xDisplacementTmp = 0;
-
+	
 	private String chartTitle;
 	private String xAxisTitle;
 	private String yAxisTitle;
 	
 	private GestureDetector gestureScanner;
-
+	
 	SortedMap<Float, Float> dataPoints;
 
+	/**
+	 * Instantiates a new chart.
+	 *
+	 * @param context the context
+	 * @param dataPoints the data points to chart
+	 * @param chartTitle the chart title
+	 * @param xAxisTitle the x axis title
+	 * @param yAxisTitle the y axis title
+	 * @param xAxisUnits the x axis units
+	 * @param yAxisUnits the y axis units
+	 * @param smooth whether to smooth the plotted line
+	 */
 	public Chart(Context context, SortedMap<Float, Float> dataPoints,
 			String chartTitle, String xAxisTitle, String yAxisTitle,
 			String xAxisUnits, String yAxisUnits, boolean smooth) {
@@ -79,6 +90,11 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		this.smooth = smooth;
 	}
 
+	/**
+	 * Draw chart titles.
+	 *
+	 * @param canvas the canvas
+	 */
 	private void drawTitles(Canvas canvas) {
 		Path path = new Path();
 		Paint paint = new Paint();
@@ -110,6 +126,11 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		canvas.drawTextOnPath(yAxisTitle, path, 0, axisTitleSize, paint);
 	}
 
+	/**
+	 * Draw chart axes.
+	 *
+	 * @param canvas the canvas
+	 */
 	private void drawAxes(Canvas canvas) {
 		Paint tickLine = new Paint();
 		Paint tickLabel = new Paint();
@@ -123,16 +144,18 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		tickLabel.setTextAlign(Align.RIGHT);
 		tickLabel.setAntiAlias(true);
 		tickLabel.setTextSize(tickLabelSize);
+		
+		/* little hack to cover extra chart data to the left */
+		Paint hackRect = new Paint();
+		hackRect.setColor(Color.BLACK);
+		canvas.drawRect(0, 0, margin.x - 1, viewSize.y, hackRect);
 
 		/* y-axis lines & labels */
-		int ticks = (int) ((scaleYAxis.getNiceMax() - scaleYAxis.getNiceMin()) / scaleYAxis
-				.getTickSpacing()) + 1;
+		float ticks = (float) (((scaleYAxis.getNiceMax() - scaleYAxis.getNiceMin()) / scaleYAxis.getTickSpacing()) + 1);
 
 		for (int i = 0; i < ticks; i++) {
-			float yPoint = (float) (i * scaleYAxis.getTickSpacing())
-					* transMultiplier.y + margin.y;
-			float label = (float) (scaleYAxis.getNiceMax() - (i * scaleYAxis
-					.getTickSpacing()));
+			float yPoint = (float) (i * scaleYAxis.getTickSpacing()) * transMultiplier.y + margin.y;
+			float label = (float) (scaleYAxis.getNiceMax() - (i * scaleYAxis .getTickSpacing()));
 
 			if (label == 0) {
 				tickLine.setColor(Color.WHITE);
@@ -149,14 +172,18 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 
 		/* x-axis lines & labels */
 		tickLabel.setTextAlign(Align.CENTER);
-		ticks = (int) ((scaleXAxis.getNiceMax() - scaleXAxis.getNiceMin()) / scaleXAxis
-				.getTickSpacing()) + 1;
+		ticks = (float) ((scaleXAxis.getNiceMax() - scaleXAxis.getNiceMin()) / scaleXAxis.getTickSpacing()) + 1;			
 
-		for (int i = 0; i < ticks; i++) {
-			float xPoint = (float) (i * scaleXAxis.getTickSpacing())
-					* transMultiplier.x + margin.x;
-			float label = (float) (scaleXAxis.getNiceMin() + (i * scaleXAxis
-					.getTickSpacing()));
+		for (float i = 0; i < (ticks * zoomFactor); i++) {
+			float centreOffset = 0;
+			float tickSpacing = (float) (i * scaleXAxis.getTickSpacing() * zoomFactor);
+			
+			if (zoomed)
+				centreOffset = ((touchPoint.x - margin.x) / transMultiplier.x) * (zoomFactor - 1);
+			
+			float xPoint = (float) ((tickSpacing - centreOffset) * transMultiplier.x) + margin.x;
+			float label = (float) (scaleXAxis.getNiceMin() + (i * scaleXAxis.getTickSpacing()));
+			xPoint += xDisplacement;
 
 			if (label == 0) {
 				tickLine.setColor(Color.WHITE);
@@ -168,13 +195,18 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 			if (i == ticks - 1)
 				tickLabel.setTextAlign(Align.RIGHT);
 
-			canvas.drawLine(xPoint, margin.y, xPoint, viewSize.y - margin.y,
-					tickLine);
-			canvas.drawText(Float.toString(label), xPoint, viewSize.y
-					- margin.y + tickLabelSize, tickLabel);
+			if (xPoint >= margin.x) { 
+				canvas.drawLine(xPoint, margin.y, xPoint, viewSize.y - margin.y, tickLine);
+				canvas.drawText(Float.toString(label), xPoint, viewSize.y - margin.y + tickLabelSize, tickLabel);
+			}
 		}
 	}
 
+	/**
+	 * Plot the data points on the chart.
+	 *
+	 * @param canvas the canvas
+	 */
 	private void plot(Canvas canvas) {
 		boolean initPoint = false;
 		Path path = new Path();
@@ -236,25 +268,35 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		canvas.drawPath(translatePath(path), paint);
 	}
 	
+	/**
+	 * Translate a path to properly represent zoomed/displaced charting data.
+	 *
+	 * @param path the path
+	 * @return the path
+	 */
 	private Path translatePath(Path path) {
 		Matrix m = new Matrix();
-
-		if (zoomed)
-			path.offset(-minBounds.x - (touchPoint.x / (transMultiplier.x * zoomFactor)), -minBounds.y);
-		else
-			path.offset(-minBounds.x, -minBounds.y);
-
+		float centreOffset = 0;
+		float zoomOffset = 0;
+		
+		if (zoomed) {
+			centreOffset = (touchPoint.x - margin.x) / transMultiplier.x;
+			zoomOffset = touchPoint.x - margin.x;
+		}
+		
+		path.offset(-minBounds.x - centreOffset, -minBounds.y);
 		m.setScale(transMultiplier.x * zoomFactor, -transMultiplier.y);
 		path.transform(m);
-
-		if (zoomed)
-			path.offset(margin.x + 1 + (touchPoint.x / (transMultiplier.x * zoomFactor)), (viewSize.y - (margin.y * 2)) + margin.y);
-		else
-			path.offset(margin.x + 1, (viewSize.y - (margin.y * 2)) + margin.y);
+		path.offset(margin.x + zoomOffset + xDisplacement, (viewSize.y - (margin.y * 2)) + margin.y);
+		
+		Log.i("Position", Float.toString(zoomOffset - xDisplacement));
 		
 		return path;
 	}
 
+	/**
+	 * Sets the data bounds.
+	 */
 	private void setDataBounds() {
 		/* Iterate through the data set */
 		Set<?> set = dataPoints.entrySet();
@@ -276,6 +318,9 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		}
 	}
 
+	/**
+	 * Auto scale the chart using "nice" numbers.
+	 */
 	private void autoScale() {
 		setDataBounds();
 		scaleXAxis = new NiceScale(minBounds.x, maxBounds.x);
@@ -301,9 +346,9 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 		viewSize.set(this.getWidth(), this.getHeight());
 		
 		autoScale();
+		plot(canvas);
 		drawAxes(canvas);
 		drawTitles(canvas);
-		plot(canvas);
 	}
 	
     /**
@@ -324,10 +369,10 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
      * every down event. All other events should be preceded by this.
      *
      * @param e The down motion event.
+     * @return true, if successful
      */
 	@Override
 	public boolean onDown(MotionEvent e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -373,6 +418,12 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
+		
+		if (zoomed) {
+			xDisplacement -= distanceX;
+			this.postInvalidate();
+		}
+		
 		return false;
 	}
 
@@ -412,18 +463,23 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
      * will only be called after the detector is confident that the user's
      * first tap is not followed by a second tap leading to a double-tap
      * gesture.
+     * 
+     * Manages zooming out of the chart.
      *
      * @param e The down motion event of the single-tap.
      * @return true if the event is consumed, else false
      */
 	@Override
 	public boolean onSingleTapConfirmed(MotionEvent e) {
-		zoomed = true;
-		
-		touchPoint.set(e.getRawX(), e.getRawY());
-		
-		if (zoomFactor < 6)
-			zoomFactor++;
+
+		if (zoomFactor > 1) {
+			zoomFactor -= 1;
+			
+			if (zoomFactor == 1) {
+				xDisplacement = 0;
+				zoomed = false;
+			}
+		}
 		
 		this.postInvalidate();
 		
@@ -432,21 +488,24 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 
     /**
      * Notified when a double-tap occurs.
+     * 
+     * Managed zooming in on the chart.
      *
      * @param e The down motion event of the first tap of the double-tap.
      * @return true if the event is consumed, else false
      */
 	@Override
 	public boolean onDoubleTap(MotionEvent e) {
-		touchPoint.set(e.getRawX(), e.getRawY());
+		zoomed = true;
 		
-		if (zoomFactor > 1) {
-			if (--zoomFactor == 1) {
-				zoomed = false;
-			}
+		if (e.getRawX() < margin.x)
+			return true;
+		
+		if (zoomFactor < maxZoomFactor) {
+			touchPoint.set(e.getRawX(), e.getRawY());
+			zoomFactor += 1;
+			this.postInvalidate();
 		}
-		
-		this.postInvalidate();
 		
 		return true;
 	}

@@ -378,7 +378,7 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 
     /**
      * Notified when a long press occurs with the initial on down {@link MotionEvent}
-     * that trigged it.
+     * that triggered it.
      *
      * @param e The initial on down motion event that started the longpress.
      */
@@ -407,7 +407,7 @@ public class Chart extends View implements GestureDetector.OnDoubleTapListener, 
 
     /**
      * Notified when a single-tap occurs.
-     * <p>
+     * 
      * Unlike {@link OnGestureListener#onSingleTapUp(MotionEvent)}, this
      * will only be called after the detector is confident that the user's
      * first tap is not followed by a second tap leading to a double-tap

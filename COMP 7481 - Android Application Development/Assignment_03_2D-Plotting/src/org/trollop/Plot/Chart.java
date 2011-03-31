@@ -25,6 +25,7 @@ import android.graphics.PointF;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 
 /**
  * Creates a simple scaled line graph with x and y axis labels.
@@ -32,7 +33,7 @@ import android.view.View;
  * @author Steffen L. Norgren, A00683006
  * 
  */
-public class Chart extends View {
+public class Chart extends View implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener {
 	private Point viewSize = new Point();
 	private Point margin = new Point(60, 40);
 	private PointF minBounds = new PointF();
@@ -69,105 +70,13 @@ public class Chart extends View {
 			String xAxisUnits, String yAxisUnits, boolean smooth) {
 		super(context);
 		
-		gestureScanner = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-	        /**
-	         * Notified when a tap occurs with the up {@link MotionEvent}
-	         * that triggered it.
-	         * 
-	         * This handles zooming in on the chart.
-	         *
-	         * @param e The up motion event that completed the first tap
-	         * @return true if the event is consumed, else false
-	         */
-			@Override
-			public boolean onSingleTapConfirmed(MotionEvent event) {
-				zoomed = true;
-				
-				touchPoint.set(event.getRawX(), event.getRawY());
-				
-				if (zoomFactor < 5)
-					zoomFactor++;
-				
-				return true;
-			}
-			
-	        /**
-	         * Notified when a double-tap occurs.
-	         * 
-	         * This handles zooming out of the chart.
-	         *
-	         * @param e The down motion event of the first tap of the double-tap.
-	         * @return true if the event is consumed, else false
-	         */
-			@Override
-			public boolean onDoubleTap(MotionEvent event) {
-				
-				touchPoint.set(event.getRawX(), event.getRawY());
-				
-				if (zoomFactor > 1) {
-					if (--zoomFactor == 1) {
-						zoomed = false;
-					}
-				}
-				
-				return true;
-			}
-			
-	        /**
-	         * Notified when a scroll occurs with the initial on down {@link MotionEvent} and the
-	         * current move {@link MotionEvent}. The distance in x and y is also supplied for
-	         * convenience.
-	         * 
-	         * This handles scrolling through the chart.
-	         *
-	         * @param e1 The first down motion event that started the scrolling.
-	         * @param e2 The move motion event that triggered the current onScroll.
-	         * @param distanceX The distance along the X axis that has been scrolled since the last
-	         *              call to onScroll. This is NOT the distance between {@code e1}
-	         *              and {@code e2}.
-	         * @param distanceY The distance along the Y axis that has been scrolled since the last
-	         *              call to onScroll. This is NOT the distance between {@code e1}
-	         *              and {@code e2}.
-	         * @return true if the event is consumed, else false
-	         */
-			@Override
-			public boolean onScroll(MotionEvent event1, MotionEvent event2, float distanceX, float distanceY) {
-				return true;
-			}
-		});
+		gestureScanner = new GestureDetector(this);
 
 		this.chartTitle = chartTitle;
 		this.xAxisTitle = xAxisTitle + " (" + xAxisUnits + ")";
 		this.yAxisTitle = yAxisTitle + " (" + yAxisUnits + ")";
 		this.dataPoints = dataPoints;
 		this.smooth = smooth;
-	}
-
-    /**
-     * Implement this to do your drawing.
-     *
-     * @param canvas the canvas on which the background will be drawn
-     */
-	@Override
-	protected void onDraw(Canvas canvas) {
-		viewSize.set(this.getWidth(), this.getHeight());
-		
-		autoScale();
-		drawAxes(canvas);
-		drawTitles(canvas);
-		plot(canvas);
-	}
-	
-    /**
-     * Implement this method to handle touch screen motion events.
-     *
-     * @param event The motion event.
-     * @return True if the event was handled, false otherwise.
-     */
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		gestureScanner.onTouchEvent(event);
-		return true;
 	}
 
 	private void drawTitles(Canvas canvas) {
@@ -380,5 +289,177 @@ public class Chart extends View {
 		transMultiplier.set(
 				(viewSize.x - margin.x) / Math.abs(maxBounds.x - minBounds.x),
 				(viewSize.y - (margin.y * 2)) / Math.abs(maxBounds.y - minBounds.y));
+	}
+
+    /**
+     * Implement this to do your drawing.
+     *
+     * @param canvas the canvas on which the background will be drawn
+     */
+	@Override
+	protected void onDraw(Canvas canvas) {
+		viewSize.set(this.getWidth(), this.getHeight());
+		
+		autoScale();
+		drawAxes(canvas);
+		drawTitles(canvas);
+		plot(canvas);
+	}
+	
+    /**
+     * Implement this method to handle touch screen motion events.
+     *
+     * @param event The motion event.
+     * @return True if the event was handled, false otherwise.
+     */
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		gestureScanner.onTouchEvent(event);
+		return true;
+	}
+
+    /**
+     * Notified when a tap occurs with the down {@link MotionEvent}
+     * that triggered it. This will be triggered immediately for
+     * every down event. All other events should be preceded by this.
+     *
+     * @param e The down motion event.
+     */
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+    /**
+     * The user has performed a down {@link MotionEvent} and not performed
+     * a move or up yet. This event is commonly used to provide visual
+     * feedback to the user to let them know that their action has been
+     * recognized i.e. highlight an element.
+     *
+     * @param e The down motion event
+     */
+	@Override
+	public void onShowPress(MotionEvent e) {
+	}
+
+    /**
+     * Notified when a tap occurs with the up {@link MotionEvent}
+     * that triggered it.
+     *
+     * @param e The up motion event that completed the first tap
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		return false;
+	}
+
+    /**
+     * Notified when a scroll occurs with the initial on down {@link MotionEvent} and the
+     * current move {@link MotionEvent}. The distance in x and y is also supplied for
+     * convenience.
+     *
+     * @param e1 The first down motion event that started the scrolling.
+     * @param e2 The move motion event that triggered the current onScroll.
+     * @param distanceX The distance along the X axis that has been scrolled since the last
+     *              call to onScroll. This is NOT the distance between {@code e1}
+     *              and {@code e2}.
+     * @param distanceY The distance along the Y axis that has been scrolled since the last
+     *              call to onScroll. This is NOT the distance between {@code e1}
+     *              and {@code e2}.
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		return false;
+	}
+
+    /**
+     * Notified when a long press occurs with the initial on down {@link MotionEvent}
+     * that trigged it.
+     *
+     * @param e The initial on down motion event that started the longpress.
+     */
+	@Override
+	public void onLongPress(MotionEvent e) {
+	}
+
+    /**
+     * Notified of a fling event when it occurs with the initial on down {@link MotionEvent}
+     * and the matching up {@link MotionEvent}. The calculated velocity is supplied along
+     * the x and y axis in pixels per second.
+     *
+     * @param e1 The first down motion event that started the fling.
+     * @param e2 The move motion event that triggered the current onFling.
+     * @param velocityX The velocity of this fling measured in pixels per second
+     *              along the x axis.
+     * @param velocityY The velocity of this fling measured in pixels per second
+     *              along the y axis.
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		return false;
+	}
+
+    /**
+     * Notified when a single-tap occurs.
+     * <p>
+     * Unlike {@link OnGestureListener#onSingleTapUp(MotionEvent)}, this
+     * will only be called after the detector is confident that the user's
+     * first tap is not followed by a second tap leading to a double-tap
+     * gesture.
+     *
+     * @param e The down motion event of the single-tap.
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onSingleTapConfirmed(MotionEvent e) {
+		zoomed = true;
+		
+		touchPoint.set(e.getRawX(), e.getRawY());
+		
+		if (zoomFactor < 6)
+			zoomFactor++;
+		
+		this.postInvalidate();
+		
+		return true;
+	}
+
+    /**
+     * Notified when a double-tap occurs.
+     *
+     * @param e The down motion event of the first tap of the double-tap.
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onDoubleTap(MotionEvent e) {
+		touchPoint.set(e.getRawX(), e.getRawY());
+		
+		if (zoomFactor > 1) {
+			if (--zoomFactor == 1) {
+				zoomed = false;
+			}
+		}
+		
+		this.postInvalidate();
+		
+		return true;
+	}
+
+    /**
+     * Notified when an event within a double-tap gesture occurs, including
+     * the down, move, and up events.
+     *
+     * @param e The motion event that occurred during the double-tap gesture.
+     * @return true if the event is consumed, else false
+     */
+	@Override
+	public boolean onDoubleTapEvent(MotionEvent e) {
+		return false;
 	}
 }

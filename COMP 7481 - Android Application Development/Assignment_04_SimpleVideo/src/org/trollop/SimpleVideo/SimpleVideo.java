@@ -6,25 +6,17 @@
  */
 package org.trollop.SimpleVideo;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.widget.ImageView;
 
 public class SimpleVideo extends Activity {
-	private Bitmap bitmap = null;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -35,27 +27,34 @@ public class SimpleVideo extends Activity {
         downloadImageSequence("http://virtual-void.org/", 10, "gif");
     }
     
-	public void downloadImageSequence(String baseURL, int numImages, String type) {
+    /* store image in the buffer and wait if full */
+	public void downloadImageSequence(String baseURL, int numImages, String imgType) {
 		final String url = baseURL;
+		final int seq = numImages;
+		final String type = imgType;
 		
 		new Thread() {
 			public void run() {
 				InputStream in = null;
-				Message msg = Message.obtain();
 				
 				try {
-					in = openHttpConnection(url);
-					bitmap = BitmapFactory.decodeStream(in);
-					Bundle b = new Bundle();
-					b.putParcelable("bitmap", bitmap);
-					msg.setData(b);
-					in.close();
+					int i = 1;
+					
+					while (true) {
+						in = openHttpConnection(url + Integer.toString(i) + "." + type);
+						byte[] bt = in.toString().getBytes();
+						
+						if (i != 10)
+							i++;
+						else
+							i = 1;
+						
+						in.close();
+					}
 				}
 				catch (IOException e) {
 					Log.e("IOException", e.toString());
 				}
-				
-				messageHandler.sendMessage(msg);
 			}
 		}.start();
 	}
@@ -94,7 +93,11 @@ public class SimpleVideo extends Activity {
 	}
 	
 	/* adds data to the buffer */
-	public boolean addData(byte[] image, int size) {
+	private boolean addData(byte[] image, int size) {
+		return false;
+	}
+	
+	private boolean isFull() {
 		return false;
 	}
 	
@@ -102,23 +105,4 @@ public class SimpleVideo extends Activity {
 	public byte[] getData() {
 		return null;
 	}
-	
-//	/* puts data into the buffer */
-//	private Handler messageHandler = new Handler() {
-//		public void handleMessage(Message msg) {
-//			super.handleMessage(msg);
-//			
-//			ImageView img = (ImageView) findViewById(R.id.imageView);
-//			
-//			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//			bitmap = (Bitmap)(msg.getData().getParcelable("bitmap"));
-//			
-//			bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);
-//			byte[] b = baos.toByteArray();
-//			
-//			img.setImageBitmap(BitmapFactory.decodeByteArray(b, 0, b.length));
-//			
-//			//img.setImageBitmap((Bitmap)(msg.getData().getParcelable("bitmap")));
-//		}
-//	};
 }

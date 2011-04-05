@@ -6,46 +6,49 @@
  */
 package org.trollop.SimpleVideo;
 
-import java.util.concurrent.Delayed;
-import java.util.concurrent.TimeUnit;
+import java.io.Serializable;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 
 /**
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class ImageData implements Delayed {
+public class ImageData implements Comparable<Object>, Serializable {
+	private static final long serialVersionUID = 601898220926582662L;
+	private int imageID;
 	private byte[] data;
-	private int sequence;
-	private long lastViewed;
+	private long accessTime;
 	
-	ImageData(byte[] data, int sequence) {
+	ImageData(byte[] data, int imageID) {
 		this.data = data;
-		this.sequence = sequence;
-		this.lastViewed = System.nanoTime();
+		this.imageID = imageID;
+		this.accessTime = System.nanoTime();
 	}
 	
-	public int compareTo(Delayed object) {
-		if (this.lastViewed < (((ImageData)object).lastViewed))
-			return -1;
-		else if (this.lastViewed > (((ImageData)object).lastViewed))
-			return 1;
+	public int getImageID() {
+		return this.imageID;
+	}
+	
+	public Bitmap getImage() {
+		Bitmap bm = BitmapFactory.decodeByteArray(this.data, 0, this.data.length);
+		
+		return bm;
+	}
+
+	public long getAccessTime() {
+		return this.accessTime;
+	}
+	
+	@Override
+	public int compareTo(Object another) {
 		return 0;
 	}
 	
-	public boolean equals(ImageData object) {
-		return ((ImageData)object).lastViewed == this.lastViewed;
-	}
-	
-	public long getDelay(TimeUnit unit) {
-		long n = this.lastViewed - System.nanoTime();
-		return unit.convert(n, TimeUnit.NANOSECONDS);
-	}
-	
-	public long getLastViewed() {
-		return this.lastViewed;
-	}
-	
+	@Override
 	public String toString() {
-		return "Image Size: " + data.length + "\nLast Viewed: " + String.valueOf(this.lastViewed);
+		return "Image Size: " + data.length + "\nAccess Time (ns): " + this.accessTime;
 	}
 }

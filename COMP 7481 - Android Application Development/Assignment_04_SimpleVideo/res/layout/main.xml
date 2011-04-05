@@ -21,7 +21,6 @@
         	android:layout_width="wrap_content"
         	android:layout_weight="50"
         	android:scaleType="centerInside"/>
-	    
 	</LinearLayout>
     
     <LinearLayout

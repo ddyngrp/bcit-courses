@@ -26,6 +26,8 @@ import android.util.Log;
  * @author Steffen L. Norgren, A00683006
  */
 public class JitterBuffer {
+	private String URL;
+	private String imageType;
 	
 	/** The capacity of the buffer. */
 	private int capacity;
@@ -41,11 +43,28 @@ public class JitterBuffer {
 	 *
 	 * @param capacity the capacity of the buffer
 	 */
-	public JitterBuffer(int capacity) {
+	public JitterBuffer(int capacity, String URL, String imageType) {
 		this.capacity = capacity;
+		this.URL = URL;
+		this.imageType = imageType;
 		
 		elements = new Vector<ImageData>(capacity);
 		queue = new Vector<Thread>();
+		
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(true) {
+					deleteOldestImage();
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						Log.e("image reaper", e.getMessage());
+					}
+				}
+			}
+			
+		}).start();
 	}
 	
 	/**
@@ -64,7 +83,7 @@ public class JitterBuffer {
 	 *
 	 * @param element the ImageData to be added to the buffer.
 	 */
-	public synchronized void putData(ImageData element) {
+	private synchronized void putData(ImageData element) {
 		Thread caller = Thread.currentThread();
 		
 		if (elements.size() == capacity) {
@@ -89,16 +108,25 @@ public class JitterBuffer {
 	 * calling thread will be blocked until another thread adds an element to
 	 * the buffer.
 	 *
-	 * @return the ImageData that was removed from the buffer.
+	 * @return the byte array that was retrieved from the buffer.
 	 */
 	public synchronized byte[] getData(int imageID) {
 		Thread caller = Thread.currentThread();
 		
-		if (elements.isEmpty()) {
+		if (elements.isEmpty() || findImageByID(imageID) == -1) {
 			queue.addElement(caller);
 			
-			while (elements.isEmpty() || caller != queue.firstElement() || findImageByID(imageID) == -1) {
+			if (elements.isEmpty() || caller != queue.firstElement() || findImageByID(imageID) == -1) {
 				try {
+					final int startID = imageID;
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							downloadImage(URL + startID + imageType, startID);
+						}
+						
+					}).start();
+					
 					wait();
 				}
 				catch (InterruptedException e) {
@@ -108,8 +136,11 @@ public class JitterBuffer {
 			queue.removeElement(caller);
 		}
 		
+		int getID = findImageByID(imageID);
+		elements.get(getID).updateAccessTime();
+		
 		notifyAll();
-		return elements.get(findImageByID(imageID)).getData();
+		return elements.get(getID).getData();
 	}
 	
 	private int findImageByID(int imageID) {

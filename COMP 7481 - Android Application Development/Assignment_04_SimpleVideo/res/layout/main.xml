@@ -30,34 +30,35 @@
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true">
 	    
-	    <Button
+	    <ImageButton
 	    	android:id="@+id/play"
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
-	    	android:layout_weight="50"
-	    	android:text="Play" />
+	    	android:layout_weight="50"/>
 	    
-	    <Button
+	    <ImageButton
 	    	android:id="@+id/pause"
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
-	    	android:layout_weight="50"
-	    	android:text="Pause" />
+	    	android:layout_weight="50"/>
 	    	
-	    <Button
+	    <ImageButton
 	    	android:id="@+id/rewind"
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
-	    	android:layout_weight="50"
-	    	android:text="Rewind" />
+	    	android:layout_weight="50"/>
 
-	    <Button
+	    <ImageButton
 	    	android:id="@+id/forward"
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
-	    	android:layout_weight="50"
-	    	android:text="Forward" />
+	    	android:layout_weight="50"/>
 	    	
+	    <ImageButton
+	    	android:id="@+id/exit"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
 	</LinearLayout>
     
 </RelativeLayout>

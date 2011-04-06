@@ -29,6 +29,8 @@ public class JitterBuffer {
 	private String URL;
 	private String imageType;
 	
+	private boolean running = true;
+	
 	/** The capacity of the buffer. */
 	private int capacity;
 	
@@ -54,7 +56,7 @@ public class JitterBuffer {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while(true) {
+				while(running) {
 					deleteOldestImage();
 					try {
 						Thread.sleep(2000);
@@ -65,6 +67,10 @@ public class JitterBuffer {
 			}
 			
 		}).start();
+	}
+	
+	public void endThreads() {
+		this.running = false;
 	}
 	
 	/**
@@ -164,9 +170,9 @@ public class JitterBuffer {
 		if (elements.size() != capacity) {
 			queue.addElement(caller);
 			
-			while (this.size() != capacity || caller != queue.firstElement()) {
+			while ((this.size() != capacity || caller != queue.firstElement()) && running) {
 				try {
-					wait();
+					wait(100);
 				}
 				catch (InterruptedException e) {
 					Log.e("InterruptedException: put", e.toString());

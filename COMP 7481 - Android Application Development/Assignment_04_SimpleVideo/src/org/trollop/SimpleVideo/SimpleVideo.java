@@ -22,7 +22,6 @@ import android.util.Log;
 import android.widget.ImageView;
 
 public class SimpleVideo extends Activity {
-	private ImageView iv;
 	private ImageData id;
 
 	/** Called when the activity is first created. */
@@ -30,8 +29,6 @@ public class SimpleVideo extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-		iv = (ImageView) findViewById(R.id.imageView);
 		
 		downloadImageSequence("http://virtual-void.org/", 10, "gif");
 	}
@@ -50,8 +47,6 @@ public class SimpleVideo extends Activity {
 			bm = BitmapFactory.decodeStream(is);
 			bm.compress(Bitmap.CompressFormat.PNG, 0, os);
 			id = new ImageData(os.toByteArray(), 10);
-			
-			iv.setImageBitmap(id.getImage());
 
 			os.flush();
 			os.close();

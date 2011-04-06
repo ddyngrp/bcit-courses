@@ -17,7 +17,7 @@ import android.util.Log;
  *
  * @author Steffen L. Norgren, A00683006
  */
-public class Buffer {
+public class JitterBuffer {
 	
 	/** The capacity of the buffer. */
 	private int capacity;
@@ -33,7 +33,7 @@ public class Buffer {
 	 *
 	 * @param capacity the capacity of the buffer
 	 */
-	public Buffer(int capacity) {
+	public JitterBuffer(int capacity) {
 		this.capacity = capacity;
 		elements = new Vector<byte[]>(capacity);
 		queue = new Vector<Thread>();

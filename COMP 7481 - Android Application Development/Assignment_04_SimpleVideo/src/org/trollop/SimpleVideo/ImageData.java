@@ -6,10 +6,14 @@
  */
 package org.trollop.SimpleVideo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 
 /**
@@ -33,9 +37,32 @@ public class ImageData implements Comparable<Object>, Serializable {
 	}
 	
 	public Bitmap getImage() {
-		Bitmap bm = BitmapFactory.decodeByteArray(this.data, 0, this.data.length);
+		return BitmapFactory.decodeByteArray(this.data, 0, this.data.length);
+	}
+	
+	public boolean setData(byte[] data, int size) {
+		return false;
+	}
+	
+	public boolean setImage(InputStream is) {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		
-		return bm;
+		try {
+			Bitmap bm = BitmapFactory.decodeStream(is);
+			bm.compress(Bitmap.CompressFormat.PNG, 0, bos);
+			
+			
+
+			bos.flush();
+			bos.close();
+			is.close();
+			
+			return true;
+		}
+		catch (IOException e) {
+			Log.e("BITMAP_TEST", "Error compressing to byte stream");
+			return false;
+		}
 	}
 
 	public long getAccessTime() {

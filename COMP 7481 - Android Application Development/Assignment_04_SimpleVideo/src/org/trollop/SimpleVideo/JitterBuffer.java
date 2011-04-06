@@ -6,6 +6,12 @@
  */
 package org.trollop.SimpleVideo;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Vector;
 
 import android.util.Log;
@@ -102,5 +108,36 @@ public class JitterBuffer {
 		elements.removeElement(element);
 		notifyAll();
 		return element;
+	}
+	
+	private InputStream openHttpConnection(String URL) {
+		InputStream in = null;
+		int resCode = -1;
+
+		try {
+			URL url = new URL(URL);
+			URLConnection urlConn = url.openConnection();
+
+			if (!(urlConn instanceof HttpURLConnection))
+				throw new IOException("URL is not an HTTP URL");
+
+			HttpURLConnection httpConn = (HttpURLConnection) urlConn;
+			httpConn.setAllowUserInteraction(false);
+			httpConn.setInstanceFollowRedirects(true);
+			httpConn.setRequestMethod("GET");
+			httpConn.connect();
+
+			resCode = httpConn.getResponseCode();
+
+			if (resCode == HttpURLConnection.HTTP_OK) {
+				in = httpConn.getInputStream();
+			}
+		} catch (MalformedURLException e) {
+			Log.e("MalformedURLException", e.toString());
+		} catch (IOException e) {
+			Log.e("IOException", e.toString());
+		}
+
+		return in;
 	}
 }

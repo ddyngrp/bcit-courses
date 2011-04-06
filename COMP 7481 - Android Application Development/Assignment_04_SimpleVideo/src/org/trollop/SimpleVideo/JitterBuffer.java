@@ -12,6 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Vector;
 
 import android.util.Log;
@@ -29,7 +31,7 @@ public class JitterBuffer {
 	private int capacity;
 	
 	/** The elements of the buffer. */
-	private Vector<byte[]> elements;
+	private Vector<ImageData> elements;
 	
 	/** The queue of threads waiting until the buffer is not full or empty. */
 	private Vector<Thread> queue;
@@ -41,7 +43,8 @@ public class JitterBuffer {
 	 */
 	public JitterBuffer(int capacity) {
 		this.capacity = capacity;
-		elements = new Vector<byte[]>(capacity);
+		
+		elements = new Vector<ImageData>(capacity);
 		queue = new Vector<Thread>();
 	}
 	
@@ -55,24 +58,24 @@ public class JitterBuffer {
 	}
 	
 	/**
-	 * Adds an element to the end of the buffer. If the buffer is full, the
-	 * calling thread will be blocked until another thread removes an element
+	 * Adds an ImageData element to the end of the buffer. If the buffer is full,
+	 * the calling thread will be blocked until another thread removes an element
 	 * from the buffer.
 	 *
-	 * @param element the element to be added to the buffer.
+	 * @param element the ImageData to be added to the buffer.
 	 */
-	public synchronized void put(byte[] element) {
+	public synchronized void putData(ImageData element) {
 		Thread caller = Thread.currentThread();
 		
 		if (elements.size() == capacity) {
 			queue.addElement(caller);
 			
-			while (size() == capacity || caller != queue.firstElement()) {
+			while (this.size() == capacity || caller != queue.firstElement()) {
 				try {
 					wait();
 				}
 				catch (InterruptedException e) {
-					Log.e("put: InterruptedException", e.toString());
+					Log.e("InterruptedException: put", e.toString());
 				}
 			}
 			queue.removeElement(caller);
@@ -82,36 +85,86 @@ public class JitterBuffer {
 	}
 	
 	/**
-	 * Removes the first element from the buffer. If the buffer is empty, the
+	 * Retrieves the specified image from the buffer. If the buffer is empty, the
 	 * calling thread will be blocked until another thread adds an element to
 	 * the buffer.
 	 *
-	 * @return the byte[] that was removed from the buffer.
+	 * @return the ImageData that was removed from the buffer.
 	 */
-	public synchronized byte[] get() {
+	public synchronized byte[] getData(int imageID) {
 		Thread caller = Thread.currentThread();
 		
 		if (elements.isEmpty()) {
 			queue.addElement(caller);
 			
-			while (elements.isEmpty() || caller != queue.firstElement()) {
+			while (elements.isEmpty() || caller != queue.firstElement() || findImageByID(imageID) == -1) {
 				try {
 					wait();
 				}
 				catch (InterruptedException e) {
-					Log.e("get: InterruptedException", e.toString());
+					Log.e("InterruptedException: get", e.toString());
 				}
 			}
 			queue.removeElement(caller);
 		}
-		byte[] element = elements.firstElement();
-		elements.removeElement(element);
+		
 		notifyAll();
-		return element;
+		return elements.get(findImageByID(imageID)).getData();
+	}
+	
+	private int findImageByID(int imageID) {
+		Collections.sort(elements);
+		Iterator<ImageData> itr = elements.iterator();
+		
+		while(itr.hasNext()) {
+			ImageData id = itr.next();
+
+			if (id.getImageID() == imageID) {
+				return elements.indexOf(id);
+			}
+		}
+		
+		return -1;
+	}
+	
+	public synchronized void deleteOldestImage() {
+		Thread caller = Thread.currentThread();
+		
+		if (elements.size() != capacity) {
+			queue.addElement(caller);
+			
+			while (this.size() != capacity || caller != queue.firstElement()) {
+				try {
+					wait();
+				}
+				catch (InterruptedException e) {
+					Log.e("InterruptedException: put", e.toString());
+				}
+			}
+			queue.removeElement(caller);
+		}
+		
+		Collections.sort(elements, ImageData.AccessTimeComparator);
+		elements.remove(0);
+	}
+	
+	public void downloadImage(String URL, int imageID) {
+		InputStream is = openHttpConnection(URL);
+		Utils util = new Utils();
+		
+		ImageData id = new ImageData(util.streamToByteArray(is), imageID);
+		putData(id);
+		
+		try {
+			is.close();
+		}
+		catch (IOException e) {
+			Log.e("IOException: downloadImage", e.getMessage());
+		}
 	}
 	
 	private InputStream openHttpConnection(String URL) {
-		InputStream in = null;
+		InputStream is = null;
 		int resCode = -1;
 
 		try {
@@ -130,7 +183,7 @@ public class JitterBuffer {
 			resCode = httpConn.getResponseCode();
 
 			if (resCode == HttpURLConnection.HTTP_OK) {
-				in = httpConn.getInputStream();
+				is = httpConn.getInputStream();
 			}
 		} catch (MalformedURLException e) {
 			Log.e("MalformedURLException", e.toString());
@@ -138,6 +191,6 @@ public class JitterBuffer {
 			Log.e("IOException", e.toString());
 		}
 
-		return in;
+		return is;
 	}
 }

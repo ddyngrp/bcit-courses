@@ -9,6 +9,9 @@ package org.trollop.SimpleVideo;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,9 +21,9 @@ import android.util.Log;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class Utility {
+public class Utils {
 	
-	public Utility() {
+	public Utils() {
 	}
 	
 	public byte[] streamToByteArray(InputStream is) {
@@ -34,7 +37,6 @@ public class Utility {
 			
 			bos.flush();
 			bos.close();
-			is.close();
 			
 			return byteArray;
 		}
@@ -48,5 +50,14 @@ public class Utility {
 		Bitmap bm = BitmapFactory.decodeByteArray(data, 0, data.length);
 		
 		return bm;
+	}
+	
+	public String timeMillisToString(long timeMillis) {
+		Calendar cal = Calendar.getInstance();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+		cal.setTimeInMillis(timeMillis);
+		
+		return df.format(cal.getTime());
 	}
 }

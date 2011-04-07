@@ -60,7 +60,7 @@ public class Demo extends Activity {
         /** Set the result text in TextView and add it to the layout */
         for (int i = 0; i < messages.size(); i++) {
         	messageView[i] = new TextView(this);
-        	messageView[i].setText("Message = " + messages.get(i));
+        	messageView[i].setText(messages.get(i));
         	layout.addView(messageView[i]);
         }
         

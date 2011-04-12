@@ -26,7 +26,7 @@ public class RailsXMLHandler extends DefaultHandler {
 		}
 	}
 	
-	@Override
+	@Override 
 	public void endElement(String uri, String localName, String name) throws SAXException {
 		if (localName.equals("message")) {
 			messages.add("Message: " + currentValue);

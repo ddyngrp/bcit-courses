@@ -18,10 +18,8 @@ public class FeedItem {
 	private URL link;
 	private String description;
 	private String pubDate;
-	private boolean unread;
 	
 	public FeedItem() {
-		this.unread = true;
 	}
 	
 	/**
@@ -82,19 +80,5 @@ public class FeedItem {
 	 */
 	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
-	}
-
-	/**
-	 * @return the unread
-	 */
-	public boolean isUnread() {
-		return unread;
-	}
-
-	/**
-	 * @param unread the unread to set
-	 */
-	public void setUnread(boolean unread) {
-		this.unread = unread;
 	}
 }

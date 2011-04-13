@@ -43,7 +43,6 @@ public class SAXFeedParser {
 			SAXHandler handler = new SAXHandler();
 			parser.parse(this.getInputStream(), handler);
 			handler.getFeed().setFeedURL(feedURL.toString());
-			handler.getFeed().downloadIcon();
 			return handler.getFeed();
 		} catch (Exception e) {
 			throw new RuntimeException(e);

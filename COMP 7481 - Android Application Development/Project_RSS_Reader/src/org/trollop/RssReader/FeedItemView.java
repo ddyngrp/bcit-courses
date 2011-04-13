@@ -6,10 +6,12 @@
  */
 package org.trollop.RssReader;
 
+import android.app.Activity;
+
 /**
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class ViewFeedItem {
+public class FeedItemView extends Activity {
 
 }

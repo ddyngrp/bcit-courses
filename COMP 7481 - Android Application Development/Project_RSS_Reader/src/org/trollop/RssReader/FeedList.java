@@ -6,10 +6,12 @@
  */
 package org.trollop.RssReader;
 
+import android.app.ListActivity;
+
 /**
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class ListFeed {
+public class FeedList extends ListActivity {
 
 }

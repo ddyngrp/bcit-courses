@@ -1,15 +1,17 @@
 /**
  * Project: Project_RSS_Reader
- * File: Feeds.java
+ * File: ListFeedItem.java
  * Date: 2011-04-12
- * Time: 6:11:51 PM
+ * Time: 6:13:32 PM
  */
 package org.trollop.RssReader;
+
+import android.app.ListActivity;
 
 /**
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class Feeds {
-	
+public class FeedItemList extends ListActivity {
+
 }

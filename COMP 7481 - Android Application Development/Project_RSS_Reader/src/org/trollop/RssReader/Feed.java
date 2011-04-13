@@ -7,7 +7,6 @@
 package org.trollop.RssReader;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ import android.graphics.Bitmap;
  */
 public class Feed {
 	private String name;
-	private String feedURL;
-	private String link;
+	private URL feedURL;
+	private URL link;
 	private Bitmap icon;
 	private List<FeedItem> itemList;
 	
@@ -67,7 +66,7 @@ public class Feed {
 	/**
 	 * @return the feedURL
 	 */
-	public String getFeedURL() {
+	public URL getFeedURL() {
 		return feedURL;
 	}
 
@@ -75,7 +74,11 @@ public class Feed {
 	 * @param feedURL the feedURL to set
 	 */
 	public void setFeedURL(String feedURL) {
-		this.feedURL = feedURL;
+		try {
+			this.feedURL = new URL(feedURL);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -103,12 +106,16 @@ public class Feed {
 		return itemList.get(itemID);
 	}
 
-	public String getLink() {
+	public URL getLink() {
 		return link;
 	}
 
 	public void setLink(String link) {
-		this.link = link;
+		try {
+			this.link = new URL(link);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public void downloadIcon() {
@@ -116,7 +123,7 @@ public class Feed {
 		
 		if (link != null) {
 			try {
-				setIcon(util.streamToBitmap(new URL(link + "/favicon.ico").openConnection().getInputStream()));
+				setIcon(util.streamToBitmap(new URL(link.toString() + "/favicon.ico").openConnection().getInputStream()));
 			} catch (MalformedURLException e) {
 				throw new RuntimeException(e);
 			} catch (IOException e) {

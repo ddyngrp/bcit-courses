@@ -6,13 +6,16 @@
  */
 package org.trollop.RssReader;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * @author Steffen L. Norgren, A00683006
  *
  */
 public class FeedItem {
 	private String title;
-	private String link;
+	private URL link;
 	private String description;
 	private String pubDate;
 	private boolean unread;
@@ -38,7 +41,7 @@ public class FeedItem {
 	/**
 	 * @return the link
 	 */
-	public String getLink() {
+	public URL getLink() {
 		return link;
 	}
 
@@ -46,7 +49,11 @@ public class FeedItem {
 	 * @param link the link to set
 	 */
 	public void setLink(String link) {
-		this.link = link;
+		try {
+			this.link = new URL(link);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**

@@ -25,10 +25,10 @@ public class SAXHandler extends DefaultHandler {
 
 	private Feed currentFeed;
 	private FeedItem currentFeedItem;
-	private String currentNode;
+	private StringBuilder builder;
 
 	public Feed getFeed() {
-		return this.currentFeed;
+		return currentFeed;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class SAXHandler extends DefaultHandler {
 			throws SAXException {
 		super.characters(ch, start, length);
 		
-		currentNode = new String(ch, start, length);
+		builder.append(ch, start, length);
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class SAXHandler extends DefaultHandler {
 		super.startElement(uri, localName, name, attributes);
 		
 		if (localName.equalsIgnoreCase(ITEM)){
-			this.currentFeedItem = new FeedItem();
-			this.isItem = true;
+			currentFeedItem = new FeedItem();
+			isItem = true;
 		}
 	}
 
@@ -55,33 +55,35 @@ public class SAXHandler extends DefaultHandler {
 			throws SAXException {
 		super.endElement(uri, localName, name);
 
-		if (this.currentFeed != null) {
+		if (currentFeed != null && localName.equals(name)) {
 			if (localName.equalsIgnoreCase(TITLE) && !isItem)
-				currentFeed.setName(currentNode);
+				currentFeed.setName(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK) && !isItem)
-				currentFeed.setLink(currentNode);
+				currentFeed.setLink(builder.toString().trim());
 		}
 		
-		if (this.currentFeedItem != null) {
+		if (currentFeedItem != null) {
 			if (localName.equalsIgnoreCase(TITLE) && isItem)
-				currentFeedItem.setTitle(currentNode);
+				currentFeedItem.setTitle(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK) && isItem)
-				currentFeedItem.setLink(currentNode);
+				currentFeedItem.setLink(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(DESCRIPTION) && isItem)
-				currentFeedItem.setDescription(currentNode);
+				currentFeedItem.setDescription(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(PUB_DATE) && isItem)
-				currentFeedItem.setPubDate(currentNode);
+				currentFeedItem.setPubDate(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(ITEM) && isItem) {
 				currentFeed.addItem(currentFeedItem);
 				isItem = false;
 			}
 		}
+		builder.setLength(0);
 	}
 
 	@Override
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		
-		this.currentFeed = new Feed();
+		currentFeed = new Feed();
+		builder = new StringBuilder();
 	}
 }

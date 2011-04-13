@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.util.Log;
 
 /**
@@ -27,6 +28,7 @@ public class Utility {
 		
 		try {
 			Bitmap bm = BitmapFactory.decodeStream(is);
+			bm.eraseColor(Color.TRANSPARENT);
 			bm.compress(Bitmap.CompressFormat.PNG, 0, bos);
 			
 			bos.flush();

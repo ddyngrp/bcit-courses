@@ -1,25 +1,25 @@
 package org.trollop.RssReader;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 public class RSSReader extends ListActivity {
 	private static final String[] defaultFeeds = {"http://www.osnews.com/files/recent.xml",
 			"http://www.popsci.com/rss.xml",
 			"http://feeds.boingboing.net/boingboing/iBag"};
-	private List<Feed> feeds;
+	private ArrayList<Feed> mFeeds = null;
+	private FeedListAdapter mFeedListAdapter;
+	private Runnable viewFeeds;
+	private ProgressDialog mProgressDialog = null;
 	
     /** Called when the activity is first created. */
     @Override
@@ -27,60 +27,82 @@ public class RSSReader extends ListActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.main);
         
-        initDefaultFeeds();
+        mFeeds = new ArrayList<Feed>();
+        this.mFeedListAdapter = new FeedListAdapter(this, R.layout.feed_list, mFeeds);
+        setListAdapter(this.mFeedListAdapter);
         
-        ListAdapter adapter = new FeedListAdapter(this);
-        getListView().setAdapter(adapter);
+        viewFeeds = new Runnable() {
+			@Override
+			public void run() {
+				initDefaultFeeds();
+			}
+        };
+        
+        Thread thread = new Thread(null, viewFeeds, "DownloadFeeds");
+        thread.start();
+        mProgressDialog = ProgressDialog.show(RSSReader.this, "Please wait...", "Downloading feeds...", true);
     }
+    
+    private Runnable returnRes = new Runnable() {
+		@Override
+		public void run() {
+			if (mFeeds != null && mFeeds.size() > 0) {
+				mFeedListAdapter.notifyDataSetChanged();
+				
+				for (int i = 0; i < mFeeds.size(); i++) {
+					Log.i("returnRes", "" + mFeeds.size());
+//					mFeedListAdapter.add(mFeeds.get(i));
+					Log.i("returnRes", "" + mFeeds.size());
+				}
+			}
+			mProgressDialog.dismiss();
+			mFeedListAdapter.notifyDataSetChanged();
+		}
+    };
     
     protected void initDefaultFeeds() {
-    	feeds = new ArrayList<Feed>();
-    	
-    	for (String feed : defaultFeeds) {
-            SAXFeedParser sfp = new SAXFeedParser(feed);
-            feeds.add(sfp.parse());
+    	try {
+        	for (String feed : defaultFeeds) {
+                SAXFeedParser sfp = new SAXFeedParser(feed);
+                mFeeds.add(sfp.parse());
+                Log.i("initFeeds", "" + mFeeds.size());
+        	}
+        	Thread.sleep(1000);
+    	} catch (Exception e) {
+    		Log.e("initDefaultFeeds", e.getMessage());
     	}
+    	runOnUiThread(returnRes);
     }
     
-    private class FeedListAdapter extends BaseAdapter {
-    	private Context mContext;
+    private class FeedListAdapter extends ArrayAdapter<Feed> {
+    	private ArrayList<Feed> feeds = new ArrayList<Feed>();
     	
-    	public FeedListAdapter(Context context) {
-    		mContext = context;
+    	public FeedListAdapter(Context context, int textViewResourceID, ArrayList<Feed> feeds) {
+    		super(context, textViewResourceID, feeds);
+    		this.feeds = feeds;
     	}
-
-		@Override
-		public int getCount() {
-			return feeds.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			return feeds.get(position);
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			LinearLayout itemLayout;
-			Feed feed = feeds.get(position);
+			View view = convertView;
 			
-			
-			itemLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.feed_list, parent, false);
-			
-			TextView topText = (TextView) findViewById(R.id.toptext);
-			TextView botText = (TextView) findViewById(R.id.bottomtext);
-			
-			if (topText != null && botText != null) {
-				topText.setText(feed.getName());
-				botText.setText("Testing bottom...");
+			if (view == null) {
+				LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				view = li.inflate(R.layout.feed_list, null);
 			}
 			
-			return itemLayout;
+			Feed feed = feeds.get(position);
+			
+			if (feed != null) {
+				TextView topText = (TextView) view.findViewById(R.id.toptext);
+				TextView botText = (TextView) view.findViewById(R.id.bottomtext);
+				
+				if (topText != null)
+					topText.setText(feed.getName());
+				if (botText != null)
+					botText.setText("Something will go here");
+			}
+			return view;
 		}
     }
 }

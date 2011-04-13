@@ -6,6 +6,10 @@
  */
 package org.trollop.RssReader;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +22,11 @@ import android.graphics.Bitmap;
 public class Feed {
 	private String name;
 	private String feedURL;
+	private String link;
 	private Bitmap icon;
 	private List<FeedItem> itemList;
 	
-	public Feed(String feedURL) {
-		this.feedURL = feedURL;
+	public Feed() {
 		this.itemList = new ArrayList<FeedItem>();
 	}
 	
@@ -97,5 +101,27 @@ public class Feed {
 	
 	public FeedItem getItem(int itemID) {
 		return itemList.get(itemID);
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+	
+	public void downloadIcon() {
+		Utility util = new Utility();
+		
+		if (link != null) {
+			try {
+				setIcon(util.streamToBitmap(new URL(link + "/favicon.ico").openConnection().getInputStream()));
+			} catch (MalformedURLException e) {
+				throw new RuntimeException(e);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 }

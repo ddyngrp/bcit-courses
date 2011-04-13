@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -20,11 +18,11 @@ import javax.xml.parsers.SAXParserFactory;
  * 
  */
 public class SAXFeedParser {
-	private final URL feedUrl;
+	private final URL feedURL;
 
 	public SAXFeedParser(String feedUrl) {
 		try {
-			this.feedUrl = new URL(feedUrl);
+			this.feedURL = new URL(feedUrl);
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
@@ -32,19 +30,21 @@ public class SAXFeedParser {
 
 	protected InputStream getInputStream() {
 		try {
-			return feedUrl.openConnection().getInputStream();
+			return feedURL.openConnection().getInputStream();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public List<FeedItem> parse() {
+	public Feed parse() {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser parser = factory.newSAXParser();
 			SAXHandler handler = new SAXHandler();
 			parser.parse(this.getInputStream(), handler);
-			return handler.getFeedItems();
+			handler.getFeed().setFeedURL(feedURL.toString());
+			handler.getFeed().downloadIcon();
+			return handler.getFeed();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

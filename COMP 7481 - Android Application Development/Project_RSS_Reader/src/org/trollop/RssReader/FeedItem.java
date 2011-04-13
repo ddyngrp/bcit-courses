@@ -17,14 +17,10 @@ public class FeedItem {
 	private String pubDate;
 	private boolean unread;
 	
-	public FeedItem(String title, String link, String description, String pubDate) {
-		this.title = title;
-		this.link = link;
-		this.description = description;
-		this.pubDate = pubDate;
+	public FeedItem() {
 		this.unread = true;
 	}
-
+	
 	/**
 	 * @return the title
 	 */

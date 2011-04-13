@@ -9,5 +9,8 @@ public class RSSReader extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        SAXFeedParser sfp = new SAXFeedParser("http://www.osnews.com/files/recent.xml");
+        sfp.parse();
     }
 }

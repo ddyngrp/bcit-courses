@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class Feed {
 	private String name;
+	private String description;
 	private URL feedURL;
 	private URL link;
 	private List<FeedItem> itemList;
@@ -86,5 +87,13 @@ public class Feed {
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

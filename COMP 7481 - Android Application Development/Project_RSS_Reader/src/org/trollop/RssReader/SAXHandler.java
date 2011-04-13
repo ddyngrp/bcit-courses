@@ -20,6 +20,7 @@ public class SAXHandler extends DefaultHandler {
 	private static final String LINK = "link";
 	private static final String DESCRIPTION = "description";
 	private static final String PUB_DATE = "pubDate";
+	private static final String PUB_DATE_ALT = "dc:date";
 	
 	private boolean isItem = false;
 
@@ -55,14 +56,16 @@ public class SAXHandler extends DefaultHandler {
 			throws SAXException {
 		super.endElement(uri, localName, name);
 
-		if (currentFeed != null && localName.equals(name)) {
+		if (currentFeed != null && builder.toString().trim().length() > 0) {
 			if (localName.equalsIgnoreCase(TITLE) && !isItem)
 				currentFeed.setName(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK) && !isItem)
 				currentFeed.setLink(builder.toString().trim());
+			else if (localName.equalsIgnoreCase(DESCRIPTION) && !isItem)
+				currentFeed.setDescription(builder.toString().trim());
 		}
 		
-		if (currentFeedItem != null) {
+		if (currentFeedItem != null && builder.toString().trim().length() > 0) {
 			if (localName.equalsIgnoreCase(TITLE) && isItem)
 				currentFeedItem.setTitle(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK) && isItem)
@@ -70,6 +73,8 @@ public class SAXHandler extends DefaultHandler {
 			else if (localName.equalsIgnoreCase(DESCRIPTION) && isItem)
 				currentFeedItem.setDescription(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(PUB_DATE) && isItem)
+				currentFeedItem.setPubDate(builder.toString().trim());
+			else if (localName.equalsIgnoreCase(PUB_DATE_ALT) && isItem)
 				currentFeedItem.setPubDate(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(ITEM) && isItem) {
 				currentFeed.addItem(currentFeedItem);

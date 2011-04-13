@@ -51,7 +51,7 @@ public class ImageData implements Comparable<ImageData> {
 	}
 
 	public void logInfo() {
-		Utils util = new Utils();
+		Utility util = new Utility();
 		Bitmap bm;
 
 		bm = util.byteArrayToBitmap(this.data);

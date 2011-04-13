@@ -58,7 +58,7 @@ public class SimpleVideo extends Activity {
 		pauseButton.setEnabled(false);
 		
 		/* set initial image */
-		Bitmap bm = new Utils().byteArrayToBitmap(jBuffer.getData(FIRST_IMAGE_ID));
+		Bitmap bm = new Utility().byteArrayToBitmap(jBuffer.getData(FIRST_IMAGE_ID));
 		imageView.setImageBitmap(bm);
 		
 		playButton.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,7 @@ public class SimpleVideo extends Activity {
 
 		@Override
 		public void run() {
-			Bitmap bm = new Utils().byteArrayToBitmap(jBuffer.getData(currentImageID));
+			Bitmap bm = new Utility().byteArrayToBitmap(jBuffer.getData(currentImageID));
 			
 			imageView.setImageBitmap(bm);
 			
@@ -147,7 +147,7 @@ public class SimpleVideo extends Activity {
 			else
 				currentImageID--;
 			
-			Bitmap bm = new Utils().byteArrayToBitmap(jBuffer.getData(currentImageID));
+			Bitmap bm = new Utility().byteArrayToBitmap(jBuffer.getData(currentImageID));
 			
 			imageView.setImageBitmap(bm);
 		}
@@ -162,7 +162,7 @@ public class SimpleVideo extends Activity {
 			else
 				currentImageID++;
 			
-			Bitmap bm = new Utils().byteArrayToBitmap(jBuffer.getData(currentImageID));
+			Bitmap bm = new Utility().byteArrayToBitmap(jBuffer.getData(currentImageID));
 			
 			imageView.setImageBitmap(bm);
 		}

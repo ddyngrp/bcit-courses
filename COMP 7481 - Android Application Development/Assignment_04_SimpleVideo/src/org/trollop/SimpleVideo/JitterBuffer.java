@@ -187,7 +187,7 @@ public class JitterBuffer {
 	
 	public void downloadImage(String URL, int imageID) {
 		InputStream is = openHttpConnection(URL);
-		Utils util = new Utils();
+		Utility util = new Utility();
 		
 		ImageData id = new ImageData(util.streamToByteArray(is), imageID);
 		putData(id);

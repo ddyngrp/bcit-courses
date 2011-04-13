@@ -21,9 +21,9 @@ import android.util.Log;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class Utils {
+public class Utility {
 	
-	public Utils() {
+	public Utility() {
 	}
 	
 	public byte[] streamToByteArray(InputStream is) {

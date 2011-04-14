@@ -1,12 +1,10 @@
 /**
  * Project: Project_RSS_Reader
- * File: FeedAdapter.java
+ * File: FeedArticleAdapter.java
  * Date: 2011-04-12
- * Time: 6:13:23 PM
+ * Time: 6:13:32 PM
  */
 package org.trollop.RssReader;
-
-import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,26 +15,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Manages displaying RSS Feed items within a ListView. Because we're
- * extending the ArrayAdapter class, we can automatically display new
- * data items within the ListView.
+ * Manages displaying RSS articles from a single feed within a ListView.
  *
  * @author Steffen L. Norgren, A00683006
  */
-public class FeedAdapter extends ArrayAdapter<RssFeed> {
+public class FeedArticleAdapter extends ArrayAdapter<RssArticle> {
 	
 	private int resource;
 	private Context context;
 	
 	/**
-	 * Instantiates a new FeedAdapter object.
+	 * Instantiates a new FeedArticleAdapter object.
 	 *
 	 * @param context application's current context
 	 * @param resource id of the current list item
 	 * @param feeds to be displayed within the ListView
 	 */
-	public FeedAdapter(Context context, int resource, ArrayList<RssFeed> feeds) {
-		super(context, resource, feeds);
+	public FeedArticleAdapter(Context context, int resource, RssArticles articles) {
+		super(context, resource, articles);
 		this.context = context;
 		this.resource = resource;
 	}
@@ -59,7 +55,7 @@ public class FeedAdapter extends ArrayAdapter<RssFeed> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout feedView;
-		RssFeed feed = getItem(position);
+		RssArticle article = getItem(position);
 		
 		if (convertView == null) {
 			feedView = new LinearLayout(context);
@@ -72,15 +68,12 @@ public class FeedAdapter extends ArrayAdapter<RssFeed> {
 			feedView = (LinearLayout) convertView;
 		}
 		
-		if (feed != null) {
-			TextView topText = (TextView) feedView.findViewById(R.id.toptext);
-			TextView botText = (TextView) feedView.findViewById(R.id.bottomtext);
+		if (article != null) {
+			TextView title = (TextView) feedView.findViewById(R.id.article_title);
 			
-			if (topText != null) {
-				topText.setText(feed.getName());
+			if (title != null) {
+				title.setText(article.getTitle());
 			}
-			if (botText != null)
-				botText.setText(feed.getDescription());
 		}
 		return feedView;
 	}

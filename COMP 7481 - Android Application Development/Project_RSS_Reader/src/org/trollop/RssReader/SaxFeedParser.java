@@ -1,6 +1,6 @@
 /**
  * Project: Project_RSS_Reader
- * File: SAXFeedParser.java
+ * File: SaxFeedParser.java
  * Date: 2011-04-12
  * Time: 11:27:41 PM
  */
@@ -14,12 +14,20 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 /**
+ * Manages the creation of the input streams for each RSS feed. These
+ * streams will then be parsed the SAXParer via the SaxHandler class.
+ *
  * @author Steffen L. Norgren, A00683006
- * 
  */
 public class SaxFeedParser {
+	
 	private final URL feedURL;
 
+	/**
+	 * Instantiates a new SAX feed parser.
+	 *
+	 * @param feedUrl the feed url
+	 */
 	public SaxFeedParser(String feedUrl) {
 		try {
 			this.feedURL = new URL(feedUrl);
@@ -28,6 +36,11 @@ public class SaxFeedParser {
 		}
 	}
 
+	/**
+	 * Gets the input stream for the RSS feed
+	 *
+	 * @return the input stream
+	 */
 	protected InputStream getInputStream() {
 		try {
 			return feedURL.openConnection().getInputStream();
@@ -36,6 +49,12 @@ public class SaxFeedParser {
 		}
 	}
 
+	/**
+	 * Parses the RSS feed and deposits all relevent data within the
+	 * appropriate data containers.
+	 *
+	 * @return the rss feed to parse
+	 */
 	public RssFeed parse() {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {

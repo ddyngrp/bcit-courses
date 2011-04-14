@@ -1,6 +1,6 @@
 /**
  * Project: Project_RSS_Reader
- * File: SAXHandler.java
+ * File: SaxHandler.java
  * Date: 2011-04-12
  * Time: 11:27:56 PM
  */
@@ -11,10 +11,13 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
+ * The handler where all call-back events are managed while serially reading
+ * through an XML file.
+ *
  * @author Steffen L. Norgren, A00683006
- * 
  */
 public class SaxHandler extends DefaultHandler {
+	
 	private static final String CHANNEL = "channel";
 	private static final String ITEM = "item";
 	private static final String TITLE = "title";
@@ -22,14 +25,19 @@ public class SaxHandler extends DefaultHandler {
 	private static final String DESCRIPTION = "description";
 	private static final String PUB_DATE = "pubDate";
 	private static final String PUB_DATE_ALT = "dc:date";
-	
+
 	private boolean isItem = false;
 	private boolean isChannel = false;
 
 	private RssFeed currentFeed;
-	private RssArticle currentFeedItem;
+	private RssArticle currentArticle;
 	private StringBuilder builder;
 
+	/**
+	 * Gets the feed.
+	 *
+	 * @return the feed
+	 */
 	public RssFeed getFeed() {
 		return currentFeed;
 	}
@@ -51,7 +59,7 @@ public class SaxHandler extends DefaultHandler {
 			isChannel = true;
 		
 		if (localName.equalsIgnoreCase(ITEM)){
-			currentFeedItem = new RssArticle();
+			currentArticle = new RssArticle();
 			isItem = true;
 		}
 	}
@@ -72,19 +80,19 @@ public class SaxHandler extends DefaultHandler {
 				isChannel = false;
 		}
 		
-		if (currentFeedItem != null && isItem) {
+		if (currentArticle != null && isItem) {
 			if (localName.equalsIgnoreCase(TITLE))
-				currentFeedItem.setTitle(builder.toString().trim());
+				currentArticle.setTitle(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK))
-				currentFeedItem.setLink(builder.toString().trim());
+				currentArticle.setLink(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(DESCRIPTION))
-				currentFeedItem.setDescription(builder.toString().trim());
+				currentArticle.setDescription(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(PUB_DATE))
-				currentFeedItem.setPubDate(builder.toString().trim());
+				currentArticle.setPubDate(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(PUB_DATE_ALT))
-				currentFeedItem.setPubDate(builder.toString().trim());
+				currentArticle.setPubDate(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(ITEM)) {
-				currentFeed.addItem(currentFeedItem);
+				currentFeed.addItem(currentArticle);
 				isItem = false;
 			}
 		}

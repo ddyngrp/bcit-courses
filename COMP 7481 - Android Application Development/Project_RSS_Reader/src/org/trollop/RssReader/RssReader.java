@@ -29,11 +29,11 @@ public class RssReader extends ListActivity {
 												  "http://www.macrumors.com/macrumors.xml",
 												  "http://minimalmac.com/rss",
 												  "http://www.phdcomics.com/gradfeed.php",
-												  "http://www.popsci.com/rss.xml",
 												  "http://www.smbc-comics.com/rss.php",
 												  "http://www.patheos.com/community/slacktivist/feed/",
 												  "http://scienceblogs.com/startswithabang/index.xml",
-												  "http://xkcd.com/rss.xml"};
+												  "http://xkcd.com/rss.xml",
+												  "http://www.popsci.com/rss.xml"};
 	private ArrayList<RssFeed> feeds = null;
 	private FeedAdapter feedAdapter;
 	private ProgressDialog progressDialog;

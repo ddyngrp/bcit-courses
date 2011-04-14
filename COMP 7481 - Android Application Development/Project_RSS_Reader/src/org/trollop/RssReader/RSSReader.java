@@ -2,19 +2,21 @@ package org.trollop.RssReader;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
-public class RSSReader extends Activity {
+public class RSSReader extends ListActivity {
 	private static final String[] defaultFeeds = {"http://www.osnews.com/files/recent.xml",
 												  "http://rss.slashdot.org/Slashdot/slashdot",
 												  "http://feeds.boingboing.net/boingboing/iBag"};
-	private ListView feedListView;
 	private ArrayList<Feed> feeds = null;
-	private FeedList feedListAdapter;
+	private FeedAdapter feedAdapter;
 	private ProgressDialog progressDialog;
 	private Runnable initFeeds;
 	
@@ -22,13 +24,11 @@ public class RSSReader extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.main);
         
-        feedListView = (ListView) findViewById(R.id.list_view);
         feeds = new ArrayList<Feed>();
         
-        feedListAdapter = new FeedList(RSSReader.this, R.layout.feeds, feeds);
-        feedListView.setAdapter(feedListAdapter);
+        feedAdapter = new FeedAdapter(RSSReader.this, R.layout.feeds, feeds);
+        setListAdapter(feedAdapter);
         
         initFeeds = new Runnable() {
         	@Override
@@ -42,11 +42,23 @@ public class RSSReader extends Activity {
         progressDialog = ProgressDialog.show(RSSReader.this, "Please wait...", "Downloading feeds...", true);
     }
     
+	@Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+    	super.onListItemClick(l, v, position, id);
+    	
+    	Intent intent = new Intent(RSSReader.this, FeedItemActivity.class);
+    	Bundle bundle = new Bundle();
+    	
+    	
+    	    	
+    	startActivity(intent);
+    }
+    
     private Runnable updateUI = new Runnable() {
     	@Override
     	public void run() {
     		progressDialog.dismiss();
-    		feedListAdapter.notifyDataSetChanged();
+    		feedAdapter.notifyDataSetChanged();
     	}
     };
     

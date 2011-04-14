@@ -20,11 +20,11 @@ import android.widget.TextView;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class FeedItemList extends ArrayAdapter<FeedItem> {
+public class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 	private int resource;
 	private Context context;
 	
-	public FeedItemList(Context context, int resource, ArrayList<FeedItem> feedItems) {
+	public FeedItemAdapter(Context context, int resource, ArrayList<FeedItem> feedItems) {
 		super(context, resource, feedItems);
 		this.context = context;
 		this.resource = resource;

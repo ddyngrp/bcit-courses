@@ -6,6 +6,7 @@
  */
 package org.trollop.RssReader;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Feed {
 	private String description;
 	private URL feedURL;
 	private URL link;
-	private List<FeedItem> itemList;
+	private ArrayList<FeedItem> itemList;
 	
 	public Feed() {
 		this.itemList = new ArrayList<FeedItem>();
@@ -69,7 +70,7 @@ public class Feed {
 	/**
 	 * @return the itemList
 	 */
-	public List<FeedItem> getItemList() {
+	public ArrayList<FeedItem> getItemList() {
 		return itemList;
 	}
 	

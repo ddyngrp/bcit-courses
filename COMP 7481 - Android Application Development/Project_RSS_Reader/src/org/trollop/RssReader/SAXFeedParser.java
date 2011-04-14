@@ -36,7 +36,7 @@ public class SAXFeedParser {
 		}
 	}
 
-	public Feed parse() {
+	public RSSFeed parse() {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser parser = factory.newSAXParser();

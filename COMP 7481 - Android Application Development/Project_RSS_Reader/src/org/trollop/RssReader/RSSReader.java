@@ -15,7 +15,7 @@ public class RSSReader extends ListActivity {
 	private static final String[] defaultFeeds = {"http://www.osnews.com/files/recent.xml",
 												  "http://rss.slashdot.org/Slashdot/slashdot",
 												  "http://feeds.boingboing.net/boingboing/iBag"};
-	private ArrayList<Feed> feeds = null;
+	private ArrayList<RSSFeed> feeds = null;
 	private FeedAdapter feedAdapter;
 	private ProgressDialog progressDialog;
 	private Runnable initFeeds;
@@ -25,7 +25,7 @@ public class RSSReader extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        feeds = new ArrayList<Feed>();
+        feeds = new ArrayList<RSSFeed>();
         
         feedAdapter = new FeedAdapter(RSSReader.this, R.layout.feeds, feeds);
         setListAdapter(feedAdapter);
@@ -49,8 +49,11 @@ public class RSSReader extends ListActivity {
     	Intent intent = new Intent(RSSReader.this, FeedItemActivity.class);
     	Bundle bundle = new Bundle();
     	
+    	RSSItems item = feeds.get(position).getItemList();
     	
-    	    	
+    	bundle.putParcelable("FEED", item);
+    	intent.putExtras(bundle);
+
     	startActivity(intent);
     }
     

@@ -16,13 +16,13 @@ import android.os.Parcelable;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class FeedItem implements Parcelable {
+public class RSSItem {
 	private String title;
 	private URL link;
 	private String description;
 	private String pubDate;
 	
-	public FeedItem() {
+	public RSSItem() {
 	}
 	
 	/**
@@ -83,31 +83,5 @@ public class FeedItem implements Parcelable {
 	 */
 	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
-	}
-	
-	public static final Parcelable.Creator<FeedItem> CREATOR = new Parcelable.Creator<FeedItem>() {
-
-		@Override
-		public FeedItem createFromParcel(Parcel source) {
-			return null;
-		}
-
-		@Override
-		public FeedItem[] newArray(int size) {
-			return null;
-		}
-	};
-
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(title);
-		dest.writeString(link.toString());
-		dest.writeString(description);
-		dest.writeString(pubDate);
 	}
 }

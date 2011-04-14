@@ -24,11 +24,11 @@ public class SAXHandler extends DefaultHandler {
 	
 	private boolean isItem = false;
 
-	private Feed currentFeed;
-	private FeedItem currentFeedItem;
+	private RSSFeed currentFeed;
+	private RSSItem currentFeedItem;
 	private StringBuilder builder;
 
-	public Feed getFeed() {
+	public RSSFeed getFeed() {
 		return currentFeed;
 	}
 
@@ -46,7 +46,7 @@ public class SAXHandler extends DefaultHandler {
 		super.startElement(uri, localName, name, attributes);
 		
 		if (localName.equalsIgnoreCase(ITEM)){
-			currentFeedItem = new FeedItem();
+			currentFeedItem = new RSSItem();
 			isItem = true;
 		}
 	}
@@ -65,7 +65,7 @@ public class SAXHandler extends DefaultHandler {
 				currentFeed.setDescription(builder.toString().trim());
 		}
 		
-		if (currentFeedItem != null && builder.toString().trim().length() > 0) {
+		if (currentFeedItem != null) {
 			if (localName.equalsIgnoreCase(TITLE) && isItem)
 				currentFeedItem.setTitle(builder.toString().trim());
 			else if (localName.equalsIgnoreCase(LINK) && isItem)
@@ -88,7 +88,7 @@ public class SAXHandler extends DefaultHandler {
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		
-		currentFeed = new Feed();
+		currentFeed = new RSSFeed();
 		builder = new StringBuilder();
 	}
 }

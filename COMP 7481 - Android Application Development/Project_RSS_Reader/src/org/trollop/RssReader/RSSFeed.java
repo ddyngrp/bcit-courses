@@ -16,18 +16,18 @@ import java.util.List;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class Feed {
+public class RSSFeed {
 	private String name;
 	private String description;
 	private URL feedURL;
 	private URL link;
-	private ArrayList<FeedItem> itemList;
+	private RSSItems itemList;
 	
-	public Feed() {
-		this.itemList = new ArrayList<FeedItem>();
+	public RSSFeed() {
+		this.itemList = new RSSItems();
 	}
 	
-	public void addItem(FeedItem item) {
+	public void addItem(RSSItem item) {
 		itemList.add(item);
 	}
 	
@@ -70,11 +70,11 @@ public class Feed {
 	/**
 	 * @return the itemList
 	 */
-	public ArrayList<FeedItem> getItemList() {
+	public RSSItems getItemList() {
 		return itemList;
 	}
 	
-	public FeedItem getItem(int itemID) {
+	public RSSItem getItem(int itemID) {
 		return itemList.get(itemID);
 	}
 

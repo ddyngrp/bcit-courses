@@ -17,12 +17,11 @@
         android:layout_weight="1"
         android:layout_height="fill_parent">
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/article_title"
             android:layout_width="fill_parent"
-            android:layout_height="20dip"
-            android:textSize="22dip"
+            android:layout_height="fill_parent"
+            android:textSize="14dip"
             android:layout_weight="1"
-            android:singleLine="true"
             android:gravity="center_vertical"/>
     </LinearLayout>
 </LinearLayout>

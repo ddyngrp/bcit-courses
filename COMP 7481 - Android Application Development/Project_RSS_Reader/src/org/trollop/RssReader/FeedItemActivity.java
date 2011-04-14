@@ -17,6 +17,7 @@ import android.widget.ListView;
  *
  */
 public class FeedItemActivity extends ListActivity {
+	RssArticles rssItems;
 
     /** Called when the activity is first created. */
     @Override
@@ -24,11 +25,7 @@ public class FeedItemActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         
         Bundle bundle = getIntent().getExtras();
-        RSSItems items = bundle.getParcelable("FEED");
-        
-        if (items.size() > 0)
-        	Log.i("new activity", "" + items.size());
-        
+        rssItems = bundle.getParcelable("FEED");
     }
     
     @Override

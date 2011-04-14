@@ -14,7 +14,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Steffen L. Norgren, A00683006
  * 
  */
-public class SAXHandler extends DefaultHandler {
+public class SaxHandler extends DefaultHandler {
 	private static final String ITEM = "item";
 	private static final String TITLE = "title";
 	private static final String LINK = "link";
@@ -24,11 +24,11 @@ public class SAXHandler extends DefaultHandler {
 	
 	private boolean isItem = false;
 
-	private RSSFeed currentFeed;
-	private RSSItem currentFeedItem;
+	private RssFeed currentFeed;
+	private RssArticle currentFeedItem;
 	private StringBuilder builder;
 
-	public RSSFeed getFeed() {
+	public RssFeed getFeed() {
 		return currentFeed;
 	}
 
@@ -46,7 +46,7 @@ public class SAXHandler extends DefaultHandler {
 		super.startElement(uri, localName, name, attributes);
 		
 		if (localName.equalsIgnoreCase(ITEM)){
-			currentFeedItem = new RSSItem();
+			currentFeedItem = new RssArticle();
 			isItem = true;
 		}
 	}
@@ -88,7 +88,7 @@ public class SAXHandler extends DefaultHandler {
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		
-		currentFeed = new RSSFeed();
+		currentFeed = new RssFeed();
 		builder = new StringBuilder();
 	}
 }

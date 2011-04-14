@@ -17,10 +17,10 @@ import javax.xml.parsers.SAXParserFactory;
  * @author Steffen L. Norgren, A00683006
  * 
  */
-public class SAXFeedParser {
+public class SaxFeedParser {
 	private final URL feedURL;
 
-	public SAXFeedParser(String feedUrl) {
+	public SaxFeedParser(String feedUrl) {
 		try {
 			this.feedURL = new URL(feedUrl);
 		} catch (MalformedURLException e) {
@@ -36,11 +36,11 @@ public class SAXFeedParser {
 		}
 	}
 
-	public RSSFeed parse() {
+	public RssFeed parse() {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser parser = factory.newSAXParser();
-			SAXHandler handler = new SAXHandler();
+			SaxHandler handler = new SaxHandler();
 			parser.parse(this.getInputStream(), handler);
 			handler.getFeed().setFeedURL(feedURL.toString());
 			return handler.getFeed();

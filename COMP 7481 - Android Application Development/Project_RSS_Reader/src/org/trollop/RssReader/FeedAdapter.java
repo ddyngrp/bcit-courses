@@ -20,11 +20,11 @@ import android.widget.TextView;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class FeedAdapter extends ArrayAdapter<RSSFeed> {
+public class FeedAdapter extends ArrayAdapter<RssFeed> {
 	private int resource;
 	private Context context;
 	
-	public FeedAdapter(Context context, int resource, ArrayList<RSSFeed> feeds) {
+	public FeedAdapter(Context context, int resource, ArrayList<RssFeed> feeds) {
 		super(context, resource, feeds);
 		this.context = context;
 		this.resource = resource;
@@ -33,7 +33,7 @@ public class FeedAdapter extends ArrayAdapter<RSSFeed> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout feedView;
-		RSSFeed feed = getItem(position);
+		RssFeed feed = getItem(position);
 		
 		if (convertView == null) {
 			feedView = new LinearLayout(context);

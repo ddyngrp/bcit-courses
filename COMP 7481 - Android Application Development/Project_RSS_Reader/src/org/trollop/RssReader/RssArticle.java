@@ -16,13 +16,13 @@ import android.os.Parcelable;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class RSSItem {
+public class RssArticle {
 	private String title;
 	private URL link;
 	private String description;
 	private String pubDate;
 	
-	public RSSItem() {
+	public RssArticle() {
 	}
 	
 	/**

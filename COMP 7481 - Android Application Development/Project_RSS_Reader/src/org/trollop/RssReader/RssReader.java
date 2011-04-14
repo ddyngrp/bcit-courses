@@ -11,11 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
-public class RSSReader extends ListActivity {
+public class RssReader extends ListActivity {
 	private static final String[] defaultFeeds = {"http://www.osnews.com/files/recent.xml",
 												  "http://rss.slashdot.org/Slashdot/slashdot",
 												  "http://feeds.boingboing.net/boingboing/iBag"};
-	private ArrayList<RSSFeed> feeds = null;
+	private ArrayList<RssFeed> feeds = null;
 	private FeedAdapter feedAdapter;
 	private ProgressDialog progressDialog;
 	private Runnable initFeeds;
@@ -25,9 +25,9 @@ public class RSSReader extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        feeds = new ArrayList<RSSFeed>();
+        feeds = new ArrayList<RssFeed>();
         
-        feedAdapter = new FeedAdapter(RSSReader.this, R.layout.feeds, feeds);
+        feedAdapter = new FeedAdapter(RssReader.this, R.layout.feeds, feeds);
         setListAdapter(feedAdapter);
         
         initFeeds = new Runnable() {
@@ -39,17 +39,17 @@ public class RSSReader extends ListActivity {
         
         Thread thread = new Thread(null, initFeeds, "DownloadFeeds");
         thread.start();
-        progressDialog = ProgressDialog.show(RSSReader.this, "Please wait...", "Downloading feeds...", true);
+        progressDialog = ProgressDialog.show(RssReader.this, "Please wait...", "Downloading feeds...", true);
     }
     
 	@Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	super.onListItemClick(l, v, position, id);
     	
-    	Intent intent = new Intent(RSSReader.this, FeedItemActivity.class);
+    	Intent intent = new Intent(RssReader.this, FeedItemActivity.class);
     	Bundle bundle = new Bundle();
     	
-    	RSSItems item = feeds.get(position).getItemList();
+    	RssArticles item = feeds.get(position).getItemList();
     	
     	bundle.putParcelable("FEED", item);
     	intent.putExtras(bundle);
@@ -68,7 +68,7 @@ public class RSSReader extends ListActivity {
     protected void initFeeds() {
     	try {
         	for (String feed : defaultFeeds) {
-                SAXFeedParser sfp = new SAXFeedParser(feed);
+                SaxFeedParser sfp = new SaxFeedParser(feed);
                 feeds.add(sfp.parse());
                 Log.i("initFeeds", "" + feeds.size());
         	}

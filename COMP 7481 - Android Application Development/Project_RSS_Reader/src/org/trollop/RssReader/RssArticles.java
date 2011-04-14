@@ -15,20 +15,20 @@ import android.os.Parcelable;
  * @author Steffen L. Norgren, A00683006
  *
  */
-public class RSSItems extends ArrayList<RSSItem> implements Parcelable {
+public class RssArticles extends ArrayList<RssArticle> implements Parcelable {
 	private static final long serialVersionUID = -1198598975335080328L;
 	
-	public RSSItems() {
+	public RssArticles() {
 	}
 	
-	public RSSItems(Parcel in) {
+	public RssArticles(Parcel in) {
 		readFromParcel(in);
 	}
 	
 	@SuppressWarnings("rawtypes")
 	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		public RSSItems createFromParcel(Parcel in) {
-			return new RSSItems(in);
+		public RssArticles createFromParcel(Parcel in) {
+			return new RssArticles(in);
 		}
 		
 		public Object[] newArray(int arg0) {
@@ -44,7 +44,7 @@ public class RSSItems extends ArrayList<RSSItem> implements Parcelable {
 		
 		/* order of reading to and writing from the Parcel is imperative */
 		for (int i = 0; i < size; i++) {
-			RSSItem item = new RSSItem();
+			RssArticle item = new RssArticle();
 			item.setTitle(in.readString());
 			item.setLink(in.readString());
 			item.setDescription(in.readString());
@@ -67,7 +67,7 @@ public class RSSItems extends ArrayList<RSSItem> implements Parcelable {
 		
 		/* order of reading to and writing from the Parcel is imperative */
 		for (int i = 0; i < size; i++) {
-			RSSItem item = this.get(i);
+			RssArticle item = this.get(i);
 			dest.writeString(item.getTitle());
 			dest.writeString(item.getLink().toString());
 			dest.writeString(item.getDescription());

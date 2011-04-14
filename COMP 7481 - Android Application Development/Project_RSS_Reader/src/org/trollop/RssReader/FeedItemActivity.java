@@ -18,6 +18,7 @@ import android.widget.ListView;
  */
 public class FeedItemActivity extends ListActivity {
 	RssArticles rssItems;
+	private FeedItemAdapter feedItemAdapter;
 
     /** Called when the activity is first created. */
     @Override
@@ -26,6 +27,9 @@ public class FeedItemActivity extends ListActivity {
         
         Bundle bundle = getIntent().getExtras();
         rssItems = bundle.getParcelable("FEED");
+        
+        feedItemAdapter = new FeedItemAdapter(FeedItemActivity.this, R.layout.feed_items, rssItems);
+        setListAdapter(feedItemAdapter);
     }
     
     @Override

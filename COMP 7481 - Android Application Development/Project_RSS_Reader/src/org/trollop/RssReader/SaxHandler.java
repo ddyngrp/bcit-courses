@@ -15,6 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  */
 public class SaxHandler extends DefaultHandler {
+	private static final String CHANNEL = "channel";
 	private static final String ITEM = "item";
 	private static final String TITLE = "title";
 	private static final String LINK = "link";
@@ -23,6 +24,7 @@ public class SaxHandler extends DefaultHandler {
 	private static final String PUB_DATE_ALT = "dc:date";
 	
 	private boolean isItem = false;
+	private boolean isChannel = false;
 
 	private RssFeed currentFeed;
 	private RssArticle currentFeedItem;
@@ -45,6 +47,9 @@ public class SaxHandler extends DefaultHandler {
 			Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, name, attributes);
 		
+		if (localName.equalsIgnoreCase(CHANNEL))
+			isChannel = true;
+		
 		if (localName.equalsIgnoreCase(ITEM)){
 			currentFeedItem = new RssArticle();
 			isItem = true;
@@ -56,27 +61,29 @@ public class SaxHandler extends DefaultHandler {
 			throws SAXException {
 		super.endElement(uri, localName, name);
 
-		if (currentFeed != null && builder.toString().trim().length() > 0) {
-			if (localName.equalsIgnoreCase(TITLE) && !isItem)
+		if (currentFeed != null && isChannel && !isItem) {
+			if (localName.equalsIgnoreCase(TITLE) && builder.toString().trim().length() > 0)
 				currentFeed.setName(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(LINK) && !isItem)
+			else if (localName.equalsIgnoreCase(LINK) && builder.toString().trim().length() > 0)
 				currentFeed.setLink(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(DESCRIPTION) && !isItem)
+			else if (localName.equalsIgnoreCase(DESCRIPTION) && builder.toString().trim().length() > 0)
 				currentFeed.setDescription(builder.toString().trim());
+			else if (localName.equalsIgnoreCase(CHANNEL))
+				isChannel = false;
 		}
 		
-		if (currentFeedItem != null) {
-			if (localName.equalsIgnoreCase(TITLE) && isItem)
+		if (currentFeedItem != null && isItem) {
+			if (localName.equalsIgnoreCase(TITLE))
 				currentFeedItem.setTitle(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(LINK) && isItem)
+			else if (localName.equalsIgnoreCase(LINK))
 				currentFeedItem.setLink(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(DESCRIPTION) && isItem)
+			else if (localName.equalsIgnoreCase(DESCRIPTION))
 				currentFeedItem.setDescription(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(PUB_DATE) && isItem)
+			else if (localName.equalsIgnoreCase(PUB_DATE))
 				currentFeedItem.setPubDate(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(PUB_DATE_ALT) && isItem)
+			else if (localName.equalsIgnoreCase(PUB_DATE_ALT))
 				currentFeedItem.setPubDate(builder.toString().trim());
-			else if (localName.equalsIgnoreCase(ITEM) && isItem) {
+			else if (localName.equalsIgnoreCase(ITEM)) {
 				currentFeed.addItem(currentFeedItem);
 				isItem = false;
 			}

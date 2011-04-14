@@ -24,8 +24,8 @@ public class FeedItemAdapter extends ArrayAdapter<RssArticle> {
 	private int resource;
 	private Context context;
 	
-	public FeedItemAdapter(Context context, int resource, ArrayList<RssArticle> feedItems) {
-		super(context, resource, feedItems);
+	public FeedItemAdapter(Context context, int resource, RssArticles articles) {
+		super(context, resource, articles);
 		this.context = context;
 		this.resource = resource;
 	}
@@ -33,7 +33,7 @@ public class FeedItemAdapter extends ArrayAdapter<RssArticle> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout feedView;
-		RssArticle feedItem = getItem(position);
+		RssArticle article = getItem(position);
 		
 		if (convertView == null) {
 			feedView = new LinearLayout(context);
@@ -46,11 +46,11 @@ public class FeedItemAdapter extends ArrayAdapter<RssArticle> {
 			feedView = (LinearLayout) convertView;
 		}
 		
-		if (feedItem != null) {
-			TextView title = (TextView) feedView.findViewById(R.id.toptext);
+		if (article != null) {
+			TextView title = (TextView) feedView.findViewById(R.id.article_title);
 			
 			if (title != null) {
-				title.setText(feedItem.getTitle());
+				title.setText(article.getTitle());
 			}
 		}
 		return feedView;

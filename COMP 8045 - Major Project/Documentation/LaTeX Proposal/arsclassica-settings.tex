@@ -1,0 +1,257 @@
+% ********************************************************************
+% arsclassica-settings
+% ********************************************************************
+
+
+
+\newcommand{\myName}{Steffen L. Norgren}
+\newcommand{\myTitle}{Customizing ClassicThesis with the ArsClassica package}
+\newcommand{\mySubTitle}{User Manual}
+\newcommand{\myLocation}{Cesena}
+\newcommand{\myGroup}{Italian \TeX{} and \LaTeX{} User Group}
+\newcommand{\myUrl}{\url{http://www.guitex.org/}}
+\newcommand{\myTime}{2012, February}
+
+
+% ********************************************************************
+% hyperref
+% ******************************************************************** 
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+
+% ********************************************************************
+% makeidx, multicol
+% ********************************************************************
+\let\orgtheindex\theindex
+\let\orgendtheindex\endtheindex
+\def\theindex{%
+	\def\twocolumn{\begin{multicols}{2}}%
+	\def\onecolumn{}%
+	\clearpage
+	\orgtheindex
+}
+\def\endtheindex{%
+	\end{multicols}%
+	\orgendtheindex
+}
+
+\makeindex
+
+
+% ********************************************************************
+% listings
+% ********************************************************************
+
+\definecolor{lightergray}{gray}{0.99}
+
+\lstset{language=[LaTeX]Tex,
+    keywordstyle=\color{RoyalBlue},
+    basicstyle=\normalfont\ttfamily,
+    commentstyle=\color{Emerald}\ttfamily,
+    stringstyle=\rmfamily,
+    numbers=none,
+    numberstyle=\scriptsize,
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=lines,
+    backgroundcolor=\color{lightergray}
+} 
+
+\lstset{	morekeywords=%
+        {RequirePackage,newboolean,DeclareOption,setboolean,%
+        ProcessOptions,PackageError,ifthenelse,boolean,%
+        chapterNumber,sodef,textls,allcapsspacing,%
+        MakeTextLowercase,orgtheindex,endtheindex,%
+        @ifpackageloaded,undefined,sfdefault,%
+        DeclareRobustCommand,spacedallcaps,%
+        microtypesetup,MakeTextUppercase,lowsmallcapsspacing,%
+        lowsmallcapsspacing,spacedlowsmallcaps,
+        spacedlowsmallcaps,lehead,headmark,color,%
+        headfont,partname,thepart,titleformat,part,
+        titlerule,chapter,thechapter,thesection,%
+        subsection,thesubsection,thesubsubsection,%
+        paragraph,theparagraph,descriptionlabel,titlespacing,%
+        graffito,lineskiplimit,finalhyphendemerits,%
+        colorbox,captionsetup,labelitemi,%
+        myincludegraphics,hypersetup,setlength,%
+        definecolor,lsstyle,textssc,subsubsection,%
+        graffito@setup,includegraphics,ifdefined,%
+        myTitle,textcopyright,myName,lstset,lstnewenvironment,%
+        setkeys,lst@BeginAlsoWriteFile,contentsname,%
+        toc@heading,@ppljLaTeX,z@,check@mathfonts,%
+        sf@size,ptctitle,mtctitle,stctitle,lst@intname,%
+        @empty,math@fontsfalse,@ppljscTeX,@iwonaTeX,%
+        @iwonascLaTeX,@ctTeX,tw@,ct@sc,@ctTeX,f@family,%
+        f@shape,ct@sc,ctLaTeX,ctLaTeXe,@twoe,@sctwoe,%
+        texorpdfstring,m@th,ctTeX,@mkboth,ProvidesPackage,%
+        theindex,PackageInfo,PackageWarningNoLine,%
+        mtifont,mtcindent,@iwonaLaTeX,@ppljTeX,@iwonascTeX,%
+        rohead,orgendtheindex,@ppljscLaTeX,%
+        @ifclassloaded,toc@headingbkORrp,backreftwosep,%
+        backrefalt,backreflastsep,areaset,pnumfont,%
+        arsincludegraphics,ExecuteOptions,PackageWarning,textcolor,%
+        MessageBreak,ars@@includegraphics,ifcld@backref,rofoot,formatchapter,%
+        if@twoside},
+        commentstyle=\color{Emerald}\ttfamily,%
+        frame=lines}
+
+\lstset{basicstyle=\normalfont\ttfamily}
+\lstset{flexiblecolumns=true}
+\lstset{moredelim={[is][\normalfont\itshape]{/*}{*/}}}
+\lstset{basicstyle=\normalfont\ttfamily}
+\lstset{flexiblecolumns=false}
+\lstset{moredelim={[is][\ttfamily]{!?}{?!}}} 
+\lstset{escapeinside={£*}{*£}}
+\lstset{firstnumber=last}
+\lstset{moredelim={[is][\ttfamily]{!?}{?!}}}
+
+\DeclareRobustCommand*{\pacchetto}[1]{{\normalfont\ttfamily#1}%
+\index{Pacchetto!#1@\texttt{#1}}%
+\index{#1@\texttt{#1}}}
+
+\DeclareRobustCommand*{\bibtex}{\textsc{Bib}\TeX%
+\index{bibtex@\textsc{Bib}\protect\TeX}%
+}
+
+\DeclareRobustCommand*{\amseuler}{\protect\AmS{} Euler%
+\index{AmS Euler@\protect\AmS~Euler}%
+\index{Font!AmS Euler@\protect\AmS~Euler}}
+
+\lstnewenvironment{code}% 
+{\setkeys{lst}{columns=fullflexible,keepspaces=true}%
+\lstset{basicstyle=\small\ttfamily}%
+}{}
+
+\lstset{extendedchars} 
+\lstnewenvironment{sidebyside}{% 
+    \global\let\lst@intname\@empty 
+    \setbox\z@=\hbox\bgroup 
+    \setkeys{lst}{columns=fullflexible,% 
+    linewidth=0.45\linewidth,keepspaces=true,%
+    breaklines=true,% 
+    breakindent=0pt,%
+    boxpos=t,%
+    basicstyle=\small\ttfamily
+}% 
+    \lst@BeginAlsoWriteFile{\jobname.tmp}% 
+}{% 
+    \lst@EndWriteFile\egroup 
+        \begin{center}% 
+            \begin{minipage}{0.45\linewidth}% 
+                \hbox to\linewidth{\box\z@\hss} 
+            \end{minipage}% 
+            \qquad 
+            \begin{minipage}{0.45\linewidth}%
+            \setkeys{lst}{frame=none}% 
+                \leavevmode \catcode`\^^M=5\relax 
+                \small\input{\jobname.tmp}% 
+            \end{minipage}% 
+        \end{center}% 
+} 
+
+\newcommand{\omissis}{[\dots\negthinspace]}
+
+\graphicspath{{Graphics/}}
+
+\hyphenation{Robert Bring-hurst DejaVu
+Bera Mono Vera Classic-Thesis suite Knuth Zapf}
+
+\newcommand{\meta}[1]{$\langle${\normalfont\itshape#1}$\rangle$}
+\lstset{escapeinside={£*}{*£}}
+
+
+\DeclareRobustCommand*{\miktex}{MiK\TeX%
+\index{miktex@MiK\protect\TeX}%
+}
+
+\DeclareRobustCommand*{\metafont}{\MF%
+\index{METAFONT@\protect\MF}%
+}
+
+\DeclareRobustCommand*{\metapost}{\MP%
+\index{METAPOST@\protect\MP}%
+}
+
+\DeclareRobustCommand*{\texlive}{\TeX{}~Live%
+\index{texlive@\protect\TeX{}~Live}%
+}
+
+
+% ********************************************************************
+% biblatex
+% ******************************************************************** 
+
+\bibliography{Bibliography}
+
+\renewcommand{\nameyeardelim}{, }
+
+\defbibheading{bibliography}{%
+\cleardoublepage
+\manualmark
+\phantomsection
+\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+\chapter*{\bibname\markboth{\spacedlowsmallcaps{\bibname}}
+{\spacedlowsmallcaps{\bibname}}}}     
+
+  \DeclareCiteCommand{\citeyearpar}[\mkbibparens] 
+  {\boolfalse{citetracker}% 
+   \boolfalse{pagetracker}% 
+   \usebibmacro{prenote}} 
+  {\printtext[bibhyperref]{\printfield{year}}} 
+  {\multicitedelim} 
+  {\usebibmacro{postnote}} 
+
+\makeatletter 
+  \DeclareCiteCommand{\citetalias} 
+  {\usebibmacro{prenote}} 
+  {\usebibmacro{citeindex}% 
+   \bibhyperref{\@citealias{\thefield{entrykey}}}} 
+  {\multicitedelim} 
+  {\usebibmacro{postnote}} 
+\makeatother 
+
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+
+
+% ********************************************************************
+% other commands
+% ******************************************************************** 
+
+\newcommand{\ita}[1]{% 
+  \begin{otherlanguage*}{italian}#1\end{otherlanguage*}}
+  
+\DeclareRobustCommand*{\pkgname}[1]{{\normalfont\sffamily#1}%
+\index{Package!#1@\textsf{#1}}%
+\index{#1@\textsf{#1}}}
+
+\DeclareRobustCommand*{\envname}[1]{{\normalfont\ttfamily#1}%
+\index{Environment!#1@\texttt{#1}}%
+\index{#1@\texttt{#1}}}
+
+\DeclareRobustCommand*{\optname}[1]{{\normalfont\ttfamily#1}%
+\index{Option!#1@\texttt{#1}}%
+\index{#1@\texttt{#1}}}
+
+\DeclareRobustCommand*{\clsname}[1]{{\normalfont\sffamily#1}%
+\index{Class!#1@\textsf{#1}}%
+\index{#1@\textsf{#1}}}
+
+\DeclareRobustCommand*{\cmdname}[1]{\mbox{\lstinline!\\#1!}%
+\index{#1@\texttt{\hspace*{-1.2ex}\textbackslash#1}}}
+
+\DeclareRobustCommand*{\classicthesis}{Classic\-Thesis}
+
+\DeclareRobustCommand*{\arsclassica}{{\normalfont\sffamily ArsClassica}}
+
+\DeclareRobustCommand*{\miktex}{MiK\TeX%
+\index{miktex@MiK\protect\TeX}}
+
+\DeclareRobustCommand*{\texlive}{\TeX{}~Live%
+\index{texlive@\protect\TeX{}~Live}}
+
+

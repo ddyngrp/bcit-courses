@@ -1,0 +1,55 @@
+\documentclass[12pt,letterpaper,oneside,openright,titlepage,fleqn,%
+               headinclude,,footinclude,BCOR5mm,%
+               numbers=noenddot,cleardoublepage=empty,%
+               tablecaptionabove]{scrreprt}
+               
+\usepackage[italian,american]{babel}
+\usepackage[applemac]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{varioref}
+\usepackage[style=philosophy-modern,hyperref,square,natbib]{biblatex}
+\usepackage{chngpage}
+\usepackage{calc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage{makeidx}
+\usepackage{fixltx2e}
+\usepackage{relsize}
+\usepackage{lipsum}
+\usepackage[eulerchapternumbers,subfig,beramono,eulermath,pdfspacing,listings]{classicthesis}
+\usepackage{arsclassica}
+
+\input{arsclassica-settings}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+%******************************************************************
+% Frontmatter
+%******************************************************************
+\input{FrontBackMatter/Titlepage}
+%\input{FrontBackMatter/Titleback}
+%\clearpage
+%\input{FrontBackMatter/Abstract+Sommario}
+%\input{FrontBackMatter/Acknowledgements}
+%\pagestyle{scrheadings} 
+%\clearpage
+%\input{FrontBackMatter/Contents}
+%\cleardoublepage
+%******************************************************************
+% Mainmatter
+%******************************************************************
+%\pagenumbering{arabic}
+%\input{Chapters/Fundamentals}
+%\input{Chapters/Code}
+% *****************************************************************
+% Backmatter
+%******************************************************************
+%\clearpage
+%\input{FrontBackMatter/Bibliography}
+%\clearpage
+%\input{FrontBackMatter/Index}
+\end{document}

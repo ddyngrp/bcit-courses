@@ -85,14 +85,71 @@ There is a prolific amount of information on the Internet with respect to using 
 
 \clearpage
 \section{Testing Plan}
-\subsection{Unit Testing}
+Much of this project's work lies within loadable FreeBSD kernel modules. Unfortunately, unlike user-land applications, there exists no established procedure for testing, such as unit testing. However, this does not mean that a testing procedure cannot be established for kernel modules.
+
+\subsection{Kernel Module Testing}
+In order to test a kernel module, the module needs to output to a standard character device (for example /dev/charout). This is analogous to a developer adding printf("It works!") to somewhere within a standard program. Obviously this is not an ideal situation, but given the nature of kernel modules, one cannot implement established testing procedures such as unit tests.
+
+Whenever the kernel module successfully intercept a system call, this fact can be written out to a standard character device. Similarly, communication with other nodes in the network can be output to a character device as well.
+
+Essentially, all testing with regards to the kernel module will have to be done via print messages output to a character device. Because this is an exploratory project, I cannot be more definite as to testing procedure in this regard.
+
+\subsection{Unit Testing outside of the Kernel Module}
+I will be making use of a unit testing framework for C called Check\footnote[5]{\url{http://check.sourceforge.net/doc/check_html/index.html}}. It was inspired by similar frameworks that currently exist for most programming languages; the most famous example being JUnit for Java. The incremental test and code approach will provide three main benefits:
+
+\begin{enumerate}
+	\item Because the unit tests use the interface to the unit being tested, they allow the developer to think about how the interface should be designed for usage early in the coding process.
+	\item They help the developer think early about aberrant cases, and code accordingly.
+	\item By providing a documented level of correctness, they allow the developer to refactor.
+\end{enumerate}
+
+As noted, unit testing cannot be used with loadable kernel modules. As such, any unit testing that does occur will be limited to any software created that lies outside of the kernel. For instance, a helper daemon will be required to facilitate interpretation of command-line interface-type commands. That is whenever a command to execute something on the command-line (such as rm -rf somefile), the kernel module will need to pass that information to a character device which is read by the daemon and then executed.
+
+Given the nature of unit testing, the process will involve the creation of functional code and then the creation of tests to validate said code’s sanity. This will inevitable lengthen the amount of time spent coding, but it will inevitable lead to fewer issues as we near completion.
+
 \subsection{Functional Testing}
+Unit testing can only go so far when it comes to the fully functional result. With the code fully tested, the actual functionality of the system will need to be tested. In order to achieve this, functional testing will be split into the following major activities:
+
+\begin{itemize}
+	\item \textbf{Network Structure} - Validate that each node is connecting with the appropriate nodes within the mesh. This will be verified by disabling any and all network connection hiding mechanisms of the system and using the tool tcpdump to verify that each node is only talking to the node it should be.
+	\item \textbf{Kernel Module: Process Hiding} - Validate that the any associated processes and loaded kernel modules do not show up in the process table. Additionally, examine whether signs of the application can be traced using FreeBSD’s dtrace utility.
+	\item \textbf{Kernel Module: Network Connection Hiding} - Validate that associated network connections do not show up when using `netstat -nav' and that network traffic cannot be seen when using tcpdump.
+	\item \textbf{Kernel Modules: Loading \& Unloading} - Validate that the system responds appropriately to loading and unloading the kernel module. Forced unloading of the module should be intercepted and disabled by the kernel module itself and loading unassociated modules should be permitted while the custom kernel module is running.
+	\item \textbf{Encryption \& Decryption} - Data encryption can be verified by having the kernel module output example encrypted and unencrypted data to a character device.
+\end{itemize}
 
 \clearpage
-\section{Schedule \& Milestones}
+\section{Schedule Estimates}
+\textbf{Total Schedule Budget:} $\sim$435 Hours
+
 \subsection{Research}
+$\sim$60 Hours
+
+A great deal of exploratory research into FreeBSD kernel modules will need to be accomplished before any real programming in earnest can be accomplished. Specific research into process hiding and network connection hiding requires a lower level understanding of the FreeBSD kernel and its system calls.
+
+Additionally, research into appropriate encryption technologies as well as the limitations of using a FreeBSD jails setup with respect to loadable kernel module support will also need to be looked into.
+
 \subsection{Environment Setup}
+$\sim$10 Hours
+
+Installation and configuration of a virtualized FreeBSD environment using VMWare for programming and testing along with the associated FreeBSD jailed environments for full scale testing.
+
 \subsection{Proof of Concept Prototypes}
+$\sim$80 Hours
+
+Development of a proof of concept prototype loadable kernel module for FreeBSD that accomplishes a simplified version of the goals required for the final kernel module. Failure to create an adequate prototype at this stage will require a changing to a data obfuscation scheme using TCP/IP headers instead of making the traffic at the kernel level. Success of this proof of concept is imperative to the project as a whole.
+
 \subsection{Programming}
+$\sim$210 Hours
+
+Development in earnest, including unit tests for each module of code produced. This also included final integration of the code. The high budget time for this section is to take into account the uncertainty involved in developing in the kernel space for a system that is relatively little used.
+
 \subsection{Testing \& Debugging}
+$\sim$50 Hours
+
+Final testing and debugging, which is inevitable. In addition to troubleshooting any problems that made it this far into the development cycle, testing will begin to produce documented results for use in the final report. All data produced throughout this phase of the project should be documented and saved.
+
 \subsection{Documentation \& Final Report}
+$\sim$25 Hours
+
+Collation of all the testing documentation and construction of the final report along with all supporting data and analysis.

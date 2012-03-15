@@ -22,7 +22,7 @@
 \usepackage[eulerchapternumbers,subfig,beramono,eulermath,pdfspacing,listings]{classicthesis}
 \usepackage{arsclassica}
 
-\input{arsclassica-settings}
+\input{settings}
 
 \begin{document}
 \pagenumbering{roman}
@@ -40,12 +40,11 @@
 %: Main Pages
 %******************************************************************
 \pagenumbering{arabic}
-\input{Chapters/StudentExperience}
+\input{Chapters/CurriculumVitae}
+\input{Chapters/ProjectInformation}
 % *****************************************************************
 %: Back Pages
 %******************************************************************
-%\clearpage
-%\input{FrontBackPages/Bibliography}
-%\clearpage
-%\input{FrontBackPages/Index}
+\clearpage
+\input{FrontBackPages/Appendix}
 \end{document}

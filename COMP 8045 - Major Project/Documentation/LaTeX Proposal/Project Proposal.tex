@@ -3,7 +3,7 @@
                numbers=noenddot,cleardoublepage=empty,%
                tablecaptionabove]{scrreprt}
                
-\usepackage[italian,american]{babel}
+\usepackage[american]{babel}
 \usepackage[applemac]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm}
@@ -28,28 +28,24 @@
 \pagenumbering{roman}
 \pagestyle{plain}
 %******************************************************************
-% Frontmatter
+%: Front Pages
 %******************************************************************
-\input{FrontBackMatter/Titlepage}
-%\input{FrontBackMatter/Titleback}
-%\clearpage
-%\input{FrontBackMatter/Abstract+Sommario}
-%\input{FrontBackMatter/Acknowledgements}
-%\pagestyle{scrheadings} 
-%\clearpage
-%\input{FrontBackMatter/Contents}
-%\cleardoublepage
+\input{FrontBackPages/Titlepage}
+\clearpage
+\pagestyle{scrheadings} 
+\clearpage
+\input{FrontBackPages/Contents}
+\cleardoublepage
 %******************************************************************
-% Mainmatter
+%: Main Pages
 %******************************************************************
-%\pagenumbering{arabic}
-%\input{Chapters/Fundamentals}
-%\input{Chapters/Code}
+\pagenumbering{arabic}
+\input{Chapters/StudentExperience}
 % *****************************************************************
-% Backmatter
+%: Back Pages
 %******************************************************************
 %\clearpage
-%\input{FrontBackMatter/Bibliography}
+%\input{FrontBackPages/Bibliography}
 %\clearpage
-%\input{FrontBackMatter/Index}
+%\input{FrontBackPages/Index}
 \end{document}

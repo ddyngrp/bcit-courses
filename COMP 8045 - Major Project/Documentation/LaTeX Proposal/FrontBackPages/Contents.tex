@@ -1,0 +1,29 @@
+%*******************************************************
+%: TOC Corrections
+%*******************************************************
+
+\renewcommand{\cftchapleader}{\hfill}
+\renewcommand{\cftsecleader}{\hfill}
+\renewcommand{\cftsubsecleader}{\hfill}
+\renewcommand{\cftsubsubsecleader}{\hfill}
+\renewcommand{\cftchapfont}{\Large\color{Maroon}}
+\renewcommand{\cftsecfont}{\normalsize\sffamily}
+
+%*******************************************************
+%: Contents
+%*******************************************************
+\phantomsection
+\pdfbookmark{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2}
+\begingroup 
+	\let\clearpage\relax
+	\let\cleardoublepage\relax
+
+	\tableofcontents
+\endgroup
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}} 
+
+\begingroup 
+	\let\clearpage\relax
+	\let\cleardoublepage\relax
+\endgroup

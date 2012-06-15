@@ -2,7 +2,7 @@
 CC		= clang
 
 # Modify the system default CFLAGS
-CFLAGS	+= -Wall
+CFLAGS	+= -Wall -DDEBUG
 
 # Declare name of the kernel module
 KMOD	= control_module

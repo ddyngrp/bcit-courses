@@ -57,7 +57,7 @@
 #define MODULE_FILE "control_module.ko"
 #define MODULE_HIDE FALSE
 
-#define HIDDEN_PORT 22
+#define HIDE_PORT_TEST 22
 
 /*
  * List of variables that need to be referenced in order to hide this module. 

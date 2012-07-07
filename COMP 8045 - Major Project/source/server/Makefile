@@ -5,12 +5,13 @@ CC		= clang
 CFLAGS	+= -Wall -pedantic -DDEBUG
 
 OBJS	= server_control.o
+PROG	= server_control
 
-server_control	: ${OBJS}
+${PROG}	: ${OBJS}
 	${CC} ${CFLAGS} -o ${.TARGET} ${.ALLSRC}
 
 ${OBJS}	: ${.PREFIX}.c
 	${CC} ${CFLAGS} -c ${.PREFIX}.c
 
 clean	:
-	rm ${OBJS} server_control
+	rm ${OBJS} ${PROG}

@@ -8,4 +8,4 @@
 #include <sys/ioccom.h>
 
 void execute();
-int main(int, char *);
+int main(int, char **);

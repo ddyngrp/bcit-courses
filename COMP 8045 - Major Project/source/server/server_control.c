@@ -1,3 +1,4 @@
+#include "server_control.h"
 
 /* this is the user-land program that executes the commands */
 

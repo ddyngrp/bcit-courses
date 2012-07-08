@@ -1,6 +1,16 @@
+/**
+ * @file
+ *
+ * This is the server control application. It reads commands from a character device.
+ */
+
 #include "server_control.h"
 
-void execute() {	
+/**
+ * @fn execute()
+ * @brief Description of function
+ */
+void execute() {
 	int kernel_fd;
 	char icmp_msg[256+1];
 
@@ -18,9 +28,18 @@ void execute() {
 
 }
 
-int main(int argc,char *argv[]) {
+/**
+ * @fn int main(int argc, char **argv)
+ * @brief Description of function
+ * @param argc number of arguments passed via the command line
+ * @param argv an array containing arguments
+ * @return exit code
+ */
+int main(int argc, char **argv) {
 	while(1) {
 		execute();
 		sleep(1);
 	}
+
+	return 0;
 }

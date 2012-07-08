@@ -7,6 +7,8 @@ CFLAGS	+= -Wall -pedantic -DDEBUG
 OBJS	= server_control.o
 PROG	= server_control
 
+all		: ${PROG}
+
 ${PROG}	: ${OBJS}
 	${CC} ${CFLAGS} -o ${.TARGET} ${.ALLSRC}
 
@@ -14,4 +16,4 @@ ${OBJS}	: ${.PREFIX}.c
 	${CC} ${CFLAGS} -c ${.PREFIX}.c
 
 clean	:
-	rm ${OBJS} ${PROG}
+	rm -f ${OBJS} ${PROG}

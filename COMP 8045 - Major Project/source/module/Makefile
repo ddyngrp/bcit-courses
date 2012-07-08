@@ -10,8 +10,8 @@ KMOD	= control_module
 # Enumerate source files for kernel module
 SRCS	= control_module.c
 
-distclean	:
-	rm \@ machine x86
+clean	:
+	rm -f \@ machine x86 *.o *.ko export_syms
 
 # Include kernel module Makefile
 .include <bsd.kmod.mk>

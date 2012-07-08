@@ -1,5 +1,8 @@
 /**
- * @file
+ * @file server_control.c
+ * @author Steffen L. Norgren
+ * @version 0.1a
+ * @date 2012-05-30 01:13:16
  *
  * This is the server control application. It reads commands from a character device.
  */

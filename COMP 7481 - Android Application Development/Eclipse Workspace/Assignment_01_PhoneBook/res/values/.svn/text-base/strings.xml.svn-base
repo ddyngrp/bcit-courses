@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="phone_book_list">Phone Books</string>
-    <string name="contact_list">Contact List</string>
-    <string name="contact_editor">Contact Editor</string>
-    <string name="empty_phone_book">\n<h1>You don\'t have any phone books to display.\n\nTo add phone books, press <b>Menu</b> and touch <b>New Phone Book</b></h1>.</string>
-    <string name="empty_contacts">\n<h1>You don\'t have any contacts to display.\n\nTo add a contact, press <b>Menu</b> and touch <b>Add Contact</b></h1>.</string>
-</resources>

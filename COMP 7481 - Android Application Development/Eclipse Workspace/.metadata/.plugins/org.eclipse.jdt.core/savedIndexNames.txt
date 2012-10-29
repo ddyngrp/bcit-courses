@@ -1,3 +1,0 @@
-INDEX VERSION 1.126+/Users/ironix/Documents/Schoolwork/COMP 7481 - Android Application Development/Eclipse Workspace/.metadata/.plugins/org.eclipse.jdt.core
-1375508107.index
-4231603864.index

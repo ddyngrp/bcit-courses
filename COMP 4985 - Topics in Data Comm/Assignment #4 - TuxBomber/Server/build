@@ -1,0 +1,1 @@
+clear; g++ -Wall -ggdb -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer *.cpp Map/*.cpp -ggdb

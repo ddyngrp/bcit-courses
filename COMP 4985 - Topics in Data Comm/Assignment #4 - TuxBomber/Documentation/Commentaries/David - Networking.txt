@@ -1,0 +1,28 @@
+Networking team leader commentary
+
+I think that generally, my team did a fairly good job. Early on in the project, we got a decent amount of work 
+done and had very little to do afterwards. As requirements changed, we worked to accommodate those 
+changes. Near the end of the project, there was a major decision to switch from TCP to UDP, a decision that 
+didn't seem to be that big of a deal work-wise, but implementing and integrating it with everyone else's code 
+proved to be more problematic.
+
+What was planned & what got done
+
+This is a somewhat difficult topic to answer. What was originally planned, we accomplished for the most part. 
+However, design changes kept coming in from other groups, and we had to modify things to compensate for 
+new data formats being passed across the network.
+
+What we produced & what was never used
+
+We had initially created a set of functions to make networking tasks more readable and easier to accomplish. 
+Unfortunately, other groups didn't wait for us to implement what they wanted before they started testing their 
+code, so they created their own versions of networking code. When we started to integrate everyone's code 
+into a final project, there was no time for us to make everything into neat and organized groupings of functions.
+
+Reasons for major development decisions
+
+In the beginning, we thought that it would be possible to do the entire game in TCP, but we eventually realized 
+that retransmissions might put some players behind others. So we decided that UDP would be a better fit for 
+the actual gameplay, while still keeping TCP for control information such as player connection and game-start 
+alerts. Other than what I've mentioned above, we didn't really make any design decisions. Everything was a 
+hack to get things to work with the latest requirements we received from other groups.

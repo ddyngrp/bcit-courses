@@ -1,0 +1,8 @@
+Log of fsck -C -a -t xfs /dev/sda3 
+Tue Dec  7 22:17:52 2010
+
+fsck 1.40.2 (12-Jul-2007)
+/sbin/fsck.xfs: XFS file system.
+
+Tue Dec  7 22:17:52 2010
+----------------

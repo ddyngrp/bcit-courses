@@ -1,0 +1,11 @@
+
+
+Overall Statistics over 3673638 seconds (1020:27:18.677558):
+376733864 ttl bytes sent, 102.551 bytes/second
+370358287 ttl non-rexmit bytes sent, 100.815 bytes/second
+6375577 ttl rexmit bytes sent, 1.735 bytes/second
+1829725 packets sent, 0.498 packets/second
+90401 connections opened, 0.025 conns/second
+860 dupacks sent, 0.000 dupacks/second
+96984 rexmits sent, 0.026 rexmits/second
+average RTT: 126.991 msecs

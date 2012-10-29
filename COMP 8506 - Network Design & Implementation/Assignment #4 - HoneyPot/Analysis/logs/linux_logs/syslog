@@ -1,0 +1,2 @@
+Dec  8 06:25:44 majikthise syslogd 1.4.1#21ubuntu3: restart.
+Dec  8 06:39:01 majikthise /USR/SBIN/CRON[9599]: (root) CMD (  [ -d /var/lib/php5 ] && find /var/lib/php5/ -type f -cmin +$(/usr/lib/php5/maxlifetime) -print0 | xargs -r -0 rm)

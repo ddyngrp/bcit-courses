@@ -1,0 +1,713 @@
+Nov 11 22:00:51 majikthise init: tty4 main process (4334) killed by TERM signal
+Nov 11 22:00:51 majikthise init: tty5 main process (4335) killed by TERM signal
+Nov 11 22:00:51 majikthise init: tty2 main process (4338) killed by TERM signal
+Nov 11 22:00:51 majikthise init: tty3 main process (4339) killed by TERM signal
+Nov 11 22:00:51 majikthise init: tty6 main process (4341) killed by TERM signal
+Nov 11 22:00:51 majikthise init: tty1 main process (4340) killed by TERM signal
+Nov 11 22:00:51 majikthise mysqld[4918]: 101111 22:00:51 [Note] /usr/sbin/mysqld: Normal shutdown
+Nov 11 22:00:51 majikthise mysqld[4918]: 
+Nov 11 22:00:51 majikthise mysqld[4918]: 101111 22:00:51  InnoDB: Starting shutdown...
+Nov 11 22:00:53 majikthise mysqld[4918]: 101111 22:00:53  InnoDB: Shutdown completed; log sequence number 0 43665
+Nov 11 22:00:54 majikthise mysqld[4918]: 101111 22:00:54 [Note] /usr/sbin/mysqld: Shutdown complete
+Nov 11 22:00:54 majikthise mysqld[4918]: 
+Nov 11 22:00:54 majikthise mysqld_safe[7399]: ended
+Nov 11 22:12:07 majikthise named[4806]: starting BIND 9.4.1-P1.1 -u bind
+Nov 11 22:12:07 majikthise named[4806]: found 2 CPUs, using 2 worker threads
+Nov 11 22:12:07 majikthise named[4806]: loading configuration from '/etc/bind/named.conf'
+Nov 11 22:12:07 majikthise named[4806]: listening on IPv4 interface lo, 127.0.0.1#53
+Nov 11 22:12:07 majikthise named[4806]: listening on IPv4 interface eth0, 96.53.93.58#53
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: D.F.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Nov 11 22:12:07 majikthise named[4806]: command channel listening on 127.0.0.1#953
+Nov 11 22:12:07 majikthise named[4806]: command channel listening on ::1#953
+Nov 11 22:12:10 majikthise mysqld_safe[4921]: started
+Nov 11 22:12:13 majikthise mysqld[4924]: 101111 22:12:13  InnoDB: Started; log sequence number 0 43665
+Nov 11 22:12:13 majikthise mysqld[4924]: 101111 22:12:13 [Note] /usr/sbin/mysqld: ready for connections.
+Nov 11 22:12:13 majikthise mysqld[4924]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Nov 11 22:12:14 majikthise /etc/mysql/debian-start[4985]: Upgrading MySQL tables if necessary.
+Nov 11 22:12:15 majikthise /etc/mysql/debian-start[4990]: Looking for 'mysql' in: /usr/bin/mysql
+Nov 11 22:12:15 majikthise /etc/mysql/debian-start[4990]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Nov 11 22:12:15 majikthise /etc/mysql/debian-start[4990]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Nov 11 22:12:15 majikthise /etc/mysql/debian-start[5028]: Checking for insecure root accounts.
+Nov 11 22:12:15 majikthise /etc/mysql/debian-start[5032]: Checking for crashed MySQL tables.
+Nov 11 22:19:24 majikthise init: tty1 main process ended, respawning
+Nov 28 15:04:17 majikthise init: tty1 main process ended, respawning
+Nov 28 15:38:48 majikthise mysqld[4924]: 101128 15:38:48 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_sessions.MYI'; try to repair it
+Nov 28 15:38:48 majikthise mysqld[4924]: 101128 15:38:48 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_posts.MYI'; try to repair it
+Nov 28 15:38:48 majikthise mysqld[4924]: 101128 15:38:48 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_posts.MYI'; try to repair it
+Nov 28 17:00:38 majikthise mysqld[4924]: 101128 17:00:38 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_topics.MYI'; try to repair it
+Nov 28 17:00:38 majikthise mysqld[4924]: 101128 17:00:38 [ERROR] Got error 126 when reading table './phpbb_db/phpbb_topics'
+Nov 28 17:00:41 majikthise mysqld[4924]: 101128 17:00:41 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Nov 28 17:00:41 majikthise mysqld[4924]: 101128 17:00:41 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Nov 29 18:26:50 majikthise mysqld[4924]: 101129 18:26:50 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_topics.MYI'; try to repair it
+Nov 29 18:26:50 majikthise mysqld[4924]: 101129 18:26:50 [ERROR] Got error 126 when reading table './phpbb_db/phpbb_topics'
+Nov 29 20:51:26 majikthise mysqld[4924]: 101129 20:51:26 [ERROR] /usr/sbin/mysqld: Incorrect key file for table './phpbb_db/phpbb_topics.MYI'; try to repair it
+Nov 29 20:51:26 majikthise mysqld[4924]: 101129 20:51:26 [ERROR] Got error 126 when reading table './phpbb_db/phpbb_topics'
+Nov 30 05:17:24 majikthise mysqld[4924]: 101130  5:17:24 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Nov 30 05:17:24 majikthise mysqld[4924]: 101130  5:17:24 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Nov 30 11:38:53 majikthise named[4794]: starting BIND 9.4.1-P1.1 -u bind
+Nov 30 11:38:53 majikthise named[4794]: found 2 CPUs, using 2 worker threads
+Nov 30 11:38:53 majikthise named[4794]: loading configuration from '/etc/bind/named.conf'
+Nov 30 11:38:53 majikthise named[4794]: listening on IPv4 interface lo, 127.0.0.1#53
+Nov 30 11:38:53 majikthise named[4794]: listening on IPv4 interface eth0, 96.53.93.58#53
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: D.F.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Nov 30 11:38:53 majikthise named[4794]: command channel listening on 127.0.0.1#953
+Nov 30 11:38:53 majikthise named[4794]: command channel listening on ::1#953
+Nov 30 11:39:01 majikthise mysqld_safe[4927]: started
+Nov 30 11:39:06 majikthise mysqld[4930]: 101130 11:39:06  InnoDB: Started; log sequence number 0 43665
+Nov 30 11:39:06 majikthise mysqld[4930]: 101130 11:39:06 [Note] Recovering after a crash using /var/log/mysql/mysql-bin
+Nov 30 11:39:06 majikthise mysqld[4930]: 101130 11:39:06 [Note] Starting crash recovery...
+Nov 30 11:39:06 majikthise mysqld[4930]: 101130 11:39:06 [Note] Crash recovery finished.
+Nov 30 11:39:06 majikthise mysqld[4930]: 101130 11:39:06 [Note] /usr/sbin/mysqld: ready for connections.
+Nov 30 11:39:06 majikthise mysqld[4930]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Nov 30 11:39:06 majikthise /etc/mysql/debian-start[5009]: Upgrading MySQL tables if necessary.
+Nov 30 11:39:07 majikthise /etc/mysql/debian-start[5014]: Looking for 'mysql' in: /usr/bin/mysql
+Nov 30 11:39:07 majikthise /etc/mysql/debian-start[5014]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Nov 30 11:39:07 majikthise /etc/mysql/debian-start[5014]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Nov 30 11:39:07 majikthise /etc/mysql/debian-start[5052]: Checking for insecure root accounts.
+Nov 30 11:39:07 majikthise /etc/mysql/debian-start[5059]: Checking for crashed MySQL tables.
+Nov 30 11:39:08 majikthise mysqld[4930]: 101130 11:39:08 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 11:39:08 majikthise mysqld[4930]: 101130 11:39:08 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: WARNING: mysqlcheck has found corrupt tables
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: phpbb_db.phpbb_sessions
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: error    : Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: 
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]:  Improperly closed tables are also reported if clients are accessing
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]:  the tables *now*. A list of current connections is below.
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: 
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: | Id | User             | Host      | db | Command | Time | State | Info             |
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: | 7  | debian-sys-maint | localhost |    | Query   | 0    |       | show processlist |
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Nov 30 11:39:08 majikthise /etc/mysql/debian-start[5104]: Uptime: 7  Threads: 1  Questions: 64  Slow queries: 0  Opens: 51  Flush tables: 1  Open tables: 45  Queries per second avg: 9.143
+Nov 30 11:47:41 majikthise mysqld[4930]: 101130 11:47:41 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 11:47:41 majikthise last message repeated 3 times
+Nov 30 12:06:39 majikthise mysqld[4930]: 101130 12:06:39 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 12:06:39 majikthise mysqld[4930]: 101130 12:06:39 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 12:17:28 majikthise mysqld[4930]: 101130 12:17:28 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 12:17:28 majikthise mysqld[4930]: 101130 12:17:28 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Nov 30 12:56:06 majikthise mysqld[4930]: 101130 12:56:06 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 12:56:06 majikthise mysqld[4930]: 101130 12:56:06 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 13:08:45 majikthise mysqld[4930]: 101130 13:08:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 13:08:45 majikthise last message repeated 7 times
+Nov 30 13:18:20 majikthise mysqld[4930]: 101130 13:18:20 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 13:18:20 majikthise mysqld[4930]: 101130 13:18:20 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 13:40:54 majikthise mysqld[4930]: 101130 13:40:54 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 13:40:54 majikthise mysqld[4930]: 101130 13:40:54 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:02:42 majikthise mysqld[4930]: 101130 14:02:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:02:42 majikthise mysqld[4930]: 101130 14:02:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:25:08 majikthise mysqld[4930]: 101130 14:25:08 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:25:08 majikthise mysqld[4930]: 101130 14:25:08 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:47:30 majikthise mysqld[4930]: 101130 14:47:30 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 14:47:30 majikthise mysqld[4930]: 101130 14:47:30 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 15:10:06 majikthise mysqld[4930]: 101130 15:10:06 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 15:10:06 majikthise mysqld[4930]: 101130 15:10:06 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 16:10:21 majikthise mysqld[4930]: 101130 16:10:21 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 16:10:21 majikthise mysqld[4930]: 101130 16:10:21 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 17:19:37 majikthise mysqld[4930]: 101130 17:19:37 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 17:19:37 majikthise last message repeated 3 times
+Nov 30 19:54:27 majikthise mysqld[4930]: 101130 19:54:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 19:54:27 majikthise mysqld[4930]: 101130 19:54:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 22:53:16 majikthise mysqld[4930]: 101130 22:53:16 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 22:53:16 majikthise last message repeated 3 times
+Nov 30 23:14:06 majikthise mysqld[4930]: 101130 23:14:06 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 23:14:06 majikthise last message repeated 3 times
+Nov 30 23:14:07 majikthise mysqld[4930]: 101130 23:14:07 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 23:14:07 majikthise last message repeated 3 times
+Nov 30 23:14:09 majikthise mysqld[4930]: 101130 23:14:09 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 23:14:09 majikthise last message repeated 3 times
+Nov 30 23:34:35 majikthise mysqld[4930]: 101130 23:34:35 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 23:34:35 majikthise last message repeated 3 times
+Nov 30 23:45:10 majikthise mysqld[4930]: 101130 23:45:10 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Nov 30 23:45:10 majikthise mysqld[4930]: 101130 23:45:10 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 00:28:15 majikthise mysqld[4930]: 101201  0:28:15 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 00:28:15 majikthise last message repeated 3 times
+Dec  1 00:28:16 majikthise mysqld[4930]: 101201  0:28:16 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 00:28:16 majikthise last message repeated 3 times
+Dec  1 00:28:17 majikthise mysqld[4930]: 101201  0:28:17 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 00:28:17 majikthise last message repeated 3 times
+Dec  1 00:40:08 majikthise mysqld[4930]: 101201  0:40:08 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 00:40:08 majikthise last message repeated 3 times
+Dec  1 01:44:45 majikthise mysqld[4930]: 101201  1:44:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 01:44:45 majikthise last message repeated 3 times
+Dec  1 02:00:14 majikthise mysqld[4930]: 101201  2:00:14 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 02:00:14 majikthise last message repeated 3 times
+Dec  1 03:37:03 majikthise mysqld[4930]: 101201  3:37:03 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 03:37:03 majikthise mysqld[4930]: 101201  3:37:03 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 07:27:28 majikthise mysqld[4930]: 101201  7:27:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 07:27:28 majikthise last message repeated 3 times
+Dec  1 09:55:53 majikthise mysqld[4930]: 101201  9:55:53 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 09:55:53 majikthise last message repeated 3 times
+Dec  1 09:55:54 majikthise mysqld[4930]: 101201  9:55:54 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 09:55:54 majikthise last message repeated 3 times
+Dec  1 10:32:48 majikthise mysqld[4930]: 101201 10:32:48 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 10:32:48 majikthise last message repeated 3 times
+Dec  1 10:32:49 majikthise mysqld[4930]: 101201 10:32:49 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 10:32:49 majikthise last message repeated 3 times
+Dec  1 10:32:51 majikthise mysqld[4930]: 101201 10:32:51 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 10:32:51 majikthise last message repeated 3 times
+Dec  1 11:20:48 majikthise mysqld[4930]: 101201 11:20:48 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 11:20:48 majikthise mysqld[4930]: 101201 11:20:48 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 12:47:13 majikthise mysqld[4930]: 101201 12:47:13 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 12:47:13 majikthise last message repeated 3 times
+Dec  1 15:29:43 majikthise mysqld[4930]: 101201 15:29:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 15:29:43 majikthise mysqld[4930]: 101201 15:29:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 16:02:27 majikthise mysqld[4930]: 101201 16:02:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 16:02:27 majikthise last message repeated 3 times
+Dec  1 16:07:39 majikthise mysqld[4930]: 101201 16:07:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 16:07:39 majikthise mysqld[4930]: 101201 16:07:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 16:09:47 majikthise mysqld[4930]: 101201 16:09:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 16:09:47 majikthise mysqld[4930]: 101201 16:09:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:28 majikthise mysqld[4930]: 101201 17:18:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:28 majikthise last message repeated 3 times
+Dec  1 17:18:31 majikthise mysqld[4930]: 101201 17:18:31 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:31 majikthise last message repeated 3 times
+Dec  1 17:18:33 majikthise mysqld[4930]: 101201 17:18:33 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:33 majikthise last message repeated 3 times
+Dec  1 17:18:35 majikthise mysqld[4930]: 101201 17:18:35 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:35 majikthise last message repeated 3 times
+Dec  1 17:18:36 majikthise mysqld[4930]: 101201 17:18:36 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:36 majikthise last message repeated 7 times
+Dec  1 17:18:37 majikthise mysqld[4930]: 101201 17:18:37 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:37 majikthise last message repeated 3 times
+Dec  1 17:18:39 majikthise mysqld[4930]: 101201 17:18:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:39 majikthise last message repeated 3 times
+Dec  1 17:18:41 majikthise mysqld[4930]: 101201 17:18:41 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:41 majikthise last message repeated 3 times
+Dec  1 17:18:45 majikthise mysqld[4930]: 101201 17:18:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:18:45 majikthise last message repeated 3 times
+Dec  1 17:20:41 majikthise mysqld[4930]: 101201 17:20:41 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:20:41 majikthise last message repeated 3 times
+Dec  1 17:21:56 majikthise mysqld[4930]: 101201 17:21:56 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:21:56 majikthise last message repeated 3 times
+Dec  1 17:21:59 majikthise mysqld[4930]: 101201 17:21:59 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:21:59 majikthise last message repeated 3 times
+Dec  1 17:34:48 majikthise mysqld[4930]: 101201 17:34:48 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:34:48 majikthise last message repeated 3 times
+Dec  1 17:34:53 majikthise mysqld[4930]: 101201 17:34:53 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:34:53 majikthise last message repeated 3 times
+Dec  1 17:35:01 majikthise mysqld[4930]: 101201 17:35:01 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:01 majikthise last message repeated 3 times
+Dec  1 17:35:18 majikthise mysqld[4930]: 101201 17:35:18 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:18 majikthise last message repeated 3 times
+Dec  1 17:35:23 majikthise mysqld[4930]: 101201 17:35:23 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:23 majikthise last message repeated 3 times
+Dec  1 17:35:40 majikthise mysqld[4930]: 101201 17:35:40 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:40 majikthise last message repeated 3 times
+Dec  1 17:35:46 majikthise mysqld[4930]: 101201 17:35:46 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:46 majikthise last message repeated 3 times
+Dec  1 17:35:48 majikthise mysqld[4930]: 101201 17:35:48 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:48 majikthise last message repeated 3 times
+Dec  1 17:35:57 majikthise mysqld[4930]: 101201 17:35:57 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:35:57 majikthise last message repeated 3 times
+Dec  1 17:36:01 majikthise mysqld[4930]: 101201 17:36:01 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 17:36:01 majikthise last message repeated 3 times
+Dec  1 19:33:46 majikthise mysqld[4930]: 101201 19:33:46 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 19:33:46 majikthise last message repeated 3 times
+Dec  1 20:13:47 majikthise mysqld[4930]: 101201 20:13:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 20:13:47 majikthise mysqld[4930]: 101201 20:13:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 20:25:30 majikthise mysqld[4930]: 101201 20:25:30 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 20:25:30 majikthise last message repeated 3 times
+Dec  1 20:37:09 majikthise mysqld[4930]: 101201 20:37:09 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 20:37:09 majikthise mysqld[4930]: 101201 20:37:09 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 22:33:11 majikthise mysqld[4930]: 101201 22:33:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 22:33:11 majikthise mysqld[4930]: 101201 22:33:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 22:39:11 majikthise mysqld[4930]: 101201 22:39:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 22:39:11 majikthise last message repeated 3 times
+Dec  1 23:52:24 majikthise mysqld[4930]: 101201 23:52:24 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  1 23:52:24 majikthise last message repeated 3 times
+Dec  2 08:02:19 majikthise mysqld[4930]: 101202  8:02:19 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 08:02:19 majikthise last message repeated 3 times
+Dec  2 08:12:11 majikthise mysqld[4930]: 101202  8:12:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 08:12:11 majikthise last message repeated 3 times
+Dec  2 08:12:35 majikthise mysqld[4930]: 101202  8:12:35 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 08:12:35 majikthise last message repeated 3 times
+Dec  2 08:12:37 majikthise mysqld[4930]: 101202  8:12:37 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 08:12:37 majikthise last message repeated 3 times
+Dec  2 15:16:31 majikthise mysqld[4930]: 101202 15:16:31 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 15:16:31 majikthise last message repeated 3 times
+Dec  2 15:45:28 majikthise mysqld[4930]: 101202 15:45:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 15:45:28 majikthise mysqld[4930]: 101202 15:45:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 15:45:29 majikthise mysqld[4930]: 101202 15:45:29 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 15:45:29 majikthise last message repeated 3 times
+Dec  2 16:08:11 majikthise mysqld[4930]: 101202 16:08:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 16:08:11 majikthise mysqld[4930]: 101202 16:08:11 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 16:51:47 majikthise mysqld[4930]: 101202 16:51:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 16:51:47 majikthise mysqld[4930]: 101202 16:51:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:15:51 majikthise mysqld[4930]: 101202 17:15:51 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:15:51 majikthise mysqld[4930]: 101202 17:15:51 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:38:02 majikthise mysqld[4930]: 101202 17:38:02 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:38:02 majikthise mysqld[4930]: 101202 17:38:02 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:45:36 majikthise mysqld[4930]: 101202 17:45:36 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 17:45:36 majikthise last message repeated 3 times
+Dec  2 18:23:36 majikthise mysqld[4930]: 101202 18:23:36 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 18:23:36 majikthise mysqld[4930]: 101202 18:23:36 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 18:34:35 majikthise mysqld[4930]: 101202 18:34:35 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 18:34:35 majikthise mysqld[4930]: 101202 18:34:35 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 19:30:56 majikthise mysqld[4930]: 101202 19:30:56 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 19:30:56 majikthise mysqld[4930]: 101202 19:30:56 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 20:26:42 majikthise mysqld[4930]: 101202 20:26:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 20:26:42 majikthise last message repeated 3 times
+Dec  2 20:27:32 majikthise mysqld[4930]: 101202 20:27:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 20:27:32 majikthise mysqld[4930]: 101202 20:27:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 20:37:17 majikthise mysqld[4930]: 101202 20:37:17 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 20:37:17 majikthise last message repeated 3 times
+Dec  2 21:11:50 majikthise mysqld[4930]: 101202 21:11:50 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 21:11:50 majikthise last message repeated 3 times
+Dec  2 21:23:59 majikthise mysqld[4930]: 101202 21:23:59 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 21:23:59 majikthise mysqld[4930]: 101202 21:23:59 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 21:36:23 majikthise mysqld[4930]: 101202 21:36:23 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 21:36:23 majikthise last message repeated 3 times
+Dec  2 21:41:42 majikthise mysqld[4930]: 101202 21:41:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 21:41:42 majikthise mysqld[4930]: 101202 21:41:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 22:20:27 majikthise mysqld[4930]: 101202 22:20:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 22:20:27 majikthise mysqld[4930]: 101202 22:20:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 23:16:54 majikthise mysqld[4930]: 101202 23:16:54 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  2 23:16:54 majikthise mysqld[4930]: 101202 23:16:54 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 00:13:19 majikthise mysqld[4930]: 101203  0:13:19 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 00:13:19 majikthise mysqld[4930]: 101203  0:13:19 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 00:13:46 majikthise mysqld[4930]: 101203  0:13:46 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 00:13:46 majikthise last message repeated 3 times
+Dec  3 00:56:33 majikthise mysqld[4930]: 101203  0:56:33 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 00:56:33 majikthise last message repeated 3 times
+Dec  3 01:09:45 majikthise mysqld[4930]: 101203  1:09:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 01:09:45 majikthise mysqld[4930]: 101203  1:09:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:06:14 majikthise mysqld[4930]: 101203  2:06:14 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:06:14 majikthise mysqld[4930]: 101203  2:06:14 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:24:28 majikthise mysqld[4930]: 101203  2:24:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:24:28 majikthise last message repeated 3 times
+Dec  3 02:24:29 majikthise mysqld[4930]: 101203  2:24:29 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:24:29 majikthise last message repeated 3 times
+Dec  3 02:24:32 majikthise mysqld[4930]: 101203  2:24:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 02:24:32 majikthise last message repeated 3 times
+Dec  3 03:02:34 majikthise mysqld[4930]: 101203  3:02:34 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:02:34 majikthise mysqld[4930]: 101203  3:02:34 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:27:43 majikthise mysqld[4930]: 101203  3:27:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:27:43 majikthise mysqld[4930]: 101203  3:27:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:49:29 majikthise mysqld[4930]: 101203  3:49:29 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:49:29 majikthise last message repeated 3 times
+Dec  3 03:59:07 majikthise mysqld[4930]: 101203  3:59:07 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 03:59:07 majikthise mysqld[4930]: 101203  3:59:07 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 04:55:43 majikthise mysqld[4930]: 101203  4:55:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Dec  3 04:55:43 majikthise mysqld[4930]: 101203  4:55:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Dec  3 04:55:43 majikthise mysqld[4930]: 101203  4:55:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 04:55:43 majikthise mysqld[4930]: 101203  4:55:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 05:52:10 majikthise mysqld[4930]: 101203  5:52:10 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 05:52:10 majikthise mysqld[4930]: 101203  5:52:10 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 06:48:23 majikthise mysqld[4930]: 101203  6:48:23 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 06:48:23 majikthise mysqld[4930]: 101203  6:48:23 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 07:10:12 majikthise mysqld[4930]: 101203  7:10:12 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 07:10:12 majikthise last message repeated 3 times
+Dec  3 07:10:13 majikthise mysqld[4930]: 101203  7:10:13 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 07:10:13 majikthise last message repeated 3 times
+Dec  3 07:25:24 majikthise mysqld[4930]: 101203  7:25:24 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 07:25:24 majikthise last message repeated 3 times
+Dec  3 07:45:15 majikthise mysqld[4930]: 101203  7:45:15 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 07:45:15 majikthise mysqld[4930]: 101203  7:45:15 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 08:41:28 majikthise mysqld[4930]: 101203  8:41:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 08:41:28 majikthise mysqld[4930]: 101203  8:41:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 09:16:32 majikthise mysqld[4930]: 101203  9:16:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Dec  3 09:16:32 majikthise mysqld[4930]: 101203  9:16:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_topics.frm'
+Dec  3 09:16:32 majikthise mysqld[4930]: 101203  9:16:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 09:16:32 majikthise mysqld[4930]: 101203  9:16:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 09:37:50 majikthise mysqld[4930]: 101203  9:37:50 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 09:37:50 majikthise mysqld[4930]: 101203  9:37:50 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 10:33:22 majikthise mysqld[4930]: 101203 10:33:22 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 10:33:22 majikthise last message repeated 3 times
+Dec  3 10:33:23 majikthise mysqld[4930]: 101203 10:33:23 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 10:33:23 majikthise last message repeated 3 times
+Dec  3 10:33:25 majikthise mysqld[4930]: 101203 10:33:25 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 10:33:25 majikthise last message repeated 3 times
+Dec  3 10:34:13 majikthise mysqld[4930]: 101203 10:34:13 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 10:34:13 majikthise mysqld[4930]: 101203 10:34:13 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 11:30:46 majikthise mysqld[4930]: 101203 11:30:46 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 11:30:46 majikthise mysqld[4930]: 101203 11:30:46 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 11:34:32 majikthise mysqld[4930]: 101203 11:34:32 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 11:34:32 majikthise last message repeated 3 times
+Dec  3 12:28:20 majikthise mysqld[4930]: 101203 12:28:20 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 12:28:20 majikthise mysqld[4930]: 101203 12:28:20 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 12:42:41 majikthise mysqld[4930]: 101203 12:42:41 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 12:42:41 majikthise last message repeated 3 times
+Dec  3 12:42:42 majikthise mysqld[4930]: 101203 12:42:42 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 12:42:42 majikthise last message repeated 3 times
+Dec  3 13:23:45 majikthise mysqld[4930]: 101203 13:23:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 13:23:45 majikthise mysqld[4930]: 101203 13:23:45 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 14:42:39 majikthise mysqld[4930]: 101203 14:42:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 14:42:39 majikthise last message repeated 3 times
+Dec  3 14:56:38 majikthise mysqld[4930]: 101203 14:56:38 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 14:56:38 majikthise mysqld[4930]: 101203 14:56:38 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 14:56:39 majikthise mysqld[4930]: 101203 14:56:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 14:56:39 majikthise mysqld[4930]: 101203 14:56:39 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 15:01:43 majikthise mysqld[4930]: 101203 15:01:43 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 15:01:43 majikthise last message repeated 3 times
+Dec  3 15:01:44 majikthise mysqld[4930]: 101203 15:01:44 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 15:01:44 majikthise last message repeated 3 times
+Dec  3 15:01:47 majikthise mysqld[4930]: 101203 15:01:47 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 15:01:47 majikthise last message repeated 3 times
+Dec  3 17:00:01 majikthise mysqld[4930]: 101203 17:00:01 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 17:00:01 majikthise last message repeated 3 times
+Dec  3 17:01:27 majikthise mysqld[4930]: 101203 17:01:27 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 17:01:27 majikthise last message repeated 3 times
+Dec  3 17:01:28 majikthise mysqld[4930]: 101203 17:01:28 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 17:01:28 majikthise last message repeated 3 times
+Dec  3 17:01:30 majikthise mysqld[4930]: 101203 17:01:30 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  3 17:01:30 majikthise last message repeated 3 times
+Dec  3 17:01:41 majikthise init: tty4 main process (4274) killed by TERM signal
+Dec  3 17:01:41 majikthise init: tty5 main process (4275) killed by TERM signal
+Dec  3 17:01:41 majikthise init: tty6 main process (4282) killed by TERM signal
+Dec  3 17:01:41 majikthise init: tty2 main process (4277) killed by TERM signal
+Dec  3 17:01:41 majikthise init: tty3 main process (4279) killed by TERM signal
+Dec  3 17:01:41 majikthise init: tty1 main process (4281) killed by TERM signal
+Dec  3 17:01:42 majikthise mysqld[4930]: 101203 17:01:42 [Note] /usr/sbin/mysqld: Normal shutdown
+Dec  3 17:01:42 majikthise mysqld[4930]: 
+Dec  3 17:01:42 majikthise mysqld[4930]: 101203 17:01:42  InnoDB: Starting shutdown...
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: Error: tried to read 16384 bytes at offset 0 0.
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: Was only able to read 0.
+Dec  3 17:01:44 majikthise mysqld[4930]: 101203 17:01:44  InnoDB: Operating system error number 0 in a file operation.
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: Error number 0 means 'Success'.
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: Some operating system error numbers are described at
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: http://dev.mysql.com/doc/refman/5.0/en/operating-system-error-codes.html
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: File operation call: 'read'.
+Dec  3 17:01:44 majikthise mysqld[4930]: InnoDB: Cannot continue operation.
+Dec  3 17:01:44 majikthise mysqld_safe[8756]: Number of processes running now: 0
+Dec  3 17:01:44 majikthise mysqld_safe[8758]: restarted
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: Error: tried to read 16384 bytes at offset 0 0.
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: Was only able to read 0.
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: Fatal error: cannot read from file. OS error number 17.
+Dec  3 17:01:44 majikthise mysqld[8761]: 101203 17:01:44InnoDB: Assertion failure in thread 3083167424 in file os0file.c line 2197
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: We intentionally generate a memory trap.
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: Submit a detailed bug report to http://bugs.mysql.com.
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: If you get repeated assertion failures or crashes, even
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: immediately after the mysqld startup, there may be
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: corruption in the InnoDB tablespace. Please refer to
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: http://dev.mysql.com/doc/refman/5.0/en/forcing-recovery.html
+Dec  3 17:01:44 majikthise mysqld[8761]: InnoDB: about forcing recovery.
+Dec  3 17:01:44 majikthise mysqld[8761]: 101203 17:01:44 - mysqld got signal 11;
+Dec  3 17:01:44 majikthise mysqld[8761]: This could be because you hit a bug. It is also possible that this binary
+Dec  3 17:01:44 majikthise mysqld[8761]: or one of the libraries it was linked against is corrupt, improperly built,
+Dec  3 17:01:44 majikthise mysqld[8761]: or misconfigured. This error can also be caused by malfunctioning hardware.
+Dec  3 17:01:44 majikthise mysqld[8761]: We will try our best to scrape up some info that will hopefully help diagnose
+Dec  3 17:01:44 majikthise mysqld[8761]: the problem, but since we have already crashed, something is definitely wrong
+Dec  3 17:01:44 majikthise mysqld[8761]: and this may fail.
+Dec  3 17:01:44 majikthise mysqld[8761]: 
+Dec  3 17:01:44 majikthise mysqld[8761]: key_buffer_size=0
+Dec  3 17:01:44 majikthise mysqld[8761]: read_buffer_size=131072
+Dec  3 17:01:44 majikthise mysqld[8761]: max_used_connections=0
+Dec  3 17:01:44 majikthise mysqld[8761]: max_connections=100
+Dec  3 17:01:44 majikthise mysqld[8761]: threads_connected=0
+Dec  3 17:01:44 majikthise mysqld[8761]: It is possible that mysqld could use up to 
+Dec  3 17:01:44 majikthise mysqld[8761]: key_buffer_size + (read_buffer_size + sort_buffer_size)*max_connections = 217599 K
+Dec  3 17:01:44 majikthise mysqld[8761]: bytes of memory
+Dec  3 17:01:44 majikthise mysqld[8761]: Hope that's ok; if not, decrease some variables in the equation.
+Dec  3 17:01:44 majikthise mysqld[8761]: 
+Dec  3 17:01:44 majikthise mysqld[8761]: thd=(nil)
+Dec  3 17:01:44 majikthise mysqld[8761]: Attempting backtrace. You can use the following information to find out
+Dec  3 17:01:44 majikthise mysqld[8761]: where mysqld died. If you see no messages after this, something went
+Dec  3 17:01:44 majikthise mysqld[8761]: terribly wrong...
+Dec  3 17:01:44 majikthise mysqld[8761]: Cannot determine thread, fp=0xbfee3d28, backtrace may not be correct.
+Dec  3 17:01:44 majikthise mysqld[8761]: Stack range sanity check OK, backtrace follows:
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x81f05f0
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x84223d9
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x83e97aa
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x8336f3b
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x82b5140
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x82a9f92
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x81ef606
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x81f2f1b
+Dec  3 17:01:44 majikthise mysqld[8761]: 0xb7c6e050
+Dec  3 17:01:44 majikthise mysqld[8761]: 0x8163a51
+Dec  3 17:01:44 majikthise mysqld[8761]: New value of fp=(nil) failed sanity check, terminating stack trace!
+Dec  3 17:01:44 majikthise mysqld[8761]: Please read http://dev.mysql.com/doc/mysql/en/using-stack-trace.html and follow instructions on how to resolve the stack trace. Resolved
+Dec  3 17:01:44 majikthise mysqld[8761]: stack trace is much more helpful in diagnosing the problem, so please do 
+Dec  3 17:01:44 majikthise mysqld[8761]: resolve it
+Dec  3 17:01:44 majikthise mysqld[8761]: The manual page at http://www.mysql.com/doc/en/Crashing.html contains
+Dec  3 17:01:44 majikthise mysqld[8761]: information that should help you find out what is causing the crash.
+Dec  3 17:01:44 majikthise mysqld_safe[8767]: ended
+Dec  3 23:04:14 majikthise named[4798]: starting BIND 9.4.1-P1.1 -u bind
+Dec  3 23:04:14 majikthise named[4798]: found 2 CPUs, using 2 worker threads
+Dec  3 23:04:14 majikthise named[4798]: loading configuration from '/etc/bind/named.conf'
+Dec  3 23:04:14 majikthise named[4798]: listening on IPv4 interface lo, 127.0.0.1#53
+Dec  3 23:04:14 majikthise named[4798]: listening on IPv4 interface eth0, 96.53.93.58#53
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: D.F.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Dec  3 23:04:15 majikthise named[4798]: command channel listening on 127.0.0.1#953
+Dec  3 23:04:15 majikthise named[4798]: command channel listening on ::1#953
+Dec  3 23:04:19 majikthise mysqld_safe[4922]: started
+Dec  3 23:04:21 majikthise mysqld[4925]: 101203 23:04:21  InnoDB: Started; log sequence number 0 43665
+Dec  3 23:04:21 majikthise mysqld[4925]: 101203 23:04:21 [Note] /usr/sbin/mysqld: ready for connections.
+Dec  3 23:04:21 majikthise mysqld[4925]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[4977]: Upgrading MySQL tables if necessary.
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[4982]: Looking for 'mysql' in: /usr/bin/mysql
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[4982]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[4982]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[5021]: Checking for insecure root accounts.
+Dec  3 23:04:22 majikthise /etc/mysql/debian-start[5038]: Checking for crashed MySQL tables.
+Dec  3 23:04:23 majikthise mysqld[4925]: 101203 23:04:23 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  3 23:04:23 majikthise mysqld[4925]: 101203 23:04:23 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: WARNING: mysqlcheck has found corrupt tables
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: phpbb_db.phpbb_sessions
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: error    : Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: 
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]:  Improperly closed tables are also reported if clients are accessing
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]:  the tables *now*. A list of current connections is below.
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: 
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: | Id | User             | Host      | db | Command | Time | State | Info             |
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: | 7  | debian-sys-maint | localhost |    | Query   | 0    |       | show processlist |
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  3 23:04:23 majikthise /etc/mysql/debian-start[5063]: Uptime: 4  Threads: 1  Questions: 64  Slow queries: 0  Opens: 51  Flush tables: 1  Open tables: 45  Queries per second avg: 16.000
+Dec  4 00:04:50 majikthise mysqld[4925]: 101204  0:04:50 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 00:04:50 majikthise mysqld[4925]: 101204  0:04:50 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 00:06:07 majikthise mysqld[4925]: 101204  0:06:07 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 00:06:07 majikthise last message repeated 3 times
+Dec  4 00:46:29 majikthise mysqld[4925]: 101204  0:46:29 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 00:46:29 majikthise last message repeated 3 times
+Dec  4 03:54:12 majikthise mysqld[4925]: 101204  3:54:12 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 03:54:12 majikthise last message repeated 3 times
+Dec  4 04:44:01 majikthise mysqld[4925]: 101204  4:44:01 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 04:44:01 majikthise mysqld[4925]: 101204  4:44:01 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 05:43:07 majikthise mysqld[4925]: 101204  5:43:07 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 05:43:07 majikthise mysqld[4925]: 101204  5:43:07 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 06:49:45 majikthise mysqld[4925]: 101204  6:49:45 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 06:49:45 majikthise last message repeated 3 times
+Dec  4 06:49:46 majikthise mysqld[4925]: 101204  6:49:46 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 06:49:46 majikthise last message repeated 3 times
+Dec  4 06:49:47 majikthise mysqld[4925]: 101204  6:49:47 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 06:49:47 majikthise last message repeated 3 times
+Dec  4 07:48:12 majikthise mysqld[4925]: 101204  7:48:12 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 07:48:12 majikthise mysqld[4925]: 101204  7:48:12 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:19:20 majikthise mysqld[4925]: 101204  8:19:20 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:19:20 majikthise last message repeated 3 times
+Dec  4 08:19:54 majikthise mysqld[4925]: 101204  8:19:54 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:19:54 majikthise last message repeated 3 times
+Dec  4 08:20:36 majikthise mysqld[4925]: 101204  8:20:36 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:20:36 majikthise last message repeated 3 times
+Dec  4 08:21:23 majikthise mysqld[4925]: 101204  8:21:23 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:21:23 majikthise last message repeated 3 times
+Dec  4 08:22:00 majikthise mysqld[4925]: 101204  8:22:00 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:22:00 majikthise last message repeated 3 times
+Dec  4 08:22:38 majikthise mysqld[4925]: 101204  8:22:38 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:22:38 majikthise last message repeated 3 times
+Dec  4 08:23:43 majikthise mysqld[4925]: 101204  8:23:43 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:23:43 majikthise last message repeated 3 times
+Dec  4 08:23:44 majikthise mysqld[4925]: 101204  8:23:44 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 08:23:44 majikthise last message repeated 3 times
+Dec  4 10:53:17 majikthise mysqld[4925]: 101204 10:53:17 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 10:53:17 majikthise last message repeated 3 times
+Dec  4 14:09:31 majikthise mysqld[4925]: 101204 14:09:31 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 14:09:31 majikthise last message repeated 7 times
+Dec  4 14:09:37 majikthise mysqld[4925]: 101204 14:09:37 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 14:09:37 majikthise last message repeated 3 times
+Dec  4 14:12:00 majikthise mysqld[4925]: 101204 14:12:00 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 14:12:00 majikthise mysqld[4925]: 101204 14:12:00 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 16:03:54 majikthise mysqld[4925]: 101204 16:03:54 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 16:03:54 majikthise last message repeated 3 times
+Dec  4 16:03:55 majikthise mysqld[4925]: 101204 16:03:55 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 16:03:55 majikthise last message repeated 3 times
+Dec  4 16:04:01 majikthise mysqld[4925]: 101204 16:04:01 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 16:04:01 majikthise last message repeated 3 times
+Dec  4 17:33:25 majikthise mysqld[4925]: 101204 17:33:25 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 17:33:25 majikthise last message repeated 7 times
+Dec  4 17:33:27 majikthise mysqld[4925]: 101204 17:33:27 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 17:33:27 majikthise last message repeated 3 times
+Dec  4 17:57:11 majikthise mysqld[4925]: 101204 17:57:11 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 17:57:11 majikthise last message repeated 3 times
+Dec  4 17:57:12 majikthise mysqld[4925]: 101204 17:57:12 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 17:57:12 majikthise last message repeated 3 times
+Dec  4 17:57:18 majikthise mysqld[4925]: 101204 17:57:18 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  4 17:57:18 majikthise last message repeated 3 times
+Dec  7 20:33:54 majikthise named[4847]: starting BIND 9.4.1-P1.1 -u bind
+Dec  7 20:33:54 majikthise named[4847]: found 2 CPUs, using 2 worker threads
+Dec  7 20:33:54 majikthise named[4847]: loading configuration from '/etc/bind/named.conf'
+Dec  7 20:33:54 majikthise named[4847]: listening on IPv4 interface lo, 127.0.0.1#53
+Dec  7 20:33:54 majikthise named[4847]: listening on IPv4 interface eth0, 96.53.93.58#53
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: D.F.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Dec  7 20:33:54 majikthise named[4847]: command channel listening on 127.0.0.1#953
+Dec  7 20:33:54 majikthise named[4847]: command channel listening on ::1#953
+Dec  7 20:34:00 majikthise mysqld_safe[4980]: started
+Dec  7 20:34:03 majikthise mysqld[4983]: 101207 20:34:03  InnoDB: Started; log sequence number 0 43665
+Dec  7 20:34:03 majikthise mysqld[4983]: 101207 20:34:03 [Note] /usr/sbin/mysqld: ready for connections.
+Dec  7 20:34:03 majikthise mysqld[4983]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5044]: Upgrading MySQL tables if necessary.
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5048]: Looking for 'mysql' in: /usr/bin/mysql
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5048]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5048]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5088]: Checking for insecure root accounts.
+Dec  7 20:34:04 majikthise /etc/mysql/debian-start[5104]: Checking for crashed MySQL tables.
+Dec  7 20:34:05 majikthise mysqld[4983]: 101207 20:34:05 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 20:34:05 majikthise mysqld[4983]: 101207 20:34:05 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: WARNING: mysqlcheck has found corrupt tables
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: phpbb_db.phpbb_sessions
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: error    : Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: 
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]:  Improperly closed tables are also reported if clients are accessing
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]:  the tables *now*. A list of current connections is below.
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: 
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: | Id | User             | Host      | db | Command | Time | State | Info             |
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: | 7  | debian-sys-maint | localhost |    | Query   | 0    |       | show processlist |
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 20:34:05 majikthise /etc/mysql/debian-start[5120]: Uptime: 5  Threads: 1  Questions: 64  Slow queries: 0  Opens: 51  Flush tables: 1  Open tables: 45  Queries per second avg: 12.800
+Dec  7 21:00:58 majikthise init: tty4 main process (4333) killed by TERM signal
+Dec  7 21:00:58 majikthise init: tty5 main process (4334) killed by TERM signal
+Dec  7 21:00:58 majikthise init: tty1 main process (4340) killed by TERM signal
+Dec  7 21:00:58 majikthise init: tty6 main process (4341) killed by TERM signal
+Dec  7 21:00:58 majikthise init: tty2 main process (4336) killed by TERM signal
+Dec  7 21:00:58 majikthise init: tty3 main process (4338) killed by TERM signal
+Dec  7 21:00:58 majikthise mysqld[4983]: 101207 21:00:58 [Note] /usr/sbin/mysqld: Normal shutdown
+Dec  7 21:00:58 majikthise mysqld[4983]: 
+Dec  7 21:00:58 majikthise mysqld[4983]: 101207 21:00:58  InnoDB: Starting shutdown...
+Dec  7 21:01:01 majikthise mysqld[4983]: 101207 21:01:01  InnoDB: Shutdown completed; log sequence number 0 43665
+Dec  7 21:01:01 majikthise mysqld[4983]: 101207 21:01:01 [Note] /usr/sbin/mysqld: Shutdown complete
+Dec  7 21:01:01 majikthise mysqld[4983]: 
+Dec  7 21:01:01 majikthise mysqld_safe[5604]: ended
+Dec  7 21:07:26 majikthise named[4849]: starting BIND 9.4.1-P1.1 -u bind
+Dec  7 21:07:26 majikthise named[4849]: found 2 CPUs, using 2 worker threads
+Dec  7 21:07:26 majikthise named[4849]: loading configuration from '/etc/bind/named.conf'
+Dec  7 21:07:27 majikthise named[4849]: listening on IPv4 interface lo, 127.0.0.1#53
+Dec  7 21:07:27 majikthise named[4849]: listening on IPv4 interface eth0, 96.53.93.58#53
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: D.F.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Dec  7 21:07:27 majikthise named[4849]: command channel listening on 127.0.0.1#953
+Dec  7 21:07:27 majikthise named[4849]: command channel listening on ::1#953
+Dec  7 21:07:30 majikthise mysqld_safe[4973]: started
+Dec  7 21:07:32 majikthise mysqld[4976]: 101207 21:07:32  InnoDB: Started; log sequence number 0 43665
+Dec  7 21:07:32 majikthise mysqld[4976]: 101207 21:07:32 [Note] /usr/sbin/mysqld: ready for connections.
+Dec  7 21:07:32 majikthise mysqld[4976]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Dec  7 21:07:33 majikthise /etc/mysql/debian-start[5028]: Upgrading MySQL tables if necessary.
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5033]: Looking for 'mysql' in: /usr/bin/mysql
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5033]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5033]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5071]: Checking for insecure root accounts.
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5082]: Checking for crashed MySQL tables.
+Dec  7 21:07:34 majikthise mysqld[4976]: 101207 21:07:34 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 21:07:34 majikthise mysqld[4976]: 101207 21:07:34 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: WARNING: mysqlcheck has found corrupt tables
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: phpbb_db.phpbb_sessions
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: error    : Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: 
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]:  Improperly closed tables are also reported if clients are accessing
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]:  the tables *now*. A list of current connections is below.
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: 
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: | Id | User             | Host      | db | Command | Time | State | Info             |
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: | 7  | debian-sys-maint | localhost |    | Query   | 0    |       | show processlist |
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 21:07:34 majikthise /etc/mysql/debian-start[5104]: Uptime: 4  Threads: 1  Questions: 64  Slow queries: 0  Opens: 51  Flush tables: 1  Open tables: 45  Queries per second avg: 16.000
+Dec  7 21:08:59 majikthise init: tty4 main process (4333) killed by TERM signal
+Dec  7 21:08:59 majikthise init: tty5 main process (4334) killed by TERM signal
+Dec  7 21:08:59 majikthise init: tty2 main process (4336) killed by TERM signal
+Dec  7 21:08:59 majikthise init: tty3 main process (4338) killed by TERM signal
+Dec  7 21:08:59 majikthise init: tty1 main process (4340) killed by TERM signal
+Dec  7 21:08:59 majikthise init: tty6 main process (4341) killed by TERM signal
+Dec  7 21:08:59 majikthise mysqld[4976]: 101207 21:08:59 [Note] /usr/sbin/mysqld: Normal shutdown
+Dec  7 21:08:59 majikthise mysqld[4976]: 
+Dec  7 21:08:59 majikthise mysqld[4976]: 101207 21:08:59  InnoDB: Starting shutdown...
+Dec  7 21:09:01 majikthise mysqld[4976]: 101207 21:09:01  InnoDB: Shutdown completed; log sequence number 0 43665
+Dec  7 21:09:01 majikthise mysqld[4976]: 101207 21:09:01 [Note] /usr/sbin/mysqld: Shutdown complete
+Dec  7 21:09:01 majikthise mysqld[4976]: 
+Dec  7 21:09:01 majikthise mysqld_safe[5362]: ended
+Dec  7 22:18:08 majikthise named[4816]: starting BIND 9.4.1-P1.1 -u bind
+Dec  7 22:18:08 majikthise named[4816]: found 2 CPUs, using 2 worker threads
+Dec  7 22:18:08 majikthise named[4816]: loading configuration from '/etc/bind/named.conf'
+Dec  7 22:18:08 majikthise named[4816]: listening on IPv4 interface lo, 127.0.0.1#53
+Dec  7 22:18:08 majikthise named[4816]: listening on IPv4 interface eth0, 96.53.93.58#53
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 254.169.IN-ADDR.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 2.0.192.IN-ADDR.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 255.255.255.255.IN-ADDR.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: D.F.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 8.E.F.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: 9.E.F.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: A.E.F.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: automatic empty zone: view internal: B.E.F.IP6.ARPA
+Dec  7 22:18:09 majikthise named[4816]: command channel listening on 127.0.0.1#953
+Dec  7 22:18:09 majikthise named[4816]: command channel listening on ::1#953
+Dec  7 22:18:12 majikthise mysqld_safe[4931]: started
+Dec  7 22:18:14 majikthise mysqld[4934]: 101207 22:18:14  InnoDB: Started; log sequence number 0 43665
+Dec  7 22:18:14 majikthise mysqld[4934]: 101207 22:18:14 [Note] /usr/sbin/mysqld: ready for connections.
+Dec  7 22:18:14 majikthise mysqld[4934]: Version: '5.0.45-Debian_1ubuntu3.4-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  Debian etch distribution
+Dec  7 22:18:14 majikthise /etc/mysql/debian-start[4986]: Upgrading MySQL tables if necessary.
+Dec  7 22:18:15 majikthise /etc/mysql/debian-start[4990]: Looking for 'mysql' in: /usr/bin/mysql
+Dec  7 22:18:15 majikthise /etc/mysql/debian-start[4990]: Looking for 'mysqlcheck' in: /usr/bin/mysqlcheck
+Dec  7 22:18:15 majikthise /etc/mysql/debian-start[4990]: This installation of MySQL is already upgraded to 5.0.45, use --force if you still need to run mysql_upgrade
+Dec  7 22:18:15 majikthise /etc/mysql/debian-start[5031]: Checking for insecure root accounts.
+Dec  7 22:18:15 majikthise /etc/mysql/debian-start[5044]: Checking for crashed MySQL tables.
+Dec  7 22:18:16 majikthise mysqld[4934]: 101207 22:18:16 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 22:18:16 majikthise mysqld[4934]: 101207 22:18:16 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: WARNING: mysqlcheck has found corrupt tables
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: phpbb_db.phpbb_sessions
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: error    : Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: 
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]:  Improperly closed tables are also reported if clients are accessing
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]:  the tables *now*. A list of current connections is below.
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: 
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: | Id | User             | Host      | db | Command | Time | State | Info             |
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: | 7  | debian-sys-maint | localhost |    | Query   | 0    |       | show processlist |
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: +----+------------------+-----------+----+---------+------+-------+------------------+
+Dec  7 22:18:16 majikthise /etc/mysql/debian-start[5062]: Uptime: 4  Threads: 1  Questions: 64  Slow queries: 0  Opens: 51  Flush tables: 1  Open tables: 45  Queries per second avg: 16.000
+Dec  7 23:27:50 majikthise mysqld[4934]: 101207 23:27:50 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 23:27:50 majikthise last message repeated 7 times
+Dec  7 23:27:51 majikthise mysqld[4934]: 101207 23:27:51 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 23:27:51 majikthise last message repeated 3 times
+Dec  7 23:27:52 majikthise mysqld[4934]: 101207 23:27:52 [ERROR] /usr/sbin/mysqld: Table './phpbb_db/phpbb_sessions' is marked as crashed and should be repaired
+Dec  7 23:27:52 majikthise last message repeated 3 times
+Dec  8 03:17:36 majikthise mysqld[4934]: 101208  3:17:36 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  8 03:17:36 majikthise last message repeated 3 times
+Dec  8 03:26:55 majikthise mysqld[4934]: 101208  3:26:55 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  8 03:26:55 majikthise last message repeated 3 times
+Dec  8 05:26:18 majikthise mysqld[4934]: 101208  5:26:18 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  8 05:26:18 majikthise last message repeated 3 times
+Dec  8 05:26:19 majikthise mysqld[4934]: 101208  5:26:19 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  8 05:26:19 majikthise last message repeated 3 times
+Dec  8 05:26:20 majikthise mysqld[4934]: 101208  5:26:20 [ERROR] /usr/sbin/mysqld: Incorrect information in file: './phpbb_db/phpbb_sessions.frm'
+Dec  8 05:26:20 majikthise last message repeated 3 times

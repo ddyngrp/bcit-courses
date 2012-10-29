@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.jem.internal.beaninfo.beaninfo="http:///org/eclipse/jem/internal/beaninfo/beaninfo.ecore" xmlns:org.eclipse.jem.java="java.xmi">
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="org.eclipse.jem.java:JavaClass java:/javax.swing#ScrollPaneLayout">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.0"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="eStructuralFeatures">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.1 #//@objectsToAttach.2 #//@objectsToAttach.3 #//@objectsToAttach.4 #//@objectsToAttach.5 #//@objectsToAttach.6 #//@objectsToAttach.7"/>
+    </value>
+  </objectChanges>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanDecorator" implicitDecoratorFlag="IMPLICIT_DECORATOR"/>
+  <objectsToAttach xsi:type="ecore:EReference" name="horizontalScrollBarPolicy" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getHorizontalScrollBarPolicy(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.setHorizontalScrollBarPolicy(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="columnHeader" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JViewport" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getColumnHeader("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="viewport" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JViewport" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getViewport("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="horizontalScrollBar" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JScrollBar" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getHorizontalScrollBar("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="rowHeader" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JViewport" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getRowHeader("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="verticalScrollBar" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JScrollBar" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getVerticalScrollBar("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="verticalScrollBarPolicy" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.getVerticalScrollBarPolicy(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#ScrollPaneLayout.setVerticalScrollBarPolicy(int"/>
+  </objectsToAttach>
+</change:ChangeDescription>

@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=StoreHours()
+comment0.text=\nConstructor\ for\ StoreHours\ objects\n\n
+comment1.target=void\ checkStatus()
+comment1.text=\nThis\ method\ checks\ the\ open\ status\ of\ the\ store\ at\ the\ \ncurrent\ time\ and\ day.\ If\ the\ store\ is\ open,\ it\ displays\ \na\ "store\ open"\ message\ and\ the\ current\ time\ and\ day.\ If\ \nthe\ store\ is\ closed,\ it\ displays\ a\ "store\ closed"\ message,\ \nthe\ current\ time\ and\ day,\ and\ the\ time\ and\ day\ when\ the\ \nstore\ will\ next\ be\ open.\n\n
+comment2.target=void\ increment()
+comment2.text=\nThis\ method\ increments\ the\ time\ by\ one\ minute.\ It\ ensures\ \nthat\ the\ day\ is\ kept\ in\ synch,\ i.e.\ if\ the\ clock\ reaches\ \nmidnight\ it\ increments\ the\ day.\ It\ also\ invokes\ \nmanageOpeningClosing()\ to\ ensure\ that\ the\ store\ opening\ \nis\ kept\ in\ synch\ with\ the\ time\ and\ day.\n\n
+comment3.params=newHour\ newMinute\ newDay
+comment3.target=void\ setTimeAndDay(int,\ int,\ int)
+comment3.text=\nThis\ method\ sets\ a\ new\ time\ and\ day.\ \nIt\ is\ useful\ for\ testing\ the\ program.\ \n\n
+comment4.params=minutesToAdvance
+comment4.target=void\ advanceMinutes(int)
+comment4.text=\nThis\ method\ advances\ the\ clock\ (and\ potentially\ day)\ by\ \nthe\ number\ of\ minutes\ passed\ in\ through\ the\ parameter.\ \nIt\ is\ useful\ for\ testing\ the\ program.\n\n
+comment5.target=void\ manageOpeningClosing()
+comment5.text=\nThis\ method\ manages\ the\ opening\ and\ closing\ of\ the\ store.\ \nIf\ it\ is\ time\ to\ open,\ the\ store\ is\ opened.\ If\ it\ is\ time\ \nto\ close,\ the\ store\ is\ closed.\n\n
+comment6.target=void\ open()
+comment6.text=\nThis\ method\ opens\ the\ store.\n\n
+comment7.target=void\ close()
+comment7.text=\nThis\ method\ closes\ the\ store.\ \n\n
+comment8.target=String\ getOpenStatus()
+comment8.text=\nThis\ method\ returns\ a\ string\ with\ information\ about\ \nthe\ store's\ open\ status,\ i.e.\ open\ or\ closed.\n\n
+comment9.target=String\ getCurrentTimeDay()
+comment9.text=\nThis\ method\ returns\ a\ string\ with\ information\ \nabout\ the\ current\ time\ and\ day.\n\n
+numComments=10

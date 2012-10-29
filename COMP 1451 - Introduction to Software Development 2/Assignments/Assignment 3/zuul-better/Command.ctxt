@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=firstWord\ secondWord
+comment0.target=Command(String,\ String)
+comment0.text=\nCreate\ a\ command\ object.\ First\ and\ second\ word\ must\ be\ supplied,\ but\neither\ one\ (or\ both)\ can\ be\ null.\n@param\ firstWord\ The\ first\ word\ of\ the\ command.\ Null\ if\ the\ command\nwas\ not\ recognised.\n@param\ secondWord\ The\ second\ word\ of\ the\ command.\n\n
+comment1.target=String\ getCommandWord()
+comment1.text=\nReturn\ the\ command\ word\ (the\ first\ word)\ of\ this\ command.\ If\ the\ncommand\ was\ not\ understood,\ the\ result\ is\ null.\n@return\ The\ command\ word.\n\n
+comment2.target=String\ getSecondWord()
+comment2.text=\n@return\ The\ second\ word\ of\ this\ command.\ Returns\ null\ if\ there\ was\ no\nsecond\ word.\n\n
+comment3.target=boolean\ isUnknown()
+comment3.text=\n@return\ true\ if\ this\ command\ was\ not\ understood.\n\n
+comment4.target=boolean\ hasSecondWord()
+comment4.text=\n@return\ true\ if\ the\ command\ has\ a\ second\ word.\n\n
+numComments=5

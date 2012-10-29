@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;diff&apos; in &apos;Scale.bestTick(...)&apos; to &apos;dataRange&apos;&#x0A;- Original project: &apos;TestScale&apos;&#x0A;- Original element: &apos;Scale.bestTick(float, int).diff&apos;&#x0A;- Renamed element: &apos;diff&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;diff&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Scale.java[Scale~bestTick~F~I@diff!327!336!333!336!F" name="dataRange" references="true" stamp="1299785274473" version="1.0"/>
+</session>

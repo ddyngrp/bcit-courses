@@ -1,0 +1,8 @@
+Proposal Notes:
+
+Note it is a 9/18 credit practicum
+Clearly state the problem being solved (or in my case, what is being explored)
+System Diagrams - Schemas, Network diagram, etc.
+Proper test plan (if things change, test plan will be modified)
+Schedule (405 hours approx)
+Explain why I am doing this.

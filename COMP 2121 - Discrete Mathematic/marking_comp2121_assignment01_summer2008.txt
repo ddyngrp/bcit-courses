@@ -1,0 +1,19 @@
+comp2121
+assignment #1 of 4
+summer 2008
+
+SOLUTIONS
+=========
+
+Page 54		#4, 8
+
+#4a) r -> q
+#4b) q -> p
+#4c) s ^ r -> q
+
+#8)
+
+
+Page 66		#2, 6, 10
+Page 84		#2, 4, 12
+Page 100	#2, 4, 6, 8, 14, 16, 18, 20, 24

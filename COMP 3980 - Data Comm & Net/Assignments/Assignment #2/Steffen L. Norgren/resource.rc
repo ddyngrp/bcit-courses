@@ -1,0 +1,178 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Canada) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "^X",           ID_FILE_EXIT,           ASCII,  NOINVERT
+    "^F",           ID_EDIT_FONT,           ASCII,  NOINVERT
+    "^O",           ID_EDIT_SETTINGS,       ASCII,  NOINVERT
+    "^W",           ID_VIEW_CLEARSCREEN,    ASCII,  NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_CONFIG DIALOGEX 0, 0, 142, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMPORT_COMBO,68,12,60,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_BPS_COMBO,68,30,60,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_DATABITS_COMBO,68,48,60,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PARITY_COMBO,68,66,60,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_STOPBITS_COMBO,68,84,60,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "COM Port:",IDC_STATIC,30,14,34,8
+    LTEXT           "Bits per second:",IDC_STATIC,12,32,52,8
+    LTEXT           "Data bits:",IDC_STATIC,32,51,32,8
+    LTEXT           "Parity:",IDC_STATIC,42,67,22,8
+    LTEXT           "Stop bits:",IDC_STATIC,32,86,32,8
+    DEFPUSHBUTTON   "OK",IDOK,27,109,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,85,109,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENUEX 
+BEGIN
+    POPUP "&File",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Connect",                    ID_FILE_CONNECT,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Disconnect",                 ID_FILE_DISCONNECT,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "E&xit\tCtrl+X",               ID_FILE_EXIT,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Edit",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "F&ont\tCtrl+F",               ID_EDIT_FONT,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Settings\tCtrl+O",           ID_EDIT_SETTINGS,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&View",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Clear Screen\tCtrl-W",       ID_VIEW_CLEARSCREEN,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Testing",                        65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Erase from SOL",              ID_TESTING_ERASEFROMSOL,MFT_STRING,MFS_ENABLED
+        MENUITEM "Erase to EOL",                ID_TESTING_ERASETOEOL,MFT_STRING,MFS_ENABLED
+        MENUITEM "New Line",                    ID_TESTING_NEWLINE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Set Cursor to (5,5)",         ID_TESTING_SETCURSOR,MFT_STRING,MFS_ENABLED
+        MENUITEM "Move Cursor to (5,5)",        ID_TESTING_MOVECURSOR,MFT_STRING,MFS_ENABLED
+        MENUITEM "Single Width Line",           ID_TESTING_SINGLELINE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Double Width Line",           ID_TESTING_DOUBLELINE,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Normal",                      ID_TESTING_NORMAL,MFT_STRING,MFS_ENABLED
+        MENUITEM "Bold",                        ID_TESTING_BOLD,MFT_STRING,MFS_ENABLED
+        MENUITEM "Underline",                   ID_TESTING_UNDERLINE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Invert",                      ID_TESTING_INVERT,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Help",                          65535,MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+    BEGIN
+        MENUITEM "&About Terminal",             ID_HELP_ABOUT,MFT_STRING,MFS_ENABLED
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DLG_CONFIG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 135
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (Canada) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="VehicleMaintenance.OilChange" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\OilChange.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Owner" Collapsed="true">
+    <Position X="1.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Owner.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Individual" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Owner.cs</FileName>
+      <HashCode>AAAAAEAAAAAAAAAEAAAQAAAAAAAABAAAAAAAAAAAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Company" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Owner.cs</FileName>
+      <HashCode>AAAAQAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Parts" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Part.cs</FileName>
+      <HashCode>AAIAAAAAAAAAEAAACAAABAQAAAAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Part" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Part.cs</FileName>
+      <HashCode>AAAAAAAAAAAgAAAEIAAAABAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.RadiatorFlush" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\RadiatorFlush.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.TransmissionReplacement" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\TransmissionReplacement.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.UnknownProblemJob" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\UnknownProblemJob.cs</FileName>
+      <HashCode>AIAAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.ValveAdjustment" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\ValveAdjustment.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Vehicle" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\Vehicle.cs</FileName>
+      <HashCode>AgIEAABABAAAAAAUAAAAAAAAAAAAAAAAAAwAAAIoAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.VehicleMaintJob" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\VehicleMaintJob.cs</FileName>
+      <HashCode>CIUBEACAAAAAmAABAAAAAQAEBAAIAAQAAAAAAAAAAQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.VehicleMaintJobs" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\VehicleMaintJob.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAACAAABARAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.FixedTimeJob" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Business\VehicleMaintJob.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Program" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.CreateJobMenu" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\CreateJobMenu.cs</FileName>
+      <HashCode>AAAAAABAAAAEAAAAAAAgAIQAAAAAAAAAAAAAAAABAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.MainMenu" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\MainMenu.cs</FileName>
+      <HashCode>AAAAAAAAAAAgAAAAAACAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.Menu" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\Menu.cs</FileName>
+      <HashCode>AAAAAAQAQAQAAEAAAEBQQAAAAAFBAAAACAEAAUAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.MenuItem" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\MenuItem.cs</FileName>
+      <HashCode>AAAAFAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleMaintenance.WorkOnJobsMenu" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\WorkOnJobsMenu.cs</FileName>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleUtils" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>UI\ConsoleUtils.cs</FileName>
+      <HashCode>QAIAAAACAABIAAAAAAAAAAACAAAAAAAAAAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

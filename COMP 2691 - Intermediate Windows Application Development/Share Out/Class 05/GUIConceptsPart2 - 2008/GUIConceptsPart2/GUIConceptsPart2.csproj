@@ -1,0 +1,312 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A7EDF30-50C2-4AF2-A30A-0A0169D9B471}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GUIConceptsPart2</RootNamespace>
+    <AssemblyName>GUIConceptsPart2</AssemblyName>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADONetSamples\ADONetExamples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\ADONetExamples.Designer.cs">
+      <DependentUpon>ADONetExamples.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\Callback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\Callback.Designer.cs">
+      <DependentUpon>Callback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\MultipleCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\MultipleCommands.Designer.cs">
+      <DependentUpon>MultipleCommands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\NonBlocking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Async\NonBlocking.Designer.cs">
+      <DependentUpon>NonBlocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\ConnString\FromConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\ConnString\FromConfig.Designer.cs">
+      <DependentUpon>FromConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Factory\CallDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Factory\CallDb.Designer.cs">
+      <DependentUpon>CallDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Factory\Factories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Factory\Factories.Designer.cs">
+      <DependentUpon>Factories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADONetSamples\Readers\MultiResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetSamples\Readers\MultiResult.Designer.cs">
+      <DependentUpon>MultiResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageListControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageListControl.Designer.cs">
+      <DependentUpon>ImageListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListViewControl.Designer.cs">
+      <DependentUpon>ListViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListViewTestForm.designer.cs">
+      <DependentUpon>ListViewTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="northwindDataSet.cs">
+      <DependentUpon>northwindDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="northwindDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>northwindDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PopulateTreeViewfromDataSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopulateTreeViewfromDataSetForm.Designer.cs">
+      <DependentUpon>PopulateTreeViewfromDataSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ADONetSamples\ADONetExamples.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ADONetExamples.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Async\Callback.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Callback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Async\MultipleCommands.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MultipleCommands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Async\NonBlocking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NonBlocking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\ConnString\FromConfig.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FromConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Factory\CallDb.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CallDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Factory\Factories.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Factories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADONetSamples\Readers\MultiResult.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MultiResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageListControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ImageListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListViewControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ListViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListViewTestForm.resx">
+      <DependentUpon>ListViewTestForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopulateTreeViewfromDataSetForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PopulateTreeViewfromDataSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TreeViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewDirectoryStructureForm.resx">
+      <DependentUpon>TreeViewDirectoryStructureForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsingTabsForm.resx">
+      <DependentUpon>UsingTabsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="northwindDataSet.xsc">
+      <DependentUpon>northwindDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="northwindDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>northwindDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="northwindDataSet.xss">
+      <DependentUpon>northwindDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TabControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabControl.Designer.cs">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeViewControl.Designer.cs">
+      <DependentUpon>TreeViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewDirectoryStructureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeViewDirectoryStructureForm.designer.cs">
+      <DependentUpon>TreeViewDirectoryStructureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsingTabsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsingTabsForm.designer.cs">
+      <DependentUpon>UsingTabsForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.1.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.9.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition SP2 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="northwind.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="northwind_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>northwind.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

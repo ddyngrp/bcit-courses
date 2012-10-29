@@ -1,0 +1,216 @@
+n++ ->	n.operator++();	//returns a copy
+++n ->  n.operator++(); //returns directly
+
+
+
+Date& operator++(); //prefix
+Date& operator++(int); //postfix, not used	note: returntype, prefix return copy, postfix 
+
+Date& operator--();	//prefix
+Date operator--(int);	//postfix
+
+
+The prefix version actually allows: ++n = x;		//n and x are date objects
+The postfix version actually allows: n++ = x;
+
+If we don't want to allow these, make their return type const
+
+
+-	We did not put "using namespace std"; other file that includes Date.h will be using namespace std.
+-	alternative return types for operators ++, --
+-	friend declartions can be in public or private section
+-	static variables are declared in the class defintion; they must be defined in the class implementation
+-	static members are associated with the class rather than data or function
+-	with individual objects; in particular, static members functions have no 'this' pointer.
+
+//Date.cpp - class implemenation
+
+#include <iostream>
+#include "Date.h"
+
+//definition of static members;  Note: no static keyword
+
+
+const int Date::daysInRegularYear[] = {
+
+0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} ; //0 is a dummy value
+
+
+//ctor (Note:  no default argument values)
+
+Date::Date(int year, int month, int day)
+:year_ (year), month_ (month), day_ (day){
+	if(!isValidDate(year, month, day))
+		throw "Date:Date(int, int, int): invalid arguments";
+}
+
+
+//Always initializes data members in the order they are listed in the class definition; the compiler actually enforces
+this order by reorganizing the member initializers if necessary
+
+
+Date&
+Date::operator++(){
+	const int*days = isLeapYear()? daysInLeapYear:
+					daysInRegularYear;
+{
+
+	if(++day__ > days[month_]{
+		day_ 1;
+		if(++month_>12){
+			month_ = 1;
+			++year_;
+		}
+	}
+	return *this;	//the 'this'* pointer points to the current object
+
+}
+
+
+
+
+//postfix version:
+
+
+Date
+Date::operator++(int){	//postfix
+	Date copy(*this);	//make a copy of the current object by calling copy constructor
+	++*this;		//increment original by calling prefix++
+	return copy;
+}
+
+//Note: always implement postfix version by calling the prefix version
+
+
+Date&
+
+Date::operator--(){
+
+	const int *days = isLeapYear()? daysInLeapYear_:
+					daysInRegularYear_;
+
+	if (--day_ < 1) {
+		if (--month- < 1) {
+			month_ = 12;
+			--year_;
+		}
+
+	
+		day_ = days[month_];
+
+	}
+//may need to call isValidDate
+
+	return *this;
+}
+
+
+Date
+
+Date::operator--(int){	//postfix
+	Date copy(*this);
+	--*this;
+	return copy;
+}
+
+
+
+
+
+Date
+
+Date::setDate(int year, int month, int day)
+	if(!isValidDate(year,month,day))
+		throw "Date::setDate(int,int,int):invalid date";
+
+
+	Date copy(*this);
+	year_ = year;
+	month_ = month;
+	day_ = day;
+	return copy
+}
+
+
+
+//note:  can't use member initializers; they can only be used in constructors.
+
+
+
+bool
+Date::isLeapYear(int year){
+
+	if (year%400 == 0)
+		return true;
+	if (year%100 == 0)
+		return false;
+	if (year%4 == 0)
+		return true;
+	return false;
+}
+
+
+
+bool
+
+Date::isValidDate(in year, int month, int day){
+	const int *days = isLeapYear(year)?daysInLeapYear_:
+						daysInRegularYear_;
+
+
+//may need to check year is within a certain range
+
+	return  1 < month && month <= 12 && 1 <= day && day <= days[month];
+
+}
+
+
+Date
+
+Date::today(){
+	time_t now = time(0);
+
+	tm *ts = localtime(&now);
+
+	return Date(ts -> tm_year_ + 1900, ts -> tm_mon + 1,
+			ts -> tm_mday);
+
+}
+
+ostream&
+operator<<(ostream& os, const Date& d){	//eg.2008/10/07
+
+
+	ostringstream oss;
+	oss << setfill('0') << d.year_ << '/'
+		<< setw(2) << d.month_ << '/'
+		<< setw(2) << d.day_;
+	os << oss.str();
+	return os;
+}
+
+
+
+
+istream&
+operator >> (istream & is, Date& d){
+	string s;
+	if (!(is>>s))
+		throw "....";
+
+	istringstream iss(s);
+
+	char c1, c2;
+	int year, month, day;
+	iss >> year >> c1 >> month >> c2 >> day;
+
+	
+	if (iss && c1 =='/' && c2 == '/')
+		d = Date(year, month, day);
+
+	else
+		throw "....";
+	return is;
+}
+
+//the above throws an exception when it fails; alternative: change 'is' to fail state

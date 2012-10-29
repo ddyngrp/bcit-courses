@@ -1,0 +1,39 @@
+import java.util.Calendar;
+
+public class Quicksort {
+
+	public Quicksort() {	
+	}
+	
+	public int[] Sort(int[] input) {
+		
+		input = this.Partition(input);
+		
+		return input;
+	}
+	
+	private int[] Partition(int[] input) {
+		int leftIndex = input[0];
+		int rightIndex = input.length;
+		int index = 0;
+		
+		do {
+			
+		} while (index >= rightIndex);
+		
+		return input;
+	}
+	
+	public void RunTests(int runTimes) {
+		
+	}
+	
+	private double TestMerge(int[] input) {
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		this.Sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

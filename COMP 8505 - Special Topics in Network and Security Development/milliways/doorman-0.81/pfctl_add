@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+#
+#  file "pfctl_add"
+#  OpenBSD-style 'pf' firewall-add script, called by "doormand". 
+#  This adds a "pass in quick" rule to the firewall.
+#
+#  Called with five arguments:
+#
+# $1 : name of the interface (e.g. ne0)
+# $2 : source IP; i.e. dotted-decimal address of the 'knock' client
+# $3 : source port; when this script is called for the first time
+#      for a connection (man 8 doormand), this argument will be set
+#      to a single "0" (0x30) character.  This means that the source
+#      port is not yet known, and a broad rule allowing any source
+#      port is required.
+# $4 : destination IP; that is, the IP address of the interface 
+#      in argument 1.
+# $5 : The port number of the requested service (e.g. 22 for ssh, etc.)
+#
+#
+
+use strict ;
+
+my ($if, $saddr, $sport, $daddr, $dport) ;
+my ($name) ; 
+my (@a, $int_saddr) ;
+my ($ret) ;
+
+($if, $saddr, $sport, $daddr, $dport) = @ARGV ;
+
+if ($sport == 0) {
+    @a = split /\./, $saddr ;
+    $int_saddr = ($a[0]<<24) + ($a[1]<<16) + ($a[2]<<8) + $a[3] ;
+    $name = sprintf ("%8.8x-%4.4x", $int_saddr, $dport) ;
+    open PIPE, "echo 'pass in quick on $if proto TCP from $saddr" .
+               " to $daddr port $dport' | 2>&1 pfctl -a doorman:$name -f - |" ;
+} else {
+    $name = sprintf ("%4.4x-%4.4x", $sport, $dport) ;
+    open PIPE, "echo 'pass in quick on $if proto TCP from $saddr" .
+               " port $sport to $daddr port $dport' | 2>&1 pfctl -a doorman:$name -f - |" ;
+}
+
+$ret = <PIPE> ;
+chomp $ret ;
+
+if ($ret =~ /^$/) {
+    print "0\n" ;
+} else {
+    print "-1 3 $ret\n" ;
+}
+

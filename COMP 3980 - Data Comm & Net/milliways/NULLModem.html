@@ -1,0 +1,115 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; U) [Netscape]">
+   <title>The  NULL Modem Cable</title>
+</head>
+<body>
+
+<center><b><u><font face="Lucida Bright"><font size=-1>The null Modem Cable</font></font></u></b></center>
+
+<p><br>
+<br>
+<p><font face="Lucida Bright"><font size=-1>Quite frequently there is a
+need to connect two computers (DTEs) that are very close to each other
+using RS-233-C. Since neither is a modem (DCE), there is an interface problem
+to consider. This problem can be solved using a device called a null modem.
+A null modem device is a cable that connects the transmit line of one serial
+port to the receive line of the other. It also crosses some of the other
+lines in a similar fashion.</font></font><font face="Lucida Bright"><font size=-1></font></font>
+<p><font face="Lucida Bright"><font size=-1>For most applications pins
+1 through 8 plus 20 and 22 are all that are needed. The table below shows
+the basic pins that would be required for a null modem connection.</font></font>
+<br><font face="Lucida Bright"><font size=-1></font></font>&nbsp;
+<br><font face="Lucida Bright"><font size=-1></font></font>&nbsp;
+<br><font face="Lucida Bright"><font size=-1></font></font>&nbsp;
+<center><table BORDER CELLSPACING=2 CELLPADDING=9 WIDTH="299" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>Pin #</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>Signal</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Description</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>2</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>TX</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Transmit Data</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>3</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>RX</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Receive Data</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>4</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>RTS</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Request to Send</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>5</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>CTS</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Clear to Send</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>20</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>DTR</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Data Terminal Ready</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>6</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>DSR</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Data Set Ready</font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font size=-1>8</font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font size=-1>DCD</font></td>
+
+<td VALIGN=TOP WIDTH="57%"><font size=-1>Data Carrier Detect</font></td>
+</tr>
+</table></center>
+
+<br>&nbsp;
+<p><font face="Lucida Bright"><font size=-1>In constructing the cable bear
+in mind that pin 2 (Tx) is an output at both ends so it must be crossed
+over to pin 3 (Rx) at the other end. Similar care must be taken in connecting
+the control lines. The RTS is an output and its corresponding input will
+be the CTS line. This leaves the DCD and many devices require that this
+pin be "on" before data transfer can take place. The DCD can be simulated
+with a signal from some other pin.</font></font><font face="Lucida Bright"></font>
+<p><font face="Lucida Bright"><font size=-1>The diagram provided shows
+one method of constructing a null modem cable.</font></font>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<blockquote>
+<blockquote>
+<blockquote><img SRC="Image550.jpg" height=300 width=515></blockquote>
+</blockquote>
+</blockquote>
+
+<br>&nbsp;
+</body>
+</html>

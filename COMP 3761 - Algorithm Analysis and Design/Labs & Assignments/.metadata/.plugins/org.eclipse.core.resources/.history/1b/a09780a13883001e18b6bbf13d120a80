@@ -1,0 +1,54 @@
+public class Mergesort {
+	
+	public Mergesort() {		
+	}
+		
+	public int[] Sort(int[] input) {
+		int[] result = new int[input.length];
+		int[] left = new int[(int)Math.floor((input.length / 2))];
+		int[] right = new int[(int)Math.ceil((input.length / 2))];
+		
+		if (input.length <= 1) {
+			return input;
+		}
+		
+		for (int i = 0; i < left.length; i++) {
+			left[i] = input[i];
+		}
+		for (int j = 0; j < right.length; j++) {
+			right[j] = input[j + left.length];
+		}
+		
+		left = Sort(left);
+		right = Sort(right);
+		result = Merge(left, right);
+		
+		return result;
+	}
+	
+	private int[] Merge(int[] left, int[] right) {
+		int[] result = new int[left.length + right.length];
+		int i = 0, j = 0, k = 0;
+		
+		while (i < left.length && j < right.length) {
+			if (left[i] <= right[j]) {
+				result[k] = left[i];
+				i++;
+			}
+			else {
+				result[k] = right[j];
+				j++;
+			}
+			k++;
+		}
+		
+		if (i == left.length) {
+			
+		}
+		else {
+			
+		}
+		
+		return result;
+	}
+}

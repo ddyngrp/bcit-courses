@@ -1,0 +1,194 @@
+/**
+ * Project: assignment02
+ * File: MainWindow.java
+ * Date: 23-Nov-07
+ * Time: 11:09:50 AM
+ */
+package a00683006.bedz.ui;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import a00683006.bedz.data.*;
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class MainWindow {
+	private static final long serialVersionUID = 218739874L;
+	private static final String IMAGE_PATH = "../images/";
+	private static final String BB_NAME = "The Queen Anne Bed & Breakfast Inn";
+	private JTextField jtNumber, jtLName, jtFName, jtPhone, jtEmail, jtStreet,
+					   jtCity, jtPC, jtCountry;
+	private JList jlGuests;
+	private MyFrame jfContainer;
+	private BedAndBreakfast db;
+	
+	public MainWindow(BedAndBreakfast db) {
+		this.db = db;
+		jfContainer = new MyFrame();
+		jfContainer.setLayout(new BorderLayout());
+
+		createMenu();
+		createHeader();
+		createTabPanes();
+		jfContainer.setVisible(true);
+	}
+	
+	private void createMenu() {
+		JMenuBar jmbMenu = new JMenuBar();
+		jfContainer.setJMenuBar(jmbMenu);
+		
+		JMenu fileMenu = new JMenu("File");
+		JMenu guestMenu = new JMenu("Guest");
+		JMenu reservationMenu = new JMenu("Reservation");
+		JMenu helpMenu = new JMenu("Help");
+		
+		JMenuItem fileExit = new JMenuItem("Exit", 'X');
+		JMenuItem guestNew = new JMenuItem("New Guest");
+		JMenuItem guestDelete = new JMenuItem("Delete Guest");
+		JMenuItem guestSave = new JMenuItem("Save Guest");
+		JMenuItem helpAbout = new JMenuItem("About", 'A');
+		
+		fileMenu.setMnemonic('F');
+		guestMenu.setMnemonic('G');
+		reservationMenu.setMnemonic('R');
+		helpMenu.setMnemonic('H');
+		
+		jmbMenu.add(fileMenu);
+		jmbMenu.add(guestMenu);
+		jmbMenu.add(reservationMenu);
+		jmbMenu.add(helpMenu);
+		
+		fileMenu.add(fileExit);
+		guestMenu.add(guestNew);
+		guestMenu.add(guestDelete);
+		guestMenu.add(guestSave);
+		reservationMenu.add(new JMenuItem("New Reservation"));
+		reservationMenu.add(new JMenuItem("Delete Reservation"));
+		reservationMenu.add(new JMenuItem("Save Reservation"));
+		helpMenu.add(helpAbout);
+		
+		helpAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
+		
+		fileExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+
+		guestNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// new guest
+			}
+		});
+		guestDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// delete guest
+			}
+		});
+		guestSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// save guest
+			}
+		});
+		
+		helpAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				messageDialogue("About Bedz", "Bedz 2.0\nBy Steffen L. Norgren A00683006");
+			}
+		});
+	}
+	
+	private void createHeader() {
+		JPanel jpHeader = new JPanel();
+		jfContainer.add(jpHeader, BorderLayout.NORTH);
+
+		jpHeader.setLayout(new BorderLayout());
+		jpHeader.setBackground(new Color(120,201,79));
+		
+		JLabel image = new JLabel(new ImageIcon(getClass().getResource(
+				IMAGE_PATH + "logo.png")));
+		
+		JLabel name = new JLabel(BB_NAME, JLabel.CENTER);
+		name.setFont(new Font("Times", Font.ITALIC, 36));
+		name.setForeground(Color.YELLOW);
+		
+		jpHeader.add(image, BorderLayout.LINE_START);
+		jpHeader.add(name, BorderLayout.CENTER);
+	}
+	
+	private void createTabPanes() {
+		JPanel jpContents = new JPanel();
+		jpContents.setLayout(new BorderLayout());
+		jfContainer.add(jpContents);
+		
+		JTabbedPane mainTabPane = new JTabbedPane();
+		JTabbedPane roomTabPane = new JTabbedPane();
+		
+		JPanel jpRooms = new JPanel();
+		JPanel jpGuests = new JPanel();
+		JPanel jpReservations = new JPanel();
+		JPanel guestInfo = new JPanel();
+		
+		mainTabPane.addTab("Rooms", jpRooms);
+		mainTabPane.addTab("Guests", jpGuests);
+		mainTabPane.addTab("Reservations", jpReservations);
+		
+		guestInfo.setLayout(new GridBagLayout());
+		jpRooms.setLayout(new BorderLayout());
+		jpGuests.setLayout(new BorderLayout());
+		jpReservations.setLayout(new BorderLayout());
+		
+		for (Room room : db.getRoom()) {
+			JPanel jpRoomInfo = new JPanel(new BorderLayout());
+			
+			jpRoomInfo.add(new RoomInfo(room), BorderLayout.NORTH);
+			
+			roomTabPane.addTab(Integer.toString(room.getNumber()),
+					jpRoomInfo);
+		}
+		
+		roomTabPane.setTabPlacement(JTabbedPane.LEFT);
+		
+		jpGuests.add(new JScrollPane(jlGuests = new JList()), BorderLayout.LINE_START);
+		guestInfo.add(new GuestInfo());
+		
+		jpRooms.add(roomTabPane, BorderLayout.CENTER);
+		jpGuests.add(guestInfo, BorderLayout.CENTER);
+		jpContents.add(mainTabPane);
+	}
+	
+	private void messageDialogue(String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+	
+	private void messageDialogue(String title, String message) {
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	private class MyFrame extends JFrame {
+		private static final long serialVersionUID = 1287687621L;
+		
+		/**
+		 * Default frame.
+		 */
+		public MyFrame() {
+			setSize(700,600);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setLocationRelativeTo(null);
+			
+			try {
+				String gtk = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+				String metal = "javax.swing.plaf.metal.MetalLookAndFeel";
+				String motif = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+				String mac = "javax.swing.plaf.mac.MacLookAndFeel";
+				UIManager.setLookAndFeel(metal);
+			}
+			catch (Exception e) {
+				System.err.println("Could not install the look and feel.");
+			}
+		}
+	}
+}

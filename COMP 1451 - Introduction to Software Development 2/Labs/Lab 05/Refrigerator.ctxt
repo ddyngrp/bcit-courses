@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=theMaker\ theSerialNumber\ theHeightCM\ theDepthCM\ theWidthCM\ theCapacityM2\ theMinTempC
+comment0.target=Refrigerator(String,\ int,\ double,\ double,\ double,\ double,\ double)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Refrigerator\n\n
+comment1.params=newCapacityM2
+comment1.target=void\ setCapacityM2(double)
+comment1.text=\nSetter\ for\ capacityM2\n\n
+comment2.params=newMinTempC
+comment2.target=void\ setMinTempC(double)
+comment2.text=\nSetter\ for\ minTempC\n\n
+comment3.target=double\ getCapacityM2()
+comment3.text=\nGetter\ for\ capacityM2\n\n
+comment4.target=double\ getMinTempC()
+comment4.text=\nGetter\ for\ minTempC\n\n
+numComments=5

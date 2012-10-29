@@ -1,0 +1,7 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\bin\Debug\ReadXml_CS.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\bin\Debug\ReadXml_CS.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.Form1.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.csproj.GenerateResource.Cache

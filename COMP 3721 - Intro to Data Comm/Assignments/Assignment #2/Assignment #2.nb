@@ -1,0 +1,110 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      2761,        101]
+NotebookOptionsPosition[      2229,         77]
+NotebookOutlinePosition[      2567,         92]
+CellTagsIndexPosition[      2524,         89]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"ResponseTime", "=", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"4", "kB", "\[Times]", "8"}], 
+    RowBox[{"64", "kbps"}]], "=", 
+   RowBox[{"500", "ms"}]}]}]], "Input",
+ CellChangeTimes->{{3.434342562133069*^9, 3.434342648225569*^9}, {
+  3.434342690256522*^9, 3.434342707914383*^9}, {3.4343427783310413`*^9, 
+  3.434342792545226*^9}, {3.434342868488661*^9, 3.434342907061742*^9}}],
+
+Cell[BoxData[
+ FractionBox["kB", 
+  RowBox[{"2", " ", "kbps"}]]], "Output",
+ CellChangeTimes->{3.4343429019452553`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TotalResponseTime", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"250", "ms"}], "+", 
+    RowBox[{"500", "ms"}], "+", 
+    RowBox[{"11.1911", "ms"}]}], "=", 
+   RowBox[{"761.191", "ms"}]}]}]], "Input",
+ CellChangeTimes->{{3.434342928226513*^9, 3.43434319966663*^9}, {
+  3.434343687561285*^9, 3.434343704759926*^9}}],
+
+Cell[BoxData[
+ RowBox[{"761.1911`", " ", "ms"}]], "Output",
+ CellChangeTimes->{{3.4343430470479717`*^9, 3.4343430694931393`*^9}, 
+   3.434343189281266*^9, {3.434343688576765*^9, 3.434343695755952*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TransmissionTime", " ", "=", " ", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"3355", "\[Times]", "1000", "m"}], 
+    RowBox[{"299792458", "m", "\[Times]", 
+     SuperscriptBox["s", 
+      RowBox[{"-", "1"}]]}]], "=", 
+   RowBox[{"11.1911", "ms"}]}]}]], "Input",
+ CellChangeTimes->{{3.434343592085684*^9, 3.434343655823485*^9}}],
+
+Cell[BoxData[
+ RowBox[{"0.011191075393898001`", " ", "s"}]], "Output",
+ CellChangeTimes->{{3.434343633447413*^9, 3.434343636554483*^9}}]
+}, Open  ]]
+},
+WindowSize->{689, 720},
+WindowMargins->{{1, Automatic}, {Automatic, 0}},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 401, 9, 49, "Input"],
+Cell[994, 34, 119, 3, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1150, 42, 335, 9, 27, "Input"],
+Cell[1488, 53, 201, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1726, 61, 348, 9, 48, "Input"],
+Cell[2077, 72, 136, 2, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

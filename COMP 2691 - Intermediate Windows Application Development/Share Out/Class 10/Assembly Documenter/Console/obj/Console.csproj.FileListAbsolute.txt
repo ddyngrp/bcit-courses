@@ -1,0 +1,7 @@
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\bin\Debug\Console.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\bin\Debug\Console.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\bin\Debug\AssemblyDocumenter.dll
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\bin\Debug\AssemblyDocumenter.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\obj\Debug\Console.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\Console\obj\Debug\Console.pdb

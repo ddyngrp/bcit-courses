@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="CXYrice.xsl"?>
+<rice_trade_statistics
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="rice.xsd">
+  <country_info name="Argentina">
+    <export_statistics year="2003">170</export_statistics>
+    <export_statistics year="2004">249</export_statistics>
+    <export_statistics year="2005">345</export_statistics>
+    <export_statistics year="2006">400</export_statistics>
+    <export_statistics year="2007">400</export_statistics>
+  </country_info>
+
+  <country_info name="Australia">
+    <export_statistics year="2003">141</export_statistics>
+    <export_statistics year="2004">131</export_statistics>
+    <export_statistics year="2005">52</export_statistics>
+    <export_statistics year="2006">500</export_statistics>
+    <export_statistics year="2007">600</export_statistics>
+  </country_info>
+
+  <country_info name="China">
+    <export_statistics year="2003">2583</export_statistics>
+    <export_statistics year="2004">880</export_statistics>
+    <export_statistics year="2005">656</export_statistics>
+    <export_statistics year="2006">800</export_statistics>
+    <export_statistics year="2007">800</export_statistics>
+    <import_statistics year="2003">258</import_statistics>
+    <import_statistics year="2004">1122</import_statistics>
+    <import_statistics year="2005">609</import_statistics>
+    <import_statistics year="2006">600</import_statistics>
+    <import_statistics year="2007">800</import_statistics>
+  </country_info>
+
+  <country_info name="Canada">
+    <import_statistics year="2003">242</import_statistics>
+    <import_statistics year="2004">285</import_statistics>
+    <import_statistics year="2005">300</import_statistics>
+    <import_statistics year="2006">325</import_statistics>
+    <import_statistics year="2007">325</import_statistics>
+  </country_info>
+
+  <country_info name="Colombia">
+    <import_statistics year="2003">75</import_statistics>
+    <import_statistics year="2004">58</import_statistics>
+    <import_statistics year="2005">92</import_statistics>
+    <import_statistics year="2006">100</import_statistics>
+    <import_statistics year="2007">100</import_statistics>
+  </country_info>
+
+  <country_info name="Costa Rica">
+    <import_statistics year="2003">95</import_statistics>
+    <import_statistics year="2004">136</import_statistics>
+    <import_statistics year="2005">106</import_statistics>
+    <import_statistics year="2006">100</import_statistics>
+    <import_statistics year="2007">100</import_statistics>
+  </country_info>
+
+  <country_info name="Cote d'Ivore">
+    <import_statistics year="2003">750</import_statistics>
+    <import_statistics year="2004">750</import_statistics>
+    <import_statistics year="2005">800</import_statistics>
+    <import_statistics year="2006">750</import_statistics>
+    <import_statistics year="2007">750</import_statistics>
+  </country_info>
+
+  <country_info name="Cuba">
+    <import_statistics year="2003">371</import_statistics>
+    <import_statistics year="2004">639</import_statistics>
+    <import_statistics year="2005">736</import_statistics>
+    <import_statistics year="2006">700</import_statistics>
+    <import_statistics year="2007">700</import_statistics>
+  </country_info>
+
+  <country_info name="Uruguay">
+    <export_statistics year="2003">675</export_statistics>
+    <export_statistics year="2004">804</export_statistics>
+    <export_statistics year="2005">762</export_statistics>
+    <export_statistics year="2006">700</export_statistics>
+    <export_statistics year="2007">700</export_statistics>
+  </country_info>
+
+  <country_info name="Uzbekistan">
+    <import_statistics year="2003">25</import_statistics>
+    <import_statistics year="2004">25</import_statistics>
+    <import_statistics year="2005">25</import_statistics>
+    <import_statistics year="2006">25</import_statistics>
+    <import_statistics year="2007">25</import_statistics>
+  </country_info>
+
+  <country_info name="UAE">
+    <import_statistics year="2003">80</import_statistics>
+    <import_statistics year="2004">80</import_statistics>
+    <import_statistics year="2005">80</import_statistics>
+    <import_statistics year="2006">80</import_statistics>
+    <import_statistics year="2007">80</import_statistics>
+  </country_info>
+
+</rice_trade_statistics>

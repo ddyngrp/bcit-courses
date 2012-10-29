@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadXml_CS", "C#\ReadXml_CS\ReadXml_CS.csproj", "{163CA704-5F01-41C3-97DC-076F83E7B178}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{163CA704-5F01-41C3-97DC-076F83E7B178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163CA704-5F01-41C3-97DC-076F83E7B178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163CA704-5F01-41C3-97DC-076F83E7B178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163CA704-5F01-41C3-97DC-076F83E7B178}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=TreeFarm()
+comment0.text=\nDefault\ constructor\ for\ TreeFarm\n\n
+comment1.params=newTree
+comment1.target=void\ addTree(Tree)
+comment1.text=\ntakes\ one\ parameter\ of\ type\ Tree\ and\ adds\ an\ existing\nTree\ object\ to\ the\ treeFarm.\n\n
+comment2.target=void\ showAllTrees()
+comment2.text=\nShows\ all\ trees\ and\ displays\ the\ species\ and\ age\ of\ each\n\n
+comment3.params=maxTreeAge
+comment3.target=void\ logOldTrees(int)
+comment3.text=\nremoves\ from\ the\ treeFarm\ all\ the\ trees\ whose\nage\ is\ grater\ than\ the\ parameter\n\n
+comment4.params=xTree\ yTree
+comment4.target=void\ swap(int,\ int)
+comment4.text=\nchecks\ to\ make\ sure\ that\ the\ two\ int\ parameters\ are\ valid\ index\npositions\ within\ the\ treeFarm.\ If\ not,\ it\ displays\ an\ error,\ otherwise\nit\ will\ switch\ the\ position\ of\ the\ two\ trees\ at\ these\ index\ positions.\n\n
+numComments=5

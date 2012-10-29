@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>  
+<MyDataSet>  
+	<NorthwindEmployees> 
+		<Employee id="1">  
+			<lastname>Davolio</lastname>
+			<firstname>Nancy</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+	</NorthwindEmployees>
+</MyDataSet>

@@ -1,0 +1,14 @@
+// CritSect.rc
+// Copyright (c) 1995 C. Calvert
+// A. Abdulla 1997
+
+
+#include "CritSect.h"
+
+ThreadsIcon ICON "threads.ico"
+
+ThreadMenu	MENU
+BEGIN
+	MENUITEM "Run Thread" ID_GOTHREAD
+   MENUITEM "Toggle CritSections" ID_CRITSECTS
+END

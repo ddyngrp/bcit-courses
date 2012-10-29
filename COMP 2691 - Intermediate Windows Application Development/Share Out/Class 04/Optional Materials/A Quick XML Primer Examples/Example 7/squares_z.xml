@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="squares_z.css"?>
+
+<squares>
+  <square class="one">
+  Square One
+  </square>
+  <square class="two">
+  Square Two
+  </square>
+  <square class="three">
+  Square Three
+  </square>
+  <square class="four">
+  Square Four
+  </square>
+</squares>

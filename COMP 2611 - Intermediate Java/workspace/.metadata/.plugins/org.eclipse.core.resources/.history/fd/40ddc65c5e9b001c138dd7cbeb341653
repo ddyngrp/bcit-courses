@@ -1,0 +1,85 @@
+/**
+ * Project: assignment02
+ * File: RoomInfo.java
+ * Date: 25-Nov-07
+ * Time: 5:14:51 AM
+ */
+package a00683006.bedz.ui;
+
+import java.awt.*;
+import javax.swing.*;
+import a00683006.bedz.data.*;
+
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class RoomInfo extends JPanel {
+	private static final String IMAGE_PATH = "../images/";
+	private static final long serialVersionUID = 192837987L;
+	
+	public RoomInfo(Room room) {
+		GridBagConstraints gbcLabels = new GridBagConstraints();
+		GridBagConstraints gbcFields = new GridBagConstraints();
+		setLayout(new GridBagLayout());
+		
+		JTextField jtRoomNum = new JTextField(Integer.toString(room.getNumber()));
+		JTextField jtRoomName = new JTextField(room.getName());
+		JTextField jtRoomRate = new JTextField(Float.toString(room.getRate()));
+		JTextField jtRoomGuests = new JTextField(Integer.toString(
+				room.getMaximumNumberOfGuests()));
+		JTextArea jtRoomDescription = new JTextArea(room.getDescription());
+		MyLabel jtRoomPicture = new MyLabel(
+				new ImageIcon(getClass().getResource(IMAGE_PATH + room.getImageName())));
+		
+		jtRoomDescription.setWrapStyleWord(true);
+		
+		jtRoomNum.setEditable(false);
+		jtRoomName.setEditable(false);
+		jtRoomRate.setEditable(false);
+		jtRoomGuests.setEditable(false);
+		jtRoomDescription.setEditable(false);
+		
+		// Set GridBagLayout Field constraints
+		gbcFields.gridwidth = GridBagConstraints.REMAINDER;
+		gbcFields.fill = GridBagConstraints.HORIZONTAL;
+		gbcFields.anchor = GridBagConstraints.WEST;
+		gbcFields.weightx = 1.00;
+
+		// Set GridBagLayout Label constraints
+		gbcLabels = (GridBagConstraints)gbcFields.clone();
+		gbcLabels.weightx = 0.00;
+		gbcLabels.gridwidth = 1;
+
+		// Add Labels to the panel
+		gbcLabels.gridx = 0;
+		gbcLabels.gridy = 0;
+		add(new MyLabel("Room # "), gbcLabels);
+		gbcLabels.gridy = 1;
+		add(new MyLabel("Name "), gbcLabels);
+		gbcLabels.gridy = 2;
+		add(new MyLabel("Rate "), gbcLabels);
+		gbcLabels.gridy = 3;
+		add(new MyLabel("Guests "), gbcLabels);
+		gbcLabels.gridy = 4;
+		add(new MyLabel("Description "), gbcLabels);
+		gbcLabels.gridy = 5;
+		add(new MyLabel("Picture "), gbcLabels);
+		
+		// Add Fields to the panel
+		gbcFields.gridx = 1;
+		gbcFields.gridy = 0;
+		add(jtRoomNum, gbcFields);
+		gbcFields.gridy = 1;
+		add(jtRoomName, gbcFields);
+		gbcFields.gridy = 2;
+		add(jtRoomRate, gbcFields);
+		gbcFields.gridy = 3;
+		add(jtRoomGuests, gbcFields);
+		gbcFields.gridy = 4;
+		add(jtRoomDescription, gbcFields);
+		gbcFields.gridy = 5;
+		add(jtRoomPicture, gbcFields);
+	}
+}

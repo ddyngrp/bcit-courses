@@ -1,0 +1,38 @@
+rule DefineHeaderDependencies
+{
+	INCLUDES "Assign05.c" : "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/base.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/system.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/debug.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/unicode.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/mouse.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/timer.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/keyboard.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/joystick.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/palette.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/gfx.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/color.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/draw.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/rle.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/compiled.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/text.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/font.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/fli.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/config.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/gui.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/sound.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/file.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/lzss.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/datafile.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/fixed.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/fmaths.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/matrix.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/quat.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/3d.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/3dmaths.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/alcompat.h" ;
+	INCLUDES "/Library/Frameworks/Allegro.framework/Versions/Current/Headers/allegro.h" : "/usr/local/include/allegro/fix.h" ;
+}
+
+DefineHeaderDependencies "<Assignment 05>Assignment 05.app" ;
+

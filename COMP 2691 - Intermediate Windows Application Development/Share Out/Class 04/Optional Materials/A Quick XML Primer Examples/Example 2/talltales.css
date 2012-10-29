@@ -1,0 +1,25 @@
+tt {
+  display: block;
+  width: 750px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 4px double black;
+  background-color: silver;
+}
+
+question {
+  display: block;
+  color: black;
+  font-family: Times, serif;
+  font-size: 16pt;
+  text-align: left;
+}
+
+a, b, c {
+  display: block;
+  color: brown;
+  font-family: Times, serif;
+  font-size: 12pt;
+  text-indent: 15px;
+  text-align: left;
+}

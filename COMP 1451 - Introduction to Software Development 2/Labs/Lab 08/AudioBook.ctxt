@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=title\ author\ publisher\ playingTime\ soundQuality
+comment0.target=AudioBook(String,\ String,\ String,\ double,\ String)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ AudioBook\n\n
+comment1.target=String\ getTitle()
+comment1.text=\n@return\ the\ book\ title\n\n
+comment2.target=String\ getAuthor()
+comment2.text=\n@return\ the\ book\ author\n\n
+comment3.target=String\ getPublisher()
+comment3.text=\n@treturn\ the\ book\ publisher\n\n
+comment4.target=double\ getPlayingTime()
+comment4.text=\n@return\ the\ book's\ playing\ time\n\n
+comment5.target=String\ getSoundQuality()
+comment5.text=\n@return\ the\ book's\ sound\ quality,\ e.g.\ "good",\ "excellent"\n\n
+comment6.target=String\ toString()
+comment6.text=\n@return\ a\ String\ representing\ this\ book\n\n
+numComments=7

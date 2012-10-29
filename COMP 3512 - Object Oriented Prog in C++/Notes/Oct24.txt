@@ -1,0 +1,152 @@
+The Employee Class
+
+
+-	name, ID, birthdate
+
+//Employee.h
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
+#include <string>
+#include <iostream>
+#include "Date.h"
+#include "Name.h"
+
+			//we'll keep track of the no. of employees
+class Employee{
+public:
+	explicit Employee (const std::string& id = "A00000000",
+			const Name& name = Name(),		//calls default Name ctor
+			const Date & birthdate = Date());
+
+	//compiler generated assignment
+
+	Employee (const Employee& src):id_(src.id_),
+		name_(src.name_), birthdate_(src.birthdate_){
+		count++;
+	}
+
+
+//Note: no need to valid ID, name, birthdate in copy ctor because the original was validated!
+
+
+
+virtual ~Employee(){count_--;}		// no need to explicitly call dtor for base class or data members
+
+					// virutal tells the compiler to use late binding
+
+					// (typically dtor should be virtual if some other class is going to inherit
+					// for this class)
+					// generally dtors are called implicitly
+
+
+// get and set methods
+
+
+std::string getId() const { return id_;}
+
+//other get methods: getName, getBirthDate
+
+std::string setId(const std::string& id){
+	if (!isValid(id))
+		throw "Employee::stdId(const std::string&): invalid Id";
+	std::string copy(id_);
+	id_ = id;
+	return copy;
+}
+
+
+// other set methods
+
+static long getCount(){ return count_};	//no const since method is static
+
+friend std::ostream& operator << (std::ostream&, const Employee&);
+
+friend std::istream& operator >> (std::istream&, Employee &);
+
+private:
+
+	string id_;
+	Name name_;
+	Date birthdate_;
+	static long count_;	//declaration only
+
+	//other static methods for validation
+};	#endif
+
+
+
+_____________________________________________________________________
+
+
+//Employee.cpp
+
+#include "Employee.h"
+
+using namespace std;
+
+long Employee::count_ 0;	//definition of static data member
+
+//note:: no explicit keyword and no default argument value
+
+Employee::Employee(const string& id, const Name& name, const Date& birthdate)
+: id_(id), name_(name), birthdate_(birthdate){
+
+	//call copy ctors
+
+
+	//additional validation if necessary; throws excpetion if not valid
+
+	count_++;
+
+}
+
+
+//Note:  count_ is used to keep track of the no of employee objects
+//Therefore constructor needs to incremet count_, the destructor needs to decrement  it
+
+ostream&
+operator << (ostream& os, const Employee& e){
+
+	os << e.Id_ << endl
+		<< e.name_ << endl
+		<< e.birthdate_;
+	return os;
+}
+
+//printing directly to os since we are not doing any formatting
+
+
+istream&
+
+operator >> (istream& is, Employee& e){
+
+	string id;
+	Name name;
+	Date birthdate;
+	
+	if (is >> id >> name >> birthdate){		//calls operator >> for Name and Date
+		e = Employee(id,name,birthdate);	//may throw exception; validation delegated to ctor
+
+	return is;
+}
+
+
+//Example
+
+-	Reading Employees from a "file" and sorting them according them to IDs
+
+
+Employee e;
+
+set<Employee> s;		//use multiset if duplicate Ids allowed
+
+while(cin>>e)
+	s.insert(e);
+
+copy(s.begin(),  s.end(), ostream_iterator<Employee> const,("in")		// can't read what he wrote
+);
+
+
+bool operator <(const Employee& e1, const Employee& e2){
+	return e1.getId() < e2.getId();
+}

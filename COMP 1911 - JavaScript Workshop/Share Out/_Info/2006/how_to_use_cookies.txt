@@ -1,0 +1,12 @@
+http://signalflare.ca/comp1911/samplecode/lesson09/01_cookie_functions.html
+
+	var now = new Date();
+	now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+
+
+	setcookie('firstname', document.getElementById('f').value, now);
+
+
+
+	document.write(getcookie('firstname'));
+

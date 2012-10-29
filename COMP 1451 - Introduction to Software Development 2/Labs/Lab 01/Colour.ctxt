@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=newColour\ newWeight
+comment0.target=Colour(String,\ int)
+comment0.text=\nDefault\ constructor\n\n
+comment1.target=String\ toString()
+numComments=2

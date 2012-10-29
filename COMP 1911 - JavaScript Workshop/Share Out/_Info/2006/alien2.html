@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>intro to js</title>
+<script type="text/javascript">
+<!--
+	var directory    = "./alien/";
+	var imageType    = ".gif";
+	var imageName    = "alienrwalk"
+	var startIndex   = 0;
+	var endIndex     = 30;
+	var currentIndex = startIndex;
+	var imagesArray  = new Array();
+
+	for ( var x = startIndex; x < endIndex; x++ ){
+		var someImage = new Image();
+		someImage.src = directory + imageName + x + imageType;			
+		imagesArray[x] = someImage;
+	}
+		
+function advanceImage(imageId){
+
+	currentIndex++;
+
+	if(currentIndex >= endIndex){
+		currentIndex = startIndex;	
+	}
+
+	if((parseInt(document.getElementById(imageId).style.left) + 
+                    document.getElementById(imageId).width) < screen.availWidth)
+	{
+
+		
+
+		document.getElementById(imageId).style.left =  
+			parseInt(document.getElementById(imageId).style.left) + 2 + "px";  
+
+		document.getElementById(imageId).src =  
+			imagesArray[currentIndex].src;	
+			
+	}
+	else
+	{
+		
+		clearInterval(timerId);
+		alert("STOPPED");
+	}
+}
+
+
+var timerId;
+
+function startAnimation()
+{
+	timerId = setInterval('advanceImage(\'alien\')', 50);
+}
+
+
+
+	// -->
+	</script>
+
+</head>
+
+<body onload="startAnimation();">
+	
+
+<img src="./alien/alienrwalk0.gif" id="alien" style="position:absolute;left:0px">
+
+
+
+</body>
+</html>
+
+
+

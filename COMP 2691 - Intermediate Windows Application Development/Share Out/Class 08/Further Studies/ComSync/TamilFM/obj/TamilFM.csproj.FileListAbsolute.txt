@@ -1,0 +1,10 @@
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\bin\Debug\TamilFM.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\bin\Debug\TamilFM.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.Tamil16.ICO
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.mainForm.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.Properties.Resources.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.aboutForm.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 8\TamilFM\obj\Debug\TamilFM.pdb

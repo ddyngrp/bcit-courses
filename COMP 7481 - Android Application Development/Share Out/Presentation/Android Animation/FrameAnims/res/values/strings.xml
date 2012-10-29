@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Animation!</string>
+    <string name="app_name">FameAnims</string>
+    <drawable name="rocket_thrust1">#f00</drawable>
+    <drawable name="rocket_thrust2">#0000ff</drawable>
+    <drawable name="rocket_thrust3">#ffffff00</drawable>
+</resources>

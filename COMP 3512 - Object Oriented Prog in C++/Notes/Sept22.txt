@@ -1,0 +1,108 @@
+iv)	user_defined conversion	
+
+
+Easy way to remember
+
+1)	exact match - should be easily recognizable
+2)	promotion
+		smaller integer type	-> int
+				float	-> double
+3)	standard conversion - basically everything else
+4)	choose the best match from the viable functions
+
+	the viable function "c" is the best if for all other viable function "c'"
+
+	a)	None of the conversions needed to call "c'" is better than the corresponding
+		conversion needed to call c
+	b)	there must be at least 1 conversion where "c" is better than "c'"
+		(In a sense, c must be the clear winner)
+
+Examples
+
+I
+
+int f(int, int);
+double f(double, double);
+f(1,1);		Can either do int f(exact,exact) or double f(std. conv., std. conv);
+
+It calls int f(int, int);
+
+float x = 1.0;
+
+f(x,1);		can either do int f(std. conv, exact) or double f(promotion, std. conv)
+
+promotion beats std conv
+exact beats std. conv
+
+both cases equally viable
+therefore ambiguous
+and therefore will result an error
+
+
+float x = 1.0;
+long l = 2;
+
+f(x,l);		can either do int f(std. conv, std. conv)or double f(promotion, std. conv)
+
+
+II
+
+void g(long);
+void g(double);	
+
+g(1);		can either do void(std. conv) or void (std.conv), ambiguous
+
+
+III
+
+void g(long&);
+void g(double);
+
+g(1);		calls 2nd one because g(1) can never call the 1st one
+
+
+IV
+
+void g(const long&);
+void g(double);
+
+g(1)		ambiguous (note: both are viable)
+
+V
+
+void g(int&);
+void g(long);
+
+short s = 1;
+
+g(s);		1st one is not viable, calls 2nd
+
+
+In order to call the 1st one, s must be converted to an int which is a temporary
+but we can't create a reference to temporary that is not const.
+
+VI
+
+void g(const int&)
+void g(long);
+short s = 1;
+
+g(s);		1st one is promotion, 2nd one is std. conv, calls 1st one
+
+VII
+
+void g(char*);
+void g(const char*);
+
+g("hello");	Calls 2 because of string const
+
+
+________________
+
+type safe linkage
+
+extern
+
+
+Without extern "c", square would be mangled in the output from the C++ compiler wheras it is not 
+mangled in the output from the C compiler

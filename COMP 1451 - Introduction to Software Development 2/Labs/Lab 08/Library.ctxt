@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Library()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Library\n\n
+comment1.target=void\ showAllItems()
+comment1.text=\nShow\ details\ of\ all\ the\ items\ in\ the\ library\n\n
+comment2.params=book
+comment2.target=void\ addPrintedBook(PrintedBook)
+comment2.text=\nAdd\ a\ printed\ book\ to\ the\ library\n\n
+comment3.params=book
+comment3.target=void\ addAudioBook(AudioBook)
+comment3.text=\nAdd\ an\ audio\ book\ to\ the\ library\n\n
+comment4.params=movie
+comment4.target=void\ addMovie(Movie)
+comment4.text=\nAdd\ a\ movie\ to\ the\ library\n\n
+comment5.params=musicItem
+comment5.target=void\ addMusic(Music)
+comment5.text=\nAdd\ music\ to\ the\ library\n\n
+numComments=6

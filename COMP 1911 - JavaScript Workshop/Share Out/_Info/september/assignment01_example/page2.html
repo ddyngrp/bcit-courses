@@ -1,0 +1,87 @@
+<!-- 
+	comp1911 assignment01 example page2.html
+	see specifications for details
+-->
+<html>
+<head>
+	<title>COMP1911 Assignment 1 Example PAGE 2</title>
+	<script		type="text/javascript" 
+				language="javascript"
+				src="functions.js"
+				></script>
+	<style type="text/css">
+		#dropmenudiv{
+		position:absolute;
+		border:1px solid black;
+		border-bottom-width: 0;
+		font:normal 12px Verdana;
+		line-height:18px;
+		z-index:100;
+		}
+		#dropmenudiv a{
+		width: 100%;
+		display: block;
+		text-indent: 3px;
+		border-bottom: 1px solid black;
+		padding: 1px 0;
+		text-decoration: none;
+		font-weight: bold;
+		}
+		#dropmenudiv a:hover{ 
+		background-color: yellow;
+		}
+		#NewsLayer h1 { font-family: Arial, Helvetica, sans-serif; 
+						font-size: 14px; margin-left: 8px; margin-right: 5px; 
+						font-style: normal; color: #000000;font-weight: bold; }
+		#NewsLayer p { font-family: Arial, Helvetica, sans-serif; 
+					   font-size: 12px; margin-left: 8px; margin-right: 10px; 
+					   color: #000000;}
+		#NewsLayer a { font-family: Arial, Helvetica, sans-serif; 
+					   font-size: 12px; margin-left: 8px; margin-right: 10px; 
+					   color: #000000;}
+
+		#HeadlineLayer h1 { font-family: "Times New Roman", Times, serif; 
+							font-size: 18px; margin-left: 5px; margin-top: 3px; 
+							margin-right: 5px; color: #000000; 
+							font-weight: normal; }
+	</style>
+</head>
+
+<body>
+	<h3>COMP1911 Assignment 1 Example PAGE 2</h3>
+	
+
+<body bgcolor="#ffffff" text="#000000" onLoad="startScrolling();">
+	<a href="default.htm" onClick="return dropdownmenu(this, event, menu1, '150px')" onMouseout="delayhidemenu()">Web Design</a> |
+
+	<a href="default2.htm" onClick="return dropdownmenu(this, event, menu2, '200px')" onMouseout="delayhidemenu()">World News</a> |
+
+	<a href="default3.htm" onClick="return dropdownmenu(this, event, menu3, '200px')" onMouseout="delayhidemenu()">Sports Sites</a>
+
+	<div id="NewsLayer" 
+		 style="position:absolute; left:100px; top:200px; width:200px; 
+				height:500px; z-index:1; clip:rect(0 200 200 0);"> 
+	  <div style="margin-top:200px; margin-bottom:200px;">
+	  <h1>Royals make it official, another last-place finish, after 5-3 loss to Indians </h1>
+	  <p>Hello last place. Again. It¡¯s official now. The Royals will finish at the bottom of the American League Central Division for a fourth straight year. Alone at the bottom, too.<br>
+	  </p>
+	  <h1>Charge dropped in massage parlor case </h1>
+	  <p>Johnson County prosecutors have dropped a case against an Overland Park man who had been charged with promoting prostitution.<br>
+	  </p>
+	  <h1>Feds accuse 28 people of racketeering as part of Crips gang </h1>
+	  <p>A sweeping, secretive investigation has led to federal indictments accusing 28 people of operating the Crips street gang as a ¡°racketeering enterprise¡± that has murdered, robbed and intimidated Wichitans for years.<br>
+	  </p>
+	  <h1>Buckner boy, 4, still in critical condition after go-cart crash </h1>
+	  <p>Relatives and neighbors in Buckner are still feeling the shock of Thursday evening¡¯s accident involving two young brothers on a go-cart.
+	</p>
+	  </div>
+	</div>
+
+
+	<div id="HeadlineLayer" 
+		 style="position:absolute; left:100px; top:150px; width:200px; 
+				height:25px; z-index:2; background-color: #cccccc;"> 
+	  <h1>Breaking News</h1>
+	</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FinalExam</name>
+    </assembly>
+    <members>
+        <member name="T:FinalExam.WritingUtensil">
+            <summary>
+            Represents a writing utensil, for example a pen or pencil or something else with which
+            one can write.
+            </summary>
+        </member>
+        <member name="F:FinalExam.WritingUtensil.color">
+            <summary>
+            Color that shows when this object is used.
+            </summary>
+        </member>
+        <member name="M:FinalExam.WritingUtensil.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the WritingUtensil class.
+            </summary>
+            <param name="color">Color of the writing utensil (the color that shows when the utensil is used).</param>
+        </member>
+        <member name="P:FinalExam.WritingUtensil.Color">
+            <summary>
+            Gets or sets the color that shows when this object is used.
+            </summary>
+        </member>
+        <member name="T:FinalExam.Pencil">
+            <summary>
+            Represents a pencil, which has a lead type property.
+            </summary>
+        </member>
+        <member name="M:FinalExam.Pencil.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Pencil class.  Throws a LeadTypeException
+            if leadType is not a valid lead type.
+            </summary>
+            <param name="color"></param>
+            <param name="leadType"></param>
+        </member>
+        <member name="M:FinalExam.Pencil.ValidLeadTypesAsString">
+            <summary>
+            Returns a comma-delimited string listing all valid lead types.  This method can be used
+            by the calling code, however its primary use is for the LeadTypeException class itself.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FinalExam.Pencil.ToString">
+            <summary>
+            Returns a string representation of this object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FinalExam.Pencil.LeadType">
+            <summary>
+            Sets or gets the lead type for this object.  Valid lead types are: HB, 2B and 4B.
+            Throws LeadTypeException.
+            </summary>
+        </member>
+        <member name="T:FinalExam.LeadTypeException">
+            <summary>
+            This exception is thrown when a Pencil's LeadType is set to an invalid type,
+            which may occur in the constructor or the LeadType property.  See the LeadType property
+            for valid types.
+            </summary>
+        </member>
+        <member name="M:FinalExam.LeadTypeException.#ctor">
+            <summary>
+            Initializes a new instance of the LeadTypeException class with a default message.
+            </summary>
+        </member>
+        <member name="T:FinalExam.BallPointPen">
+            <summary>
+            Represents a ballpoint pen, which has a thickness property.
+            </summary>
+        </member>
+        <member name="M:FinalExam.BallPointPen.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the BallPointPen class.  Throws a ThicknessException
+            if thickness is invalid.  See Thickness property for valid thicknesses.
+            </summary>
+            <param name="color">Color that is shown when this object is used.</param>
+            <param name="thickness">Thickness of the point.  See Thickness property for valid 
+            thicknesses.</param>
+        </member>
+        <member name="M:FinalExam.BallPointPen.ToString">
+            <summary>
+            Returns a string representation of this object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FinalExam.BallPointPen.ValidThicknessesAsString">
+            <summary>
+            Returns a comma-delimited string listing all valid thicknesses.  This method can be used
+            by the calling code, however its primary use is for the ThicknessException class itself.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FinalExam.BallPointPen.Thickness">
+            <summary>
+            Sets or gets the thickness for this object.  Valid thicknesses are : fine, medium and broad.
+            Throws ThicknessException.
+            </summary>
+        </member>
+        <member name="T:FinalExam.ThicknessException">
+            <summary>
+            This exception is thrown when a BallPointPen's Thickness is set to an invalid thickness,
+            which may occur in the constructor or the Thickness property.  See the Thickness property
+            for valid thicknesses.
+            </summary>
+        </member>
+        <member name="M:FinalExam.ThicknessException.#ctor">
+            <summary>
+            Initializes a new instance of the ThicknessException class with a default message.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,11 @@
+Useful links for PHP & Tomcat
+
+http://blog.taragana.com/index.php/archive/running-php-5x-on-windows-using-tomcat-4x-or-5x/
+http://www.dsl.uow.edu.au/~sk33/php5jsp.htm
+
+PHP & SOAP
+
+http://www.devx.com/webdev/Article/22338
+http://ca.php.net/soap
+http://www.packtpub.com/article/SOAP-and-PHP-5
+http://devzone.zend.com/node/view/id/689

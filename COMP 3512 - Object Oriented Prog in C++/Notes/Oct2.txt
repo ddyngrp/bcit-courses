@@ -1,0 +1,138 @@
+Sets&MultiSets
+
+-	provide fast retrieval of elements (keys)
+-	elements must be unique in sets; multisets allow duplicate elements
+-	elements are ordered by 'less-than' by default
+-	both classes have no mutable iterator type: don't change the value of an element directly, remove it
+	&and insert a new one instead
+
+-	provide special search functions
+
+-	find(elem) returns the position of the first element equivalemnt to elem or end()
+-	lower_bound(elem) returns the position of the first element not less than elem
+-	upper_bound(elem) is the opposite
+-	equal_range(elem) returns the position of the first element greater than elem
+-	equal_range(elem) returns a pair
+	* whose first is lower_bound(elem)
+	* whose second is upper_bound(elem)
+
+	(it basically returns a range between first and second)
+
+
+using std::endl
+
+int main(){
+	multiset<int> s;
+	s.insert(2);
+	s.insert(1);
+	s.insert(2);
+	s.insert(3);
+	s.insert(5);
+	s.insert(2);
+	s.insert(5);
+
+
+	cout << s.count(2) << endl;	//print 3
+
+	//print 5,5
+
+	cout << *s.lower_bound(4)	<< ","
+		<< *s.upper_bound(4)	<< endl;	
+
+
+//missing notes here, he went kinda fast
+
+
+Example: program to sort words removing duplicatets
+
+#include <iosream>
+#include <set>
+
+int main() {
+	using namespace sted;
+	string word;
+	set <string> s;
+	while (cin >> word)
+		s.insert(word);
+
+	for (set<string>::iterator it = s.begin(); it!=s.end(); ++i)
+		cout << *it << ' ';
+	cout << endl;
+}
+
+-	Note:  the words are sorted by < relation
+
+struct Pair{
+	int x,y;
+	Pair(int u = 0, int v = 0): x(u), y(v) {}
+};
+
+We need a < operator in order to use a set
+
+bool operator <(const Pair& lhs, const Pair& rhs){
+	return lhs.x + lhs.y < rhs.x + rhs.y;
+}
+
+
+set<Pair> s;
+
+s.insert(Pair(1,2));
+s.insert(Pair(3,4));
+s.insert(Pair(4,3)):		//equivalent
+
+
+
+Example:	sorting student records
+
+class Students{
+	private:
+		string id, lastname, firstname;
+
+//(id assumed unique)
+
+
+	public:
+		student(const string& id = "", const string& lastname = "",
+			const string& firstname = ""): id_(id),
+			lastname_(lastname), firstname_(firstname){}
+};
+
+
+
+Need to define an ordering <
+
+bool operator < (const Student& lhs, const Student& rhs){
+	return lhs.id_ < rhs.id_;
+
+
+In order for operator < to acces id_ (which is private),
+the studnet classe needs to declare operator <  as a friend
+
+
+friend bool operator < (const student&, const student&);
+
+
+set<student> s;
+
+string id, lastname, firstname;
+
+
+while (cin >> id >> lastname >> firstname)
+	s.insert(student(id,lastname,firstname));
+
+for (set<student>::iterator it = s.begin(); it != s.end(); ++it)
+
+	cout << (*it).id_ << '' << (*it).lastname_ << '' << (*it).firstname_ << endl;
+
+//	(*it).id : it -> id_
+
+
+}
+
+
+-	We'll overload operator << + operator >> for student objects.  This'll allow us to do:
+
+student st;
+
+cin >> st;
+cout << st;

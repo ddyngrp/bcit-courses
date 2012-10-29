@@ -1,0 +1,42 @@
+headline {
+  display:block;
+  width:400px;
+  border-bottom:5px double black;
+  text-align:right;
+  color:olive;
+  font-family:Times, serif;
+  font-size:32pt;
+}
+
+byline {
+  display:inline;
+  width:200px;
+  text-align:left;
+  color:black;
+  font-family:Times, serif;
+  font-size:14pt;
+}
+
+dateline {
+  display:inline;
+  width:200px;
+  text-align:right;
+  color:black;
+  font-family:Times, serif;
+  font-size:11pt;
+  font-style:italic;
+}
+
+p {
+  display:block;
+  width:400px;
+  margin-bottom:8px;
+  color:black;
+  font-family:Times, serif;
+  font-size:12pt;
+}
+
+quote {
+  display:inline;
+  font-style:italic;
+}

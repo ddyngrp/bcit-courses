@@ -1,0 +1,15 @@
+                  Exercise Solutions - Errata
+                  ===========================
+
+
+Week 2:
+------
+   Exercise 3, Question 1:
+             The answer should be "C" instead of "F"
+
+   Exercise 9, Questions 3 and 4:
+             Expanded on the explanation by including a table
+	     showing "Miss Rate" and "% of reads that reach
+	     this level".
+
+   Corrected - 2008-04-30

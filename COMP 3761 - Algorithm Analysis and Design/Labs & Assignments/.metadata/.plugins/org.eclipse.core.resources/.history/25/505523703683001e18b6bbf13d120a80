@@ -1,0 +1,46 @@
+public class Mergesort {
+	
+	public Mergesort() {		
+	}
+		
+	public int[] Sort(int[] input) {
+		int[] result = new int[input.length];
+		int[] left = new int[(int)Math.floor((input.length / 2)) - 1];
+		int[] right = new int[(int)Math.ceil((input.length / 2)) - 1];
+		
+		if (input.length <= 1) {
+			return input;
+		}
+		
+		for (int i = 0; i < left.length; i++) {
+			left[i] = input[i];
+		}
+		for (int j = left.length; j < input.length; j++) {
+			right[right.length - j] = input[j];
+		}
+		
+		ArrayUtils au = new ArrayUtils();
+		au.Print(left);
+		au.Print(right);
+		
+		return input;
+	}
+	
+	private int[] Merge(int[] left, int[] right) {
+		return left;
+	}
+	
+	private int[] Append(int[] left, int[] right) {
+		int[] result = new int[left.length + right.length];
+		
+		for (int i = 0; i < left.length; ++i) {
+			result[i] = left[i];
+		}
+		
+		for (int i = left.length; i < result.length; ++i) {
+			result[i] = right[i - left.length];
+		}
+		
+		return result;
+	}
+}

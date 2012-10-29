@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=gridRows\ gridColumns
+comment0.target=Grid(int,\ int)
+comment1.target=int\ getRows()
+comment1.text=\nReturns\ the\ number\ of\ rows\ in\ the\ grid\n\n
+comment2.target=int\ getColumns()
+comment2.text=\nReturns\ the\ number\ of\ columns\ in\ the\ grid\n\n
+comment3.target=void\ loadGrid()
+comment3.text=\nLoads\ the\ grid\ with\ random\ values\ between\ 0\ and\ MAX_VALUE.\n\n
+comment4.target=void\ displayGrid()
+comment4.text=\nDisplays\ the\ grid\ contents\ in\ table\ format.\n\n
+comment5.params=valueSought
+comment5.target=GridPoint\ getCoordinates(int)
+comment5.text=\nSearches\ the\ grid\ for\ the\ specified\ value\ and\ returns\ the\ coordinates\nas\ a\ GridPoint\ object\ or\ returns\ null\ if\ not\ found.\ If\ there\ are\nduplicates,\ only\ the\ first\ instance\ will\ be\ found.\n\n
+numComments=6

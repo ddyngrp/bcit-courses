@@ -1,0 +1,128 @@
+exception - safely:	3 guarantees
+
+1)	basic guarantee: the program is in a valid state in the presense of exception
+		cin >> s;	if this throws an excpetion is s still valid?
+
+
+2)	strong guarantee: the state is unchanged in the precense of exception
+
+	cin > s;	s refrains its previous value if this fails
+
+3)	nothrow guarantee:	never throws exception, always succeeds
+
+exception specification
+
+
+e.g.	void f() throws(){		//f doesn't throw anything
+	...
+	}
+
+	void g(int) throw(int,long);	//note:compiler does not enforce that g throws the correct type of exception!
+
+
+	If g throws the wrong type of exception, a runtime error will occur(calls unexpected())
+
+Using exception specification is not recommended.
+
+void h();	//can throw any type of exception
+
+
+-	Dtors should not throw exceptions.  If an exception is thrown when another exception is active,
+	the program terminates
+
+e.g.
+
+try{
+	f();
+}catch(int n){}
+
+
+void f(){
+
+	A a;
+	B b;
+	G();
+}
+
+void g(){
+
+	C c;
+	D d;
+	h();
+}
+
+void h(){
+	E e;
+	throw 1;
+}
+
+
+-	When a thrown exception is caught, the stack is unwound, (i.e. the objects on the stack are destroyed)
+
+-	In the above, the dtors are called in the following orders:
+
+
+~E()
+~D()
+~C()
+~B()
+~A()
+
+Exceptions
+
+-	are used for error-handling
+-	are a form of control flow.
+
+e.g.	break some money into change
+
+	given an amount + given the available denominations, write that amount as the sum of the demoninations.
+
+
+	available denominations:[200,100,25,10,5,1]
+
+amount: 357
+
+
+change(amount, denom)	//denom is a list, head([1,2,5,4]) -> 1
+			//		   fail([1,2,5,4]) -> [2,5,4]
+			//assume this returns the list of coints
+
+-	calls change(amount-head(denom), denom)
+
+	if this succeeds, the answer is its return value (a list) plus head(denom)
+
+-	if amount == 0, return empty list
+-	if amount < 0, no solution(throws exception)
+-	if denominator is empty, no solution
+
+vector<int> change(vector<int>::iterator first, vector<int>::iterator last, int amount){
+
+	if (amount == 0)
+		return vector<int>();
+
+	if (amount < 0 || first == last)
+		throw "no solution";
+
+	try{
+		vector<int> v = change(first, last, amount - *first);
+	}catch(const char *s){
+		return change(first+1, last, amount);
+	}
+}
+
+int main(){
+
+	int denom[] = {200,100,25,10,5,1};
+
+	vector<int> coins(denom, denom+b);
+
+	try{
+		vector<int> ans = change(coins,begin(), coins.end(), 357);
+		copy(ans.begin(),ans.end(),ostream_iterator<int>(cout, "\n");
+	}catch(const char*s){
+		cout << s << endl;
+	}
+
+}
+
+//try/catch when used this way is like if/else

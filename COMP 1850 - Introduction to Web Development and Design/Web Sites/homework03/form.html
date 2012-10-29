@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Music Survey</title>
+<link rel="stylesheet" type="text/css" href="site.css" />
+</head>
+
+<form id="music_form" name="music_form" method="post" action="" class="body">
+  <table border="0">
+    <tr>
+      <td colspan="5" class="header">Music Survey</td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="right">Name:</div>
+        </label></td>
+      <td colspan="2"><input type="text" name="name" id="name" /></td>
+      <td><div align="right"></div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="right">E-Mail:</div>
+        </label></td>
+      <td colspan="2"><input type="text" name="email" id="email" /></td>
+      <td><div align="right"></div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="subheader">Select Your Favourite Types of Music:</td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="pop" id="pop" />
+        </div>
+        </label></td>
+      <td colspan="2">Pop</td>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="classical" id="classical" />
+        </div>
+        </label></td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="rock" id="rock" />
+        </div>
+        </label></td>
+      <td colspan="2">Rock</td>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="folk" id="folk" />
+        </div>
+        </label></td>
+      <td>Folk</td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="rap" id="rap" />
+        </div>
+        </label></td>
+      <td colspan="2">Rap</td>
+      <td><label>
+        <div align="right">
+          <input type="checkbox" name="other" id="other" />
+        </div>
+        </label></td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="subheader">Select how often you purchase Music CDs:</td>
+    </tr>
+    <tr>
+      <td><div align="right">
+          <label>
+          <input type="radio" name="purchase_period" value="weekly" id="purchase_period_0" />
+          </label>
+        </div></td>
+      <td colspan="2">Weekly</td>
+      <td><div align="right">
+          <input type="radio" name="purchase_period" value="few_year" id="purchase_period_2" />
+        </div></td>
+      <td>A few CDs each year</td>
+    </tr>
+    <tr>
+      <td><div align="right">
+          <input type="radio" name="purchase_period" value="monthly" id="purchase_period_1" />
+        </div></td>
+      <td colspan="2">Monthly</td>
+      <td><div align="right">
+          <input type="radio" name="purchase_period" value="never" id="purchase_period_3" />
+        </div></td>
+      <td>Never purchase</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="subheader">Select the locations you listen to CDs:</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="4"><label>
+        <select name="listen_locations" size="3" multiple="multiple" id="listen_locations">
+          <option value="NULL">Select one or more locations</option>
+          <option value="At home">At home</option>
+          <option value="In the car">In the car</option>
+          <option value="At work">At work</option>
+          <option value="While stalking people">While stalking people</option>
+        </select>
+        </label>
+        <div align="right"></div></td>
+    </tr>
+    <tr>
+      <td colspan="5" class="subheader">What role does music play in your life?</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="4"><label>
+        <textarea name="music_role" id="music_role" cols="60" rows="3"></textarea>
+        </label>
+        <div align="right"></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><label>
+        <input type="submit" name="Submit" id="Submit" value="Submit" />
+        </label></td>
+      <td><input type="reset" name="Reset" id="Reset" value="Reset" /></td>
+      <td colspan="2"><div align="right">
+          <label></label>
+          <div align="left"></div>
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body></html>

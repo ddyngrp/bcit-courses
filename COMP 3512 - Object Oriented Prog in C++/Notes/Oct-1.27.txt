@@ -1,0 +1,127 @@
+Assignment submission-
+	create folder with id + name and put source file in folder
+
+
+	A00..._name
+
+
+___________________________________________________________________________
+
+Fractional operator /= (const Fraction& src){
+
+	if (src.n_==0)
+		throw "Division by zero";
+
+	n_ * = src.d_;
+	d_ * = src.n_;
+	reduce();
+	return *this;
+}
+
+//similiarily for -=, *=
+
+Fraction& operator ++(){
+	*this+=1;
+	return *this;
+}
+
+Fraction operator++(int){
+	Fraction copy(*this);
+	++*this;
+	return copy;
+}
+
+//similiariliy for --
+
+implment + using +=
+
+//outside class definition (non-member)
+
+inline Fraction
+operator + (const Fraction& f1, const Fraction& f2){
+	Fraction copy(f1);
+	copy += f2;
+	return copy;
+
+}
+
+//similariliy for -, *, /
+
+
+inline std::ostream&
+operator << (std::ostream& os, const Fraction&f){
+	ostringstream oss;
+	if(f.d_ == 1)
+		oss << f.n_;
+	else
+		oss << f.n_ << '/' << f.d_;
+	return os << oss.str();
+}
+
+inline std::istream&
+operator >> (std::istream& is, Fraction& f){
+	std::string s;
+	if(!(is>>s))
+		return is;
+	istringstream iss(s);
+}
+
+iss.clear();
+iss.str(s);
+//or:iss.seekg(ios::pos_type(0));
+if (iss >> n >> c >> d && c == '/' && d!=0 && !(iss>>extra)
+	f = Fraction(n,d);
+	return is;
+}
+
+if (iss >> n && !(iss>>extra)){
+	f = Fraction(n,1);
+	return is;
+}
+
+is.setstate(ios_base::failbit);
+	return is;
+}
+
+inline bool
+
+operator == (const Fraction& lhs, const Fraction& rhs){
+	return lhs.n_ == rhs.n_ && lhs.d_ == rhs.d_;
+}
+
+//similarly for other comparisons
+
+inline long
+
+gcd(long a, long b){
+	a = labs(a); b = labs(b);		//labs is long abs
+	long c;
+	while((c= a%b)! = 0){
+		a = b;
+		b = c;
+	}
+	return b;
+}
+
+
+
+_________________________
+
+
+Oct 30 continuation
+
+void
+Fraction::reduce(){
+	if(d_ < 0){
+		d_* = -1;
+		n_* = -1;
+	}
+
+	long g = gcd(n_, d_);
+	n_* /= g;
+	d_* /= g;
+	}
+
+//comparison operators
+
+}//end of namespace Math

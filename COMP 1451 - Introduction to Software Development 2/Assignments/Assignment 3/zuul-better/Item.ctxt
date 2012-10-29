@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=itemName\ weightKG\ cost\ canCarry
+comment0.target=Item(String,\ double,\ double,\ boolean)
+comment0.text=\nCreate\ an\ item.\n@param\ itemName\ description\ of\ the\ item.\n@param\ weightKG\ weight\ of\ the\ item\ in\ kilograms.\n@param\ cost\ the\ cost\ of\ the\ item\ in\ dollars.\n@param\ canCarry\ whether\ the\ item\ can\ be\ carried.\n\n
+comment1.target=String\ getItemName()
+comment1.text=\nGetter\ for\ description\n@return\ String\ item\ description\n\n
+comment2.target=double\ getWeightKG()
+comment2.text=\nGetter\ for\ weightKG\n@return\ String\ items\ weight\ in\ kilograms\n\n
+comment3.target=boolean\ getCanCarry()
+comment3.text=\nGetter\ for\ canCarry\n@return\ boolean\ whether\ item\ can\ be\ carried\n\n
+comment4.target=double\ getCost()
+comment4.text=\nGetter\ for\ cost\n@return\ String\ item's\ cost\ in\ dollars\n\n
+comment5.params=cost
+comment5.target=void\ setCost(double)
+comment5.text=\nSetter\ for\ cost\n@param\ double\ the\ items\ new\ cost\n\n
+numComments=6

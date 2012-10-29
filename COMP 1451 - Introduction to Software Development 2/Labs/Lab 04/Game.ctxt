@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Game()
+comment0.text=\nCreate\ the\ game\ and\ initialise\ its\ internal\ map.\n\n
+comment1.target=void\ createRooms()
+comment1.text=\nCreate\ all\ the\ rooms\ and\ link\ their\ exits\ together.\n\n
+comment2.target=void\ play()
+comment2.text=\nMain\ play\ routine.\ \ Loops\ until\ end\ of\ play.\n\n
+comment3.target=void\ printWelcome()
+comment3.text=\nPrint\ out\ the\ opening\ message\ for\ the\ player.\n\n
+comment4.params=command
+comment4.target=boolean\ processCommand(Command)
+comment4.text=\nGiven\ a\ command,\ process\ (that\ is\:\ execute)\ the\ command.\n@param\ command\ The\ command\ to\ be\ processed.\n@return\ true\ If\ the\ command\ ends\ the\ game,\ false\ otherwise.\n\n
+comment5.target=void\ printHelp()
+comment5.text=\nPrint\ out\ some\ help\ information.\nHere\ we\ print\ some\ stupid,\ cryptic\ message\ and\ a\ list\ of\ the\ \ncommand\ words.\n\n
+comment6.params=command
+comment6.target=void\ goRoom(Command)
+comment6.text=\nTry\ to\ go\ to\ one\ direction.\ If\ there\ is\ an\ exit,\ enter\nthe\ new\ room,\ otherwise\ print\ an\ error\ message.\n\n
+comment7.target=void\ printLocationInfo()
+comment7.text=\nPrint\ out\ information\ about\ the\ current\ location\ within\nthe\ room\ layout.\n\n
+comment8.params=command
+comment8.target=boolean\ quit(Command)
+comment8.text=\n"Quit"\ was\ entered.\ Check\ the\ rest\ of\ the\ command\ to\ see\nwhether\ we\ really\ quit\ the\ game.\n@return\ true,\ if\ this\ command\ quits\ the\ game,\ false\ otherwise.\n\n
+numComments=9

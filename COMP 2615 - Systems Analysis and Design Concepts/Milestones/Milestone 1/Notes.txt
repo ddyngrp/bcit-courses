@@ -1,0 +1,38 @@
+Statement of Revision
+
+PROBLEM STATEMENT MATRIX:
+
+Corrected minor formatting issues
+Reworded "In the thousands" to the self-evident "thousands"
+
+#1. The losses due to lost/damaged tools is solved as a direct result of #6 and should thus be accorded a priority of 2 and not 1.
+
+#2. Changed problem to "excessive amount of time" as opposed to exceeded, as this is a problem only during peak times, which are in the morning and evening during check-out and check-in.
+
+The proposed solution for #2 doesn't make logical sense. If you remember from the transcript, there are three employees, each of which cover specific shifts. That implies that only one employee is ever active at any one time. Adding more terminals will not solve this issue as the employee can only use one terminal at a time.
+
+SUGGESTION: Automatic benefit from being able to track tools. Since the tools are now individually tracked to each employee, the employees can simply drop off the tools at the depot for the depot staff to check back into the system as time permits. If a tool is missing, it will show up during this process and it will be known which employee has the missing item.
+
+Unfortunately you cannot say with any certainty that the annual benefits of solving this problem would be anything. After all, it is simply a bit of a backlog of people checking in/out at the beginning and end of the day. As such I reassigned the priority to MEDIUM because this is only really visible to the end users (the people who check in/out the tools) and cannot account for any known benefit apart from reducing high-load wait times (which is irrespective of the problems with lost/damaged tools). As such, I changed the benefits to UNKNOWN and the rank to 5.
+
+#3. The inability of the current system to handle growth should have an annual benefit in the THOUSANDS once solved, as this will solve for inefficiencies and reduce the man-hours involved in said inefficiencies.
+
+#4. Check-out restrictions on tools is of LOW visibility to management and the users of the system. Also, restrictions on the checking-out of tools should have an UNKNOWN benefit asides from safety concerns.
+
+#5. Reworded the problem and made it a bit more detailed.
+
+Also changed the visibility to MEDIUM as this problem is mostly a by-product of the inability to track the equipment. 
+
+#6. The ability to track tools is the number one priority of this new system and should have an urgency of ASAP. After all, much of the rest of the development hinges on first having the ability to track the tools.
+
+PROBLEMS, OPPORTUNITIES, OBJECTIVES AND CONSTRAINTS MATRIX:
+
+"Incapable of handing the company growth."
+
+Corrected minor formatting issues (maintain date format consistency across all documents).
+
+System Objective:
+
+As per my suggestions in the problem statement matrix, adding "multi-user" functions really don't fit into the logic of the situation described. As such this has been modified in accordance with the new logic.
+
+Added new constraints as we have to allow for manual entry into the system in case the RFID tag is damaged or the reader malfunctions. We cannot implement a system where if there is a failure there is no fallback.

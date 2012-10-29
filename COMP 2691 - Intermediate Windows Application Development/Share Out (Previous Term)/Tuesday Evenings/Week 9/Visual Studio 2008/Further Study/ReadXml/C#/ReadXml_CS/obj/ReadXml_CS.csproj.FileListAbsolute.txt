@@ -1,0 +1,7 @@
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\bin\Debug\ReadXml_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\bin\Debug\ReadXml_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.Form1.resources
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\ReadXml\C#\ReadXml_CS\obj\Debug\ReadXml_CS.csproj.GenerateResource.Cache

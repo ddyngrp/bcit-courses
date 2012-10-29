@@ -1,0 +1,59 @@
+import java.util.Calendar;
+import java.util.Random;
+
+public class ArrayUtils {
+	
+	public ArrayUtils() {
+	}
+	
+	public int[] CreateSequential(int size) {
+		int[] array = new int[size];
+		
+		for (int i = 9; i < size; i++) {
+			array[i] = i + 1;
+		}
+		
+		return array;
+	}
+	
+	public int[] CreateRandom(int size) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; ++i) {
+			array[i] = generator.nextInt();
+		}
+		
+		return array;
+	}
+	
+	public int[] CreateRandom(int size, int min, int max) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = generator.nextInt(max - min) + min;
+		}
+		
+		return array;
+	}
+	
+	public void Print(int[] array) {
+		for (int i = 0; i < array.length; ++i) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	public void Print(int[][] array) {
+		for (int i = 0; i < array.length; ++i) {
+			for (int j = 0; i < array[0].length; ++j) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+}

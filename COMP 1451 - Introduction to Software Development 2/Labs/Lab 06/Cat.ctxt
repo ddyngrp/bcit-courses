@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=theBreed\ theWeightKG\ huntsYN
+comment0.target=Cat(String,\ double,\ boolean)
+comment1.params=huntsYN
+comment1.target=void\ setHunts(boolean)
+comment2.target=boolean\ getHunts()
+comment3.target=String\ toString()
+numComments=4

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/Lab3.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE Lab3 SYSTEM "Lab3.dtd">
+
+    <Lab3>
+    ...
+    </Lab3>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Lab3 (Members, GolfCourses)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Members (Player)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Player (Rounds, PlayerHandicaps)>
+<!ATTLIST Player
+    PlayerContactNumber CDATA #IMPLIED
+    PlayerPostCode CDATA #IMPLIED
+    PlayerCountry CDATA #IMPLIED
+    PlayerTown CDATA #IMPLIED
+    PlayerAddress CDATA #IMPLIED
+    PlayerLastName CDATA #IMPLIED
+    PlayerFirstName CDATA #IMPLIED
+    PlayerID ID #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Rounds (GolfRounds)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT GolfRounds (PlayerRounds)*>
+<!ATTLIST GolfRounds
+    Weather CDATA #IMPLIED
+    NumberOfHoles CDATA #IMPLIED
+    FinishDate CDATA #IMPLIED
+    StartDate CDATA #IMPLIED
+    CourseID IDREF #REQUIRED
+    RoundID ID #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT PlayerRounds (HoleNumber)*>
+<!ATTLIST PlayerRounds
+    RoundID IDREF #REQUIRED
+    PlayerID IDREF #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HoleNumber (HoleScore)>
+<!ATTLIST HoleNumber
+    HoleID IDREF #REQUIRED
+    CourseID IDREF #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HoleScore (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT PlayerHandicaps (PlayerHandicap)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT PlayerHandicap (HandicapDate, HandicapScore)>
+<!ATTLIST PlayerHandicap
+    PlayerID IDREF #REQUIRED
+    HandicapID ID #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HandicapDate (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HandicapScore (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT GolfCourses (Courses)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Courses (Hole)*>
+<!ATTLIST Courses
+    StandardScratcgScore CDATA #IMPLIED
+    CourseContactNumber CDATA #IMPLIED
+    CoursePostCode CDATA #IMPLIED
+    CourseCountry CDATA #IMPLIED
+    CourseTown CDATA #IMPLIED
+    CourseAddress CDATA #IMPLIED
+    CourseName CDATA #IMPLIED
+    CourseID ID #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Hole (Par, Yards, HoleInfo)>
+<!ATTLIST Hole
+    HoleID ID #REQUIRED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Par (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Yards (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HoleInfo (Bunkers)?>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Bunkers (#PCDATA)>

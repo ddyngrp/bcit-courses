@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=description\ suit\ value
+comment0.target=Card(String,\ String,\ int)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Card\n\n
+comment1.target=int\ getValue()
+comment1.text=\nGets\ the\ value\ of\ the\ card.\ Face\ cards\ are\ counted\ as\ 10.\n@return\ \ \ \ \ the\ card's\ value\ as\ an\ int\n\n
+comment2.target=String\ getSuit()
+comment2.text=\nGets\ the\ card's\ suit,\ e.g.\ "Hearts",\ "Diamonds"\n@return\ the\ suit\ as\ a\ String\n\n
+comment3.target=String\ getDescription()
+comment3.text=\nGets\ the\ card's\ description,\ e.g.\ "ten",\ "king",\ "ace"\n@return\ the\ card's\ description\ as\ a\ String\n\n
+comment4.target=String\ toString()
+comment4.text=\nreturns\ the\ String\ representation\ of\ this\ Card.\n\n
+numComments=5

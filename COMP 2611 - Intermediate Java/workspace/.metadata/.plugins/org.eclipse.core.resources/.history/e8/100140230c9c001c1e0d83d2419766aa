@@ -1,0 +1,165 @@
+/**
+ * Project: assignment02
+ * File: Guest.java
+ * Date: 9-Oct-07
+ * Time: 1:55:24 AM
+ */
+package a00683006.bedz.data;
+
+/**
+ * Holds guest information.
+ * @author Steffen L. Norgren, A00683006
+ * 
+ */
+public class Guest {
+	
+	private Integer id;
+	private String lastName;
+	private String firstName;
+	private String phoneNumber;
+	private String emailAddress;
+	private Address address;
+	
+	/**
+	 * Default constructor.
+	 */
+	public Guest() {
+	}
+	
+	/**
+	 * Creates a guest using the following parameters.
+	 * @param id
+	 * @param lastName
+	 * @param firstName
+	 * @param phoneNumber
+	 * @param emailAddress
+	 * @param address
+	 */
+	public Guest(Integer id, String lastName, String firstName, String phoneNumber,
+			String emailAddress, Address address) throws DataException {
+		if (lastName.equals("")) {
+			
+			System.out.println("Throw for craps sake!!!");
+			
+			throw new DataException(
+					"Please make sure the entire form is filled out before saving.");
+		}
+		else {
+			setId(id);
+			setLastName(lastName);
+			setFirstName(firstName);
+			setPhoneNumber(phoneNumber);
+			setEmailAddress(emailAddress);
+			setAddress(address);			
+		}
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the phoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	/**
+	 * @return the emailAddress
+	 */
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	/**
+	 * @param emailAddress the emailAddress to set
+	 */
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	/**
+	 * @return the address
+	 */
+	public Address getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = ", ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "Guest{"
+	        + "id=" + this.id + TAB
+	        + "lastName='" + this.lastName + "'" + TAB
+	        + "firstName='" + this.firstName + "'" + TAB
+	        + "phoneNumber='" + this.phoneNumber + "'" + TAB
+	        + "emailAddress='" + this.emailAddress + "'" + TAB
+	        + "address=" + this.address
+	        + "}";
+
+	    return retValue;
+	}
+}

@@ -1,0 +1,11 @@
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar_Control.Form1.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar_Control.Properties.Resources.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar Control.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\bin\Debug\Trackbar Control.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\bin\Debug\Trackbar Control.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar Control.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar Control.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\obj\Debug\Trackbar_Control.Form2.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\bin\Debug\BankLibrary.dll
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Trackbar Control\Trackbar Control\bin\Debug\BankLibrary.pdb

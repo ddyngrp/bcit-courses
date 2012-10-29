@@ -1,0 +1,136 @@
+.\" Copyright (c) 2003-2005 Bruce Ward <bward2@users.sourceforge.net>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111,
+.\" USA.
+.\"
+.\"  --------------------------------------------
+.\"   Oct.6, 2003 :  JBW :  Initial version
+.\"   Jun 29,2004 :  JBW :  Added acknowledgement
+.\"                      :  Added extra info
+.\"   Aug 14,2005 :  JBW :  No change from doorman V0.8
+.\"  --------------------------------------------
+.\"
+
+.TH .knockcf 5  "Aug 14 2005" "Port-knocker, V0.81" "Doorman & Knocker"
+
+.SH  NAME
+.B .knockcf
+\- The
+.I knock
+configuration file
+.SH DESCRIPTION
+The port-knocker client
+.I knock
+requires a configuration file named ".knockcf" to be in the user's home
+directory.  Any value in the file may be overridden by command-line
+parameters to
+.I knock
+.br
+
+The file consists of simple keyword-value pairs, one pair
+per line.  The keyword and value must be separated by one or more space
+or tab characters.   Keywords are not case-sensitive, though most values
+are.
+Any part of a line following a '#' character is
+ignored, and may be used as a comment.  Blank lines are ignored.
+.br
+
+The file MUST be readable and writeable ONLY by the owner.
+.br
+
+.SH RECORDS
+.TP
+\fB\ group\fR  <name>
+This specifies the group name (guest name) used to identify yourself.
+Group names may be up to 32 characters in length.  Both group names
+and secrets  may  contain  any alphanumeric character, as well as
+the characters:  !@#$%^&*()_-+=|{};:'"<>,?/
+.br
+
+Note that whitespace and the "." character (period, or decimal point)
+are not permitted.
+.TP
+\fB\ secret\fR  <password>
+This is the password used to authenticate you to the doorman.
+Secrets  may be up to 64 characters in length, and use the same
+character set as group names.
+The secret is catenated with the IP address of the
+client machine and the seconds-of-epoch, and put through an MD5 hash
+before being sent to the doorman.
+.br
+
+This record may be omitted from .knockcf; if it is missing, and
+the secret is not included as an option on the command line
+(generally not a bright idea, anyway), 'knock' will prompt you
+for one.
+.TP
+\fB\ port\fR  <integer, 1-65534>
+Knock on the specified UDP port.  The default is port 1001.
+.TP
+\fB\ run\fR  "program  arg1 arg2 ... "
+Run this program after sending the knock packet, and after a 1/10th second
+pause.  Note that the entire command must be enclosed in either single or double
+quotes.   Two special strings may be included to substitute for command-line
+parameters.  %H% substitutes for the hostname or IP address, and %P%
+substitutes for the requested port number or service name.
+
+.br
+
+.SH
+\fB\ AN EXAMPLE\fR
+.br
+.nf
+#
+#  If any of these records is missing, its value may be
+#  specified with a command-line option.
+#  (You may omit the secret from both, and wait to be prompted;
+#   this is perhaps the safest [or most paranoid] way on a unix host)
+#
+group       marketeers           # "Who you are" to the doorman
+secret      b1g%Hairy_[seCret}!  # <- This is why no one else should
+#                                     be able to read this file...
+#                                     A PLAINTEXT PASSWORD!
+#
+port        1001                 # The UDP port the doorman is watching
+#
+run         "ssh -lmyname %H%"   # Run 'ssh' after knocking.
+#                                  The hostname used in the knock command
+#                                  will be subsituted in place of '%H%'.
+.br
+.fi
+
+.SH SEE ALSO
+.BR knock (1),
+.BR doormand (8),
+.BR doormand.cf (5),
+.BR guestlist (5)
+
+.SH ACKNOWLEDGEMENT
+.BR doormand
+and
+.BR knock
+are an implementation of an original idea by
+.B Martin Krzywinski.
+See his site at http://www.portknocking.org
+.SH COPYRIGHT
+Copyright (c) 2003-2005, J.B.Ward
+.br
+<bward2@users.sourceforge.net>
+

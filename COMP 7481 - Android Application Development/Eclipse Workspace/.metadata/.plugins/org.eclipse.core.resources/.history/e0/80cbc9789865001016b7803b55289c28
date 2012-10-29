@@ -1,0 +1,31 @@
+/**
+ * Project: Project_RSS_Reader
+ * File: SAXFeedParser.java
+ * Date: 2011-04-12
+ * Time: 11:27:41 PM
+ */
+package org.trollop.RssReader;
+
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class SAXFeedParser {
+	public List<Message> parse() {
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		try {
+			SAXParser parser = factory.newSAXParser();
+			RssHandler handler = new RssHandler();
+			parser.parse(this.getInputStream(), handler);
+			return handler.getMessages();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} 
+	}
+
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2000/10/XMLSchema">
+  <xsd:element name="trainlog">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="session" type="sessionType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="sessionType">
+    <xsd:sequence>
+      <xsd:element name="duration" type="xsd:timeDuration"/>
+      <xsd:element name="distance" type="distanceType"/>
+      <xsd:element name="location" type="xsd:string"/>
+      <xsd:element name="comments" type="xsd:string"/>
+    </xsd:sequence>
+
+    <xsd:attribute name="date" type="xsd:date" use="required"/>
+    <xsd:attribute name="type" type="typeType" use="required"/>
+    <xsd:attribute name="heartrate" type="xsd:positiveInteger"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="distanceType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="units" type="unitsType" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:simpleType name="typeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="running"/>
+      <xsd:enumeration value="swimming"/>
+      <xsd:enumeration value="cycling"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="unitsType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="miles"/>
+      <xsd:enumeration value="kilometers"/>
+      <xsd:enumeration value="laps"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,17 @@
+<script type="text/javascript">
+
+	d = new Date();   
+
+	mill=new Date(2007, 11, 25, 00, 00, 00); // christmas 2007
+
+	diff = mill-d;    
+
+	mtg = new String(diff/86400000);   
+
+	mod = mtg % 1;
+
+	mod = mod * 24 * 60 * 60;
+
+	document.write(mod + " seconds to christmas.");
+
+</script>

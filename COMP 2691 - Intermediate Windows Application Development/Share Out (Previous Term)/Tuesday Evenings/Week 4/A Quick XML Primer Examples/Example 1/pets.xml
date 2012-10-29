@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<pets>
+  <pet name="Maximillian" type="pot bellied pig" age="3">
+    <friend name="Augustus"/>
+    <friend name="Nigel"/>
+  </pet>
+  <pet name="Augustus" type="goat" age="2">
+    <friend name="Maximillian"/>
+  </pet>
+  <pet name="Nigel" type="chipmunk" age="2">
+    <friend name="Maximillian"/>
+  </pet>
+</pets>

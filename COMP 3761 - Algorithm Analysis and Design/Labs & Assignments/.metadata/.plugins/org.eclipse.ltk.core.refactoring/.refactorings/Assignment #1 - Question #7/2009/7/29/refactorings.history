@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;p&apos; in &apos;Main.PolyCalc(...)&apos; to &apos;result&apos;&#x0A;- Original project: &apos;Assignment #1 - Question #7&apos;&#x0A;- Original element: &apos;Main.PolyCalc(int[], int).p&apos;&#x0A;- Renamed element: &apos;p&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;p&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Main.java[Main~PolyCalc~\[I~I@p!261!275!268!268!D" name="result" references="true" stamp="1247851168508" version="1.0"/>
+</session>

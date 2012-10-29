@@ -1,0 +1,27 @@
+#include "winmenu2.h"
+
+MYMENU MENU
+{
+	POPUP "&TX/RX"
+	{
+		MENUITEM "&TX", IDM_TX
+		MENUITEM "&RX", IDM_RX
+	}
+	POPUP "&Settings"
+	{
+		POPUP "&Port"
+		{
+			MENUITEM "&COM1", IDM_COM1
+			MENUITEM "&COM2", IDM_COM2
+		}
+		POPUP "&Speed"
+		{
+			MENUITEM "&9600", IDM_9600
+			MENUITEM "&32000", IDM_32000
+			MENUITEM "&110000", IDM_110000
+		}
+		MENUITEM "&Word Size", IDM_Word
+		MENUITEM "&Save", IDM_Save
+	}
+	MENUITEM "&Help", IDM_HELP
+}

@@ -1,0 +1,67 @@
+import java.util.Calendar;
+
+/**
+ * Assignment #1 - Question #9
+ * @author Steffen L. Norgren - A00683006
+ *
+ */
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayUtils au = new ArrayUtils();
+		Quicksort qs = new Quicksort();
+		Heapsort hs = new Heapsort();
+		
+		// Store time averages & set # of run times
+		double[] avg = new double[12];
+		int runTimes = 100;
+		
+		// Run Mergesort tests
+		System.out.println("Running MergeSort " + runTimes + " times.");
+		for (int i = 0; i < runTimes; i++) {
+			avg[0] += TestMerge(au.CreateRandom(100, 1, 100));
+			avg[1] += TestMerge(au.CreateRandom(1000, 1, 100));
+			avg[2] += TestMerge(au.CreateRandom(10000, 1, 100));
+			avg[3] += TestMerge(au.CreateRandom(100000, 1, 100));
+
+			avg[4] += TestMerge(au.CreateSequential(100));
+			avg[5] += TestMerge(au.CreateSequential(1000));
+			avg[6] += TestMerge(au.CreateSequential(10000));
+			avg[7] += TestMerge(au.CreateSequential(100000));
+			
+			avg[8] += TestMerge(au.CreateDecremental(100));
+			avg[9] += TestMerge(au.CreateDecremental(1000));
+			avg[10] += TestMerge(au.CreateDecremental(10000));
+			avg[11] += TestMerge(au.CreateDecremental(100000));
+		}
+		
+		System.out.println("Random with size n = 10^2: " + (avg[0] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^3: " + (avg[1] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^4: " + (avg[2] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^5: " + (avg[3] / runTimes) + "ms");
+
+		System.out.println("Random with size n = 10^2: " + (avg[0] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^3: " + (avg[1] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^4: " + (avg[2] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^5: " + (avg[3] / runTimes) + "ms");
+		
+		System.out.println("Random with size n = 10^2: " + (avg[0] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^3: " + (avg[1] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^4: " + (avg[2] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^5: " + (avg[3] / runTimes) + "ms");
+	}
+	
+	private static double TestMerge(int[] input) {
+		Mergesort ms = new Mergesort();
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		ms.Sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

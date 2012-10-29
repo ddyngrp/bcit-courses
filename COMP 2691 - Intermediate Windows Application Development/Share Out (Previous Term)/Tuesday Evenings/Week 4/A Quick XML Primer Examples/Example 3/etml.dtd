@@ -1,0 +1,22 @@
+<!ELEMENT trainlog (session)+>
+
+<!ELEMENT session (duration, distance, location, comments)>
+<!ATTLIST session
+  date CDATA #IMPLIED
+  type (running | swimming | cycling) "running"
+  heartrate CDATA #IMPLIED
+>
+
+<!ELEMENT duration (#PCDATA)>
+<!ATTLIST duration
+  units (seconds | minutes | hours) "minutes"
+>
+
+<!ELEMENT distance (#PCDATA)>
+<!ATTLIST distance
+  units (miles | kilometers | laps) "miles"
+>
+
+<!ELEMENT location (#PCDATA)>
+
+<!ELEMENT comments (#PCDATA)>

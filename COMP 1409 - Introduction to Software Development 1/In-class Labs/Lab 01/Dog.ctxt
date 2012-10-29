@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=dogName\ dogWeight
+comment0.target=Dog(String,\ double)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Dog\ (I'll\ refrain\ from\ comment)\n\n
+comment1.target=double\ getWeight()
+comment1.text=\nReturns\ the\ weight\ of\ the\ dog\n\n
+comment2.target=String\ getName()
+comment2.text=\nReturns\ the\ name\ of\ the\ dog\n\n
+comment3.target=boolean\ getNeutered()
+comment3.text=\nReturns\ the\ neutered\ status\ of\ the\ dog\nWhy\ don't\ you\ invoke\ getNeutered\ yourself\!\n\n
+comment4.params=newWeight
+comment4.target=void\ setWeight(double)
+comment4.text=\nChanges\ the\ dog's\ weight\ to\ a\ new\ value\n\n
+comment5.target=void\ neuter()
+comment5.text=\nChanges\ the\ dog's\ neuter\ status\n\n
+comment6.target=void\ eat()
+comment6.text=\nPrints\ something\ useless\ to\ the\ screen\n\n
+comment7.target=void\ run()
+comment7.text=\nPrints\ something\ useless\ to\ the\ screen\n\n
+comment8.target=void\ bark()
+comment8.text=\nPrints\ something\ useless\ to\ the\ screen\n\n
+comment9.target=void\ displayName()
+comment9.text=\nPrints\ the\ dog's\ name\n\n
+numComments=10

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="news.css"?>
+
+<news>
+  <header>
+    <headline>
+    Local Author Breaks Ankle In Gruesome Skateboard Accident
+    </headline>
+    <byline>
+    By Eric Martin
+    </byline>
+    <dateline>
+      <location>Nashville, Tennessee</location>
+      <date>Tuesday December 11 2001 4:52 CST</date>
+    </dateline>
+  </header>
+
+  <story>
+    <p>Local nerd author Michael Morrison broke his ankle today while
+    skateboarding on a ramp at an undisclosed location. This injury comes
+    as a considerable blow to Morrison considering that he recently
+    emerged from retirement to make another go at skateboarding. Against
+    the wishes of friends of family, Morrison decided to to return to
+    skateboarding where risk is a fact of life. His terse response to the
+    injury was <quote>I don't think my ankle was supposed to bend that
+    way</quote>.</p>
+
+    <p>Witnesses to the accident recall the gruesome aftermath. Fellow skater
+    and witness Darin Masters said <quote>his ankle was twisted around like
+    one of those little balloon animals</quote>. While out of commission for
+    a few months, Mr. Morrison has vowed to make yet another return to the
+    sport.</p>
+  </story>
+</news>

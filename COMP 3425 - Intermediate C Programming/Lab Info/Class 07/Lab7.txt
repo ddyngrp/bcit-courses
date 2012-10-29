@@ -1,0 +1,9 @@
+Write a preprocessor directive to accomplish each of the folowing:
+   1) Define symbolic constant YES to have the value 1.
+   2) Define symbolic constant NO to have the value 0.
+   3) Include the header common.h.  The header is found in the same directory as the file being compiled.
+   4) Renumber the remaining lines in the beginning with the line number 3000.
+   5) If symbolic constant TRUE is defined, undefine it and redefine it as 1. Do NOT use the #ifdef preprocessor directive.
+   6) If symbolic constant TRUE is defined, undefine it and redefine it as 1. Use the #ifdef preprocessor directive.
+   7) If symbolic constant TRUE is not equal to 0, define symbolic constant FALSE as 0.  Otherwise define FALSE as 1.
+   8) Define macro CUBE_VOLUME that computes the volume of a cube.  The macro takes one argument.

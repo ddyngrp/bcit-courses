@@ -1,0 +1,42 @@
+import java.util.Calendar;
+import java.util.Random;
+
+public class FilledArray {
+	
+	public FilledArray() {
+	}
+	
+	public static int[] Sequential(int size) {
+		int[] array = new int[size];
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = i + 1;
+		}
+		
+		return array;
+	}
+	
+	public static int[] Random(int size) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = generator.nextInt();
+		}
+		
+		return array;
+	}
+	
+	public static int[] Random(int size, int[] range) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = generator.nextInt();
+		}
+		
+		return array;
+	}
+}

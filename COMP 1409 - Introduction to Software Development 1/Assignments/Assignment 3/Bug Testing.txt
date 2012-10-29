@@ -1,0 +1,123 @@
+
+[ new StoreHours() ]
+
+[ storeHours1.checkStatus() ]
+The store is now closed
+The current time is: 00:00 Sunday
+Opening time is 09:00 Sunday
+
+[ storeHours1.increment() ]
+
+[ storeHours1.increment() ]
+
+[ storeHours1.checkStatus() ]
+The store is now closed
+The current time is: 00:02 Sunday
+Opening time is 09:00 Sunday
+
+[ storeHours1.setTimeAndDay(8, 59, 0) ]
+
+[ storeHours1.checkStatus() ]
+The store is now closed
+The current time is: 08:59 Sunday
+Opening time is 09:00 Sunday
+
+[ storeHours1.increment() ]
+
+[ storeHours1.checkStatus() ]
+The store is now open
+The current time is: 09:00 Sunday
+
+[ storeHours1.setTimeAndDay(8, 59, 2) ]
+
+[ storeHours1.checkStatus() ]
+The store is now closed
+The current time is: 08:59 Tuesday // closing day
+Opening time is 09:00 Thursday
+
+*** The opening day should be Wednesday. Needed to initialize "numberToAdd" to 1.
+
+[ new StoreHours() ]
+
+[ storeHou1.setTimeAndDay(8, 59, 2) ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 08:59 Tuesday // closing day
+Opening time is 09:00 Tuesday
+
+*** Needed to add an AND statement to the if statement that checked against the opening time to also include whether today was a closed day or not.
+
+[ new StoreHours() ]
+
+[ storeHou1.setTimeAndDay(8, 59, 2) ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 08:59 Tuesday // closing day
+Opening time is 09:00 Wednesday
+
+[ storeHou1.increment() ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 09:00 Tuesday // closing day
+Opening time is 09:00 Wednesday
+
+[ storeHou1.advanceMinutes(4135) ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 05:55 Friday
+Opening time is 09:00 Friday
+
+[ storeHou1.increment() ]
+
+[ storeHou1.advanceMinutes(300) ]
+
+[ storeHou1.checkStatus() ]
+The store is now open
+The current time is: 10:56 Friday
+
+[ storeHou1.setTimeAndDay(23, 59, 3) ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 23:59 Wednesday
+Opening time is 09:00 Thursday
+
+[ storeHou1.increment() ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 00:00 Thursday
+Opening time is 09:00 Thursday
+
+[ storeHou1.setTimeAndDay(23, 58, 6) ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 23:58 Saturday
+Opening time is 09:00 Sunday
+
+[ storeHou1.increment() ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 23:59 Saturday
+Opening time is 09:00 Sunday
+
+[ storeHou1.increment() ]
+
+[ storeHou1.checkStatus() ]
+The store is now closed
+The current time is: 00:00 Sunday
+Opening time is 09:00 Sunday
+
+[ storeHou1.advanceMinutes(38275) ]
+
+[ storeHou1.checkStatus() ]
+The store is now open
+The current time is: 13:55 Friday
+
+*** No other bugs that I can find.

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Animal()
+comment0.text=\nCreate\ a\ new\ animal\ with\ age\ zero\ (a\ new\ born).\n\n
+comment1.target=boolean\ isAlive()
+comment1.text=\nCheck\ whether\ the\ actor\ is\ alive\ or\ not.\n@return\ True\ if\ the\ actor\ is\ still\ alive.\n\n
+comment2.target=void\ setDead()
+comment2.text=\nTell\ the\ actor\ that\ it's\ dead\ now\ \:(\n\n
+comment3.target=int\ getAge()
+comment3.text=\nReturn\ the\ actor's\ age.\n@return\ The\ actor's\ age.\n\n
+comment4.params=age
+comment4.target=void\ setAge(int)
+comment4.text=\nSet\ the\ actor's\ age.\n@param\ age\ The\ actor's\ age.\n\n
+comment5.target=Location\ getLocation()
+comment5.text=\nReturn\ the\ actor's\ location.\n@return\ The\ actor's\ location.\n\n
+comment6.params=row\ col
+comment6.target=void\ setLocation(int,\ int)
+comment6.text=\nSet\ the\ actor's\ location.\n@param\ row\ The\ vertical\ coordinate\ of\ the\ location.\n@param\ col\ The\ horizontal\ coordinate\ of\ the\ location.\n\n
+comment7.params=location
+comment7.target=void\ setLocation(Location)
+comment7.text=\nSet\ the\ actor's\ location.\n@param\ location\ The\ actor's\ location.\n\n
+numComments=8

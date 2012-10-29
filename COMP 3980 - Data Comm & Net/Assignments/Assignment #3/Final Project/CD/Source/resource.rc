@@ -1,0 +1,134 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Exit\tCtrl-Q",               ID_FILE_EXIT
+    END
+    POPUP "&Port"
+    BEGIN
+        MENUITEM "COM1\tCtrl-1",                ID_PORT_COM1
+        MENUITEM "COM2\tCtrl-2",                ID_PORT_COM2
+        MENUITEM "COM3\tCtrl-3",                ID_PORT_COM3
+        MENUITEM "COM4\tCtrl-4",                ID_PORT_COM4
+        MENUITEM "COM5\tCtrl-5",                ID_PORT_COM5
+        MENUITEM "COM6\tCtrl-6",                ID_PORT_COM6
+        MENUITEM "COM7\tCtrl-7",                ID_PORT_COM7
+        MENUITEM "COM8\tCtrl-8",                ID_PORT_COM8
+        MENUITEM "COM9\tCtrl-9",                ID_PORT_COM9
+    END
+    POPUP "&Connection"
+    BEGIN
+        MENUITEM "&Connect",                    ID_CONNECTION_CONNECT
+        MENUITEM "&Disconnect",                 ID_CONNECTION_DCONNECT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_INFOTOOL DIALOGEX 0, 0, 420, 193
+STYLE DS_ABSALIGN | DS_SETFONT | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_BORDER
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LISTBOX         IDC_LST_RFID,8,25,403,156,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Start",IDC_BTN_START,8,5,50,14,WS_DISABLED
+    PUSHBUTTON      "Stop",IDC_BTN_STOP,61,5,50,14,WS_DISABLED
+    PUSHBUTTON      "Clear List",IDC_BTN_CLEAR,114,5,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "^Q",           ID_FILE_EXIT,           ASCII,  NOINVERT
+    "1",            ID_PORT_COM1,           VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_PORT_COM2,           VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_PORT_COM3,           VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_PORT_COM4,           VIRTKEY, CONTROL, NOINVERT
+    "5",            ID_PORT_COM5,           VIRTKEY, CONTROL, NOINVERT
+    "6",            ID_PORT_COM6,           VIRTKEY, CONTROL, NOINVERT
+    "7",            ID_PORT_COM7,           VIRTKEY, CONTROL, NOINVERT
+    "8",            ID_PORT_COM8,           VIRTKEY, CONTROL, NOINVERT
+    "9",            ID_PORT_COM9,           VIRTKEY, CONTROL, NOINVERT
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

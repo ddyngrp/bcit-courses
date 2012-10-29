@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=theBreed\ theWeightKG\ walksYN
+comment0.target=Dog(String,\ double,\ boolean)
+comment1.params=walksYN
+comment1.target=void\ setWalks(boolean)
+comment2.target=boolean\ getWalks()
+comment3.target=String\ toString()
+numComments=4

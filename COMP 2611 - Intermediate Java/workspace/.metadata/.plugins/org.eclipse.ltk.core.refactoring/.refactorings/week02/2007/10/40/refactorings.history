@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 elements(s) to &apos;Options/src/org.trollop.options&apos;&#x0A;- Original project: &apos;week02&apos;&#x0A;- Destination element: &apos;Options/src/org.trollop.options&apos;&#x0A;- Original element: &apos;scores.txt&apos;" description="Copy file" destination="/src&lt;org.trollop.options" element1="src/scores.txt" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" log="src/scores.txt&#x09;true&#x09;false" policy="org.eclipse.jdt.ui.copyResources" stamp="1191623609153" units="0" version="1.0"/>
+</session>

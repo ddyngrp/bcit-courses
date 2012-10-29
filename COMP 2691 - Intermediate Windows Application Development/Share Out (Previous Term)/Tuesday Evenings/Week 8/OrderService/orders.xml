@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<dsOrders xmlns="http://www.tempuri.org/dsOrders.xsd">
+<Orders>
+<CustomerID>VINET</CustomerID>
+<EmployeeID>5</EmployeeID>
+<OrderDate>2002-10-11</OrderDate>
+<RequiredDate>2002-10-21</RequiredDate>
+<ShippedDate>2002-10-18</ShippedDate>
+<ShipVia>3</ShipVia>
+<Freight>22.38</Freight>
+<ShipName>Vins et alcools Chevalier</ShipName>
+<ShipAddress>59 rue de Abbaye</ShipAddress>
+<ShipCity>Reims</ShipCity>
+<ShipRegion>MI</ShipRegion>
+<ShipPostalCode>51100</ShipPostalCode>
+<ShipCountry>France</ShipCountry>
+</Orders>
+</dsOrders>

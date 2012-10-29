@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 elements(s) to &apos;lab09/src/a00683006.util&apos;&#x0A;- Original project: &apos;assignment01&apos;&#x0A;- Destination element: &apos;lab09/src/a00683006.util&apos;&#x0A;- Original element: &apos;a00683006.bedz.util.ReadFile.java&apos;" description="Copy compilation unit" destination="/src&lt;a00683006.util" element1="/src&lt;a00683006.bedz.util{ReadFile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" log="/src&lt;a00683006.bedz.util{ReadFile.java&#x09;true&#x09;false" policy="org.eclipse.jdt.ui.copyResources" stamp="1194944890832" units="1" version="1.0"/>
+</session>

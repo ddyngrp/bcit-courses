@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>COMP1911</title>
+		<script type="text/javascript" language="javascript">
+		<!--
+		/**
+			REQUIREMENTS: animated character should walk horizontally across screen, 
+			and change direction when it reaches the edges
+
+		*/
+			var animationSpeed = 5;
+			var currentImage = 0;
+			var numberOfImages = 30;
+			var timerId = null;
+			var alienImages = new Array();
+			
+			//load the image array
+			for(x=0; x < numberOfImages; x++)
+			{
+				var anImage = new Image();
+				anImage.src = "./img/alienrwalk" + x + ".gif";
+				alienImages[x] = anImage;
+			}
+			
+			function runAnimation()
+			{
+				var alien = document.getElementById("alien");
+				currentImage++;
+				if(currentImage >= numberOfImages)
+				{
+					currentImage = 0;
+				}
+				alien.src = alienImages[currentImage].src;
+			}
+			function startAnimation()
+			{
+				if(timerId == null)
+				{
+					setInterval("runAnimation();", animationSpeed);
+				}
+			}
+			function stopAnimation()
+			{
+				
+			}
+
+		//-->	
+		</script>
+	</head>
+
+	<body>
+		<img 
+			src="./img/alienrwalk0.gif"
+			id="alien"
+			style="position:absolute; 
+					top:0px;
+					left:0px;
+			"
+			onclick="startAnimation();"
+		/>
+	</body>
+</html>

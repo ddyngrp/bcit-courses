@@ -1,0 +1,127 @@
+#!/bin/sh
+#
+#  Shell script 'roll_distribution'
+#  usage: ./roll_distribution   <version-number>
+#
+#  Create two new distribution files, doorman-$VERSION.tgz, & KNOCK-$WINVERSION.ZIP
+#
+#
+
+if [ $# -ne 1 ]
+then
+    echo -e "\aUsage: $0 <version-number>"
+    exit 1
+fi
+
+VERSION=$1
+
+WINVERSION=`echo $VERSION | sed -e's/\./_/g' -`
+
+IFS=" "
+
+NAMES="AUTHORS COPYING ChangeLog INSTALL\
+       KNOCK.CFG KNOCK.HTM KNOCK.TXT KNOCKCFG.HTM KNOCKCFG.TXT\
+       Makefile.in Makefile.am\
+       NEWS README README.TXT\
+       WINNOCK.DSP WINNOCK.DSW\
+       acinclude.m4 aclocal.m4\
+       bootstrap configure configure.ac config.h.in\
+       config_win.h constants.h\
+       depcomp\
+       doormand.c doormand.8 doormand.cf.EXAMPLE doormand.cf.5\
+       guestlist.EXAMPLE guestlist.5\
+       install-sh\
+       ipchains_add ipchains_delete  iptables_add iptables_delete\
+       ipfw_add ipfw_delete  pfctl_add pfctl_delete  ipf_add ipf_delete\
+       knock.1 knock.c knockcf knockcf.5\
+       lexer.l\
+       lstat.c\
+       missing\
+       mkinstalldirs\
+       roll_distribution\
+       utilities.c utilities.h"
+
+RFNAMES="bpf.h daemon.c getopt.c hmac_md5.c hmac_md5.h md5.c md5.h pcap.h"
+
+WINNAMES="KNOCK.EXE  KNOCK.CFG  KNOCK.HTM  KNOCK.TXT\
+          KNOCKCFG.HTM  KNOCKCFG.TXT  README.TXT doormand.cf.EXAMPLE"
+
+
+if [ ! -d doorman-$VERSIOM ]
+then
+    mkdir doorman-$VERSION
+fi
+
+if [ ! -d doorman-$VERSION/Replacement_fns ]
+then
+    mkdir doorman-$VERSION/Replacement_fns
+fi
+
+cd doorman-$VERSION
+for I in $NAMES
+do
+    if [ ! -e $I ]; then
+        ln -s ../$I $I
+    fi
+done
+
+for I in $WINNAMES
+do
+    if [ ! -e $I ]; then
+        ln -s ../$I $I
+    fi
+done
+
+cd Replacement_fns
+for I in $RFNAMES
+do
+    if [ ! -e $I ]; then
+        ln -s ../../Replacement_fns/$I $I
+    fi
+done
+
+cd ../..
+
+PATHS=""
+for I in $NAMES
+do
+    PATHS=$PATHS" "doorman-$VERSION/$I
+done
+
+RFPATHS=""
+for I in $RFNAMES
+do
+    RFPATHS=$RFPATHS" "doorman-$VERSION/Replacement_fns/$I
+done
+
+# echo $NAMES
+# echo
+# echo $PATHS
+# echo
+
+./bootstrap
+
+rm -f doorman-$VERSION.tgz
+tar -cvhzf doorman-$VERSION.tgz $PATHS $RFPATHS
+echo;echo finished   doorman-$VERSION.tgz;echo
+
+
+
+if [ -f knock.exe ]  # (Visual C++ creates lower-case filenames)
+then
+    mv knock.exe KNOCK.EXE
+fi
+
+rm -f KNOCK-$WINVERSION.ZIP
+zip KNOCK-$WINVERSION.ZIP  doorman-$VERSION/KNOCK.EXE\
+                           doorman-$VERSION/KNOCK.CFG\
+			   doorman-$VERSION/KNOCK.HTM\
+			   doorman-$VERSION/KNOCK.TXT\
+                           doorman-$VERSION/KNOCKCFG.HTM\
+			   doorman-$VERSION/KNOCKCFG.TXT\
+			   doorman-$VERSION/README.TXT\
+			   doorman-$VERSION/doormand.cf.EXAMPLE
+echo;echo finished   KNOCK-$WINVERSION.ZIP;echo
+
+exit 0
+

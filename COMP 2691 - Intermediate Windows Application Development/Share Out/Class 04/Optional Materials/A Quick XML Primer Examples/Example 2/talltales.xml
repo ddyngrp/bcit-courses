@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="talltales.css"?>
+
+<talltales>
+  <tt answer="a">
+
+      In 1994, a man had an accident while robbing a pizza restaurant in Akron, Ohio, that resulted in his
+      arrest. What happened to him?
+    
+    <a>He slipped on a patch of grease on the floor and knocked himself out.</a>
+    <b>He backed into a police car while attempting to drive off.</b>
+    <c>He choked on a breadstick that he had grabbed as he was running out.</c>
+  </tt>
+
+  <tt answer="c">
+    <question>
+      In 1993, a man was charged with burglary in Martinsville, Indiana, after the homeowners discovered his
+      presence. How were the homeowners alerted to his presence?
+    </question>
+    <a>He had rung the doorbell before entering.</a>
+    <b>He had rattled some pots and pans while making himself a waffle in their kitchen.</b>
+    <c>He was playing their piano.</c>
+  </tt>
+
+  <tt answer="a">
+    <question>
+      In 1994, the Nestle UK food company was fined for injuries suffered by a 36 year-old employee at a
+      plant in York, England. What happened to the man?
+    </question>
+    <a>He fell in a giant mixing bowl and was whipped for over a minute.</a>
+    <b>He developed an ulcer while working as a candy bar tester.</b>
+    <c>He was hit in the head with a large piece of flying chocolate.</c>
+  </tt>
+</talltales>

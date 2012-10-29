@@ -1,0 +1,165 @@
+Recall:	equal_range returns a pair where first is lower_bound and second is upper_bound
+
+What is a pair?
+
+defined in <utility> basically as follows:
+
+template <typename U, typename >	//class template
+
+struct pair{
+
+	typedef U first_type;
+	typedef V second_type;
+
+	
+
+	U first;
+	V second;
+
+
+	pair();
+	pair(U,V);
+	template<typename S, typename T>
+	pair(constpair<S,T>);
+
+}
+
+
+e.g. pair<int,double> p(,2.3);
+
+To simplify the creation of pairs, there is also a function 
+
+template <typename I, typename V>	//function template
+pair <U, V>
+
+make_pair(U f, V s);
+
+//can be implemented as:  return(pair<U,V>(f,s));
+
+
+e.g. make_pair(1, 2.3)		
+
+-	the complier cand deduce the templateagrumetns when a template function is called
+
+Therefore V = int and V = double
+
+
+
+
+
+_____________________________________________________
+
+
+
+an iterator can be used to go through a map; in the example above we would use somethin glike
+
+
+map < string, string>::iterator it;
+
+for (it = phonebook.begin(); it != phonebook.end(); ++it)
+
+	cout << it -> first << "," << it -> second << endl;
+
+
+The only thing new here is that we need to use the first and second members to access the key and value respectively.
+(A map essentially stores pairs.)
+
+-	note that in the phonebook example, the line
+
+phoneboook["jason"] = "123-4567";
+
+first initializes jason's phone to the default string (using the default ctor of string) before "123-4567" is
+assigned ot it; for built-in arithmetic types, 0 is used as the default values
+
+
+However, if an equivalent key is already in the map, the code changes the corresponding value.
+
+A "better" way to insert the key/value pair is
+
+phonebook.insert(map<string, string>::value_type("jason", "123-4567"));
+
+Note however that this may fail if an element with an equivalent key is already in the map.
+
+It is also convinient to use a typedef:
+
+typedef map<string, string>::value_type val_type;
+
+
+Example:  Program to count the frequency of each word
+
+
+#include <map>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main{
+
+	string s;
+	map<string, unsigned> count;
+
+	while (cin >> s)
+		count[s]++;		//note:  count[s] is initialized to 0 the first time it is accessed.
+
+	for (map<string,unsigned>::const_iterator it = count.begin();
+		it != count.end(); ++it)
+
+	cout << it -> first ": " << it -> second <<endl;
+
+}
+
+
+
+
+______________________________________-
+
+
+
+
+multipmaps
+
+
+provide fast retrrieval of objects (values based on keys)
+-	allows duplicate keys
+
+
+#include <map>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+	multimap<string,string> phonebook;
+
+	phonebook.insert(make_pair<string,string>("stephen", "123-5678"));
+	phonebook.insert(make_pair<string,string>("albert", "123-6789"));
+...
+
+}
+
+________________________________________________
+
+Recall:  print function template
+
+We can think of printing as copying a range of iterators to some ostream.
+
+
+function to sum array
+function to multiply array		->	function that operate on an array
+
+
+function that triples every element in an array
+function that incrementes every elemetn in an array	->	function that applies an operation on each element
+
+
+
+void apply(int a[], size_t n, int (*f)(int));
+
+.....
+
+	a[i] = f(a[i]);
+
+}
+

@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Deck()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Deck\n\n
+comment1.target=void\ newDeck()
+comment1.text=\nLoad\ a\ new\ deck\ with\ all\ SUITS_IN_DECK\ *\ CARDS_IN_SUIT\ size\n\n
+comment2.params=newCard
+comment2.target=void\ addCard(Card)
+comment2.text=\nAdd\ a\ single\ card\ to\ the\ deck.\n@param\ a\ Card\ object\n\n
+comment3.target=void\ shuffle()
+comment3.text=\nShuffle\ the\ deck.\ This\ involves\ selecting\ random\ pairs\ of\ \ncards\ and\ swapping\ them,\ the\ number\ of\ times\ to\ swap\ determined\nby\ the\ constant\ TIMES_TO_SHUFFLE.\ Java\ provides\ a\ shuffle\ method\nas\ part\ of\ the\ Collections\ interface,\ however\ for\ this\ assignment\nyou\ must\ write\ your\ own.\n\n
+comment4.params=xCard\ yCard
+comment4.target=void\ swap(int,\ int)
+comment4.text=\nSwaps\ two\ Card\ objects\ in\ the\ deck.\n@param\ xCard\ first\ Card\ object\n@param\ yCard\ second\ Card\ object\n\n
+comment5.target=void\ showDeck()
+comment5.text=\nDisplay\ the\ entire\ contents\ of\ the\ deck.\ Not\ used\ in\ the\ngame\ but\ useful\ for\ debugging.\n\n
+comment6.target=boolean\ hasCards()
+comment6.text=\nReturns\ whether\ the\ deck\ is\ empty\ or\ not.\n\n
+comment7.target=Card\ takeCard()
+comment7.text=\nRemove\ the\ top\ card\ (the\ first\ card)\ from\ the\ deck.\n@return\ the\ Card\ object\ removed\ or\ null\ if\ there\ is\ nothing\ in\ the\ deck.\n\n
+numComments=8

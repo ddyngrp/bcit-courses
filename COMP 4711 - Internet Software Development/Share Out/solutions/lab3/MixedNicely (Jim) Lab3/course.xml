@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : course.xml
+    Created on : January 30, 2009, 2:46 PM
+    Author     : A00702683
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE courses SYSTEM "course.dtd">
+
+<courses>
+    <course id="C123456">
+        <holedetail id="H156789" number="1" par="4" yards="400">It be tricky!</holedetail>
+        <holedetail id="H155788" number="2" par="3" yards="500">It be normal!</holedetail>
+        <holedetail id="H154787" number="3" par="4" yards="100">It be easy!</holedetail>
+        <holedetail id="H153786" number="4" par="5" yards="200">It be Real easy</holedetail>
+        <holedetail id="H156785" number="5" par="5" yards="400">It be tricky!</holedetail>
+        <holedetail id="H155784" number="6" par="2" yards="500">It be normal!</holedetail>
+        <holedetail id="H154783" number="7" par="3" yards="100">It be easy!</holedetail>
+        <holedetail id="H153782" number="8" par="4" yards="200">It be tricky!</holedetail>
+        <holedetail id="H159702" number="9" par="5" yards="777">It be tricky!</holedetail>
+    </course>
+    <course id="C987654">
+        <holedetail id="H256789" number="1" par="4" yards="400">It be tricky!</holedetail>
+        <holedetail id="H255788" number="2" par="3" yards="500">It be normal!</holedetail>
+        <holedetail id="H254787" number="3" par="4" yards="100">It be easy!</holedetail>
+        <holedetail id="H253786" number="4" par="5" yards="200">It be Real easy</holedetail>
+        <holedetail id="H256785" number="5" par="5" yards="400">It be tricky!</holedetail>
+        <holedetail id="H255784" number="6" par="2" yards="500">It be normal!</holedetail>
+        <holedetail id="H254783" number="7" par="3" yards="100">It be easy!</holedetail>
+        <holedetail id="H253782" number="8" par="4" yards="200">It be tricky!</holedetail>
+        <holedetail id="H259702" number="9" par="5" yards="777">It be tricky!</holedetail>
+    </course>
+    <course id="C135790">
+        <holedetail id="H356789" number="1" par="4" yards="400">It be tricky!</holedetail>
+        <holedetail id="H355788" number="2" par="3" yards="500">It be normal!</holedetail>
+        <holedetail id="H354787" number="3" par="4" yards="100">It be easy!</holedetail>
+        <holedetail id="H353786" number="4" par="5" yards="200">It be Real easy</holedetail>
+        <holedetail id="H356785" number="5" par="5" yards="400">It be tricky!</holedetail>
+        <holedetail id="H355784" number="6" par="2" yards="500">It be normal!</holedetail>
+        <holedetail id="H354783" number="7" par="3" yards="100">It be easy!</holedetail>
+        <holedetail id="H353782" number="8" par="4" yards="200">It be tricky!</holedetail>
+        <holedetail id="H359702" number="9" par="5" yards="777">It be tricky!</holedetail>
+    </course>
+    <course id="C246801">
+        <holedetail id="H456789" number="1" par="4" yards="400">It be tricky!</holedetail>
+        <holedetail id="H455788" number="2" par="3" yards="500">It be normal!</holedetail>
+        <holedetail id="H454787" number="3" par="4" yards="100">It be easy!</holedetail>
+        <holedetail id="H453786" number="4" par="5" yards="200">It be Real easy</holedetail>
+        <holedetail id="H456785" number="5" par="5" yards="400">It be tricky!</holedetail>
+        <holedetail id="H455784" number="6" par="2" yards="500">It be normal!</holedetail>
+        <holedetail id="H454783" number="7" par="3" yards="100">It be easy!</holedetail>
+        <holedetail id="H453782" number="8" par="4" yards="200">It be tricky!</holedetail>
+        <holedetail id="H459702" number="9" par="5" yards="777">It be tricky!</holedetail>
+    </course>
+</courses>

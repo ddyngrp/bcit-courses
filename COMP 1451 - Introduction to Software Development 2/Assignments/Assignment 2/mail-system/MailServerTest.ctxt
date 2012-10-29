@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MailServerTest()
+comment0.text=\nDefault\ constructor\ for\ test\ class\ MailServerTest\n\n
+comment1.target=void\ setUp()
+comment1.text=\nSets\ up\ the\ test\ fixture.\n\nCalled\ before\ every\ test\ case\ method.\n\n
+comment2.target=void\ tearDown()
+comment2.text=\nTears\ down\ the\ test\ fixture.\n\nCalled\ after\ every\ test\ case\ method.\n\n
+comment3.target=void\ testPositiveSpamChecker()
+comment4.target=void\ testNegativeSpamChecker()
+comment5.target=void\ testFirstToUpper()
+comment6.target=void\ testHowManyMailItems()
+comment7.target=void\ testNextMailItem()
+numComments=8

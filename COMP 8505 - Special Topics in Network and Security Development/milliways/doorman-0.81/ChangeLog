@@ -1,0 +1,77 @@
+
+V0.2  Oct.17, 2003  JBW
+  Added new doormand.cf records 'connection_delay_1' & 'connection_delay_2'.
+  Updated to autoconf 2.57 & automake 1.7.8
+  Fixed md5 library search for Debian.
+  Fixed db function calls for db version 2.
+
+V0.3  Oct.22, 2003  JBW
+  Added more stringent packet-validity checks to doormand.c
+  Changed log-level of valid packet receipt events
+  Improved method of supplying replacement functions
+  Fixed zombie problem; (had forgotten wait() call...*blush*...)
+  Fixed -many- bugs in use of db version 2 functions
+  Added support for db version 1; can now accept versions 1-4.
+  Fixed several problems in configure.ac
+  Added "-i ipaddress" option to knock.c
+
+V0.4  Nov.03, 2003  JBW
+  Changed semantics of "-D" option in doormand; now means "Debug"
+  Fixed bug in "-h" option in knock
+  Added iptables firewall scripts; renamed ipchains scripts
+  Fixed doormand hang on reconfigure after SIGHUP.
+
+V0.5  July 2, 2004  JBW
+  Added an 'Enter secret' prompt to knock.c if no secret is specified
+  in either .knockcf or on command line
+  Removed use of Berkeley DB; using crude (but fast enough) binary search now.
+  Changed syntax of 'guestlist' configuration file
+  Fixed several small bugs in knock & doormand
+
+v0.5.1 July 3, 2004  JBW
+  Removed 'maskbits' config record for knock client. (Never was actually
+  useful.. just a stupid design blunder.)  Changed code to match in
+  doormand.c
+  Cleaned up many discrepancies in documentation
+
+v0.6   July 14, 2004  JBW
+  Fixed bug in knock.exe, which under Win9x, would cause stubborn
+  'incorrect secret' errors.
+  Removed 'gettimeofday.c' from replacement functions
+  Added '-U' option to Windows version of the knocker, to allow
+  checks on what UTC time Windows thinks it is.  (This helps fix
+  any leftover 'incorrect secret' problems.)
+  Added extra info on UTC problems to Windows docs 'knock.htm' & 'knock.txt'.
+
+v0.6.1 July 16, 2004  JBW
+  Added explicit check during configuration for the existence of the
+  utility program 'lsof'.
+  (The doorman needs lsof to know when to remove the firewall rule that
+  allowed a connection after that connection is broken.  If 'lsof' is
+  missing, old 'ALLOW' rules will never be removed.)
+
+v0.6.2 July 16, 2004  JBW
+  Corrected doormand installation 'chmod' commands in Makefile.am
+  'knock' is unchanged from v0.6.1, for both *nix & winows
+
+v0.7   July 22, 2004  JBW
+  Added firewall scripts for FreeBSD, OpenBSD, & netBSD
+  Changed error-reporting in all firewall scripts.
+
+v0.8   July 29, 2004  JBW
+  Fixed several bugs found by Leonid Shalupov.
+  Added pidfile (suggested by Leonid)
+  Changed default listening port to 1001
+  Changed authentication method; time sync between client & server is
+  no longer necessary. (Also: replay attacks are now more difficult)
+
+v0.8.1  Aug.13, 2005  JBW
+  Added support for linux cooked socket header len;  thanks to Markus Hoffmann.
+  Fixed guestlist hostname-parsing bug; also thanks to Markus.
+  Changed method of remembering old knock hashes, without use of Berkeley DB.
+  Kinda-fixed a bug handling pcapnext-returns-null condition. I hope.
+  Included lexer.c ('flex' output from lexer.l) in distribution. Duh.
+  Fixed doorman bug when creating new new hashfile; thanks to Robert Koropcak
+  No changes made to knock.c;   however, it will report being V0.81
+
+

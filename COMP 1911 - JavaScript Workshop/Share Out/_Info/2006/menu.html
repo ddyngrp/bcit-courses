@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>menu stuff</title>
+
+	<style type="text/css">
+		.menu{display:none;margin-left:20px}
+	</style>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+		function togglemenu(currmenu) {
+			if (document.getElementById) {
+				var thismenu = document.getElementById(currmenu).style;
+				if (thismenu.display == "block") {
+					thismenu.display = "none";
+					
+				}
+				else {
+					thismenu.color = "green";
+					thismenu.display = "block";
+
+				}
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+	// -->
+	</script>
+</head>
+
+<body>
+<h1>jeffrey parker</h1>
+
+<div id="mymenu">
+<!-- MENU 1 -->
+<span onclick="return togglemenu('menu1')">sports</span>
+<span class="menu" id="menu1">
+	<a href = "http://www.nsmb.com">biking</a><br>
+	<a href = "http://whistlerblackcomb.com">snowboarding</a><br>
+</span>
+
+<!-- MENU 2 -->
+<br><a href="page2.html" onclick="return togglemenu('menu2')">interests</a>
+<span class="menu" id="menu2">
+	<a href = "http://www.openoffice.org/product/draw.html">drawing</a><br>
+	<a href = "http://www.ltolstoy.com">reading</a><br>
+</span>
+
+<!-- MENU 3 -->
+<br><a href="page3.html" onclick="return togglemenu('menu3')">pictures</a>
+<span class="menu" id="menu3">
+	<a href = "http://www.collegeparkbaptist.org/images/jeff2.jpg">musical jeffrey</a><br>
+	<a href = "http://www.geocities.com/Area51/5341/jeff.jpg">tough jeffrey</a><br>
+</span>
+</div>
+</body>
+</html>
+
+
+

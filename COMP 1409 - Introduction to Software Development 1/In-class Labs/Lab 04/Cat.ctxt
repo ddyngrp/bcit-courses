@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=newCatName\ newYearOfBirth\ newWeightInPounds
+comment0.target=Cat(String,\ int,\ double)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Cat\n\n
+comment1.target=String\ getCatName()
+comment1.text=\nGetter\ for\ catName\n\n
+comment2.target=int\ getYearOfBirth()
+comment2.text=\nGetter\ for\ yearOfBirth\n\n
+comment3.target=double\ getWeightInPounds()
+comment3.text=\nGetter\ for\ weightInPounds\n\n
+numComments=4

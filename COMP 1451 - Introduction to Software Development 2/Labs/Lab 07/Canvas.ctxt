@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Canvas\ getCanvas()
+comment0.text=\nFactory\ method\ to\ get\ the\ canvas\ singleton\ object.\n\n
+comment1.params=title\ width\ height\ bgColor
+comment1.target=Canvas(String,\ int,\ int,\ Color)
+comment1.text=\nCreate\ a\ Canvas.\n@param\ title\ \ \ \ title\ to\ appear\ in\ Canvas\ Frame\n@param\ width\ \ \ \ the\ desired\ width\ for\ the\ canvas\n@param\ height\ \ \ the\ desired\ height\ for\ the\ canvas\n@param\ bgColor\ the\ desired\ background\ color\ of\ the\ canvas\n\n
+comment2.params=visible
+comment2.target=void\ setVisible(boolean)
+comment2.text=\nSet\ the\ canvas\ visibility\ and\ brings\ canvas\ to\ the\ front\ of\ screen\nwhen\ made\ visible.\ This\ method\ can\ also\ be\ used\ to\ bring\ an\ already\nvisible\ canvas\ to\ the\ front\ of\ other\ windows.\n@param\ visible\ \ boolean\ value\ representing\ the\ desired\ visibility\ of\nthe\ canvas\ (true\ or\ false)\ \n\n
+comment3.params=referenceObject\ color\ shape
+comment3.target=void\ draw(Object,\ String,\ Shape)
+comment3.text=\nDraw\ a\ given\ shape\ onto\ the\ canvas.\n@param\ \ referenceObject\ \ an\ object\ to\ define\ identity\ for\ this\ shape\n@param\ \ color\ \ \ \ \ \ \ \ \ \ \ \ the\ color\ of\ the\ shape\n@param\ \ shape\ \ \ \ \ \ \ \ \ \ \ \ the\ shape\ object\ to\ be\ drawn\ on\ the\ canvas\n\n
+comment4.params=referenceObject
+comment4.target=void\ erase(Object)
+comment4.text=\nErase\ a\ given\ shape's\ from\ the\ screen.\n@param\ \ referenceObject\ \ the\ shape\ object\ to\ be\ erased\ \n\n
+comment5.params=colorString
+comment5.target=void\ setForegroundColor(String)
+comment5.text=\nSet\ the\ foreground\ color\ of\ the\ Canvas.\n@param\ \ newColor\ \ \ the\ new\ color\ for\ the\ foreground\ of\ the\ Canvas\ \n\n
+comment6.params=milliseconds
+comment6.target=void\ wait(int)
+comment6.text=\nWait\ for\ a\ specified\ number\ of\ milliseconds\ before\ finishing.\nThis\ provides\ an\ easy\ way\ to\ specify\ a\ small\ delay\ which\ can\ be\nused\ when\ producing\ animations.\n@param\ \ milliseconds\ \ the\ number\ \n\n
+comment7.target=void\ redraw()
+comment7.text=\nRedraw\ ell\ shapes\ currently\ on\ the\ Canvas.\n\n
+comment8.target=void\ erase()
+comment8.text=\nErase\ the\ whole\ canvas.\ (Does\ not\ repaint.)\n\n
+numComments=9

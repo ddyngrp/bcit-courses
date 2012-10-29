@@ -1,0 +1,160 @@
+
+Doormand, Version 0.81
+Bruce Ward
+Saint John, NB, Canada   Aug 06, 2005
+
+
+It should be noted that this is 'beta' software, and, of this date, has been
+tested only under SuSE Linux 7.1 through 9.3.  While doormand should compile
+and run on most linux distributions, FreeBSD, NetBSD, OpenBSD, and OSX (Darwin)
+it has not yet been tested on them.  'knock' has been tested on these platforms,
+and functions correctly.
+
+
+KNOWN PROBLEMS:
+
+1....  "Silent Doorman"
+        The doorman will occasionally (via 'pcap') "guess" the 
+        data-link header length of the interface it listens on incorrectly.
+        If this happens, the doorman will do NOTHING when it receives a
+        'knock'.
+        It will not recognize it as a knock, and so will not even log its
+        receipt.   If you experience this problem of a stubbbornly silent
+        doorman, use a command line such as this:
+
+        ./doormand -D -X -f ./doormand.cf.TEST
+
+        This will dump all received UDP packets on the port the doorman
+        is listening to.  Send a few 'knock' packets, and look for "45 00"
+        in the  dump.   These are  usually  the  first 2 bytes of the IP
+        header; count the number of bytes before them, and you have length
+        of the data-link header.   Use this number as the value for
+        the "link-header-length" configuration option in 'doormand.cf'.
+        If you have counted correctly, the doorman should function 
+        properly when restarted.
+        (Thanks to Robert Koropcak for letting me log onto his personal
+        machine to let me figure how to fix the "silent doorman" problem)
+
+
+2....   "64-bit segfaults"
+        Under 64-bit systems such as SuSE9.3 for the Athlon 64, connection-
+        watching child processes of the doorman will seg-fault just before
+        the point at which they would normally exit after closing the firewall
+        hole which was created for a now-disconnected session.  This, while
+        merely annoying by itself, probably indicates serious problems with heap
+        corruption.  To be fixed...
+
+
+
+If you find bugs, please, -PLEASE- report them to:
+<bward2@users.sourceforge.net>
+
+This includes anything in the documentation which is unclear, incorrect,
+or just plain dumb, or things which don't work the way you think they should.
+
+-----------------------------------------------------------------------------
+
+HOW TO BUILD for *NIX :
+
+---  If you are updating from a previous version, and have modified
+---  your firewall scripts, BACK UP YOUR OLD CONFIGURATION FILES!
+---  (doormand.cf & guestlist will not be over-written.)
+---  > su -c"cp -r /usr/local/etc/doormand /usr/local/etc/doormand.OLD"
+
+The impatient may simply issue the commands:
+
+> tar -xvzf doormand.tgz
+> cd doormand
+> ./configure
+> make
+> su -c"make install"
+
+(For a full explanation of 'configure', read 'INSTALL',
+or issue the command: ./configure --help)
+
+After this, as root, 'cd' to the doorman's configuration directory
+(by default, '/usr/local/etc/doormand'), and create suitable
+'doormand.cf' & 'guestlist' files.  Examples are provided.
+Also see 'man doormand.cf' & 'man guestlist'.
+
+So far, no system startup & shutdown scripts are provided, due
+to wide variation from one OS to another.  You will have to
+roll yer own for the time being.  Sorry.  However, a script
+which functions under SuSE Linux v7.1 is pasted at the end of
+this file as an example for fellow Linux weenies. ;)
+
+The doorman requires the utility program 'lsof'.
+While the doorman may SEEM to run well without 'lsof', it will 
+never be able to remove the holes it punches in the firewall for 
+connections.   Eventually, you will have a firewall like piece of
+Swiss cheese, all tattered with old 'accept' rules.  This is BAD.
+
+You can get lsof at:
+< ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof.tar.gz >
+
+
+By default, 'knock' is installed in /usr/local/bin,
+'doormand' in /usr/local/sbin, and the doormand configuration
+files and sample firewall scripts in /usr/local/etc/doormand .
+See 'INSTALL' to select different installation directories.
+
+
+-----------------------------------------------------------------------------
+
+HOW TO BUILD for WINDOWS :
+
+Only the 'knock' client may be built for windows.
+Knock.c can be compiled with Microsoft Visual C++; double-click
+on 'WINNOCK.DSW', and build as normal.
+
+-----------------------------------------------------------------------------
+
+
+------ sample '/etc/init.d/doormand' for SuSE 7.1 -------
+
+#! /bin/sh
+
+. /etc/rc.status
+. /etc/rc.config
+
+
+# The echo return value for success (defined in /etc/rc.config).
+rc_reset
+case "$1" in
+    start)
+        checkproc /usr/local/sbin/doormand && {
+            killproc /usr/local/sbin/doormand 2> /dev/null
+            echo -n "Re-"
+        }
+             echo -n "Starting doormand:"
+         startproc /usr/local/sbin/doormand
+         rc_status -v
+         ;;
+    stop)
+         echo -n "Shutting down doormand:"
+         killproc -TERM /usr/local/sbin/doormand
+         rc_status -v 
+         ;;
+    restart|reload)
+         $0 stop  &&  $0 start
+         rc_status
+         ;;
+    status)
+         echo -n "Checking for doormand: "
+         checkproc /usr/local/sbin/doormand && echo OK || echo No process
+         ;;
+    *)
+         echo "Usage: $0 {start|stop|status|restart|reload}"
+         exit 1
+         ;;
+esac
+rc_exit
+
+------ end sample '/etc/init.d/doormand' for SuSE 7.1 -------
+
+To set symbolic links in /etc/init.d/rc3.d & /etc/init.d/rc5.d :
+   cd /etc/init.d/rc3.d;  ln -s ../doormand K01doormand;  ln -s ../doormand S20doormand
+   cd /etc/init.d/rc5.d;  ln -s ../doormand K01doormand;  ln -s ../doormand S20doormand
+
+
+

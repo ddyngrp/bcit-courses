@@ -1,0 +1,69 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      1681,         60]
+NotebookOptionsPosition[      1359,         45]
+NotebookOutlinePosition[      1700,         60]
+CellTagsIndexPosition[      1657,         57]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["2", "x"], "-", "2"}], "\[GreaterEqual]", "150"}]], "Input",\
+
+ CellChangeTimes->{{3.437710291319942*^9, 3.437710305340334*^9}, 
+   3.437710341151661*^9, {3.437710620979692*^9, 3.4377106221465063`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"2", ",", "150."}], "]"}], " ", "~"}], "=", " ", 
+  "7.22822"}]], "Input",
+ CellChangeTimes->{{3.437710391625174*^9, 3.437710435465951*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["2", "8"], "-", "2"}], "\[Equal]", "254"}]], "Input",
+ CellChangeTimes->{{3.437710439547893*^9, 3.437710446299548*^9}, {
+  3.437710494273299*^9, 3.437710497380533*^9}, {3.437710584248807*^9, 
+  3.437710590848384*^9}, {3.43771062463562*^9, 3.437710626331459*^9}}]
+},
+WindowSize->{792, 896},
+WindowMargins->{{100, Automatic}, {Automatic, 41}},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 255, 6, 29, "Input"],
+Cell[826, 29, 211, 6, 27, "Input"],
+Cell[1040, 37, 315, 6, 30, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

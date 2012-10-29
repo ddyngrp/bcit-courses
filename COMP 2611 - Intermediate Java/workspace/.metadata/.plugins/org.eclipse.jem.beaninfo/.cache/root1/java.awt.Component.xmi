@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.jem.internal.beaninfo.beaninfo="http:///org/eclipse/jem/internal/beaninfo/beaninfo.ecore" xmlns:org.eclipse.jem.java="java.xmi">
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="org.eclipse.jem.java:JavaClass java:/java.awt#Component">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.0"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="eStructuralFeatures">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.5 #//@objectsToAttach.6 #//@objectsToAttach.7 #//@objectsToAttach.8 #//@objectsToAttach.9 #//@objectsToAttach.10 #//@objectsToAttach.11 #//@objectsToAttach.12 #//@objectsToAttach.13 #//@objectsToAttach.14 #//@objectsToAttach.15 #//@objectsToAttach.16 #//@objectsToAttach.17 #//@objectsToAttach.18 #//@objectsToAttach.19 #//@objectsToAttach.20 #//@objectsToAttach.21 #//@objectsToAttach.22 #//@objectsToAttach.23 #//@objectsToAttach.24 #//@objectsToAttach.25 #//@objectsToAttach.26 #//@objectsToAttach.27 #//@objectsToAttach.28 #//@objectsToAttach.29 #//@objectsToAttach.30 #//@objectsToAttach.31 #//@objectsToAttach.32 #//@objectsToAttach.33 #//@objectsToAttach.34 #//@objectsToAttach.35 #//@objectsToAttach.36 #//@objectsToAttach.37 #//@objectsToAttach.38 #//@objectsToAttach.39 #//@objectsToAttach.40 #//@objectsToAttach.41 #//@objectsToAttach.42 #//@objectsToAttach.43 #//@objectsToAttach.44 #//@objectsToAttach.45 #//@objectsToAttach.46 #//@objectsToAttach.47 #//@objectsToAttach.48 #//@objectsToAttach.49 #//@objectsToAttach.50 #//@objectsToAttach.51 #//@objectsToAttach.52 #//@objectsToAttach.53 #//@objectsToAttach.54 #//@objectsToAttach.55 #//@objectsToAttach.56 #//@objectsToAttach.57 #//@objectsToAttach.58 #//@objectsToAttach.59 #//@objectsToAttach.60 #//@objectsToAttach.61 #//@objectsToAttach.62 #//@objectsToAttach.63"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="events">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.64 #//@objectsToAttach.65 #//@objectsToAttach.66 #//@objectsToAttach.67 #//@objectsToAttach.68 #//@objectsToAttach.69 #//@objectsToAttach.70 #//@objectsToAttach.71 #//@objectsToAttach.72 #//@objectsToAttach.73"/>
+    </value>
+  </objectChanges>
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="ecore:EReference java:/java.awt#Component/bounds">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.1"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="name" dataValue="bounds"/>
+    <value xsi:type="change:FeatureChange" featureName="transient" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="volatile" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="changeable" dataValue="true"/>
+    <value xsi:type="change:FeatureChange" featureName="eType" referenceValue="org.eclipse.jem.java:JavaClass java:/java.awt#Rectangle"/>
+    <value xsi:type="change:FeatureChange" featureName="lowerBound" dataValue="0"/>
+    <value xsi:type="change:FeatureChange" featureName="upperBound" dataValue="1"/>
+  </objectChanges>
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="ecore:EReference java:/java.awt#Component/location">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.2"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="name" dataValue="location"/>
+    <value xsi:type="change:FeatureChange" featureName="transient" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="volatile" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="changeable" dataValue="true"/>
+    <value xsi:type="change:FeatureChange" featureName="eType" referenceValue="org.eclipse.jem.java:JavaClass java:/java.awt#Point"/>
+    <value xsi:type="change:FeatureChange" featureName="lowerBound" dataValue="0"/>
+    <value xsi:type="change:FeatureChange" featureName="upperBound" dataValue="1"/>
+  </objectChanges>
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="ecore:EReference java:/java.awt#Component/size">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.3"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="name" dataValue="size"/>
+    <value xsi:type="change:FeatureChange" featureName="transient" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="volatile" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="changeable" dataValue="true"/>
+    <value xsi:type="change:FeatureChange" featureName="eType" referenceValue="org.eclipse.jem.java:JavaClass java:/java.awt#Dimension"/>
+    <value xsi:type="change:FeatureChange" featureName="lowerBound" dataValue="0"/>
+    <value xsi:type="change:FeatureChange" featureName="upperBound" dataValue="1"/>
+  </objectChanges>
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="ecore:EReference java:/java.awt#Component/componentOrientation">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.4"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="name" dataValue="componentOrientation"/>
+    <value xsi:type="change:FeatureChange" featureName="transient" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="volatile" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="changeable" dataValue="true"/>
+    <value xsi:type="change:FeatureChange" featureName="eType" referenceValue="org.eclipse.jem.java:JavaClass java:/java.awt#ComponentOrientation"/>
+    <value xsi:type="change:FeatureChange" featureName="lowerBound" dataValue="0"/>
+    <value xsi:type="change:FeatureChange" featureName="upperBound" dataValue="1"/>
+  </objectChanges>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanDecorator" implicitDecoratorFlag="IMPLICIT_DECORATOR"/>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getBounds(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setBounds(java.awt.Rectangle"/>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getLocation(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setLocation(java.awt.Point"/>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getSize(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setSize(java.awt.Dimension"/>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getComponentOrientation(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setComponentOrientation(java.awt.ComponentOrientation"/>
+  <objectsToAttach xsi:type="ecore:EReference" name="alignmentX" eType="org.eclipse.jem.java:JavaDataType java:/#float" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getAlignmentX("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="alignmentY" eType="org.eclipse.jem.java:JavaDataType java:/#float" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getAlignmentY("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="background" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Color" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getBackground(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setBackground(java.awt.Color"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="colorModel" eType="org.eclipse.jem.java:JavaClass java:/java.awt.image#ColorModel" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getColorModel("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="cursor" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Cursor" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getCursor(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setCursor(java.awt.Cursor"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="dropTarget" eType="org.eclipse.jem.java:JavaClass java:/java.awt.dnd#DropTarget" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getDropTarget(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setDropTarget(java.awt.dnd.DropTarget"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="enabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isEnabled(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setEnabled(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusTraversable" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isFocusTraversable("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="font" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Font" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getFont(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setFont(java.awt.Font"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="foreground" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Color" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getForeground(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setForeground(java.awt.Color"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="graphics" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Graphics" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getGraphics("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="locale" eType="org.eclipse.jem.java:JavaClass java:/java.util#Locale" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getLocale(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setLocale(java.util.Locale"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="locationOnScreen" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Point" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getLocationOnScreen("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="maximumSize" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Dimension" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMaximumSize(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setMaximumSize(java.awt.Dimension"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="minimumSize" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Dimension" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMinimumSize(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setMinimumSize(java.awt.Dimension"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="name" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getName(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setName(java.lang.String"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="parent" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Container" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getParent("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="showing" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isShowing("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="toolkit" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Toolkit" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getToolkit("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="treeLock" eType="org.eclipse.jem.java:JavaClass java:/java.lang#Object" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getTreeLock("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="valid" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isValid("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="visible" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isVisible(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setVisible(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="lightweight" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isLightweight("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fontSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isFontSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="width" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getWidth("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="keyListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#KeyListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getKeyListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="inputContext" eType="org.eclipse.jem.java:JavaClass java:/java.awt.im#InputContext" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getInputContext("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="mouseWheelListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#MouseWheelListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMouseWheelListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="opaque" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isOpaque("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="inputMethodListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#InputMethodListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getInputMethodListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="mousePosition" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Point" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMousePosition("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="doubleBuffered" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isDoubleBuffered("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="accessibleContext" eType="org.eclipse.jem.java:JavaClass java:/javax.accessibility#AccessibleContext" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getAccessibleContext("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="maximumSizeSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isMaximumSizeSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="hierarchyListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#HierarchyListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getHierarchyListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="preferredSize" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Dimension" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getPreferredSize(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setPreferredSize(java.awt.Dimension"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="minimumSizeSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isMinimumSizeSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="mouseMotionListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#MouseMotionListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMouseMotionListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="propertyChangeListeners" eType="org.eclipse.jem.java:ArrayType java:/java.beans#PropertyChangeListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getPropertyChangeListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="y" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getY("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="x" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getX("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="cursorSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isCursorSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="componentListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#ComponentListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getComponentListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="inputMethodRequests" eType="org.eclipse.jem.java:JavaClass java:/java.awt.im#InputMethodRequests" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getInputMethodRequests("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#FocusListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getFocusListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="peer" eType="org.eclipse.jem.java:JavaClass java:/java.awt.peer#ComponentPeer" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getPeer("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="height" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getHeight("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="displayable" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isDisplayable("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="hierarchyBoundsListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#HierarchyBoundsListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getHierarchyBoundsListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="graphicsConfiguration" eType="org.eclipse.jem.java:JavaClass java:/java.awt#GraphicsConfiguration" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getGraphicsConfiguration("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusTraversalKeysEnabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getFocusTraversalKeysEnabled(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setFocusTraversalKeysEnabled(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusOwner" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isFocusOwner("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="backgroundSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isBackgroundSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="ignoreRepaint" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getIgnoreRepaint(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setIgnoreRepaint(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusable" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isFocusable(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setFocusable(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="mouseListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#MouseListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getMouseListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="foregroundSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isForegroundSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="preferredSizeSet" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isPreferredSizeSet("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusCycleRootAncestor" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Container" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getFocusCycleRootAncestor("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="key">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addKeyListener(java.awt.event.KeyListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#KeyListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeKeyListener(java.awt.event.KeyListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="mouse">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addMouseListener(java.awt.event.MouseListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#MouseListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeMouseListener(java.awt.event.MouseListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="hierarchy">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addHierarchyListener(java.awt.event.HierarchyListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#HierarchyListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeHierarchyListener(java.awt.event.HierarchyListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="component">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addComponentListener(java.awt.event.ComponentListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#ComponentListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeComponentListener(java.awt.event.ComponentListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="mouseMotion">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addMouseMotionListener(java.awt.event.MouseMotionListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#MouseMotionListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeMouseMotionListener(java.awt.event.MouseMotionListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="propertyChange">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addPropertyChangeListener(java.beans.PropertyChangeListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.beans#PropertyChangeListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removePropertyChangeListener(java.beans.PropertyChangeListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="hierarchyBounds">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addHierarchyBoundsListener(java.awt.event.HierarchyBoundsListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#HierarchyBoundsListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeHierarchyBoundsListener(java.awt.event.HierarchyBoundsListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="focus">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addFocusListener(java.awt.event.FocusListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#FocusListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeFocusListener(java.awt.event.FocusListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="inputMethod">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addInputMethodListener(java.awt.event.InputMethodListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#InputMethodListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeInputMethodListener(java.awt.event.InputMethodListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="mouseWheel">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.addMouseWheelListener(java.awt.event.MouseWheelListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#MouseWheelListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Component.removeMouseWheelListener(java.awt.event.MouseWheelListener"/>
+  </objectsToAttach>
+</change:ChangeDescription>

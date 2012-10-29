@@ -1,0 +1,23 @@
+<diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+  <NorthwindInfo>
+    <Employees diffgr:id="Employees1" msdata:rowOrder="0" employeeid="1" lastname="Davolio" firstname="Nancy" />
+    <Employees diffgr:id="Employees2" msdata:rowOrder="1" employeeid="2" lastname="Fuller" firstname="Andrew" />
+    <Employees diffgr:id="Employees3" msdata:rowOrder="2" employeeid="3" lastname="Leverling" firstname="Janet" />
+    <Employees diffgr:id="Employees4" msdata:rowOrder="3" employeeid="4" lastname="Peacock" firstname="Margaret" />
+    <Employees diffgr:id="Employees5" msdata:rowOrder="4" employeeid="5" lastname="Buchanan" firstname="Steven" />
+    <Employees diffgr:id="Employees6" msdata:rowOrder="5" employeeid="6" lastname="Suyama" firstname="Michael" />
+    <Employees diffgr:id="Employees7" msdata:rowOrder="6" employeeid="7" lastname="King" firstname="Robert" />
+    <Employees diffgr:id="Employees8" msdata:rowOrder="7" employeeid="8" lastname="Callahan" firstname="Laura" />
+    <Employees diffgr:id="Employees9" msdata:rowOrder="8" employeeid="9" lastname="Dodsworth" firstname="Anne" />
+    <Territories diffgr:id="Territories1" msdata:rowOrder="0" employeeid="1" territoryid="06897" />
+    <Territories diffgr:id="Territories2" msdata:rowOrder="1" employeeid="1" territoryid="19713" />
+    <Territories diffgr:id="Territories3" msdata:rowOrder="2" employeeid="2" territoryid="01581" />
+    <Territories diffgr:id="Territories4" msdata:rowOrder="3" employeeid="2" territoryid="01730" />
+    <Territories diffgr:id="Territories5" msdata:rowOrder="4" employeeid="2" territoryid="01833" />
+    <Territories diffgr:id="Territories6" msdata:rowOrder="5" employeeid="2" territoryid="02116" />
+    <Territories diffgr:id="Territories7" msdata:rowOrder="6" employeeid="2" territoryid="02139" />
+    <Territories diffgr:id="Territories8" msdata:rowOrder="7" employeeid="2" territoryid="02184" />
+    <Territories diffgr:id="Territories9" msdata:rowOrder="8" employeeid="2" territoryid="40222" />
+    <Territories diffgr:id="Territories10" msdata:rowOrder="9" employeeid="3" territoryid="30346" />
+  </NorthwindInfo>
+</diffgr:diffgram>

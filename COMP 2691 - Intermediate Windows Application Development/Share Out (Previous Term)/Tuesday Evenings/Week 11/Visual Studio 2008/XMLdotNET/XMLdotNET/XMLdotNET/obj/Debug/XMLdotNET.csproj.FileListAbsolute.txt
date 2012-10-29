@@ -1,0 +1,2 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 11\Visual Studio 2008\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 11\Visual Studio 2008\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.pdb

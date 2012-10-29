@@ -1,0 +1,115 @@
+<html>
+	<head>
+		<title>COMP1911</title>
+		<script type="text/javascript" language="javascript">
+		<!--
+
+		/**
+			REQUIREMENTS: animated character walks horizontally across screen, 
+			and changes direction when it reaches the edges
+
+			NOTE: there are many ways to solve the requirements
+			following is one possibility
+		*/
+
+			//----------------------------------------
+			// declare variables
+			//----------------------------------------
+			var animationSpeed = 5;			//milliseconds between animation frames
+			var currentImage = 0;			//tracks the currently shown image
+			var currentPosition = 0;		//tracks the position of the image on the x axis of the browser body
+			var numberOfImages = 30;		//total number of animation cells
+			var timerId = null;				//keeps track of the animating timer
+			var isFacingRight = true;		//track the direction animation is currently headed
+			//one way to track two different animations is to use two separate arrays to store the data
+			var alienImagesRight = new Array();
+			var alienImagesLeft = new Array();
+			//this 3rd array will be used for the animation itself.
+			//we can re-assign its value depending on which animation we wish to show,
+			//eg: alienImages = alienImagesRight;
+			var alienImages = new Array();
+
+			//----------------------------------------
+			// load images 
+			//----------------------------------------
+			//load an image array for all the right facing images
+			for(x=0; x < numberOfImages; x++)
+			{
+				var anImage = new Image();
+				anImage.src = "./img/alienrwalk" + x + ".gif";
+				alienImagesRight[x] = anImage;
+			}
+			//load an image array for all the left facing images
+			for(x=0; x < numberOfImages; x++)
+			{
+				var anImage = new Image();
+				anImage.src = "./img/alienlwalk" + x + ".gif";
+				alienImagesLeft[x] = anImage;
+			}
+			//assign the starting set of images
+			alienImages = alienImagesRight;
+
+			//----------------------------------------
+			// show the next frame of animation, and move the image across the screen
+			//----------------------------------------
+			function runAnimation()
+			{
+				//get the image element we need to work with
+				var alien = document.getElementById("alien");
+				//determine which image is next in the sequence
+				currentImage++;
+				//make sure we havent counted past the actual number of images...
+				if(currentImage >= numberOfImages)
+				{
+					//...if we have, reset to the first image
+					currentImage = 0;
+				}
+				//if image is currently moving to the right, AND hasnt exceeded the page width...
+				if( isFacingRight && currentPosition <= (document.body.offsetWidth-80) )
+				{
+					alien.style.left = currentPosition++;	//...move the image to the right			
+				}
+				else 
+				{
+					//no longer moving to the right - we've run out of browser space
+					isFacingRight = false;					
+					//swap the images array to show the left facing ones
+					alienImages = alienImagesLeft;
+					alien.style.left = currentPosition--;	//...move the image to the left
+					//if left-moving image has reached the edge of the browser...
+					if(currentPosition <= 0)
+					{
+						//reset variables to change back to right-moving images
+						currentPosition = 0;
+						isFacingRight = true;
+						alienImages = alienImagesRight;
+					}					
+				}
+				//finally, change the image
+				alien.src = alienImages[currentImage].src;		
+			}
+
+			//initiate the animation
+			function startAnimation()
+			{
+				if(timerId == null)
+				{
+					timerId = setInterval("runAnimation();", animationSpeed);
+				}
+			}
+		//-->	
+		</script>
+	</head>
+
+	<body onload="startAnimation();">
+		<img 
+			src="./img/alienrwalk0.gif"
+			id="alien"
+			style="position:absolute; 
+					top:0px;
+					left:0px;
+			"
+			
+		/>
+	</body>
+</html>

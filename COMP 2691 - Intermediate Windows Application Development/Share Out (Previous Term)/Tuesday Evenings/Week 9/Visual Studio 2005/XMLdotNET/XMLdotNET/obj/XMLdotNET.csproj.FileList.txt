@@ -1,0 +1,8 @@
+obj\Debug\XMLdotNET.exe
+obj\Debug\XMLdotNET.pdb
+bin\Debug\XMLdotNET.exe
+bin\Debug\XMLdotNET.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\XMLdotNET.frmXML.resources
+obj\Debug\XMLdotNET.Properties.Resources.resources
+obj\Debug\XMLdotNET.csproj.GenerateResource.Cache

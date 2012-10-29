@@ -1,0 +1,3 @@
+bin\Debug\ADOdotNET.exe.config
+obj\Debug\ADOdotNET.exe
+obj\Debug\ADOdotNET.pdb

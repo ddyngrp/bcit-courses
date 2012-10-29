@@ -1,0 +1,9 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\bin\Debug\WriteXml_CS.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\bin\Debug\WriteXml_CS.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.Form1.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.csproj.GenerateResource.Cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml\C#\WriteXml-CS\obj\Debug\WriteXml_CS.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\Further Study\WriteXml\C#\WriteXml-CS\obj\Debug\WriteXml_CS.pdb

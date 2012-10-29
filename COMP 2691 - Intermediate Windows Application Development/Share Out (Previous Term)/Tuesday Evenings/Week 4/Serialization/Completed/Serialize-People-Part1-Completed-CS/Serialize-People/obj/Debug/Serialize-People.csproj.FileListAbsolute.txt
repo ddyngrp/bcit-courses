@@ -1,0 +1,2 @@
+D:\Work\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\obj\Debug\Serialize-People.exe
+D:\Work\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\obj\Debug\Serialize-People.pdb

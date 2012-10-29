@@ -1,0 +1,72 @@
+mainMenuScreen:
+	display:
+		number of images/videos/sounds/etc
+	fields:
+		title
+		description
+	buttons:
+		add image:
+			opens imageCaptureScreen
+		add sound:
+			opens soundCaptureScreen
+		add video:
+			(not implemented)
+		cancel:
+			closes memo program without sending
+		send button:
+			if logged in:
+				try to send
+				if success:
+					popup "Message Sent" window
+				else if send failed from expired login:
+					open LoginWindowScreen
+				else if unknown Error occured:
+					popup "Unknown Error" window
+			else:
+				open LoginWindowScreen
+				
+
+imageCaptureScreen:
+	display:
+		camera preview
+	buttons:
+		capture button:
+			<takes picture and shows preview>
+			save:
+				saves the picture to the memo and close window
+			cancel:
+				close window
+		close button:
+			close window
+
+soundCaptureScreen:
+	buttons:
+		record button:
+			starts recording
+		playback button:
+			plays back recorded sound
+		save button:
+			saves the last-recorded sound
+		close button:
+			returns to mainMenuScreen
+
+LoginScreen:
+	fields:
+		username
+		password
+	buttons:
+		Log In:
+			try to login user
+			if success:
+				popup "Logged In" window
+				close window
+			else if send failed from invalid userName/Password:
+				popup "Invalid Username/Password" window
+				close window
+			else if unknown Error occured:
+				popup "Unknown Error" window
+				close indow
+		Cancel:
+			close window
+
+

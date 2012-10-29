@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Bank()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Bank\n\n
+comment1.params=customerName\ openingBalance
+comment1.target=void\ openAccount(String,\ double)
+comment1.text=\nOpens\ a\ new\ bank\ account,\ customer\ name\ and\ opening\nbalance\ to\ be\ specified.\n\n@param\ \ String\ customer\ name\ --\ double\ opening\ balance\n\n
+comment2.params=customerName
+comment2.target=void\ openAccount(String)
+comment2.text=\nOpens\ a\ new\ bank\ account,\ customer\ name\ to\ be\ specified.\n\n@param\ \ String\ name\ of\ customer\n\n
+comment3.params=account
+comment3.target=void\ openAccount(BankAccount)
+comment3.text=\nAdds\ an\ existing\ account\ to\ the\ bank.\n\n@param\ \ BankAccount\ account\ to\ be\ added\n\n
+comment4.target=int\ numberOfAccounts()
+comment4.text=\nGets\ the\ size\ of\ the\ bank\n\n@return\ int\ number\ of\ accounts\ in\ the\ bank\n\n
+comment5.target=void\ applyInterest()
+comment5.text=\nApplies\ interest\ to\ all\ accounts\ in\ the\ bank.\n\n
+comment6.target=void\ showAccountInfo()
+comment6.text=\nDisplays\ information\ about\ all\ the\ accounts\ in\ \nthe\ bank.\n\n
+comment7.params=accountToRemove
+comment7.target=void\ removeAccount(int)
+comment7.text=\nRemoves\ the\ account\ with\ the\ specified\ account\ number\nTests\ parameter\ to\ determine\ if\ valid\n\n@param\ int\ unique\ account\ number\ of\ the\ account\ to\ remove\n\n
+comment8.params=accountWanted
+comment8.target=BankAccount\ getAccount(int)
+comment8.text=\nReturns\ a\ specified\ account\nTests\ parameter\ to\ determine\ if\ valid\n\n@param\ int\ unique\ account\ number\ of\ the\ account\ we\ want\n\n@return\ BankAccount\ account\ with\ the\ specified\ account\ number\ or\ null\ if\ it\ does\ not\ exist\n\n
+numComments=9

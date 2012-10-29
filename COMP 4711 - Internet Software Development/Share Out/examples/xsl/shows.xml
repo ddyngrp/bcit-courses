@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='shows.xsl'?>
+<SHOWS>
+  <PERFORMANCE>
+    <TITLE>Fairy Princess</TITLE>
+    <AUTHOR/>
+    <DESCRIPTION>
+      Scratch sound with emphasis on color, texture.
+    </DESCRIPTION>
+    <DATE status="cancelled">09/11/2001</DATE>
+  </PERFORMANCE>
+  <PERFORMANCE>
+    <TITLE>Hamlet</TITLE>
+    <AUTHOR>William Shakespeare</AUTHOR>
+    <DESCRIPTION>
+      Themes of youth, power, greed and deceit.
+    </DESCRIPTION>
+    <DATE>09/15/2001</DATE>
+  </PERFORMANCE>
+</SHOWS>

@@ -1,0 +1,33 @@
+1. Problem 10.5 Page 433 of the text.
+
+Provide the definition for each of the following structures and unions:
+
+a) Structure "inventory" containing character array partName[ 30 ], integer partNumber, floating point price, integer stock and integer reorder.
+
+b) Union data containing char c, short s, long b, float f and double d.
+
+c) A structure called address that contains character arrays streetAddress[ 25 ], city[ 20 ], state[ 3 ] and zipCode[ 6 ].
+
+d) Stucture student that contains arrays firstNAme[ 15 ] and lastName[ 15 ] and field (also called a member) homeAddress of type "struct address" from part c) above.
+
+e) Structure test containing 16 bit fields with widths of 1 bit.  The names of the bit fields are the letters a to p.
+
+2. Problem 10.10 Page 434 of the text.
+
+Write a program that right shifts an integer variable 4 bits. The program should print the integer in bits before and after the shift operation.  Does your system place 0s or 1s in the vacated bits?
+
+3. Problem 10.12 Page 435 of the text.
+
+Left shifting an unsigned integer by 1 bit is equivalant to multiplying the value by 2.  Write function Power2() that takes 2 integer arguements number and pow and calculates 
+
+   number * 2 (to the power of pow)
+
+USe the shift operator to calculate the result.  Print the values as integers and as bits.
+
+======================================================================
+
+If time permits, do additional problems from Chapter 10 that you find interesting.  If you would like to see the text solution for the problem, send me your solution and I will send you the text solution.
+
+
+
+

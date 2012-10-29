@@ -1,0 +1,10 @@
+bin\Release\Serialize-People.exe
+bin\Release\Serialize-People.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Serialize-People.exe
+obj\Release\Serialize-People.pdb
+bin\Debug\Serialize-People.exe
+bin\Debug\Serialize-People.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Serialize-People.exe
+obj\Debug\Serialize-People.pdb

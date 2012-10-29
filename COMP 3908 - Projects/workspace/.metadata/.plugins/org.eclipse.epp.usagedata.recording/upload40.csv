@@ -1,0 +1,10 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.jdt.ui,3.4.1.r341_v20080827-1100,org.eclipse.jdt.ui,1229715193866
+stopped,bundle,org.eclipse.mylyn.bugzilla.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.bugzilla.ui,1229715193866
+stopped,bundle,org.eclipse.mylyn.ide.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.ide.ui,1229715193882
+stopped,bundle,org.eclipse.mylyn.team.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.team.ui,1229715193882
+stopped,bundle,org.eclipse.mylyn.resources.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.resources.ui,1229715193893
+stopped,bundle,org.eclipse.mylyn.context.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.context.ui,1229715193893
+stopped,bundle,org.eclipse.mylyn.help.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.help.ui,1229715193911
+stopped,bundle,org.eclipse.mylyn.tasks.bugs,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.tasks.bugs,1229715193946
+stopped,bundle,org.eclipse.mylyn.tasks.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.tasks.ui,1229715193947

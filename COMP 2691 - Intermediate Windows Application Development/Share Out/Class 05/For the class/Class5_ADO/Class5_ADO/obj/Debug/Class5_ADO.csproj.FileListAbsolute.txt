@@ -1,0 +1,17 @@
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\bin\Debug\Class5_ADO.exe
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\bin\Debug\Class5_ADO.pdb
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\Class5_ADO.frmConnection.resources
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\Class5_ADO.Properties.Resources.resources
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\Class5_ADO.csproj.GenerateResource.Cache
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\Class5_ADO.exe
+C:\Documents and Settings\A00559173\Local Settings\Application Data\Temporary Projects\Class5_ADO\obj\Debug\Class5_ADO.pdb
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\bin\Debug\Class5_ADO.exe.config
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\Class5_ADO.exe
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\Class5_ADO.pdb
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\bin\Debug\Class5_ADO.exe
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\bin\Debug\Class5_ADO.pdb
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\Class5_ADO.frmConnection.resources
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\Class5_ADO.Properties.Resources.resources
+D:\Work\Visual Studio 2008\Projects\Class5_ADO\Class5_ADO\obj\Debug\Class5_ADO.csproj.GenerateResource.Cache

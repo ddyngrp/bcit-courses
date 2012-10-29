@@ -1,0 +1,6 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading\Threading\bin\Debug\Threading.exe.config
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading\Threading\obj\Debug\Threading.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading\Threading\obj\Debug\Threading.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading - VS 2008\Threading\bin\Debug\Threading.exe.config
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading - VS 2008\Threading\obj\Debug\Threading.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 7\Threading - VS 2008\Threading\obj\Debug\Threading.pdb

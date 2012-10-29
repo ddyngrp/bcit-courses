@@ -1,0 +1,180 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{676A99C4-3D06-474E-BAB9-E2B2D7C95479}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XMLdotNET</RootNamespace>
+    <AssemblyName>XMLdotNET</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.SHDocVw, Version=1.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AxInterop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DiffGram\DiffGram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiffGram\DiffGram.Designer.cs">
+      <DependentUpon>DiffGram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiffGram\Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiffGram\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXML.Designer.cs">
+      <DependentUpon>frmXML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NodeLayout\XMLReadersinAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NodeLayout\XMLReadersinAction.Designer.cs">
+      <DependentUpon>XMLReadersinAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DiffGram\DiffGram.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DiffGram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiffGram\Edit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXML.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NodeLayout\XMLReadersinAction.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XMLReadersinAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadXML\ReadXML.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReadXML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WriteXML\WriteXML.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WriteXML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLDataReader\TestXMLDataReader.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TestXMLDataReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLHotDOM\TestHotDOM.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TestHotDOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XPathEvaluator\XpathEval.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XpathEval.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReadXML\ReadXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReadXML\ReadXML.Designer.cs">
+      <DependentUpon>ReadXML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WriteXML\WriteXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WriteXML\WriteXML.Designer.cs">
+      <DependentUpon>WriteXML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLDataReader\TestXMLDataReader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLDataReader\TestXMLDataReader.Designer.cs">
+      <DependentUpon>TestXMLDataReader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLDataReader\XMLDataReader.cs" />
+    <Compile Include="XMLHotDOM\TestHotDOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLHotDOM\TestHotDOM.Designer.cs">
+      <DependentUpon>TestHotDOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLHotDOM\XMLHotDocument.cs" />
+    <Compile Include="XMLSamples\LoadingXMLDocumentAsynchronously.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLSamples\LoadingXMLDocumentAsynchronously.Designer.cs">
+      <DependentUpon>LoadingXMLDocumentAsynchronously.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XPathEvaluator\XpathEval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XPathEvaluator\XpathEval.Designer.cs">
+      <DependentUpon>XpathEval.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

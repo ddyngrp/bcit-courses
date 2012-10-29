@@ -1,0 +1,20 @@
+#BlueJ package file
+package.editor.height=238
+package.editor.width=354
+package.editor.x=220
+package.editor.y=122
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
+target1.editor.height=813
+target1.editor.width=753
+target1.editor.x=33
+target1.editor.y=25
+target1.height=80
+target1.name=EmailInfo
+target1.showInterface=false
+target1.type=ClassTarget
+target1.width=120
+target1.x=100
+target1.y=50

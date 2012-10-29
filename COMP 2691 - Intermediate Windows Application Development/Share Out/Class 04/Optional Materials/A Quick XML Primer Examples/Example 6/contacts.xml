@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="contacts.css"?>
+<!DOCTYPE contacts SYSTEM "contacts.dtd">
+
+<contacts>
+  <!-- This is my good friend Frank. -->
+  <contact>
+    <name>Frank Rizzo</name>
+    <address>1212 W 304th Street</address>
+    <city>New York</city>
+    <state>New York</state>
+    <zip>10011</zip>
+    <phone>
+      <voice>212-555-1212</voice>
+      <fax>212-555-1213</fax>
+    </phone>
+    <company>Frank&apos;s Ratchet Service</company>
+  </contact>
+
+  <!-- This is my old college roommate Sol. -->
+  <contact>
+    <name>Sol Rosenberg</name>
+    <address>1162 E 412th Street</address>
+    <city>New York</city>
+    <state>New York</state>
+    <zip>10011</zip>
+    <phone>
+      <voice>212-555-1818</voice>
+      <fax>212-555-1819</fax>
+    </phone>
+    <company>Rosenberg&apos;s Shoes &amp; Glasses</company>
+  </contact>
+</contacts>

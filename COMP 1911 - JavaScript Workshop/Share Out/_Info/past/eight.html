@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>intro js</title>
+
+	<script language="javascript" type="text/javascript">
+	<!--		
+
+function rollover(theId, theSrc)
+{
+	document.getElementById(theId).src=theSrc;
+}
+
+
+
+function textRollOver(theId, theColor)
+{
+	document.getElementById(theId).style.color = theColor;
+}
+
+
+
+	// -->
+	</script>
+</head>
+<body>
+
+	i don't care about the 
+
+<span 	id="whatever" 
+	name="whatever"
+	onmouseover="textRollOver(this.id, 'red');" 
+	onmouseout="textRollOver(this.id, 'black');"
+>super bowl</span>
+
+; i like hockey<br />
+
+
+
+
+<img 	src="./baby_cheetah.jpg" 
+	id="whocares"  
+	name="whocares"
+	onmouseover="rollover(this.id, './baby_wolf.jpg');"	
+	onmouseout="rollover(this.id, './baby_cheetah.jpg');"
+>
+
+
+<img 	src="./baby_giraffe.jpg" 
+	id="right" 
+	name="right"
+	onmouseover="rollover(this.id, './kitten.jpg');"	
+	onmouseout="rollover(this.id, './baby_giraffe.jpg');"
+	width="200"
+>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

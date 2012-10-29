@@ -1,0 +1,148 @@
+better: istream&
+
+operator >> (istream& is, Date &d){
+	string s;
+	if (is >> s){
+		istringstream iss(s);
+	int y, m, d;
+	char c1, c2;
+
+	if (iss >> y >> c1 >> m >> c2 >> d && c1 == '/' && c2 == '/'
+		&& Date::isValidDate(y,m,d)){
+			d.year_ = y;
+			d.month_ = m;
+			d.day_ = d;
+	}
+	else
+	{
+		is.setstate(ios_base::failbit);
+		
+	}
+	return is;
+}
+
+
+
+Add the caller can use: Date d;
+
+	if(cin >> d)...
+
+
+Recall: ctor throws an exception (throw "Date::Date...");
+	to catch, use this:
+
+	try{
+		Date d(...);
+	}
+	catch(const char *s) { //type matches exception exactly
+		cerr << s << endl;
+	}
+
+If we want to be able tu compare Date objects than we need to overload operators ==, !=, ... so we can:
+
+	Date d1(...), d2(...);
+	if d1 == d2)
+
+2 alternatives:
+
+operators can be member functions
+operators can be global functions
+
+d1 == d2 can be interpreted in 1 of 2 ways by the compiler
+
+1. d1.operator == (d2);	//member functions
+2. operator == (d1,d2);	//global function
+
+It is an error to write both.  Let's use member functions.  These prototypes must be added to the class
+defintion:
+
+
+bool
+Date::operator==(const Date& d) const{
+	return year == d.year_ && monrth == d.month_ && day == d.day_;
+}
+
+
+bool
+Date::operator!=(const Date&d) const{
+	return !(*this==d);
+}
+
+bool
+Date::operator < (const Date& d) const{
+	if (year_ != d.year_)
+		return year_ < d.year_;
+	if (mont_ != d.month)
+		return month_ < d.month_;
+	return day_ < d.day_;
+{
+
+bool
+Date::operator<=(const Date&d) const{
+	return *this < d || *this == d
+	
+bool
+Date::operator>(const Date& d) const{
+	return !(*this <= d);
+
+bool
+Date::operator>=(const Date& d) const{
+	return !(*this<d);
+}
+
+
+Member Initilaizers
+
+only used in ctors
+
+e.g.
+
+class c{
+	public
+		c(const string& s);
+	private
+		string s_;
+	}
+
+c::c(const string& s): s_(s){}
+	//member init last regarded as initialization
+
+c::c(const string& s){
+	s_ = s;	//assginment only works when the 2 variables already exis
+}
+
+//in this case, the compiler inserts a call to the def ctor to initialize s_
+//this means there are 2 function calls, which is less efficient
+
+e.g. 
+class D{
+
+	public:
+		D(size_t a);
+		D::D(size_t a): a_(w, p_(new char[a_]){}
+	private:
+		size_t a;
+		char *p_;
+	];
+
+The order is important - The compiler rearranges the order of the ctor calls in the initializer
+lis so the order matches the order of members in the class declaration
+
+
+Explicit:
+
+A constructor that takes 1 arg can be used as a conversion "operator" it's called a converting ctor
+
+e.g. Date(int = 2000, int =  1, int = 1);	//can be called with 1 argument
+
+Therefore it can be inplicitly called by the compiler to convert an int to a date at any time
+
+e.g. Date d(20001), d2(2002,20, d3(2008,1020), d4;
+
+if (d==10)
+	//this will compile!  It's the same as if d == Date(10))
+the explicit keyword disallows this type of inplicit conversion
+
+e.g. //in the class definition header file
+
+explicit Date (int y = 200, int m = 1, int d = 1);

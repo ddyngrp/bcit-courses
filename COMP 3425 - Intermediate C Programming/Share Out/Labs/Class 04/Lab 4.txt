@@ -1,0 +1,20 @@
+1. Add a new menu option to fig12_08.c "to sum the values on the stack" and implement the changes required to support this new menu option.  The work of this menu option should be put in the following function:
+
+  int sumValues (StackNodePtr topPtr);
+
+The function should return the sum of all of the values pushed onto the stack.  The main program should then display the sum returned by the function. For exanmple:
+
+  The sum of all the values on the stack is 43
+
+The sumValues() function should _NOT_ modify the stack!!!
+
+
+2. Add a new menu option to fig12_03.c: "to delete duplicate elements in the list" and implement changes required to support this new menu option. The work of this menu option should be put in the following function:
+
+   long deleteDuplicates(ListNodePtr sPtr)
+
+The function should return the number of duplicates entries found (which should be identical to the number of duplicates deleted).  The function should print a message each time a duplicate entry is found, displaying the duplicate that was found (and is about to be deleted).
+
+Note that we pass sPtr as a call by value, which means that the function should not modify Sptr's value!
+
+Note that you should remember that the list is ordered, so therefore a duplicate element will follow immediately after the element it is a duplicate of.  This makes the task of finding and deleting duplicates much easier!

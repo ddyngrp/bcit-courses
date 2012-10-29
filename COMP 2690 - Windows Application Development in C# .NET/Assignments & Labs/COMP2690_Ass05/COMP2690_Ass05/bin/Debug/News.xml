@@ -1,0 +1,438 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>News</name>
+    </assembly>
+    <members>
+        <member name="T:COMP2690.News.Newsgroup">
+            <summary>
+            Represents a newsgroup, including its name and a collection of articles.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.Newsgroup.#ctor(System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the Newsgroup class.
+            </summary>
+            <param name="name">Name of the newsgroup.</param>
+            <param name="postingAllowed">Whether or not posting is allowed to this newsgroup.  This value
+            indicates.  Note that posting may still be prohibited to a client even though this value is true.
+            This flag exists for each newsgroup because some newsgroups are moderated or are digests, and 
+            therefore cannot be posted to; that is, articles posted to them must be mailed to a
+            moderator who will post them for the submitter.  This is independent of the posting permission granted 
+            to a client by the NNTP server.
+            </param>
+            <param name="firstArticleNum">Sequence number of the first known article in this newsgroup.</param>
+            <param name="lastArticleNum">Sequence number of the last known article in this newsgroup.</param>
+        </member>
+        <member name="M:COMP2690.News.Newsgroup.#ctor(System.String,System.Boolean,System.Int32,System.Int32,COMP2690.News.ArticleCollection)">
+            <summary>
+            Initializes a new instance of the Newsgroup class.
+            </summary>
+            <param name="name">Name of the newsgroup.</param>
+            <param name="postingAllowed">Whether or not posting is allowed to this newsgroup.  This value
+            indicates.  Note that posting may still be prohibited to a client even though this value is true.
+            This flag exists for each newsgroup because some newsgroups are moderated or are digests, and 
+            therefore cannot be posted to; that is, articles posted to them must be mailed to a
+            moderator who will post them for the submitter.  This is independent of the posting permission granted 
+            to a client by the NNTP server.
+            </param>
+            <param name="firstArticleNum">Sequence number of the first known article in this newsgroup.</param>
+            <param name="lastArticleNum">Sequence number of the last known article in this newsgroup.</param>
+            <param name="articles">A collection of articles in this newsgroup.</param>
+        </member>
+        <member name="M:COMP2690.News.Newsgroup.ToString">
+            <summary>
+            Returns a string representation of this object.  In this case, the article's name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:COMP2690.News.Newsgroup.Name">
+            <summary>
+            Gets the name of this newsgroup.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Newsgroup.PostingAllowed">
+            <summary>
+            Gets whether or not posting is allowed to this newsgroup.  Note that posting may still be prohibited to 
+            a client even though this value is true.  This flag exists for each newsgroup because some newsgroups 
+            are moderated or are digests, and therefore cannot be posted to; that is, articles posted to them 
+            must be mailed to a moderator who will post them for the submitter.  This is independent of the 
+            posting permission granted to a client by the NNTP server.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Newsgroup.EstimatedArticleCount">
+            <summary>
+            Number of articles, based on the first and last sequence number specified when this newsgroup 
+            is created.  Use this value when the Articles property is null.  If Articles is not null then
+            use Articles.Count for a more accurate count.  Note that Articles contains those articles that
+            have been downloaded, which may be less than the total articles currently available in this
+            newsgroup.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Newsgroup.Articles">
+            <summary>
+            Gets or sets a collection of articles that have been downloaded for this newsgroup.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.NewsgroupCollection">
+            <summary>
+            Represents a collection of Newsgroup objects.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsgroupCollection.#ctor">
+            <summary>
+            Initializes a new instance of the NewsgroupCollection class.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsgroupCollection.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the NewsgroupCollection class with an initial capacity.
+            </summary>
+            <param name="capacity">The initial capacity of the collection.  The collection can
+            still grow past capacity.  Specify this value for efficiency when the approximate 
+            maximum size of the collection is already known.</param>
+        </member>
+        <member name="T:COMP2690.News.Article">
+            <summary>
+            Represents a newsgroup article with header information, like date and subject, and the 
+            body text, which is the actual article.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.Article.#ctor(System.String,System.Int32,System.String,System.DateTime,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Article class.
+            </summary>
+            <param name="id">ID found in the article's header.</param>
+            <param name="sequenceNum">Sequence number assigned by the newsgroup to which this article is posted.</param>
+            <param name="from">Email address of the person who posted the article.</param>
+            <param name="date">Date that the article was posted to the newsgroup.</param>
+            <param name="subject">Subject given for this article.</param>
+            <param name="lines">Estimated number of lines of text found in the article's body.</param>
+        </member>
+        <member name="M:COMP2690.News.Article.#ctor(System.String,System.Int32,System.String,System.DateTime,System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the Article class.
+            </summary>
+            <param name="id">ID found in the article's header.</param>
+            <param name="sequenceNum">Sequence number assigned by the newsgroup to which this article is posted.</param>
+            <param name="from">Email address of the person who posted the article.</param>
+            <param name="date">Date that the article was posted to the newsgroup.</param>
+            <param name="subject">Subject given for this article.</param>
+            <param name="lines">Estimated number of lines of text found in the article's body.</param>
+            <param name="body">Body text of the article.</param>
+        </member>
+        <member name="M:COMP2690.News.Article.ToString">
+            <summary>
+            Returns a string representation of this object.  In this case, the article's subject.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:COMP2690.News.Article.ID">
+            <summary>
+            Gets the ID of this article (found in the article's header).
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.From">
+            <summary>
+            Gets the email address of the person who posted this article (found in the article's header).
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.Date">
+            <summary>
+            Gets the date that this article was posted to the newsgroup (found in the article's header).
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.Subject">
+            <summary>
+            Gets the subject of the article (found in the article's header).
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.LineCount">
+            <summary>
+            Gets the estimated number of lines of this article's body text (found in the article's header).
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.Body">
+            <summary>
+            Gets or sets the body text of this article.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.Article.SequenceNumber">
+            <summary>
+            Gets the sequence number of this article that was assigned by the newsgroup to which this 
+            article was posted.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.ArticleCollection">
+            <summary>
+            Represents a collection of Article objects.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.ArticleCollection.#ctor">
+            <summary>
+            Initializes a new instance of the ArticleCollection class.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.ArticleCollection.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the ArticleCollection class with an initial capacity.
+            </summary>
+            <param name="capacity">The initial capacity of the collection.  The collection can
+            still grow past capacity.  Specify this value for efficiency when the approximate 
+            maximum size of the collection is already known.</param>
+        </member>
+        <member name="T:COMP2690.News.NewsConnection">
+            <summary>
+            Represents a connection to a news server.  All download and posting activity 
+            is performed with this class.  Refer to the NNTP protocol for more
+            information on how this class obtains news data.  
+            http://www.ietf.cnri.reston.va.us/internet-drafts/draft-ietf-nntpext-base-27.txt
+            and
+            http://www.mibsoftware.com/userkt/0099.htm
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.#ctor">
+            <summary>
+            Initializes a new instance of the NewsConnection class.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.Connect(System.String)">
+            <summary>
+            Connects to the given news server using port 119 (default NNTP port).  
+            Throws an exception if the connection fails.
+            </summary>
+            <param name="server">name of the news server to connect to 
+            (e.g. news.microsoft.com)</param>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.Disconnect">
+            <summary>
+            Disconnects from the news server.  If there is no connection, this method 
+            does nothing.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.GetNewsgroups">
+            <summary>
+            Downloads all newsgroups, without articles.  Use GetArticleHeaders and 
+            GetArticle methods to get article information.
+            </summary>
+            <returns>A collection of Newsgroup objects.  Each object's Articles 
+            property will be null.  Use GetArticleHeaders to populate these objects 
+            with Article objects.</returns>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.GetNewsgroups(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String})">
+            <summary>
+            If includeList is not null then this method downloads the newsgroups
+            that have any of the words in includeList in any part of the newsgroup 
+            name.  If excludeList is not null then this method downloads the 
+            newsgroups that do not have any of the words in the excludeList in any 
+            part of the newsgroup name.  If both parameters are null then all 
+            newsgroups are downloaded; if both are not null then an assertion is 
+            raised.
+            </summary>
+            <param name="includeList">A collection of strings to search for in the 
+            newsgroup names.  If any of the words are in any part of the newsgroup 
+            name then that newsgroup is downloaded.  This value must be null if 
+            excludeList is not null.</param>
+            <param name="excludeList">A collection of strings to search for in the 
+            newsgroup names.  If any of the words are in any part of the newsgroup 
+            name then that newsgroup is not downloaded.  This value must be null if 
+            includeList is not null.</param>
+            <returns>A collection of Newsgroup objects that match the filter criteria 
+            given by includeList or by excludeList.  Each object's Articles property 
+            will be null.  Use GetArticleHeaders to populate these objects with 
+            Article objects.</returns>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.GetArticleHeaders(COMP2690.News.Newsgroup)">
+            <summary>
+            Downloads all article headers for the given group.  Currently, only some
+            of the header fields are downloaded: id, from, date, subject, lines.  The 
+            body is not downloaded.  Use GetArticle to download an article's body 
+            text.
+            </summary>
+            <param name="group">Newsgroup whose article headers will be 
+            downloaded.</param>
+            <returns>A collection of Article objects contained in the given 
+            newsgroup.  The articles' body text is not downloaded.  Use GetArticle to 
+            download an article's body text.</returns>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.GetArticleHeaders(COMP2690.News.Newsgroup,System.Int32)">
+            <summary>
+            Downloads up to maxHeaders article headers from the given group.  The 
+            latest ones are chosen.  Currently, only some of the header fields are 
+            downloaded: id, from, date, subject, lines.  The body is not 
+            downloaded.  Use GetArticle to download an article's body text.  
+            
+            This method does not modify the Articles property of the group parameter.
+            The suggested way to use this method is to store its returned ArticleCollection
+            into group.Articles.
+            </summary>
+            <param name="group">Newsgroup whose articles headers will be 
+            downloaded.</param>
+            <param name="maxHeaders">Maximum number of article headers to download.  
+            The latest ones are chosen.</param>
+            <returns>A collection of Article objects contained in the given 
+            newsgroup.  The articles' body text is not downloaded.  Use GetArticle to 
+            download an article's body text.</returns>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.GetArticle(COMP2690.News.Newsgroup,COMP2690.News.Article)">
+            <summary>
+            Downloads the body text of the given article, storing it into the Body 
+            property of article.
+            </summary>
+            <param name="group">Newsgroup to which article belongs.</param>
+            <param name="article">Article for which to download body text.</param>
+            <returns>True if successful and the body text is not empty.</returns>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.Post(System.String,System.String,System.String,System.String)">
+            <summary>
+            Posts an article to the given newsgroup.  This method has not been 
+            tested--use at your own risk.
+            </summary>
+            <param name="newsgroup"></param>
+            <param name="subject"></param>
+            <param name="from"></param>
+            <param name="content"></param>
+        </member>
+        <member name="M:COMP2690.News.NewsConnection.Response">
+            <summary>
+            Most of this method was copied from 
+            http://www.developerfusion.co.uk/show/4472/, which is also available on 
+            MSDN.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:COMP2690.News.NewsConnection.BytesReceived">
+            <summary>
+            Occurs when this object receives any data from the server.
+            </summary>
+        </member>
+        <member name="E:COMP2690.News.NewsConnection.NewsgroupReceived">
+            <summary>
+            Occurs when this object receives all data for a newsgroup (no article 
+            though).  Use NewsgroupReceivedArgs.Newsgroup to get the Newsgroup object.
+            </summary>
+        </member>
+        <member name="E:COMP2690.News.NewsConnection.ArticleHeaderReceived">
+            <summary>
+            Occurs when this object receives data for an article header.  Use 
+            ArticleHeaderReceivedEventArgs.Article to get the Article object.
+            </summary>
+        </member>
+        <member name="E:COMP2690.News.NewsConnection.ArticleBodyReceived">
+            <summary>
+            Occurs when this object receives the body text of an article.  Use 
+            ArticleBodyReceivedEventArgs.Article to get the Article object.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.NewsConnection.ConnectionState">
+            <summary>
+            Gets the connection state of this object.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.NntpException">
+            <summary>
+            This exception is thrown whenever a public class of the News class library throws a custom
+            exception.  You may use this class as a base class or simply catch NntpExceptions.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.BytesReceivedArgs">
+            <summary>
+            A BytesReceivedArgs specifies the number of bytes received by a transmission so far.
+            Note to students: For your assignment, you will not instantiate this class yourself.
+            Rather, whenever you generate an event handler for the BytesReceived event, the second
+            parameter will be of type BytesReceivedArgs.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.BytesReceivedArgs.Bytes">
+            <summary>
+            Gets the number of bytes received so far in the current trasmission.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.NewsgroupReceivedArgs">
+            <summary>
+            A NewsgroupReceivedArgs specifies the newsgroup received when a NewsgroupReceived event 
+            occurs.
+            Note to students: For your assignment, you will not instantiate this class yourself.
+            Rather, whenever you generate an event handler for the NewsgroupReceived event, the second
+            parameter will be of type NewsgroupReceivedArgs.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.NewsgroupReceivedArgs.#ctor(COMP2690.News.Newsgroup,COMP2690.News.NewsgroupCollection)">
+            <summary>
+            Initializes a new instance of the NewsgroupReceivedArgs class.
+            </summary>
+            <param name="group">Newsgroup that was received.</param>
+            <param name="groups">NewsgroupCollection to which group was added.  This collection allows
+            a caller to determine how many groups have been collected so far in a download.  This
+            value may be null if no collection is involved.</param>
+        </member>
+        <member name="P:COMP2690.News.NewsgroupReceivedArgs.Newsgroup">
+            <summary>
+            Newsgroup that was received.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.NewsgroupReceivedArgs.Newsgroups">
+            <summary>
+            NewsgroupCollection to which group was added.  This collection allows
+            a caller to determine how many groups have been collected so far in a download.  This
+            value may be null so be sure to check it first.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.ArticleHeaderReceivedEventArgs">
+            <summary>
+            An ArticleHeaderReceivedEventArgs specifies an article header that was received during a 
+            download of article header.  It also specifies the newsgroup to which the article belongs.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.ArticleHeaderReceivedEventArgs.#ctor(COMP2690.News.Article,COMP2690.News.ArticleCollection,COMP2690.News.Newsgroup)">
+            <summary>
+            Initializes a new instance of the ArticleHeaderReceivedEventArgs class.
+            Note to students: For your assignment, you will not instantiate this class yourself.
+            Rather, whenever you generate an event handler for the ArticleHeaderReceived event, the second
+            parameter will be of type ArticleHeaderReceivedEventArgs.
+            </summary>
+            <param name="article">Article object that contains nothing but the header information that was
+            received.</param>
+            <param name="articles">Collection of articles to which the recently downloaded article header is
+            added.  This value may be null if no collection is involved.</param>
+            <param name="group">Newsgroup to which the article belongs.</param>
+        </member>
+        <member name="P:COMP2690.News.ArticleHeaderReceivedEventArgs.Article">
+            <summary>
+            Article object that contains nothing but the header information that was
+            received.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.ArticleHeaderReceivedEventArgs.Articles">
+            <summary>
+            Collection of articles to which the recently downloaded article header is
+            added.  This value may be null if no collection is involved so be sure to check it first.
+            </summary>
+        </member>
+        <member name="P:COMP2690.News.ArticleHeaderReceivedEventArgs.Newsgroup">
+            <summary>
+            Newsgroup to which the article belongs.
+            </summary>
+        </member>
+        <member name="T:COMP2690.News.ArticleBodyReceivedEventArgs">
+            <summary>
+            An ArticleBodyReceivedEventsArgs specifies an article body that was received during a
+            download of an article.
+            Note to students: For your assignment, you will not instantiate this class yourself.
+            Rather, whenever you generate an event handler for the ArticleBodyReceived event, the second
+            parameter will be of type ArticleBodyReceivedEventsArgs.
+            </summary>
+        </member>
+        <member name="M:COMP2690.News.ArticleBodyReceivedEventArgs.#ctor(COMP2690.News.Article)">
+            <summary>
+            Initializes a new instance of the ArticleBodyReceivedEventArgs class.
+            </summary>
+            <param name="article">Article object that contains the body that was received.</param>
+        </member>
+        <member name="P:COMP2690.News.ArticleBodyReceivedEventArgs.Article">
+            <summary>
+            Article object that contains the body that was received.
+            </summary>
+        </member>
+    </members>
+</doc>

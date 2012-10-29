@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="learn"/>
+	<classpathentry kind="src" path="14painting"/>
+	<classpathentry kind="src" path="14start"/>
+	<classpathentry kind="src" path="components"/>
+	<classpathentry kind="src" path="events"/>
+	<classpathentry kind="src" path="layout"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="14start/jars/jnlp.jar"/>
+	<classpathentry kind="lib" path="components/jars/jlfgr-1_0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

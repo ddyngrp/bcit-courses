@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=theMaker\ theSerialNumber\ theHeightCM\ theDepthCM\ theWidthCM\ theHeatingElements
+comment0.target=Stove(String,\ int,\ double,\ double,\ double,\ int)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Stove\n\n
+comment1.params=newHeatingElements
+comment1.target=void\ setHeatingElements(int)
+comment1.text=\nSetter\ for\ heatingElements\n\n
+comment2.target=int\ getHeatingElements()
+comment2.text=\nGetter\ for\ heatingElements\n\n
+numComments=3

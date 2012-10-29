@@ -1,0 +1,16 @@
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		PostMessage pm = new PostMessage();
+		
+		data = "";
+		
+		pm.PostNewMessage(1234567890, "Test Message", "Message contents test");
+		pm.PostMsgAttachment(1234567890, 0, data, "jpeg-image")
+	}
+
+}

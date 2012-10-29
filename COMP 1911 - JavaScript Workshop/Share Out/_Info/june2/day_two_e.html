@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>slideshow</title>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+	// http://devguru.com/technologies/javascript/10541.asp
+	var images             = new Array();	
+	var currentImageNumber = 0;
+	var timerId            = null;
+	
+	for(x = 0; x <= 30; x++)
+	{
+		// http://devguru.com/technologies/javascript/10699.asp
+		image = new Image();
+		image.src = "alien/alienrwalk" + x + ".gif";
+		images[x] = image;
+	}
+
+	function startTimer()
+	{
+		timerId = setInterval('advanceImage()', '10');
+                document.getElementById('im').style.left = "0px";
+                document.getElementById('im').style.top  = "0px";
+		document.getElementById('im').style.position  = "absolute";
+	}
+
+	function cancelTimer()
+	{
+		clearInterval(timerId);
+	}
+
+	function advanceImage()
+	{
+	  currentImageNumber++;
+
+	  if(currentImageNumber > 30)
+	  {
+		currentImageNumber = 0;
+          }
+
+	  document.getElementById('im').src = images[currentImageNumber].src;
+
+	  newLeft = document.getElementById('im').style.left;	// 0px
+	  newLeft = parseInt(newLeft);				// 0
+	  newLeft++;						// 1
+
+	  if(newLeft > (screen.width - document.getElementById('im').width))
+	  {
+		document.getElementById('im').style.left = "0px";	
+		// or negative
+                return;
+          }
+
+	  newLeft = newLeft + "px";				// 1px
+
+          document.getElementById('im').style.left = newLeft;
+	}
+
+	// -->
+	</script>
+</head>
+<body onload="startTimer();">
+	<img src="alien/alienrwalk0.gif" id="im" name="im" onclick="cancelTimer();"><br />
+
+</body>
+</html>

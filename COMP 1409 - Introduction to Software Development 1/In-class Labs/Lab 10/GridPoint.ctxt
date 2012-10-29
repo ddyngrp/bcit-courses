@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.params=newRow\ newColumn
+comment0.target=GridPoint(int,\ int)
+numComments=1

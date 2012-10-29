@@ -1,0 +1,1 @@
+void myvoid(int i) {}

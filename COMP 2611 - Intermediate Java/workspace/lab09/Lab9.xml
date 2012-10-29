@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_13" class="java.beans.XMLDecoder"> 
+ <object class="java.util.ArrayList"> 
+  <void method="add"> 
+   <object class="a00683006.data.Guest"> 
+    <void property="emailAddress"> 
+     <string>b.lee@bcit.ca</string> 
+    </void> 
+    <void property="firstName"> 
+     <string>Brenda</string> 
+    </void> 
+    <void property="lastName"> 
+     <string>Lee</string> 
+    </void> 
+    <void property="phoneNumber"> 
+     <string>(604) 636-1000</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="a00683006.data.Guest"> 
+    <void property="emailAddress"> 
+     <string>Sam777@hotmail.com</string> 
+    </void> 
+    <void property="firstName"> 
+     <string>Sam</string> 
+    </void> 
+    <void property="lastName"> 
+     <string>Sullivan</string> 
+    </void> 
+    <void property="phoneNumber"> 
+     <string>604-873-7011</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="a00683006.data.Guest"> 
+    <void property="emailAddress"> 
+     <string>Lars147@gmail.com</string> 
+    </void> 
+    <void property="firstName"> 
+     <string>Lars</string> 
+    </void> 
+    <void property="lastName"> 
+     <string>Johansen</string> 
+    </void> 
+    <void property="phoneNumber"> 
+     <string>(604) 636-1000</string> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

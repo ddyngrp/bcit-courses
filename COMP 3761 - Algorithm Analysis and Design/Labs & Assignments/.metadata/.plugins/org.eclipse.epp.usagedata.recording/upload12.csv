@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.ui.forms,3.4.0.v20090526,"org.eclipse.ui.forms",1247019602413
+started,bundle,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.ide",1247019602413
+started,bundle,org.eclipse.ui.net,1.2.0.I20090430-0408,"org.eclipse.ui.net",1247019602413
+started,bundle,org.eclipse.ui.views,3.4.0.I20090525-2000,"org.eclipse.ui.views",1247019602413
+started,bundle,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"org.eclipse.ui.workbench",1247019602413
+started,bundle,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.workbench.texteditor",1247019602413
+started,bundle,org.eclipse.update.configurator,3.3.0.v20090312,"org.eclipse.update.configurator",1247019602414
+started,bundle,org.eclipse.update.core,3.2.300.v20090525,"org.eclipse.update.core",1247019602414
+started,bundle,org.eclipse.update.scheduler,3.2.200.v20081127,"org.eclipse.update.scheduler",1247019602414
+started,bundle,com.collabnet.subversion.merge,1.9.0.4,"com.collabnet.subversion.merge",1247019602414
+started,bundle,org.tigris.subversion.clientadapter,1.6.0.2,"org.tigris.subversion.clientadapter",1247019602414
+started,bundle,org.tigris.subversion.subclipse.core,1.6.2,"org.tigris.subversion.subclipse.core",1247019602414
+started,bundle,org.tigris.subversion.subclipse.mylyn,3.0.0,"org.tigris.subversion.subclipse.mylyn",1247019602414
+started,bundle,org.tigris.subversion.subclipse.ui,1.6.2,"org.tigris.subversion.subclipse.ui",1247019602414
+os,sysinfo,,,"macosx",1247019602417
+arch,sysinfo,,,"x86",1247019602417
+ws,sysinfo,,,"cocoa",1247019602417
+locale,sysinfo,,,"en_CA",1247019602417
+processors,sysinfo,,,"2",1247019602417
+java.runtime.name,sysinfo,,,"Java(TM) 2 Runtime Environment, Standard Edition",1247019602417
+java.runtime.version,sysinfo,,,"1.5.0_19-b02-304",1247019602417
+java.specification.name,sysinfo,,,"Java Platform API Specification",1247019602417
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1247019602417
+java.specification.version,sysinfo,,,"1.5",1247019602417
+java.vendor,sysinfo,,,"Apple Inc.",1247019602417

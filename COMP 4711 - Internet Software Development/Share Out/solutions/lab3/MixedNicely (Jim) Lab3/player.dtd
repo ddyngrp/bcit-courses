@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--- Root element. -->
+<!ELEMENT players (player)*>
+
+<!--- Describes a golf player and their game history. -->
+<!ELEMENT player (name, address, phone?, handicap+, round+)>
+<!ATTLIST player
+    id ID #REQUIRED
+  >
+
+<!--- Player name. -->
+<!ELEMENT name EMPTY>
+<!ATTLIST name
+    last CDATA #REQUIRED
+    first CDATA #REQUIRED
+  >
+
+<!--- Player home address. -->
+<!ELEMENT address (#PCDATA)>
+<!ATTLIST address
+    postalcode CDATA #REQUIRED
+    prov CDATA #REQUIRED
+    city CDATA #REQUIRED
+  >
+
+<!--- Player home phone number. -->
+<!ELEMENT phone EMPTY>
+<!ATTLIST phone
+    number CDATA #REQUIRED
+    areacode CDATA #REQUIRED
+  >
+
+<!--- Player handicap during a particular day. -->
+<!ELEMENT handicap (date,score)>
+<!ATTLIST handicap
+    id ID #REQUIRED
+  >
+
+<!--- Describes a calander date. -->
+<!ELEMENT date EMPTY>
+<!ATTLIST date
+    year CDATA #REQUIRED
+    day CDATA #REQUIRED
+    month CDATA #REQUIRED
+  >
+
+<!--- Score on a course hole. -->
+<!ELEMENT score EMPTY>
+<!ATTLIST score
+    value CDATA #REQUIRED
+  >
+
+<!--- Describes a round of golf. -->
+<!ELEMENT round (start,finish?,weather?,holes+)>
+<!ATTLIST round
+    id CDATA #REQUIRED
+  >
+
+<!--- Start of a golf round. -->
+<!ELEMENT start (date,time)>
+
+<!--- Describes a time in hours and minutes. -->
+<!ELEMENT time EMPTY>
+<!ATTLIST time
+    min CDATA "0"
+    hour CDATA #REQUIRED
+  >
+
+<!--- End of a round. -->
+<!ELEMENT finish (date,time)>
+
+<!--- Weather conditions. -->
+<!ELEMENT weather (#PCDATA)>
+
+<!--- A collection of golfing holes. -->
+<!ELEMENT holes (hole)+>
+<!ATTLIST holes
+    courseid ID #REQUIRED
+  >
+
+<!--- Said golf holes. -->
+<!ELEMENT hole EMPTY>
+<!ATTLIST hole
+    score CDATA #REQUIRED
+    number CDATA #REQUIRED
+  >

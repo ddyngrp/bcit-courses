@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>slideshow</title>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+	// http://devguru.com/technologies/javascript/10541.asp
+	var images             = new Array();	
+	var currentImageNumber = 0;
+	
+	for(x = 0; x <= 30; x++)
+	{
+		// http://devguru.com/technologies/javascript/10699.asp
+		image = new Image();
+		image.src = "alien/alienrwalk" + x + ".gif";
+		images[x] = image;
+	}
+
+
+	function advanceImage()
+	{
+	  currentImageNumber++;
+
+	  if(currentImageNumber > 30)
+	  {
+		currentImageNumber = 0;
+          }
+
+	  document.getElementById('im').src = images[currentImageNumber].src;
+	}
+
+	// -->
+	</script>
+</head>
+<body onload="setInterval('advanceImage()', '1000');">
+	<img src="alien/alienrwalk0.gif" id="im" name="im"><br />
+
+</body>
+</html>
+
+
+

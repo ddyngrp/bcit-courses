@@ -1,0 +1,32 @@
+#include "resource.h"
+
+MYMENU MENU
+{
+		POPUP "&File"
+		{
+			MENUITEM SEPARATOR
+			MENUITEM "&Exit", IDM_EXIT
+		}
+
+		POPUP "&Action"
+		{
+			MENUITEM "&Scan", IDM_SCAN
+			MENUITEM "&Stop", IDM_STOP
+			MENUITEM SEPARATOR
+			MENUITEM "&Clear Messages", IDM_CLMES
+			MENUITEM "&Reset Cache", IDM_RESETCACHE
+			MENUITEM SEPARATOR
+			MENUITEM "&Restart",IDM_RESTART
+		}
+
+		MENUITEM "&Configuration", IDM_CONFIG
+
+		POPUP "&Help"
+		{
+			MENUITEM "&Help", IDM_HELP
+			MENUITEM SEPARATOR
+			MENUITEM "&About", IDM_ABOUT
+		}
+
+
+}

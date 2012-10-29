@@ -1,0 +1,10 @@
+connect:
+	open connection
+	set connected flag
+
+
+
+disconnect:
+	if scanning for tags:
+		stop scanning for tags
+	disconnect

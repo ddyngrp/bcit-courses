@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/ironix/!svn/ver/642/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader
+END
+RssFeed.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/RssFeed.java
+END
+RssArticles.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/RssArticles.java
+END
+FeedArticleActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/FeedArticleActivity.java
+END
+SaxFeedParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/SaxFeedParser.java
+END
+RssArticle.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/RssArticle.java
+END
+SaxHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/SaxHandler.java
+END
+FeedArticleView.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/FeedArticleView.java
+END
+FeedArticleAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/FeedArticleAdapter.java
+END
+RssReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/ironix/!svn/ver/642/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/RssReader.java
+END
+FeedAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/ironix/!svn/ver/638/COMP%207481%20-%C2%A0Android%20Application%20Development/Project_RSS_Reader/src/org/trollop/RssReader/FeedAdapter.java
+END

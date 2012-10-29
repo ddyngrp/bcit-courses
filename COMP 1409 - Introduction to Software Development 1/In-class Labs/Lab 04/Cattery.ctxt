@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Cattery()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Cattery\n\n
+comment1.target=void\ oldestCatName()
+comment2.target=Cat\ heaviestCatObject()
+numComments=3

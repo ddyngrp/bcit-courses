@@ -1,0 +1,21 @@
+/**
+ * Assignment #2 - Question #2
+ * @author Steffen L. Norgren - A00683006
+ *
+ */
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int[][] graph = {{0, 3, 5, 1},
+						 {3, 0, 2, 7},
+						 {5, 2, 0, 6},
+						 {1, 7, 6, 0}};
+		
+		
+	}
+
+}

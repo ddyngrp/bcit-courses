@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>j a v a s c r i p t</title>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+
+	var row = 1;
+
+	function addRow(tableId)
+	{
+		var newTr = document.createElement("tr");
+
+		var newTd = document.createElement("td");
+
+		var newTextBox = document.createElement("input");
+
+		newTextBox.setAttribute("type", "text");
+
+		var theId = "textbox" + row;
+		row++;
+
+
+		newTextBox.setAttribute("name", theId);
+
+		var theNewId = newTextBox.getAttribute("name");
+
+		newTextBox.setAttribute("value", theNewId);
+
+
+		newTd.appendChild(newTextBox);
+
+		newTr.appendChild(newTd);
+	
+		var lastRow = document.getElementById(tableId).lastChild;
+
+		lastRow.appendChild(newTr);
+	}
+
+	// -->
+	</script>
+</head>
+
+<body>
+
+	<table id='homework'>
+
+	<tr><td><input type="button" value="add student" onclick="addRow('homework');"></td></tr>
+
+
+	<tr>			
+	    <td><input type="text" name="student[]"></td></tr>
+
+
+	</table>
+
+</body>
+</html>
+
+
+

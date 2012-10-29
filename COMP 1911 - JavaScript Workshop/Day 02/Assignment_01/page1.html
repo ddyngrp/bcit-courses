@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Assignment #01: page1.html</title>
+<script type="text/javascript" language="javascript">
+	<!-- Check if the user is using internet explorer -->
+	if (navigator.appName.indexOf("Microsoft") == -1) {
+		document.write("Why don’t you use internet explorer?<br />");
+	}
+
+	function focusEmail() {
+		document.getElementById("email").focus();
+	}
+	
+	function submitForm() {
+		var email;
+		email = document.getElementById("email").value;
+		
+		if((!email.indexOf("@")) == -1 || email.indexOf(".") == -1 || email.indexOf(" ") >= 0
+				|| email.indexOf("\\") >= 0 || email.indexOf("\"") >= 0 || email.indexOf("\'") >= 0) {
+			alert("No no no! Bad e-email address!");
+			
+			focusEmail();
+			return false;
+		}
+	}
+</script>
+</head>
+<body onload="focusEmail();">
+<p>
+  <noscript>
+  Javascript is disabled. Please enable Javascript to use this site.
+  </noscript>
+</p>
+<form id="email_form" name="email_form" method="post" action="page2.html" onsubmit="return submitForm();">
+  <label>Please enter your e-mail address:
+  <input type="text" name="email" id="email" />
+  </label>
+  <label>
+  <input type="submit" name="submit" id="submit" value="Submit" />
+  </label>
+  <br />
+</form>
+</body>
+</html>

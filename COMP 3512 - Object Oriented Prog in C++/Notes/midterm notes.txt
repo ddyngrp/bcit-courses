@@ -1,0 +1,168 @@
+-	midterm:	tommorow afternoon
+-	no c++ lecture tommorow morning
+-	22 marks = 22%	part I: 15	part II:7
+
+Review:
+
+to read line by line:
+
+
+	string line;
+	while(getline(cin,line)){
+		...
+	}
+
+	to read word by word:
+	string word;
+	while(cin>>word){
+		...
+	}
+
+	to read char by char:
+
+	int c;
+	while((c = cin.get()!=EOF){
+		...
+	}
+
+//************************************************
+
+
+1)	string line;
+	double sum = 0;
+	int cout = 0;
+	cout << setprecision(2) << fixed;
+	while (getline(in, line)){
+		istringstream iss(line);
+		double f;
+		if (iss>>f){
+			cout << setw(10) << f << endl;
+			cout++;
+			sum+= f;
+	if(count !=0)
+		cout<<setw(10) << (sum/count)<< endl;
+
+	ifstream in("numbers.txt");
+	if(!in){
+		//error handling
+	}
+
+
+//**************************************************
+
+
+
+2)	a)	copy(v.begin(), v.end(), lst.begin());
+	b)	copy(lst.begin(), lst.end(), ostream_iterator<int>(cout, "in"));
+
+
+//**************************************************
+
+
+3)	Sequence is a template type, Unaryfunction f means an argument that takes 1 arg
+
+
+(3,2,7,6,8)	f returns the double of an int
+
+6,4,14,12,16
+
+		int f(int n){
+			return a*n;
+		}
+
+
+template<class Sequence, class UnaryFunction>
+
+Sequence maxf(Sequence c, UnaryFunction f){
+	Sequence d;
+
+	for(typename Sequence::iterator it = c.begin();	//typename needed because Sequence can be anything
+		it!= c.end(); ++it)
+	d.push_back(f(*it));
+}
+
+
+alternative:
+
+template<....>
+sequence mapf(....){
+
+	for(typename Sequence::iterator it = c.begin();
+		it != c.end();++i)
+
+	*it = f(*it);
+	return c;
+}
+
+
+//Why typename
+
+If X can be any type, than the type of X::y is ambiguous.
+
+x = ios_base
+y = hex
+
+ios_base::hex isn't the name of a type
+
+x = list<int>
+y = iterator
+
+list<int>::iterator is the name of a type
+
+If we want to declare x::y as the name of the the we use: typename x::y
+
+
+
+//******************************************************************
+
+
+
+4)	void f(int&)
+	void f(long)
+
+	short s = 1; f(s);
+
+	exact match
+
+	promotion:  smaller types	->int
+					->double
+
+
+	standard conversions
+
+
+	note:  reference to temporary not allowed unless const.
+
+
+	void g(long,double);
+	void g(int, float);
+
+part 1:	g(1, 1.0);
+
+	void g(long,double);	//didn't get time to copy answers
+	void g(int, float);
+
+
+
+
+//******************************************
+
+
+Question 5
+
+1.	default C()|
+2.	default 3times	C()|C()|C()|
+3.	copy C(const(&)|
+4.	copy
+5.	default
+6.	no output
+7.	assginment
+8.	destructor
+9.	C(const(&)|f|~C()|	//~ means destructr of copy
+10.	g|
+11.	default: c()|D()|
+12.	copy ctor
+13.	copy ctor
+14.	default twice
+15.	a.assign
+16.	destructor twice

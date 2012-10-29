@@ -1,0 +1,28 @@
+& - in a declaration is a reference
+	int & B = A; // B references A
+
+- in an executable statement (address of operator)
+	intPtr = & x; 	// x is an int
+			// intPtr is a pointer to int
+
+------------------------------------------------------
+
+* - in a declaration (declares a pointer)
+	int & intPtr; // declares that intPtr is a pointer to in
+
+- in an exacutable
+	&intPtr = 10;
+
+------------------------------------------------------
+
+int x = 10;
+int y = 6;
+
+int & xRef = x; // declaration form
+int * xPtr = &x; // executable form
+
+xPtr = & y; 	// xPtr is no longer a pointer to x, but y now.
+		// References cannot be made to do this
+
+xRef = 20;
+* xPtr = 20;

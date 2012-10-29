@@ -1,0 +1,43 @@
+*Command State*
+
+CheckAvailablePorts(); //Check for each accessible port
+swtich(message) {
+case port n:
+	get comm properties for port n;
+case connect:
+	if(cannot connect)
+		report error;
+		return to command state;
+	else
+		switch to connect state
+case disconnect:
+	if(in connect state)
+		disconnect;
+	else
+		report error;
+
+*Connect State*
+
+open port n; //specified port
+create seperate thread;
+while(connected) {
+	read port;
+	if(received)
+		ParseBuffer(); //Deciphers the data in the buffer
+}
+
+GUI -> Start button is pressed;
+Send Initial packet to RFID;
+
+Send "look for tag" packet;
+while(1) {
+	if(ParseBuffer() != "tag found" packet)
+		Send "look for tag" packet;
+	else if(ParseBuffer() == "tag found" packet)
+		get tag details;
+		print tag;
+	if(GUI -> Stop button is pressed)
+		break;
+}
+
+

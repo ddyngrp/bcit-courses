@@ -1,0 +1,108 @@
+﻿<HTML>
+<HEAD>
+<TITLE>Playback Log for Classics</TITLE>
+<SCRIPT>
+<!--
+function w1(str) { logtitle.document.writeln(str) }
+function w2(str) { navframe.document.writeln(str) }
+function writeTitle()
+{
+	logtitle.document.open("text/html", "replace")
+	w1('<HTML>')
+	w1('<HEAD>')
+	w1('<STYLE TYPE="text/css">')
+	w1('<!--')
+	w1('	p {color: #FFFFFF; font-size: 20pt; font-weight: bold}')
+	w1('	select {width: 100%; font-size: 8pt}')
+	w1('//--\>')
+	w1('</STYLE>')
+	w1('</HEAD>')
+	w1('<BODY BGCOLOR=#0099CC>')
+	w1('<TABLE BORDER=0 WIDTH="100%" HEIGHT="100%"><TR VALIGN=CENTER><TD ALIGN=CENTER><P>Log: Classics</TD></TR></TABLE>')
+	w1('</BODY>')
+	w1('</HTML>')
+	logtitle.document.close()
+}
+
+function writeNavFrame()
+{
+	navframe.document.open("text/html", "replace")
+	w2('<HTML>')
+	w2('<HEAD>')
+	w2('<STYLE TYPE="text/css">')
+	w2('<!--')
+	w2('	div#return {text-decoration: none; font-size: 10pt; color: black;}')
+	w2('	div#return:hover {text-decoration: underline;}')
+	w2('	select {width: 100%; font-size: 8pt}')
+	w2('//--\>')
+	w2('</STYLE>')
+	w2('<SCRIPT>')
+	w2('<!--')
+	w2('function gotoLogAnchor(hash,text)')
+	w2('{')
+	w2('	if (text != "<none>") {')
+	w2('		parent.log.location.replace("rational_ft_logframe.html#"+hash)')
+	w2('		window.status=text')
+	w2('	} else {')
+	w2('		window.status=""')
+	w2('	}')
+	w2('}')
+	w2('function clearOtherLists(listbox)')
+	w2('{')
+	w2('	if (document.failures.list != listbox)')
+	w2('		document.failures.list.selectedIndex = -1;')
+	w2('	if (document.warnings.list != listbox)')
+	w2('		document.warnings.list.selectedIndex = -1;')
+	w2('	if (document.vps.list != listbox)')
+	w2('		document.vps.list.selectedIndex = -1;')
+	w2('}')
+	w2('//--\>')
+	w2('</SCRIPT>')
+	w2('</HEAD>')
+	w2('<BODY BGCOLOR=#EEEEEE>')
+	w2('<FORM NAME=failures>')
+	w2('	<FONT COLOR=darkred><B>Failures</B></FONT><BR>')
+	w2('	<SELECT WIDTH="100%" SIZE=8 NAME=list')
+	w2('	 onChange="gotoLogAnchor(this.options[this.selectedIndex].value,this.options[this.selectedIndex].text); clearOtherLists(this);">')
+	w2('<OPTION VALUE="">&lt;none&gt;</OPTION>')
+	w2('	</SELECT>')
+	w2('</FORM>')
+	w2('</P>')
+	w2('<FORM NAME=warnings>')
+	w2('	<FONT COLOR=darkgoldenrod><B>Warnings</B></FONT><BR>')
+	w2('	<SELECT WIDTH="100%" SIZE=8 NAME=list')
+	w2('	 onChange="gotoLogAnchor(this.options[this.selectedIndex].value,this.options[this.selectedIndex].text); clearOtherLists(this);">')
+	w2('<OPTION VALUE="">&lt;none&gt;</OPTION>')
+	w2('	</SELECT>')
+	w2('</FORM>')
+	w2('</P>')
+	w2('<FORM NAME=vps>')
+	w2('	<FONT COLOR=#222222><B>Verification Points</B></FONT><BR>')
+	w2('	<SELECT WIDTH="100%" SIZE=8 NAME=list')
+	w2('	 onChange="gotoLogAnchor(this.options[this.selectedIndex].value,this.options[this.selectedIndex].text); clearOtherLists(this);">')
+w2('<OPTION TITLE="[Classics_tree] passed" VALUE="vp0">[Classics_tree] passed</OPTION>')
+w2('<OPTION TITLE="[OrderForTrentCulpito_standard] passed" VALUE="vp1">[OrderForTrentCulpito_standard] passed</OPTION>')
+	w2('	</SELECT>')
+	w2('</FORM>')
+	w2('</P>')
+	w2('</BODY>')
+	w2('</HTML>')
+	navframe.document.close()
+}
+//-->
+</SCRIPT>
+</HEAD>
+<NOFRAMES>
+<H2>Frame Alert</H2>
+<P>
+This document is designed to be viewed with a frame-capable web browser.</P>
+<A HREF="rational_ft_logframe.html">Non-Frame Version</A>
+</NOFRAMES>
+<FRAMESET ROWS="70px,*" FRAMEBORDER=0 onLoad="writeTitle(); writeNavFrame();");>
+  <FRAME NAME="logtitle" SRC="about:blank" TITLE="Log Title">
+  <FRAMESET COLS="20%,80%">
+	<FRAME NAME="navframe" SRC="about:blank" TITLE="Navigation Frame">
+	<FRAME NAME="log" SRC="rational_ft_logframe.html" TITLE="Log Frame">
+  </FRAMESET>
+</FRAMESET>
+</HTML>

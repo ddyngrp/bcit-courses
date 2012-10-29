@@ -1,0 +1,7 @@
+bin\Debug\WriteXml_CS.exe
+bin\Debug\WriteXml_CS.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\WriteXml_CS.Form1.resources
+obj\Debug\WriteXml_CS.csproj.GenerateResource.Cache
+obj\Debug\WriteXml_CS.exe
+obj\Debug\WriteXml_CS.pdb

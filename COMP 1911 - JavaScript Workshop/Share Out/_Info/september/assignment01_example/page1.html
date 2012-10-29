@@ -1,0 +1,67 @@
+<!-- 
+	comp1911 assignment01 example page1.html
+	see specifications for details
+-->
+<html>
+<head>
+	<title>COMP1911 Assignment 1 Example PAGE 1</title>
+	<script		type="text/javascript" 
+				language="javascript"
+				src="functions.js"
+				></script>
+</head>
+
+<body>
+	<h3>COMP1911 Assignment 1 Example PAGE 1</h3>
+	
+	<!-- show this message to all javascript deniers -->
+	<noscript>
+	Sorry, this page is for Javascript users only.
+	</noscript>
+
+	<!-- determine which browser they are using -->
+	<script type="text/javascript" language="javascript">
+	if (navigator.appName != "Microsoft Internet Explorer") {
+		document.write("This page is for internet explorer users only. Please go away.<br />");
+	}
+	</script>
+	<br />	
+
+	<!-- determine if theyve been here before -->
+	<script type="text/javascript" language="javascript">
+		var theCookie = getCookie("chocolatechip");
+		var message = "";
+		if(theCookie != null){
+			message = "Welcome back!";
+			formEmail = theCookie;
+		}else{		
+			message = "So nice to see you! Finally you are visiting this page!";
+		}
+		//show the appropriate message
+		document.write("<p>"+ message +"</p>");
+	</script>
+	
+	<!-- show form -->
+	<form	action="./page2.html" 
+			method="GET" 
+			onsubmit="return processForm();">
+		Enter a valid email address please (i wont spam you, i PROMISE!)<br />
+		<input	type="text" 
+				id="email"
+				name="email"
+				size="30" />
+		<br />
+		<input	type="submit" 
+				value="Submit" />
+	</form>
+
+	<!-- populate form email if cookie exists -->
+	<script type="text/javascript" language="javascript">
+		//populate the email textbox if there is an email cookie
+		document.getElementById("email").value=formEmail;
+		document.getElementById("email").disabled=true;
+	</script>
+
+</body>
+</html>
+

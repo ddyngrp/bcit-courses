@@ -1,0 +1,190 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #000000 url(../images/horiz_spacer.gif) repeat-x;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #999999;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	letter-spacing: -1px;
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+p, ul, ol {
+	margin-top: 1.8em;
+	line-height: 180%;
+}
+
+ul, ol {
+	margin-left: 3em;
+}
+
+blockquote {
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+a {
+	color: #CCCCCC;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+hr {
+	display: none;
+}
+
+/* Header */
+
+#header {
+	width: 960px;
+	height: 80px;
+	margin: 0 auto;
+	background: url(../images/header.png);
+}
+
+#header h1, #header h2 {
+	float: left;
+	margin: 0;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+
+#header h1 {
+	padding: 30px 0 0 20px;
+	font-size: 3em;
+}
+
+#header h2 {
+	padding: 47px 0 0 8px;
+	font-size: 1.8em;
+	font-style: italic;
+}
+
+#header a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Menu */
+
+#menu {
+	width: 960px;
+	height: 51px;
+	margin: 0 auto;
+	background: url(../images/menu.png);
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	padding: 12px 10px 0 20px;
+}
+
+#menu a {
+	text-decoration: none;
+	letter-spacing: -1px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#menu a:hover {
+	text-decoration: underline;
+}
+
+/* Page */
+
+#page {
+	width: 920px;
+	margin: 0 auto;
+	padding: 30px 20px 20px 20px;
+	background: url(../images/background.png) no-repeat;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 605px;
+}
+
+{
+	margin-bottom: 40px;
+}
+
+.title {
+	border-bottom: 1px solid #454545;
+}
+
+.title a {
+	text-decoration: none;
+}
+
+.content {
+	padding: 0 20px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: right;
+	width: 295px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+}
+
+#sidebar img {
+	padding: 0;
+	margin: 0;
+}
+
+#sidebar h2 {
+	height: 37px;
+	padding: 13px 20px 0 20px;
+	background: url(../images/navhead.png) no-repeat;
+	font-size: 1.6em;
+}
+
+/* Footer */
+
+#footer {
+	width: 960px;
+	margin: 0 auto;
+	padding: 20px 0;
+	background: url(../images/footer.gif) no-repeat;
+}
+
+#footer p {
+	margin: 0;
+	line-height: normal;
+	text-align: center;
+}

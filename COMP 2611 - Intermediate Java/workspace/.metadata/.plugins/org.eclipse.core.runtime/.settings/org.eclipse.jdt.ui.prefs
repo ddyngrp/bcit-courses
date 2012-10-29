@@ -1,0 +1,23 @@
+#Mon Nov 26 03:14:45 PST 2007
+org.eclipse.jdt.ui.overrideannotation=true
+spelling_locale_initialized=true
+command=/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/bin/javadoc
+org.eclipse.jdt.ui.gettersetter.use.is=true
+org.eclipse.jdt.ui.text.templates_migrated=true
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+org.eclipse.jface.textfont=1|Monaco|11.0|0|CARBON|1|;
+tabWidthPropagated=true
+org.eclipse.jdt.ui.exception.name=e
+org.eclipse.jdt.ui.editor.tab.width=
+fontPropagated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates><template autoinsert\="false" context\="filecomment_context" deleted\="false" description\="Comment for created Java files" enabled\="true" id\="org.eclipse.jdt.ui.text.codetemplates.filecomment" name\="filecomment">/**\n * Project\: ${project_name}\n * File\: ${file_name}\n * Date\: ${date}\n * Time\: ${time}\n */</template><template autoinsert\="false" context\="typecomment_context" deleted\="false" description\="Comment for created types" enabled\="true" id\="org.eclipse.jdt.ui.text.codetemplates.typecomment" name\="typecomment">/**\n * @author Steffen L. Norgren, A00683006\n *\n * ${tags}\n */</template></templates>
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+proposalOrderMigrated=true
+org.eclipse.jdt.ui.formatterprofiles.version=11
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.ui.javadoc=true
+useQuickDiffPrefPage=true
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8"?><history maxLHS\="100" maxRHS\="10"/>
+org.eclipse.jdt.ui.text.code_templates_migrated=true

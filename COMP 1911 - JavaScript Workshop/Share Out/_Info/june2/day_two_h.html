@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title>times</title>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+	
+	function init()
+	{
+		document.getElementById("e").focus();
+		document.getElementById("d").style.display = "none";
+	}
+
+	function showPasswordDiv()
+	{
+		document.getElementById("d").style.display = "block";
+		document.getElementById("p").focus();
+	}
+
+	function validateEmailAddress(emailAddressToBeChecked)
+	{
+		if(emailAddressToBeChecked.indexOf("@") == -1)
+		{
+			alert("not a valid email address");
+			document.getElementById("e").select();
+			document.getElementById("d").style.display = "none";
+			document.getElementById("p").value = "";
+			return false;
+		}
+
+		if(emailAddressToBeChecked.indexOf(".") == -1)
+		{
+			alert("not a valid email address");
+			document.getElementById("e").select();
+			document.getElementById("d").style.display = "none";
+			document.getElementById("p").value = "";
+			return false;
+		}
+
+		showPasswordDiv();
+		return true;		
+	}
+
+
+	// return false to prevent form submission
+	// return true to allow form submission
+	function validatePassword()
+	{
+		val = document.getElementById("p").value;
+
+		if(val.length < 1)
+		{
+			alert("error! need a password");
+			return false;
+		}
+		return true;
+	}
+
+	// -->
+	</script>
+</head>
+<body onload="init();">
+
+<form action="whatever.php" onsubmit="return validatePassword();">
+
+
+
+
+
+email:<br />
+<input 	type="text" 
+	id="e" 
+	name="e" 
+	onblur="validateEmailAddress(this.value);"><br />
+
+
+
+
+
+
+
+<div id="d" name="d">
+	password:<br />
+	<input type="password" id="p" name="p"><br />
+</div>
+
+<input type="submit">
+
+
+</form>
+
+</body>
+</html>
+
+
+

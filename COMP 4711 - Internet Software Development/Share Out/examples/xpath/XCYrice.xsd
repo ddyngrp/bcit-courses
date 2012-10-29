@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3schools.com"
+           xmlns="http://www.w3schools.com"
+           elementFormDefault="qualified">
+
+<!-- definition of simple elements -->
+<xs:element name="weight">
+    <xs:simpleType>
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:element>
+
+<!-- definition of complex elements -->
+<xs:element name="rice">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="exports">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="year" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element ref="weight"/>
+                                            </xs:sequence>
+                                            <xs:attribute name="year_id" type="xs:decimal" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="country_id" type="xs:string" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="imports">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="country" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="year" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element ref="weight"/>
+                                            </xs:sequence>
+                                            <xs:attribute name="year_id" type="xs:decimal" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="country_id" type="xs:string" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>

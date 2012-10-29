@@ -1,0 +1,28 @@
+Networking:
+	Logging in:
+		Connect to server
+
+		Generate XML file with username/password
+
+		Post/Get XML file to/from server
+
+		Decode XML file for account status		
+
+		if (valid account)
+			successful login
+		else
+			failed login
+
+	Sending Memo:
+		Connect to server
+
+		Generate XML file with attached soap message
+
+		Post/Get XML file to/from server
+
+		Decode XML file for transmission details
+
+		if (valid memo)
+			successful transmission
+		else
+			post error report

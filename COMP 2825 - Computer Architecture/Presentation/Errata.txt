@@ -1,0 +1,15 @@
+Week 2:
+------
+   Page 71 - The wrong expression was given in the question for
+             Exercise 14 - Circuit Equivalence.
+
+   Corrected - 2008-04-23
+
+
+Week 3:
+------
+   Page 29 - The output of the right AND gate should be "0"
+
+   Page 59 - There are two "D" choices, choices should be A - H
+
+   Corrected - 2008-04-30

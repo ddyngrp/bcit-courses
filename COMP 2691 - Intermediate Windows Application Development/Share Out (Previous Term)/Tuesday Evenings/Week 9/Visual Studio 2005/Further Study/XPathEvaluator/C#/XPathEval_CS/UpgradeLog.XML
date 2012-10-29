@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="XPathEval_CS">
+</Property><Property Name="Solution File" Value="C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\XPathEval_CS.sln">
+</Property><Property Name="Date" Value="January 18, 2007">
+</Property><Property Name="Time" Value="1:39:20 AM">
+</Property></Properties><Event ErrorLevel="0" Project="XPathEval_CS" Source="XPathEval_CS.csproj" Description="Project file successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\XPathEval_CS.csproj">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="XPathEval_CS.csproj.user" Description="Project user file successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\XPathEval_CS.csproj.user">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="XpathEval.cs" Description="File successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\XpathEval.cs">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="App.ico" Description="File successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\App.ico">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="XpathEval.resx" Description="File successfully backed up as C:\MS Press Books\XMLProgNET\Chap06\XPathEvaluator\C#\XPathEval_CS\Backup\XpathEval.resx">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="XPathEval_CS.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="XPathEval_CS" Source="XPathEval_CS.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="XPathEval_CS" Source="XPathEval_CS.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

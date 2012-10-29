@@ -1,0 +1,14 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\bin\Debug\WeekThree.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\bin\Debug\WeekThree.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.dateTimePickerDropOff.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.ErrorProvider.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.KeyDemoForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.LinkLabel.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.PainterForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.Properties.Resources.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.ProviderControls.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.ScrollBarControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 3\Class Activities\WeekThree2008\WeekThree\obj\Debug\WeekThree.csproj.GenerateResource.Cache

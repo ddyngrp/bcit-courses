@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ArrayWork()
+comment0.text=\nOh\ look\!\ The\ default\ constructor\n\n
+comment1.params=arraySize
+comment1.target=ArrayWork(int)
+comment1.text=\nOh\ look\!\ An\ overloaded\ constructor\n\n
+comment2.params=setArrayValues
+comment2.target=void\ loadArray(int)
+comment2.text=\nTakes\ an\ int\ parameter\ and\ sets\ each\ element\ in\ the\ array\nto\ the\ value\ of\ the\ parameter\ plus\ the\ value\ of\ the\ array\ index.\n\n
+comment3.target=void\ displayContents()
+comment3.text=\nThis\ method\ iterates\ over\ the\ array\ and\ displays\ the\ index\npositions\ of\ the\ array\ and\ the\ contents\ of\ each\ position\n\n
+comment4.target=int\ reportSum()
+comment4.text=\nThis\ method\ iterates\ over\ the\ array\ and\ adds\ up\ the\ values\nin\ the\ array\ then\ returns\ the\ sum.\n\n
+comment5.params=findInArray
+comment5.target=boolean\ search(int)
+comment5.text=\nThis\ method\ takes\ an\ int\ parameter\ and\ returns\ TRUE\ if\nthe\ parameter\ value\ is\ in\ the\ array\ and\ false\ if\ not.\n\n
+numComments=6

@@ -1,0 +1,30 @@
+Write a preprocessor directive to accomplish each of the folowing:
+   1) Define symbolic constant YES to have the value 1.
+
+#define YES 1
+
+   2) Define symbolic constant NO to have the value 0.
+
+#define NO 0
+
+   3) Include the header common.h.  The header is found in the same directory as the file being compiled.
+
+#include "common.h"
+
+   4) Renumber the remaining lines in the beginning with the line number 3000.
+
+#line 3000
+
+   5) If symbolic constant TRUE is defined, undefine it and redefine it as 1. Do NOT use the #ifdef preprocessor directive.
+
+#if defined TRUE
+  #undef TRUE
+  #define TRUE 1
+#endif
+
+   6) If symbolic constant TRUE is defined, undefine it and redefine it as 1. Use the #ifdef preprocessor directive.
+
+#ifdef TRUE
+  #undef TRUE
+  #define TRUE 1
+#endif

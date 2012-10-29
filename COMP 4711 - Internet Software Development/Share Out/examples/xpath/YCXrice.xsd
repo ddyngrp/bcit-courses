@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="country">
+		<xs:complexType>
+			<xs:attribute name="imports" type="xs:string" use="required" />
+			<xs:attribute name="exports" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="world">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="year" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="year">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="country" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="number" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

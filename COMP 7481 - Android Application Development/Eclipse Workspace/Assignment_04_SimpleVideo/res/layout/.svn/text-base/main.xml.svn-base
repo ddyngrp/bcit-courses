@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:id="@+id/root">
+    
+    <LinearLayout
+    	android:id="@+id/buttons"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true" android:layout_marginTop="20dip">
+	    
+        <ImageView
+        	android:id="@+id/imageView"
+        	android:src="@drawable/icon"
+        	android:layout_height="wrap_content"
+        	android:layout_width="wrap_content"
+        	android:layout_weight="50"
+        	android:scaleType="centerInside"/>
+	</LinearLayout>
+    
+    <LinearLayout
+    	android:id="@+id/buttons"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true">
+	    
+	    <ImageButton
+	    	android:id="@+id/play"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
+	    
+	    <ImageButton
+	    	android:id="@+id/pause"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
+	    	
+	    <ImageButton
+	    	android:id="@+id/rewind"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
+
+	    <ImageButton
+	    	android:id="@+id/forward"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
+	    	
+	    <ImageButton
+	    	android:id="@+id/exit"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="50"/>
+	</LinearLayout>
+    
+</RelativeLayout>

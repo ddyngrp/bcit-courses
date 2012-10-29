@@ -1,0 +1,21 @@
+<?xml version = "1.0"?>
+<books xmlns="http://www.w3schools.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.w3schools.com ./books2.xsd"	>
+   <book> 
+      <title>Alice in Wonderland</title>
+      <translation edition = "1">Spanish</translation>
+      <translation edition = "1">Chinese</translation>
+      <translation edition = "1">Japanese</translation>
+      <translation edition = "2">French</translation>
+      <translation edition = "2">Japanese</translation>
+   </book>
+   <book> 
+      <title>Around the world in 80 days</title>
+      <translation edition = "1">Korean</translation>
+      <translation edition = "2">French</translation>
+      <translation edition = "2">Spanish</translation>
+      <translation edition = "3">Italian</translation>
+      <translation edition = "3">Japanese</translation>
+   </book>
+</books> 

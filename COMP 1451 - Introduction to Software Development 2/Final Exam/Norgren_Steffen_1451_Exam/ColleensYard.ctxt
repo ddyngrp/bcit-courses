@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ColleensYard()
+comment0.text=\nConstructor\ for\ ColleensYard\n\n
+comment1.params=animal
+comment1.target=void\ addAnimal(Animal)
+comment1.text=\nNew\ animal\ in\ colleen's\ yard\n\n
+comment2.target=void\ showAll()
+comment2.text=\nShow\ information\ about\ all\ the\ animals\ in\nColleen's\ yard.\n\n
+comment3.target=void\ showMoves()
+comment3.text=\nShow\ information\ about\ the\ moves\ each\ animal\nin\ Colleen's\ yard\ can\ do.\n\n
+comment4.target=double\ averageFlightSpeed()
+comment4.text=\nCalculates\ the\ average\ flight\ speed\ of\ all\nthe\ birds\ in\ the\ yard.\n@return\ double\ the\ average\ flight\ speed\ of\ all\ birds,\nreturns\ null\ if\ there\ are\ no\ birds\ in\ the\ yard\ at\ all.\n\n
+numComments=5

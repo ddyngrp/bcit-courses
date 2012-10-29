@@ -1,0 +1,110 @@
+There are a number of search functions
+
+
+find() & rfind(), find_first_of() & find-last_of(), find_first_not_of() & find_last_not_f()
+
+Each has several versions, e.g.
+
+
+//start looking from position pos
+
+
+size_type find(const string* str, size_type pos = 0) const;
+
+//start from position pos, compare with first n chars in n
+
+size_type find(const char* s, size_type pos, size_type n) const;
+
+size_type find(const char* s, size_type pos = 0) const;
+size_type find(char c, size_type pos = 0) const;
+
+
+Examples
+
+
+string s("okeley-dokeley");
+
+cout << s.find("ley") << endl;	//prints 3
+cout << s.rfind("ley") << endl;  //prints 11
+
+
+
+Example
+
+//Program name: replace
+//Purpose: to replace all occurences of a specified string by aother in a wile
+//string by aonther in a file
+//old and new strings are specified on cmd line
+//use of I/O ridrection
+//Example replace oldstring newstring <infile> outfile
+
+
+int main(int argc, char *argv[]){
+	if (argc !=3){
+		cerr << "usage: replace <old string> <new string> \n";
+		return 0
+	}
+	string		s, os(argv[1]), ns(argv[2]);
+
+	string::size_type	idx, oslen = os.length()
+				nslen = ns.length()
+
+	while (getline(cin,s)){
+		idx = 0
+		//while string is found in the line, replace it 
+		while (((idx = s.find(os,idx)) != string::npos) {
+			s.replace(idx, oslen,ns);
+			idx += nslen;
+		}
+		cout << s << endl;
+	}
+	return 0;
+}
+
+idx is important to update!  otherwise you may keep getting stuck on replacing the same word if old string is
+similar to new version
+
+
+tokenizing a string (recall:strtok in C)
+
+	e.g.	"hello::world; goodbye!world"
+
+break that string up at ::!
+
+string next_token(const string &s, const string &delimiters, string::size_type &start){
+
+
+	start = s.find_first_not_of(delimiters,start);
+	if (start == string::npos)	/* no more non_delimiter */
+		return"";
+	string::size_type i = start;
+
+	start = s.find_first_of(deliminters,i);
+	if(start==string::npos)
+		return s.substr(i);
+	return s.substr(i, start-i);
+
+
+}
+
+Note: start is the starting position to look for the next token; it is updated to the index just after the next
+token (if token exists)
+
+next token starts at the first non-delimiter (find_first_not_of), it ends at the first delimiter after that
+(find_first_of)
+
+
+____________________
+
+
+STL (Standard Template Library)
+
+- generic programming
+- main components
+
+1)	containers		-	2 types: sequence and associative (automatically sorts elements)
+2)	algorithms		-	
+3)	iterators		-	act as glue between containers and algorithms
+4)	function objects	-	can be used to cuotmize algorithms
+
+iterators	-	abstraction of pointers

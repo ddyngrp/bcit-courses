@@ -1,0 +1,164 @@
+RTTI	(Runtime Type Info)
+#include <typeinfo>
+-	only works for polymorphic classes
+-	typeinfo defines a class type_info whose objects contain type information
+
+type_info class:
+
+-	no default ctor, e.g., type_info t; won't compile
+	//there no way to create a type_info object by typeid calling
+
+-	copy ctor is private
+
+How can we "store" the type_info object returned by typeid?
+
+type_info t = typeid(X);	//won't compile
+
+type_info& t = typeid(X);	//OK
+
+We can do this: typerid(X) == typeid(Employee)
+
+...
+
+In order for typeid to retrieved the derived type, it must be applied to an object or a reference.
+
+B - base class
+D - derived from B
+B b;
+D d;
+
+typeid(b) == typeid(B);		//true
+typeid(pb) == typeid(D*);	//false
+typeid(rb) == typeid(D&);	//true
+typeid(pb) == typeid(B*);	//true
+typeid(rb) == typeid(B&);	//false
+typeid(D&) == typeid(D);	//true
+
+-	the name() method of type_info returns a C-style string that contains info about the type
+	but the string is not standarddize and varies with compilers
+
+
+
+class Shape{	
+
+	public:
+		...
+		virtual void save (ostream&) const;
+
+	private
+		int colour_;
+};
+
+void shape::save(ostream& os) const{
+	os << typeid(*this).name() << endl		//save type inferred so we can move object later
+	os << colour_ << endl;
+}
+
+
+in cirle.cpp
+
+
+void
+Circle::save(ostream& os) const{
+	Shape::save(os);
+	os << centre_ << endl;
+	os << radius_ << endl;
+}
+
+
+Virtual Function
+
+Recall:
+
+class Shape{
+	public:
+	virtual ~Shape(){}	//inline virtual function.  How is that possible?
+
+		...
+	};
+
+
+If a function is inlined by the compiler, there is no function that allows late binding 
+- defer call to function until runtime.
+
+They seem to be incompatible!
+
+
+Virtual doesn't always apply the late binding.  A virtual function must be called from a printer or a reference for
+late binding to apply.
+
+So if a virtual function is called on an object, the compiler may bea able to inline the call.
+
+
+2)	Dtor should gernally be virtual.  Why?
+
+B	-	base
+D	-	derived
+
+Bb=*pb = new D(...);
+
+
+
+
+
+delete pb;	//which dtor is called? ~B() or ~D()?
+		//If the dtor is virtual, ~D() is called
+		//If the dtor is not virutal, behaviour is undefined)
+
+3)	Can ctor be virtual?
+
+No.  When a ctor is called, the object is fully constructed set.
+But there's a "virtual copy ctor idiom" (prototype pattern)
+
+
+class B{
+
+public:
+	virtual B *clone() const;
+};
+
+class D:public B{
+
+public:
+	virtual D* clone() const;
+};
+
+
+B*
+B::clone() const{
+	return new B(*this);
+}
+
+//*this calls copy ctor
+
+
+
+
+B*pb = ...; // can print to a B or a D
+B*pb2 = pb -> clone();	//wil create a B or a D
+
+
+Example
+
+int choice = getchoice();
+Shape *p;
+switch(choice){
+	case 1:
+		p = new Circle(...); break;
+	case 2:
+		p = new Rectangle(...); break;
+
+	....
+
+	};
+
+
+alternatve: using prototype pattern
+
+Circle c;
+Rectange r;
+Shape * prototype[] = {&c, &r, ... };	Shape *p;
+
+int choice = getchoice();
+if(isvalid(choice))...
+

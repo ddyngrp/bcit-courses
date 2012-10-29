@@ -1,0 +1,5 @@
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\AssemblyDocumenter\bin\Debug\AssemblyDocumenter.dll
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\AssemblyDocumenter\bin\Debug\AssemblyDocumenter.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\AssemblyDocumenter\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\AssemblyDocumenter\obj\Debug\AssemblyDocumenter.dll
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 10\AssemblyDocumenter\AssemblyDocumenter\obj\Debug\AssemblyDocumenter.pdb

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<trainlog
+  xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="etml.xsd">
+  <session date="2001-11-19" type="running" heartrate="158">
+    <duration>PT45M</duration>
+    <distance units="miles">5.5</distance>
+    <location>Warner Park</location>
+    <comments>Mid-morning run, a little winded throughout.</comments>
+  </session>
+
+  <session date="2001-11-21" type="cycling" heartrate="153">
+    <duration>PT2H30M</duration>
+    <distance units="miles">37.0</distance>
+    <location>Natchez Trace Parkway</location>
+    <comments>Hilly ride, felt strong as an ox.</comments>
+  </session>
+
+  <session date="2001-11-24" type="running" heartrate="156">
+    <duration>PT1H30M</duration>
+    <distance units="miles">8.5</distance>
+    <location>Warner Park</location>
+    <comments>Afternoon run, felt reasonably strong.</comments>
+  </session>
+</trainlog>

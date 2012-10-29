@@ -1,0 +1,35 @@
+<html>		<head><title>interdependent menus</title></head>
+<body>
+<form name="my_form">
+	<select name="my_groups" size="4" onChange="updategroups(this.selectedIndex)" style="width: 150px">
+		<option selected>Select a topic</option>
+		<option value="food">food and drink</option>
+		<option value="sports">sports</option>
+		<option value="books">good books</option>
+	</select>
+
+	<select name="sub_groups" size="4" style="width: 150px" onClick="alert(this.options[this.options.selectedIndex].value);">   /select>
+</form>
+<script language="javascript" type="text/javascript">
+<!--
+	var countrieslist=document.my_form.my_groups;
+	var groupslist=document.my_form.sub_groups;
+	var groups=new Array();
+
+	groups[0]="";		// erase all current values in the list
+	groups[1]=["pizza and beer|pizzabeervalue", "hamburger and fries|burgerfriesvalue", "salad|saladvalue"];
+	groups[2]=["nhl hockey|hockeyvalue", "cfl football|footballvalue", "pga golf|golfvalue", "tour de france cycling|cyclingvalue"]
+	groups[3]=["paddle to the arctic|paddlevalue", "as far as my feet will carry me|feetvalue", "training a tiger|tigervalue", "two survived|survivedvalue", "66 days adrift|adriftvalue"]
+
+	function updategroups(selectedgroup){
+		groupslist.options.length=0;	// erase the existing array
+
+		if (selectedgroup>0) {
+			for (i=0; i<groups[selectedgroup].length; i++) {
+				groupslist.options[groupslist.options.length] = 
+					new Option(groups[selectedgroup][i].split("|")[0],     groups[selectedgroup][i].split("|")[1])
+			}
+		}
+	}
+// -->
+</script></body></html>

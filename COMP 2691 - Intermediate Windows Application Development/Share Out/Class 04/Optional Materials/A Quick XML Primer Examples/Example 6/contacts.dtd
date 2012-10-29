@@ -1,0 +1,25 @@
+<!ELEMENT contacts (contact)+>
+
+<!ELEMENT contact (name, address+, city, state, zip, phone, email, web, company)>
+
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT address (#PCDATA)>
+
+<!ELEMENT city (#PCDATA)>
+
+<!ELEMENT state (#PCDATA)>
+
+<!ELEMENT zip (#PCDATA)>
+
+<!ELEMENT phone (voice, fax?)>
+
+<!ELEMENT voice (#PCDATA)>
+
+<!ELEMENT fax (#PCDATA)>
+
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT web (#PCDATA)>
+
+<!ELEMENT company (#PCDATA)>

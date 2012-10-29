@@ -1,0 +1,10 @@
+obj\Debug\Trackbar Control.exe
+obj\Debug\Trackbar Control.pdb
+bin\Debug\Trackbar Control.exe
+bin\Debug\Trackbar Control.pdb
+bin\Debug\BankLibrary.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Trackbar_Control.Properties.Resources.resources
+obj\Debug\Trackbar Control.csproj.GenerateResource.Cache
+obj\Debug\Trackbar_Control.frmProgressBar.resources
+obj\Debug\Trackbar_Control.frmTrackBar.resources

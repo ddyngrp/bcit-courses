@@ -1,0 +1,17 @@
+-Recent update to blackberry api allows video capture, including streaming video and taking snapshots
+
+-Controlled by the Player class - capable of streaming a sample, taking the snapshot and saving
+
+-saves the image as an array of raw bytes, which can be converted into a bitmap
+
+-My next step is to make the camera more user friendly, and then add a video recorder
+
+
+
+OVERALL PRESENTATION (Just a thought)
+
+Talk about:
+-The client
+-Project
+-Requirements
+-How we achieved.

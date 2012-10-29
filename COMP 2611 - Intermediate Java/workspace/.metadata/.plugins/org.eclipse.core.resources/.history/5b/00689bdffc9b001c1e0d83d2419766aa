@@ -1,0 +1,15 @@
+/**
+ * Project: assignment02
+ * File: ReadWriteXML.java
+ * Date: 26-Nov-07
+ * Time: 12:51:02 AM
+ */
+package a00683006.bedz.util;
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class ReadWriteXML {
+
+}

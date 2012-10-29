@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Game()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Game\n\n
+comment1.target=void\ playGame()
+comment1.text=\nPlay\ the\ game\ -\ this\ method\ contains\ the\ game\ logic\n\n
+comment2.target=int\ getHits()
+comment2.text=\nReturns\ the\ number\ of\ hits.\n\n@return\ An\ int\ value\ representing\ the\ number\ of\ hits.\n\n
+comment3.params=coordinates
+comment3.target=char\ checkHitMiss(CoordinatePair)
+comment3.text=\nChecks\ to\ see\ whether\ the\ user's\ input\ location\ represents\ a\ hit\nor\ a\ miss\ and\ returns\ the\ value\ accordingly.\n\n@param\ coordinates\ A\ CoordinatePair\ object\ representing\ the\ values\ chosen\n@return\ A\ char\ value\ representing\ a\ hit\ or\ a\ miss.\n\n
+comment4.params=coordinates
+comment4.target=boolean\ checkGrid(CoordinatePair)
+comment4.text=\nChecks\ whether\ the\ input\ coordinates\ are\ valid\ and\ returns\ntrue\ or\ false\ depending\ on\ validity.\n\n@param\ coordinates\ A\ CoordinatePair\ object\ representing\ the\ values\ chosen\n@return\ A\ boolean\ value\ representing\ whether\ the\ input\ was\ valid\n\n
+comment5.target=void\ showInstructions()
+comment5.text=\nProvides\ instructions\ to\ the\ user\n\n
+numComments=6

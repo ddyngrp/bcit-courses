@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Simulator()
+comment0.text=\nConstruct\ a\ simulation\ field\ with\ default\ size.\n\n
+comment1.params=depth\ width\ trappingLicences\ minFoxesTrapped\ maxFoxesTrapped
+comment1.target=Simulator(int,\ int,\ int,\ int,\ int)
+comment1.text=\nCreate\ a\ simulation\ field\ with\ the\ given\ size.\n@param\ depth\ Depth\ of\ the\ field.\ Must\ be\ greater\ than\ zero.\n@param\ width\ Width\ of\ the\ field.\ Must\ be\ greater\ than\ zero.\n@param\ trappingLicences\ number\ of\ trapping\ licenses\ to\ issue.\n@param\ minFoxesTrapped\ minimum\ number\ of\ foxes\ to\ trap\ to\ retain\ a\ license\n@param\ maxFoxesTrapped\ maximum\ number\ of\ foxes\ allowed\ to\ be\ trapped\n\n
+comment2.target=void\ runLongSimulation()
+comment2.text=\nRun\ the\ simulation\ from\ its\ current\ state\ for\ a\ reasonably\ long\ period,\ne.g.\ 500\ steps.\n\n
+comment3.params=numSteps
+comment3.target=void\ simulate(int)
+comment3.text=\nRun\ the\ simulation\ from\ its\ current\ state\ for\ the\ given\ number\ of\ steps.\nStop\ before\ the\ given\ number\ of\ steps\ if\ it\ ceases\ to\ be\ viable.\n@param\ numSteps\ How\ many\ steps\ to\ run\ for.\n\n
+comment4.target=void\ simulateOneStep()
+comment4.text=\nRun\ the\ simulation\ from\ its\ current\ state\ for\ a\ single\ step.\nIterate\ over\ the\ whole\ field\ updating\ the\ state\ of\ each\nfox\ and\ rabbit.\n\n
+comment5.target=void\ reset()
+comment5.text=\nReset\ the\ simulation\ to\ a\ starting\ position.\n\n
+comment6.params=field
+comment6.target=void\ populate(Field)
+comment6.text=\nPopulate\ a\ field\ with\ foxes\ and\ rabbits.\n@param\ field\ The\ field\ to\ be\ populated.\n\n
+comment7.target=void\ printStats()
+comment7.text=\nPrint\ out\ statistics\ at\ the\ end\ of\ each\ simulation\ run.\n\n
+numComments=8

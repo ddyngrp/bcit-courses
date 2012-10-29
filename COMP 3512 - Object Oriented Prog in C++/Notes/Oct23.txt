@@ -1,0 +1,154 @@
+Assignment 1:	due 9pm monday
+
+Debug mode	-	check for <m1><config>
+			process up to </config>
+
+process_config	<m1><config>...</config?
+process_text	<text>...</text></m1?
+
+int main(){
+	....
+	process_config(....)
+
+#ifdef DEBUG
+	//print tags
+#else
+	process_text(....)
+#endif
+}
+
+
+g++ -DDEBUG	//-D means define
+
+
+conditional inclusion
+conditional compilation
+
+
+
+_______________________________________________________________
+
+
+//name.h
+
+#ifndef NAME_H
+#define NAME_H
+#include <string>
+
+class Name{
+
+public:
+
+	explicit Name(const std::string& lastName = "doe",
+			const std::String& firstName = "john");
+	//compiler_generated copy ctor, assignment + dtor
+	std::string getLastName() const {return last_;}
+	std::string getFirstName() const {retrun first_;}
+
+	std::string setLastName(std::string& lastName);
+	stdLLstring setFirstName(std::string& firstName);
+
+	friend ostream& operator<< (ostream&, const Name&);
+	friend istream& operator>> (istream&, Name&);
+
+
+private:
+
+	std::string last_, first_;
+	static bool isValid(std::string&);
+};
+
+
+//Name.cpp
+
+#include "Name.h"
+using namespace std;
+
+bool
+Name::isValid(std::string& s){
+	....
+}
+
+string
+Name::setLastName(const string& lastName){
+	if(!isValid(lastName))
+		throw "Name::setLastName(const string&):....";
+	string old(last_);
+	last_ = lastName;
+	return old;
+}
+
+
+
+//similarily for setFirstName
+
+ostream&
+operator<<(ostream &os, const Name& n){
+	ostringstream oss;
+	oss << n.first_<< ' '<< n.last_;
+	return os << oss.str();
+}
+
+//cout << setw(30) << n << endl;	where n is name
+
+Note:  setw applies to the whole name because we print to ostring stream first.
+
+
+istream&
+operator >> (istringstream& is, Name &n){
+string first, last
+
+if (is>>first>>Last && Name::isValid(first)
+	&&Name::isValid(last))
+	{
+		n.Last_ = Last, n.first_ = first;
+	}
+	else
+	{
+		is.setstate(ios_base:;failbit);
+	}
+	return is;
+}
+
+
+
+
+The Employee Class
+
+
+-	name, ID, birthdate
+
+//Employee.h
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
+#include <string>
+#include <iostream>
+#include "Date.h"
+#include "Name.h"
+
+			//we'll keep track of the no. of employees
+calss Employee{
+public:
+	explicit Employee (const std::string& id = "A00000000",
+			const Name& name = Name(),		//calls default Name ctor
+			const Date & birthdate = Date());
+
+	//compiler generated assignment
+
+	Employee (const Employee& src):id_(src.id_),
+		name_(src.name_), birthdate_(src.birthdate_){
+		count++;
+	}
+
+
+//Note: no need to valid ID, name, birthdate in copy ctor because the original was validated!
+
+
+
+virtual ~Employee(){count_--;}		// no need to explicitly call dtor for base class or data members
+
+					// virutal tells the compiler to use late binding
+
+					// (typically dtor should be virtual if some other class is going to inherit
+					// for this class)
+					// generally dtors are called implicitly

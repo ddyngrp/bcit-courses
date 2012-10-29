@@ -1,0 +1,7 @@
+bin\Debug\Console.exe
+bin\Debug\Console.pdb
+bin\Debug\AssemblyDocumenter.dll
+bin\Debug\AssemblyDocumenter.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Console.exe
+obj\Debug\Console.pdb

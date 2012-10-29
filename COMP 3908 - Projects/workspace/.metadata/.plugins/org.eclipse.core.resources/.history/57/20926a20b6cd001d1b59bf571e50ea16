@@ -1,0 +1,17 @@
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		PostMessage pm = new PostMessage();
+		
+		String data = "R0lGODlhKAAeAIAAAHZ+5gAAACwAAAAAKAAeAAACIYSPqcvtD6OctNqLs968+w+G4kiW5omm6sq2" +
+			"7gvH8kxzBQA7";
+		
+		pm.PostNewMessage(1234567890, "Test Message", "Message contents test");
+		//pm.PostMsgAttachment(1234567890, 0, data, "gif-image");
+	}
+
+}

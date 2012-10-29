@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+xmlns="http://www.w3schools.com">
+
+<!-- definition of simple elements -->
+<xs:element name="Amount" type="xs:positiveInteger"/>
+
+<!-- definition of complex elements -->
+<xs:element name="WorldRiceTrade">
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="Exports" maxOccurs="1" minOccurs="1"/>
+   <xs:element ref="Imports" maxOccurs="1" minOccurs="1"/>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="Exports">
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="Year" maxOccurs="unbounded"/>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="Imports">
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="Year" maxOccurs="unbounded"/>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="Year">
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="Country" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attribute name="date" type="xs:positiveInteger"/>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="Country">
+ <xs:complexType>
+  <xs:sequence>
+   <xs:element ref="Amount" maxOccurs="1" minOccurs="1"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string"/>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema>

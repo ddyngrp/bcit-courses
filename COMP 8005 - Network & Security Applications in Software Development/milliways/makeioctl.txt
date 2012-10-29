@@ -1,0 +1,14 @@
+# make for ioctl
+
+C=gcc
+
+ifinfo: ifinfo.o getinfo.o
+	gcc ifinfo.o getinfo.o -o ifinfo
+
+ifinfo.o: ifinfo.c
+	gcc -O -c ifinfo.c
+
+getinfo.o: getinfo.c
+	gcc -O -c getinfo.c
+
+

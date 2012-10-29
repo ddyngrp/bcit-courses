@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extenders", "Extenders.csproj", "{679C8EC0-2D3B-4B3C-A9F8-C78C8A6EA19E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtenderLib", "..\ExtenderLib\ExtenderLib.csproj", "{9C865752-C5AB-4B77-A44B-7A6452BE6C61}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{679C8EC0-2D3B-4B3C-A9F8-C78C8A6EA19E}.Debug.ActiveCfg = Debug|.NET
+		{679C8EC0-2D3B-4B3C-A9F8-C78C8A6EA19E}.Debug.Build.0 = Debug|.NET
+		{679C8EC0-2D3B-4B3C-A9F8-C78C8A6EA19E}.Release.ActiveCfg = Release|.NET
+		{679C8EC0-2D3B-4B3C-A9F8-C78C8A6EA19E}.Release.Build.0 = Release|.NET
+		{9C865752-C5AB-4B77-A44B-7A6452BE6C61}.Debug.ActiveCfg = Debug|.NET
+		{9C865752-C5AB-4B77-A44B-7A6452BE6C61}.Debug.Build.0 = Debug|.NET
+		{9C865752-C5AB-4B77-A44B-7A6452BE6C61}.Release.ActiveCfg = Release|.NET
+		{9C865752-C5AB-4B77-A44B-7A6452BE6C61}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

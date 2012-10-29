@@ -1,0 +1,9 @@
+MIDlet-Name: M_CameraStream_Prj
+MIDlet-Version: 0.0
+MIDlet-Vendor: <unknown>
+MIDlet-Jar-URL: M_CameraStream_Prj.jar
+MIDlet-Jar-Size: 0
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-1: ,,
+RIM-MIDlet-Flags-1: 0

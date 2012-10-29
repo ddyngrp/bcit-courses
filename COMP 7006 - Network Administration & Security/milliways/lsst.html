@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- || Jay Laxmi Mata Dee || --><!-- Last Updates : Thu., April- 11, 2002 06:18:30 PM (IST) <br> -->
+  <title>Linux Shell Scripting Tutorial - A Beginner's handbook</title>
+</head>
+	 	 	
+<body>
+<table width="100%" border="0" cellspacing="1" cellpadding="1">
+<!--Google Top Ad BEGIN-->
+<script type="text/javascript"><!--
+google_ad_client = "pub-9961351994700795";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_color_border = "A8DDA0";
+google_color_bg = "EBFFED";
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = "6F6F6F";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script> 
+
+<!--Google Top Ad END-->
+  <tbody>
+    <tr>
+      <td width="76%">
+      <h1>Linux Shell Scripting Tutorial v1.05r3<br>
+A Beginner's handbook</h1>
+      <p><a href="aboutthisdoc.html">Copyright</a> &copy; 1999-2002 by
+Vivek G. Gite &lt;<a href="mailto:vivek@nixcraft.com">vivek@nixcraft.com</a>&gt;</p>
+      <p><a href="http://www.nixcraft.com/"><img
+ src="images/nixcraftlogo.gif" width="353" height="54" border="1"
+ alt="nixCraft Logo :: Next generation *nix services"></a><br>
+(Formally know as vivek-tech.com)</p>
+      </td>
+      <td width="24%">
+      <table width="100%" border="5" cellspacing="1" cellpadding="1"
+ align="center">
+        <tbody>
+          <tr>
+            <td height="153">
+            <div align="center"><a href="javascript:;"
+ onclick="MM_openBrWindow('main-page.html','mainpagewindow','width=470,height=450')"><img
+ src="images/Book-Main%20Page200x190.jpg" width="200" height="190"
+ border="0" alt="Linux Shell Scripting Tutorial - A Beginner's handbook"></a></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3><b>Table of Contents</b></h3>
+<dl>
+  <dt><b>Chapter 1: <a href="ch01.html">Quick Introduction to Linux </a></b></dt>
+  <dd><a href="ch01sec01.html"> What Linux is?</a><br>
+    <a href="ch01sec02.html">Who developed the Linux?</a><br>
+    <a href="ch01sec03.html">How to get Linux?</a><br>
+    <a href="ch01sec04.html">How to Install Linux</a><br>
+    <a href="ch01sec05.html">Where I can use Linux?</a><br>
+    <a href="ch01sec06.html">What Kernel Is?</a><br>
+    <a href="ch01sec07.html">What is Linux Shell?</a><br>
+    <a href="ch01sec08.html">How to use Shell</a><br>
+    <a href="ch01sec09.html">What is Shell Script ?</a><br>
+    <a href="ch01sec10.html">Why to Write Shell Script ?</a><br>
+    <a href="ch01sec11.html">More on Shell...</a></dd>
+  <dt><b>Chapter 2: <a href="ch02.html">Getting started with Shell
+Programming</a></b></dt>
+  <dd><a href="ch02sec01.html">How to write shell script</a><br>
+    <a href="ch02sec02.html">Variables in shell</a><br>
+    <a href="ch02sec03.html">How to define User defined variables (UDV) </a><br>
+    <a href="ch02sec04.html">Rules for Naming variable name (Both UDV
+and System Variable)</a><br>
+    <a href="ch02sec05.html">How to print or access value of UDV (User
+defined variables)</a><br>
+    <a href="ch02sec06.html">echo Command</a><br>
+    <a href="ch02sec07.html">Shell Arithmetic</a><br>
+    <a href="ch02sec08.html">More about Quotes</a><br>
+    <a href="ch02sec09.html">Exit Status</a><br>
+    <a href="ch02sec10.html">The read Statement </a><br>
+    <a href="ch02sec11.html">Wild cards (Filename Shorthand or meta
+Characters) </a><br>
+    <a href="ch02sec12.html">More commands on one command line</a><br>
+    <a href="ch02sec13.html">Command Line Processing</a><br>
+    <a href="ch02sec14.html">Why Command Line arguments required</a><br>
+    <a href="ch02sec15.html">Redirection of Standard output/input i.e.
+Input - Output redirection</a><br>
+    <a href="ch02sec16.html">Pipes</a><br>
+    <a href="ch02sec17.html">Filter</a><br>
+    <a href="ch02sec18.html">What is Processes</a><br>
+    <a href="ch02sec19.html">Why Process required</a><br>
+    <a href="ch02sec20.html">Linux Command(s) Related with Process</a></dd>
+  <dt><b> Chapter 3: <a href="ch03.html">Shells (bash) structured
+Language Constructs </a></b></dt>
+  <dd> <a href="ch03sec01.html">Decision making in shell script ( i.e.
+if command)</a><br>
+    <a href="ch03sec02.html">test command or [ expr ]</a><br>
+    <a href="ch03sec03.html">if...else...fi</a><br>
+    <a href="ch03sec03.html#nestedifelseif">Nested ifs</a><br>
+    <a href="ch03sec04.html">Multilevel if-then-else</a><br>
+    <a href="ch03sec05.html">Loops in Shell Scripts</a><br>
+    <a href="ch03sec06.html">for loop</a><br>
+    <a href="ch03sec06.html#nestedforloop">Nested for loop</a><br>
+    <a href="ch03sec07.html">while loop</a><br>
+    <a href="ch03sec08.html">The case Statement</a><br>
+    <a href="ch03sec09.html">How to de-bug the shell script? </a></dd>
+  <dt><b>Chapter 4: <a href="ch04.html">Advanced Shell Scripting
+Commands</a></b></dt>
+  <dd><a href="ch04sec1.html">/dev/null - to send unwanted output of
+program </a><br>
+    <a href="ch04sec2.html">Local and Global Shell variable (export
+command)</a><br>
+    <a href="ch04sec3.html">Conditional execution i.e. &amp;&amp; and
+|| </a><br>
+    <a href="ch04sec4.html">I/O Redirection and file descriptors</a><br>
+    <a href="ch04sec5.html">Functions</a><br>
+    <a href="ch04sec6.html">User Interface and dialog utility-Part I</a><br>
+    <a href="ch04sec7.html">User Interface and dialog utility-Part II</a><br>
+    <a href="ch04sec8.html">Message Box (msgbox) using dialog utility </a><br>
+    <a href="ch04sec9.html">Confirmation Box (yesno box) using dialog
+utility</a><br>
+    <a href="ch04sec10.html">Input (inputbox) using dialog utility</a><br>
+    <a href="ch04sec11.html">User Interface using dialog Utility -
+Putting it all together</a><br>
+    <a href="ch04sec12.html">trap command</a><br>
+    <a href="ch04sec14.html">The shift Command</a><br>
+    <a href="ch04sec13.html">getopts command</a></dd>
+  <dt><b>Chapter 5: <a href="ch05.html">Essential Utilities for Power
+User</a></b></dt>
+  <dd><a href="ch05sec01.html">Preparing for Quick Tour of essential
+utilities</a><br>
+    <a href="ch05sec02.html">Selecting portion of a file using cut
+utility</a><br>
+    <a href="ch05sec03.html">Putting lines together using paste utility</a><br>
+    <a href="ch05sec04.html">The join utility</a><br>
+    <a href="ch05sec05.html">Translating range of characters using tr
+utility</a><br>
+    <a href="ch05sec06.html">Data manipulation using awk utility</a><br>
+    <a href="ch05sec07.html">sed utility - Editing file without using
+editor</a><br>
+    <a href="ch05sec08.html">Removing duplicate lines from text
+database file using uniq utility</a><br>
+    <a href="ch05sec09.html">Finding matching pattern using grep utility</a></dd>
+  <dt><b>Chapter 6: <a href="ch06.html">Learning expressions with ex </a></b></dt>
+  <dd><a href="ch06sec01.html">Getting started with ex</a><br>
+    <a href="ch06sec02.html">Printing text on-screen</a><br>
+    <a href="ch06sec03.html">Deleting lines</a><br>
+    <a href="ch06sec04.html">Coping lines</a><br>
+    <a href="ch06sec05.html">Searching the words</a><br>
+    <a href="ch06sec06.html">Find and Replace (Substituting regular
+expression)</a><br>
+    <a href="ch06sec07.html">Replacing word with confirmation from user</a><br>
+    <a href="ch06sec08.html">Finding words</a><br>
+    <a href="ch06sec09.html">Using range of characters in regular
+expressions</a><br>
+    <a href="ch06sec10.html">Using &amp; as Special replacement
+character</a><br>
+    <a href="ch06sec11.html">Converting lowercase character to uppercase</a></dd>
+  <dt><b>Chapter 7: <a href="ch07.html">awk Revisited</a></b></dt>
+  <dd><a href="ch07sec01.html">Getting Starting with awk</a><br>
+    <a href="ch07sec02.html">Predefined variables of awk </a><br>
+    <a href="ch07sec03.html">Doing arithmetic with awk</a><br>
+    <a href="ch07sec04.html">User Defined variables in awk</a><br>
+    <a href="ch07sec05.html">Use of printf statement</a><br>
+    <a href="ch07sec06.html">Use of Format Specification Code</a><br>
+    <a href="ch07sec07.html">if condition in awk</a><br>
+    <a href="ch07sec08.html">Loops in awk</a><br>
+    <a href="ch07sec09.html">Real life examples in awk</a><br>
+    <a href="ch07sec10.html">awk miscellaneous</a><br>
+    <a href="ch07sec11.html">sed - Quick Introduction</a><br>
+    <a href="ch07sec12.html">Redirecting the output of sed command</a><br>
+    <a href="ch07sec13.html">How to write sed scripts?</a><br>
+    <a href="ch07sec14.html">More examples of sed</a></dd>
+  <dt><b>Chapter 8: <a href="ch08.html">Examples of Shell Scripts</a> </b></dt>
+  <dd>Logic Development:<br>
+    <a href="ch08.html#q7">Shell script to print given numbers sum of
+all digit</a><br>
+    <a href="ch08.html#q13">Shell script to print contains of file from
+given line number to next given number of lines</a><br>
+    <a href="ch08.html#q15">Shell script to say Good
+morning/Afternoon/Evening as you log in to system</a><br>
+    <a href="scripts/leap">Shell script to find whether entered year is
+Leap or not</a><br>
+    <a href="scripts/sortA">Sort the given five number in ascending
+order</a> (use of array)<br>
+Command line (args) handling:<br>
+    <a href="ch08.html#q1">Adding 2 nos. suppiled as command line args</a><br>
+    <a href="scripts/calavg">Calculating average of given numbers on
+command line args</a><br>
+    <a href="ch08.html#q2">Finding out biggest number from given three
+nos suppiled as command line args</a><br>
+    <a href="ch08.html#q14">Shell script to implement getopts statement</a>.<br>
+    <a href="ch08.html#q4">Basic math Calculator</a> (case statement)<br>
+Loops using while &amp; for loop:<br>
+    <a href="ch08.html#q3">Print nos. as 5,4,3,2,1 using while loop </a><br>
+    <a href="ch08.html#q20">Printing the patterns using for loop.</a><br>
+Arithmetic in shell scripting:<br>
+    <a href="ch08.html#q10">Performing real number calculation in shell
+script</a><br>
+    <a href="scripts/dec2hex">Converting decimal number to hexadecimal
+number</a><br>
+    <a href="scripts/fact">Calculating factorial of given number</a><br>
+File handling:<br>
+    <a href="ch08.html#q11">Shell script to determine whether given
+file exist or not.</a><br>
+Screen handling/echo command with escape sequence code:<br>
+    <a href="ch08.html#q16">Shell script to print "Hello World"
+message, in Bold, Blink effect, and in different colors like red, brown
+etc.</a><br>
+Background process implementation:<br>
+    <a href="ch08.html#q17">Digital clock using shell script</a><br>
+User interface and Functions in shell script:<br>
+    <a href="ch08.html#q18">Shell script to implements menu based system</a>.<br>
+System Administration:<br>
+    <a href="ch08.html#q5">Getting more information about your working
+environment through shell script</a><br>
+    <a href="ch08.html#q19">Shell script to gathered useful system
+information such as CPU, disks, Ram and your environment etc</a>.<br>
+    <a href="scripts/AddDomain">Shell script to add DNS Entery to BIND
+Database with default Nameservers, Mail Servers (MX) and host </a><br>
+Integrating awk script with shell script:<br>
+    <a href="ch08.html#q21">Script to convert file names from UPPERCASE
+to lowercase file names or vice versa. </a></dd>
+  <dt><b>Chapter 9: <a href="ch09.html">Other Resources</a></b></dt>
+  <dd><a href="appa.html">Appendix - A</a> : Linux File Server Tutorial
+(LFST) version b0.1 Rev. 2<br>
+    <a href="http://www.nixcraft.com/docs/">Appendix - B</a> : Linux
+Command Reference (LCR)<br>
+    <a href="aboutauth.html">About the author</a><br>
+    <a href="aboutthisdoc.html">About this Document</a> </dd>
+</dl>
+<div align="center">
+<center> </center>
+</div>
+<table width="100%" border="0" cellspacing="1" cellpadding="1">
+  <tbody>
+    <tr>
+      <td colspan="3">
+      <hr align="center"></td>
+    </tr>
+    <tr>
+      <td width="37%"><br>
+      </td>
+      <td width="30%">
+      <div align="center"><a href="http://www.nixcraft.com/docs/">Home</a></div>
+      </td>
+      <td width="33%">
+      <div align="right"><a href="ch01.html">Next</a></div>
+      </td>
+    </tr>
+    <tr>
+      <td width="37%"><br>
+      </td>
+      <td width="30%">
+      <div align="center"><a href="index.html">Up</a></div>
+      </td>
+      <td width="33%">
+      <div align="right">Quick Introduction to Linux </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

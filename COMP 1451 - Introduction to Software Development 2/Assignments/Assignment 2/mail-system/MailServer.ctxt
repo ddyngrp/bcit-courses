@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=MailServer()
+comment0.text=\nConstruct\ a\ mail\ server.\n\n
+comment1.params=who
+comment1.target=int\ howManyMailItems(String)
+comment1.text=\nReturn\ how\ many\ mail\ items\ are\ waiting\ for\ a\ user.\n@param\ who\ The\ user\ to\ check\ for.\n@return\ How\ many\ items\ are\ waiting.\n\n
+comment2.params=who
+comment2.target=MailItem\ getNextMailItem(String)
+comment2.text=\nReturn\ the\ next\ mail\ item\ for\ a\ user\ or\ null\ if\ there\nare\ none.\n@param\ who\ The\ user\ requesting\ their\ next\ item.\n@return\ The\ user's\ next\ item.\n\n
+comment3.params=item
+comment3.target=void\ post(MailItem)
+comment3.text=\nAdd\ the\ given\ mail\ item\ to\ the\ message\ list.\n@param\ item\ The\ mail\ item\ to\ be\ stored\ on\ the\ server.\n\n
+comment4.params=string
+comment4.target=boolean\ spamChecker(String)
+comment4.text=\nReturn\ true\ of\ the\ string\ contains\ any\ of\ the\ words\nwithin\ the\ spamWords\ array.\n\n@param\ string\ a\ string\ of\ any\ given\ length\n@return\ true\ or\ false\ if\ the\ string\ contains\ a\ spamWord\n\n
+comment5.target=void\ printAllMessages()
+comment5.text=\nIterates\ through\ all\ the\ users,\ prints\ out\ each\ user\ name,\ and\ \nprints\ out\ all\ the\ emails\ associated\ with\ that\ user.\n\n
+comment6.params=string
+comment6.target=String\ firstToUpper(String)
+comment6.text=\nConvert\ the\ first\ letter\ in\ any\ string\ to\ uppercase\nas\ well\ as\ the\ first\ letter\ after\ any\ space.\n\n@param\ string\ a\ string\ of\ any\ given\ length\n@return\ the\ converted\ string\n\n
+numComments=7

@@ -1,0 +1,33 @@
+#Fri Aug 07 02:14:34 PDT 2009
+content_assist_proposals_foreground=0,0,0
+spelling_locale=en_US
+spelling_locale_initialized=true
+spelling_ignore_urls=true
+spelling_user_dictionary=/Applications/eclipse/User Dictionary.txt
+content_assist_disabled_computers=org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000
+spelling_ignore_non_letters=true
+org.eclipse.jdt.ui.text.templates_migrated=true
+spelling_ignore_ampersand_in_properties=true
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+org.eclipse.jface.textfont=1|Monaco|11.0|0|COCOA|1|;
+tabWidthPropagated=true
+org.eclipse.jdt.ui.editor.tab.width=
+spelling_ignore_single_letters=true
+fontPropagated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+proposalOrderMigrated=true
+spelling_user_dictionary_encoding=
+spelling_ignore_mixed=true
+spelling_ignore_java_strings=true
+org.eclipse.jdt.ui.formatterprofiles.version=11
+content_assist_proposals_background=255,255,255
+content_assist_number_of_computers=16
+spelling_ignore_digits=true
+spelling_ignore_upper=true
+useQuickDiffPrefPage=true
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8"?><history maxLHS\="100" maxRHS\="10"/>
+spelling_ignore_sentence=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true

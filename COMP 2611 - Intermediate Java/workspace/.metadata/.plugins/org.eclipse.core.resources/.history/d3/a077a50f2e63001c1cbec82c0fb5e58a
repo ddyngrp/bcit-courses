@@ -1,0 +1,22 @@
+/**
+ * Project: Hello
+ * File: Hello.java
+ * Date: 14-Sep-07
+ * Time: 6:48:42 PM
+ */
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class Hello {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

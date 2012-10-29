@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=theBreed\ theWeightKG
+comment0.target=Animals(String,\ double)
+comment1.params=theBreed
+comment1.target=void\ setBreed(String)
+comment2.params=theWeightKG
+comment2.target=void\ setWeightKG(double)
+comment3.target=String\ getBreed()
+comment4.target=double\ getWeightKG()
+comment5.target=String\ toString()
+numComments=6

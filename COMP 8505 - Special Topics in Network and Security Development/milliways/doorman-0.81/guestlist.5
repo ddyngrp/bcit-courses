@@ -1,0 +1,130 @@
+.\" Copyright (c) 2003-2005 Bruce Ward <bward2@users.sourceforge.net>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111,
+.\" USA.
+.\"
+.\"  ---------------------------------------------------------------
+.\"   Oct.8  2003 :  JBW :  Initial version
+.\"   Jun 29 2004 :  JBW :  Updated for v0.5 & Added acknowledgement
+.\"   Aug 14 2005 :  JBW :  No changes from doorman V0.8
+.\"  ---------------------------------------------------------------
+.\"
+
+.TH guestlist  5 "Aug 14 2005" "Doorman, V0.81" "Doorman & Knocker"
+
+.SH  NAME
+.B guestlist
+\- The secondary
+.I doormand
+configuration file
+.SH DESCRIPTION
+The doorman daemon
+.I doormand
+requires a list of permitted "guests", or groups.
+There must be one record per group, with the following order:
+.br
+
+<groupname> <secret> <port1> <port2> .. <address1> <address2> .. 
+
+Records may span multiple lines.  The groupname MUST begin on
+the first character of a line.  Continuation lines MUST 
+be preceeded by at least one character of whitespace (tabs or spaces).
+Tabs and space characters may be freely used in any order.
+.br
+
+Any part of a line following a '#' character is
+ignored, and may be used as a comment.  Blank lines are ignored.
+.br
+
+This file MUST be readable and writeable by root, only.
+.br
+
+.br
+.HP 4
+.B groupname
+\- The name which is sent by a
+.I knock
+client to identify itself.  Group names may be up to 32 characters in
+length.  Both group names and secrets may contain any alphanumeric character,
+as well as the characters:  !@#$%^&*()_-+=|\[]{};:'"<>,?/
+
+Note that whitespace and the "." character (period, or decimal point)
+are not permitted.
+.br
+.HP 4
+.B secret 
+\ - an authenticating password.  This is sent by the client as an MD5 hash
+salted with the client's IP address and the rounded seconds-of-epoch.
+.br
+
+Secrets may be up to 64 characters in length, and use the same character 
+set as group names. (Remember: -no- periods!)
+.br
+
+The existence of this secret in plaintext on both the client and server
+machines is the reason this file, and the client's
+.I ~/.knockcf
+file, must be readable only by their users.   Under NO circumstances should
+it correspond to anything in any 'passwd' file anywhere.
+.br
+.HP 4
+.B port1 port2 ..
+\- a whitespace-delimited list of the ports to which the group may connect.
+A port may be specified as a number or a service name;  that is, "22" and "ssh"
+are equivalent.  Service names are case sensitive.
+.br
+.HP 4
+.B address1 address2 ..
+\- a whitespace-delimited list of IP addresses or hostnames from which the
+group may connect.  Addresses may be unique, or expressed as ranges by means
+of an "/nbits" modifier.  Using a hostname to specify a range is permitted.
+There must be no whitespace before or after the "/" character.
+.br
+
+.PP
+.B An example record:
+.br
+.nf
+group187  b1g%Hairy_[seCret}!                    # groupname & secret
+          ssh 23                                 # allowed ports
+          1.2.3.4/16   5.6.7.8  x.myplace.org/24 # allowed addresses
+.fi
+.br
+
+.SH SEE ALSO
+.BR knock (1),
+.BR knockcf (5),
+.BR doormand (8),
+.BR doormand.cf (5)
+
+.SH ACKNOWLEDGEMENT
+.BR doormand
+and
+.BR knock
+are an implementation of an original idea by
+.TH doormand.cf  5 "Aug 14, 2005" "Doorman, V0.81" "Doorman & Knocker"
+.B Martin Krzywinski.
+See his site at http://www.portknocking.org
+
+.SH COPYRIGHT
+Copyright (c) 2003-2005, J.B.Ward
+.br
+<bward2@users.sourceforge.net>
+

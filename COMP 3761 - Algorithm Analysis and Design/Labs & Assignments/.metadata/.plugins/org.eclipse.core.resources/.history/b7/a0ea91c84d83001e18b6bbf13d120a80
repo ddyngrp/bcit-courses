@@ -1,0 +1,69 @@
+import java.util.Calendar;
+
+public class Quicksort {
+
+	public Quicksort() {	
+	}
+	
+	public void Sort(int[] input) {
+		this.Sort(input, 0, input.length - 1);
+	}
+	
+	public void Sort(int[] input, int left, int right) {
+		if (right <= left) {
+			return;
+		}
+		else {
+			int pivot = this.Partition(input, left, right);
+			this.Sort(input, left, pivot - 1);
+			this.Sort(input, pivot + 1, right);
+		}
+	}
+	
+	private int Partition(int[] input, int left, int right) {
+        int i = left - 1;
+        int j = right;
+        while (true) {
+            while (input[++i] < input[right])
+                ; // do nothing, just iterate
+            while (input[--j] > input[right])
+                if (j == left) {
+                	break;
+                }
+            if (i >= j) {
+            	break;            
+            }
+            Swap(input, i, j);
+        }
+        exch(a, i, right);
+        return i;
+	}
+	
+	private void Swap(int[] input, int xPos, int yPos) {
+		int xVal = input[xPos];
+		
+		input[xPos] = input[yPos];
+		input[yPos] = xVal;
+	}
+	
+	public void RunTests(int runTimes) {
+		ArrayUtils au = new ArrayUtils();
+		
+		int[] test = au.CreateRandom(100, 1, 100);
+		
+		System.out.println(au.toString(test));
+		
+		TestMerge(test);
+		
+		System.out.println(au.toString(test));		
+	}
+	
+	private double TestMerge(int[] input) {
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		this.Sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

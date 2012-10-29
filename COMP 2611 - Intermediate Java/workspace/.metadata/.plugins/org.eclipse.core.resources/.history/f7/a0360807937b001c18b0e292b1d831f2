@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Launching HelloJWS</title>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550" summary="layout">
+<tr>
+<td align="left" valign="center">
+<a href="compile.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing
+</font>
+
+<h2>
+Launching HelloJWS 
+</h2>
+<blockquote>
+To test whether your browser can launch an application using Java Web Start,
+click the following link:
+
+<blockquote>
+<a href="http://java.sun.com/docs/books/tutorialJWS/uiswing/14start/example-1dot4/HelloJWS.jnlp">Launch Java Web Start</a>
+</blockquote>
+
+Information on what you should see
+is in
+<a href="compile.html#jws" target="_top">
+Compiling and Running Swing Programs</a>.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="">
+<br>
+<table width="550" summary="layout">
+<tr>
+<td align="left" valign="center">
+<a href="compile.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+
+</tr>
+</table>
+<p>
+<font size="-1">
+<a href="../../information/copyright.html">Copyright</a>
+1995-2004 Sun Microsystems, Inc.  All rights reserved.
+</font>
+</p>
+</body>
+</html>

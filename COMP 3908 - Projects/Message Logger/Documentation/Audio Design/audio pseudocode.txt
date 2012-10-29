@@ -1,0 +1,16 @@
+Audio:
+	Start Recording:
+		Start the player object to record sound
+
+	Stop Recording:
+		Stop the player object from recording sound
+		Store audio file locally
+
+	Playback:
+		Playback the locally stored audio file
+
+	Save:
+		Save locally stored audio file into the media controller
+
+	Cancel:
+		Return back to the main menu

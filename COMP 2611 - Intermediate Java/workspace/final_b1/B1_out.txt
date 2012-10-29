@@ -1,0 +1,3 @@
+   Joe    Clark   66
+Lester  Pearson  108
+   Kim Campbell   58

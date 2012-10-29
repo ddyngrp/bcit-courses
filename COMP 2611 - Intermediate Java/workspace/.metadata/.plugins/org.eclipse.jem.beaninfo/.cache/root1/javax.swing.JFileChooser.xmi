@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.jem.internal.beaninfo.beaninfo="http:///org/eclipse/jem/internal/beaninfo/beaninfo.ecore" xmlns:org.eclipse.jem.java="java.xmi">
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="org.eclipse.jem.java:JavaClass java:/javax.swing#JFileChooser">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.0"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="eStructuralFeatures">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.2 #//@objectsToAttach.3 #//@objectsToAttach.4 #//@objectsToAttach.5 #//@objectsToAttach.6 #//@objectsToAttach.7 #//@objectsToAttach.8 #//@objectsToAttach.9 #//@objectsToAttach.10 #//@objectsToAttach.11 #//@objectsToAttach.12 #//@objectsToAttach.13 #//@objectsToAttach.14 #//@objectsToAttach.15 #//@objectsToAttach.16 #//@objectsToAttach.17 #//@objectsToAttach.18 #//@objectsToAttach.19 #//@objectsToAttach.20 #//@objectsToAttach.21 #//@objectsToAttach.22 #//@objectsToAttach.23 #//@objectsToAttach.24 #//@objectsToAttach.25 #//@objectsToAttach.26 #//@objectsToAttach.27 #//@objectsToAttach.28"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="events">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.29"/>
+    </value>
+  </objectChanges>
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="ecore:EReference java:/javax.swing#JFileChooser/approveButtonMnemonic">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.1"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="name" dataValue="approveButtonMnemonic"/>
+    <value xsi:type="change:FeatureChange" featureName="transient" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="volatile" dataValue="false"/>
+    <value xsi:type="change:FeatureChange" featureName="changeable" dataValue="true"/>
+    <value xsi:type="change:FeatureChange" featureName="eType" referenceValue="org.eclipse.jem.java:JavaDataType java:/#int"/>
+    <value xsi:type="change:FeatureChange" featureName="lowerBound" dataValue="0"/>
+    <value xsi:type="change:FeatureChange" featureName="upperBound" dataValue="1"/>
+  </objectChanges>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanDecorator" implicitlySetBits="2161727821137838094" implicitDecoratorFlag="IMPLICIT_DECORATOR" mergeSuperMethods="false">
+    <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="ICON_COLOR_32x32" value="implicit,&quot;icons/dialog32.gif&quot;"/>
+    <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="ICON_COLOR_16x16" value="implicit,&quot;icons/dialog16.gif&quot;"/>
+    <notInheritedPropertyNames>background</notInheritedPropertyNames>
+    <notInheritedPropertyNames>font</notInheritedPropertyNames>
+    <notInheritedPropertyNames>foreground</notInheritedPropertyNames>
+    <notInheritedPropertyNames>layout</notInheritedPropertyNames>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getApproveButtonMnemonic(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setApproveButtonMnemonic(int"/>
+  <objectsToAttach xsi:type="ecore:EReference" name="UI" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.plaf#FileChooserUI" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getUI("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="UIClassID" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getUIClassID("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="acceptAllFileFilter" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.filechooser#FileFilter" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getAcceptAllFileFilter("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="acceptAllFileFilterUsed" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.isAcceptAllFileFilterUsed(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setAcceptAllFileFilterUsed(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="accessibleContext" eType="org.eclipse.jem.java:JavaClass java:/javax.accessibility#AccessibleContext" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getAccessibleContext("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="accessory" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#JComponent" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getAccessory(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setAccessory(javax.swing.JComponent"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="approveButtonText" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getApproveButtonText(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setApproveButtonText(java.lang.String"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="approveButtonToolTipText" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getApproveButtonToolTipText(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setApproveButtonToolTipText(java.lang.String"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="background" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Color" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Background color of the component" hidden="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getBackground(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setBackground(java.awt.Color"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="choosableFileFilters" eType="org.eclipse.jem.java:ArrayType java:/javax.swing.filechooser#FileFilter[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getChoosableFileFilters("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="controlButtonsAreShown" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getControlButtonsAreShown(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setControlButtonsAreShown(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="currentDirectory" eType="org.eclipse.jem.java:JavaClass java:/java.io#File" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getCurrentDirectory(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setCurrentDirectory(java.io.File"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="dialogTitle" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getDialogTitle(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setDialogTitle(java.lang.String"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="dialogType" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2161727821137838140" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getDialogType(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setDialogType(int">
+      <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="enumerationValues" value="implicit,[9]{&quot;Open&quot;,0,&quot;javax.swing.JFileChooser.OPEN_DIALOG&quot;,&quot;Save&quot;,1,&quot;javax.swing.JFileChooser.SAVE_DIALOG&quot;,&quot;Custom&quot;,2,&quot;javax.swing.JFileChooser.CUSTOM_DIALOG&quot;}"/>
+    </eAnnotations>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="directorySelectionEnabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.isDirectorySelectionEnabled("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileFilter" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.filechooser#FileFilter" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getFileFilter(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setFileFilter(javax.swing.filechooser.FileFilter"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileHidingEnabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.isFileHidingEnabled(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setFileHidingEnabled(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileSelectionEnabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982260" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.isFileSelectionEnabled("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileSelectionMode" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2161727821137838140" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getFileSelectionMode(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setFileSelectionMode(int">
+      <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="enumerationValues" value="implicit,[9]{&quot;Files Only&quot;,0,&quot;javax.swing.JFileChooser.OPEN_DIALOG&quot;,&quot;Directories Only&quot;,1,&quot;javax.swing.JFileChooser.DIRECTORIES_ONLY&quot;,&quot;Files and Directories&quot;,2,&quot;javax.swing.JFileChooser.FILES_AND_DIRECTORIES&quot;}"/>
+    </eAnnotations>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileSystemView" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.filechooser#FileSystemView" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getFileSystemView(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setFileSystemView(javax.swing.filechooser.FileSystemView"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="fileView" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.filechooser#FileView" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" expert="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getFileView(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setFileView(javax.swing.filechooser.FileView"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="font" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Font" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Font of component" hidden="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getFont(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setFont(java.awt.Font"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="foreground" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Color" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Foreground color" hidden="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.getForeground(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Component.setForeground(java.awt.Color"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="layout" eType="org.eclipse.jem.java:JavaClass java:/java.awt#LayoutManager" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Layout for container" hidden="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/java.awt#Container.getLayout(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Container.setLayout(java.awt.LayoutManager"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="multiSelectionEnabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.isMultiSelectionEnabled(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setMultiSelectionEnabled(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="selectedFile" eType="org.eclipse.jem.java:JavaClass java:/java.io#File" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getSelectedFile(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setSelectedFile(java.io.File"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="selectedFiles" eType="org.eclipse.jem.java:ArrayType java:/java.io#File[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" hidden="true" implicitlySetBits="2017612633061982268" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.getSelectedFiles(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.setSelectedFiles(java.io.File[]"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="action">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" displayName="Action" shortDescription="action" implicitlySetBits="-2594073385365405571" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" inDefaultEventSet="true" addListenerMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.addActionListener(java.awt.event.ActionListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#ActionListener" removeListenerMethod="org.eclipse.jem.java:Method java:/javax.swing#JFileChooser.removeActionListener(java.awt.event.ActionListener">
+      <serListMthd xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:MethodProxy" name="actionPerformed" method="org.eclipse.jem.java:Method java:/java.awt.event#ActionListener.actionPerformed(java.awt.event.ActionEvent">
+        <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:MethodDecorator" implicitlySetBits="2017612633061982209">
+          <serParmDesc xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:ParameterDecorator" implicitlySetBits="2017612633061982209" name="ActionEvent"/>
+        </eAnnotations>
+      </serListMthd>
+    </eAnnotations>
+  </objectsToAttach>
+</change:ChangeDescription>

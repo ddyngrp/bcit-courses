@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="CommitDialog.location.y" value="22"/>
+	<item key="CommitDialog.weights.1" value="444"/>
+	<item key="CommitDialog.location.x" value="378"/>
+	<item key="CommitDialog.size.x" value="525"/>
+	<item key="CommitDialog.weights.0" value="555"/>
+	<item key="CommitDialog.size.y" value="585"/>
+	<section name="NewLocationWizard">
+	</section>
+</section>

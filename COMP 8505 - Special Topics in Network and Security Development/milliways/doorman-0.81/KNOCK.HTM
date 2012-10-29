@@ -1,0 +1,113 @@
+<html>
+<head></head>
+<body>
+<pre>
+
+knock(1)                Doorman &amp; Knocker                knock(1)
+
+
+
+<b>NAME</b>
+       <b>knock </b>- The port-knock client
+
+<b>SYNOPSIS</b>
+       knock [-h] [-v] [-U] [-t s.s] [-p port] \
+             [-g groupid] [-s secret]  host  service
+
+
+<b>DESCRIPTION</b>
+       "Knock  on  the door"  of a host running the 'doorman' dae
+       mon.  If the conditions outlined below are met, a firewall
+       rule  will be created for a  short time allowing a TCP con
+       nection on the requested port.  If a  connection  is  made
+       within this time, the rule will be left in place until the
+       connection is broken.
+       No reply is made to the knock; success  is  apparent  only
+       when a connection to the requested server has been made.
+
+
+<b>OPTIONS</b>
+       <b>-h </b>    'help'; print a message explaining the options and
+              quit.
+
+       <b>-v </b>    'version'; print the version number and quit.
+
+       <b>-p </b><b>port</b>
+              Override the 'port' value in 'KNOCK.CFG'.  Knock on
+              the specified UDP port.
+
+       <b>-g </b><b>groupid</b>
+              Override the 'group' value in 'KNOCK.CFG'.
+
+       <b>-r </b><b>"program </b><b>arg1 </b><b>arg2..."</b>
+              Override  the  'run'  value in KNOCK.CFG.  Run this
+              program after sending the knock packet.  The  argu­
+              ment list given to the program may include the spe­
+              cial strings %H% and %P%.   '%H%'  substitutes  for
+              the hostname to which the knock is sent; '%P%' sub­
+              stitutes for the portnumber or service name.
+
+              Example:   knock -r"ssh -l  myname  %H%"  abc.what­
+              ever.org ssh
+
+              To avoid running the program specified by the 'run'
+              record, use any of:
+              -r" " , -r' ' , -r0 , -rX , or -rx
+
+       <b>-s </b><b>secret</b>
+              Override the 'secret' value in 'KNOCK.CFG'.
+
+        <b>host </b> the  IP  address or DNS name of the host to which a
+              TCP connection is desired.
+
+        <b>service</b>
+              the port number or  service  name  (as  defined  in
+              /etc/services) of the desired service.
+
+
+<b>CONDITIONS</b>
+       In  order for a knock to succeed, the following conditions
+       must be met:
+
+       1. the groupid must be in the doorman's 'guestlist' file
+
+       2. the secret must match that in the guestlist record  for
+       that group
+
+       3. the IP address of the  client machine's interface  must
+       match  one  of  the  addresses  in  the  guestlist  record
+
+       4. the service requested must be in the guestlist record
+
+       5. A  randomly-chosen  number (called a 'tag') is sent in
+       the knock packet; it must not occur in a list of old  tags
+       kept  by  the  doorman.  It may occasionally happen that a
+       tag is found in the list, and the knock will  fail;  there
+       is  no  other remedy for this but to make another attempt.
+       However, since tags are 32 bits in magnitude, such  occur-
+       rences should be rare.
+
+
+<b>FILES</b>
+       <b>C:\KNOCK.CFG:</b> the configuration file for 'knock'.
+
+
+<b>SEE </b><b>ALSO</b>
+       <b>knockcf(</b>5), <b>doormand(</b>8), <b>doormand.cf(</b>5), <b>guestlist(</b>5)
+
+
+<b>ACKNOWLEDGEMENT</b>
+       <b>doormand </b>and <b>knock </b>are an implementation  of  an  original
+       idea    by   <b>Martin </b>  <b>Krzywinski. </b>   See   his   site   at
+       <a href="http://www.portknocking.org">http://www.portknocking.org</a>
+
+
+<b>COPYRIGHT</b>
+       Copyright (c) 2003-2005, J.B.Ward
+       &lt;bward2@users.sourceforge.net&gt;
+
+
+
+
+Port-knocker, V0.81        Sept 03, 2005                  knock(1)
+</body></html>

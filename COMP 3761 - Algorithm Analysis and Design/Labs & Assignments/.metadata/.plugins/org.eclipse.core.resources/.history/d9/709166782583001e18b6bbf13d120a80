@@ -1,0 +1,19 @@
+import java.util.Calendar;
+import java.util.Random;
+
+
+public class RandIntArray {
+
+	private static int[] MakeRandArray(int size) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = generator.nextInt();
+		}
+		
+		return array;
+	}
+
+}

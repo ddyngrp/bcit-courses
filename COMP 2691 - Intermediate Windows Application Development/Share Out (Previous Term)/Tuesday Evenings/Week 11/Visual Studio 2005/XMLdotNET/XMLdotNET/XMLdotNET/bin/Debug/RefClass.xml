@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<class xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="schema.xsd" 
+	title="Programming XML.NET" company="BCIT" author="Amir Ahani">
+
+	<days total="4" expandable="true">
+		<day id="1">XML Core Classes</day>
+		<day id="2">XML-related Technologies</day>
+		<day id="3">XML and ADO.NET</day>
+		<day id="4">Remoting and Web services</day>
+		<day id="5" optional="true">Miscellaneous and Samples</day>
+	</days>
+</class>

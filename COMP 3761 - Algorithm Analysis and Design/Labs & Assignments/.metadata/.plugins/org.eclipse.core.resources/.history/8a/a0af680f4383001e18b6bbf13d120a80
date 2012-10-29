@@ -1,0 +1,118 @@
+import java.util.Calendar;
+
+public class Mergesort {
+	
+	public Mergesort() {		
+	}
+		
+	public int[] Sort(int[] input) {
+		
+		if (input.length <= 1) {
+		    return input;
+		}
+		else {
+			int[] result = new int[input.length];
+			int[] left = new int[input.length / 2];
+			int[] right = new int[input.length - left.length];
+			
+			// Copy the left & right of the input into the new arrays
+		    System.arraycopy(input, 0, left, 0, left.length);
+		    System.arraycopy(input, left.length, right, 0, right.length);
+		    
+		    left = this.Sort(left);
+		    right = this.Sort(right);
+		    
+		    result = this.Merge(left, right);
+
+		    return result;
+		}
+	}
+	
+	private int[] Merge(int[] left, int[] right) {
+		int[] result = new int[left.length + right.length];
+		int leftIndex = 0;
+		int rightIndex = 0;
+		int resultIndex = 0;
+		
+		while (leftIndex < left.length && rightIndex < right.length) {
+		    if (left[leftIndex] < right[rightIndex]) {
+				result[resultIndex] = left[leftIndex];
+				leftIndex++;
+		    }
+		    else {
+				result[resultIndex] = right[rightIndex];
+				rightIndex++;
+		    }
+		    resultIndex++;
+		}
+		
+		int[] remainder;
+		int remainIndex;
+		
+		if (leftIndex >= left.length) {
+		    remainder = right;
+		    remainIndex = rightIndex;
+		}
+		else {
+		    remainder = left;
+		    remainIndex = leftIndex;
+		}
+
+		for (int i = remainIndex; i < remainder.length; i++) {
+		    result[resultIndex] = remainder[i];
+		    resultIndex++;
+		}
+		
+		return result;
+	}
+	
+	public void RunTests(int runTimes) {
+		ArrayUtils au = new ArrayUtils();
+		
+		// Store time averages & set # of run times
+		double[] avg = new double[12];
+		
+		// Run Mergesort tests
+		System.out.println("Running MergeSort " + runTimes + " times.");
+		for (int i = 0; i < runTimes; i++) {
+			avg[0] += TestMerge(au.CreateRandom(100, 1, 100));
+			avg[1] += TestMerge(au.CreateRandom(1000, 1, 100));
+			avg[2] += TestMerge(au.CreateRandom(10000, 1, 100));
+			avg[3] += TestMerge(au.CreateRandom(100000, 1, 100));
+
+			avg[4] += TestMerge(au.CreateSequential(100));
+			avg[5] += TestMerge(au.CreateSequential(1000));
+			avg[6] += TestMerge(au.CreateSequential(10000));
+			avg[7] += TestMerge(au.CreateSequential(100000));
+			
+			avg[8] += TestMerge(au.CreateDecremental(100));
+			avg[9] += TestMerge(au.CreateDecremental(1000));
+			avg[10] += TestMerge(au.CreateDecremental(10000));
+			avg[11] += TestMerge(au.CreateDecremental(100000));
+		}
+		
+		System.out.println("Random with size n = 10^2: " + (avg[0] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^3: " + (avg[1] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^4: " + (avg[2] / runTimes) + "ms");
+		System.out.println("Random with size n = 10^5: " + (avg[3] / runTimes) + "ms");
+
+		System.out.println("Sequential with size n = 10^2: " + (avg[4] / runTimes) + "ms");
+		System.out.println("Sequential with size n = 10^3: " + (avg[5] / runTimes) + "ms");
+		System.out.println("Sequential with size n = 10^4: " + (avg[6] / runTimes) + "ms");
+		System.out.println("Sequential with size n = 10^5: " + (avg[7] / runTimes) + "ms");
+		
+		System.out.println("Decremental with size n = 10^2: " + (avg[8] / runTimes) + "ms");
+		System.out.println("Decremental with size n = 10^3: " + (avg[9] / runTimes) + "ms");
+		System.out.println("Decremental with size n = 10^4: " + (avg[10] / runTimes) + "ms");
+		System.out.println("Decremental with size n = 10^5: " + (avg[11] / runTimes) + "ms");
+	}
+	
+	private double TestMerge(int[] input) {
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		this.Sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

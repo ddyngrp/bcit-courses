@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE trainlog SYSTEM "etml.dtd">
+
+<trainlog>
+  <session date="11/19/01" type="running" heartrate="158">
+    <duration units="minutes">45</duration>
+    <distance units="miles">5.5</distance>
+    <location>Warner Park</location>
+    <comments>Mid-morning run, a little winded throughout.</comments>
+  </session>
+  <session date="11/21/01" type="cycling" heartrate="153">
+    <duration units="hours">2.5</duration>
+    <distance units="miles">37.0</distance>
+    <location>Natchez Trace Parkway</location>
+    <comments>Hilly ride, felt strong as an ox.</comments>
+  </session>
+  <session date="11/24/01" type="running" heartrate="156">
+    <duration units="hours">1.5</duration>
+    <distance units="miles">8.5</distance>
+    <location>Warner Park</location>
+    <comments>Afternoon run, felt reasonably strong.</comments>
+  </session>
+</trainlog>

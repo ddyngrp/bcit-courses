@@ -1,0 +1,43 @@
+<html><head> 
+
+
+<script type="text/javascript">
+
+	var w = null;
+
+	function openIt()
+	{
+		w = window.open("window2.html", "jason", 
+"height=100,width=400,scrollbars=yes,menubar=no,titlebar=no,resizable=no,status=no");
+
+
+
+		self.focus();		
+	}
+
+	function closeIt()
+	{
+
+		alert(w.document.getElementById('t').value);
+	
+		w.close();
+	}
+
+</script>
+
+
+</head>
+<body>
+
+
+<form action="whatever.com" onsubmit="return validate()";>
+
+<input type="button" id="open"  value="open"  onclick="openIt();">
+<input type="button" id="close" value="close" onclick="closeIt();">
+
+</form>
+
+
+
+
+</body></html>

@@ -1,0 +1,73 @@
+Example BinArray:
+		Unsorted	Sorted
+		   B G C	   B  G  C
+		B1 1 2 3	B1 12 0  0
+		B2 4 5 6	B2 0  0  18
+		B3 7 8 9	B3 0  15 0
+
+		Costs
+		{4+7,1+7,4+7} = {11, 8, 5}
+		{5+8,2+8,2+5} = {13,10, 7}
+		{6+9,3+9,3+6} = {15,12, 9}
+
+		Unsorted	Sorted
+		   B  G  C	   B  G  C
+		B1 5  10 5	B1 0  0  20
+		B2 20 10 5	B2 35 0  0
+		B3 10 20 10	B3 0  40 0
+
+		Costs
+				{30,30,15}
+				{15,30,15}
+				{25,20,10}
+
+inputArray[9] = input;
+BinArray[3][3]
+CostArray[3][3]
+MinPat[] = {0,0,0}
+Bins[] = {R,G,C}
+		    
+// Populate the BinArray with the input
+for i = 0 to (length(inputArray) - 1) {
+	if i < 3
+		BinArray[0][i] = inputArray[i]
+	if i >= 3 and i < 6
+		BinArray[1][i] = inputArray[i]
+	if i >= 6
+		BinArray[2][i] = inputArray[i]
+}
+
+// Calculate the various costs
+for i = 0 to (length(BinArray[]) - 1) {
+	for k = 0 to (length(BinArray[][]) - 1) {
+		if i = 0 then
+			CostArray[i][k] = BinArray[i+1][k] + BinArray[i+2][k]
+		if i = 1 then
+			CostArray[i][k] = BinArray[i-1][k] + BinArray[i+1][k]
+		if i = 2 then
+			CostArray[i][k] = BinArray[i-2][k] + BinArray[i-1][k]
+	}
+}
+
+// first column minimum
+for i = 0 to (length(BinArray[]) - 1) {
+	if CostArray[i][0] < CostArray[MinPat[i][0]]
+		MinPat[i] = i
+}
+
+// second column minimum
+for i = 0 to (length(BinArray[]) - 1) {
+	if CostArray[i][1] < CostArray[MinPat[i][1]] and MinPat[i] != i
+		MinPat[i] = i
+}
+
+// third column default
+// second column minimum
+for i = 0 to (length(BinArray[]) - 1) {
+	if CostArray[i][2] < CostArray[MinPat[i][1]] and MinPat[2] != i
+		MinPat[i] = i
+}
+
+// output
+Print(Bins[MinPat[0]] + Bins[MinPat[1]] + Bins[MinPat[2]])
+Print(" " + (CostArray[MinPat[0]][0] + CostArray[MinPat[1]][1] + CostArray[MinPat[2]][2]) + '\n')

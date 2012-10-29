@@ -1,0 +1,261 @@
+/**
+ * Project: assignment02
+ * File: GuestInfo.java
+ * Date: 23-Nov-07
+ * Time: 7:45:58 PM
+ */
+package a00683006.bedz.ui;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+
+import javax.swing.*;
+import javax.swing.event.*;
+import java.util.*;
+import a00683006.bedz.data.*;
+import a00683006.bedz.util.*;
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class GuestInfo extends JPanel {
+	private static final long serialVersionUID = 12098374129L;
+	private JTextField jtGuestNum, jtGuestFName, jtGuestLName, jtGuestPhone, jtGuestEmail,
+					   jtGuestStreet, jtGuestCity, jtGuestPC, jtGuestCountry;
+	private JList jlGuest;
+	private DefaultListModel listModel;
+	private JComboBox jcGuestProv;
+	private JMenuItem guestNew, guestDelete, guestSave;
+	private BedAndBreakfast db;
+
+	public GuestInfo(BedAndBreakfast db, JMenuItem guestNew, JMenuItem guestDelete,
+			JMenuItem guestSave) {
+		this.db = db;
+		
+		setLayout(new BorderLayout());
+		
+		listModel = new DefaultListModel();
+		Set<String> guestList = db.getGuests().keySet();
+		
+		for (String guest : guestList) {
+			listModel.addElement(guest);
+		}
+		
+		jlGuest = new JList(listModel);
+		jlGuest.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jlGuest.setSelectedIndex(0);
+		
+		JScrollPane jspGuest = new JScrollPane(jlGuest);
+		JPanel jpGuestInfoContainer = new JPanel();
+		JPanel jpGuestInfo = new JPanel();
+		
+		jpGuestInfoContainer.setLayout(new BorderLayout());
+		jpGuestInfo.setLayout(new GridBagLayout());
+		jpGuestInfoContainer.add(jpGuestInfo, BorderLayout.NORTH);
+
+		GridBagConstraints gbcLabels = new GridBagConstraints();
+		GridBagConstraints gbcFields = new GridBagConstraints();
+
+		add(jspGuest, BorderLayout.LINE_START);
+		jspGuest.setPreferredSize(new Dimension(200,500));
+		
+		jtGuestNum = new JTextField();
+		jtGuestFName = new JTextField();
+		jtGuestLName = new JTextField();
+		jtGuestPhone = new JTextField();
+		jtGuestEmail = new JTextField();
+		jtGuestStreet = new JTextField();
+		jtGuestCity = new JTextField();
+		jcGuestProv = new JComboBox();
+		jtGuestPC = new JTextField();
+		jtGuestCountry = new JTextField();
+		
+		jtGuestNum.setEditable(false);
+		jtGuestNum.setVisible(false);
+		
+		// Set GridBagLayout Field constraints
+		gbcFields.gridwidth = GridBagConstraints.REMAINDER;
+		gbcFields.fill = GridBagConstraints.HORIZONTAL;
+		gbcFields.anchor = GridBagConstraints.WEST;
+		gbcFields.weightx = 1.00;
+
+		// Set GridBagLayout Label constraints
+		gbcLabels = (GridBagConstraints)gbcFields.clone();
+		gbcLabels.weightx = 0.00;
+		gbcLabels.gridwidth = 1;
+
+		// Add Labels to the panel
+		gbcLabels.gridx = 0;
+		gbcLabels.gridy = 0;
+		jpGuestInfo.add(new MyLabel("Number  "), gbcLabels);
+		gbcLabels.gridy = 1;
+		jpGuestInfo.add(new MyLabel("First Name  "), gbcLabels);
+		gbcLabels.gridy = 2;
+		jpGuestInfo.add(new MyLabel("Last Name  "), gbcLabels);
+		gbcLabels.gridy = 3;
+		jpGuestInfo.add(new MyLabel("Phone #  "), gbcLabels);
+		gbcLabels.gridy = 4;
+		jpGuestInfo.add(new MyLabel("Email Address  "), gbcLabels);
+		gbcLabels.gridy = 5;
+		jpGuestInfo.add(new MyLabel("Street  "), gbcLabels);
+		gbcLabels.gridy = 6;
+		jpGuestInfo.add(new MyLabel("City  "), gbcLabels);
+		gbcLabels.gridy = 7;
+		jpGuestInfo.add(new MyLabel("Province  "), gbcLabels);
+		gbcLabels.gridy = 8;
+		jpGuestInfo.add(new MyLabel("Postal Code  "), gbcLabels);
+		gbcLabels.gridy = 9;
+		jpGuestInfo.add(new MyLabel("Country  "), gbcLabels);
+		
+		// Add Fields to the panel
+		gbcFields.gridx = 1;
+		gbcFields.gridy = 0;
+		jpGuestInfo.add(jtGuestNum, gbcFields);
+		gbcFields.gridy = 1;
+		jpGuestInfo.add(jtGuestFName, gbcFields);
+		gbcFields.gridy = 2;
+		jpGuestInfo.add(jtGuestLName, gbcFields);
+		gbcFields.gridy = 3;
+		jpGuestInfo.add(jtGuestPhone, gbcFields);
+		gbcFields.gridy = 4;
+		jpGuestInfo.add(jtGuestEmail, gbcFields);
+		gbcFields.gridy = 5;
+		jpGuestInfo.add(jtGuestStreet, gbcFields);
+		gbcFields.gridy = 6;
+		jpGuestInfo.add(jtGuestCity, gbcFields);
+		gbcFields.gridy = 7;
+		jpGuestInfo.add(jcGuestProv, gbcFields);
+		gbcFields.gridy = 8;
+		jpGuestInfo.add(jtGuestPC, gbcFields);
+		gbcFields.gridy = 9;
+		jpGuestInfo.add(jtGuestCountry, gbcFields);
+		
+		add(jpGuestInfoContainer, BorderLayout.CENTER);
+		
+	    jlGuest.addListSelectionListener(new ListSelectionListener() {
+	    	public void valueChanged(ListSelectionEvent evt) {
+	    		if (evt.getValueIsAdjusting()) {
+	    			return;
+	    		}
+	    		if (jlGuest.getSelectedValue() != null) {
+	    			setCurrentValues(jlGuest.getSelectedValue());
+	    		}
+	    		else if (listModel.size() == 0) {
+	    			newGuest();
+	    		}
+	    	}
+	    });
+	    
+	    populateProvBox();
+	    setCurrentValues(jlGuest.getSelectedValue());
+	    
+		guestNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				newGuest();
+			}
+		});
+		guestDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deleteGuest();
+			}
+		});
+		guestSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveGuest();
+			}
+		});
+	}
+	
+	private void setCurrentValues(Object name) {
+		Province prov = Province.getProvince(
+				db.getGuests().get(name).getAddress().getProvince());
+		
+		jtGuestFName.setText(db.getGuests().get(name).getFirstName());
+		jtGuestLName.setText(db.getGuests().get(name).getLastName());
+		jtGuestPhone.setText(db.getGuests().get(name).getPhoneNumber());
+		jtGuestEmail.setText(db.getGuests().get(name).getEmailAddress());
+		jtGuestStreet.setText(
+				db.getGuests().get(name).getAddress().getStreet());
+		jtGuestCity.setText(
+				db.getGuests().get(name).getAddress().getCity());
+		jcGuestProv.setSelectedItem(prov);
+		jtGuestPC.setText(
+				db.getGuests().get(name).getAddress().getPostalCode());
+		jtGuestCountry.setText(
+				db.getGuests().get(name).getAddress().getCountry());
+	}
+	
+	private void populateProvBox() {
+		for (Province prov : Province.values()) {
+			jcGuestProv.addItem(prov);
+	    }
+	}
+	
+	public void newGuest() {
+		jtGuestFName.setText(null);
+		jtGuestLName.setText(null);
+		jtGuestPhone.setText(null);
+		jtGuestEmail.setText(null);
+		jtGuestStreet.setText(null);
+		jtGuestCity.setText(null);
+		jcGuestProv.setSelectedItem(null);
+		jtGuestPC.setText(null);
+		jtGuestCountry.setText(null);
+		jlGuest.clearSelection();
+	}
+	
+	public void deleteGuest() {
+	    int index = jlGuest.getSelectedIndex();
+	    Object name = jlGuest.getSelectedValue();
+
+		db.getGuests().remove(name);
+
+	    int size = listModel.getSize();
+
+	    if (size != 0) {
+	    	listModel.remove(index);
+	        if (index == listModel.getSize()) {
+	            index--;
+	        }
+	        
+	        jlGuest.setSelectedIndex(index);
+	        jlGuest.ensureIndexIsVisible(index);
+	    }
+	    exportGuestXML();
+	}
+	
+	public void saveGuest() {
+		
+		Guest newGuest = new Guest();
+		
+		System.out.println(jcGuestProv.getSelectedItem().toString());
+		
+		newGuest.setFirstName(jtGuestFName.getText());
+		newGuest.setLastName(jtGuestLName.getText());
+		newGuest.setPhoneNumber(jtGuestPhone.getText());
+		newGuest.setEmailAddress(jtGuestEmail.getText());
+		newGuest.setAddress(new Address(	
+				jtGuestStreet.getText(),
+				jtGuestCity.getText(),
+				jcGuestProv.getSelectedItem().toString(),
+				jtGuestPC.getText(),
+				jtGuestCountry.getText()));
+		
+		//db.getGuests().put(jlGuest.getSelectedValue().toString(), newGuest);
+		newGuest.toString();
+		
+		Console console = new Console();
+		console.print(db.getGuests().values());
+	}
+	
+	private void exportGuestXML() {
+		try {
+			ReadWriteXML.exportXML(db.getGuests(), "Guests.xml");
+		}
+		catch (IOException error) {
+			// don't say anything
+		}		
+	}
+}

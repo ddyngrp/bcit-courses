@@ -1,0 +1,2 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 10\Visual Studio 2008\AssemblyDocumenter\Console\obj\Debug\Console.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 10\Visual Studio 2008\AssemblyDocumenter\Console\obj\Debug\Console.pdb

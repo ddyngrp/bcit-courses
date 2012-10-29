@@ -1,0 +1,101 @@
+# Jamfile for configuration Development of target "Allegro GNUgo Project" of project "Allegro GNUgo Project"
+
+
+JAVAC_SOURCE_FILE_ENCODING default = MacRoman ;
+
+# Implicitly computed project-wide settings for project "Allegro GNUgo Project"
+export deferred ANTICIPATED_BUILT_PRODUCTS_DIR = $(CONFIGURATION_BUILD_DIR) ;
+export deferred ANTICIPATED_TARGET_BUILD_DIR = $(CONFIGURATION_BUILD_DIR) ;
+export deferred BUILD_STYLE = "$(CONFIGURATION)" ;
+export deferred CONFIGURATION = Development ;
+export deferred CONFIGURATION_BUILD_DIR = $(BUILD_DIR)/$(CONFIGURATION) ;
+export deferred CONFIGURATION_TEMP_DIR = $(PROJECT_TEMP_DIR)/$(CONFIGURATION) ;
+export deferred DEVELOPMENT_LANGUAGE = English ;
+export deferred GID = 501 ;
+export deferred GROUP = ironix ;
+export deferred MAC_OS_X_VERSION_ACTUAL = 1052 ;
+export deferred MAC_OS_X_VERSION_MAJOR = 1050 ;
+export deferred NATIVE_ARCH = ppc ;
+export deferred NATIVE_ARCH_32_BIT = ppc ;
+export deferred NATIVE_ARCH_64_BIT = ppc64 ;
+export deferred NATIVE_ARCH_ACTUAL = ppc ;
+export deferred PROJECT = $(PROJECT_NAME) ;
+export deferred PROJECT_DIR = /Users/ironix/Documents/Schoolwork/COMP 3425/Assignments/Allegro GNUgo Project ;
+export deferred PROJECT_FILE_PATH = /Users/ironix/Documents/Schoolwork/COMP 3425/Assignments/Allegro GNUgo Project/Allegro GNUgo Project.xcodeproj ;
+export deferred PROJECT_NAME = "Allegro GNUgo Project" ;
+export deferred PROJECT_TEMP_DIR = $(OBJROOT)/$(PROJECT_NAME).build ;
+export deferred SRCROOT = /Users/ironix/Documents/Schoolwork/COMP 3425/Assignments/Allegro GNUgo Project ;
+export deferred TARGET_TEMP_DIR = $(CONFIGURATION_TEMP_DIR)/$(TARGET_NAME).build ;
+export deferred TEMP_DIR = $(TARGET_TEMP_DIR) ;
+export deferred UID = 501 ;
+export deferred USER = ironix ;
+export deferred VALID_ARCHS = ppc64 ppc7400 ppc970 i386 x86_64 ppc ;
+export deferred XCODE_VERSION_ACTUAL = 0300 ;
+export deferred XCODE_VERSION_MAJOR = 0300 ;
+
+# Project-wide settings for project "Allegro GNUgo Project"
+
+# User-defined project-wide settings for project "Allegro GNUgo Project"
+
+# Build Settings for target "Allegro GNUgo Project"
+
+export deferred _INFO_PLIST_FILE_PATH = "$(TARGET_TEMP_DIR)/Info.plist" ;
+export deferred _PKGINFO_FILE_PATH = "$(TARGET_TEMP_DIR)/PkgInfo" ;
+export deferred _PBDEVELOPMENT_PLIST_FILE_PATH = "$(TARGET_TEMP_DIR)/pbdevelopment.plist" ;
+
+# Implicitly computed build settings for target "Allegro GNUgo Project"
+export deferred PFE_FILE_C_DIALECTS = c ;
+export deferred TARGETNAME = $(TARGET_NAME) ;
+export deferred TARGET_NAME = "Allegro GNUgo Project" ;
+
+# User-defined build settings for target "Allegro GNUgo Project"
+export deferred COPY_PHASE_STRIP = NO ;
+export deferred DEBUGGING_SYMBOLS = YES ;
+export deferred FRAMEWORK_SEARCH_PATHS =  ;
+export deferred GCC_DYNAMIC_NO_PIC = NO ;
+export deferred GCC_ENABLE_FIX_AND_CONTINUE = YES ;
+export deferred GCC_GENERATE_DEBUGGING_SYMBOLS = YES ;
+export deferred GCC_OPTIMIZATION_LEVEL = 0 ;
+export deferred HEADER_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/Allegro.framework/Versions/Current/Headers" ;
+export deferred INSTALL_PATH = "$(HOME)/Applications" ;
+export deferred JAVA_COMPILER_DEBUGGING_SYMBOLS = NO ;
+export deferred LIBRARY_SEARCH_PATHS =  ;
+export deferred OPTIMIZATION_CFLAGS = -O0 ;
+export deferred OTHER_LDFLAGS = -L/usr/local/lib -lalleg-main ;
+export deferred PREBINDING = YES ;
+export deferred PRODUCT_NAME = "Allegro GNUgo Project" ;
+export deferred SECTORDER_FLAGS =  ;
+export deferred WARNING_CFLAGS = -Wmost -Wno-four-char-constants -Wno-unknown-pragmas ;
+export deferred WRAPPER_EXTENSION = app ;
+export deferred ZERO_LINK = YES ;
+
+# Target "Allegro GNUgo Project"
+
+ConditionalDefinitions _ ;
+commitdeferred ;
+
+
+BeginApplication "<Allegro GNUgo Project>Allegro GNUgo Project.app" ;
+
+# Resources
+RESOURCES = ;
+ProcessResources "<Allegro GNUgo Project>Allegro GNUgo Project.app" : "$(RESOURCES)" : "" : BPTag000 ;
+
+# Sources
+goProject.c_ATTRIBUTES = ;
+SOURCES =
+	goProject.c
+	test/test.c ;
+ProcessSources "<Allegro GNUgo Project>Allegro GNUgo Project.app" : "$(SOURCES)" : BPTag000 : BPTag001 ;
+
+# Frameworks & Libraries
+/System/Library/Frameworks/Cocoa.framework_ATTRIBUTES = AbsolutePath ;
+/Library/Frameworks/Allegro.framework_ATTRIBUTES = AbsolutePath ;
+FRAMEWORKS_AND_LIBRARIES =
+	/System/Library/Frameworks/Cocoa.framework
+	/Library/Frameworks/Allegro.framework ;
+ProcessFrameworksAndLibraries "<Allegro GNUgo Project>Allegro GNUgo Project.app" : "$(FRAMEWORKS_AND_LIBRARIES)" : BPTag001 : BPTag002 ;
+
+include $(TEMP_DIR)/HeaderDependencies.jam ;
+EndApplication "<Allegro GNUgo Project>Allegro GNUgo Project.app" ;
+

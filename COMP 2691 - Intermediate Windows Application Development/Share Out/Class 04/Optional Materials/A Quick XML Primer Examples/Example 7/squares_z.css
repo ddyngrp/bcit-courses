@@ -1,0 +1,37 @@
+square {
+  display:block;
+  position:absolute;
+  width:100px;
+  height:75px;
+  border:10px single black;
+  color:black;
+  text-align:center;
+}
+
+square.one {
+  background-color:red;
+  z-index:0;
+  left:0px;
+  top:0px;
+}
+
+square.two {
+  background-color:green;
+  z-index:3;
+  left:75px;
+  top:25px;
+}
+
+square.three {
+  background-color:blue;
+  z-index:2;
+  left:150px;
+  top:50px;
+}
+
+square.four {
+  background-color:yellow;
+  z-index:1;
+  left:225px;
+  top:75px;
+}

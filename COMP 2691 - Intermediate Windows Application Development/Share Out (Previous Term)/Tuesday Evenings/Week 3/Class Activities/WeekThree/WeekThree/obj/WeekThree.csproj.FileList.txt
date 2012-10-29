@@ -1,0 +1,14 @@
+obj\Debug\WeekThree.exe
+obj\Debug\WeekThree.pdb
+bin\Debug\WeekThree.exe
+bin\Debug\WeekThree.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\WeekThree.dateTimePickerDropOff.resources
+obj\Debug\WeekThree.ErrorProvider.resources
+obj\Debug\WeekThree.KeyDemoForm.resources
+obj\Debug\WeekThree.LinkLabel.resources
+obj\Debug\WeekThree.PainterForm.resources
+obj\Debug\WeekThree.Properties.Resources.resources
+obj\Debug\WeekThree.ProviderControls.resources
+obj\Debug\WeekThree.ScrollBarControl.resources
+obj\Debug\WeekThree.csproj.GenerateResource.Cache

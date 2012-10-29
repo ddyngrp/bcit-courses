@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=title\ director\ playingTime\ soundQuality
+comment0.target=Movie(String,\ String,\ double,\ String)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Movie\n\n
+comment1.target=String\ getTitle()
+comment1.text=\n@return\ the\ movie's\ title\n\n
+comment2.target=String\ getDirector()
+comment2.text=\n@return\ the\ movie's\ director\n\n
+comment3.target=double\ getPlayingTime()
+comment3.text=\n@return\ the\ movie's\ playing\ time\n\n
+comment4.target=String\ getSoundQuality()
+comment4.text=\n@return\ the\ movie's\ sound\ quality,\ e.g.\ "good",\ "fair"\n\n
+comment5.target=String\ toString()
+comment5.text=\n@return\ a\ String\ representing\ this\ movie\n\n
+numComments=6

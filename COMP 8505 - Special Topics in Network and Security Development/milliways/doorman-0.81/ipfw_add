@@ -1,0 +1,49 @@
+#!/usr/bin/perl
+#
+#  file "ipfw_add"
+#  FreeBSD-style firewall-add script, called by "doormand". 
+#  This example can be used by systems which use ipfw.
+#
+#  Called with five arguments:
+#
+# $1 : name of the interface (e.g. eth0)
+# #2 : source IP; i.e. dotted-decimal address of the 'knock' client
+# $3 : source port; when this script is called for the first time
+#      for a connection (man 8 doormand), this argument will be set
+#      to a single "0" (0x30) character.  This means that the source
+#      port is not yet known, and a broad rule allowing any source
+#      port is required.
+# $4 : destination IP; that is, the IP address of the interface 
+#      in argument 1.
+# $5 : The port number of the requested service (e.g. 22 for ssh, etc.)
+#
+# The IPFW scripts were contributed by Aaron Dalton <aaron@daltons.ca> who also
+# maintains the FreeBSD port.
+#
+
+use strict;
+my ($interface, $srcip, $srcport, $destip, $destport) = @ARGV;
+my $rulenum = undef;
+my ($ret) ;
+
+my $fwcmd = '/sbin/ipfw';
+
+if ($srcport == 0)
+{
+    open PIPE, "$fwcmd add allow log tcp from $srcip to $destip $destport recv $interface in setup keep-state |" ;
+}
+else
+{
+    open PIPE, "$fwcmd add allow log tcp from $srcip $srcport to $destip $destport recv $interface in setup keep-state |" ;
+}
+
+
+$ret = <PIPE> ;
+chomp $ret ;
+
+if ($ret =~ /^[0-9]{5}/) {
+    print "0\n" ; 
+} else {
+    print "-1 3 $ret\n" ;
+}   
+

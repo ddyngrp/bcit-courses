@@ -1,0 +1,12 @@
+%utilityclass:packageDeclaration%
+
+/**
+ * Description   : Utility class
+ * 
+ * @author %system:user.name%
+ * @since  %date:MMMM dd, yyyy%
+ */
+public class %utilityclass:name% 
+{
+	//TODO Insert utility code here
+}

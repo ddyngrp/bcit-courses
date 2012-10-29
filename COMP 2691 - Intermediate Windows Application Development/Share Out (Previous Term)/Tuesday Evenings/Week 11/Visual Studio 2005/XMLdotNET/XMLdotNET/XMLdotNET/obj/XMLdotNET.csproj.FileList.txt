@@ -1,0 +1,16 @@
+obj\Debug\XMLdotNET.exe
+obj\Debug\XMLdotNET.pdb
+bin\Debug\XMLdotNET.exe
+bin\Debug\XMLdotNET.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\XMLdotNET.DiffGram.DiffGram.resources
+obj\Debug\XMLdotNET.DiffGram.Edit.resources
+obj\Debug\XMLdotNET.frmXML.resources
+obj\Debug\XMLdotNET.NodeLayout.XMLReadersinAction.resources
+obj\Debug\XMLdotNET.Properties.Resources.resources
+obj\Debug\XMLdotNET.ReadXML.ReadXML.resources
+obj\Debug\XMLdotNET.WriteXML.WriteXML.resources
+obj\Debug\XMLdotNET.XMLDataReader.TestXMLDataReader.resources
+obj\Debug\XMLdotNET.XMLHotDOM.TestHotDOM.resources
+obj\Debug\XMLdotNET.XPathEvaluator.XpathEval.resources
+obj\Debug\XMLdotNET.csproj.GenerateResource.Cache

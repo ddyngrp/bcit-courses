@@ -1,0 +1,85 @@
+/*******************************************************************
+ * Layout for Course organizer                                     *
+ * Fall 2006 - JLP                                                 *
+ *-----------------------------------------------------------------*
+ * Original from "Industrofunk" template at www.oswd.org           *
+ *******************************************************************/
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif, verdana, arial; 
+}
+.tbox {
+	font-size: .9em;
+	padding-left: 2px;
+	margin-right: 55%;
+	background-color: #50C128;
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	font-weight: bold;
+}
+.ubox {
+	font-size: .9em;
+	padding-left: 2px;
+	margin-right: 55%;
+	background-color: #FF9000;
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	font-weight: bold;
+}
+.mbox {
+	font-size: .9em;
+	text-align: left;
+	color: #333333;
+	background-color: #EEEEEE;
+	border: 1px solid #000000;
+	padding: 4px;
+}
+.bbox {
+	font-size: .85em;
+	padding: 2px;
+	background-color: #C9C9C9;
+	border-color: #000000;
+	border-style: solid;
+	border-width: 0px 1px 1px 1px;	
+}
+.code {
+	font-family: courier; 
+}
+.border {
+	border: 1px solid #000000;
+}
+a {
+	color: blue;
+	text-decoration: none;
+}	
+a:hover {
+	color: green;
+	text-decoration: none;
+}
+.spiffy {
+	border-left: 2px solid #EEEEEE;
+}
+.spiffy:hover {
+	color: #000000;
+	border-left: 2px solid #FFAA00;
+}
+.sidetop {
+	text-align: center;
+	font-size: .95em;
+	padding: 2px;
+	background-color: #FFAA00;
+	border: 1px solid #000000;
+}
+.sideelse {
+	text-align: left;
+	padding-left: 8px;
+	font-size: .9em;
+	background-color: #EEEEEE;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #000000;
+}

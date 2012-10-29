@@ -1,0 +1,155 @@
+I/O classes
+
+
+				ios_base
+
+				^
+				|
+
+				basic_ios<>
+getline >>
+	^									^
+	|									|
+	
+	basic_istream<>	(cin)						basic_ostream<>	(cout)
+^	^		^					^		^		^
+|	|		|					|		|		|
+|	|		|					|		|		|
+|	basic_ifstream<>						basic_ofstream<>	|
+|			basic_iostream<> (multiple inheritance)					|
+|				^		^						|
+basic_istringstream<>		|		|					basic_ostringstream<>
+				|		|
+			
+			basic_stringstream<>	basic_fstream<>
+				
+
+
+
+
+typedef basic_ios<char> ios;
+typedef basic_istream<char> istream;
+typedef basic_ostream<char> ostream;
+typedef basic_istringstream<char> istringstream;
+
+
+note: we can also use, e.g., ios::hex instead of ios_base::hex
+
+
+
+The string class
+
+
+c:	stdlib.h	ctype.h
+c++:	cstdlibb	cctype
+#include(cctype)
+
+instantiation of a class template
+
+-	typedef basic string<char string;
+
+declared in the header file string
+
+for older C-style strings, use the header file cstring
+
+a string can contain any character; '\0' is not a special character
+
+>> and << can bbe used for input and output
+
+-	string s;	//default ctor; empty string
+-	if (cin >> s)	//read next word, skip leading whitespace
+
+the getline fuction can also be used to input into a string
+
+string s;
+
+while (getline(cin,s)){
+	//for each line read('n" is throw away)
+}
+
+while (getline(cin,s,':')){
+
+}
+
+
+several constructors
+
+
+string s1;		//empty string
+	s2(10, 'a')	// string of 10 a's
+	s3("hello")	//contains 'h','e','l','l','o'
+	s4("hello", 4)	//contains 'h','e','l','l'
+	s5(s3,3)	//contains 'l','o'
+	s6(s3,1,2)	//'e','l'
+	s7(s3)		//copy of s3
+
+
+
+string s8(s3,3,string::npos)	//equal to s5
+
+string::npos is defined as
+	static const size_type npos = -1; /* ?? */
+
+automatic conversion from const char * into strings but not automatic conversion in the other direction
+
+use member function c.str() to return the content as a "constat" C-string (const char *)
+
+Note:	the returned pointer is valid only until the next call to a nonconstant member function of the same string
+
+
+string s("123);
+int n = atoi(s.c_str())		//converts ASCII to integer
+
+conatenation (+) & appending (+=)
+
+
+sring s, s1("hello"), s2("world);
+s = s1 + " " + s2;
+cout << s << endl;		//prints hello world
+
+s1 += '!';
+cout << s1 << endl;		//prints hello!
+
+
+element access:	use [] operator or at() member function
+
+
+const_reference		operator[](size_type pos)	const;
+reference		operator[](size_type pos);
+const_reference		at(size_type pos) const;
+reference		at(size_type pos);
+
+-	[] does not check that position used is valid; at() does (it throws out_of_range exception)
+-	for the constant version of []; the position after the last char is valid (it returns '\0')
+
+
+
+
+fucntion to change a string to all uppercase
+
+string& toupper(string& s)
+{
+	for (string::size_type i = 0; i < s.length(); i++)
+		s[i] = toupper(s[i]);
+	return s;
+}
+
+
+standard idiom to process a string char by char
+
+s is a string
+
+s::size_type i;
+for(i = 0; i < s.length(); i++)
+
+	/* process s[i] */
+
+
+
+Use the substr() member function to extract a substring
+
+
+string s("goodbye");
+s.substr();		//	returns a copy of s
+s.substr(4);		//	returns string("bye")
+s.substr(4,2)		//	returns string("by")

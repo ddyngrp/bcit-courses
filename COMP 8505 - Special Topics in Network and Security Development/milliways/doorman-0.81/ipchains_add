@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+#  file "ipchains_add"
+#  Linux2.2-style firewall-add script, called by "doormand". 
+#  This example can be used by systems which use ipchains.
+#
+#  Called with five arguments:
+#
+# $1 : name of the interface (e.g. eth0)
+# $2 : source IP; i.e. dotted-decimal address of the 'knock' client
+# $3 : source port; when this script is called for the first time
+#      for a connection (man 8 doormand), this argument will be set
+#      to a single "0" (0x30) character.  This means that the source
+#      port is not yet known, and a broad rule allowing any source
+#      port is required.
+# $4 : destination IP; that is, the IP address of the interface 
+#      in argument 1.
+# $5 : The port number of the requested service (e.g. 22 for ssh, etc.)
+#
+#
+if [ $3 = 0 ]
+then
+    ret=`ipchains -I input 1 -j ACCEPT -p tcp -i $1 -s $2     -d $4 $5 2>&1`
+else
+    ret=`ipchains -I input 1 -j ACCEPT -p tcp -i $1 -s $2 $3  -d $4 $5 2>&1`
+fi
+
+if [ -z "$ret" ]
+then
+    echo 0
+else
+    echo -1 3 $ret
+fi
+

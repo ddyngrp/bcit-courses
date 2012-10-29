@@ -1,0 +1,174 @@
+Multiple Inheritance
+
+
+
+class B1{
+public:
+	void f();
+	void g();
+
+}
+
+
+class B2{
+public:
+	void f();
+	void g(int);
+
+}
+
+class D: public B1, public B2{
+
+...	//no f
+
+}
+
+
+D d;
+
+d.f();	//which version is called? won't compile
+d.g();	//won't compile
+d.g(1);	//won't compile		The 2 g's hide each other
+
+
+d.B1::f();	//OK
+d.B1::g();	//OK
+d.B2::g(1);	//OK
+
+Another problem:
+
+class A{
+private:
+	int a_;
+...
+
+class B1:public A{...};
+class B2:public A{...};
+class D:public B1, public B2{...};
+
+does a D object cotnain 2 copies of a_?
+
+
+
+D 	-> 	B1	-> 	A
+	->	B2
+
+We need to use virtual inheritance.
+
+class B1:virtual public A{...};
+class B2:virtual public A{...};
+
+Then D will have only 1 copy of A.
+
+
+class A{	
+private:
+	int a_;
+
+};
+
+
+class B1:virtual public A{
+
+};
+
+class B2:virtual public A{
+
+};
+
+
+B1::B1(const B1& src):A(src){}
+B2::B2(const B2& src):A(src){}
+
+class D:public B1, public B2{...};
+
+D::D(const D& src):B1(src), B2(src), A(src){...}// NEED to CALL COPY CTOR of A
+
+D&
+D::operator ={const D& src){//assignment for D
+	if (this!=&src){
+		B1::operator = (src);	//this calls A::operator
+		B2::operator = (src);	//this also calls A::operator
+					(A part assigned twice)
+
+	}
+
+	return *this;
+}
+
+
+____________________________________________________-
+
+
+Exceptions:
+
+-	In C, we need to check the return value of each function to see if it succeeds.  This is cumbersome
+-	In C++, we use exceptions
+
+	throw	try/catch (note:no finally)
+
+-	throw obj;	//throws a copy of obj (may need to call copy ctor)
+
+-	try{
+		...
+	} catch(xxx){	//eg int
+		...
+	} catch(xxx){	
+		...
+	} catch(...){	//catch all exception
+
+	}
+
+e.g. try{
+		...
+	} catch (int n){
+		...
+	} catch (const B& b){
+		...
+	}
+
+The block where the first catch matches is executed.  This matching is trickter than function overloading.
+
+
+
+	throw "invalid argument";
+
+
+to catch the above, use
+
+	try{
+		...
+	}catch(const char *s){
+		cerr <<  s << endl;
+	}
+
+can rethrow on excpetion, e.g.
+
+
+	try{
+		...
+	}catch(const B& b)	{
+		throw;	//rethrow b;	if we had throw b; we'll be throwing a new copy of b
+	}
+
+
+try{
+
+	...
+}catch(B b){
+	...
+}
+
+
+exception - safely:	3 guarantees
+
+1)	basic guarantee: the program is in a valid state in the presense of exception
+		cin >> s;	if this throws an excpetion is s still valid?
+
+
+2)	strong guarantee: the state is unchanged in the precense of exception
+
+	cin > s;	s refrains its previous value if this fails
+
+3)	nothrow guarantee:	never throws exception
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 elements(s) to &apos;assignment02/src/a00683006.bedz.data&apos;&#x0A;- Original project: &apos;lab04&apos;&#x0A;- Destination element: &apos;assignment02/src/a00683006.bedz.data&apos;&#x0A;- Original element: &apos;a00683006.data.DataException.java&apos;" description="Copy compilation unit" destination="/src&lt;a00683006.bedz.data" element1="/src&lt;a00683006.data{DataException.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" log="/src&lt;a00683006.data{DataException.java&#x09;true&#x09;false" policy="org.eclipse.jdt.ui.copyResources" stamp="1196072225695" units="1" version="1.0"/>
+</session>

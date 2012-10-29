@@ -1,0 +1,4 @@
+RA / PD = Requirements Analysis / Preliminary Design
+DD = Detailed Design
+CUT = Coding & Unit Testing
+I&T = Integration & Testing

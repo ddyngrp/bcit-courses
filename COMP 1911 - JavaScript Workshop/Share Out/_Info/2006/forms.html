@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>j a v a s c r i p t</title>
+
+	<script type="text/javascript" language="javascript">
+	<!--
+	function setFocus(element){
+		element.focus();
+		element.select();
+	}
+	function validate(){
+		
+		var email = document.getElementById("email").value;
+		
+
+		//check for @ sign, check for .
+		if( (email.indexOf("@") == -1) ||  (email.indexOf(".") == -1) ){
+			alert("Thats not a valid email");
+			setFocus(document.getElementById("email"));	
+			return false;
+		}else{
+			return true;
+		}
+	}
+	// -->
+	</script>
+</head>
+
+<body onload="setFocus(document.getElementById("name"));">
+
+<form action="somepage.html" method="POST" onsubmit="return validate();">
+	Name: <input type="text" id="name"><br>
+	Age: <input type="text" id="age"><br>
+	Email: <input type="text" id="email"><br>
+	<input type="submit">
+</form>
+
+</body>
+</html>
+
+
+

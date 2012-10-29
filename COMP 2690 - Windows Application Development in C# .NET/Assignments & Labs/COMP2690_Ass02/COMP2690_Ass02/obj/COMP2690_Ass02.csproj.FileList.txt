@@ -1,0 +1,5 @@
+bin\Debug\COMP2690_Ass02.exe
+bin\Debug\COMP2690_Ass02.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\COMP2690_Ass02.exe
+obj\Debug\COMP2690_Ass02.pdb

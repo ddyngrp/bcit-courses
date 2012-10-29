@@ -1,0 +1,29 @@
+<html>
+<head>
+
+<title>property swapping</title>
+
+<script language="javascript" type="text/javascript">
+<!--
+	//using the 'style' attribute allows 
+	//you to access/change any element's standard CSS properties
+
+	function changeColor(){
+		document.getElementById("pi").style.color = "red";
+
+		//you dont always have to change the value of an attribute
+		//you can simply access the value:
+		//var somevalue = document.getElementById("pi").style.color;
+	}
+// -->
+</script>
+
+</head>
+
+<body>
+	<h1>Pi is a piece of cake! 	<span 
+					id="pi"
+					onclick="changeColor();"
+					>3.141592</span> ...</h1>
+</body>
+</html>

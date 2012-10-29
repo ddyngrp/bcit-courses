@@ -1,0 +1,7 @@
+"Lee", "Brenda", "(604) 636-1000", "b.lee@bcit.ca"
+"Sullivan", "Sam", "604-873-7011", "Sam777@hotmail.com"
+"Fish", "800-555-1212", "fred@yahoo.com"
+"Fish", "Fred", "George", "555-1212", "fred.fish@yahoo.com"
+"Fish", "Fred", "555-1212", "fred.fish@yahoo.com"
+"Fish", "George", "800-555-1212", "fish.yahoo.com"
+"Johansen", "Lars", "(604) 636-1000", "Lars147@gmail.com"

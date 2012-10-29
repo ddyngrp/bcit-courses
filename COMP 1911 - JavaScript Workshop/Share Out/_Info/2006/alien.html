@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>intro to js</title>
+	<script type="text/javascript">
+		
+		var directory    = "./alien/";
+		var imageType    = ".gif";
+		var imageName    = "alienrwalk"
+		var startIndex   = 0;
+		var endIndex     = 30;
+		var currentIndex = startIndex;
+		var imagesArray  = new Array();
+
+		for ( var x = startIndex; x < endIndex; x++ ){
+			var someImage = new Image();
+			someImage.src = directory + imageName + x + imageType;			
+			imagesArray[x] = someImage;
+		}
+		
+		function advanceImage(imageId){
+			currentIndex = currentIndex + 1;
+			if(currentIndex > endIndex){
+				currentIndex = startIndex;	
+			}
+			document.getElementById(imageId).src =  
+			imagesArray[currentIndex].src;			
+		}
+	</script>
+
+</head>
+
+<body onload="setInterval('advanceImage(\'alien\')', 50);">
+	<img src="./alien/alienrwalk0.gif" id="alien">
+</body>
+</html>
+
+
+

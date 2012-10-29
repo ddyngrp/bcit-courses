@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Lab01 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		System.out.println(Secret(MakeArray(10)));
+	}
+	
+	/**
+	 * An array of A[0..n - 1] of n real numbers
+	 * @param array
+	 */
+	private static int Secret(int[] array) {
+		int minVal, maxVal;
+		
+		minVal = array[0];
+		maxVal = array[0];
+		
+		for (int i = 1; i < array.length; i++) {
+			
+		}
+		return maxVal - minVal;
+	}
+	
+	private static int[] MakeArray(int size) {
+		int[] array = new int[size];
+		Calendar rightNow = Calendar.getInstance();
+		Random generator = new Random(rightNow.getTimeInMillis());
+		
+		for (int i = 0; i < size; i++) {
+			array[i] = generator.nextInt();
+		}
+		
+		return array;
+	}
+
+}

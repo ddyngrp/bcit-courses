@@ -1,0 +1,30 @@
+<html><head><title>time</title></head>
+
+<script type="text/javascript">
+
+	var myWindow = null;		// window variable
+
+function openW()
+{
+ myWindow = window.open(
+  "http://www.google.com", 
+  "jeff",
+  "toolbar=no,scrollbars=yes,titlebar=no,width=100,height=1000,resizable=no"
+);
+
+	myWindow.location="http://google.com";
+	self.focus();
+}	
+
+
+</script>
+
+
+<body>
+
+	<input type="button" value="open" onclick="openW();"><br>
+
+	<input type="button" value="close" onclick="closeW();"><br>
+
+</body>
+</html>

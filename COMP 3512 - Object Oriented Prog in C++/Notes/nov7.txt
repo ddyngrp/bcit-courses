@@ -1,0 +1,193 @@
+eg. to use sqrt, we need to link with the math library
+
+#include <pthread.h> n posix threads
+#include <iostream>
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INTIALIZER;
+
+void *print(void *arg){
+	const char *s = (const char *)arg; // c++ requires cast
+	pthread_detach(pthread_self());//return thread 1 of current thread
+	pthread_mutex_lock(&mutex);
+	for(int i= 0; i<1000; i++)
+		cout<<s<<endl;
+	pthread_mutex_unlock(&mutex);
+}
+
+int main(){
+	pthread_t tid1, tid2;
+	
+	pthread_create(&tid1, 0, print, (void*)"hello");
+	pthread_create(&tid2, 0, print, (void*)"world");
+	pthread_exit(0);
+}
+
+when main returns all threads are killed (unless main calls pthreads_exit).
+
+g++ -D_REENTRANT example.cpp -lpthread<--- includes library
+
+
+
+
+
+
+eg. to use sqrt we need to link with the math library
+gcc...-lm (in unix, this links with the file libm.so
+
+
+
+Smart pointers
+---------------
+Idea: destructor calls delete
+C++ library: auto_ptr, shared_ptr <---need g++ version 4, extension
+
+
+auto_ptr
+--------
+-semantics of strict ownership
+-can't be used with the STL
+-we think of an auto_ptr as owning the object it is pointing to
+-when one auto_ptr is assigned to another, the ownership is transferred
+
+#include <memory>
+auto_ptr<int> p(new int(1));
+cout<<*p<endl;
+*p * 2;
+auto_ptr<int> q(p); //p because null; q owned the object
+q = r; //r becomes null, q owns 'new int(1)' (destructor called)
+int *s = q.get(); //returns stored pointer
+
+s = q.release(); //q becomes null, doesn't call destructor
+auto_ptr<int> t(new int(4));
+t.reset(new int(5)); // destructor called, t pointers to the int containing 5
+
+void f(){
+	C *p = new C(...);
+	.......//if there is an early return here, or the code throws an exception here, delete won't be called
+	delete p;
+}
+
+void f(){
+	auto_ptr(c) p(new C(..)); //note: can't use auto_ptr<c> p* new C(..); because constructor is explicit
+}
+
+this function is fine even if the code in '...' return early or throws an exception.
+
+Note: when an exception is thrown, the stack is unwound (if the exception is caught somewhere)
+
+
+auto_ptr<c> create(){
+	...//creates a C object dynamically and return if wrapped in an auto_ptr
+}
+
+void g(auto_ptr<c> p){
+	...
+}
+
+Note: can't use auto_ptr to point to an array as its destructor calls delete. 
+auto_ptr<Student> p(new Student(...));
+
+cout<<p->get(&C)<<endl;
+
+overloads: X& operator*()const;		auto_ptr<x>
+X *operator->()const;
+
+
+
+
+std::tr1::shared_ptr
+-------------------
+-implements the sementics of shared ownership uses reference counting the last owning pointer deletes the object when it goes out of scope
+-can be used with the STL
+
+tr1::shared_ptr<int> p(new int(1));
+{tr1::shared_ptr<int> q; //empty pointer
+q = p; //p and q share the object
+*q = 2; //okay
+*p = 3; //okay
+cout<<p.use_count()<<endl; //2
+} //q goes out of scope
+cout<<p.use_count()<<endl; //1
+
+eg. tr1::shared_ptr<int> creat(istream& is){
+	int n;
+	tr1::shared_ptr<int> p;
+	if(is>>n)
+		p.reset(new int(n));
+	return p;
+     }
+
+int main(){
+	vector(tr1::shared_ptr<int>> v;
+	tr1::shared_ptr<int> p;
+	while((p = create(cin)))
+		v.push_back(p);
+	
+	for(vector(tr1::shared_ptr<int> >::const_iterator
+		it = v.begin(); it!= v.end(); ++it)
+
+		cout<<**it<<endl;
+}
+
+
+-just like auto_ptr, shared_ptr has get(), reset()
+-a shared_ptr can be used as a boolean value, it is true iff get() ! = 0
+-we can actually specify the function to call when a shared_ptr is destroyed
+
+shared_ptr(X*p, D d)
+^
+constructor       ^ deletes(called on p by the destructor) <----- !shared_ptr(){d(p);}
+
+
+
+
+Inheritance
+-----------
+C++ has 3 types of inheritance: public, protected, private
+C++ also has 3 access specifiers
+
+class C{
+
+public: //interface for everyone
+                                                                   // access specifiers
+protected://interface for derived classes(subclasses)
+
+private://interface for current class
+
+}
+
+
+
+
+
+access specifier|
+-------------------------------------------
+public
+
+
+protected
+
+
+private
+
+
+
+note: everything in the base class is inherited by the derived class but may or may not be accessible
+
+C++		Java
+----		-----
+base class	superclass
+derived class	subclass
+
+
+public inheritance modes the "is-a-kind-of" relationship
+-private inheritance is for implementation inheritance
+
+eg. stack inherits from vector using private inheritance
+
+alternative: composition - stack contains a vector
+
+Use composition rather than inheritance if possible
+
+-protected inheritance ????? (rarely used)
+

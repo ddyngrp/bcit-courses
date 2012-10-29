@@ -1,0 +1,68 @@
+public class Mergesort {
+	
+	public Mergesort() {		
+	}
+		
+	public int[] Sort(int[] input) {
+		
+		if (input.length <= 1) {
+		    return input;
+		}
+		else {
+			int[] result = new int[input.length];
+			int[] left = new int[(int)Math.floor(input.length/2)];
+			int[] right = new int[(int)Math.ceil(input.length/2)];
+			
+			// Copy the left and right halves of the input array into the
+			// new array
+		    System.arraycopy(input, 0, left, 0, left.length);
+		    System.arraycopy(input, left.length, right, 0, right.length);
+		    
+		    left = Sort(left);
+		    right = Sort(right);
+
+		    result = Merge(left, right);
+
+		    return result;
+		}
+	}
+	
+	private int[] Merge(int[] left, int[] right) {
+		int[] result = new int[left.length + right.length];
+		int leftIndex = 0;
+		int rightIndex = 0;
+		int resultIndex = 0;
+		
+		while (leftIndex < left.length && rightIndex < right.length) {
+		    if (left[leftIndex] < right[rightIndex]) {
+			result[resultIndex] = left[leftIndex];
+			leftIndex++;
+		    }
+		    else {
+			result[resultIndex] = right[rightIndex];
+			rightIndex++;
+		    }
+		    resultIndex++;
+		}
+		
+		int[] rest;
+		int restIndex;
+		if (leftIndex >= left.length) {
+		    // The left array has been use up...
+		    rest = right;
+		    restIndex = rightIndex;
+		}
+		else {
+		    // The right array has been used up...
+		    rest = left;
+		    restIndex = leftIndex;
+		}
+
+		// Copy the rest of whichever array (left or right) was
+		// not used up.
+		for (int i=restIndex; i<rest.length; i++) {
+		    result[resultIndex] = rest[i];
+		    resultIndex++;
+		}
+	}
+}

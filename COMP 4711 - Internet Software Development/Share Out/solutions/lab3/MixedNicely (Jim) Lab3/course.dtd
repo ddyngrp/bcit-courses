@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--- Root element. -->
+<!ELEMENT courses (course)+>
+
+<!--- Encapsulates a golf course. -->
+<!ELEMENT course (holedetail)+>
+<!ATTLIST course
+    id CDATA #REQUIRED
+  >
+
+<!--- Describes each hole in a golf course. -->
+<!ELEMENT holedetail (#PCDATA)>
+<!ATTLIST holedetail
+    yards CDATA #REQUIRED
+    par CDATA #REQUIRED
+    number CDATA #REQUIRED
+    id CDATA #REQUIRED
+  >

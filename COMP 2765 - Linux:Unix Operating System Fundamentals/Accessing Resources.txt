@@ -1,0 +1,36 @@
+Hey all,
+
+Here's the info to access various resources we will be using throughout the course.
+
+MY BCIT:
+
+http://my.bcit.ca
+
+Enter your bcitid eg. A00000000 and your password eg. YYMMDD (birthdate)
+
+Go to My Course tab, select course, select email to exchange email with anyone in the class
+
+Click on calendar & select course to see a list of current events, due dates, etc.
+
+SHARE OUT:
+
+ftp://{bcitid}@share.bcit.ca/OUT/COMP/{course number}
+
+Enter your password eg. YYMMDD (birthdate)
+
+Here you can download soft copies of all assignment, lecture notes, solutions etc.
+
+SERVER ACCESS:
+
+Using any ssh client such as putty:
+
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+login to obiwan.bcit.ca using your bcitid (make sure you use a lower case 'a') and then enter the password Penguin1. You will be prompted to immediately choose a new password before you can access the system.
+
+Here you can practice the commands, work on assignments etc.
+
+If you have any difficulty in accessing any of these resources please do not hesitate to contact me.
+
+thanks
+<dave

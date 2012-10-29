@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Grid()
+comment0.text=\nThe\ Grid\ constructor\ creates\ a\ new\ grid\ using\ public\ constants\ ROWS\ and\ COLUMNS.\ \nConstructor\ also\ creates\ a\ new\ random\ number\ generator.\ The\ slots\ in\ the\ array\nare\ initialized\ to\ char\ 0\ (null\ char)\ by\ default.\n\n
+comment1.target=void\ showGrid()
+comment1.text=\nDisplays\ a\ grid\ on\ the\ terminal\ window.\ This\ method\ will\ be\ invoked\ on\ the\ display\ grid,\ and\non\ the\ working\ grid\ at\ the\ end\ of\ the\ game.\n\n
+comment2.target=CoordinatePair\ getRandomCoordinates()
+comment2.text=\nGenerates\ random\ coordinates,\ puts\ them\ into\ a\ new\ CoordinatePair,\nreturns\ CoordinatePair\ -\ This\ method\ is\ complete\ and\ requires\ no\ change.\n@return\ a\ randomly-generated\ pair\ of\ coordinates\ within\ the\ bounds\ of\ the\ngrid\n\n
+comment3.params=numCoordsToSet\ valueToSet
+comment3.target=void\ setRandomCoordinates(int,\ char)
+comment3.text=\nInvokes\ getRandomCoordinates()\ to\ put\ a\ specific\ value\ into\ the\ number\ of\ngrid\ positions\ specified\ by\ the\ first\ parameter,\ e.g.\ \nsetRandomCoordinates(5,\ 'T')\ will\ set\ the\ target\ char\ 'T'\ into\ 5\ different\nlocations\ in\ the\ grid\ on\ which\ it\ is\ invoked.\ This\ method\ will\ be\ invoked\ on\ the\ \nworking\ grid.\n@param\ the\ number\ of\ randomly-generated\ coordinates\ to\ set\ with\ the\ value,\nthe\ target\ value\ to\ set\n\n
+comment4.params=coordsToSet\ valueToSet
+comment4.target=void\ setSpecificCoordinates(CoordinatePair,\ char)
+comment4.text=\nSets\ the\ specified\ value\ in\ a\ grid\ at\ the\ location\ specified\ by\ the\ CoordinatePair\ parameter.\ \nThis\ method\ will\ be\ invoked\ on\ the\ display\ grid.\n@param\ CoordinatePair\ object\ containing\ the\ coordinates,\ and\ the\ value\ to\ put\ into\ that\nlocation\ as\ a\ char.\ This\ value\ will\ indicate\ "hit"\ or\ "miss".\n\n
+comment5.params=row\ column
+comment5.target=char\ getContents(int,\ int)
+comment5.text=\nGets\ the\ contents\ of\ a\ grid\ at\ the\ specified\ row\ column\ location.\n@return\ the\ grid\ contents\ as\ a\ char\n\n
+comment6.target=int\ getNumRows()
+comment6.text=\nGets\ the\ number\ of\ rows\ in\ the\ grid.\n@return\ the\ number\ of\ rows\ as\ an\ int.\n\n
+comment7.target=int\ getNumColumns()
+comment7.text=\nGets\ the\ number\ of\ columns\ in\ the\ grid.\n@return\ the\ number\ of\ columns\ as\ an\ int.\n\n
+numComments=8

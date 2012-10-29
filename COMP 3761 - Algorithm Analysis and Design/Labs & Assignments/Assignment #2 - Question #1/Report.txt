@@ -1,0 +1,45 @@
+Running MergeSort 100 times...
+Random with size n = 10^2: 0.05ms
+Random with size n = 10^3: 0.28ms
+Random with size n = 10^4: 2.87ms
+Random with size n = 10^5: 32.73ms
+Sequential with size n = 10^2: 0.02ms
+Sequential with size n = 10^3: 0.25ms
+Sequential with size n = 10^4: 2.03ms
+Sequential with size n = 10^5: 24.58ms
+Decremental with size n = 10^2: 0.03ms
+Decremental with size n = 10^3: 0.24ms
+Decremental with size n = 10^4: 2.09ms
+Decremental with size n = 10^5: 24.94ms
+
+Running Quicksort 100 times...
+Random with size n = 10^2: 0.03ms
+Random with size n = 10^3: 0.07ms
+Random with size n = 10^4: 1.17ms
+Random with size n = 10^5: 9.99ms
+Sequential with size n = 10^2: 0.05ms
+Sequential with size n = 10^3: 1.51ms
+Sequential with size n = 10^4: 152.63ms
+Sequential with size n = 10^5: Throws a stack overflow
+Decremental with size n = 10^2: 0.01ms
+Decremental with size n = 10^3: 1.4ms
+Decremental with size n = 10^4: 132.1ms
+Decremental with size n = 10^5: Throws a stack overflow
+
+Running Heapsort 100 times...
+Random with size n = 10^2: 0.03ms
+Random with size n = 10^3: 0.0ms
+Random with size n = 10^4: 0.19ms
+Random with size n = 10^5: 1.71ms
+Sequential with size n = 10^2: 0.02ms
+Sequential with size n = 10^3: 0.03ms
+Sequential with size n = 10^4: 0.15ms
+Sequential with size n = 10^5: 1.65ms
+Decremental with size n = 10^2: 0.0ms
+Decremental with size n = 10^3: 0.01ms
+Decremental with size n = 10^4: 0.05ms
+Decremental with size n = 10^5: 0.4ms
+
+After running the above tests, I have found that both MergeSort and QuickSort both fall in line with expected time efficiencies. QuickSort tends to deal better with randomly sorted arrays. Unfortunately, the level of recursions that take place on large sequential and decremental lists causes Java to throw a stack overflow.
+
+Additionally, HeapSort performs the best out of all three algorithms on all sizes. However, this does not result in a sorted list, but rather a heap that allows for efficient binary searches.

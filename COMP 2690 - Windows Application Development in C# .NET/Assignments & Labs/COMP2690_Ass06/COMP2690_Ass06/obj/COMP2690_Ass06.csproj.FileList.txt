@@ -1,0 +1,15 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\COMP2690_Ass06.Properties.Resources.resources
+obj\Debug\COMP2690_Ass06.csproj.GenerateResource.Cache
+bin\Debug\BankMachine.dll
+bin\Debug\BankMachine.pdb
+obj\Debug\COMP2690_Ass06.BalanceForm.resources
+obj\Debug\COMP2690_Ass06.DepositForm.resources
+obj\Debug\COMP2690_Ass06.TransactionHistoryForm.resources
+obj\Debug\COMP2690_Ass06.TransferForm.resources
+obj\Debug\COMP2690_Ass06.WithdrawForm.resources
+obj\Debug\COMP2690_Ass06.MainForum.resources
+bin\Debug\BankMachineGUI.exe
+bin\Debug\BankMachineGUI.pdb
+obj\Debug\BankMachineGUI.exe
+obj\Debug\BankMachineGUI.pdb

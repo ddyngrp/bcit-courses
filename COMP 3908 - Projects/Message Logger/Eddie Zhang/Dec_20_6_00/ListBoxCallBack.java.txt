@@ -1,0 +1,64 @@
+/*
+ * ListBox.java
+ *
+ * © <your company here>, 2003-2008
+ * Confidential and proprietary.
+ */
+package src;
+import net.rim.device.api.ui.component.ListField;
+import net.rim.device.api.ui.Graphics;
+import net.rim.device.api.ui.component.ListFieldCallback;
+import net.rim.device.api.ui.DrawStyle;
+import net.rim.device.api.ui.*;
+
+
+
+
+/**
+ * 
+ */
+class ListBoxCallBack implements ListFieldCallback
+{
+   private MediaController mc;
+   public ListBoxCallBack(MediaController mc_){
+        mc = mc_;
+   }
+   public void drawListRow(ListField list, Graphics g, int index, int y, int w)
+   {
+       byte[] data = {1, 2, 3, 4, 5, 6};
+       
+       
+       
+       try {
+           mc.add(new Image(data, "format"));
+            if(mc.numItems()>0) {
+                String name;
+                for(MediaNode node = mc.iterator(); node != null; node = node.next(), y++) {
+                    name = node.item().type();
+                    g.drawText(name,0,y,0,w);
+                }
+            }
+        } catch(NullPointerException e) {
+            System.err.println(e);
+        }
+   }
+   
+   public Object get(ListField listField,int index)
+   {
+       return null;
+   }
+   
+   public int getPreferredWidth(ListField listField)
+   {
+       return Graphics.getScreenWidth();
+   }
+   
+   public int indexOfList(ListField listField, String prefix, int start)
+   {
+       return listField.indexOfList(prefix,start);
+   }
+   
+   public MediaController getMC(){
+       return this.mc;
+   }
+} 

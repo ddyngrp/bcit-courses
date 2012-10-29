@@ -1,0 +1,8 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.frmXML.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.Properties.Resources.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 9\2008\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.csproj.GenerateResource.Cache

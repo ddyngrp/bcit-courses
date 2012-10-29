@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE image [
+<!NOTATION JPEG SYSTEM "PhotoEd.exe">
+<!ENTITY skate SYSTEM "skate.jpg" NDATA JPEG>
+
+<!ELEMENT image EMPTY>
+<!ATTLIST image source ENTITY #REQUIRED>
+]>
+
+<image source="skate"/>

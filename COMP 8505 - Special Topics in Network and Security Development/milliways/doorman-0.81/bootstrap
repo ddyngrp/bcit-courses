@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -x
+
+aclocal
+autoheader
+autoscan
+automake
+autoconf
+

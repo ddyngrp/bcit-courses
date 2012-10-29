@@ -1,0 +1,22 @@
+/**
+ * Project: Testing_Delete
+ * File: Testing.java
+ * Date: 2011-04-05
+ * Time: 12:43:06 AM
+ */
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class Testing {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

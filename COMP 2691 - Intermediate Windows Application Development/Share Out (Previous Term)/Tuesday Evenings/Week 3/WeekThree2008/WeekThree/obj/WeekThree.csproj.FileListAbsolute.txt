@@ -1,0 +1,14 @@
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\bin\Debug\WeekThree.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\bin\Debug\WeekThree.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.PainterForm.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.Properties.Resources.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.KeyDemoForm.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.LinkLabel.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.ProviderControls.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.ScrollBarControl.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.ErrorProvider.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\WeekThree\WeekThree\obj\Debug\WeekThree.dateTimePickerDropOff.resources

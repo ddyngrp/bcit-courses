@@ -1,0 +1,8 @@
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.frmXML.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.Properties.Resources.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.pdb

@@ -1,0 +1,142 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A557F93F-5A9C-470A-8C54-C95EE9CDBB78}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeekThree</RootNamespace>
+    <AssemblyName>WeekThree</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dateTimePickerDropOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dateTimePickerDropOff.Designer.cs">
+      <DependentUpon>dateTimePickerDropOff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorProvider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorProvider.Designer.cs">
+      <DependentUpon>ErrorProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyDemoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyDemoForm.Designer.cs">
+      <DependentUpon>KeyDemoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinkLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinkLabel.Designer.cs">
+      <DependentUpon>LinkLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PainterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PainterForm.Designer.cs">
+      <DependentUpon>PainterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="dateTimePickerDropOff.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>dateTimePickerDropOff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorProvider.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ErrorProvider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyDemoForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>KeyDemoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinkLabel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LinkLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PainterForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PainterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProviderControls.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProviderControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrollBarControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScrollBarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProviderControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProviderControls.Designer.cs">
+      <DependentUpon>ProviderControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScrollBarControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrollBarControl.Designer.cs">
+      <DependentUpon>ScrollBarControl.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flower.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Basic Properties */
+body {
+	background-color:#000066;
+	margin:0px 0px 0px 0px;
+	color:#FFFFFF;
+}
+
+/* Navigation Bar */
+table.nav {
+	background-color:#003366;
+}
+td.nav {
+	padding-left: 10px;
+}
+
+/* Header Text */
+div.header {
+	font-family:"Courier New", Courier, monospace;
+	color:#99FF66;
+	font-weight:bold;
+	font-size:24px;
+	text-align:center;
+	margin-top:30px;
+	margin-bottom:10px;
+}
+
+/* Body */
+div.body {
+	color:#E6E6E6;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+
+span.list {
+	font-family:Arial, Helvetica, sans-serif;
+	font-style:italic;
+	position:relative;
+	left:35px;
+}
+
+span.list_noimage {
+	font-family:Arial, Helvetica, sans-serif;
+	font-style:italic;
+}
+
+/* Images */
+img.centreframe {
+	border:5px solid white;
+	float:left;
+	margin:0px 20px 0px 0px;
+}
+
+/* Links */
+a:link {
+	color: #FFFF00;
+	text-decoration:none;
+}
+a:visited {
+	color: #FFFFAA;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;	
+}
+a:active {
+	text-decoration:underline;	
+}

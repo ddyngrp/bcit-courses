@@ -1,0 +1,148 @@
+More Iterators
+
+Note:  to use iterators
+#include <iterator>
+
+
+Recall:  any container can take 2 iterators in its constructor
+
+int a[] {1,2,3,4};
+vector <int> v(a, a+3)
+
+list <int> lst (v.begin(), v.end());
+
+
+
+istream_iterator<student> start(cin);
+istream_iterator<student> end;
+
+
+set <student> s(start, end);
+
+
+
+(set will use "<" to sort, must overload operator <)
+(student will read in students from cin until an eol char is sent)
+
+then, to output:
+
+copy(s.begin(),s.begin(), ostream_iterator<student> (cout, "/n"));
+
+Or even more compact:
+
+set<student>((istream_iterator<student>(cin)),istream_iterator<student>());
+
+_____________________________________
+
+
+Some Standard Algorithms
+
+-copy
+-find_if
+
+
+find:
+
+template<typename InputIterator, Typename T>
+Input_Iterator find(InputIterator first, InputIterator last, const T& value);
+
+
+int c[] {1,2,3,4,5,6,7};
+vector <int> v(a, a+7);
+
+vector <int>::iterator it = find(v.begin(), v.end(), 7);
+
+if (i == v.end())
+
+	cout << "not found" << endl;
+
+else
+	
+	*it = 7;		(there are 7 elements and we shift it 7)
+
+
+Replace:
+
+template <typename ForwewardIterator, typename T>
+
+void replace(ForewardIterator first, ForewardIterator last, const T& old-value, const T& new-value)
+
+e.g. replace(v.begin(), v.end(), 3,5);
+
+
+For_each:
+
+template <typename InputIterator, typename Function)
+
+Function for_each(InputIterator first, InputIterator last, Function f)
+
+//returns a copy of f
+
+
+struct stats
+{
+	int count;
+	int sum;
+	stats():count(0), sum(0){}
+	void operator()(int n)
+	{
+		count++;
+		sum += n;
+	}
+stats s = for_each(v.begin(), v.end(), stats());
+
+___________________________
+
+
+Iterator Categories
+
+1)	Input Iterator -> single-pass only
+
+2)	Output Iterator -> single-pass only
+
+3)	Forward Iterator -> supports mult-pass algo's (input or output)
+
+4)	Bi-directional Iterators -> fwd and back
+	++it, it++, --it, it--
+
+5)	Random Access Iterator -> like in vectors
+	it +n, it-n
+
+Stacks (use in Assign 1)
+
+	container adapater: uses a dequeue to act as a stack
+
+#include <stack>
+
+stack<int> s;
+
+s.push(5);
+s.push(2);
+
+cout << s.top() << endl;	<- 2
+s.pop()				<- no return, void
+cout << s.size << endl;		<- 1
+cout << s.empty << endl;	<- false, 0
+
+
+________________________________________________________
+
+
+Classes
+
+4 Standard Memeber fns
+
+1)	Default constructor
+		constructr that takes 0 args
+2)	Copy constructor
+3)	Destructor
+4)	Assignment Operator
+	(& operator = (const C&);
+
+If there are no explicit constructors, the compiler will create a default constructor
+	-> call constructor of the base class, then the constructor of each data member in declration order
+
+	-> primitive types ignored
+
+
+Default copy constructor performs bit-wise copy

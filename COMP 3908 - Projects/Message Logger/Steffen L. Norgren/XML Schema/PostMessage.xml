@@ -1,0 +1,35 @@
+POST /MLogger/MLService.asmx HTTP/1.1
+Host: windev.trollop.org
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: "http://virus-box/MLogger/PostMessage"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<PostMessage xmlns="http://virus-box/MLogger">
+			<postContents>
+				<sessionID>long</sessionID>
+				<title>string</title>
+				<message>string</message>
+				<!-- This section can be omitted or repeated based on the number of attachments -->
+				<dataType>string</dataType>
+				<data>string</data>
+			</postContents>
+		</PostMessage>
+	</soap:Body>
+</soap:Envelope>
+
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<PostMessageResponse xmlns="http://virus-box/MLogger">
+			<PostMessageResult>int</PostMessageResult>
+		</PostMessageResponse>
+	</soap:Body>
+</soap:Envelope>

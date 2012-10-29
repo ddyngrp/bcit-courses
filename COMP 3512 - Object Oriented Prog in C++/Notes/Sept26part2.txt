@@ -1,0 +1,121 @@
+
+
+STL (Standard Template Library)
+
+- generic programming
+- main components
+
+1)	containers		-	2 types: sequence and associative (automatically sorts elements)
+2)	algorithms		-	
+3)	iterators		-	act as glue between containers and algorithms
+4)	function objects	-	can be used to cuotmize algorithms
+
+iterators	-	abstraction of pointers
+
+Containers provide iterators; algorithms operate on iterators
+
+iterators - abstractions of pointers
+
+e.g.
+
+int a[N];	//N - some marco
+
+int *p;
+
+for (p = a; p! = a + N; ++p)
+	/*process *p */
+
+c - container
+
+it - iterator
+
+for(it = c.begin(); it! = c.end(); ++it)
+	/* process *it */
+
+
+note: ++it may be more efficient than it++
+
+we can *it, ++it, it++
+
+An iterator is an object of a certain class that has the above methods
+
+We can abstract pointers in different ways.  This lead to different categories of iterators:
+	-	input iterator
+	-	output iterator
+	-	forward iterator	p++, ++p (no --p or p--)
+	-	bidirectional iterator: p++, ++p, --p, p--
+	-	random access iterator
+
+
+funtion objects	-	generalization of functions
+
+-	they are objects that act like functions (by overloading operator())
+
+F f;	//function objet
+f(1);	->	f.operator()(1);
+
+string s("hello");
+
+s[2] -> s.operator[](2)
+
+
+STL containers provde value semantics
+
+-	they create internal copies of their elements
+-	hence they contain the values of the object inserted rather than the objec itself
+
+Vectors
+
+-	provide random acces to a sequence of varying length with constant time insertion @ deletion at the end
+
+-	like dynamic arrays
+
+#include <iostream>
+#include <vector>
+using namespace std;
+void print(const vector <int>& v);
+
+
+int main() {
+
+	vectoir<int> ve;
+	vec.reserve(20)		//recommnded to minimize realloc
+
+	for (int i = 0; i < 5; i++)
+		vec.push_back(i)
+	print(vec)'
+
+	cout << vec.front() << ' ' << vec.back() << endl;	//0 4
+	vec.pop_back();						//delete last element
+	print(vec);						//0 1 2 3
+
+	//use iterator to traverse vector
+	for(it = vec.begin(); it != vec.end(); ++it)
+
+		*it *= 2;
+
+	int a[] = {4,5,6,7,8}
+	vec.insert(vec.begin(), a, a+4);	//range [a, a+4]
+	print(vec);				//4 5 6 7 0 2 4 6
+	
+	it = vec.begin();
+	vec.erase(it + 2, it + 5);		//4 5 2 4 6
+	print(vec)
+
+	vec.assign(a+2,a+5)
+	print(vec;				//6 7 8
+
+	vector<int> vec2(5,1)			//5 copies of 1
+	print(vec2)				// 1 1 1 1 1
+
+	void print(const vector<int> &v) {
+	for (vector<int>::size_type i = 0; i < v.size(); i++)
+	{
+	}
+
+	}	
+}
+
+
+//my battery ran out of juice... refer to vector handouts
+STL uses half-open range [it1, it2]

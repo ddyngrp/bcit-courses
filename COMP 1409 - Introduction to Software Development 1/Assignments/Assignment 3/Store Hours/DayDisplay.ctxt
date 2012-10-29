@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=DayDisplay()
+comment0.text=\nConstructor\ for\ DayDisplay\ objects.\ This\ constructor\nsets\ a\ new\ day\ set\ at\ 0\ (Sunday).\n\n
+comment1.target=int\ getValue()
+comment1.text=\nThis\ method\ returns\ the\ numeric\ value\ of\ \nthe\ current\ day.\n\n
+comment2.params=whichDay
+comment2.target=String\ getDisplayValue(int)
+comment2.text=\nThis\ method\ returns\ the\ string\ representation\ of\ \nthe\ day\ passed\ in\ as\ its\ parameter.\n\n
+comment3.params=newValue
+comment3.target=void\ setValue(int)
+comment3.text=\nThis\ method\ sets\ the\ day\ value\ to\ the\ new\ value.\ \nIf\ the\ new\ value\ is\ less\ than\ zero\ or\ over\ the\ \nnumber\ of\ days\ per\ week,\ do\ nothing.\n\n
+comment4.target=void\ increment()
+comment4.text=\nThis\ method\ increments\ the\ day\ by\ one,\ rolling\ \nover\ to\ zero\ if\ the\ limit\ (days\ per\ week)\ is\ reached.\n\n
+numComments=5

@@ -1,0 +1,8 @@
+bin\Debug\COMP2690_Ass04.exe
+bin\Debug\COMP2690_Ass04.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\COMP2690_Ass04.Properties.Resources.resources
+obj\Debug\COMP2690_Ass04.csproj.GenerateResource.Cache
+obj\Debug\COMP2690_Ass04.exe
+obj\Debug\COMP2690_Ass04.pdb
+obj\Debug\COMP2690_Ass04.DateValidatorForm.resources

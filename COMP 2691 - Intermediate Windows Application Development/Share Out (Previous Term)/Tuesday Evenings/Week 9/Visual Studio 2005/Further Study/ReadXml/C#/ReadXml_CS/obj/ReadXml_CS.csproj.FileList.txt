@@ -1,0 +1,7 @@
+bin\Debug\ReadXml_CS.exe
+bin\Debug\ReadXml_CS.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ReadXml_CS.Form1.resources
+obj\Debug\ReadXml_CS.csproj.GenerateResource.Cache
+obj\Debug\ReadXml_CS.exe
+obj\Debug\ReadXml_CS.pdb

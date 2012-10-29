@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=gridRows\ gridColumns
+comment0.target=Grid(int,\ int)
+comment1.target=int\ getRows()
+comment1.text=\nReturns\ the\ number\ of\ rows\ in\ the\ grid,\ length\ of\ the\ grid\n\n
+comment2.target=int\ getColumns()
+comment2.text=\nReturns\ the\ number\ of\ columns\ in\ the\ grid,\ length\ of\ a\ row\n\n
+comment3.target=void\ loadGrid()
+comment3.text=\nLoads\ half\ the\ grid\ at\ randomly-chossen\ locations\ (half\ if\ total\nlocations\ is\ even,\ otherwie\ half-1).\ Each\ choen\ location\ will\ get\na\ new\ Colour\ object\ reference\ with\ colour\ and\ weight\ randomly\nchosen.\ Do\ not\ replace\ one\ Colour\ object\ with\ another.\nPossible\ colours\ are\:\ red,\ blue,\ green,\ yellow,\ orange.\nPossible\ weights\ are\ between\ 1\ and\ 6\ inclusive.\n\n
+comment4.target=String\ randomColour()
+comment4.text=\nReturn\ a\ random\ Colour\n\n
+comment5.target=void\ diplayGrid()
+comment5.text=\nDisplays\ the\ grid\ contentsss,\ e.g.\ for\ a\ 3x3\ grid\:\nyellow\ weight\ 1\ at\ location\ 1,0\nred\ weight\ 6\ at\ location\ 1,1\n...\n\n
+numComments=6

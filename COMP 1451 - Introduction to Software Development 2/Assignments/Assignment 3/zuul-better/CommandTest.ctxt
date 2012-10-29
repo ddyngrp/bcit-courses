@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=CommandTest()
+comment0.text=\nDefault\ constructor\ for\ test\ class\ CommandTest\n\n
+comment1.target=void\ setUp()
+comment1.text=\nSets\ up\ the\ test\ fixture.\n\nCalled\ before\ every\ test\ case\ method.\n\n
+comment2.target=void\ tearDown()
+comment2.text=\nTears\ down\ the\ test\ fixture.\n\nCalled\ after\ every\ test\ case\ method.\n\n
+comment3.target=void\ testTwoKnown()
+comment3.text=\nTesting\ whether\ the\ Command\ class\ properly\ recognizes\ a\ known\ command\nword\ along\ with\ a\ second\ word.\n\n
+comment4.target=void\ testTwoUnknown()
+comment4.text=\nTesting\ whether\ the\ Command\ class\ properly\ recognizes\ an\ unknown\ncommand\ word\ along\ with\ a\ second\ word.\n\n
+comment5.target=void\ testOneKnown()
+comment5.text=\nTesting\ whether\ the\ Command\ class\ properly\ recognizes\ a\nsingle\ known\ command\ word\n\n
+comment6.target=void\ testOneUnknown()
+comment6.text=\nTesting\ whether\ the\ Command\ class\ properly\ recognizes\ a\nsingle\ unknown\ command\ word\n\n
+numComments=7

@@ -1,0 +1,7 @@
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\obj\Debug\XPathEval_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\obj\Debug\XPathEval_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\bin\Debug\XPathEval_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\bin\Debug\XPathEval_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\obj\Debug\XPathEval_CS.Form1.resources
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionEight\SectionEight\Examples\XPathEvaluator\C#\XPathEval_CS\obj\Debug\XPathEval_CS.csproj.GenerateResource.Cache

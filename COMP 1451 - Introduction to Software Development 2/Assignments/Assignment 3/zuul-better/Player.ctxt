@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Player()
+comment0.text=\nCreate\ a\ player.\n\n
+comment1.target=double\ getBalance()
+comment1.text=\nGet\ the\ amount\ of\ money\ in\ the\ player's\ wallet\n@return\ String\ items\ weight\ in\ kilograms\n\n
+comment2.params=money
+comment2.target=void\ addMoney(double)
+comment2.text=\nAdd\ money\ to\ the\ player's\ wallet\n@param\ double\ money\ to\ add\ to\ the\ player\n\n
+comment3.params=money
+comment3.target=void\ spendMoney(double)
+comment3.text=\nRemove\ money\ from\ the\ player's\ wallet.\n@param\ double\ money\ to\ remove\ from\ the\ player\n\n
+comment4.params=item
+comment4.target=void\ takeItem(Item)
+comment4.text=\nAdd\ an\ item\ to\ the\ player's\ inventory.\n@param\ Item\ item\ object\ to\ put\ in\ the\ player's\ inventory\n\n
+comment5.params=itemName
+comment5.target=Item\ dropItem(String)
+comment5.text=\nRemove\ an\ item\ from\ the\ player's\ inventory\ and\ return\nthe\ item\ object.\n@param\ String\ item\ name\n@return\ item\ object\n\n
+comment6.target=double\ inventoryWeight()
+comment6.text=\nReturns\ the\ total\ weight\ of\ all\ items\ in\ the\ player's\ninventory.\n\n
+comment7.target=String\ inventoryList()
+comment7.text=\nReturns\ a\ string\ items\ in\ the\ player's\ inventory.\n\n
+comment8.target=boolean\ allRequiredItems()
+comment8.text=\nReturns\ true\ or\ false\ depending\ on\ whether\ the\ player\ has\nall\ of\ the\ required\ items\ to\ win\ the\ game.\n\n
+numComments=9

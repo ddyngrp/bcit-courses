@@ -1,0 +1,60 @@
+<html><head>
+
+<!--  From slide 19:
+
+DOM Element Properties
+document.createElement(tagName)
+document.createTextNode(text)
+<element>.appendChild(childNode)
+<element>.getAttribute(name)
+<element>.setAttribute(name, value)
+<element>.insertBefore(newNode, targetNode)
+<element>.removeAttribute(name)
+<element>.removeChild(childNode)
+<element>.replaceChild(newNode, oldNode)
+<element>.hasChildnodes()
+-->
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var row = 1;
+
+function addRow(tableId) {
+	var newRow         = document.createElement("tr");
+	var newTd	   = document.createElement("td");
+
+	newTd.setAttribute("id", row);
+
+	var newTextBox    = document.createElement("input");
+	newTextBox.setAttribute("id", "student[]");
+
+	var newId = "id is " + newTextBox.getAttribute("id");
+
+	newTextBox.setAttribute("value", newId);
+
+	newTd.appendChild(newTextBox);
+
+/*
+	var newText        = document.createTextNode("Row " + row + " and id is " + newTd.getAttribute('id'));
+
+	row++;
+
+	newTd.appendChild(newText);
+*/
+	var currentLastRow = document.getElementById(tableId).lastChild;
+	newRow.appendChild(newTd);		
+	currentLastRow.appendChild(newRow);
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<table id="jason">
+	<tr><td><input type="button" onclick="addRow('jason');"></td></tr>
+	<tr><td>jeff was here</td></tr>
+</table>
+</body>
+</html>

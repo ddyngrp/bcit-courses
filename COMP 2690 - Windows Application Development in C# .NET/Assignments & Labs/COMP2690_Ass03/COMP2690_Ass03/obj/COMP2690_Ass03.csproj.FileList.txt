@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\COMP2690_Ass03.Properties.Resources.resources
+obj\Debug\COMP2690_Ass03.csproj.GenerateResource.Cache
+bin\Debug\sportsresults.exe.config
+bin\Debug\sportsresults.exe
+bin\Debug\sportsresults.pdb
+obj\Debug\sportsresults.exe
+obj\Debug\sportsresults.pdb

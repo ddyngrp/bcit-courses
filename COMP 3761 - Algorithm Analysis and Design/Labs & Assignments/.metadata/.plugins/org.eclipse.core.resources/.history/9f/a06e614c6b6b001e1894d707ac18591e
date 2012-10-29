@@ -1,0 +1,14 @@
+public class Lab01 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Secret();
+	}
+	
+	private static void Secret() {
+		
+	}
+
+}

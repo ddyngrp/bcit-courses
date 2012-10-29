@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+RIM-COD-Module-Name: P
+RIM-COD-Module-Dependencies: net_rim_cldc,net_rim_xml,net_rim_xml_org
+MIDlet-Jar-Size: 42854
+MIDlet-1: ,,
+RIM-COD-Creation-Time: 1229819795
+MIDlet-Jar-URL: P.jar
+RIM-COD-URL: P.cod
+RIM-COD-SHA1: b7 b2 e8 8f 22 bf 68 72 da 93 06 b5 75 8d 92 02 e7 92 69 54
+RIM-COD-Size: 14156
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Version: 0.0
+MIDlet-Name: P
+MIDlet-Vendor: <unknown>
+MicroEdition-Profile: MIDP-2.0
+RIM-MIDlet-Flags-1: 0

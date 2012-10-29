@@ -1,0 +1,12 @@
+#Mon Nov 26 01:42:06 PST 2007
+DEBUG.consoleOpenOnErr=false
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8"?>\n<launchPerspectives/>\n
+org.eclipse.debug.ui.cancel_launch_with_compile_errors=always
+pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684"/>
+Console.highWaterMark=88000
+preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
+Console.limitConsoleOutput=false
+org.eclipse.debug.ui.switch_perspective_on_suspend=always
+eclipse.preferences.version=1
+org.eclipse.debug.ui.save_dirty_editors_before_launch=always
+org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8"?>\n<viewBindings>\n<view id\="org.eclipse.ui.console.ConsoleView">\n<perspective id\="org.eclipse.jdt.ui.JavaPerspective" userAction\="opened"/>\n</view>\n</viewBindings>\n

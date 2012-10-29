@@ -1,0 +1,128 @@
+Assignment 1
+midterm:	Friday Oct 31 (tentative)
+
+Function objects(functions)
+
+
+
+e.g.		Fibonocci numbers:	1,1,2,3,5,8,13...
+
+
+int fib(){
+
+	static int a = 0, b = 1;
+	int c = a + b;
+	a = b;
+	b = c;
+	return a;
+
+}
+
+fib() ->	1
+fib() ->	1
+fib() ->	2
+
+What if we want 2 fibonaaci sequences??
+
+struct Fib{
+
+	int a, b;
+	Fib():a(0), b(1){}
+	int next(){
+		int c = a+b;
+		a = b;
+		b = c;
+		return a;
+	}
+};
+
+
+Fib f1, f2;
+
+f1.next(); ->	1
+f1.next(); ->	1
+f1.next(); -> 	2
+f2.next(); ->	1
+
+
+Want to use f1() instead of f1.next()
+
+simple:  overload operator()
+
+e.g. a[n] -> a.operator[](n)
+
+
+
+int a_, b_;
+
+public;
+	Fib(): a_(0), b_(1){}
+	int operator()(){
+		int c = a_ + b_;
+		a_ = b_;
+		b_ c;
+		return a_;
+	}
+}
+
+
+Fib f();	declars a function f that takes n arguements and returns a Fib
+
+
+
+
+
+struct is_divisible_by{
+	int divisor;
+	is_divisible_by(int d):divisor(d){}
+	bool operator()(int n) const{		//	this method doesn't change the data member (divisor)
+		return n%divisor == 0;
+	}
+};
+
+
+To find the first int by divisible by 3 in a list of ints
+
+
+is_divisible_by div3(3);	e.g. 	div3(5)	->	false;
+					div3(9) ->	true;
+
+
+list<int>::iterator it = find_if(lst.begin(),list.end(), div3);
+
+
+problem:
+
+I've "hardcoded" int into is_divisible_by
+
+(no "magic" type!)
+
+soultion: make it into a class template
+
+template<typename T>
+
+struct is_divisible_by{
+	T divisor;
+	is_divisible_by(T d): divisor(d) {}
+	bool operator()(T n) constP
+		return n% divisor == 0
+	}
+};
+
+
+is_divisible_by<int> div3(3);
+
+
+Recall: set<studnet> and studnet has 3 data members:
+
+id, lastname, firstname.  We wrote operator < comparing 2 students by their ids.  What if we want to sort by
+last and first names?
+
+set<student,cmp> s;
+
+
+struct cmp{
+	cool operator()(const student& s1, const student& s2)const{
+		if (s1.lastname != s2.lastnmae)
+			return s1.lastname < s2.lastname;
+		return s1.firstname < s2.firstname;

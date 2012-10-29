@@ -1,0 +1,20 @@
+#
+#  Sample 'guestlist' file (man 5 guestlist)
+#
+#   .--<-- group name must start on column 1 !
+#  /
+# /grp   secret    ports                     addresses
+#/---- ----------  -----     ------------------------------------------
+grp187 Big%sEcReT  20 23     1.2.3.4/16   some.site.net   9.10.11.12/16
+
+user4  qwertyuiop4  # records may be broken over several lines, so long as
+       ssh pop3     # continuation lines are preceded by some whitespace
+       192.168.0.0/24  9.10.11.12/16  127.0.0.1/24
+
+group8 qwertyuiop8
+       21 ssh 23 24 25
+       1.2.3.4         5.6.7.8        9.10.11.12/8
+
+grp-with-hard-to-remember-secret
+       @}#^&*A)_+]$!|7-[,=\>?{%<(       1 2 3   my.site.org/24
+

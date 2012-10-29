@@ -1,0 +1,18 @@
+Area Supervisor:
+Supervisor enables areaSupervisor disables areaSupervisor sets new pH level
+
+Line Operator:Operator turns line onOperator turns line offOperator sets new bottle sizeOperator removes bottle
+
+Bottling Line:
+Bottle is released from gateBottle drops into placeBottle becomes full
+Bottle is labeled with data
+Contact sensor is on
+Contact sensor is off
+
+Scale:
+Bottle weight is read
+Scale is uncalibrated (reads >0.1)
+Scale reads bottle is not full
+Scale reads bottle is full
+
+Vat:pH moves out of limits (>0.3 pH)pH moves within limits (±0.3 pH)

@@ -1,0 +1,20 @@
+# make for pfwd
+
+CC=gcc
+
+mping: mping.o proc_v4.o send_v4.o
+	$(CC) mping.o proc_v4.o send_v4.o -o mping
+
+mping.o: mping.c
+	$(CC) -O -c mping.c
+
+clean:
+	rm -f *.o mping core
+
+proc_v4.o: proc_v4.c
+	$(CC) -O -c proc_v4.c
+
+send_v4.o: send_v4.c
+	$(CC) -O -c send_v4.c
+
+

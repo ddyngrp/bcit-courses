@@ -1,0 +1,10 @@
+bin\Debug\COMP2690_Ass05.exe
+bin\Debug\COMP2690_Ass05.pdb
+bin\Debug\News.dll
+bin\Debug\News.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\COMP2690_Ass05.NewsReader.resources
+obj\Debug\COMP2690_Ass05.Properties.Resources.resources
+obj\Debug\COMP2690_Ass05.csproj.GenerateResource.Cache
+obj\Debug\COMP2690_Ass05.exe
+obj\Debug\COMP2690_Ass05.pdb

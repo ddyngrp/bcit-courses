@@ -1,0 +1,5 @@
+bin\Debug\AssemblyDocumenter.dll
+bin\Debug\AssemblyDocumenter.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\AssemblyDocumenter.dll
+obj\Debug\AssemblyDocumenter.pdb

@@ -1,0 +1,132 @@
+-	copy
+
+
+In C:
+
+void copy(int a[], size_t n, int b[]){
+	size_t i;
+	for (i = 0; i < n; i++)
+		b[i] = a[i];
+	}
+}
+
+
+
+void copy(int a[], size_t n, int b[]){
+	int *p;
+
+	for (p = a; p < a+n; p++)
+		*b++ = *p;
+
+}
+
+void copy(int *first, int *last, int *result){
+	while (first != last)
+		*result++ = *first++;
+}
+
+//note that after the method is invoked, result will be pointing to the last place it was pointing at
+//making it very useful to just call result to add to that line
+
+
+int a[] = {3,2,6,4,5};
+int b[5];
+
+copy(a, a+5, b);
+
+template <typename InputIterator, typename OutputIterator>
+OutputIterator
+copy(InputIterator first, InputIterator last, OutputIterator result){
+
+	while (first!=last)
+		*result++ *first++;
+	return result;
+}
+
+
+This is basically the version in the STL
+
+Note that copy overwrites the destination (it doesn't insert);
+we need to make sure the destination is large enought to store the source.
+
+
+Example:
+
+
+int a[] = {3,2,6,4,8};
+list<int> lst(a, a+5);
+
+vector<int> v;
+v.resize(10);
+
+copy(lst.begin(), lst.end(), v.begin));
+
+
+
+ostream_iterator
+
+
+ostream_iterator osi(cout, " ");
+
+
+++ * basically do nothing (they just return the original ostream_iterator)
+
+= calls << on the ostream associated with the iterator
+
+
+
+while (first != last)
+	*result++ *first++;  => 	result = *first++;
+
+
+					cout << *result++ << " "
+					(for the above osi)
+
+
+e.g.	copy (lst.begin(), lst.end(), ostream_iterator<int>(cout, " "));
+
+
+find
+find_if
+for_each
+
+
+
+int *find_if(int*first, int*last, int (*f)(int))	//the last int represents a true or false condition
+{
+
+	while(first != last)
+		if (f(*first))
+			return first;
+
+		first++;
+	}
+	return last;		//although you could have returned first, as firs would have reached last
+
+
+}
+
+
+
+template<typename InputIterator, typename Predicate>
+
+InputIterator
+find_if(InputIterator first, InputIterator last, Predicate f){
+
+	while (first != last){
+		if (f(*first))
+			break;
+		first++;
+	}
+	return first;
+}
+
+e.g. bool is_even(int n){
+	return n%2 == 0
+}
+
+
+list<int>::iterator it = find_if(lst.begin(), lst.end(), is_even);
+if (it = lst.end())	/* not found */
+		
+

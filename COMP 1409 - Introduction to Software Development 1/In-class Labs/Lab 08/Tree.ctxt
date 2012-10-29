@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=newTreeSpecies\ newTreeAgeInYears
+comment0.target=Tree(String,\ int)
+comment0.text=\nDefault\ constructor\ for\ Tree\n\n
+comment1.target=String\ getTreeSpecies()
+comment1.text=\nGetter\ for\ treeSpecies\n\n
+comment2.target=int\ getTreeAgeInYears()
+comment2.text=\nGetter\ for\ treeAgeInYears\n\n
+numComments=3

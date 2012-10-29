@@ -1,0 +1,7 @@
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\bin\Debug\WriteXml_CS.exe
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\bin\Debug\WriteXml_CS.pdb
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.Form1.resources
+C:\Documents and Settings\Amir\Desktop\Backup June 4\SectionTen\SectionTen\WriteXml 1\C#\WriteXml-CS\obj\Debug\WriteXml_CS.csproj.GenerateResource.Cache

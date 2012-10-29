@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ZipFileExportWizard">
+		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
+		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
+		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="/Users/ironix/Desktop/Eclipse.zip"/>
+			<item value="/Users/ironix/Desktop/A00683006.zip"/>
+		</list>
+	</section>
+	<section name="FileSystemImportWizard">
+		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
+		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/Users/ironix/Documents/Schoolwork/COMP 2611/Day 05/examples"/>
+			<item value="/Users/ironix/Documents/Schoolwork/COMP 2611/Day 05/examples/uiswing"/>
+			<item value="/Users/ironix/Documents/Schoolwork/COMP 2611/Day 04/examples"/>
+		</list>
+	</section>
+</section>

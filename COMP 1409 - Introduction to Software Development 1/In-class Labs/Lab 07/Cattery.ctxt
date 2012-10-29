@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=newCattery
+comment0.target=Cattery(String)
+comment0.text=\nConstructor\ for\ Cattery\n\n
+comment1.params=newCat
+comment1.target=void\ storeCat(Cat)
+comment1.text=\nAdds\ new\ cat\ to\ the\ collection\n\n
+comment2.params=displayPosition
+comment2.target=void\ displayStoredCat(int)
+comment2.text=\nReturn\ the\ details\ of\ the\ cat\ at\ a\ particular\ position\n\n
+comment3.params=deletePosition
+comment3.target=void\ removeStoredCat(int)
+comment3.text=\nDelete\ the\ cat\ at\ a\ particular\ position\n\n
+comment4.target=void\ displayAllStoredCats()
+comment4.text=\nShow\ all\ cat\ objects\n\n
+numComments=5

@@ -1,0 +1,133 @@
+function that merges 2 vectors
+
+v1 and v2 are already sorted in ascending order; they are merged and appended to V
+
+
+void merge(const vector <int> & v1, const vector <int> & v2, vector <int> &v) {
+
+	vector <int>::size_type i1 = 0, i2 = 0, n1 = v1.size(), n2 = v2.size();
+
+
+
+	while (i1 < n1 && i2 < n2)
+
+		if (v1[i1] < v2[i2])
+			v.push_back(v1[i1++]);
+		else
+			v.push_back(v2[i2++]);			//puts it at the back of the vector
+
+
+
+
+	if (i1 < n1)
+		v.insert(v.end(), v1begin() + i1, v1.end());
+
+
+}
+
+
+void mergesort(vector<int> & v){
+	vector<int>::size_type n = v.size();
+
+	if (n <=1)
+		return;
+
+	vector<int> v1(v.begin(), v.begin() + n/2);
+	vector<int> v2(v.begin() + n/2, v.end());
+
+}
+
+
+mergesort(v1);
+mergesort(v2);
+v.clear()
+merge(v1,v2,v3);
+
+
+
+__________________________________________
+
+
+Deques
+
+-	"double-ended" queues
+-	provide random access to a sequence of varying lengths with constant time insertion and deletion at bobth ends
+
+#include <iostream>
+#include <deque>
+using namespace sd;
+void print(const deque<int>& d);
+
+int main() {
+	deque<int> deq;
+
+	for (int i = 0; i < 5; i++)
+		if (i%2 == 0)
+			deq.push_front(i);	//insert at front
+		else
+			deq.push_back(i);	//insert at back
+
+	print(deq);				
+	deq.pop_back();				//delete last element
+	deq.pop_front();			//delete first element
+}
+
+
+___________________________________________
+
+
+Iterative mergesort
+
+
+e.g.	v[5][2][7][6][8][4]
+
+array if 1 element
+
+56	array of 1 element
+
+1)	remove 1st 2 arrays
+2)	merge them
+3)	put merged version at end of queue
+
+stop when there's only 1 array in the queue.  That's the sorted array.
+
+void mergesort(vector<int>&v){
+	deque<vector<int> > d;		//watch out for >> in a row
+	vector<int>::iterator it;
+	for (it = v.begin(); it != v.end(); ++it)
+		d.push_back(vector(1,*it));
+
+	while (d.size()>1){
+		vector tmp;
+		merge(d[0], d[1], tmp);
+		d.push_back(tmp);
+		d.pop_front();
+		d.pop_front();
+	}
+	v = d[0];
+
+
+
+}
+__________________________________________________
+
+
+lists
+
+e.g.	deleting all positive nos in a list
+
+
+	list<int>::iterator it+;
+
+	for (it = lst.being(), it! = lst.end(), ++it)
+		if (*it > 0)
+			1st.erase(it);
+
+	Can't do ++it after erase(it)!!	(think::linked list)
+
+
+	for (it = lst.begin(); it != lst.end();)
+		if (*it > 0)
+			it = lst.erase(it);	//note:erase returns iterator to the following element
+		else
+			++it;

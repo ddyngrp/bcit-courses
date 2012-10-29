@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=customerName
+comment0.target=BankAccount(String)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ BankAccount\n\n
+comment1.params=customerName\ initialBalance
+comment1.target=BankAccount(String,\ double)
+comment1.text=\nConstructor\ for\ objects\ of\ class\ BankAccount\n\n
+comment2.target=double\ getBalance()
+comment2.text=\nGets\ the\ balance\ in\ the\ account\n\n@return\ \ double\ current\ balance\ in\ the\ account\n\n
+comment3.params=amountToDeposit
+comment3.target=void\ deposit(double)
+comment3.text=\nDeposits\ the\ specified\ amount\ to\ the\ account.\ \nTests\ the\ parameter\ for\ validity\n\n@param\ double\ amount\ to\ be\ deposited\ to\ the\ account\n\n
+comment4.params=amountToWithdraw
+comment4.target=void\ withdraw(double)
+comment4.text=\nWithdraws\ the\ specified\ amount\ from\ the\ account.\nTests\ the\ parameter\ for\ validity\n\n@param\ double\ amount\ to\ withdraw\ from\ the\ account\n\n
+comment5.target=int\ getAccountNumber()
+comment5.text=\nReturns\ the\ unique\ identifier\ for\ this\ account\n\n@return\ int\ unique\ identifier\ for\ this\ account\n\n
+comment6.target=String\ getCustomerName()
+comment6.text=\nReturns\ the\ customer\ name\n\n@return\ String\ customer\ name\ of\ this\ account\n\n
+comment7.target=void\ applyInterest()
+comment7.text=\nAdds\ interest\ to\ the\ account\ balance,\ based\ on\ current\ \ninterest\ rate.\ Each\ time\ the\ method\ is\ invoked,\ the\ percentage\nis\ calculated\ and\ added\ to\ the\ account\ balance.\n\n
+comment8.target=String\ toString()
+comment8.text=\nProvides\ account\ info.\n\n@return\ account\ details\:\ customer\ name,\ account\ number,\ current\ balance\n\n
+numComments=9

@@ -1,0 +1,11 @@
+
+public class TestData {
+	private static final String data = "";
+	
+	TestData() {	
+	}
+	
+	public String getData() {
+		return data;
+	}
+}

@@ -1,0 +1,8 @@
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\bin\Debug\OurBankLibrary.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\OurBankLibrary.BankUIForm.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\OurBankLibrary.Properties.Resources.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\OurBankLibrary.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\OurBankLibrary.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\obj\Debug\OurBankLibrary.dll
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\OurBankLibrary\OurBankLibrary\bin\Debug\OurBankLibrary.dll

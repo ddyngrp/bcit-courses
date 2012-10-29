@@ -1,0 +1,15 @@
+bin\Debug\Threading.exe.config
+obj\Debug\Threading.exe
+obj\Debug\Threading.pdb
+bin\Debug\App_Data\northwind.mdf
+bin\Debug\App_Data\northwind_log.ldf
+bin\Debug\Threading.exe
+bin\Debug\Threading.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Threading.ADONetSamples.Async.Callback_ThreadSafe.resources
+obj\Debug\Threading.ADONetSamples.Async.Callback_NotThreadSafe.resources
+obj\Debug\Threading.ADONetSamples.Async.MultipleCommands.resources
+obj\Debug\Threading.ADONetSamples.Async.Parallel.resources
+obj\Debug\Threading.frmBackgroundWorker.resources
+obj\Debug\Threading.Properties.Resources.resources
+obj\Debug\Threading.csproj.GenerateResource.Cache

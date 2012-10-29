@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Cookies</title>
+
+<script type="text/javascript" language="javscript">
+<!--
+
+var timerId = null;		// step 1
+
+function startTimer()		// step 2
+{
+	if(timerId == null)
+	{
+		timerId = setInterval('moveImage()', '1000');
+	}
+}
+
+function moveImage()
+{
+	document.getElementById("an").style.left = 
+		parseInt(document.getElementById("an").style.left) 
+			+ 1 + "px";
+}
+
+function stopTimer()		// step 3
+{
+	clearInterval(timerId);
+	timerId = null;
+}
+
+// -->
+</script>
+
+</head>
+
+<body>	<!-- step 4 -->
+
+<img 	src="lion.jpeg" 
+	id="an" 
+	name="an" 
+	width="100"
+	style="position:absolute;top:0px;left:0px"
+>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<input type="button" onclick="startTimer();" value="start"><br>
+<input type="button" onclick="stopTimer();" value="stop">
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+

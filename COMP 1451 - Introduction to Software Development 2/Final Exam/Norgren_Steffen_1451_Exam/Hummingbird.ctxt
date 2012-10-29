@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=species\ age\ weightKG\ eggColour\ flightSpeedKMH
+comment0.target=Hummingbird(String,\ int,\ double,\ String,\ double)
+comment0.text=\nConstructor\ for\ hummingbird\n\n
+comment1.target=String\ getMove()
+comment1.text=\nGet\ this\ animal's\ special\ move\n@return\ String\ of\ the\ animal's\ move\n\n
+comment2.target=String\ getEggColour()
+comment2.text=\nGetter\ for\ this\ animal's\ fur\ colour.\n@return\ String\ representing\ the\ colour\ of\ the\ fur.\n\n
+comment3.target=double\ getFlightSpeedKMH()
+comment3.text=\nGetter\ for\ this\ animal's\ flight\ speed.\n@return\ double\ representing\ the\ animal's\ flight\ speed\ in\ km/hr.\n\n
+comment4.target=String\ toString()
+comment4.text=\ntoString\ method\ for\ Bird\ objects\n\n
+numComments=5

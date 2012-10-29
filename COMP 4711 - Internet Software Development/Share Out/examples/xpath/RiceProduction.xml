@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<RiceProduction xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com ./RiceProduction.xsd">
+
+	<Country name="Argentina" year="2003">
+		<Export>170</Export>
+	</Country>
+	<Country name="Argentina" year="2004">
+		<Export>249</Export>
+	</Country>
+	<Country name="Argentina" year="2005">
+		<Export>345</Export>
+	</Country>
+	<Country name="Argentina" year="2006">
+		<Export>400</Export>
+	</Country>
+	<Country name="Argentina" year="2007">
+		<Export>400</Export>
+	</Country>
+	<Country name="Australia" year="2003">
+		<Export>141</Export>
+	</Country>
+	<Country name="Australia" year="2004">
+		<Export>131</Export>
+	</Country>
+	<Country name="Australia" year="2005">
+		<Export>52</Export>
+	</Country>
+	<Country name="Australia" year="2006">
+		<Export>500</Export>
+	</Country>
+	<Country name="Australia" year="2007">
+		<Export>600</Export>
+	</Country>
+	<Country name="China" year="2003">
+		<Export>2583</Export>
+		<Import>258</Import>
+	</Country>
+	<Country name="China" year="2004">
+		<Export>880</Export>
+		<Import>1122</Import>
+	</Country>
+	<Country name="China" year="2005">
+		<Export>656</Export>
+		<Import>609</Import>
+	</Country>
+	<Country name="China" year="2006">
+		<Export>800</Export>
+		<Import>600</Import>
+	</Country>
+	<Country name="China" year="2007">
+		<Export>800</Export>
+		<Import>800</Import>
+	</Country>
+	<Country name="Canada" year="2003">
+		<Import>242</Import>
+	</Country>
+	<Country name="Canada" year="2004">
+		<Import>285</Import>
+	</Country>
+	<Country name="Canada" year="2005">
+		<Import>300</Import>
+	</Country>
+	<Country name="Canada" year="2006">
+		<Import>325</Import>
+	</Country>
+	<Country name="Canada" year="2007">
+		<Import>325</Import>
+	</Country>
+	<Country name="Columbia" year="2003">
+		<Import>75</Import>
+	</Country>
+	<Country name="Columbia" year="2004">
+		<Import>58</Import>
+	</Country>
+	<Country name="Columbia" year="2005">
+		<Import>92</Import>
+	</Country>
+	<Country name="Columbia" year="2006">
+		<Import>100</Import>
+	</Country>
+	<Country name="Columbia" year="2007">
+		<Import>100</Import>
+	</Country>
+	<Country name="Costa Rica" year="2003">
+		<Import>95</Import>
+	</Country>
+	<Country name="Costa Rica" year="2004">
+		<Import>136</Import>
+	</Country>
+	<Country name="Costa Rica" year="2005">
+		<Import>106</Import>
+	</Country>
+	<Country name="Costa Rica" year="2006">
+		<Import>100</Import>
+	</Country>
+	<Country name="Costa Rica" year="2007">
+		<Import>100</Import>
+	</Country>
+	<Country name="Cote dIvorie" year="2003">
+		<Import>750</Import>
+	</Country>
+	<Country name="Cote dIvorie" year="2004">
+		<Import>750</Import>
+	</Country>
+	<Country name="Cote dIvorie" year="2005">
+		<Import>800</Import>
+	</Country>
+	<Country name="Cote dIvorie" year="2006">
+		<Import>750</Import>
+	</Country>
+	<Country name="Cote dIvorie" year="2007">
+		<Import>750</Import>
+	</Country>
+	<Country name="Cuba" year="2003">
+		<Import>371</Import>
+	</Country>
+	<Country name="Cuba" year="2004">
+		<Import>639</Import>
+	</Country>
+	<Country name="Cuba" year="2005">
+		<Import>736</Import>
+	</Country>
+	<Country name="Cuba" year="2006">
+		<Import>700</Import>
+	</Country>
+	<Country name="Cuba" year="2007">
+		<Import>700</Import>
+	</Country>
+	<Country name="United States" year="2003">
+		<Export>3834</Export>
+		<Import>458</Import>
+	</Country>
+	<Country name="United States" year="2004">
+		<Export>3090</Export>
+		<Import>477</Import>
+	</Country>
+	<Country name="United States" year="2005">
+		<Export>3822</Export>
+		<Import>418</Import>
+	</Country>
+	<Country name="United States" year="2006">
+		<Export>3300</Export>
+		<Import>525</Import>
+	</Country>
+	<Country name="United States" year="2007">
+		<Export>3400</Export>
+		<Import>575</Import>
+	</Country>
+	<Country name="Uraguay" year="2003">
+		<Export>675</Export>
+	</Country>
+	<Country name="Uraguay" year="2004">
+		<Export>804</Export>
+	</Country>
+	<Country name="Uraguay" year="2005">
+		<Export>762</Export>
+	</Country>
+	<Country name="Uraguay" year="2006">
+		<Export>700</Export>
+	</Country>
+	<Country name="Uraguay" year="2007">
+		<Export>750</Export>
+	</Country>
+</RiceProduction>

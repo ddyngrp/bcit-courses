@@ -1,0 +1,25 @@
+Task 1
+
+Take sample program fig12_03.c from ShareOut and split it up into 5 files (using cut and paste commands) called : struct_def.h, func_prototypes.h, delete.c, insert.c and fig12_03.c (which will contain everything left over after creating the other 4 files).  Put the struct definition in the struct_def.h file.  Put the function prototypes and the typedefs in the func_prototypes.h file. Put the function implementation for the delete() function in the delete.c file and the function implementation for the insert() function in the insert.c file. 
+
+Please note that the order of things is VERY important for this task. For example the typedefs must come before the function prototypes in the func_prototypes.h file. Do you know why? Try to figure out the answer.
+
+Also, the 
+
+#include "struct_def.h" 
+
+statement must come before the 
+
+#include "func_prototypes.h"
+
+statement in each of the .c files. Do you know why?  Try to figure out the answer.
+
+Please note that the compiler does not require that the .c files for functions have the same names as the functions they contain, it just makes it easier for us humans to remember what we put in a .c file.  
+
+Compile each .c file individually (do NOT do a build, which will automatically compile all 3 .c files and link them together).  When all 3 .c files compile without errors or warnings, link them all together (using the build command) and then execute the program to make sure it still works correctly.
+
+
+
+Task 2
+
+Follow instructions posted on the web forum and install Allegro on your lab PC.

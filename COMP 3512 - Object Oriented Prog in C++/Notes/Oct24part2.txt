@@ -1,0 +1,119 @@
+Static members
+
+-	they are associated with a class rather than with an individual object.
+-	statc member functions don't have the 'this pointer
+-	static data members are delcared in the class definition and defined in the implelmentable file
+
+
+e.g.
+
+class C{
+
+public:
+	static int n;//declaration
+	static const int bufszie = 1024;
+	char buffer[bufsize];
+};
+
+//implementation
+
+int C::n = 10;
+
+const int C::bufsize;	//note: no initial value here
+
+
+- static const integral variables can be initialized within the class definition.
+- Technically, we will need to define them.
+- However, the compiler is required to generate a warning if they are not defined.
+______________________________________
+
+Operator overloading
+
+frunctions
+
++,-,*,/
++=, -=, *=, /=
+==, <, <=, >, >=, !=
+
+
+other equations that can be overloaded:
+
+[], (), *, ->		//* is dereferecne
+
+operators that can't be overloaded:
+
+. ::
+
+
+f1, f2
+
+f1 + f2
+f1+2
+2 + f1
+
+Instead of writing different versions of +, we want to take advantage of implicit conversions.
+Recall:  conversion ctor - ctor that takes 1 argument; can be automatically called by the compiler to
+perform conversions.
+
+No explicit for fraction ctr	-	(fraction long num = p, long den = 1);
+-	can be used to conver a long to a fraction
+
+The operators in (*) can be members or non-members.
+
+
+f1+2	-	f1.operator+(2)		if operator+ is a member
+	-	operator + (f1,2)	if operator+ is a non-member
+
+2 + f1	-	2.operator+(f1)		won't compile, no operator+ that takes a fraction for integers
+	-	operator+(2,f1)		OK if we have  implicicit conversions
+
+use non-member version.	(symmetry)
+
+_____________________________
+The Fraction class
+
+#ifndef FRACTION_H
+#define FRACTION_H
+
+#include <iostream>
+#include <sstream>
+#include <string>
+
+namespace N {
+
+...//class definition or implementation
+}
+
+//semicolin not needed
+//namespaces are "open" (unlike classes).  You add more things to them.
+
+
+
+
+namespace Math{
+	class Fraction{
+	public:
+		Fraction(long numerator = 0, long denominator = 1)
+		:n_(numerator), d_(denominator){
+		if (d_ == 0)
+			throw "Fraction::Fraction(long, long): zero denominator
+		reduce();
+}
+
+//compiler-generated copy ctor, assignment and dtor
+
+long numerator() const {return n_;}
+long denominator() const {return d_;}
+
+//we'll implement and use +=
+
+Fraction& operator+=(const Fraction& src){
+	n_ = n_*src.d_ + d_*src.n_;
+	d_* = src.d_;
+	reduce();
+	return *this;
+
+}
+
+
+(f1 += f2) = f3

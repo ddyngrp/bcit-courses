@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="XCYrice.xsl"?>
+<rice>
+    <exports>
+        <country country_id="Argentina">
+            <year year_id="2003">
+                <weight>170</weight>
+            </year>
+            <year year_id="2004">
+                <weight>249</weight>
+            </year>
+            <year year_id="2005">
+                <weight>345</weight>
+            </year>
+            <year year_id="2006">
+                <weight>400</weight>
+            </year>
+            <year year_id="2007">
+                <weight>400</weight>
+            </year>
+        </country>
+        <country country_id="Australia">
+            <year year_id="2003">
+                <weight>141</weight>
+            </year>
+            <year year_id="2004">
+                <weight>131</weight>
+            </year>
+            <year year_id="2005">
+                <weight>52</weight>
+            </year>
+            <year year_id="2006">
+                <weight>500</weight>
+            </year>
+            <year year_id="2007">
+                <weight>600</weight>
+            </year>
+        </country>
+        <country country_id="China">
+            <year year_id="2003">
+                <weight>2583</weight>
+            </year>
+            <year year_id="2004">
+                <weight>880</weight>
+            </year>
+            <year year_id="2005">
+                <weight>656</weight>
+            </year>
+            <year year_id="2006">
+                <weight>800</weight>
+            </year>
+            <year year_id="2007">
+                <weight>800</weight>
+            </year>
+        </country>
+        <country country_id="Uruguay">
+            <year year_id="2003">
+                <weight>675</weight>
+            </year>
+            <year year_id="2004">
+                <weight>804</weight>
+            </year>
+            <year year_id="2005">
+                <weight>762</weight>
+            </year>
+            <year year_id="2006">
+                <weight>700</weight>
+            </year>
+            <year year_id="2007">
+                <weight>750</weight>
+            </year>
+        </country>
+    </exports>
+    <imports>
+        <country country_id="Canada">
+            <year year_id="2003">
+                <weight>242</weight>
+            </year>
+            <year year_id="2004">
+                <weight>285</weight>
+            </year>
+            <year year_id="2005">
+                <weight>300</weight>
+            </year>
+            <year year_id="2006">
+                <weight>325</weight>
+            </year>
+            <year year_id="2007">
+                <weight>325</weight>
+            </year>
+        </country>
+        <country country_id="China">
+            <year year_id="2003">
+                <weight>258</weight>
+            </year>
+            <year year_id="2004">
+                <weight>1122</weight>
+            </year>
+            <year year_id="2005">
+                <weight>609</weight>
+            </year>
+            <year year_id="2006">
+                <weight>600</weight>
+            </year>
+            <year year_id="2007">
+                <weight>800</weight>
+            </year>
+        </country>
+        <country country_id="Colombia">
+            <year year_id="2003">
+                <weight>75</weight>
+            </year>
+            <year year_id="2004">
+                <weight>58</weight>
+            </year>
+            <year year_id="2005">
+                <weight>92</weight>
+            </year>
+            <year year_id="2006">
+                <weight>100</weight>
+            </year>
+            <year year_id="2007">
+                <weight>100</weight>
+            </year>
+        </country>
+        <country country_id="Costa Rica">
+            <year year_id="2003">
+                <weight>95</weight>
+            </year>
+            <year year_id="2004">
+                <weight>136</weight>
+            </year>
+            <year year_id="2005">
+                <weight>106</weight>
+            </year>
+            <year year_id="2006">
+                <weight>100</weight>
+            </year>
+            <year year_id="2007">
+                <weight>100</weight>
+            </year>
+        </country>
+        <country country_id="Cote d'Ivoire">
+            <year year_id="2003">
+                <weight>750</weight>
+            </year>
+            <year year_id="2004">
+                <weight>750</weight>
+            </year>
+            <year year_id="2005">
+                <weight>800</weight>
+            </year>
+            <year year_id="2006">
+                <weight>750</weight>
+            </year>
+            <year year_id="2007">
+                <weight>750</weight>
+            </year>
+        </country>
+        <country country_id="Cuba">
+            <year year_id="2003">
+                <weight>371</weight>
+            </year>
+            <year year_id="2004">
+                <weight>639</weight>
+            </year>
+            <year year_id="2005">
+                <weight>736</weight>
+            </year>
+            <year year_id="2006">
+                <weight>700</weight>
+            </year>
+            <year year_id="2007">
+                <weight>700</weight>
+            </year>
+        </country>
+        <country country_id="Uzbekistan">
+            <year year_id="2003">
+                <weight>25</weight>
+            </year>
+            <year year_id="2004">
+                <weight>25</weight>
+            </year>
+            <year year_id="2005">
+                <weight>25</weight>
+            </year>
+            <year year_id="2006">
+                <weight>25</weight>
+            </year>
+            <year year_id="2007">
+                <weight>25</weight>
+            </year>
+        </country>
+    </imports>
+</rice>

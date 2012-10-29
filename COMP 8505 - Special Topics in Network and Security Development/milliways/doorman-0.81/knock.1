@@ -1,0 +1,140 @@
+.\" Copyright (c) 2003-2005 Bruce Ward <bward2@users.sourceforge.net>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111,
+.\" USA.
+.\"
+.\"  --------------------------------------------------
+.\"   Oct.6,2003  :  JBW :  Initial version
+.\"   Jun 29,2004 :  JBW :  Added acknowledgement
+.\"   Jul 29,2004 :  JBW :  Updated for new option list
+.\"   Aug 14,2005 :  JBW :  No change from doorman V0.8
+.\"  --------------------------------------------------
+.\"
+
+.TH knock  1 "Aug 14 2005" "Port-knocker, V0.81" "Doorman & Knocker"
+
+.SH  NAME
+.B knock
+\- The port-knock client 
+.SH  SYNOPSIS
+.nf
+knock [-h] [-v] [-g groupid] [-p port] [-s secret] \\
+      [-r program arg1 arg2 ... ]   host  service
+
+.SH DESCRIPTION
+"Knock on the door" of a host running the 'doorman' daemon.  
+If the conditions outlined below are met, a firewall rule will be created 
+for a short time allowing a TCP connection on the requested port.  If a
+connection is made within this time, the rule will be left in place until
+the connection is broken.
+.br
+No reply is made to the knock; success is apparent only when a connection to
+the requested server has been made.
+
+.SH OPTIONS
+.TP
+\fB\-h\fR
+ 'help'; print a message explaining the options and quit.
+.TP
+\fB\-v\fR
+ 'version'; print the version number and quit.
+.TP
+\fB\-p port\fR
+Override the 'port' value in .knockcf.  Knock on the specified UDP port.
+.TP
+\fB\-g groupid\fR
+Override the 'group' value in .knockcf
+.TP
+\fB\-r "program arg1 arg2..."\fR
+Override the 'run' value in .knockcf.  Run this program after sending the
+knock packet.  The argument list given to the program may include the special
+strings %H% and %P%.  '%H%' substitutes for the hostname to which the knock
+is sent; '%P%' substitutes for the portnumber or service name.
+.br
+
+Example:   knock -r"ssh -l myname %H%" abc.whatever.org ssh
+.br
+
+To avoid running the program specified by the 'run' record, use any of:
+.br
+-r" " , -r' ' , -r0 , -rX , or -rx
+.TP
+\fB\-s secret\fR
+Override the 'secret' value in .knockcf
+.br
+.TP
+\fB\ host\fR
+the IP address or DNS name of the host to which a TCP connection is
+desired.
+.TP
+\fB\ service\fR
+the port number or service name (as defined in /etc/services)
+of the desired service.
+
+.SH CONDITIONS
+In order for a knock to succeed, the following conditions must be met:
+.br
+
+1. the groupid must be in the doorman's 'guestlist' file
+.br
+
+2. the secret must match that in the guestlist record for that group
+.br
+
+3. the IP address of the client machine's interface must match one of
+the addresses in the guestlist record.
+.br
+
+4. the service requested must be in the guestlist record
+.br
+
+5. A randomly-chosen number (called a 'tag') is sent in the knock packet; it
+must not occur in a list of old tags kept by the doorman.  It may
+occasionally happen that a tag is found in the list, and the knock
+will fail; there is no other remedy for this but to make
+another attempt.  However, since tags are 32 bits in magnitude, such
+occurrences should be rare.
+.br
+
+.SH FILES
+.BR ~/.knockcf :
+the configuration file for 'knock'.
+.br
+ '.knockcf' must be readable and writeable only by the owner.
+
+.SH SEE ALSO
+.BR knockcf (5),
+.BR doormand (8),
+.BR doormand.cf (5),
+.BR guestlist (5)
+
+.SH ACKNOWLEDGEMENT
+.BR doormand
+and
+.BR knock
+are an implementation of an original idea by
+.B Martin Krzywinski.
+See his site at http://www.portknocking.org
+
+.SH COPYRIGHT
+Copyright (c) 2003-2005, J.B.Ward
+.br
+<bward2@users.sourceforge.net>
+

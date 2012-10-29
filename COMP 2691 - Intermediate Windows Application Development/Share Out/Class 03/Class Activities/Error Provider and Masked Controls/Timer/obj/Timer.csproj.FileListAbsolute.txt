@@ -1,0 +1,9 @@
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\bin\Debug\Timer.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\bin\Debug\Timer.pdb
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.Form1.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.frmMaskedTextBox.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.Properties.Resources.resources
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.exe
+C:\Documents and Settings\Amir\My Documents\Visual Studio 2005\Projects\Timer\Timer\obj\Debug\Timer.pdb

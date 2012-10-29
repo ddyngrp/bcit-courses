@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.jem.internal.beaninfo.beaninfo="http:///org/eclipse/jem/internal/beaninfo/beaninfo.ecore" xmlns:org.eclipse.jem.java="java.xmi">
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="org.eclipse.jem.java:JavaClass java:/javax.swing#JScrollBar">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.0"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="eStructuralFeatures">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.1 #//@objectsToAttach.2 #//@objectsToAttach.3 #//@objectsToAttach.4 #//@objectsToAttach.5 #//@objectsToAttach.6 #//@objectsToAttach.7 #//@objectsToAttach.8 #//@objectsToAttach.9 #//@objectsToAttach.10 #//@objectsToAttach.11 #//@objectsToAttach.12"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="events">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.13"/>
+    </value>
+  </objectChanges>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanDecorator" shortDescription="Implementation of a scroll bar" implicitlySetBits="6773413839565225998" implicitDecoratorFlag="IMPLICIT_DECORATOR" mergeSuperMethods="false">
+    <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="ICON_COLOR_32x32" value="implicit,&quot;icons/scrb32.gif&quot;"/>
+    <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="ICON_COLOR_16x16" value="implicit,&quot;icons/scrb16.gif&quot;"/>
+    <notInheritedPropertyNames>enabled</notInheritedPropertyNames>
+    <notInheritedPropertyNames>layout</notInheritedPropertyNames>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="UI" eType="org.eclipse.jem.java:JavaClass java:/javax.swing.plaf#ScrollBarUI" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Scroll bar UI" expert="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getUI(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setUI(javax.swing.plaf.ScrollBarUI"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="blockIncrement" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Scrolled amount when block area is selected" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getBlockIncrement(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setBlockIncrement(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="enabled" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Whether the scroll bar is enabled" preferred="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Component.isEnabled(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setEnabled(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="layout" eType="org.eclipse.jem.java:JavaClass java:/java.awt#LayoutManager" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Layout for container" hidden="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/java.awt#Container.getLayout(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Container.setLayout(java.awt.LayoutManager"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="maximum" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="The maximum value of the scroll bar" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getMaximum(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setMaximum(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="minimum" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="The minimum value of the scroll bar" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getMinimum(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setMinimum(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="model" eType="org.eclipse.jem.java:JavaClass java:/javax.swing#BoundedRangeModel" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="The model of the scroll bar" expert="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getModel(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setModel(javax.swing.BoundedRangeModel"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="orientation" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Orientation of the scroll bar" preferred="true" implicitlySetBits="6773413839565226044" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getOrientation(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setOrientation(int">
+      <attributes xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:FeatureAttributeMapEntry" key="enumerationValues" value="implicit,[6]{&quot;HORIZONTAL&quot;,0,&quot;javax.swing.JScrollBar.HORIZONTAL&quot;,&quot;VERTICAL&quot;,1,&quot;javax.swing.JScrollBar.VERTICAL&quot;}"/>
+    </eAnnotations>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="unitIncrement" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Scrolled amount when the arrows are selected" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getUnitIncrement(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setUnitIncrement(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="value" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Current value of the scroll bar" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getValue(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setValue(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="valueIsAdjusting" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Whether a single event will be generated when all of the selection events have finished" expert="true" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getValueIsAdjusting(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setValueIsAdjusting(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="visibleAmount" eType="org.eclipse.jem.java:JavaDataType java:/#int" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" shortDescription="Amount of the view that is currently visible" implicitlySetBits="6629298651489370172" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" readMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.getVisibleAmount(" writeMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.setVisibleAmount(int"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="adjustment">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" displayName="Adjustment" shortDescription="All adjustment events" implicitlySetBits="-2594073385365405571" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" inDefaultEventSet="true" addListenerMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.addAdjustmentListener(java.awt.event.AdjustmentListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#AdjustmentListener" removeListenerMethod="org.eclipse.jem.java:Method java:/javax.swing#JScrollBar.removeAdjustmentListener(java.awt.event.AdjustmentListener">
+      <serListMthd xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:MethodProxy" name="adjustmentValueChanged" method="org.eclipse.jem.java:Method java:/java.awt.event#AdjustmentListener.adjustmentValueChanged(java.awt.event.AdjustmentEvent">
+        <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:MethodDecorator" shortDescription="Event fired when scroll bar values have changed" preferred="true" implicitlySetBits="6629298651489370113">
+          <serParmDesc xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:ParameterDecorator" shortDescription="Event on scroll bar interaction" implicitlySetBits="6629298651489370113" name="adjustmentEvent"/>
+        </eAnnotations>
+      </serListMthd>
+    </eAnnotations>
+  </objectsToAttach>
+</change:ChangeDescription>

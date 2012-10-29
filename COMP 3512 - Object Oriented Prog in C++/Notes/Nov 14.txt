@@ -1,0 +1,167 @@
+____________________________________________________________
+
+
+Why not:  if(*this != src)  //calls operator != for Fulltime-Employee
+				(we need to implment this for this
+				line of code to work)
+
+We also have
+
+
+ostream& operator << (ostream&, const Employee &);
+
+ostream&
+operator<<(ostream& os, const Fulltime Employee& e){
+	os << (const Employee &) e;	//calls (*)
+	os << e.salary_;
+	return os;
+}
+
+os << (Employee &) e;
+os << (Employee) e;
+
+
+-	casting doesn't change the original; it creates a temporary
+-	the above calls on Employee ctor passing in a Fulltime-Employee(the copy ctor)
+
+If we had
+
+ostream& operator << (ostream&, Employee &);	//and not (ostream&, const Employee &)
+
+
+then os << (Employee) e; won't work.  Why?
+
+can't create reference to temporary object unless it's a reference to a constant object
+
+
+Recall assignment operator of FulltimeEmployee::
+
+if (this != &src){
+	Employee::operator = (src);	//<-	there are alternatives
+	salary_ = src.salary_;
+}
+
+possible
+alternatives:
+
+(Employee)*this = src;			//*this = src, *this is a FulltimeEmployee
+					//*this = src is an infinite loop because you
+					//are assigning src to temporary Employee
+
+*(Employee*)this = src;			//other alternative
+
+
+
+istream&
+operator >> (istream& is, Fulltime Employee& e){
+	is >> (Employee&)e >> e.salary_;
+	return is;
+}
+
+Assume Employee has a virtual print method
+
+	virtual void print(ostream& os) const;
+
+Then for FulltimeEmployee:
+
+void	//note: no 'virtual' in CPP file
+
+Fulltimeemployee::print(ostream& os) const{
+	Employee::print(os);	//implicitly called on 'this'
+	os << salary_ << endl;
+}
+
+Alternative inplementation of operator << using print:
+
+(one version will work for all derived classes)
+
+ostream&
+
+operator << (ostream& os, const Employee& e){
+	e.print(os);
+	return os;
+}
+
+"polymorphic" in both arguments!
+
+eg.
+
+ofstream out(...);	Employee e(...); FulltimeEmployee f(...);
+
+out << e;	//ok
+out << f;	//ok
+
+
+Idea:  all derived classes implement the virtual print method and operator << calls it
+
+A class with at least 1 virtual method is called a polymorphic class.
+
+Any overriding version of a virtual method is automatically virtual although it's good practice to put
+the virtual keyword
+
+example:
+
+class B{
+public:
+	virtual void f();
+}
+
+class D:public B{
+public:
+	void f();	//overrides B's f(); automatically virtual, but good pratcie to put virtual void f();
+};
+
+
+_______________________________
+
+Casting
+
+C-style cast and 4 new types of casts:
+
+-	static cast
+-	dynamic cast
+-	const cast
+-	reinterpret cast
+
+
+
+Static Cast
+
+-	closest to C const
+	double d = 1.23
+	int n = static_cast<int>(d);	//in this example, it's not really necessary
+
+	static_cst<Employee>(e);	//e being Fulltimeemployee
+
+
+Dynamic Cast
+
+
+-	for casting down an inheritance hiearchy
+-	classes must be polymorphic
+-	the target type must be a pointer or a reference
+
+
+A	<-	B	<-	C
+
+Employee	FulltimeEmployee	SpecialFullTimeEmployee
+
+
+A *pa = ...;	//maybe point to A, B, or C
+
+B *pb = dynamic_cast<B*>(pa);
+
+if (pb == 0){
+	//const failed
+}else{
+	//use pb
+}
+
+A& ra = ...;	//may refer to an A, a B, or a C
+
+try{
+	C& rc = dynamic_cast<C&>(ra);
+	//use rc;
+}catch(const std::bad_alloc & e){
+	cerr << e.what() << endl;
+}

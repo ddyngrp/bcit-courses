@@ -1,0 +1,13 @@
+#
+#  'knockcf'
+#  Sample configuration file for the Doorman knocker "knock"
+#  Copy this file to your home directory, (renaming it to
+#  .knockcf) and edit to match the doorman's values.
+#
+#  > cp knockcf ~/.knockcf
+#
+group       user4            # Change this
+secret      qwertyuiop4      # And this!
+port        1001             # the UDP port the doorman is watching
+run         "ssh myname@%H%" # a typical thing to run after a knock
+

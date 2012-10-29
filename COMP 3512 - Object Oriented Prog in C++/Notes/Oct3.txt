@@ -1,0 +1,109 @@
+-	We'll overload operator << + operator >> for student objects.  This'll allow us to do:
+
+student st;
+
+cin >> st;
+cout << st;
+
+ostream& operator <<(ostream &os, const Student& s)
+
+	os << s.id_ << endl
+	<< s.lastname_ << endl
+	<< s.firstname_;
+
+	return os;
+}
+
+
+-	must be declared as a friend in class student
+
+
+istream& operator >> (istream& is, studnet& s)
+
+	is >> s.id_ >> s.lastname_ >> s.firstname_;
+	return is;
+}
+
+-	must be a friend of student
+
+program becomes:
+
+set<student>	s;
+student		st;
+
+while (cin >> st)
+	s.insert(st);
+
+for (set<student>::iterator it = s.begin(); it != s.end(); ++it)
+
+	cout << *it << endl;
+
+
+
+_________________________________________________
+
+
+void print(const list<int>& lst){
+	for(list<int>::const_iterator  it = lst.begin(); it != lst.end(); ++it)
+		cout << *it << ' ';
+		cout << endl;
+}
+
+
+Let's make this into a generic set template.
+
+
+template<typename C>	// or template <class C)
+
+void print(const C& c){
+	for (typename C::const_iterator it = c.begin(); it != c.end(); ++ it)		//C can be anything so we need to specify it as a type
+		cout << *it << ' ';
+	cout << endl;
+}
+
+
+-	we need to put typename in front of C::const_iterator
+	because as C can be any type, the compiler can't
+	tell whether C::const_iterator is a type or a specific value (e.g. 1)
+
+
+In the previous program, to print the set of students, we just need:
+
+	print(s);
+
+The compiler deduces that C = set<student>
+
+
+
+Note:
+
+1)	typically, function templates are put in header files
+2)	no code is generated if the function template is not used
+3)	if we call the function, the compiler instantiates a version of the function with appropriate
+	
+
+
+
+a version of print where C = set<student>
+
+e.g function that returns the max of the object in a container
+
+
+template <typename C>
+
+max(const C& c){
+
+	for (typename C::const_iterator it = c.begin(); it != c.end(); ++it)
+		if (*it > largest)
+			largest = 8it;
+		return largest;
+}
+
+-	precondition:  c is not empty
+
+
+
+Some standard typedefs:
+
+size_type, value_type, pointer reference, const_poinrter, const_reference, difference_type
+-	All standard containers have standardized typedefs

@@ -1,0 +1,152 @@
+struc or class, what is the difference?
+
+
+struct 	- default is public
+class	- default is private
+
+but basically the same
+
+
+eg.
+
+struct s{
+	int a,b;	//public by default
+	};	
+
+class c{
+	int a,b;	//private by default
+	};	
+
+protected - 	similar to private except that it behaves differently under inheritance
+	  - 	cant be accessesed outside the class
+
+
+class c{
+	public:
+		int pub;
+	protected:
+		int prot;
+	private
+		int priv;
+	};
+
+int main(){
+	C c(...);
+	c.pub = 1;	//ok
+	c.prot = 1;	//not allowed
+	c.priv = 1;	//not allowed
+
+}
+
+
+class D: public C{	//public inheritance
+	void f();
+};
+
+
+D d(...);
+
+d.pub = 1; //ok
+d.prot = 1; //not ok
+d.priv = 1; //not ok
+
+
+
+void
+D::f(){
+	pub = 1;	//ok
+	prot = 1;	//ok
+	priv = 1;	//not ok
+}
+
+____________________________________________________________-
+
+
+Public inheritance
+
+-	models the "is-a-kind-of" relationship
+-	in public inheriance:
+	a base pointer can point to a derived object
+	a base reference can refer to a derived object
+
+
+class B{ }
+class D:public B{ };
+
+B* = bp = new B;			//B b;
+B* bp2 = new D;	//also fine		//D d;
+
+B& *b = b;
+Bd rb2 = d;  //also fine
+
+__________________________________________
+static type vs dynamic type
+
+static is a declared type (never changes)
+dynamic is an actual type (may change)
+
+
+B* pb = new D;		//static type of pb: B*
+			//dynamic type of pb: D*
+
+B& rb = *d;		//static type of rb: B
+			//dynamic type of rb: D
+
+C++ has both early and late binding
+
+class B{
+
+public:
+	void f();
+	virtual void g();
+}
+
+class D{
+
+public:
+	void f();
+	virtual void g();	//overrides g
+}
+
+
+B b;
+
+D d;
+
+b.f();	//calls B::f
+d.f();	//calls D::f
+
+
+B& rb = b;
+B& rb2 = d;
+
+rb.f();		//Calls B::f
+rb2.f();	//Calls B::f (early binding)
+
+B* pb = new B;
+B* pb2 = new D;
+
+pb2 -> f();	//cals B::(early binding)
+
+
+early bnding	-	compiles determined at compile time which faction is called.
+
+late bining	-	compiler gerates code that determines at runtime which function is called.
+
+
+In C++, late binding is only used when we invoke a virtual function through a reference or a pointer.
+
+B b;  D d;
+
+B& rbd = d;
+B* pbd = &d;
+
+b.g(); //early binding, calls B::g
+rbd.g(); //late binding, calls D::g
+pbd -> g; //late binding, calls D::g
+
+In early binding, the compiler only consideres static type.
+In late binding, the c++ runtime looks at the dynamic type to determine which function is called.
+
+
+

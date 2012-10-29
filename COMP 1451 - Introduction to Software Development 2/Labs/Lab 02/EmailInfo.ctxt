@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=EmailInfo()
+comment0.text=\nInitializes\ the\ emailInfo\ hashmap,\ but\ doesn't\ do\ anything\nelse\ of\ interest\ or\ consequence.\n\n
+comment1.params=friendName\ friendEmail
+comment1.target=void\ addFriend(String,\ String)
+comment1.text=\nAdd\ a\ friend\ to\ the\ emailInfo\ HashMap\n\n@param\ friendName\ The\ person's\ full\ name\n@param\ friendEmail\ The\ person's\ full\ email\ address\n\n
+comment2.params=friendName
+comment2.target=void\ removeFriend(String)
+comment2.text=\nRemove\ a\ friend\ from\ the\ emailInfo\ HashMap\n\n@param\ friendName\ The\ person's\ name\ to\ delete\n\n
+comment3.params=friendName
+comment3.target=String\ returnEmail(String)
+comment3.text=\nReturn\ the\ email\ address\ of\ a\ friend\ in\ the\ HashMap\n\n@param\ friendName\ The\ person's\ name\ of\ whom's\ email\ to\ return\n\n
+comment4.target=void\ listAllFriends()
+comment4.text=\nDisplay\ all\ friends\ and\ their\ email\ address\ within\ the\ HashMap\n\n
+numComments=5

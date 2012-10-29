@@ -1,0 +1,73 @@
+/**
+ * Project: TestScale
+ * File: Scale.java
+ * Date: 2011-03-10
+ * Time: 11:16:40 AM
+ */
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class Scale {
+	private static final int nTick = 10;
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		looseLabel(0F, 240F);
+	}
+	
+	public static void looseLabel(float min, float max) {
+		float tickSpacing; /* tick mark spacing */
+		float range; /* data range in graph */
+		float graphMin; /* minimum data point */
+		float graphMax; /* maximum data point */
+		
+		range = (float) niceNum(max - min, false);
+		tickSpacing = (float) niceNum(range / (nTick - 1), true);
+		graphMin = (float) (Math.floor(min / tickSpacing) * tickSpacing);
+		graphMax = (float) (Math.ceil(max / tickSpacing) * tickSpacing);
+		
+		System.out.println("Tick Spacing\t: " + tickSpacing);
+		System.out.println("Graph Min\t: " + graphMin);
+		System.out.println("Graph Max\t: " + graphMax);
+	}
+	
+	public static double niceNum(float range, boolean round) {
+		float exponent; /* exponent of range */
+		float fraction; /* fractional part of range */
+		float niceFraction; /* nice, rounded fraction */
+		
+		exponent = (float) Math.floor(Math.log10(range));
+		fraction = (float) (range / Math.pow(10, exponent));
+		
+		if (round) {
+			if (fraction < 1.5F)
+				niceFraction = 1F;
+			else if (fraction < 2.5F)
+				niceFraction = 2F;
+			else if (fraction < 3F)
+				niceFraction = 2.5F;
+			else if (fraction < 7F)
+				niceFraction = 5F;
+			else
+				niceFraction = 10F;
+		}
+		else {
+			if (fraction <= 1F)
+				niceFraction = 1F;
+			else if (fraction <= 2F)
+				niceFraction = 2F;
+			else if (fraction <= 2.5F)
+				niceFraction = 2F;
+			else if (fraction <= 5F)
+				niceFraction = 5F;
+			else
+				niceFraction = 10F;
+		}
+		
+		return niceFraction * Math.pow(10F, exponent);
+	}
+}

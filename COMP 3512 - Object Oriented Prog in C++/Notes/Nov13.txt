@@ -1,0 +1,165 @@
+Assignment 2 due 10pm Sunday (Nov 16)
+Midterm 2: Nov.27 or 28
+
+
+Member initializers
+
+
+-	always use member initializers if at all possible (ctors)
+
+
+class C{
+
+public:
+	C(constD &d);
+
+private
+	D d_; //D is some class
+
+};
+
+
+
+Now compare this:
+
+
+C::C(constD &d){
+	d_ = d;	//assignment
+}
+
+C::C(constD &d):d_(d){}	//inializiation
+
+-	The second version is more efficient
+
+They are both equivlalent..
+
+But what happens in thise case?
+
+
+class X{
+public:
+	x(int n);
+private:
+	const int n_;
+};
+
+
+X::X(int n){	//doesnt compile
+	n_ = n;
+}
+
+X::X(int n):n_(n){}	//OK
+
+
+class Y{
+public:
+	Y(ostream & os);
+private
+	ostream& os_;
+};
+
+//or use ostream*
+
+
+
+X::Y(ostream& os){	//doesn't compile
+	os_ = os;	//a reference must be initialized when it is created
+}
+
+Y::Y(ostream& os):os_(os){}	//OK
+
+
+We'll implement a Fulltime Employee that
+	is derived from Employee
+class Employee{
+	public:
+		explicit Employee
+		(const std:: string &id="A00000000",
+		const Name &name = Name(),
+		const Date &birthdate = Date())
+
+		Employee (const Employee &src);
+		//to-get late binding
+		virtual ~Employee() { count_--;}
+		// compiler-gen copy c'tor
+	private:
+		static int count_;
+		...
+	};
+
+
+
+	Class FullTime Employee : public Employee {
+	public:
+		explicit FulltimeEmployee(const std::string& id = "A000000000"
+				const Name& name = Name(),
+				const Date& birthdate = Date(),
+				float salary = 0);
+
+		Fulltime Employee(const FulltimeEmployee &src);
+		virtual ~FullTimeEmployee(){count_--;}
+
+	private:
+		float salary_:
+		static int count_;
+				 
+};
+
+//Fulltime Employee.cpp
+
+
+FulltimeEmployee::FulltimeEmployee(const string& id, const Name& name,
+					const Date& birthdate, float salary)
+
+: Employee(id, name, birthdate), salary_(salary)	//Note: call base ctor
+{
+	count++;
+}
+
+
+-	Derived class ctor needs to the corresponding base ctor
+
+Fulltime Employee::FulltimeEmployee(const FulltimeEmployee &src)
+:Employee(src), salary_(src.salary_){
+	count_++;
+}
+
+
+//:Employee(src) ->  Why does this work?  src is a FulltimeEmployee?
+//Yes, a base referecne can refer to a derived object in public inheritance
+
+//assignment operator(not needed in this case)
+
+FulltimeEmployee&
+FulltimeEmployee::operator = (const Fulltime Employee& src){
+	if (this != &src){
+		Employee::operator=(src);
+		salary_ = src.salary_;
+	}
+	return *this;
+}
+
+
+____________________________________________________________
+
+
+Why not:  if(*this != src)  //calls operator != for Fulltime-Employee
+				(we need to implment this for this
+				line of code to work)
+
+We also have
+
+
+ostream& operator << (ostream&, const Employee &);
+
+ostream&
+operator<<(ostream& os, const Fulltime Employee& e){
+	os << (const Employee &) e;	//calls (*)
+	os << e.salary_;
+	return os;
+}
+
+os << (Employee &) e;
+os << (Employee) e;
+	
+

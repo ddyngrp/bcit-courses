@@ -1,0 +1,175 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29F05381-F124-462A-B283-396AE037B311}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ADOdotNET</RootNamespace>
+    <AssemblyName>ADOdotNET</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADONetGetData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADONetGetData.Designer.cs">
+      <DependentUpon>ADONetGetData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\DAL\Customers.cs" />
+    <Compile Include="App_Code\DAL\CustomersManager.cs" />
+    <Compile Include="App_Code\DAL\Employees.cs" />
+    <Compile Include="App_Code\DAL\EmployeesManager.cs" />
+    <Compile Include="App_Code\DAL\HelpersDAL.cs" />
+    <Compile Include="Async\Callback_NotThreadSafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Async\Callback_NotThreadSafe.Designer.cs">
+      <DependentUpon>Callback_NotThreadSafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Async\Callback_ThreadSafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Async\Callback_ThreadSafe.Designer.cs">
+      <DependentUpon>Callback_ThreadSafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Async\MultipleCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Async\MultipleCommands.Designer.cs">
+      <DependentUpon>MultipleCommands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Async\Parallel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Async\Parallel.Designer.cs">
+      <DependentUpon>Parallel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BindingSources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BindingSources.Designer.cs">
+      <DependentUpon>BindingSources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnString\FromConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnString\FromConfig.Designer.cs">
+      <DependentUpon>FromConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Factory\CallDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factory\CallDb.Designer.cs">
+      <DependentUpon>CallDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Factory\Factories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factory\Factories.Designer.cs">
+      <DependentUpon>Factories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ADONetGetData.resx">
+      <DependentUpon>ADONetGetData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Async\Callback_NotThreadSafe.resx">
+      <DependentUpon>Callback_NotThreadSafe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Async\Callback_ThreadSafe.resx">
+      <DependentUpon>Callback_ThreadSafe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Async\MultipleCommands.resx">
+      <DependentUpon>MultipleCommands.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Async\Parallel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Parallel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BindingSources.resx">
+      <DependentUpon>BindingSources.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnString\FromConfig.resx">
+      <DependentUpon>FromConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factory\CallDb.resx">
+      <DependentUpon>CallDb.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factory\Factories.resx">
+      <DependentUpon>Factories.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Readers\MultiResult.resx">
+      <DependentUpon>MultiResult.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Readers\MultiResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Readers\MultiResult.Designer.cs">
+      <DependentUpon>MultiResult.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

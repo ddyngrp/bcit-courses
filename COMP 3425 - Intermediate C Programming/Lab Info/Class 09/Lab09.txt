@@ -1,0 +1,27 @@
+1a) - Load and execute fig11_03.c and, in so doing, create a clients.dat sequential file with a minimum of 8 clients. At least 2 clients should have a negative balance;  at least 2 should have a positive balance; and at least two should have a 0.00 balance.
+
+1b) - Load and execute fig11_08.c using the clients.dat file created in a) above.  Try all 4 menu options.
+
+1c) - Add a new menu option to fig11_08.c: "Sum balances of all the accounts and display result" and implement changes required to support this new menu option.  This option should display all of the records in the file before displaying the sum of all of the balances.
+
+2a) - Load and execute fig11_11.c and, in so doing, create a clients.dat random-access file with 100 blank records. 
+
+2b) - Load and execute fig11_12.c and, in so doing, populate the clients.dat random-access file with a minimum of 8 clients. At least 2 clients should have a negative balance;  at least 2 should have a positive balance; and at least two should have a 0.00 balance.
+
+2c) - Load and execute fig11_16.c using the clients.dat file created in 2a) and 2b) above.  Try all 5 menu options.
+
+2d) - Add a new menu option to fig11_16.c: "Sum balances of all the accounts and store in a formatted text file called sum_report.txt" and implement changes required to support this new menu option.
+
+2e) - Add a new menu option to fig11_16.c: "Update accounts by adding a $10.00 debit amount" and implement changes required to support this new menu option. Implement the following function as part of your solution:
+
+double BonusDebit(FILE * filePtr, double DebitAmt);
+
+This function will provide a bonus debit ( a reward to the customer for being a good customer!) to every valid account in the file “credit.dat”. The amount to add to each account is specified by the second argument passed to the function. 
+
+The function must return to the calling program the total amount debited to all of the accounts (for example, if the file contains 5 valid customer accounts, and the amount debited to each account is $10.00, the value returned would be 5 * 10.00 = 50.00 ).
+
+After returning from the function, output the total amount that was debited to the accounts.
+
+How will you verify that you were successful in updating the file?
+
+

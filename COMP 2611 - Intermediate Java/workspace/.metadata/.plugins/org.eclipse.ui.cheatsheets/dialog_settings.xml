@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CheatSheetCategoryBasedSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="351"/>
+		<item key="DIALOG_FONT_NAME" value="1|Lucida Grande|11.0|0|CARBON|1|Lucida Grande"/>
+		<item key="DIALOG_HEIGHT" value="556"/>
+		<item key="CheatSheetCategoryBasedSelectionDialog.STORE_RADIO_SELECTION" value="1"/>
+		<item key="DIALOG_Y_ORIGIN" value="1"/>
+		<item key="CheatSheetCategoryBasedSelectionDialog.STORE_SELECTED_CHEATSHEET_ID" value="org.eclipse.jdt.helloworld.swt"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="CheatSheetCategoryBasedSelectionDialog.STORE_CHEATSHEET_FILENAME" value=""/>
+		<item key="CheatSheetCategoryBasedSelectionDialog.STORE_CHEATSHEET_URL" value=""/>
+		<list key="CheatSheetCategoryBasedSelectionDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="Java Development"/>
+			<item value="Plug-in Development"/>
+		</list>
+	</section>
+</section>

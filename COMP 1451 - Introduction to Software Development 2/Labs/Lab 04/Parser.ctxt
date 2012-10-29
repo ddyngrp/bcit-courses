@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Parser()
+comment0.text=\nCreate\ a\ parser\ to\ read\ from\ the\ terminal\ window.\n\n
+comment1.target=Command\ getCommand()
+comment1.text=\n@return\ The\ next\ command\ from\ the\ user.\n\n
+numComments=2

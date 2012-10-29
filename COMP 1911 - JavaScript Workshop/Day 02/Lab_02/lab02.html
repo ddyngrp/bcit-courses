@@ -1,0 +1,49 @@
+<head>
+<title>Lab #2</title>
+<script language="javascript" type="text/javascript" src="mine.js"></script>
+</head>
+<body onLoad="timerControl();">
+<form id="form1" name="form1" method="post" action="">
+  <label></label>
+  <table border="0">
+    <tr>
+      <td>First Name:</td>
+      <td><input type="text" name="first_name" id="first_name" /></td>
+    </tr>
+    <tr>
+      <td>Last Name:</td>
+      <td><input type="text" name="last_name" id="last_name" /></td>
+    </tr>
+    
+    <tr id="yob" style="display:''">
+      <td>Year of Birth:</td>
+      <td><label>
+        <input type="text" name="birthyear" id="birthyear" />
+        </label></td>
+    </tr>
+    
+    <tr>
+      <td>Hide Year:</td>
+      <td><input type="checkbox" name="hide_year" id="hide_year" onClick="dispHandle(yob);" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><label>
+        <input type="submit" name="submit" id="submit" value="Submit" />
+        </label></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><label>
+        <input type="button" name="new_window" id="new_window" value="New Window" onClick="openWindow('http://www.defendo.com/');">
+      </label></td>
+    </tr>
+  </table>
+</form>
+<img src="lion.png" id="lion" name="lion" width="100" height="100" style="position:absolute;top:400px;left:400px" alt="A fricking lion!"/>
+</body>
+</html>

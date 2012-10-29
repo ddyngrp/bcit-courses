@@ -1,0 +1,92 @@
+import java.util.Calendar;
+
+
+public class Heapsort {
+
+	public Heapsort() {
+	}
+	
+	public void sort(int[] input) {
+		for (int i = (int)Math.floor(input.length / 2); i >= 1; i--) {
+			int k = i;
+			int v = input[k];
+			boolean heap = false;
+			
+			while (!heap && (2 * k) <= input.length) {
+				int j = 2 * k;
+				
+				if (j < input.length) { // there are two children
+					if (input[j] < input[j + 1]) {
+						j++;
+					}
+				}
+				
+				if (v >= input[j]) {
+					heap = true;
+				}
+				else {
+					input[k] = input[j];
+					k = j;
+				}
+			}
+			input[k] = v;
+		}
+	}
+	
+	public void runTests(int runTimes) {
+		ArrayUtils au = new ArrayUtils();
+		
+		// Store time averages & set # of run times
+		double[] avg = new double[12];		
+		
+		// Run Heapsort tests
+		System.out.println("Running Heapsort " + runTimes + " times...");
+		for (int i = 0; i < runTimes; i++) {
+			int[] test = au.CreateRandom(100, 1, 100);
+			
+			System.out.println(au.toString(test));
+			
+			avg[0] += testSort(test);
+			
+			System.out.println(au.toString(test));
+//			avg[1] += testSort(au.CreateRandom(1000, 1, 100));
+//			avg[2] += testSort(au.CreateRandom(10000, 1, 100));
+//			avg[3] += testSort(au.CreateRandom(100000, 1, 100));
+//
+//			avg[4] += testSort(au.CreateSequential(100));
+//			avg[5] += testSort(au.CreateSequential(1000));
+//			avg[6] += testSort(au.CreateSequential(10000));
+//			avg[7] += testSort(au.CreateSequential(100000));
+//			
+//			avg[8] += testSort(au.CreateDecremental(100));
+//			avg[9] += testSort(au.CreateDecremental(1000));
+//			avg[10] += testSort(au.CreateDecremental(10000));
+//			avg[11] += testSort(au.CreateDecremental(100000));
+		}
+		
+		System.out.println("Random with size n = 10^2: " + (avg[0] / runTimes) + "ms");
+//		System.out.println("Random with size n = 10^3: " + (avg[1] / runTimes) + "ms");
+//		System.out.println("Random with size n = 10^4: " + (avg[2] / runTimes) + "ms");
+//		System.out.println("Random with size n = 10^5: " + (avg[3] / runTimes) + "ms");
+//
+//		System.out.println("Sequential with size n = 10^2: " + (avg[4] / runTimes) + "ms");
+//		System.out.println("Sequential with size n = 10^3: " + (avg[5] / runTimes) + "ms");
+//		System.out.println("Sequential with size n = 10^4: " + (avg[6] / runTimes) + "ms");
+//		System.out.println("Sequential with size n = 10^5: " + (avg[7] / runTimes) + "ms");
+//		
+//		System.out.println("Decremental with size n = 10^2: " + (avg[8] / runTimes) + "ms");
+//		System.out.println("Decremental with size n = 10^3: " + (avg[9] / runTimes) + "ms");
+//		System.out.println("Decremental with size n = 10^4: " + (avg[10] / runTimes) + "ms");
+//		System.out.println("Decremental with size n = 10^5: " + (avg[11] / runTimes) + "ms");
+
+	}
+	
+	private double testSort(int[] input) {
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		this.sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

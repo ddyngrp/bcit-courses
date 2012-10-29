@@ -1,0 +1,204 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9015C1D7-531C-4CBD-81BF-DE7FA2D9100E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>316C06</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>_316C06</RootNamespace>
+    <StartupObject>_316C06.StepByStep6_27</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="Customers.xml" />
+    <Content Include="SuppliersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SuppliersDataSet.Designer.cs</LastGenOutput>
+    </Content>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="GuidedPracticeExercise6_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuidedPracticeExercise6_4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_18.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_19.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_20.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_21.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_22.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_23.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_24.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_25.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_26.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_27.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_28.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepByStep6_30.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuppliersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuppliersDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GuidedPracticeExercise6_3.resx">
+      <DependentUpon>GuidedPracticeExercise6_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuidedPracticeExercise6_4.resx">
+      <DependentUpon>GuidedPracticeExercise6_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_18.resx">
+      <DependentUpon>StepByStep6_18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_19.resx">
+      <DependentUpon>StepByStep6_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_20.resx">
+      <DependentUpon>StepByStep6_20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_21.resx">
+      <DependentUpon>StepByStep6_21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_22.resx">
+      <DependentUpon>StepByStep6_22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_23.resx">
+      <DependentUpon>StepByStep6_23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_24.resx">
+      <DependentUpon>StepByStep6_24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_25.resx">
+      <DependentUpon>StepByStep6_25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_26.resx">
+      <DependentUpon>StepByStep6_26.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_27.resx">
+      <DependentUpon>StepByStep6_27.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_28.resx">
+      <DependentUpon>StepByStep6_28.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_29.resx">
+      <DependentUpon>StepByStep6_29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepByStep6_30.resx">
+      <DependentUpon>StepByStep6_30.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="SuppliersDataSet.xsc">
+      <DependentUpon>SuppliersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SuppliersDataSet.xss">
+      <DependentUpon>SuppliersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SuppliersDataSet.xsx">
+      <DependentUpon>SuppliersDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

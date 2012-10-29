@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:org.eclipse.jem.internal.beaninfo.beaninfo="http:///org/eclipse/jem/internal/beaninfo/beaninfo.ecore" xmlns:org.eclipse.jem.java="java.xmi">
+  <objectChanges xsi:type="change:EObjectToChangesMapEntry" key="org.eclipse.jem.java:JavaClass java:/java.awt#Window">
+    <value xsi:type="change:FeatureChange" featureName="eAnnotations">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.0"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="eStructuralFeatures">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.1 #//@objectsToAttach.2 #//@objectsToAttach.3 #//@objectsToAttach.4 #//@objectsToAttach.5 #//@objectsToAttach.6 #//@objectsToAttach.7 #//@objectsToAttach.8 #//@objectsToAttach.9 #//@objectsToAttach.10 #//@objectsToAttach.11 #//@objectsToAttach.12 #//@objectsToAttach.13 #//@objectsToAttach.14 #//@objectsToAttach.15"/>
+    </value>
+    <value xsi:type="change:FeatureChange" featureName="events">
+      <listChanges xsi:type="change:ListChange" referenceValues="#//@objectsToAttach.16 #//@objectsToAttach.17 #//@objectsToAttach.18"/>
+    </value>
+  </objectChanges>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanDecorator" implicitDecoratorFlag="IMPLICIT_DECORATOR"/>
+  <objectsToAttach xsi:type="ecore:EReference" name="active" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.isActive("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusableWindowState" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getFocusableWindowState(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Window.setFocusableWindowState(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="owner" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Window" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getOwner("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="ownedWindows" eType="org.eclipse.jem.java:ArrayType java:/java.awt#Window[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getOwnedWindows("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="locationByPlatform" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.isLocationByPlatform(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Window.setLocationByPlatform(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="warningString" eType="org.eclipse.jem.java:JavaClass java:/java.lang#String" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getWarningString("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="locationRelativeTo" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Component" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="56" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Window.setLocationRelativeTo(java.awt.Component"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="windowStateListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#WindowStateListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getWindowStateListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focused" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.isFocused("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="windowFocusListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#WindowFocusListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getWindowFocusListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="alwaysOnTop" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="60" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.isAlwaysOnTop(" writeMethod="org.eclipse.jem.java:Method java:/java.awt#Window.setAlwaysOnTop(boolean"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="windowListeners" eType="org.eclipse.jem.java:ArrayType java:/java.awt.event#WindowListener[]" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getWindowListeners("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="mostRecentFocusOwner" eType="org.eclipse.jem.java:JavaClass java:/java.awt#Component" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getMostRecentFocusOwner("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="focusableWindow" eType="org.eclipse.jem.java:JavaDataType java:/#boolean" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.isFocusableWindow("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="ecore:EReference" name="bufferStrategy" eType="org.eclipse.jem.java:JavaClass java:/java.awt.image#BufferStrategy" unsettable="true">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:PropertyDecorator" implicitlySetBits="52" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" bound="true" readMethod="org.eclipse.jem.java:Method java:/java.awt#Window.getBufferStrategy("/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="window">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.addWindowListener(java.awt.event.WindowListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#WindowListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.removeWindowListener(java.awt.event.WindowListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="windowFocus">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.addWindowFocusListener(java.awt.event.WindowFocusListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#WindowFocusListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.removeWindowFocusListener(java.awt.event.WindowFocusListener"/>
+  </objectsToAttach>
+  <objectsToAttach xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:BeanEvent" name="windowState">
+    <eAnnotations xsi:type="org.eclipse.jem.internal.beaninfo.beaninfo:EventSetDecorator" implicitlySetBits="25" implicitDecoratorFlag="IMPLICIT_DECORATOR_AND_FEATURE" addListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.addWindowStateListener(java.awt.event.WindowStateListener" listenerType="org.eclipse.jem.java:JavaClass java:/java.awt.event#WindowStateListener" removeListenerMethod="org.eclipse.jem.java:Method java:/java.awt#Window.removeWindowStateListener(java.awt.event.WindowStateListener"/>
+  </objectsToAttach>
+</change:ChangeDescription>

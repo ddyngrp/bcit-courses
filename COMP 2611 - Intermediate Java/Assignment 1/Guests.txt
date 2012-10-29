@@ -1,0 +1,3 @@
+1	Lee	Brenda	(604) 636-1000	b.lee@bcit.ca	3700 Willingdon Avenue	Burnaby	British Columbia	V5G 3H2	Canada
+2	Sullivan	Sam	604-873-7011	Sam777@hotmail.com	453 West 12th Avenue	Vancouver	BC	V5Y 1V4	Canada
+3	Johansen	Lars	(604) 636-1000	Lars147@gmail.com	1000 Lougheed Highway	Coquitlam	British Columbia	V3K 3T5	Canada

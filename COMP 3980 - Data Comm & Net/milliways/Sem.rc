@@ -1,0 +1,14 @@
+// Sem.rc
+// Copyright (c) 1995 C. Calvert
+// A. Abdulla 1997
+
+
+#include "Sem.h"
+
+ThreadsIcon ICON "threads.ico"
+
+ThreadMenu	MENU
+BEGIN
+	MENUITEM "Run Thread" ID_GOTHREAD
+	MENUITEM "Toggle Semaphore" ID_CRITSECTS
+END

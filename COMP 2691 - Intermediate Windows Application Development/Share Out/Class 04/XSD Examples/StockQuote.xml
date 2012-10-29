@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StockQuote>
+  <Symbol>MSFT</Symbol>
+  <Company>MICROSOFT CP</Company>
+  <Price>&lt;big&gt;&lt;b&gt;27.15&lt;/b&gt;&lt;/big&gt;</Price>
+  <Time>Apr 21</Time>
+  <Change>
+&lt;img width="10" height="14" border="0" src="http://us.i1.yimg.com/us.yimg.com/i/us/fi/03rd/up_g.gif" alt="Up"&gt; &lt;b style="color:#008800;"&gt;0.12 (0.44%)&lt;/b&gt;
+</Change>
+  <PrevClose>27.03</PrevClose>
+  <Open>27.17</Open>
+  <Bid>27.13&lt;small&gt; x 4900&lt;/small&gt;
+</Bid>
+  <Ask>27.17&lt;small&gt; x 3100&lt;/small&gt;
+</Ask>
+  <YearTarget>31.17</YearTarget>
+  <DayRange>27.00 - 27.39</DayRange>
+  <YearRange>24.25 - 28.38</YearRange>
+  <Volume>58,528,503</Volume>
+  <AvgVol>58,486,900</AvgVol>
+  <MarketCap>280.55B</MarketCap>
+  <PE>22.44</PE>
+  <EPS>1.21</EPS>
+  <DivYield>0.36 (1.30%)</DivYield>
+  <WebSite>&lt;a href="http://www.microsoft.com"&gt;http://www.microsoft.com&lt;/a&gt;</WebSite>
+  <Business>Microsoft Corporation engages in the development, manufacture, license, and support of software products for various computing devices worldwide. Its Client segment offers operating systems for servers, personal computers (PCs), and intelligent devices. The company’s Server and Tools segment provides server applications and developer tools, as well as training and certification services. Its products provide messaging and collaboration, database management, e-commerce, and mobile information access capabilities. It also offers consulting services. Microsoft’s Information Worker segment offers business and personal productivity software applications, including collaboration tools and document management and messaging applications for personal computers. Its Microsoft Business Solutions segment offers software solutions to manage financial, customer relationship, and supply chain management functions. Its products consist of business solutions, customer relationship management software, retail solutions, and related services. The company’s MSN segment provides online communication and information services, including email and instant messaging, and online search and premium content. It also provides Internet access, and Web and mobile services. Its Mobile and Embedded Devices segment offers mobile software platform; embedded device software platforms used in consumer electronics devices and enterprise devices; a hosted programmable XML Web service; and software platform to create telematics solutions for vehicles. Microsoft’s Home and Entertainment segment offers the Xbox video game system; PC software games, online games, and console games; television platform products for the interactive television industry; and consumer software and hardware products, such as learning products and services, application software for Macintosh computers, and PC peripherals. Microsoft was founded in 1975 by William H. Gates III. The company is headquartered in Redmond, Washington.</Business>
+  <sic>7372</sic>
+  <sicname>Services-Prepackaged Software</sicname>
+</StockQuote>

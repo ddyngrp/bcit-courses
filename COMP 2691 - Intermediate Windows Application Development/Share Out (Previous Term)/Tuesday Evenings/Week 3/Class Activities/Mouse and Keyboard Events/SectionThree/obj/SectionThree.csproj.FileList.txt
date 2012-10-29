@@ -1,0 +1,9 @@
+obj\Debug\SectionThree.exe
+obj\Debug\SectionThree.pdb
+bin\Debug\SectionThree.exe
+bin\Debug\SectionThree.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SectionThree.KeyDemoForm.resources
+obj\Debug\SectionThree.PainterForm.resources
+obj\Debug\SectionThree.Properties.Resources.resources
+obj\Debug\SectionThree.csproj.GenerateResource.Cache

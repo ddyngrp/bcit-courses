@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;PostMessage.java&apos; to &apos;PostXML.java&apos;&#x0A;- Original project: &apos;MLogger XML&apos;&#x0A;- Original element: &apos;PostMessage.java&apos;&#x0A;- Renamed element: &apos;PostXML.java&apos;" description="Rename compilation unit &apos;PostMessage.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{PostMessage.java" name="PostXML.java" references="false" stamp="1229822116838" version="1.0"/>
+</session>

@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<!-- Sample XML document using a XSD -->
+<class xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	title="Programming ADO.NET" company="Wintellect" author="DinoE">
+
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="class">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="days" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="day" nillable="true" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent msdata:ColumnName="day_Text" msdata:Ordinal="1">
+										<xs:extension base="xs:string">
+											<xs:attribute name="id" form="unqualified" type="xs:string" />
+											<xs:attribute name="optional" form="unqualified" type="xs:string" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="total" form="unqualified" type="xs:string" />
+						<xs:attribute name="expandable" form="unqualified" type="xs:string" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="title" form="unqualified" type="xs:string" />
+			<xs:attribute name="company" form="unqualified" type="xs:string" />
+			<xs:attribute name="author" form="unqualified" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MyClass" msdata:IsDataSet="true" msdata:EnforceConstraints="False">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="class" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+
+	<days total="5" expandable="true">
+		<day id="1">.NET Data Access Jumpstart</day>
+		<day id="2">Effective Data Access</day>
+		<day id="3">XML and ADO.NET</day>
+		<day id="4" optional="true">.NET Data Binding</day>
+		<day id="5" optional="true">Ad-hoc Web Data Reporting</day>
+	</days>
+</class>

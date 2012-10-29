@@ -1,0 +1,29 @@
+POST /MLogger/MLService.asmx HTTP/1.1
+Host: windev.trollop.org
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: "http://virus-box/MLogger/UserLogin"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<UserLogin xmlns="http://virus-box/MLogger">
+			<userName>string</userName>
+			<password>string</password>
+		</UserLogin>
+	</soap:Body>
+</soap:Envelope>
+
+
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<UserLoginResponse xmlns="http://virus-box/MLogger">
+			<UserLoginResult>long</UserLoginResult>
+		</UserLoginResponse>
+	</soap:Body>
+</soap:Envelope>

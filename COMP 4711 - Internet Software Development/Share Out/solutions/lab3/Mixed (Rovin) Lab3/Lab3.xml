@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Lab3.xml
+    Created on : February 2, 2009, 12:43 PM
+    Author     : A00667180
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE Lab3 SYSTEM "Lab3.dtd">
+<Lab3>
+
+    <Members>
+        
+        <Player PlayerID = "p1"
+                PlayerFirstName = "Rovin" PlayerLastName = "Labrador"
+                PlayerAddress = "11135, 72 Avenue"
+                PlayerTown = "Delta" PlayerCountry = "Canada"
+                PlayerPostCode = "S4E 1R4"
+                PlayerContactNumber = "778-111-1111">
+
+            <Rounds>
+
+                <GolfRounds RoundID = "r1"
+                            CourseID = "c1"
+                            StartDate = "1/1/2009"
+                            FinishDate = "1/1/2009"
+                            NumberOfHoles = "4"
+                            Weather = "Sunny">
+
+                    <PlayerRounds PlayerID = "p1"
+                                  RoundID = "r1">
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID = "c1-1st">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID = "c1-2nd">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                    <PlayerRounds PlayerID = "p1"
+                                  RoundID = "r1">
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID = "c1-3rd">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID= "c1-4th">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                </GolfRounds>
+
+                <GolfRounds RoundID = "r2"
+                            CourseID = "c2"
+                            StartDate = "1/2/2009"
+                            FinishDate = "1/2/2009"
+                            NumberOfHoles = "2"
+                            Weather = "Sunny">
+
+                    <PlayerRounds PlayerID = "p1"
+                                  RoundID = "r2">
+
+                        <HoleNumber CourseID = "c2"
+                                    HoleID = "c2-5th">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                        <HoleNumber CourseID = "c2"
+                                    HoleID = "c2-6th">
+
+                            <HoleScore>par</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                </GolfRounds>
+
+            </Rounds>
+
+            <PlayerHandicaps>
+
+                <PlayerHandicap HandicapID = "h1"
+                                PlayerID = "p1">
+
+                    <HandicapDate>1/1/2009</HandicapDate>
+                    <HandicapScore>par</HandicapScore>
+
+                </PlayerHandicap>
+
+                <PlayerHandicap HandicapID = "h2"
+                                PlayerID = "p1">
+
+                    <HandicapDate>1/2/2009</HandicapDate>
+                    <HandicapScore>par</HandicapScore>
+
+                </PlayerHandicap>
+
+            </PlayerHandicaps>
+
+        </Player>
+
+        <Player PlayerID = "p2"
+                PlayerFirstName = "Jeff" PlayerLastName = "Chen"
+                PlayerAddress = "Nowhere"
+                PlayerTown = "No" PlayerCountry = "Where"
+                PlayerPostCode = "D3V 1L0"
+                PlayerContactNumber = "604-666-6666">
+
+            <Rounds>
+
+                <GolfRounds RoundID = "r3"
+                            CourseID = "c1"
+                            StartDate = "1/5/2009"
+                            FinishDate = "1/5/2009"
+                            NumberOfHoles = "2"
+                            Weather = "Windy">
+
+                    <PlayerRounds PlayerID = "p2"
+                                  RoundID = "r3">
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID = "c1-1st">
+
+                            <HoleScore>10</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                    <PlayerRounds PlayerID = "p2"
+                                  RoundID = "r3">
+
+                        <HoleNumber CourseID = "c1"
+                                    HoleID = "c1-2nd">
+
+                            <HoleScore>11</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                </GolfRounds>
+
+            </Rounds>
+
+            <PlayerHandicaps>
+
+                <PlayerHandicap HandicapID = "h3"
+                                PlayerID = "p2">
+
+                    <HandicapDate>1/5/2009</HandicapDate>
+                    <HandicapScore>par</HandicapScore>
+
+                </PlayerHandicap>
+
+            </PlayerHandicaps>
+
+        </Player>
+
+        <Player PlayerID = "p3"
+                PlayerFirstName = "Johnny" PlayerLastName = "Thai"
+                PlayerAddress = "11136, 72 Avenue"
+                PlayerTown = "Delta" PlayerCountry = "Canada"
+                PlayerPostCode = "S4E 1R5"
+                PlayerContactNumber = "778-222-2222">
+
+            <Rounds>
+
+                <GolfRounds RoundID = "r4"
+                            CourseID = "c3"
+                            StartDate = "1/1/2009"
+                            FinishDate = "1/1/2009"
+                            NumberOfHoles = "3"
+                            Weather = "Sunny">
+
+                    <PlayerRounds PlayerID = "p3"
+                                  RoundID = "r4">
+
+                        <HoleNumber CourseID = "c3"
+                                    HoleID = "c3-7th">
+
+                            <HoleScore>6</HoleScore>
+
+                        </HoleNumber>
+
+                        <HoleNumber CourseID = "c3"
+                                    HoleID = "c3-8th">
+
+                            <HoleScore>7</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                    <PlayerRounds PlayerID = "p3"
+                                  RoundID = "r4">
+
+                        <HoleNumber CourseID = "c3"
+                                    HoleID = "c3-9th">
+
+                            <HoleScore>5</HoleScore>
+
+                        </HoleNumber>
+
+                    </PlayerRounds>
+
+                </GolfRounds>
+
+            </Rounds>
+
+            <PlayerHandicaps>
+
+                <PlayerHandicap HandicapID = "h4"
+                                PlayerID = "p3">
+
+                    <HandicapDate>1/1/2009</HandicapDate>
+                    <HandicapScore>par</HandicapScore>
+
+                </PlayerHandicap>
+
+            </PlayerHandicaps>
+
+        </Player>
+
+    </Members>
+
+    <GolfCourses>
+
+        <Courses CourseID = "c1"
+                 CourseName = "Burnaby"
+                 CourseAddress = "3700, Willingdon"
+                 CourseTown = "Burnaby"
+                 CourseCountry = "Canada"
+                 CoursePostCode = "K9S J0D"
+                 CourseContactNumber = "604-111-1111"
+                 StandardScratcgScore = "3">
+
+            <Hole HoleID = "c1-1st">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo>
+                    <Bunkers>3</Bunkers>
+                </HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-2nd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-3rd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-4th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-5th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-6th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-7th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-8th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c1-9th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+        </Courses>
+
+        <Courses CourseID = "c2"
+                 CourseName = "Vancouver"
+                 CourseAddress = "1234, Kingsway"
+                 CourseTown = "Vancouver"
+                 CourseCountry = "Canada"
+                 CoursePostCode = "A1S 2D3"
+                 CourseContactNumber = "604-222-2222"
+                 StandardScratcgScore = "3">
+
+            <Hole HoleID = "c2-1st">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo>
+                    <Bunkers>3</Bunkers>
+                </HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-2nd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-3rd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-4th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-5th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-6th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-7th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-8th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c2-9th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+        </Courses>
+
+        <Courses CourseID = "c3"
+                 CourseName = "Surrey"
+                 CourseAddress = "2938, Scottroad"
+                 CourseTown = "Surrey"
+                 CourseCountry = "Canada"
+                 CoursePostCode = "2L3 A8S"
+                 CourseContactNumber = "604-333-3333"
+                 StandardScratcgScore = "3">
+
+            <Hole HoleID = "c3-1st">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo>
+                    <Bunkers>3</Bunkers>
+                </HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-2nd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-3rd">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-4th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-5th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-6th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-7th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-8th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+            <Hole HoleID = "c3-9th">
+
+                <Par>4</Par>
+                <Yards>400</Yards>
+                <HoleInfo></HoleInfo>
+
+            </Hole>
+
+        </Courses>
+
+    </GolfCourses>
+
+</Lab3>

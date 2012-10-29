@@ -1,0 +1,10 @@
+bin\Debug\TamilFM.exe
+bin\Debug\TamilFM.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TamilFM.Tamil16.ICO
+obj\Debug\TamilFM.mainForm.resources
+obj\Debug\TamilFM.Properties.Resources.resources
+obj\Debug\TamilFM.aboutForm.resources
+obj\Debug\Tamil FM.csproj.GenerateResource.Cache
+obj\Debug\TamilFM.exe
+obj\Debug\TamilFM.pdb

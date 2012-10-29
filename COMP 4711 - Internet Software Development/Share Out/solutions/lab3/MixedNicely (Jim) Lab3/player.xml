@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : course.xml
+    Created on : January 30, 2009, 1:27 PM
+    Author     : A00702683
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE players SYSTEM "player.dtd">
+
+<players>
+    <player id="P123456">
+        <name first="Jim" last="Slemin" />
+        <address city="Vancouver" prov="BC" postalcode="V5L2N9">123 Fake st.</address>
+        <phone areacode="604" number="1234567" />
+        
+        <handicap id = "D456789">
+            <date month="04" day="13" year="2009" />
+            <score value="4" />
+        </handicap>
+        
+        <round id="R789123">
+
+            <start>
+                <date month="04" day="13" year="2009" />
+                <time hour="15" min="30" />
+            </start>
+
+            <finish>
+                <date month="04" day="13" year="2009" />
+                <time hour="15" min="30" />
+            </finish>
+
+            <weather>Parly Cloudy</weather>
+
+            <holes courseid="C123456">
+                <hole number="1" score="4" />
+                <hole number="2" score="3" />
+                <hole number="3" score="2" />
+                <hole number="4" score="1" />
+                <hole number="5" score="4" />
+                <hole number="6" score="3" />
+                <hole number="7" score="2" />
+                <hole number="8" score="1" />
+                <hole number="9" score="1" />
+            </holes>
+            
+        </round>
+    </player>
+    <player id="P654987">
+        <name first="Bob" last="Smith" />
+        <address city="Halifax" prov="NS" postalcode="B2Y3E1">345 Faker ave.</address>
+        <phone areacode="604" number="3214567" />
+
+        <handicap id = "D111222">
+            <date month="05" day="3" year="2008" />
+            <score value="1" />
+        </handicap>
+
+        <round id="R444333">
+
+            <start>
+                <date month="01" day="23" year="2009" />
+                <time hour="10" min="12" />
+            </start>
+
+            <finish>
+                <date month="01" day="23" year="2009" />
+                <time hour="15" min="10" />
+            </finish>
+
+            <weather>Parly Cloudy</weather>
+
+            <holes courseid="C987654">
+                <hole number="1" score="4" />
+                <hole number="2" score="3" />
+                <hole number="3" score="2" />
+                <hole number="4" score="1" />
+                <hole number="5" score="4" />
+                <hole number="6" score="3" />
+                <hole number="7" score="2" />
+                <hole number="8" score="1" />
+                <hole number="9" score="1" />
+            </holes>
+
+        </round>
+    </player>
+    <player id="P777777">
+        <name first="Seven" last="Sleven" />
+        <address city="SevenaTown" prov="SV" postalcode="V7L7N7">777 Seven st.</address>
+        <phone areacode="777" number="7777777" />
+
+        <handicap id = "H777777">
+            <date month="07" day="7" year="2007" />
+            <score value="7" />
+        </handicap>
+
+        <round id="R777777">
+
+            <start>
+                <date month="7" day="7" year="2007" />
+                <time hour="7" min="7" />
+            </start>
+
+            <finish>
+                <date month="7" day="7" year="2007" />
+                <time hour="7" min="17" />
+            </finish>
+
+            <weather>Parly Cloudy</weather>
+
+            <holes courseid="C135790">
+                <hole number="1" score="7" />
+                <hole number="2" score="7" />
+                <hole number="3" score="7" />
+                <hole number="4" score="7" />
+                <hole number="5" score="7" />
+                <hole number="6" score="7" />
+                <hole number="7" score="7" />
+                <hole number="8" score="7" />
+                <hole number="9" score="7" />
+            </holes>
+        </round>
+    </player>
+</players>

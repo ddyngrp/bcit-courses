@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=modelFirstName\ modelLastName\ modelHeightInInches\ modelWeightInPounds\ modelCanTravel\ modelSmokesButIsNotOnFire
+comment0.target=Model(String,\ String,\ int,\ double,\ boolean,\ boolean)
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Model\n\n
+comment1.target=String\ convertHeightToFeetInches()
+comment1.text=\nConverts\ the\ model's\ hight\ to\ feet\ and\ inches\ in\ the\ format\ of\ "5\ feet\ 8\ inches"\n\n
+comment2.target=int\ calculatePayPerHour()
+comment2.text=\nCalculates\ the\ model's\ pay\ per\ hour\n\n
+comment3.target=void\ displayModelDetails()
+comment3.text=\nDisplay's\ all\ the\ model's\ information\ on\ the\ screen.\n\n
+numComments=4

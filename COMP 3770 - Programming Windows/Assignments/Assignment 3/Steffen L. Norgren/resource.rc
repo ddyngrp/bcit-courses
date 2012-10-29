@@ -1,0 +1,170 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Canada) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit\tCtrl+Q",               ID_FILE_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPYSEL
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTESEL
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "&Line\tCtrl+1",               ID_TOOLS_LINE, CHECKED
+        MENUITEM "&Rectangle\tCtrl+2",          ID_TOOLS_RECTANGLE
+        MENUITEM "&Polygon\tCtrl+3",            ID_TOOLS_POLYGON, GRAYED
+        MENUITEM "&Select\tCtrl+4",             ID_TOOLS_SELECT
+    END
+    POPUP "&Format"
+    BEGIN
+        MENUITEM "&Tool Box\tCtrl+T",           ID_FORMAT_TOOLBOX
+        MENUITEM "&Colour\tCtrl+F",             ID_FORMAT_COLOUR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPYSEL,        VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTESEL,       VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FILE_EXIT,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_FORMAT_COLOUR,       VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_FORMAT_TOOLBOX,      VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_TOOLS_LINE,          VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_TOOLS_POLYGON,       VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_TOOLS_RECTANGLE,     VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_TOOLS_SELECT,        VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_TOOLBOX DIALOGEX 0, 0, 165, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "Tool Box"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Tools",IDC_GRP_TOOLS,7,7,79,81
+    PUSHBUTTON      "Colour",IDC_BTN_COLOUR,101,41,50,14
+    CONTROL         "Line",IDC_RAD_LINE,"Button",BS_AUTORADIOBUTTON,15,23,38,10
+    CONTROL         "Polygon",IDC_RAD_POLYGON,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,15,53,38,10
+    CONTROL         "Rectangle",IDC_RAD_RECTANGLE,"Button",BS_AUTORADIOBUTTON,15,38,51,10
+    CONTROL         "Select",IDC_RAD_SELECT,"Button",BS_AUTORADIOBUTTON,15,68,38,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DLG_TOOLBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 158
+        VERTGUIDE, 15
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+        HORZGUIDE, 18
+        HORZGUIDE, 33
+        HORZGUIDE, 48
+        HORZGUIDE, 63
+        HORZGUIDE, 78
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (Canada) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

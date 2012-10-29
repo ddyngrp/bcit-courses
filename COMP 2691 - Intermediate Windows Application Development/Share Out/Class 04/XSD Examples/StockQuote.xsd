@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="StockQuote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Symbol" type="xs:string" />
+        <xs:element name="Company" type="xs:string" />
+        <xs:element name="Price" type="xs:string" />
+        <xs:element name="Time" type="xs:string" />
+        <xs:element name="Change" type="xs:string" />
+        <xs:element name="PrevClose" type="xs:decimal" />
+        <xs:element name="Open" type="xs:decimal" />
+        <xs:element name="Bid" type="xs:string" />
+        <xs:element name="Ask" type="xs:string" />
+        <xs:element name="YearTarget" type="xs:decimal" />
+        <xs:element name="DayRange" type="xs:string" />
+        <xs:element name="YearRange" type="xs:string" />
+        <xs:element name="Volume" type="xs:string" />
+        <xs:element name="AvgVol" type="xs:string" />
+        <xs:element name="MarketCap" type="xs:string" />
+        <xs:element name="PE" type="xs:decimal" />
+        <xs:element name="EPS" type="xs:decimal" />
+        <xs:element name="DivYield" type="xs:string" />
+        <xs:element name="WebSite" type="xs:string" />
+        <xs:element name="Business" type="xs:string" />
+        <xs:element name="sic" type="xs:string" />
+        <xs:element name="sicname" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

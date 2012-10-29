@@ -1,0 +1,25 @@
+comp2121
+assignment #2 of 4
+summer 2008
+
+Assigned: 	lesson 11	July 7
+Due:		lesson 15	July 21
+Due:		on paper at the start of class
+
+All questions come from the required textbook: Grimaldi
+
+Include a cover page with your first and last names, and student number
+
+SETS
+PERMUTATIONS
+COMBINATIONS
+
+Page 11		#4, 6, 10, 20
+Page 24		#2, 8, 10, 14
+Page 134	#2, 12
+Page 146	#2abcef
+Page 150	#2
+Page 156	#2, 14
+Page 164	#2, 4, 8
+
+

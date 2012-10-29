@@ -1,0 +1,25 @@
+<html><head><title>time</title></head>
+
+
+
+<script type="text/javascript">
+
+	
+
+	function updateTime()
+	{
+		d = new Date();
+		t = document.createTextNode(d);
+		document.getElementById("time").appendChild(t);
+	}
+	
+</script>
+
+
+<body onload="setInterval('updateTime()', '1000');">
+
+	The time is <span id="time">.<br>
+	<img src="lion.jpeg">
+	
+</body>
+</html>

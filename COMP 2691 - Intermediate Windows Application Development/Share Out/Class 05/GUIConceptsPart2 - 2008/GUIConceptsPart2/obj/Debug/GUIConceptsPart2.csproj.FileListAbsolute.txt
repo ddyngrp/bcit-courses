@@ -1,0 +1,53 @@
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.exe.config
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\northwind.mdf
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\northwind_log.ldf
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetExamples.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.Callback.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.MultipleCommands.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.NonBlocking.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.ConnString.FromConfig.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Factory.CallDb.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Factory.Factories.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Readers.MultiResult.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ImageListControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ListViewControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\ListViewTestForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.PopulateTreeViewfromDataSetForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.Properties.Resources.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.TabControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.TreeViewControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\TreeViewDirectoryStructureForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\UsingTabsForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.XMLSamples.LoadingXMLDocumentAsynchronously.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.csproj.GenerateResource.Cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.exe.config
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.pdb
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\ResolveAssemblyReference.cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.ADONetExamples.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.Callback.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.MultipleCommands.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Async.NonBlocking.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.ConnString.FromConfig.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Factory.CallDb.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Factory.Factories.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ADONetSamples.Readers.MultiResult.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ImageListControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.ListViewControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\ListViewTestForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.PopulateTreeViewfromDataSetForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.Properties.Resources.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.TabControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.TreeViewControl.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\TreeViewDirectoryStructureForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\UsingTabsForm.resources
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\obj\Debug\GUIConceptsPart2.csproj.GenerateResource.Cache
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\northwind.mdf
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\northwind_log.ldf
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.exe
+D:\MYBackups\BCIT and Microsoft Exams\2691\Week 5\Class 5\GUIConceptsPart2 - 2008\GUIConceptsPart2\bin\Debug\GUIConceptsPart2.pdb

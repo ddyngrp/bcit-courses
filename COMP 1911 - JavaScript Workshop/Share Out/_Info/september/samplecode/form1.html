@@ -1,0 +1,31 @@
+<html><head><title>time</title></head>
+
+
+
+<script type="text/javascript">
+
+	function validate()
+	{
+		if(isNaN(document.getElementById('year').value))
+		{
+			alert("hey! that's not a numeric year of birth");
+			document.getElementById('year').select();
+			return false;
+		}
+	}
+	
+</script>
+
+
+<body onload="document.getElementById('year').select()">
+
+	<form action="whatever.php" onsubmit="return validate();">
+		year of birth? (example: 1970)
+		<input type="text" id="year" name="year">
+		<input type="submit">
+		
+	</form>
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+Answers to Ex2_12
+
+a) 2
+
+b) 4
+
+c) x=
+
+d) x = 2
+
+e) 5 = 5
+
+f) nothing
+
+g) nothing
+
+h) nothing (because it is a comment).
+
+i) A newline is output wjich positions the cursor at the beginning of the next line on the screen.

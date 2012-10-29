@@ -1,0 +1,25 @@
+import java.util.Calendar;
+
+/**
+ * Assignment #1 - Question #9
+ * @author Steffen L. Norgren - A00683006
+ *
+ */
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayUtils au = new ArrayUtils();
+		Mergesort ms = new Mergesort();
+		Quicksort qs = new Quicksort();
+		Heapsort hs = new Heapsort();
+		
+		ms.RunTests(1); // Run the Mergesort tests
+		System.out.println();
+		qs.runTests(1); // Run the Quicksort tests
+		
+	}
+}

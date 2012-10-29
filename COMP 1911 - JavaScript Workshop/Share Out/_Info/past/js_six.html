@@ -1,0 +1,32 @@
+<html>
+<head>	<title>		whatever	</title>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+function changePicture(theId, theSrc)
+{
+     document.getElementById(theId).src=theSrc;
+}
+// -->
+</script>
+
+
+</head>
+<body>
+
+<img 	src="kitten.jpg" 
+	id="whatever"
+	name="whatever"
+	onmouseover="changePicture(this.id, 'baby_wolf.jpg');"
+	onmouseout="changePicture(this.id, 'kitten.jpg');"
+>
+
+<img 	src="baby_cheetah.jpg" id="p" name="p"
+	onmouseover="changePicture(this.id, 'baby_giraffe.jpg');"
+	onmouseout="changePicture(this.id, 'baby_cheetah.jpg');"
+>
+
+</body>
+</html>
+

@@ -1,0 +1,285 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 3A95F0C70BC4AF02009C7FB0 /* Assignment_09 */;
+		activeSDKPreference = macosx10.4;
+		activeTarget = 8DD76F620486A84900D96B5E /* Assignment_09 */;
+		addToTargets = (
+			8DD76F620486A84900D96B5E /* Assignment_09 */,
+		);
+		codeSenseManager = 3A95F0CD0BC4AF21009C7FB0 /* Code sense */;
+		executables = (
+			3A95F0C70BC4AF02009C7FB0 /* Assignment_09 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					577,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					200,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 250044067;
+			PBXWorkspaceStateSaveDate = 250044067;
+		};
+		perUserProjectItems = {
+			3A3B23EE0EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23EE0EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23EF0EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23EF0EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23F00EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23F00EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23F10EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23F10EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23F20EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23F20EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23F30EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23F30EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A3B23F40EE75EED00FEA6C7 /* PBXTextBookmark */ = 3A3B23F40EE75EED00FEA6C7 /* PBXTextBookmark */;
+			3A95F2230BC4D672009C7FB0 /* PBXTextBookmark */ = 3A95F2230BC4D672009C7FB0 /* PBXTextBookmark */;
+			3A95F2240BC4D672009C7FB0 /* PBXTextBookmark */ = 3A95F2240BC4D672009C7FB0 /* PBXTextBookmark */;
+			3A95F58C0BC51A41009C7FB0 /* PBXTextBookmark */ = 3A95F58C0BC51A41009C7FB0 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 3A95F0CC0BC4AF21009C7FB0 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	08FB7796FE84155DC02AAC07 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 609}}";
+			sepNavSelRange = "{99, 0}";
+			sepNavVisRange = "{0, 883}";
+			sepNavVisRect = "{{0, 0}, {769, 609}}";
+			sepNavWindowFrame = "{{38, 71}, {760, 648}}";
+		};
+	};
+	3A3B23EE0EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0CF0BC4B23A009C7FB0 /* TicTacToe.h */;
+		name = "TicTacToe.h: 8";
+		rLen = 0;
+		rLoc = 164;
+		rType = 0;
+		vrLen = 692;
+		vrLoc = 0;
+	};
+	3A3B23EF0EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 5";
+		rLen = 0;
+		rLoc = 99;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 0;
+	};
+	3A3B23F00EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0D00BC4B23A009C7FB0 /* TicTacToe.cpp */;
+		name = "TicTacToe.cpp: 24";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 746;
+		vrLoc = 0;
+	};
+	3A3B23F10EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0D00BC4B23A009C7FB0 /* TicTacToe.cpp */;
+		name = "TicTacToe.cpp: 24";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 746;
+		vrLoc = 0;
+	};
+	3A3B23F20EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0CF0BC4B23A009C7FB0 /* TicTacToe.h */;
+		name = "TicTacToe.h: 8";
+		rLen = 0;
+		rLoc = 164;
+		rType = 0;
+		vrLen = 692;
+		vrLoc = 0;
+	};
+	3A3B23F30EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 5";
+		rLen = 0;
+		rLoc = 99;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 0;
+	};
+	3A3B23F40EE75EED00FEA6C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0D00BC4B23A009C7FB0 /* TicTacToe.cpp */;
+		name = "TicTacToe.cpp: 158";
+		rLen = 0;
+		rLoc = 3828;
+		rType = 0;
+		vrLen = 877;
+		vrLoc = 3236;
+	};
+	3A95F0C70BC4AF02009C7FB0 /* Assignment_09 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Assignment_09;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$cr = 1;
+			$ctr = 1;
+			$lr = 1;
+			$mq = 1;
+			$pc = 1;
+			$ps = 1;
+			$r0 = 1;
+			$r1 = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r13 = 1;
+			$r14 = 1;
+			$r15 = 1;
+			$r16 = 1;
+			$r17 = 1;
+			$r18 = 1;
+			$r19 = 1;
+			$r2 = 1;
+			$r20 = 1;
+			$r21 = 1;
+			$r22 = 1;
+			$r23 = 1;
+			$r24 = 1;
+			$r25 = 1;
+			$r26 = 1;
+			$r27 = 1;
+			$r28 = 1;
+			$r29 = 1;
+			$r3 = 1;
+			$r30 = 1;
+			$r31 = 1;
+			$r4 = 1;
+			$r5 = 1;
+			$r6 = 1;
+			$r7 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$xer = 1;
+		};
+	};
+	3A95F0CC0BC4AF21009C7FB0 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	3A95F0CD0BC4AF21009C7FB0 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	3A95F0CF0BC4B23A009C7FB0 /* TicTacToe.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 609}}";
+			sepNavSelRange = "{164, 0}";
+			sepNavVisRange = "{0, 692}";
+			sepNavVisRect = "{{0, 0}, {769, 609}}";
+			sepNavWindowFrame = "{{15, -1}, {750, 742}}";
+		};
+	};
+	3A95F0D00BC4B23A009C7FB0 /* TicTacToe.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 2408}}";
+			sepNavSelRange = "{3828, 0}";
+			sepNavVisRange = "{3236, 877}";
+			sepNavVisRect = "{{0, 0}, {769, 609}}";
+			sepNavWindowFrame = "{{15, -1}, {750, 742}}";
+		};
+	};
+	3A95F2230BC4D672009C7FB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0D00BC4B23A009C7FB0 /* TicTacToe.cpp */;
+		name = "TicTacToe.cpp: 12";
+		rLen = 0;
+		rLoc = 4113;
+		rType = 0;
+		vrLen = 180;
+		vrLoc = 0;
+	};
+	3A95F2240BC4D672009C7FB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3A95F0CF0BC4B23A009C7FB0 /* TicTacToe.h */;
+		name = TicTacToe;
+		rLen = 9;
+		rLoc = 171;
+		rType = 0;
+		vrLen = 616;
+		vrLoc = 0;
+	};
+	3A95F58C0BC51A41009C7FB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 8";
+		rLen = 0;
+		rLoc = 193;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 0;
+	};
+	8DD76F620486A84900D96B5E /* Assignment_09 */ = {
+		activeExec = 0;
+		executables = (
+			3A95F0C70BC4AF02009C7FB0 /* Assignment_09 */,
+		);
+	};
+}

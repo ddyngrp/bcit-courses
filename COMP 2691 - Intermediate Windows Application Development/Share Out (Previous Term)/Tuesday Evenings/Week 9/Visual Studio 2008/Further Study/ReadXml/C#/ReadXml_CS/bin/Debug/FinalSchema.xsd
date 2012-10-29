@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-16" ?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="class">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="days" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="day" nillable="true" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent msdata:ColumnName="day_Text" msdata:Ordinal="1">
+										<xs:extension base="xs:string">
+											<xs:attribute name="id" type="xs:string" />
+											<xs:attribute name="optional" type="xs:string" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="total" type="xs:string" />
+						<xs:attribute name="expandable" type="xs:string" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" />
+			<xs:attribute name="company" type="xs:string" />
+			<xs:attribute name="author" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NewDataSet" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="class" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

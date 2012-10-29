@@ -1,0 +1,43 @@
+import java.util.Calendar;
+
+/**
+ * Assignment #1 - Question #9
+ * @author Steffen L. Norgren - A00683006
+ *
+ */
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayUtils au = new ArrayUtils();
+		Mergesort ms = new Mergesort();
+		Quicksort qs = new Quicksort();
+		Heapsort hs = new Heapsort();
+		
+		// Create a set of randomized arrays
+		int[] aRnd2 = au.CreateRandom(100, 1, 100);
+		int[] aRnd3 = au.CreateRandom(1000, 1, 100);
+		int[] aRnd4 = au.CreateRandom(10000, 1, 100);
+		int[] aRnd5 = au.CreateRandom(100000, 1, 100);
+		
+		// Create a set of sequential arrays
+		int[] aSeq2 = au.CreateSequential(100);
+		int[] aSeq3 = au.CreateSequential(1000);
+		int[] aSeq4 = au.CreateSequential(10000);
+		int[] aSeq5 = au.CreateSequential(100000);
+		
+		// Create a set of decremental arrays
+		int[] aDec2 = au.CreateDecremental(100);
+		int[] aDec3 = au.CreateDecremental(1000);
+		int[] aDec4 = au.CreateDecremental(10000);
+		int[] aDec5 = au.CreateDecremental(100000);
+		
+		long start = Calendar.getInstance().getTimeInMillis();		
+		ms.Sort(aRnd2);
+		long end = Calendar.getInstance().getTimeInMillis();	
+		System.out.println("Random with size n = 10ª");
+	}
+}

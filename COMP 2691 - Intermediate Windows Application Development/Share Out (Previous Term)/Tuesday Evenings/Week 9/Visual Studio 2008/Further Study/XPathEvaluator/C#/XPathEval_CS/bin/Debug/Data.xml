@@ -1,0 +1,63 @@
+<?xml version="1.0" standalone="yes"?>
+
+<!-- This dataset contains information about Northwind employees -->
+<!-- Applied .NET XML Programming, Dino Esposito - MS Press -->
+
+<MyDataSet>
+	<NorthwindEmployees>
+		<Employee>
+			<employeeid>1</employeeid>
+			<lastname>Davolio</lastname>
+			<firstname>Nancy</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+		<Employee>
+			<employeeid>2</employeeid>
+			<lastname>Fuller</lastname>
+			<firstname>Andrew</firstname>
+			<title>Vice President, Sales</title>
+		</Employee>
+		<Employee>
+			<employeeid>3</employeeid>
+			<lastname>Leverling</lastname>
+			<firstname>Janet</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+		<Employee>
+			<employeeid>4</employeeid>
+			<lastname>Peacock</lastname>
+			<firstname>Margaret</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+		<Employee>
+			<employeeid>5</employeeid>
+			<lastname>Buchanan</lastname>
+			<firstname>Steve</firstname>
+			<title>Sales Manager</title>
+		</Employee>
+		<Employee>
+			<employeeid>6</employeeid>
+			<lastname>Suyama</lastname>
+			<firstname>Michael</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+		<Employee>
+			<employeeid>7</employeeid>
+			<lastname>King</lastname>
+			<firstname>Robert</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+		<Employee>
+			<employeeid>8</employeeid>
+			<lastname>Callahan</lastname>
+			<firstname>Laura</firstname>
+			<title>Inside Sales Coordinator</title>
+		</Employee>
+		<Employee>
+			<employeeid>9</employeeid>
+			<lastname>Dodsworth</lastname>
+			<firstname>Anne</firstname>
+			<title>Sales Representative</title>
+		</Employee>
+	</NorthwindEmployees>
+</MyDataSet>

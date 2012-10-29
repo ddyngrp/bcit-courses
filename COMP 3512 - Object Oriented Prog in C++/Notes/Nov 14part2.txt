@@ -1,0 +1,120 @@
+const cast:
+
+
+-	used to cast away const-ness
+-	target type must be a pointer or a reference
+
+e.g.	suppose we have
+
+void print(Employee &);	//not a good design, should be const. (print doesn't change argument)
+
+const Employee e(...);
+print(e);	//won't compile
+print(const_cast<Employee&>(e));	//use const_cast to sat away const-ness
+
+
+reinterpret cast
+
+-	for non-portable casts
+-	int n - 12345678;
+
+double *p = reinterpret_cast<double *>(n);
+
+
+_____________________________________________
+
+
+Abstract base class (ABC)
+
+-	An abstract class is a class that contains at least one PURE virtual function
+
+
+class Shape{
+public:
+
+	Shape(int colour);
+	virtual ~Shape(){}
+	virtual void draw(GC &gc) const = 0;	//pure virtual, GC stands for graphics context
+private:
+	int colour_;
+}
+
+
+-	the implementation of a pure virtual function is optional
+-	an abstract class cannot be instantiated(in the above, we can't create a Shape object)
+
+//shape.cpp
+
+Shape::Shape(int colour):colour_(colour){}
+
+void
+Shape::draw(GC& gc) const{
+	gc.setColour(colour_);	//assume setColour function
+}
+
+
+//	Circle.h
+class Circle:public Shape{
+public:
+	Circle(int colour, const Point&centre, int radius);
+	virtual ^Circle(){}
+	virtual void draw(GC& gc) const;
+private:
+	Point centre_;
+	int radius_;
+};
+
+//Circle.cpp
+
+Circle::Circle(int colour, const Point& centre, int radius)
+:Shape(colour), centre_(centre), radius_(radius){
+
+void
+
+Circle::draw(GC &gc) const{
+	Shape::draw(gc);
+	//code to draw circle
+
+}
+
+
+We should put colour in an abstract base class for commonality/variability/analysis
+
+void draw(cons list<Shape *>& lst){
+	list<Shape*>::const_iterator it;
+	for (it=lst.begin(); it!=lst.end(); it++)
+		(*it) -> draw(gc);		//*it is a shape of *
+}
+
+
+
+//	this code doesn't need to be recompiled if we add more types of shapes
+//	polymorphism
+
+
+
+RTTI	(Runtime Type Info)
+#include <typeinfo>
+-	only works for polymorphic classes
+-	typeinfo defines a class type_info whose objects contain type information
+
+type_info class:
+
+-	no default ctor, e.g., type_info t; won't compile
+	//there no way to create a type_info object by typeid calling
+
+-	copy ctor is private
+
+How can we "store" the type_info object returned by typeid?
+
+type_info t = typeid(X);	//won't compile
+
+type_info& t = typeid(X);	//OK
+
+We can do this: typerid(X) == typeid(Employee)
+
+
+
+
+
+

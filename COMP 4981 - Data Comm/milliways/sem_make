@@ -1,0 +1,20 @@
+# make for Semaphores
+
+CC=gcc
+CFLAGS=-Wall -ggdb
+
+ex: ex.o initsems.o semaphor.o
+	$(CC) $(CFLAGS) ex.o initsems.o semaphor.o -o ex
+
+clean:
+	rm -f *.o *.bak ex
+
+ex.o: ex.c
+	$(CC) $(CFLAGS) -O -c ex.c
+
+initsems.o: initsems.c
+	$(CC) $(CFLAGS) -O -c initsems.c
+
+semaphor.o: semaphor.c
+	$(CC) $(CFLAGS) -O -c semaphor.c
+

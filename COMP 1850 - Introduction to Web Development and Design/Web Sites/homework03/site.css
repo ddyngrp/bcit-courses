@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Body */
+.body {
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-size:13px;
+}
+
+.header {
+	font-family:"Times New Roman", Times, serif;
+	font-size:30px;
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:20px;
+}
+
+.subheader {
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	padding-top:20px;
+}

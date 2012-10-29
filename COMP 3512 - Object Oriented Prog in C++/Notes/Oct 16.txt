@@ -1,0 +1,112 @@
+The compiler_generated destructor calls the destructor for each data member in the reverse order they are linked
+in the reverse order they are listed in the class definition and the cllas the base destructor
+
+(Destructors for primitive types do nothing)
+
+e.g.
+
+class C{
+
+private:
+	int n_;
+	string s_;
+	string f_;
+
+	//destructor for t_
+	//destructor for s_
+	(dtor for n_ does nothing)
+};
+
+note: order of dtor calls = reverse of order of ctor calls.
+
+
+When do we need to write our own copy constructor assignment operator and destructor?
+
+-	the most common situation is when the objects of the class needs to use dynamic memory
+
+When are constructors and destructors called
+
+
+
+C a;	//calls default constructor
+C b(a);	// calls copy constructor
+C c = b //calls copy constructor
+a = b;	//calls assignment operator
+
+C d[10];	//calls default constructor 10 times
+C *p = new C;	//calls default constructor
+C *q = new C(a)	//calls copy constructor
+C *r = new C[5] //calls default constructor 5 times
+
+
+delete p;	//calls desctructor
+delete q;	//calls destrructor
+
+delete[] r;	//calls destructor 5 times
+
+void f(C x){ ... }	f(a);	//calls copy constructor because f gets a copy
+C g(){....}
+
+//returns a copy
+
+void f(const C& x){...}
+//no copy made
+
+
+
+________________________________
+
+Assignment:
+
+
+	process char by char
+	process line by line (get line
+	process string
+
+e.g.	ostringstream oss;
+	oss << file.rdbuf();
+	string context = oss.str();
+
+
+_________________________________
+
+
+Date class
+
+What functionality do we need
+
+-	constructor	//A date is basically 3 ints
+-	++/--
+-	get and set
+-	validation
+-	printing and reading dates (<<, >>)
+-	current date (static method)
+
+#if ndef DATE_H
+#define DATE_H
+#include <iostream>		//don't put "using namespace std;" in header file!!
+
+class Date{
+
+public:
+	Date(int year = 2000, int month = 1, int day = 1);
+	//compiler_generated copy ctor, assignment + dtor
+
+	int getYear() const& {return year_;}	//implicitly inline
+	int getMonth() const {return month_;}
+	int getDay() const {return day_;}
+	Date setDate(int year, int month, int day);
+	bool isLeapYear() const;
+	static bool isLeapYear(int year);	
+	static bool isValidDate(int year, int month, int day);
+	statc Date today();
+	friend std::ostream& operatr << (std::ostream&, const Date&);
+
+private
+	int year_, month_, day_;
+	static const int daysInRegularYear_ [];
+	static const int daysInLeapYaer_[];
+};
+#endif;
+}
+

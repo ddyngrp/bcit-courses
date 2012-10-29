@@ -1,0 +1,5 @@
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\bin\Debug\Serialize-People.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\bin\Debug\Serialize-People.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\obj\Debug\Serialize-People.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 4\Serialization\Completed\Serialize-People-Part1-Completed-CS\Serialize-People\obj\Debug\Serialize-People.pdb

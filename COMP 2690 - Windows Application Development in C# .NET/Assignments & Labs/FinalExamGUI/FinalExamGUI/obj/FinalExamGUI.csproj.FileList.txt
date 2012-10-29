@@ -1,0 +1,11 @@
+obj\Debug\FinalExamGUI.exe
+obj\Debug\FinalExamGUI.pdb
+bin\Debug\FinalExamGUI.exe
+bin\Debug\FinalExamGUI.pdb
+bin\Debug\FinalExam.dll
+bin\Debug\FinalExam.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\FinalExamGUI.MainForm.resources
+obj\Debug\FinalExamGUI.Properties.Resources.resources
+obj\Debug\FinalExamGUI.csproj.GenerateResource.Cache
+obj\Debug\FinalExamGUI.PencilDetailsForm.resources

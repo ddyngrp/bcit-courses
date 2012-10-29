@@ -1,0 +1,213 @@
+<stationslist>
+	<station>
+	<Name>BBC News - Eng</Name>
+	<URL>http://www.bbc.co.uk/worldservice/meta/tx/nb/live_news_au_nb.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>CNN Live - Eng</Name>
+	<URL>http://www.cnn.com/audio/radio/liveaudio.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>BBC Tamil Oosai - UK</Name>
+	<URL>http://www.bbc.co.uk/tamil/2115.ram</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Shyam Radio - Chennai</Name>
+	<URL>mms://st.malargal.com/shyamradio</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Merina - USA[Tamil]</Name>
+	<URL>http://www.merina.com/merina_lo.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>World Tamil Radio - UK[Tamil]</Name>
+	<URL>mms://live.ossai.com/wtruk</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Taalam - Srilanka[Tamil]</Name>
+	<URL>mms://wtrfm.ossai.com/worldtamilar</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Shakthi - Tamil</Name>
+	<URL>http://astream.net/live/asia/shakthi.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>IBC - Tamil</Name>
+	<URL>http://www.ibctamil.co.uk/IBC.asx</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Singapore Oli - [Tamil]</Name>
+	<URL>http://www.oli.sg/asx/fm968.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Jeevan FM - Tamil</Name>
+	<URL>http://mp3.lrdns.com:8000/</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>TMS - Tamil</Name>
+	<URL>http://tmstorrents.com:8000/</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Montreal Tamil Broadcasting Corporation(MTBC24) - Tamil</Name>
+	<URL>mms://st.malargal.com/shyamradio</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Thaemadura Thamil Osai NZ[Tamil]</Name>
+	<URL>http://www.tamilmedianz.com/audio/ttoprogram.wax</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Olifm - canada[Tamil]</Name>
+	<URL>http://www.radio.olifm.com/listen.pls</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>CTBC-ILAIYABHARATHY - Tamil</Name>
+	<URL>mms://globalit.no-ip.org/ctbc</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Thenral WorldRadio - De[Tamil]</Name>
+	<URL>http://www.thenralworld.org/radio/live.pls</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Thenisai - Tamil</Name>
+	<URL>http://www.thenisai.com/tamil/radio/tamilfm.htm</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Oli FM - Tamil</Name>
+	<URL>http://rs1.radiostreamer.com:8250/</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Ex-Tamil</Name>
+	<URL>http://extamil.com/radio</URL>
+	<PlayerHint>VLCPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Lotus FM - live from Johannesburg[Multi]</Name>
+	<URL>http://www.antfarm.co.za/clients/lotusfm/asxGen.asp</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RadioTarana-NewZealand[Hindhi]</Name>
+	<URL>mms://l1.r2.co.nz/tarana-1</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>106.2 HUMFM - UAE[Hindhi]</Name>
+	<URL>http://www.humfm.com/humfm.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RadioOfIndia - Bollywood[Hindhi]</Name>
+	<URL>http://www.radioofindia.com/asf/bollywood.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RadioOfIndia - Bhajans[Hindhi]</Name>
+	<URL>http://www.radioofindia.com/asf/bhajans.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RadioOfIndia - Classical[Hindhi]</Name>
+	<URL>http://66.238.65.109/classical</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>DesiSoundz - India[Hindhi]</Name>
+	<URL>http://desisoundz.com:8000</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Sabras radio - UK[Hindhi]</Name>
+	<URL>http://ct1.fast-serv.com:8744</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Haagstad Radio - Holand[Hindhi]</Name>
+	<URL>mms://81.205.146.32:21/haagstadradio</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RadioTeenTaal - Paris[Hindhi]</Name>
+	<URL>http://www.radioteentaal.com/masala128.wax</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>ApnaRadio - USA[Hindhi]</Name>
+	<URL>http://www.apnaradio.com/live/media24/ApnaRadio.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>BombayBeats FM - Hindhi</Name>
+	<URL>http://www.1.fm/player/energybbfm32k.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Yarr Radio - UK[Hindhi]</Name>
+	<URL>mms://193.218.160.20/yaarradio</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Radio XL - UK[Hindhi]</Name>
+	<URL>http://www.vtuner.com/vTunerweb/mms/m3u13219.m3u</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Asian Sound Radio - UK[Hindhi]</Name>
+	<URL>http://www.vtuner.com/vtunerweb/mms/mms15278.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Sanskar Radio - UK[Hindhi]</Name>
+	<URL>http://www.vtuner.com/vTunerweb/mms/m3u18290.m3u</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Trishul 90.5 FM - Hindhi</Name>
+	<URL>http://www.vtuner.com/vtunerweb/mms/mms14734.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Radio India - Canada[Hindhi]</Name>
+	<URL>mms://live.radioindiabroadcasting.com/liveradio</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>City 101.6 FM - Dubai[Hindhi]</Name>
+	<URL>http://asx.abacast.com/arabian_radio-city-24.asx</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Craze FM - Hindi/Eng</Name>
+	<URL>http://www.crazefm.com/s/DT.m3u</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>Bollywood Music - Hindhi</Name>
+	<URL>http://stream.bollywood.mu:8000/</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+	<station>
+	<Name>RaDio TEEN - Hindhi</Name>
+	<URL>http://tt.impek.tv:80/</URL>
+	<PlayerHint>MPLAYER</PlayerHint>
+	</station>
+</stationslist>
+

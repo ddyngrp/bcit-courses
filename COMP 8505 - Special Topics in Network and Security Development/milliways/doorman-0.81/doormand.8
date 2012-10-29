@@ -1,0 +1,341 @@
+.\" Copyright (c) 2003-2005 Bruce Ward <bward2@users.sourceforge.net>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111,
+.\" USA.
+.\"
+.\"  -------------------------------------------------------------------------
+.\"   Oct  6 2003 :  JBW :  Initial version
+.\"   Jun 29 2004 :  JBW :  Added acknowledgement
+.\"   Aug 14 2005 :  JBW :  Changes for hash archive replacing Berkeley DB
+.\"  -------------------------------------------------------------------------
+.\"
+
+.TH doormand  8 "Aug 14, 2005" "Doorman, V0.81" "Doorman & Knocker"
+
+.SH  NAME
+.B doormand
+\- The doorman daemon
+.SH  SYNOPSIS
+.nf
+doormand [-h] [-v] [-D] [-f config-file]
+
+.SH DESCRIPTION
+The doorman daemon "guards the door" of a host running TCP servers,
+admitting only recognized parties.
+(The current implementation of the doorman can only protect TCP services.)
+It allows a server which is not intended for general public access
+to run with most (or even all) of
+it's TCP ports closed to the outside world.
+.br
+
+A server may thus be made invisible to
+a cracker's portscans; attacks can be mounted on such a host only if it's
+existence is known by other means.  Moreover, any vulnerability in a
+specific program is made much more difficult to exploit, as the the
+firewall simply drops packets from parties the doorman does not
+recognize.
+.br
+
+The doorman watches all packets arriving at a specified interface on a
+specified UDP port.  When a valid packet from
+.I knock
+is detected (see 'conditions' below),
+doormand runs the first of two shell scripts, as configured in
+.I doormand.cf.
+It is the responsiblity of these scripts to manipulate the
+firewall rules to allow a TCP connection from the originating IP address.
+.br
+
+There is one script to add rules, and one to delete rules.   The first call
+to the 'add' script sets a broad firewall rule; open to one destination port,
+but from any source port at the originating IP address.
+The second call to that script sets a narrow rule; open to only one one
+source port at the originating IP address.
+.br
+
+Between the knock and a connection on the requested port, the doorman
+will wait for a configurable number of seconds.
+If none is made within that time, the 'delete' script is run to 
+re-close the firewall.  If a connection is made, the source port of that
+connection is noted; the 'add' script is run to narrow the firewall hole,
+and then the 'delete' script is run to delete the first, broader, rule.
+.br
+
+The sequence of calls to the scripts, if all goes well, is this:
+.br
+
+.nf
+    a valid 'knock packet' received...
+ *--> add broad rule
+    wait...  a TCP connection allowed by the broad rule is made...
+ *--> add narrow rule (we now know the source port)
+ *--> delete broad role (don't need it anymore)
+    the client & server converse; eventually, the client goes away...
+ *--> delete narrow rule
+.fi
+
+No reply is made to a knock; success is apparent to the client only when
+it discovers that a connection to the requested service can be made.
+.br
+
+.SH OPTIONS
+.TP
+\fB\-h\fR
+\'help'; print a message explaining the options and quit.
+.TP
+\fB\-v\fR
+\'version'; print the version number and quit.
+.TP
+\fB\-D\fR
+Run in "Debug" mode. Doormand will not daemonize, and remain attached to the console;
+file ownership and permission checks are skipped, and logging is done to stdout.
+.TP
+\fB\-X\fR
+Do a hex dump of all UDP packets received on the listening port, including the
+data-link header.
+Use of '-X' is not usually necessary; only used for debugging if the doorman ignores
+all knocks.  See 'man 5 doormand.cf'.
+.TP
+\fB\-f config-file\fR
+Use the specified configuration file.   The default
+configuration file is named "doormand.cf" in directory
+"/usr/local/etc/doormand", or the directory specified by the configure "--sysconfdir"
+option when building
+.I doormand
+and
+.I knock.
+
+
+.SH CONDITIONS
+A knock packet contains 4 space-delimited ASCII strings:
+portnumber, groupname, a "random" decimal number called a "tag",
+and an MD5 hash formatted as a hexadecimal
+number of 32 characters.  The knock client creates this hash from
+the the group's shared secret, salted with the first 3 fields.
+The doorman performs the same MD5 operation, and checks that the two
+hashes are identical.  If they are, the knock client must know the 
+secret, and is let in.
+
+Therefore, in order for a knock to succeed, the following conditions must be met:
+.br
+
+1. the groupid must be in the doorman's 'guestlist' file
+.br
+
+2. the secret must match that in the guestlist record for that group
+.br
+
+3. the IP address of the client machine's interface must match one of
+the addresses in the guestlist record.
+.br
+
+4. the service requested must be in the guestlist record
+.br
+
+5. the tag must not be "stale"; that is, it must not have already been
+used on a successful knock.
+(The doorman keeps a hashed table of information about successful knocks.)
+.br
+
+.SH SCRIPTS
+Ready-made scripts are supplied for Linux, FreeBSD, netBSD, and OpenBSD:
+.br
+
+ ipchains_add & ipchains_delete ... Linux 2.2 'ipchains'
+.br
+ iptables_add & iptables_delete ... Linux 2.4+ 'iptables'
+.br
+ ipf_add & ipf_delete           ... netBSD 'ipf'
+.br
+ ipfw_add & ipfw_delete         ... FreeBSD 'ipfw'
+.br
+ pfctl_add & pfctl_delete       ... OpenBSD 'pf'
+.br
+
+The 'firewall-add'
+and 'firewall-del' records in
+.I doormand.cf
+specify which set of these scripts will be executed.
+.br
+
+For other firewall types, scripts must be supplied by the administrator.
+Both 'add' and 'delete' scripts are invoked with this parameter list :
+.br
+
+.nf
+        $1         $2      $3         $4       $5
+.nf
+interface-name   src-ip  src-port   dest-ip  dest-port
+.br
+
+.fi
+When adding or deleting "broad" rules, the value of $3, the src-port
+parameter, will be set to a single '0' character.  Add & delete scripts may
+check for a zero value to determine the firewall command to be issued.
+.br
+
+.fi
+Both scripts must return a status by writing a string to stdout. A normal
+return is indicated by single ascii '0' (0x30) character.
+.br
+
+Errors encountered while running the script should be indicated
+by returning  a non-zero integer (perhaps 'errno', but '-1' will do),
+followed by a numeric severity level:
+.br
+
+.nf
+  EMERG   0    ALERT  1    CRIT 2    ERROR 3
+.br
+  WARNING 4    NOTICE 5    INFO 6    DEBUG 7
+.br
+.fi
+
+Severity values of 0..3 will cause the forked doormand process for that
+connection to log the event and exit.  Levels 4..7 will cause the event
+to be logged, but processing will continue.
+.br
+
+The message written to the
+logfile will also contain whatever text is written after the severity
+level; this may be extra information on the nature of the error, if
+so desired by the script writer.
+.br
+
+An example error return:
+.br
+   -1 3 Permission denied
+.br
+
+.SH SIGNALS
+.BR SIGHUP
+may be used force  the parent doormand process to re-read it's
+configuration and guest-list files.  Any children preparing
+new, or monitoring established connections will continue to
+use old configuration data.
+.br
+
+.BR SIGTERM,
+.BR SIGSTOP,
+.BR SIGQUIT,
+and
+.BR SIGINT
+may be used to shut the doornman down in an orderly fashion.  Any
+children processing connections will exit, after removing any
+firewall rules for which they are responsible.  There may be a delay
+of up to "connection_delay_2" (man 
+.I doormand.cf
+) before children exit.
+
+.SH FILES
+.BR doormand.cf :
+the configuration file for doormand. (man 5 doormand.cf)
+.br
+
+.BR guestlist :
+the list of guest (or group) names containing a secret for
+authentication, and information about which services they may connect to,
+and from what IP addresses. (man 5 guestlist)
+.br
+
+.BR doormand.pid:
+the process-ID file created by the parent doormand process.
+The full pathname is specified by the 'pidfile' record of
+.I doormand.cf.
+Doormand will refuse to run if this file already exists; it must be
+removed manually after a program crash.
+.br
+
+.BR A
+.BR hash
+.BR archive:
+a file containing information on previous successful knocks.  In the current implementation,
+this file should not be shared with other doorman processes. If the 'hash-archive-size'
+configuration parameter is changed to a smaller value, some stored knocks may be lost
+due to hash collisions upon insertion into the new table.
+The archive stores the 128-bit MD5 hash contained in the knock, and the time, as GMT, that
+the successful knock was received.  The size of the archive should be made as large as possible
+without consuming an inconvenient amount of memory and disk space.  This is to reduce the number of
+hash collisions; in the event of a collision where the two MD5 hashes match exactly,
+the doorman assumes a "replay" attack, logs a warning message, and refuses entry.
+However, in the event of a collision where the MD5  hashes do not match, the new knock
+simply over-writes the old.
+.br
+
+.BR A
+.BR firewall-add
+.BR script.
+.br
+
+.BR A
+.BR firewall-delete
+.BR script.
+.br
+
+.SH CAVEAT
+Three vulnerabilites of this approach spring immediately to mind.
+The first is that the guest "secrets" must exist as plaintext in the
+guestlist file, and may also exist (plaintext again!) in the client's
+.I .knockcf
+or
+.I knock.cfg
+file.  These secrets must therefore NEVER correspond to ANY passwords
+ANYWHERE ELSE.
+.br
+
+Note also that coredumps from doormand crashes will also contain all
+guest-list secrets in plaintext.
+
+Second, it is still possible for a cracker, connected to the same
+client machine as a legitimate user (L.U.), and able to sniff L.U.'s traffic,
+to 'slip in' before L.U.
+.br
+(This problem is mitigated somewhat by the fact
+that the attacker would still have to authenticate.  Hoewever, he might
+briefly be able to launch attacks against vulnerabilities in the server
+at that port.)
+.br
+
+Third, the doorman runs with root permissions.  It is therefore possible
+that the doorman itself may be attacked, in hopes of exploiting a buffer 
+overflow or similar bug.
+
+The doorman does present a formidable barrier to a cracker, but not an
+impenetrable one.
+
+.SH SEE ALSO
+.BR knock (1),
+.BR knockcf (5),
+.BR guestlist (5),
+.BR doormand.cf (5)
+
+.SH ACKNOWLEDGEMENT
+.BR doormand
+and
+.BR knock
+are an implementation of an original idea by
+.B Martin Krzywinski.
+See his site at http://www.portknocking.org
+
+.SH COPYRIGHT
+Copyright (c) 2003-2005, J.B.Ward
+.br
+<bward2@users.sourceforge.net>
+

@@ -1,0 +1,9 @@
+                  Review Questions - Errata
+                  =========================
+
+
+Week 3:
+------
+   Added question 10 for calculating disk capacity, transfer rate and average access time
+
+   Updated - 2008-05-08

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=class\ CoordinatePair
+comment0.text=\nClass\ CoordinatePair.\ This\ class\ maintains\ a\ row-column\ pair\ of\ numbers\nto\ be\ used\ as\ array\ coordinates.\ A\ CoordinatePair\ object\ refers\ to\ a\ single\nlocation\ in\ a\ two-dimensional\ array.\n\n@author\ Colleen\ Penrowley\ \n@version\ August\ 2005\n\n
+comment1.params=
+comment1.target=int\ getColumn()
+comment1.text=\nColumn\ accessor\n@return\ current\ column\ as\ int\n\n
+comment2.params=
+comment2.target=CoordinatePair()
+comment2.text=\nConstructor\ for\ objects\ of\ class\ CoordinatePair\n\n
+comment3.target=column
+comment4.params=column
+comment4.target=void\ setColumn(int)
+comment4.text=\nColumn\ mutator\ -\ sets\ column\ to\ the\ input\ value\n@param\ column\ as\ int\n\n
+comment5.params=row
+comment5.target=void\ setRow(int)
+comment5.text=\nRow\ mutator\ -\ sets\ row\ to\ the\ input\ value\n@param\ row\ as\ int\n\n
+comment6.params=
+comment6.target=int\ getRow()
+comment6.text=\nRow\ accessor\ \n@return\ \ \ current\ row\ as\ int\n\n
+comment7.target=row
+numComments=8

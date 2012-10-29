@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Game()
+comment0.text=\nConstructor\ for\ objects\ of\ class\ Game\n\n
+comment1.target=void\ play()
+comment1.text=\nThis\ method\ holds\ the\ game\ logic.\ The\ user\ is\ repeatedly\ \nprompted\ to\ play\ another\ round.\ When\ the\ user\ has\ chosen\ to\ stop\ \nplaying,\ the\ final\ tally\ of\ wins\ and\ losses\ is\ reported.\n\n\n
+comment2.target=void\ dealCard()
+comment2.text=\nDeal\ one\ card\ from\ the\ deck\ and\ put\ it\ into\ the\ player's\ hand.\nIf\ the\ deck\ is\ empty,\ it\ will\ automatically\ create\ and\ shuffle\na\ brand\ new\ deck.\n\n
+comment3.target=void\ playerTurn()
+comment3.text=\nPlay\ out\ the\ player's\ turn.\nThe\ player\ may\ choose\ to\ hit\ or\ stand,\ unless\ the\ player's\ncards\ total\ more\ than\ BLACKJACK,\ in\ which\ case\ the\ player\nis\ "busted".\n\n
+comment4.target=int\ getHandValue()
+comment4.text=\nCalculates\ and\ returns\ the\ value\ of\ the\ hand.\ An\ ace\ is\ worth\ ACE_HIGH_VALUE\nunless\ it\ would\ cause\ a\ "bust",\ in\ which\ case\ it\ is\ worth\ ACE_LOW_VALUE.\n\n
+comment5.target=void\ totalGamePoints()
+comment5.text=\nCalculate\ total\ points\n\n
+comment6.target=void\ showHand()
+comment6.text=\nShows\ the\ cards\ in\ the\ player's\ hand.\n\n
+comment7.target=void\ showTotals()
+comment7.text=\nShows\ the\ current\ round,\ total\ points\ and\ hand\ value\n\n
+numComments=8

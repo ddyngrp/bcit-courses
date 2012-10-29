@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>intro to js</title>
+	
+	<script language="javascript" type="text/javascript">
+	<!--
+	
+	function changeImg(someId, someSource)
+	{
+		document.getElementById(someId).src = someSource;
+	}
+
+	// -->
+	</script>
+</head>
+
+<body>
+	<img 	src="./images/wolf.jpg"
+		id="myimage"
+		onmouseover="changeImg(this.id, './images/giraffe.jpg');"
+		onmouseout="changeImg(this.id, './images/wolf.jpg');"
+		width="300"
+	>
+</body>
+</html>

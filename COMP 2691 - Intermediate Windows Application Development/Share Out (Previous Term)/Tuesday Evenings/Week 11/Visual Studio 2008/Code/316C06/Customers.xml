@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Customer list for Bob's Tractor Parts -->
+<Customers>
+    <Customer CustomerNumber="1">
+        <CustomerName>Lambert Tractor Works</CustomerName>
+        <CustomerCity>Millbank</CustomerCity>
+        <CustomerState>WA</CustomerState>
+    </Customer>
+    <Customer CustomerNumber="2">
+        <CustomerName><![CDATA[Joe's Garage]]></CustomerName>
+        <CustomerCity>Doppel</CustomerCity>
+        <CustomerState>OR</CustomerState>
+    </Customer>
+</Customers>

@@ -1,0 +1,5 @@
+1) Write a program that calculates the product of a series of integers that are passed to function product() using a variable-length argument list.  Test your function with several calls (in other words, invoke function product() several times from the main() function), each time with a different number of arguments. You may use sample program fig14_02.c as a starting point for this lab question.
+
+2) Write a program that prints the command-line arguments of the program. You may use sample program fig14_03.c as a starting point for this lab question.
+
+

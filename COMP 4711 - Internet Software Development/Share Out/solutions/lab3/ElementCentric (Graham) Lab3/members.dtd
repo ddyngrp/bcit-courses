@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT members (player*, course*)>
+
+<!ELEMENT player (PID, fName, lName, pAddy, pCity, pPostCode, pPhoneNumb,
+                    pRound*, pHandicap*) >
+<!ELEMENT PID (#PCDATA)>
+<!ELEMENT fName (#PCDATA)>
+<!ELEMENT lName (#PCDATA)>
+<!ELEMENT pAddy (#PCDATA)>
+<!ELEMENT pCity (#PCDATA)>
+<!ELEMENT pPostCode (#PCDATA)>
+<!ELEMENT pPhoneNumb (#PCDATA)>
+
+<!ELEMENT gRound (RID, CID, rStart, rFinish, nHoles, RWC, pRound*) >
+<!ELEMENT RID (#PCDATA)>
+<!ELEMENT rStart (#PCDATA)>
+<!ELEMENT rFinish (#PCDATA)>
+<!ELEMENT nHoles (#PCDATA)>
+<!ELEMENT RWC (#PCDATA)>
+
+<!ELEMENT pRound (PID, RID, hNumb, hScore)>
+<!ELEMENT hNumb (#PCDATA)>
+<!ELEMENT hScore (#PCDATA)>
+
+<!ELEMENT course (CID, cName, cAddy, cCity, cPostCode, cPhoneNumb, SSS,
+                    cDetails*, gRound*)>
+<!ELEMENT CID (#PCDATA)>
+<!ELEMENT cName (#PCDATA)>
+<!ELEMENT cAddy (#PCDATA)>
+<!ELEMENT cCity (#PCDATA)>
+<!ELEMENT cPostCode (#PCDATA)>
+<!ELEMENT cPhoneNumb (#PCDATA)>
+<!ELEMENT SSS (#PCDATA)>
+
+<!ELEMENT pHandicap (HCID, PID, hDate, hcScore)>
+<!ELEMENT HCID (#PCDATA)>
+<!ELEMENT hDate (#PCDATA)>
+<!ELEMENT hcScore (#PCDATA)>
+
+<!ELEMENT cDetails (HID, par, yards, aInfo, CID*)>
+<!ELEMENT HID (#PCDATA)>
+<!ELEMENT par (#PCDATA)>
+<!ELEMENT yards (#PCDATA)>
+<!ELEMENT aInfo (#PCDATA)>

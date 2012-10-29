@@ -1,0 +1,93 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Connect",                    ID_FILE_CONNECT
+        MENUITEM "&Disconnect",                 ID_FILE_DISCONNECT
+        MENUITEM "&Reconnect",                  ID_FILE_RECONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_QUIT
+    END
+    POPUP "&Configure Port"
+    BEGIN
+        MENUITEM "COM&1",                       ID_COMPORT_COM1
+        MENUITEM "COM&2",                       ID_COMPORT_COM2
+        MENUITEM "COM&3",                       ID_COMPORT_COM3
+        MENUITEM "COM&4",                       ID_COMPORT_COM4
+        MENUITEM "COM&5",                       ID_COMPORT_COM5
+        MENUITEM "COM&6",                       ID_COMPORT_COM6
+        MENUITEM "COM&7",                       ID_COMPORT_COM7
+        MENUITEM "COM&8",                       ID_COMPORT_COM8
+        MENUITEM "COM&9",                       ID_COMPORT_COM9
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

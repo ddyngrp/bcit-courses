@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=PlayerTest()
+comment0.text=\nDefault\ constructor\ for\ test\ class\ PlayerTest\n\n
+comment1.target=void\ setUp()
+comment1.text=\nSets\ up\ the\ test\ fixture.\n\nCalled\ before\ every\ test\ case\ method.\n\n
+comment2.target=void\ tearDown()
+comment2.text=\nTears\ down\ the\ test\ fixture.\n\nCalled\ after\ every\ test\ case\ method.\n\n
+comment3.target=void\ testInitialBalance()
+comment3.text=\nTest\ the\ player's\ initial\ balance\n\n
+comment4.target=void\ testAddMoney()
+comment4.text=\nTest\ adding\ money\ to\ the\ player's\ wallet\n\n
+comment5.target=void\ testSubtractMoney()
+comment5.text=\nTest\ subtracting\ money\ from\ the\ player's\ wallet\n\n
+comment6.target=void\ testInventoryWeight()
+comment6.text=\nTest\ the\ total\ weight\ of\ the\ player's\ inventory\n\n
+comment7.target=void\ testRequiredItems()
+comment7.text=\nTest\ whether\ the\ player\ has\ all\ the\ required\ items\n\n
+numComments=8

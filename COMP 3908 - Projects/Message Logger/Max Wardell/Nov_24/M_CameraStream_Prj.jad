@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+RIM-COD-Module-Name: M_CameraStream_Prj
+RIM-COD-Module-Dependencies: net_rim_cldc
+MIDlet-Jar-Size: 13285
+MIDlet-1: ,,
+RIM-COD-Creation-Time: 1227595769
+MIDlet-Jar-URL: M_CameraStream_Prj.jar
+RIM-COD-URL: M_CameraStream_Prj.cod
+RIM-COD-SHA1: 6d 54 57 01 fa 9a 25 c5 72 b2 6e 82 11 a9 30 b1 c9 14 b6 9b
+RIM-COD-Size: 5592
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Version: 0.0
+MIDlet-Name: M_CameraStream_Prj
+MIDlet-Vendor: <unknown>
+MicroEdition-Profile: MIDP-2.0
+RIM-MIDlet-Flags-1: 0

@@ -1,0 +1,42 @@
+<html><head> <script type="text/javascript">
+
+	var timerID = null;
+
+	function moveElement(i)
+	{
+		document.getElementById(i).style.left =
+ 		 parseInt(document.getElementById(i).style.left)
+		  + 1 + "px";
+	}
+
+	function startTimer(theId)
+	{
+
+		fn = "moveElement('" + theId + "')";
+	
+
+		if(timerID == null)
+		{
+		  timerID = setInterval(fn, 20);
+		}
+	}
+
+	function stopTimer()
+	{
+		clearInterval(timerID);
+		timerID = null;
+	}
+
+</script>	
+
+</head>
+<body>
+
+<input type="button" value="start" onclick="startTimer('c');">
+<input type="button" value="stop"  onclick="stopTimer();">
+<img src="baby_wolf.jpg" id="animation" style="top:50px;left:10px;position:absolute;">
+
+
+<img src="cheetah.jpg" id="c" style="top:50px;left:10px;position:absolute;" width="200">
+
+</body></html>

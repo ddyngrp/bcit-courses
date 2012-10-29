@@ -1,0 +1,156 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      4434,        146]
+NotebookOptionsPosition[      3646,        113]
+NotebookOutlinePosition[      3984,        128]
+CellTagsIndexPosition[      3941,        125]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Ingredient", " ", "=", " ", "1.24"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Labour", "=", " ", "0.47"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Packaging", " ", "=", " ", "0.40"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"LineTotal", " ", "=", " ", 
+  RowBox[{
+  "Ingredient", " ", "+", " ", "Labour", " ", "+", " ", 
+   "Packaging"}]}]}], "Input",
+ CellChangeTimes->{{3.4729234828242188`*^9, 3.47292354326503*^9}}],
+
+Cell[BoxData["2.11`"], "Output",
+ CellChangeTimes->{
+  3.472924177894939*^9, 3.472924514602935*^9, 3.4729247848704643`*^9, {
+   3.4729249691779127`*^9, 3.472924991365919*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EstUnits", "=", " ", 
+  RowBox[{"342533", "/", "LineTotal"}]}]], "Input",
+ CellChangeTimes->{{3.472923945581761*^9, 3.4729239817277718`*^9}}],
+
+Cell[BoxData["162337.91469194312`"], "Output",
+ CellChangeTimes->{
+  3.472923984674909*^9, 3.472924514721077*^9, 3.47292478497288*^9, {
+   3.472924969212089*^9, 3.4729249914679813`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SalesAvg", " ", "=", " ", 
+  RowBox[{"EstUnits", " ", "*", " ", 
+   RowBox[{"(", 
+    RowBox[{"6.95", "-", "LineTotal"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.472923770559779*^9, 3.472923806700691*^9}, {
+  3.472923842148283*^9, 3.472923878975123*^9}, {3.472924001807685*^9, 
+  3.472924015925435*^9}}],
+
+Cell[BoxData["785715.5071090047`"], "Output",
+ CellChangeTimes->{
+  3.47292380815576*^9, 3.472924017275528*^9, 3.472924514757971*^9, 
+   3.472924785005982*^9, {3.472924969331272*^9, 3.472924991516754*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CrapJamPrice", "=", 
+   RowBox[{"4.53", "-", "LineTotal"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.472924115166771*^9, 3.472924147243081*^9}, {
+  3.472924211159132*^9, 3.472924213950327*^9}, {3.47292442333677*^9, 
+  3.472924445885791*^9}, {3.472924781908142*^9, 3.472924783787797*^9}, {
+  3.472924967398275*^9, 3.472924990699955*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewSales", "=", 
+  RowBox[{"CrapJamPrice", "*", "EstUnits"}]}]], "Input",
+ CellChangeTimes->{{3.472924184214406*^9, 3.47292418912807*^9}, {
+  3.472924224447945*^9, 3.4729242272690773`*^9}}],
+
+Cell[BoxData["392857.75355450244`"], "Output",
+ CellChangeTimes->{{3.4729241948144083`*^9, 3.4729242278297787`*^9}, {
+   3.472924428835587*^9, 3.472924449378779*^9}, 3.472924514833247*^9, 
+   3.472924785103752*^9, {3.472924969424881*^9, 3.47292499158456*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"NewSales", "+", "SalesAvg"}], ")"}], "/", "SalesAvg"}], "-", 
+    "1"}], ")"}], "*", "100"}]], "Input",
+ CellChangeTimes->{{3.472924233650908*^9, 3.472924277785708*^9}}],
+
+Cell[BoxData["50.`"], "Output",
+ CellChangeTimes->{{3.4729242540119963`*^9, 3.472924278264112*^9}, {
+   3.472924430181786*^9, 3.472924450575872*^9}, 3.47292451486852*^9, 
+   3.472924785145173*^9, {3.4729249694599323`*^9, 3.472924991615354*^9}}]
+}, Open  ]]
+},
+WindowSize->{640, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 481, 12, 73, "Input"],
+Cell[1051, 36, 175, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1263, 44, 165, 3, 27, "Input"],
+Cell[1431, 49, 186, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1654, 57, 330, 7, 27, "Input"],
+Cell[1987, 66, 205, 3, 27, "Output"]
+}, Open  ]],
+Cell[2207, 72, 371, 7, 27, "Input"],
+Cell[CellGroupData[{
+Cell[2603, 83, 213, 4, 27, "Input"],
+Cell[2819, 89, 259, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3115, 97, 268, 8, 27, "Input"],
+Cell[3386, 107, 244, 3, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

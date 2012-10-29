@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=species\ age\ weightKG\ furColour
+comment0.target=Squirrel(String,\ int,\ double,\ String)
+comment0.text=\nConstructor\ for\ squirrel\n\n
+comment1.target=String\ getMove()
+comment1.text=\nGet\ this\ animal's\ special\ move\n@return\ String\ of\ the\ animal's\ move\n\n
+comment2.target=String\ getFurColour()
+comment2.text=\nGetter\ for\ this\ animal's\ fur\ colour.\n@return\ String\ representing\ the\ colour\ of\ the\ fur.\n\n
+comment3.target=String\ toString()
+comment3.text=\ntoString\ method\ for\ Mammel\ objects\n\n
+numComments=4

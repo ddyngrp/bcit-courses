@@ -1,0 +1,100 @@
+We'll implement a string class.
+
+
+class String{
+
+
+	private:
+
+		char * s_:
+		enum{bufsize = 1024};	
+	
+	public:
+		String(const char *s = ""):s_(new char[strlen(s)+1]{
+			strcpy(s_, s);
+		}
+
+		string(const String& src):s_(new char[strlen(src.s_)+1]{	
+			strcpy(s_, src.s_);		
+		}
+
+/*
+compiler-generated copy ctor
+
+-	calls copy ctor for each data member; for built-in types,
+	it uses bitwise copy
+
+
+-	need to write our own copy constructor because
+	What happens if the location that it is pointing to is deleted?
+	If one of them is destroyed, the associated dynamic memory is gone.
+
+*/
+		~String(){ delete[]s_;}
+
+		String& operator = (const String& src){
+			if (this != &src){	/*check that we are not assigning to ourself*/
+
+				char *tmp = new char[strlen(src.s_)+1];
+				strcpy(tmp,src.s);
+				delete[] s_;
+				s_ = tmp;
+			}
+
+		//alternative version
+
+		String& operator = (const String& src){
+			String tmp(src);
+			swap(tmp);
+			return *this;
+		}
+
+		void swap(String& other){
+			std::swap(s_ other.s_);
+		}
+
+
+		typedef size_t size_type;
+		
+		size_type length() const{ return strlen(s_);}
+		size_type size() const{ return length();}
+		const char* c_str() const{ return s_;}
+
+		String& operator+= (const String& src){
+			char *tmp = new char[strlen(s_) + strlen(src.s__ + 1];
+			strcpy(tmp,s_);
+			strcat(tmp, src.s_);
+			delete[]s_;
+			s_ = tmp;
+			return *this;
+		}
+
+		friend std::ostream& operator << (std::ostream&, const String&);
+		friend std::istream& operator >> (std::istream& String&);
+
+};
+
+
+inline String
+
+operator+ (const string & lhs, const string& rhs){
+	String tmp(lhs);
+	tmp += rhs;
+	return tmp;
+}
+
+inline std::ostream&
+operator >> (std::istream& is_ String& s){
+	char buffer[string::bufsize];
+	if (is >> setw(string::bufsize) >> buffer)
+		s = string(buffer(l
+	return is;
+
+}
+
+
+
+
+
+
+

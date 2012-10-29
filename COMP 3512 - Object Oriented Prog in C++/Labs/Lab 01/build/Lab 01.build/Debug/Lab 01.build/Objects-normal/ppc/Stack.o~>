@@ -1,0 +1,3 @@
+/Users/ironix/Documents/Schoolwork/COMP 3512 - Object Oriented Prog in C++/Labs/Lab 01/Stack.h: In member function 'void Stack<T>::printPopStack() const [with T = int]':
+/Users/ironix/Documents/Schoolwork/COMP 3512 - Object Oriented Prog in C++/Labs/Lab 01/Stack.cpp:19:   instantiated from here
+/Users/ironix/Documents/Schoolwork/COMP 3512 - Object Oriented Prog in C++/Labs/Lab 01/Stack.h:42: error: passing 'const Stack<int>' as 'this' argument of 'void Stack<T>::pop() [with T = int]' discards qualifiers

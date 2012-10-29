@@ -1,0 +1,15 @@
+/**
+ * Project: assignment02
+ * File: DialogBox.java
+ * Date: 25-Nov-07
+ * Time: 10:28:03 PM
+ */
+package a00683006.bedz.ui;
+
+/**
+ * @author Steffen L. Norgren, A00683006
+ *
+ */
+public class DialogBox {
+
+}

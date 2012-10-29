@@ -1,0 +1,30 @@
+<!-- 
+	comp1911 lab01 example
+-->
+<html>
+<head>
+	<title>Lab1 Example</title>
+
+	<!-- include all javascript functions from external file -->
+	<script type="text/javascript" language="javascript" src="me.js">
+	</script>
+
+	<!-- show this message to all javascript deniers -->
+	<noscript>
+	Sorry, this page is for Javascript users only. You can go now...
+	</noscript>
+
+</head>
+
+<body>
+	<!-- show image #1 -->
+	<img src="monkeyman0.png" id="img1" border="0" 
+	ondblclick="changeSource('img1','monkeyman1.png');"/>
+	<!-- show image #2 -->
+	<img src="monkeyman1.png" id="img2" border="0" 
+	ondblclick="doubleWidth('img2');"/>
+	<!-- some text for user to click on... -->
+	<p><span id="blurb" onclick="makeRed('blurb');">Click this text to see it in blood-curdling RED!</span></p>	
+</body>
+</html>
+

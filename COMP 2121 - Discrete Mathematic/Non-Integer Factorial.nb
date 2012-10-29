@@ -1,0 +1,72 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      1833,         62]
+NotebookOptionsPosition[      1478,         45]
+NotebookOutlinePosition[      1816,         60]
+CellTagsIndexPosition[      1773,         57]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"z", "=", "3.1"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubsuperscriptBox["\[Integral]", "0", "\[Infinity]"], 
+  RowBox[{
+   SuperscriptBox["t", "z"], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", "t"}]], 
+   RowBox[{"\[DifferentialD]", "t"}]}]}]}], "Input",
+ CellChangeTimes->{{3.4253364816146603`*^9, 3.425336513874756*^9}, {
+  3.425337123985106*^9, 3.4253371284832277`*^9}, {3.425337424698523*^9, 
+  3.425337425020307*^9}, {3.4253374691547203`*^9, 3.4253374698776293`*^9}, {
+  3.4253375438242207`*^9, 3.425337554606325*^9}, {3.425337607994854*^9, 
+  3.425337608863327*^9}, {3.42533778001857*^9, 3.4253377819538593`*^9}}],
+
+Cell[BoxData["3.1`"], "Output",
+ CellChangeTimes->{3.4253376095667543`*^9, 3.425337782939012*^9}],
+
+Cell[BoxData["6.812622863016674`"], "Output",
+ CellChangeTimes->{3.4253376095667543`*^9, 3.4253377839401217`*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 620},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 656, 13, 62, "Input"],
+Cell[1249, 38, 97, 1, 27, "Output"],
+Cell[1349, 41, 113, 1, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

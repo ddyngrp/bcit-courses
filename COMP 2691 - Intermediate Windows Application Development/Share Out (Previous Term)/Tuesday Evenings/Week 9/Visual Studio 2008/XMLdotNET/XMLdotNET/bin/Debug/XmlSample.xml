@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE myRoot [ 
+<!ELEMENT myRoot ANY> 
+<!ELEMENT myChild ANY> 
+<!ELEMENT myGrandChild EMPTY> 
+<!ATTLIST myChild ChildID ID #REQUIRED > ]> 
+<myRoot> 
+  <myChild ChildID="ref-1"> 
+    <myGrandChild/> 
+    <myGrandChild/> 
+    <myGrandChild/> 
+  </myChild> 
+  <myChild ChildID="ref-2"> 
+    <myGrandChild/>
+    <myGrandChild/>
+    <myGrandChild/>
+  </myChild> 
+  <myChild ChildID="ref-3">
+    <myGrandChild/> 
+    <myGrandChild/> 
+    <myGrandChild/>
+  </myChild> 
+  <myChild ChildID="ref-4"> 
+    <myGrandChild/> 
+    <myGrandChild/> 
+    <myGrandChild/>
+  </myChild> 
+</myRoot> 

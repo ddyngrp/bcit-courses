@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Quiz6", "Quiz6\Quiz6.vcproj", "{B67233EA-6EBC-4FE1-95F2-0EB31C1E74A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "second", "second\second.vcproj", "{15E9D6B4-68C1-4DA3-8B83-6C524698066E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "third", "third\third.vcproj", "{1BEC10D7-2E69-404B-B56B-1B21314918F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B67233EA-6EBC-4FE1-95F2-0EB31C1E74A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B67233EA-6EBC-4FE1-95F2-0EB31C1E74A5}.Debug|Win32.Build.0 = Debug|Win32
+		{B67233EA-6EBC-4FE1-95F2-0EB31C1E74A5}.Release|Win32.ActiveCfg = Release|Win32
+		{B67233EA-6EBC-4FE1-95F2-0EB31C1E74A5}.Release|Win32.Build.0 = Release|Win32
+		{15E9D6B4-68C1-4DA3-8B83-6C524698066E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15E9D6B4-68C1-4DA3-8B83-6C524698066E}.Debug|Win32.Build.0 = Debug|Win32
+		{15E9D6B4-68C1-4DA3-8B83-6C524698066E}.Release|Win32.ActiveCfg = Release|Win32
+		{15E9D6B4-68C1-4DA3-8B83-6C524698066E}.Release|Win32.Build.0 = Release|Win32
+		{1BEC10D7-2E69-404B-B56B-1B21314918F6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1BEC10D7-2E69-404B-B56B-1B21314918F6}.Debug|Win32.Build.0 = Debug|Win32
+		{1BEC10D7-2E69-404B-B56B-1B21314918F6}.Release|Win32.ActiveCfg = Release|Win32
+		{1BEC10D7-2E69-404B-B56B-1B21314918F6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

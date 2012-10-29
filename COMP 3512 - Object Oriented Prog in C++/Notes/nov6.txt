@@ -1,0 +1,119 @@
+String s("hello");
+cout << s[1] << endl;
+s[1] = 'E';
+
+const String& s2("hello");
+cout<<s2[1]<<endl; //ok, calls const version
+s2[1] = 'E'; // not okay, won't compile if operator [] returns a const char
+
+*****************************************
+//inside String class
+char& operator[](size_type n){ //can't be applied to const string
+	return s_[n];
+}
+
+char operator[] (size_type n) const{
+	returns_[n];
+}
+*****************************************
+
+Constructor and destructor
+--------------------------
+constructor - intialization
+destructor - release resources
+
+RAII - resource aquisition is initialization
+
+example: file streams
+ofstream out("data.txt"); //get an output stream associated with "data.txt"
+destructor automatically closes file(i.e. disassociate stream from file)
+
+example: mutual exclusion(mutex)
+programming with threads
+-when multiple threads access a resource concurrently, we need mutual exclusion.
+
+operations on mutexes: lock, unlock
+eg, lock mutex, access shared resource, unlock mutex
+-if the mutex is locked by 1 thread, another thread will block when it tries to lock the mutex.
+-if a thread forgets to unlock the mutex it has aquired, no other thread can lock the mutex.
+
+Idea: put mutex in a lock object.
+Mutex - the type of a mutex
+
+class Lock{
+	public:
+		explicit Lock(Mutex *pm):pm_(pm){lock(pm_);} //constructor locks mutex
+		~Lock(){unlock(pm_);} //destructor unlocks mutex
+	private:
+		Mutex *pm_;
+		Lock(const Lock&); //prevent copying 
+		Lock& operator=(const Lock &); //assigning locks
+};
+
+
+
+
+Usage:
+Mutex m;
+{
+	Lock L(&m);
+	//critical section
+}//lock is destroyed
+
+
+Pthreads
+--------
+#include <pthread.h> //not in standard c++ but available in unix and cygwin
+
+pthread_t tid; //thread ID
+
+//first arg is reference of thread ID, second arg = ?not important yet, third arg = function to execute, fourth arg = args of the function to be executed
+pthread_create(&tid, 0, print, "hello");
+
+void *print(void *arg){
+	const char *s = (const char*)arg;
+	
+	for(int i = 0; i<1000; i++)
+		cout<<s<<endl;
+}
+
+Assume 2 threads are printing "hello" & the other "world"
+output:
+hello
+hello
+hello
+world
+world
+hello   //running 2 threads concurrently will have mixed output
+..
+.....
+....
+
+If we don't want the output to be interleaved, we need mutual exclusion.
+
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+2 operations:
+	pthread_mutex_lock(&mutex);
+	pthread_mutex_unlock(&mutex);
+	
+	void *print(void*arg){
+		pthread_mutex_lock(&mutex);
+		//original code
+		pthread_mutex_unlock(&mutex);
+	}
+
+	class Lock{
+		public:
+			explicit Lock(pthread_mutex_t *pm):pm_(pm){
+				pthread_mutex_lock(pm_);
+			}
+			~Lock(){pthread_mutex_unlock(pm_);}
+		private:
+			pthread_mutex_t *pm_;
+			Lock(const Lock &);
+			Lock& operator==(const Lock&);
+	}
+		
+	}	

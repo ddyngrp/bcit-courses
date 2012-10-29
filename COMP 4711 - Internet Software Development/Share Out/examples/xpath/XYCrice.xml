@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="XYCrice.xsl"?>
+
+<WorldRiceTrade>
+	<Exports>
+		<Year date ="2003">
+			<Country name="Argentina"> 
+				<Amount>170</Amount>
+			</Country>
+			<Country name="Australia"> 
+				<Amount>141</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>2583</Amount>
+			</Country>
+			<Country name="Uruguay"> 
+				<Amount>675</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>3834</Amount>
+			</Country>
+		</Year>
+
+		<Year date="2004">
+			<Country name="Argentina"> 
+				<Amount>249</Amount>
+			</Country>
+			<Country name="Australia"> 
+				<Amount>131</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>880</Amount>
+			</Country>
+			<Country name="Uruguay"> 
+				<Amount>804</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>3090</Amount>
+			</Country>
+		</Year>
+
+		<Year date="2005">
+			<Country name="Argentina"> 
+				<Amount>345</Amount>
+			</Country>
+			<Country name="Australia"> 
+				<Amount>52</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>656</Amount>
+			</Country>
+			<Country name="Uruguay"> 
+				<Amount>762</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>3822</Amount>
+			</Country>
+		</Year>
+
+		<Year date="2006">
+			<Country name="Argentina"> 
+				<Amount>400</Amount>
+			</Country>
+			<Country name="Australia"> 
+				<Amount>500</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>800</Amount>
+			</Country>
+			<Country name="Uruguay"> 
+				<Amount>700</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>3300</Amount>
+			</Country>
+		</Year>
+
+		<Year date="2007">
+			<Country name="Argentina"> 
+				<Amount>400</Amount>
+			</Country>
+			<Country name="Australia"> 
+				<Amount>600</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>800</Amount>
+			</Country>
+			<Country name="Uruguay"> 
+				<Amount>750</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>3400</Amount>
+			</Country>
+		</Year>
+	</Exports>
+
+
+	<Imports>
+		<Year date ="2003">		
+			<Country name="Canada"> 
+				<Amount>242</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>258</Amount>
+			</Country>
+			<Country name="Colombia"> 
+				<Amount>75</Amount>
+			</Country>
+			<Country name="Costa Rica"> 
+				<Amount>95</Amount>
+			</Country>
+			<Country name="Cote d'Ivoire"> 
+				<Amount>750</Amount>
+			</Country>		
+			<Country name="Cuba"> 
+				<Amount>371</Amount>
+			</Country>
+			<Country name="Uzbekistan"> 
+				<Amount>25</Amount>
+			</Country>
+			<Country name="UAE"> 
+				<Amount>80</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>458</Amount>
+			</Country>
+		</Year>
+
+		<Year date ="2004">		
+			<Country name="Canada"> 
+				<Amount>285</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>1122</Amount>
+			</Country>
+			<Country name="Colombia"> 
+				<Amount>58</Amount>
+			</Country>
+			<Country name="Costa Rica"> 
+				<Amount>136</Amount>
+			</Country>
+			<Country name="Cote d'Ivoire"> 
+				<Amount>750</Amount>
+			</Country>		
+			<Country name="Cuba"> 
+				<Amount>639</Amount>
+			</Country>
+			<Country name="Uzbekistan"> 
+				<Amount>25</Amount>
+			</Country>
+			<Country name="UAE"> 
+				<Amount>80</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>477</Amount>
+			</Country>
+		</Year>
+
+		<Year date ="2005">		
+			<Country name="Canada"> 
+				<Amount>300</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>609</Amount>
+			</Country>
+			<Country name="Colombia"> 
+				<Amount>92</Amount>
+			</Country>
+			<Country name="Costa Rica"> 
+				<Amount>106</Amount>
+			</Country>
+			<Country name="Cote d'Ivoire"> 
+				<Amount>800</Amount>
+			</Country>		
+			<Country name="Cuba"> 
+				<Amount>736</Amount>
+			</Country>
+			<Country name="Uzbekistan"> 
+				<Amount>25</Amount>
+			</Country>
+			<Country name="UAE"> 
+				<Amount>80</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>418</Amount>
+			</Country>
+		</Year>
+
+		<Year date ="2006">		
+			<Country name="Canada"> 
+				<Amount>325</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>600</Amount>
+			</Country>
+			<Country name="Colombia"> 
+				<Amount>100</Amount>
+			</Country>
+			<Country name="Costa Rica"> 
+				<Amount>100</Amount>
+			</Country>
+			<Country name="Cote d'Ivoire"> 
+				<Amount>750</Amount>
+			</Country>		
+			<Country name="Cuba"> 
+				<Amount>700</Amount>
+			</Country>
+			<Country name="Uzbekistan"> 
+				<Amount>25</Amount>
+			</Country>
+			<Country name="UAE"> 
+				<Amount>80</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>525</Amount>
+			</Country>
+		</Year>
+
+		<Year date ="2007">		
+			<Country name="Canada"> 
+				<Amount>325</Amount>
+			</Country>
+			<Country name="China"> 
+				<Amount>800</Amount>
+			</Country>
+			<Country name="Colombia"> 
+				<Amount>100</Amount>
+			</Country>
+			<Country name="Costa Rica"> 
+				<Amount>100</Amount>
+			</Country>
+			<Country name="Cote d'Ivoire"> 
+				<Amount>750</Amount>
+			</Country>		
+			<Country name="Cuba"> 
+				<Amount>700</Amount>
+			</Country>
+			<Country name="Uzbekistan"> 
+				<Amount>25</Amount>
+			</Country>
+			<Country name="UAE"> 
+				<Amount>80</Amount>
+			</Country>
+			<Country name="United States"> 
+				<Amount>575</Amount>
+			</Country>
+		</Year>
+
+	</Imports>
+</WorldRiceTrade>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- Content of the "c:\" folder -->
+<folders path="c:\" count="13">
+  <folder name="Config.Msi" created="10/19/2001 9:17:12 AM">Content of Config.Msi</folder>
+  <folder name="Documents and Settings" created="8/7/2001 1:43:09 PM">Content of Documents and Settings</folder>
+  <folder name="Inetpub" created="8/7/2001 1:03:03 PM">Content of Inetpub</folder>
+  <folder name="My Icons" created="8/29/2001 10:02:39 AM">Content of My Icons</folder>
+  <folder name="My Stuff" created="9/5/2001 11:28:07 AM">Content of My Stuff</folder>
+  <folder name="Program Files" created="8/7/2001 1:44:12 PM">Content of Program Files</folder>
+  <folder name="Proof" created="8/23/2001 5:46:19 PM">Content of Proof</folder>
+  <folder name="RECYCLER" created="8/7/2001 12:37:23 PM">Content of RECYCLER</folder>
+  <folder name="System Volume Information" created="8/7/2001 12:08:37 PM">Content of System Volume Information</folder>
+  <folder name="Temp" created="8/31/2001 10:49:35 AM">Content of Temp</folder>
+  <folder name="Test" created="11/7/2001 5:03:08 PM">Content of Test</folder>
+  <folder name="WINDOWS" created="8/7/2001 1:32:30 PM">Content of WINDOWS</folder>
+  <folder name="WINNT" created="8/23/2001 1:15:53 PM">Content of WINNT</folder>
+</folders>

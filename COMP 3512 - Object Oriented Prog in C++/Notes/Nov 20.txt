@@ -1,0 +1,136 @@
+midterm 2:	Friday, Nov. 28
+
+4)	Can assignment operator be virtual?
+
+B - base	D - derived
+
+
+B& operator = (const B&);
+D& operator = (const D&);
+
+different argument types!
+
+D::operator does not override B::operator even if they are virtual.
+
+Assignment operators should not be virtual
+
+_________________________________________________________
+
+Overriding
+
+
+-	applies to virtual functions
+
+class B{
+
+public:
+	virtual void f(int);
+
+class D: public B{
+
+public:
+	virtual void f(int);
+
+
+Note: the overriding version must have the same parameter list as the overriser version but the return type can be slightly different
+
+
+base	B*	B&
+derived	D*	D&
+
+
+compiler_generated default ctor - calls default ctors of base classes and then the default ctors for data members
+(except for built-in types which will have random values)
+
+compiler_generated copy ctors - calls copy ctors of base classes and then the copy ctors for data memebers
+(for built-in types, it performs bitwise copy)
+
+copiler_generated dtor - order of dtor calls is the reverse of the order of the ctor calls.
+
+
+
+_______________________________________________
+
+
+class C{
+public:
+	static int const();
+};					<--calling static method
+
+
+const << C::count() << endl;
+
+Note:  C c;
+
+cout << c.count() << endl;	//also works
+
+Factoring pattern
+
+
+class Shape{
+
+public:
+	shape(int colour): colour_(colour){}
+	virtual void save(ostream& os) const{
+		os << typeid(*this).name() << endl;
+		os << colour_ << endl;
+	}
+
+private:
+	int colour_;
+};
+
+class Circle:public Shape{
+public:
+	explicit Circle(int colour = 0, const Point& centre = Point(), int radius = 1)
+	:Shape(colour), centre_(centre), (radius_(radius)){}
+
+
+virtual void save(ostream & os) const{
+	shape::save(os);
+	os << centre_ << endl;
+	os << radius_ << endl;
+}
+explicit Circle(istream &is):shape(is){
+	is >> centre_ >> radius_;
+	//error-handling is necessary eg. if (!is) throw...;
+
+
+
+vector(Shape *) v;	//assume we've stored some shapes
+
+for(vecotr<Shape * >::size_type i = 0; i < v.size(); i++)
+	v[i] -> save(cout);	//late binding
+
+How can we read back the output and recreate the shapes?
+Use a factory.
+
+
+class
+	ShapeFactory{
+	public:
+		ShapeFactory(istream& is): is_(is){}
+		Shape *create();
+	private:
+		istream&is_;
+	};
+
+Shape* ShapeFactory::create(){
+	string type;
+
+	if(!(is_>>type))
+		return 0;
+	if(type == typeid(Circle).name())
+		return new Circle(is_);
+	if(type == typeid(Rectangle).name())
+	return new Rectangle(is_);
+
+...
+}
+
+
+ShapeFactory sf(cin);
+vector<Shape*> v;
+Shape*	p;
+while((p=sf.create())!=0)
+	v.push_back(p);

@@ -1,0 +1,57 @@
+import java.net.*;
+import java.io.*;
+
+public class PostXml {
+
+  public static void main(String[] args) {
+		
+    try {
+      String xmldata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + 
+	"<soap:Envelope " + 
+	  "env:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" " + 
+	  "xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" " + 
+	  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" " + 
+	  "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">" +
+	  "<soap:Header/>" +
+          "<soap:Body>" +
+          	"<PostMessage xmlns=\"http://virus-box/MLogger\">" +
+          		"<SessionID>1234567</SessionID>" +
+          		"<title>Title</title>" +
+          		"<message>Message</message>" +
+          		"<image></image>" +
+          		"<video></video>" +
+          		"<audio></audio>" +
+          	"</PostMessage>" +
+          "</soap:Body>" +
+    "</soap:Envelope>";
+			
+      //Create socket
+      String hostname = "windev.trollop.org";
+      int port = 80;
+      InetAddress  addr = InetAddress.getByName(hostname);
+      Socket sock = new Socket(addr, port);
+			
+      //Send header
+      String path = "/MLogger/MLService.asmx?op=PostMessage";
+      BufferedWriter  wr = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream(),"UTF-8"));
+      // You can use "UTF8" for compatibility with the Microsoft virtual machine.
+      wr.write("POST " + path + " HTTP/1.0\r\n");
+      wr.write("Host: " + hostname + "\r\n");
+      wr.write("Content-Length: " + xmldata.length() + "\r\n");
+      wr.write("Content-Type: text/xml; charset=\"utf-8\"\r\n");
+      wr.write("\r\n");
+			
+      //Send data
+      wr.write(xmldata);
+      wr.flush();
+			
+      // Response
+      BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      String line;
+      while((line = rd.readLine()) != null)
+	System.out.println(line);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}

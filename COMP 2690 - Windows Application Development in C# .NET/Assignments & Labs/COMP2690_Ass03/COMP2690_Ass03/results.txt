@@ -1,0 +1,5 @@
+tennis,2006/01/28,Federer,Baghdatis,5,7,7,5,6,0,6,2
+hockey,2005/04/22,Canucks,Oilers,6,1
+hockey,2007/02/12,Rangers,Ducks,0,1
+tennis,2006/01/24,Clijsters,Hingis,6,3,6,3
+tennis,2007/11/05,Borg,Lawstrom,4,2,5,1,2,5,3,7

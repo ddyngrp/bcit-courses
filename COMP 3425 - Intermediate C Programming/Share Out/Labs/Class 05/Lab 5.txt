@@ -1,0 +1,32 @@
+1. Complete last week's lab, if you have not done so already.
+
+2. Add a new menu option to fig12_13.c "to add a duplicate item for each item in the queue" and implement the changes required to support this new menu option.  The work of this menu option should be put in the following function:
+
+  void duplicateValues (QueueNodePtr headPtr, QueueNodePtr * tailPtr);
+
+If the status of the Queue before this menu option is chosen is:
+
+  A --> B --> c --> NULL
+
+The status of the Queue after this menu option is chosen should be:
+
+  A --> A --> B --> B --> C --> C --> NULL
+
+Note that we pass the headPtr as a call by value to the function, while we pass the tailPtr as a call by reference to the function. Why? Because the headPtr will not be changed by the code in the function, while the tailPtr will be modified by the code in the function.  This means you must add the duplicate value after the existing value!
+
+3. a) Load the program fig12_19.c into a .NET 2005 project.
+
+b) Set a break point on line 43 (see slide 58 of Chapter 12 .ppt).
+
+c) Start debugging so that execution stops at break point.
+
+d) Based on random numbers generated, predict what the order of numbers will be when traversed preorder, inorder and postorder.
+
+e) Execute remainder of program to confirm your predictions were correct.  Repeat steps c) to e) until you are able to reliably predict the outcome.
+
+f) If you like to be challenged, modify the program so that 20 or more random numbers are generated and then repeat steps c) to e).
+
+g) Confirm that you know how to use the debugger to:
+   1) step over a call to a function (avoid stopping in the function with the debugger - it executes the function without stopping).
+   2) step into a function so that you can step through the individual statements in the function.
+   3) step out of a function that you accidentally stepped into with the debugger or no longer need to debug.

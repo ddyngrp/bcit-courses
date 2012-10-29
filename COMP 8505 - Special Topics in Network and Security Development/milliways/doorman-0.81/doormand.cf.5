@@ -1,0 +1,199 @@
+.\" Copyright (c) 2003 Bruce Ward <bward2@users.sourceforge.net>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111,
+.\" USA.
+.\"
+.\"  ------------------------------------------------------------------------
+.\"   Oct.8,2003  :  JBW :  Initial version
+.\"   Jun 29,2004 :  JBW :  Added acknowledgement
+.\"   Jul 29,2004 :  JBW :  Removed 'tolerance'; added 3 tag records
+.\"   Aug 14,2005 :  JBW :  Modified for new hash archive, removal of
+.\"                         Berkeley DB. Added link-length debugging options 
+.\"  -------------------------------------------------------------------------
+.\"
+
+.TH doormand.cf  5 "Aug 14, 2005" "Doorman, V0.81" "Doorman & Knocker"
+
+.SH NAME
+.B doormand.cf
+\- The
+.I doormand
+configuration file
+.SH DESCRIPTION
+This is the main configuration file for the 
+.I doormand
+daemon.  It consists of simple keyword-value pairs, one pair per line;
+keywords are not case-sensitive.
+Any part of a line following a '#' character is
+ignored, and may be used as a comment.  Blank lines are permitted.
+Unrecognized keywords are ignored without warning messages.
+.br
+
+
+.SH KEYWORDS
+.HP 4
+.B connection-delay-1
+\- the maximum number of microseconds to wait for a complete
+3-way handshake between the client and the requested service,
+after seeing the initial 'SYN' from the client.
+.br
+Default value is 500000 usecs (one half second)
+.HP 4
+.B connection-delay-2
+\- the number of seconds delay between checks on an established connection,
+waiting for it to be broken.  When the doorman 
+finds the connection has been broken, it removes the firewall rule which
+permitted that connection.   Default is 5 seconds.
+.HP 4
+.B firewall-add
+\- the full pathname of the script to be used to add firewall rules.
+No default.
+.HP 4
+.B firewall-del
+\- the full pathname of the script to be used to delete firewall rules.
+No default.
+.HP 4
+.B guestlist
+\- the full pathname of the doorman's "guest list".  No default.
+.HP 4
+.B link-header-length
+\- the number of bytes in the data-link header of the interface that
+the doorman is listening on.  You only need to specify this if 'pcap' guesses this 
+value incorrectly; this is rare, but -has- been reported, usually on PPPoE interfaces.
+The doorman uses the 'pcap' package
+("Packet Capture"; the Berkeley packet filter package) to watch for packets.
+If pcap gets the data-link header length wrong, the doorman will not recognize
+knock packets, and will do and log absolutely nothing.
+
+To determine the correct value to use, dump received packets to standard output
+by using the doormand "-D" and "-X" command-line options.
+Send a few 'knock' packets, and look for "45 00" in the dump.
+These are usually the first 2 bytes of the IP header; count the number of bytes
+before them, and you have length of the data-link header.
+.HP 4
+.B interface
+\- the device name of the interface at which which the doorman should
+listen.  No default.
+.HP 4
+.B logfile
+\- the full pathname of the file to which events are logged; this may
+be the system messages logfile if desired.
+Default is "/var/log/doorman".
+.HP 4
+.B loglevel
+\- the name of the severity level at which logging should occur.
+The names are not case-sensitive.
+Valid level names, in order of severity, are:
+.nf
+    DEBUG  INFO  NOTICE  WARNING
+    ERROR  CRIT  ALERT   EMERG
+.fi
+For normal usage, INFO or NOTICE will probably be the preferred level.
+Default level is DEBUG.
+.HP 4
+.B pidfile
+\- the full pathname of the process-ID file created by doormand.
+Default is "/var/run/doorman.pid".  Doormand removes this file just 
+before it stops running, except in the case of a program crash,
+after which it must be removed manually.
+.HP 4
+.B port
+\- the UDP port number at which the doorman should listen for "knocks".
+Default is 1001.
+.HP 4
+.B hash-archive
+\- the name of the file in which information about old "knock" packets is stored.
+The doorman uses this file to make sure that a successful knock cannot be re-used by
+someone sniffing traffic to your firewall.
+.HP 4
+.B hash-archive-size
+\- the number of old knocks which are to be remembered.
+This must be at least 1000, but should be 50000 or more, to make replay
+attacks difficult.  The hash archive consumes 20 bytes of disk space per knock.
+In the current implementation, some knocks may be lost
+when the doorman is restarted after this value is reduced, causing
+the archive to be re-created as a smaller file.
+Default is 100000 knocks.
+.HP 4
+.B waitfor
+\- the number of seconds that may elapse after a valid "knock", during
+which a connection may be made to the requested service.
+Default is 10 seconds.
+.br
+
+
+.SH EXAMPLE FILES
+.br
+
+for a production environment:
+.nf
+   interface         eth0
+   port              1001
+   waitfor           10
+   pidfile           /var/run/doormand.pid
+   logfile           /var/log/messages
+   loglevel          NOTICE
+   guestlist         /usr/local/etc/doormand/guestlist
+   firewall-add      /usr/local/etc/doormand/firewall_add
+   firewall-del      /usr/local/etc/doormand/firewall_delete
+   hash-archive-size 50000
+   hash-archive      /var/doormand.hash-archive
+
+.br
+.fi
+
+for testing:
+.nf
+   interface           lo
+   port                1033
+   waitfor             10
+   pidfile             /tmp/doormand.pid
+   logfile             /dev/tty
+   loglevel            DEBUG
+   guestlist           test_guestlist
+   firewall-add        test_add_script
+   firewall-del        test_del_script
+   hash-archive-size   50000
+   hash-archive        /tmp/doormand.hash-archive
+   link-header-length  16  # if doorman is ignoring knocks,
+                           # you can experiment by using
+                           # different values for this.
+.br
+.fi
+
+.SH SEE ALSO
+.BR knock (1),
+.BR knockcf (5),
+.BR doormand (8),
+.BR guestlist (5)
+
+.SH ACKNOWLEDGEMENT
+.BR doormand
+and
+.BR knock
+are an implementation of an original idea by
+.B Martin Krzywinski.
+See his site at http://www.portknocking.org
+
+.SH COPYRIGHT
+Copyright (c) 2003-2005, J.B.Ward
+.br
+<bward2@users.sourceforge.net>
+

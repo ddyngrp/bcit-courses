@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=species\ age\ weightKG
+comment0.target=Animal(String,\ int,\ double)
+comment0.text=\nConstructor\ for\ animal\ objects.\n@param\ species\ the\ name\ of\ the\ animal's\ species\n@param\ age\ the\ age\ of\ the\ animal\n@param\ weightKG\ the\ weight\ of\ the\ animal\ in\ kilograms\n\n
+comment1.target=String\ getSpecies()
+comment1.text=\nGetter\ for\ animal's\ species\n@return\ a\ string\ representing\ animal's\ species\ name.\n\n
+comment2.target=int\ getAge()
+comment2.text=\nGetter\ for\ animal's\ age\n@return\ an\ int\ representing\ the\ age\ of\ the\ animal.\n\n
+comment3.target=double\ getWeightKG()
+comment3.text=\nGetter\ for\ species\n@return\ a\ double\ representing\ the\ weight\ of\ the\ animal\ in\ kilograms.\n\n
+comment4.target=String\ toString()
+comment4.text=\ntoString\ method\ for\ animal\ objects\n\n
+comment5.target=String\ getMove()
+numComments=6

@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>rollovers</title>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+function imageRollOver(yourId, theImageSrc)
+{
+   x       = document.getElementById(yourId);
+   x.src   = theImageSrc;    
+}
+
+
+function textRollOver(yourId, theColor)
+{
+   document.getElementById(yourId).style.color = theColor;
+}
+
+
+// -->
+</script>
+</head>
+<body>
+
+<img 	src="elephant.jpg" 
+	id="one" 
+	name="one" 
+	onmouseover="imageRollOver(this.id, 'tigers.jpg');" 
+	onmouseout="imageRollOver(this.id, 'elephant.jpg');"
+	height="300"
+/>
+
+<img src="giraffe.jpg"  id="two" name="two" 
+	onmouseover="imageRollOver(this.id, 'lion.jpg');" 
+	onmouseout="imageRollOver(this.id, 'giraffe.jpg');"
+	height="300"
+/>
+
+<p>
+
+	<span id="l" name="l" onmouseover="textRollOver(this.id, 'blue');" onmouseout="textRollOver(this.id, 'black');">leafs</span> 
+	<span id="s" name="s" onmouseover="textRollOver(this.id, 'red');" onmouseout="textRollOver(this.id, 'black');">suck</span>!
+
+</p>
+
+</body>
+</html>

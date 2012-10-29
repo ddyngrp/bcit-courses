@@ -1,0 +1,15 @@
+-- You should NOT add or remove member functions in the provided headers;
+   also, you should NOT modify the function prototypes.
+
+-- The "shape" constructors that take an istream are used by ShapeFactory.
+   A ShapeFactory object is typically used to read shapes saved in a file. 
+   However, you may find it useful to use such an object to read the "c"
+   commands the user types.  For example, the writeup has:
+
+   >  c rectangle (2,-3) (4,-5)
+
+   Note that the data after the "c" is basically what a ShapeFactory expects.
+   But since the user can type in invalid data, the "shape" constructors
+   need to do error-checking (& perhaps throw an exception on error).
+
+aw

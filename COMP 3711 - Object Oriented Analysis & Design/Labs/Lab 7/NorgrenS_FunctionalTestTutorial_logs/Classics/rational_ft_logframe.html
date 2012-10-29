@@ -1,0 +1,110 @@
+﻿<HTML>
+<HEAD>
+<META HTTP-EQUIV="charset" CONTENT="utf-8">
+<TITLE>Playback Log for Classics</TITLE>
+<STYLE TYPE="text/css">
+<!--
+  table caption {color: darkblue; font-size: x-large; font-weight: bold}
+  td {align: left; font-weight: bold}
+  td.fail {color: darkred; width: 10% }
+  td.warn {color: darkgoldenrod; width: 10% }
+  td.pass {color: darkgreen; width: 10% }
+  td.unkn {color: darkcyan; width: 10% }
+  td.info {width: 10% }
+  td.time {width: 30%; font-weight: normal}
+  td.note {align: left; font-weight: bold}
+  li {font-weight: normal}
+-->
+</STYLE>
+<SCRIPT>
+<!--
+function comparator(logDir,base,exp,act)
+{
+	try{
+		document.ComparatorApplet.startComparatorEx(base,exp,act,logDir);
+	}
+	catch(e){
+		alert("CRFCN0309E: Error creating verification point display:\nAn enabled JRE (1.3.1_02 or better) must be associated with the browser to view VP results");
+	}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%" border="1" rules="rows" summary="Log Events">
+<SCRIPT>
+<!--
+if (self == top)
+	document.write('<CAPTION>Log: Classics</CAPTION>')
+//-->
+</SCRIPT>
+<TR>
+<TD>&nbsp;</TD>
+<TD CLASS="time">November 14, 2008 3:05:10 PST AM</TD>
+<TD CLASS="note">Script start [Classics]</TD>
+</TR>
+<TR><TD COLSPAN=3><UL>
+<LI><I>line_number = </I>1</LI>
+<LI><I>script_iter_count = </I>0</LI>
+<LI><I>script_name = </I>Classics</LI>
+<LI><I>script_id = </I>Classics.java</LI>
+</UL>
+</TD></TR>
+<TR>
+<TD CLASS="pass">PASS</TD>
+<TD CLASS="time">November 14, 2008 3:05:10 PST AM</TD>
+<TD CLASS="note">Start application [ClassicsJavaB]</TD>
+</TR>
+<TR><TD COLSPAN=3><UL>
+<LI><I>name = </I>ClassicsJavaB</LI>
+<LI><I>line_number = </I>31</LI>
+<LI><I>script_name = </I>Classics</LI>
+<LI><I>script_id = </I>Classics.java</LI>
+</UL>
+</TD></TR>
+<TR ID="vp0">
+<TD CLASS="pass">PASS</TD>
+<TD CLASS="time">November 14, 2008 3:05:21 PST AM</TD>
+<TD CLASS="note">Verification Point [Classics_tree] passed.</TD>
+</TR>
+<TR><TD COLSPAN=3><UL>
+<LI><I>vp_type = </I>object_data</LI>
+<LI><I>name = </I>Classics_tree</LI>
+<LI><I>script_name = </I>Classics</LI>
+<LI><I>line_number = </I>52</LI>
+<LI><I>script_id = </I>Classics.java</LI>
+<LI><I>baseline = </I>resources\Classics.Classics_tree.base.rftvp</LI>
+<LI><I>expected = </I>Classics.0000.Classics_tree.exp.rftvp</LI>
+<P><A HREF="javascript:comparator(document.URL,'resources/Classics.Classics_tree.base.rftvp','Classics.0000.Classics_tree.exp.rftvp',null)">View Results</A>
+</UL>
+</TD></TR>
+<TR ID="vp1">
+<TD CLASS="pass">PASS</TD>
+<TD CLASS="time">November 14, 2008 3:05:23 PST AM</TD>
+<TD CLASS="note">Verification Point [OrderForTrentCulpito_standard] passed.</TD>
+</TR>
+<TR><TD COLSPAN=3><UL>
+<LI><I>vp_type = </I>object_property</LI>
+<LI><I>name = </I>OrderForTrentCulpito_standard</LI>
+<LI><I>script_name = </I>Classics</LI>
+<LI><I>line_number = </I>60</LI>
+<LI><I>script_id = </I>Classics.java</LI>
+<LI><I>baseline = </I>resources\Classics.OrderForTrentCulpito_standard.base.rftvp</LI>
+<LI><I>expected = </I>Classics.0000.OrderForTrentCulpito_standard.exp.rftvp</LI>
+<P><A HREF="javascript:comparator(document.URL,'resources/Classics.OrderForTrentCulpito_standard.base.rftvp','Classics.0000.OrderForTrentCulpito_standard.exp.rftvp',null)">View Results</A>
+</UL>
+</TD></TR>
+<TR>
+<TD CLASS="pass">PASS</TD>
+<TD CLASS="time">November 14, 2008 3:05:27 PST AM</TD>
+<TD CLASS="note">Script end [Classics]</TD>
+</TR>
+<TR><TD COLSPAN=3><UL>
+<LI><I>script_name = </I>Classics</LI>
+<LI><I>script_id = </I>Classics.java</LI>
+</UL>
+</TD></TR>
+</TABLE>
+<APPLET CODE="com/rational/test/ft/bootstrap/HtmlLogComparatorApplet.class" NAME="ComparatorApplet" WIDTH=0 HEIGHT=0></APPLET>
+</BODY>
+</HTML>

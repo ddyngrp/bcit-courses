@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Square()
+comment0.text=\nCreate\ a\ new\ square\ at\ default\ position\ with\ default\ color.\n\n
+comment1.params=newSize
+comment1.target=void\ changeSize(int)
+comment1.text=\nChange\ the\ size\ to\ the\ new\ size\ (in\ pixels).\ Size\ must\ be\ >\=\ 0.\n\n
+comment2.target=void\ draw()
+comment2.text=\nDraw\ the\ square\ with\ current\ specifications\ on\ screen.\n\n
+numComments=3

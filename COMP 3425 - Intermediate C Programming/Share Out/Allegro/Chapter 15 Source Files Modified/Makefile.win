@@ -1,0 +1,30 @@
+# Project: fig15_21
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = fig15_21.o $(RES)
+LINKOBJ  = fig15_21.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" C:/Dev-Cpp/lib/liballeg.a  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = fig15_21.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS) -lalleg  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before fig15_21.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "fig15_21.exe" $(LIBS)
+
+fig15_21.o: fig15_21.c
+	$(CC) -c fig15_21.c -o fig15_21.o $(CFLAGS)

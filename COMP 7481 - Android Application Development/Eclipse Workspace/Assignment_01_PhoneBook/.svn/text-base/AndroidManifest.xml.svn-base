@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.trollop.phoneBook"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="7" />
+
+    <application android:icon="@drawable/icon">
+        <activity android:name=".PhoneBook" android:label="@string/phone_book_list">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ContactList" android:label="@string/contact_list"></activity>
+        <activity android:label="@string/contact_editor" android:name=".ContactEditor"></activity>
+
+    </application>
+</manifest>

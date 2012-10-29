@@ -1,0 +1,16 @@
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\bin\Debug\XMLdotNET.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.frmXML.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.NodeLayout.XMLReadersinAction.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.Properties.Resources.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.XMLDataReader.TestXMLDataReader.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.XMLHotDOM.TestHotDOM.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.XPathEvaluator.XpathEval.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.csproj.GenerateResource.Cache
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.exe
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.pdb
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.ReadXML.ReadXML.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.WriteXML.WriteXML.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.DiffGram.DiffGram.resources
+C:\Documents and Settings\Amir\Desktop\COMP 2691\Week 11\Practical Examples\XMLdotNET\XMLdotNET\XMLdotNET\obj\Debug\XMLdotNET.DiffGram.Edit.resources

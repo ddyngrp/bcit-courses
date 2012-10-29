@@ -1,0 +1,53 @@
+#!/usr/bin/perl
+#
+#  file "ipfw_delete"
+#  FreeBSD-style firewall-delete script, called by "doormand". 
+#  This example can be used by systems which use ipfw.
+#
+#  Called with five arguments:
+#
+# $1 : name of the interface (e.g. eth0)
+# #2 : source IP; i.e. dotted-decimal address of the 'knock' client
+# $3 : source port; when this script is called for the first time
+#      to delete a broad firewall rule, this argument will be set
+#      to a single "0" (0x30) character.  This means that the source
+#      port was not known, and a broad rule allowing any source
+#      port was set.
+# $4 : destination IP; that is, the IP address of the interface 
+#      in argument 1.
+# $5 : The port number of the requested service (e.g. 22 for ssh, etc.)
+#
+# The IPFW scripts were contributed by Aaron Dalton <aaron@daltons.ca> who also
+# maintains the FreeBSD port.
+#
+use strict;
+my ($interface, $srcip, $srcport, $destip, $destport) = @ARGV;
+my $rulenum = undef;
+my ($ret) ;
+
+my $fwcmd = '/sbin/ipfw';
+
+if ($srcport == 0)
+{
+    $rulenum = `$fwcmd list | awk '/$srcip +to/'`;
+    ($rulenum) = ($rulenum =~ /^(\d+)\s+/);
+}
+else
+{
+    $rulenum = `$fwcmd list | awk '/$srcip +$srcport +to/'`;
+    ($rulenum) = ($rulenum =~ /^(\d+)\s+/);
+}
+
+open PIPE, "$fwcmd delete $rulenum |" ;
+
+$ret = <PIPE> ;
+chomp $ret ;
+
+# -- if ($ret =~ /^rules cleared$/) {
+
+if ($ret =~ /^$/) {
+    print "0\n" ; 
+} else {
+    print "-1 3 $ret\n" ;
+}   
+

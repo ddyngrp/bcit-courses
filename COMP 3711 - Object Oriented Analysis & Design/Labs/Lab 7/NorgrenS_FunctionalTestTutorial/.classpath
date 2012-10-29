@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="var" path="RATIONAL_FT_JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="var" path="JRE_LIB_CORE" rootpath="JRE_LIB_CORE" sourcepath="JRE_LIB_CORE"/>
+	<classpathentry kind="var" path="JRE_LIB_SECURITY" rootpath="JRE_LIB_SECURITY" sourcepath="JRE_LIB_SECURITY"/>
+	<classpathentry kind="var" path="JRE_LIB_RESOURCE" rootpath="JRE_LIB_RESOURCE" sourcepath="JRE_LIB_RESOURCE"/>
+	<classpathentry kind="var" path="JRE_LIB_GRAPHICS" rootpath="JRE_LIB_GRAPHICS" sourcepath="JRE_LIB_GRAPHICS"/>
+	<classpathentry kind="var" path="JRE_LIB_SERVER" rootpath="JRE_LIB_SERVER" sourcepath="JRE_LIB_SERVER"/>
+	<classpathentry kind="var" path="JRE_LIB_XML" rootpath="JRE_LIB_XML" sourcepath="JRE_LIB_XML"/>
+	<classpathentry kind="var" path="RATIONAL_FT_LIB" rootpath="RATIONAL_FT_SRCROOT" sourcepath="RATIONAL_FT_SRC">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:\Program Files\IBM\IBMIMShared\plugins\com.rational.test.ft.api.help_7.0.2.v200810061447.jar!/ApiReference"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="RATIONAL_SAP_LIB" rootpath="RATIONAL_SAP_SRCROOT" sourcepath="RATIONAL_SAP_SRC">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:\Program Files\IBM\IBMIMShared\plugins\com.rational.test.ft.api.help_7.0.2.v200810061447.jar!/ApiReference"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="RATIONAL_WPF_LIB" rootpath="RATIONAL_WPF_SRCROOT" sourcepath="RATIONAL_WPF_SRC">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:\Program Files\IBM\IBMIMShared\plugins\com.rational.test.ft.api.help_7.0.2.v200810061447.jar!/ApiReference"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="RATIONAL_SIEBEL_LIB" rootpath="RATIONAL_SIEBEL_SRCROOT" sourcepath="RATIONAL_SIEBEL_SRC">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:\Program Files\IBM\IBMIMShared\plugins\com.rational.test.ft.api.help_7.0.2.v200810061447.jar!/ApiReference"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="var" path="RATIONAL_FT_DATAPOOL_LIB" rootpath="RATIONAL_FT_DATAPOOL_LIB" sourcepath="RATIONAL_FT_DATAPOOL_LIB"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/All Users/Application Data/IBM/RFT/customization/com.ibm.terminal.tester.ft.jar" rootpath="C:/Documents and Settings/All Users/Application Data/IBM/RFT/customization/com.ibm.terminal.tester.ft.jar" sourcepath="C:/Documents and Settings/All Users/Application Data/IBM/RFT/customization/com.ibm.terminal.tester.ft.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

@@ -1,0 +1,63 @@
+import java.util.Calendar;
+
+/**
+ * Assignment #1 - Question #9
+ * @author Steffen L. Norgren - A00683006
+ *
+ */
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayUtils au = new ArrayUtils();
+		Quicksort qs = new Quicksort();
+		Heapsort hs = new Heapsort();
+		
+		// Create a set of randomized arrays
+		int[] aRnd2 = au.CreateRandom(100, 1, 100);
+		int[] aRnd3 = au.CreateRandom(1000, 1, 100);
+		int[] aRnd4 = au.CreateRandom(10000, 1, 100);
+		int[] aRnd5 = au.CreateRandom(100000, 1, 100);
+		
+		// Create a set of sequential arrays
+		int[] aSeq2 = au.CreateSequential(100);
+		int[] aSeq3 = au.CreateSequential(1000);
+		int[] aSeq4 = au.CreateSequential(10000);
+		int[] aSeq5 = au.CreateSequential(100000);
+		
+		// Create a set of decremental arrays
+		int[] aDec2 = au.CreateDecremental(100);
+		int[] aDec3 = au.CreateDecremental(1000);
+		int[] aDec4 = au.CreateDecremental(10000);
+		int[] aDec5 = au.CreateDecremental(100000);
+		
+		// Store time averages
+		double[] avg = new double[4];
+		
+		// Run Mergesort tests
+		for (int i = 0; i < 100; i++) {
+			avg[0] += TestMerge(au.CreateRandom(100, 1, 100));
+			avg[1] += TestMerge(au.CreateRandom(1000, 1, 100));
+			avg[2] += TestMerge(au.CreateRandom(10000, 1, 100));
+			avg[3] += TestMerge(au.CreateRandom(100000, 1, 100));
+		}
+		
+		System.out.println("Random with size n = 10^2: " + (avg[0] / 100) + "ms");
+		System.out.println("Random with size n = 10^3: " + (avg[1] / 100) + "ms");
+		System.out.println("Random with size n = 10^4: " + (avg[2] / 100) + "ms");
+		System.out.println("Random with size n = 10^5: " + (avg[3] / 100) + "ms");
+	}
+	
+	private static double TestMerge(int[] input) {
+		Mergesort ms = new Mergesort();
+
+		double start = Calendar.getInstance().getTimeInMillis();		
+		ms.Sort(input);
+		double end = Calendar.getInstance().getTimeInMillis();
+		
+		return (end - start);
+	}
+}

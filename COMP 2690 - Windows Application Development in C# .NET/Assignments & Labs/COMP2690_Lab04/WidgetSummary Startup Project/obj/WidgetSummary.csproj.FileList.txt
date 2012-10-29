@@ -1,0 +1,5 @@
+bin\Debug\WidgetSummary.exe
+bin\Debug\WidgetSummary.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\WidgetSummary.exe
+obj\Debug\WidgetSummary.pdb

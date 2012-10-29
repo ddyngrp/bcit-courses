@@ -1,0 +1,7 @@
+bin\Debug\XPathEval_CS.exe
+bin\Debug\XPathEval_CS.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\XPathEval_CS.Form1.resources
+obj\Debug\XPathEval_CS.csproj.GenerateResource.Cache
+obj\Debug\XPathEval_CS.exe
+obj\Debug\XPathEval_CS.pdb

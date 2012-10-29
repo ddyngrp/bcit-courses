@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : members.xml
+    Created on : 2009/01/27, 13:44
+    Author     : Drake
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE members SYSTEM "members.dtd">
+<members>
+
+<player>
+    <PID>
+        0000000000
+    </PID>
+    <fName>
+        Graham
+    </fName>
+    <lName>
+        Kirkham
+    </lName>
+    <pAddy>
+        3921 Napier St.
+    </pAddy>
+    <pCity>
+        Burnaby
+    </pCity>
+    <pPostCode>
+        V9T 6L6
+    </pPostCode>
+    <pPhoneNumb>
+        1-604-220-8379
+    </pPhoneNumb>
+    <pRound>
+        <PID>
+            0000000000
+        </PID>
+        <RID>
+            0000000000
+        </RID>
+        <hNumb>
+            1
+        </hNumb>
+        <hScore>
+            3
+        </hScore>
+    </pRound>
+    <pRound>
+        <PID>
+            0000000000
+        </PID>
+        <RID>
+            0000000001
+        </RID>
+        <hNumb>
+            1
+        </hNumb>
+        <hScore>
+            3
+        </hScore>
+    </pRound>
+    <pHandicap>
+        <HCID>
+            0000000000
+        </HCID>
+        <PID>
+            0000000000
+        </PID>
+        <hDate>
+            26/12/09
+        </hDate>
+        <hcScore>
+            3
+        </hcScore>
+    </pHandicap>
+    <pHandicap>
+        <HCID>
+            0000000001
+        </HCID>
+        <PID>
+            0000000000
+        </PID>
+        <hDate>
+            27/12/09
+        </hDate>
+        <hcScore>
+            2
+        </hcScore>
+    </pHandicap>
+</player>
+<course>
+    <CID>
+        0000000000
+    </CID>
+    <cName>
+        Burnaby Golf Course
+    </cName>
+    <cAddy>
+        123 Random St.
+    </cAddy>
+    <cCity>
+        Burnaby
+    </cCity>
+    <cPostCode>
+        1a2 b3c
+    </cPostCode>
+    <cPhoneNumb>
+        1-604-123-4567
+    </cPhoneNumb>
+    <SSS>
+        4
+    </SSS>
+    <cDetails>
+        <HID>
+            0000000000
+        </HID>
+        <par>
+            4
+        </par>
+        <yards>
+            320
+        </yards>
+        <aInfo>
+            uphill, 3 sand bunkers
+        </aInfo>
+        <CID>
+            0000000000
+        </CID>
+    </cDetails>
+    <cDetails>
+        <HID>
+            0000000000
+        </HID>
+        <par>
+            4
+        </par>
+        <yards>
+            320
+        </yards>
+        <aInfo>
+            uphill, 3 sand bunkers
+        </aInfo>
+        <CID>
+            0000000000
+        </CID>
+    </cDetails>
+    <gRound>
+        <RID>
+            0000000001
+        </RID>
+        <CID>
+            0000000000
+        </CID>
+        <rStart>
+            27/12/08
+        </rStart>
+        <rFinish>
+            27/12/08
+        </rFinish>
+        <nHoles>
+            18
+        </nHoles>
+        <RWC>
+            Raining
+        </RWC>
+        <pRound>
+            <PID>
+                0000000000
+            </PID>
+            <RID>
+                0000000000
+            </RID>
+            <hNumb>
+                1
+            </hNumb>
+            <hScore>
+                3
+            </hScore>
+        </pRound>
+        <pRound>
+            <PID>
+                0000000000
+            </PID>
+            <RID>
+                0000000001
+            </RID>
+            <hNumb>
+                1
+            </hNumb>
+            <hScore>
+                2
+            </hScore>
+        </pRound>
+    </gRound>
+</course>
+
+</members>

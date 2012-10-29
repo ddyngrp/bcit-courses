@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>intro to js</title>
+	
+	<script language="javascript" type="text/javascript">
+	<!--
+	
+	function changeImg(someId, someSource)
+	{
+		document.getElementById(someId).src = someSource;
+	}
+
+	function changeColor(someId, someColor)
+	{
+		document.getElementById(someId).style.color=someColor;		
+		document.getElementById(someId).style.textDecoration=
+			"line-through";
+	}
+
+	// -->
+	</script>
+</head>
+
+<body>
+	<p>
+	jeff likes the <span id="suck" 
+			onmouseover="changeColor(this.id, 'red');" 
+			onmouseout="changeColor(this.id, 'black');">
+			leafs
+			</span>
+	and jason likes the canucks
+	</p>
+
+	<img 	src="./images/wolf.jpg"
+		id="myimage"
+		onmouseover="changeImg(this.id, './images/giraffe.jpg');"
+		onmouseout="changeImg(this.id, './images/wolf.jpg');"
+		width="300"
+	>
+</body>
+</html>

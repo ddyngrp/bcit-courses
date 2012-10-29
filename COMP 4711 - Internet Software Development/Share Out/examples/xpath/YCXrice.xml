@@ -1,0 +1,80 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet type="text/xsl" href="YCXrice.xsl"?>
+
+<world>
+	<year number="2003">
+		<country name="argentina" imports="0" exports="170"/>
+		<country name="australia" imports="0" exports="141"/>
+		<country name="canada" imports="242" exports="0"/>
+		<country name="china" imports="258" exports="2583"/>	
+		<country name="columbia" imports="75" exports="0"/>
+		<country name="costa rica" imports="95" exports="0"/>
+		<country name="cote d'ivoire" imports="750" exports="0"/>
+		<country name="cuba" imports="371" exports="0"/>		
+		<country name="united states" imports="458" exports="3834"/>
+		<country name="uruguay" imports="0" exports="675"/>
+		<country name="uzbekistan" imports="25" exports="0"/>
+		<country name="uae" imports="80" exports="0"/>
+	</year>
+	
+	<year number="2004">
+		<country name="argentina" imports="0" exports="249"/>
+		<country name="australia" imports="0" exports="131"/>
+		<country name="canada" imports="285" exports="0"/>
+		<country name="china" imports="1122" exports="880"/>	
+		<country name="columbia" imports="58" exports="0"/>
+		<country name="costa rica" imports="136" exports="0"/>
+		<country name="cote d'ivoire" imports="750" exports="0"/>
+		<country name="cuba" imports="639" exports="0"/>		
+		<country name="united states" imports="477" exports="3090"/>
+		<country name="uruguay" imports="0" exports="804"/>
+		<country name="uzbekistan" imports="25" exports="0"/>
+		<country name="uae" imports="80" exports="0"/>
+	</year>
+	
+	<year number="2005">
+		<country name="argentina" imports="0" exports="345"/>
+		<country name="australia" imports="0" exports="52"/>
+		<country name="canada" imports="300" exports="0"/>
+		<country name="china" imports="609" exports="656"/>	
+		<country name="columbia" imports="92" exports="0"/>
+		<country name="costa rica" imports="106" exports="0"/>
+		<country name="cote d'ivoire" imports="800" exports="0"/>
+		<country name="cuba" imports="736" exports="0"/>		
+		<country name="united states" imports="418" exports="3822"/>
+		<country name="uruguay" imports="0" exports="762"/>
+		<country name="uzbekistan" imports="25" exports="0"/>
+		<country name="uae" imports="80" exports="0"/>
+	</year>
+	
+	<year number="2006">
+		<country name="argentina" imports="0" exports="400"/>
+		<country name="australia" imports="0" exports="500"/>
+		<country name="canada" imports="325" exports="0"/>
+		<country name="china" imports="600" exports="800"/>	
+		<country name="columbia" imports="100" exports="0"/>
+		<country name="costa rica" imports="100" exports="0"/>
+		<country name="cote d'ivoire" imports="750" exports="0"/>
+		<country name="cuba" imports="371" exports="0"/>		
+		<country name="united states" imports="525" exports="3300"/>
+		<country name="uruguay" imports="0" exports="700"/>
+		<country name="uzbekistan" imports="25" exports="0"/>
+		<country name="uae" imports="80" exports="0"/>
+	</year>
+	
+	<year number="2007">
+		<country name="argentina" imports="0" exports="400"/>
+		<country name="australia" imports="0" exports="600"/>
+		<country name="canada" imports="325" exports="0"/>
+		<country name="china" imports="800" exports="800"/>	
+		<country name="columbia" imports="100" exports="0"/>
+		<country name="costa rica" imports="100" exports="0"/>
+		<country name="cote d'ivoire" imports="750" exports="0"/>
+		<country name="cuba" imports="700" exports="0"/>		
+		<country name="united states" imports="575" exports="3400"/>
+		<country name="uruguay" imports="0" exports="750"/>
+		<country name="uzbekistan" imports="25" exports="0"/>
+		<country name="uae" imports="80" exports="0"/>
+	</year>
+</world>
+

@@ -1,0 +1,53 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.team.cvs.core,3.3.300.I20100526-0800,"org.eclipse.team.cvs.core",1297906670057
+started,bundle,org.eclipse.team.cvs.ui,3.3.301.R36x_v20100825-0800,"org.eclipse.team.cvs.ui",1297906670059
+started,bundle,org.eclipse.team.ui,3.5.101.R36x_v20100825-0800,"org.eclipse.team.ui",1297906670061
+started,bundle,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui",1297906670066
+started,bundle,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console",1297906670067
+started,bundle,org.eclipse.ui.editors,3.6.1.r361_v20100825-0800,"org.eclipse.ui.editors",1297906670067
+started,bundle,org.eclipse.ui.forms,3.5.2.r36_v20100702,"org.eclipse.ui.forms",1297906670075
+started,bundle,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.ide",1297906670089
+started,bundle,org.eclipse.ui.net,1.2.100.I20100505-1245,"org.eclipse.ui.net",1297906670091
+started,bundle,org.eclipse.ui.views,3.5.0.I20100527-0800,"org.eclipse.ui.views",1297906670092
+started,bundle,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"org.eclipse.ui.workbench",1297906670097
+started,bundle,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.workbench.texteditor",1297906670099
+started,bundle,org.eclipse.wst.sse.core,1.1.502.v201008311901,"org.eclipse.wst.sse.core",1297906670101
+started,bundle,com.android.ide.eclipse.adt,9.0.0.v201101191456-93220,"com.android.ide.eclipse.adt",1297906670107
+started,bundle,com.android.ide.eclipse.ddms,9.0.0.v201101191456-93220,"com.android.ide.eclipse.ddms",1297906670107
+started,bundle,org.eclipse.team.svn.core,0.7.9.I20100512-1900,"org.eclipse.team.svn.core",1297906670110
+os,sysinfo,,,"macosx",1297906670114
+arch,sysinfo,,,"x86_64",1297906670115
+ws,sysinfo,,,"cocoa",1297906670115
+locale,sysinfo,,,"en_CA",1297906670115
+processors,sysinfo,,,"2",1297906670115
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1297906670115
+java.runtime.version,sysinfo,,,"1.6.0_22-b04-307-10M3261",1297906670115
+java.specification.name,sysinfo,,,"Java Platform API Specification",1297906670115
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1297906670115
+java.specification.version,sysinfo,,,"1.6",1297906670115
+java.vendor,sysinfo,,,"Apple Inc.",1297906670115
+java.version,sysinfo,,,"1.6.0_22",1297906670115
+java.vm.info,sysinfo,,,"mixed mode",1297906670115
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1297906670115
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1297906670115
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1297906670115
+java.vm.specification.version,sysinfo,,,"1.0",1297906670115
+java.vm.vendor,sysinfo,,,"Apple Inc.",1297906670115
+java.vm.version,sysinfo,,,"17.1-b03-307",1297906670115
+started,bundle,org.eclipse.mylyn.context.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.ui",1297906670137
+started,bundle,org.eclipse.team.svn.ui,0.7.9.I20100512-1900,"org.eclipse.team.svn.ui",1297906670193
+started,bundle,org.polarion.eclipse.team.svn.connector.svnkit16,2.2.2.I20100512-1900,"org.polarion.eclipse.team.svn.connector.svnkit16",1297906670239
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1297906670466
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.tasks.ui",1297906670487
+started,bundle,org.eclipse.mylyn.team.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.team.ui",1297906670540
+activated,editor,org.eclipse.jdt.ui,3.6.1.r361_v20100825-0800,"org.eclipse.jdt.ui.CompilationUnitEditor",1297906670546
+started,bundle,org.eclipse.epp.usagedata.ui,1.3.0.R201005261100,"org.eclipse.epp.usagedata.ui",1297906671198
+started,bundle,org.eclipse.update.scheduler,3.2.300.v20100512,"org.eclipse.update.scheduler",1297906671246
+started,bundle,org.eclipse.update.configurator,3.3.100.v20100512,"org.eclipse.update.configurator",1297906671412
+started,bundle,org.eclipse.update.core,3.2.402.R36x_v20100629,"org.eclipse.update.core",1297906671431
+started,bundle,org.eclipse.debug.core,3.6.0.v20100519,"org.eclipse.debug.core",1297906671734
+started,bundle,org.eclipse.jdt.launching,3.5.100.v20100526,"org.eclipse.jdt.launching",1297906671786
+started,bundle,org.eclipse.jdt.apt.core,3.3.401.R36_v20100727-0110,"org.eclipse.jdt.apt.core",1297906671799
+started,bundle,org.eclipse.jdt.apt.pluggable.core,1.0.301.R36_v20100727-0110,"org.eclipse.jdt.apt.pluggable.core",1297906671823
+started,bundle,org.eclipse.core.variables,3.2.400.v20100505,"org.eclipse.core.variables",1297906672454
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1297906672763

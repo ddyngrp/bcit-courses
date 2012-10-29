@@ -1,0 +1,4 @@
+#Thu Oct 18 08:28:32 PDT 2007
+eclipse.preferences.version=1
+copycon.javadoc=/**\n * Copy Constructor\n *\n * @param ${class_instance} a <code>${class_name}</code> object\n */\n
+copycon.body=public ${class_name}(${class_name} ${class_instance}) \n{\n    this.${attribute} \= ${class_instance}.${attribute};\n}\n

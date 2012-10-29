@@ -1,0 +1,52 @@
+TEST                   COMPARISON            FROM                 TO             DETAILS
+
+=============================================================================
+											Firefox				 Spry
+** TOTAL **:           1.62x as fast     6313.4ms +/- 1.7%   3898.2ms +/- 1.2%     significant
+
+=============================================================================
+
+  3d:                  1.41x as fast      732.0ms +/- 5.5%    518.4ms +/- 1.2%     significant
+    cube:              1.64x as fast      267.4ms +/- 11.2%    163.4ms +/- 2.6%     significant
+    morph:             1.31x as fast      230.2ms +/- 5.7%    175.2ms +/- 0.3%     significant
+    raytrace:          1.30x as fast      234.4ms +/- 2.6%    179.8ms +/- 1.6%     significant
+
+  access:              1.67x as fast      926.0ms +/- 2.5%    553.2ms +/- 2.1%     significant
+    binary-trees:      1.46x as fast      100.0ms +/- 7.0%     68.4ms +/- 5.8%     significant
+    fannkuch:          2.09x as fast      405.4ms +/- 2.1%    193.8ms +/- 0.5%     significant
+    nbody:             1.35x as fast      297.2ms +/- 6.7%    219.8ms +/- 3.7%     significant
+    nsieve:            1.73x as fast      123.4ms +/- 4.9%     71.2ms +/- 0.8%     significant
+
+  bitops:              1.93x as fast      662.8ms +/- 8.5%    342.8ms +/- 1.2%     significant
+    3bit-bits-in-byte: 2.15x as fast      107.6ms +/- 1.3%     50.0ms +/- 1.8%     significant
+    bits-in-byte:      2.64x as fast      163.4ms +/- 1.0%     61.8ms +/- 2.6%     significant
+    bitwise-and:       1.72x as fast      175.6ms +/- 2.4%    102.0ms +/- 2.3%     significant
+    nsieve-bits:       1.68x as fast      216.2ms +/- 26.6%    129.0ms +/- 1.0%     significant
+
+  controlflow:         1.86x as fast       82.8ms +/- 2.0%     44.6ms +/- 1.5%     significant
+    recursive:         1.86x as fast       82.8ms +/- 2.0%     44.6ms +/- 1.5%     significant
+
+  crypto:              1.48x as fast      368.6ms +/- 0.7%    249.8ms +/- 0.7%     significant
+    aes:               1.53x as fast      144.8ms +/- 1.5%     94.4ms +/- 2.0%     significant
+    md5:               1.49x as fast      109.2ms +/- 0.5%     73.2ms +/- 1.4%     significant
+    sha1:              1.39x as fast      114.6ms +/- 1.5%     82.2ms +/- 2.0%     significant
+
+  date:                1.74x as fast      730.4ms +/- 2.0%    418.8ms +/- 1.6%     significant
+    format-tofte:      1.81x as fast      445.2ms +/- 1.5%    246.2ms +/- 1.5%     significant
+    format-xparb:      1.65x as fast      285.2ms +/- 3.0%    172.6ms +/- 2.2%     significant
+
+  math:                1.64x as fast      650.4ms +/- 1.4%    395.6ms +/- 3.6%     significant
+    cordic:            2.07x as fast      252.8ms +/- 0.8%    122.0ms +/- 2.6%     significant
+    partial-sums:      1.37x as fast      279.6ms +/- 1.8%    204.6ms +/- 5.1%     significant
+    spectral-norm:     1.71x as fast      118.0ms +/- 3.6%     69.0ms +/- 3.4%     significant
+
+  regexp:              1.23x as fast      600.6ms +/- 3.8%    489.4ms +/- 0.4%     significant
+    dna:               1.23x as fast      600.6ms +/- 3.8%    489.4ms +/- 0.4%     significant
+
+  string:              1.76x as fast     1559.8ms +/- 1.8%    885.6ms +/- 0.9%     significant
+    base64:            1.38x as fast      173.2ms +/- 1.9%    125.2ms +/- 1.3%     significant
+    fasta:             2.53x as fast      365.8ms +/- 1.7%    144.8ms +/- 0.4%     significant
+    tagcloud:          1.42x as fast      335.8ms +/- 3.9%    235.8ms +/- 1.7%     significant
+    unpack-code:       2.02x as fast      472.8ms +/- 2.7%    234.0ms +/- 1.3%     significant
+    validate-input:    1.46x as fast      212.2ms +/- 4.2%    145.8ms +/- 4.1%     significant
+

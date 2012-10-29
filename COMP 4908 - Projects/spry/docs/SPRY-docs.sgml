@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+]>
+<book id="index">
+  <bookinfo>
+    <title>SPRY Reference Manual</title>
+    <releaseinfo>
+		for SPRY 20090519
+		The latest version of Spry can be found online at
+		    <ulink role="online-location" url="http://svn.trollop.org/">http://svn.trollop.org</ulink>.
+    </releaseinfo>
+  </bookinfo>
+
+  <chapter>
+    <title>[Spry Documentation]</title>
+        <xi:include href="xml/gui_funcs.xml"/>
+    <xi:include href="xml/callbacks.xml"/>
+    <xi:include href="xml/cliopts.xml"/>
+    <xi:include href="xml/spry.xml"/>
+    <xi:include href="xml/generators.xml"/>
+    <xi:include href="xml/browser.xml"/>
+
+  </chapter>
+  <index id="api-index-full">
+    <title>API Index</title>
+    <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
+</book>

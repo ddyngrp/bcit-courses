@@ -1,0 +1,16 @@
+Doug Penner
+A00658271
+
+Data Communications Assignment 1 (Dumb Terminal)
+
+
+Files:
+All documentation, designs and text files are in "doc"
+Executable is in "exe"
+all source (including resources) are in "src"
+
+*No extra libraries are need*
+
+
+exe file was compiled with Visual Studio 2008
+	may not run on all machines (please compile from source)

@@ -1,0 +1,9 @@
+COMP 8045 - Major Project/examples/turtle2/module/machine
+COMP 8045 - Major Project/examples/turtle2/module/x86
+COMP 8045 - Major Project/examples/turtle2/module/@
+COMP 8045 - Major Project/source/module/machine
+COMP 8045 - Major Project/source/module/x86
+COMP 8045 - Major Project/source/module/@
+*.ko
+*.o
+export_syms
